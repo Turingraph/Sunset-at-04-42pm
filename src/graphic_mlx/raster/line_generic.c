@@ -25,7 +25,7 @@ void	draw_line_x_generic(mlx_image_t *dst,
 		line.p2 = line.p1;
 		line.p1 = temp;
 	}
-	if (line.p2.y - line.p2.y < 0)
+	if (line.p2.y - line.p1.y < 0)
 		draw_line_thick_x_minus(dst, line, boundary, ink);
 	else
 		draw_line_thick_x_plus(dst, line, boundary, ink);
@@ -44,7 +44,7 @@ void	draw_line_y_generic(mlx_image_t *dst,
 		line.p2 = line.p1;
 		line.p1 = temp;
 	}
-	if (line.p2.x - line.p2.x < 0)
+	if (line.p2.x - line.p1.x < 0)
 		draw_line_thick_y_minus(dst, line, boundary, ink);
 	else
 		draw_line_thick_y_plus(dst, line, boundary, ink);

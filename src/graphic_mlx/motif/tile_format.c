@@ -33,19 +33,15 @@
  *
  * @return line describing the centered tile-grid area in screen coordinates
  */
-t_fline	init_offset_tile_area(size_t window_width, size_t window_height,
+t_2d_int	init_offset_tile(size_t window_width, size_t window_height,
 	size_t resolution, size_t fixed_length)
 {
-	t_fline	output;
+	t_2d_int	output;
 
-	output.p1.re = (float)init_alltiles_offset(window_width, resolution,
+	output.x = (float)init_alltiles_offset(window_width, resolution,
 			fixed_length);
-	output.p1.im = (float)init_alltiles_offset(window_height, resolution,
+	output.y = (float)init_alltiles_offset(window_height, resolution,
 			fixed_length);
-	output.p2.re = output.p1.re + (float)init_alltiles_size(window_width,
-			resolution, fixed_length);
-	output.p2.im = output.p1.im + (float)init_alltiles_size(window_height,
-			resolution, fixed_length);
 	return (output);
 }
 
@@ -73,7 +69,7 @@ t_tile_format	init_tile_format(size_t window_width,
 	size_t			fixed_side;
 
 	fixed_side = (size_t)f_min((float)window_width, (float)window_height);
-	dst.offset = init_offset_tile_area(window_width, window_height,
+	dst.offset = init_offset_tile(window_width, window_height,
 			resolution, fixed_side);
 	dst.tile_size = (float)init_tile_size(fixed_side, resolution);
 	dst.tile_counts.x = init_alltiles_count(window_width,
@@ -106,8 +102,8 @@ t_2d_int	get_ith_tile_screen(t_tile_format tiles,
 	t_2d_int	output;
 	t_2d_int	screen_xy;
 
-	screen_xy.x = (int)tiles.offset.p1.re;
-	screen_xy.y = (int)tiles.offset.p1.im;
+	screen_xy.x = (int)tiles.offset.x;
+	screen_xy.y = (int)tiles.offset.y;
 	output.x = ix * tiles.tile_size + screen_xy.x;
 	output.y = iy * tiles.tile_size + screen_xy.y;
 	return (output);

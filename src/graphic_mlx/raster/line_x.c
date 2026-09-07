@@ -12,6 +12,17 @@
 
 #include "raster.h"
 
+// time : O(n)
+// space: O(1)
+void	draw_endpoint(mlx_image_t *dst,
+	t_line line, t_line boundary, t_ink32 ink)
+{
+	ink.thickness /= 2;
+	ink.thickness -= 1;
+	draw_circle(dst, line.p1, ink, boundary);
+	draw_circle(dst, line.p2, ink, boundary);
+}
+
 /*
 dx = x2 - x1
 dy = y2 - y1
@@ -114,8 +125,7 @@ void	draw_line_thick_x_plus(mlx_image_t *dst,
 	draw_line_x_plus(dst, line, boundary, ink.color);
 	if (ink.thickness < 2)
 		return ;
-	draw_circle(dst, line.p1, ink, boundary);
-	draw_circle(dst, line.p2, ink, boundary);
+	draw_endpoint(dst, line, boundary, ink);
 	parallel = line;
 	i = 1;
 	while (i < ink.thickness / 2)
@@ -141,8 +151,7 @@ void	draw_line_thick_x_minus(mlx_image_t *dst,
 	draw_line_x_minus(dst, line, boundary, ink.color);
 	if (ink.thickness < 2)
 		return ;
-	draw_circle(dst, line.p1, ink, boundary);
-	draw_circle(dst, line.p2, ink, boundary);
+	draw_endpoint(dst, line, boundary, ink);
 	parallel = line;
 	i = 1;
 	while (i < ink.thickness / 2)

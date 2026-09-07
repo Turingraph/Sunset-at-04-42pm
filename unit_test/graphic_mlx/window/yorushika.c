@@ -95,7 +95,7 @@ int	main(int len, char **str)
 		return (0);
 	}
 	style.background_color = f_rgba_to_int32(34, 79, 112, 255);
-	style.line_thickness = 3;
+	style.line_thickness = 2;
 	style.artists = E_KUSAMA;
 	color_cells_gradient(&table, init_feeling_blue(), true);
 	color_cells_gradient(&table, init_popart(), true);

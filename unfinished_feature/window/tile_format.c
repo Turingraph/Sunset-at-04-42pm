@@ -2,18 +2,18 @@
 
 // time : O(1)
 // space: O(1)
-t_fline	init_offset_tile_area(size_t width, size_t height,
+t_2d_int	init_offset_tile(size_t width, size_t height,
 	size_t resolution, size_t fixed_length)
 {
-	t_fline	output;
+	t_2d_int	output;
 
-	output.p1.re = (float)init_alltiles_offset(width, resolution,
+	output.p1.re = init_alltiles_offset(width, resolution,
 			fixed_length);
-	output.p1.im = (float)init_alltiles_offset(height, resolution,
+	output.p1.im = init_alltiles_offset(height, resolution,
 			fixed_length);
-	output.p2.re = output.p1.re + (float)init_alltiles_size(width,
+	output.p2.re = output.p1.re + init_alltiles_size(width,
 			resolution, fixed_length);
-	output.p2.im = output.p1.im + (float)init_alltiles_size(height,
+	output.p2.im = output.p1.im + init_alltiles_size(height,
 			resolution, fixed_length);
 	return (output);
 }
@@ -27,7 +27,7 @@ t_tile_format	init_tile_format(size_t width,
 	size_t			fixed_side;
 
 	fixed_side = (size_t)f_min((float)width, (float)height);
-	dst.offset = init_offset_tile_area(width, height, resolution, fixed_side);
+	dst.offset = init_offset_tile(width, height, resolution, fixed_side);
 	dst.tile_size = (float)init_tile_size(fixed_side, resolution);
 	dst.tile_counts.x = init_alltiles_count(width, resolution, fixed_side);
 	dst.tile_counts.y = init_alltiles_count(height, resolution, fixed_side);

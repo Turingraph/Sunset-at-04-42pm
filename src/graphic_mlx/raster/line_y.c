@@ -79,8 +79,7 @@ void	draw_line_thick_y_plus(mlx_image_t *dst,
 	draw_line_y_plus(dst, line, boundary, ink.color);
 	if (ink.thickness < 2)
 		return ;
-	draw_circle(dst, line.p1, ink, boundary);
-	draw_circle(dst, line.p2, ink, boundary);
+	draw_endpoint(dst, line, boundary, ink);
 	parallel = line;
 	i = 1;
 	while (i < ink.thickness / 2)
@@ -106,8 +105,7 @@ void	draw_line_thick_y_minus(mlx_image_t *dst,
 	draw_line_y_minus(dst, line, boundary, ink.color);
 	if (ink.thickness < 2)
 		return ;
-	draw_circle(dst, line.p1, ink, boundary);
-	draw_circle(dst, line.p2, ink, boundary);
+	draw_endpoint(dst, line, boundary, ink);
 	parallel = line;
 	i = 1;
 	while (i < ink.thickness / 2)

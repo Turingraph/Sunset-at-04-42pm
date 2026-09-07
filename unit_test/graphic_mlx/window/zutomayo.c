@@ -91,12 +91,12 @@ int	main(int len, char **str)
 	table = open_table_fdf_file(str[1], NULL, parse_ascii_line_cheche01, true);
 	style.background_color = f_rgba_to_int32(0, 0, 0, 255);
 	style.line_thickness = 1;
-	style.artists = E_PICASSO;
+	style.artists = E_TUYOKI;
 	color_cells_gradient(&table, init_ztmy_studyme(), true);
 	color_cells_gradient(&table, init_ztmy_timeleft(), true);
 	scale_multiplication_fdf(&table, 1.0 / 3.0, HEIGHT);
 	color_cells_gradient(&table, init_white_noise(), true);
-	output = init_fdf(&table, projection_isometric, 1.0);
+	output = init_fdf(&table, NULL, 1.0);
 	view_fdf(&output, style);
 	free_table_fdf(&table);
 	free_fdf(&output);

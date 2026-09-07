@@ -25,42 +25,11 @@ bool	is_islamic_art_valid(const t_islamic_art *src)
 }
 
 /**
- * Translate a line into a rectangular sub-area.
- * Each coordinate of src is interpreted relative to the origin of the
- * sub-area. The coordinate is first clamped to the corresponding sub-area
- * dimension, then translated by the sub-area origin so that the complete
- * line remains within the requested region of the full table.
+ * Convert a 2D normalized floating-point coordinate to a 2D integer coordinate.
  * 
- * time/space: O(1) / O(1)
- * 
- * status: internal helper
- * 
- * issue: It truncate the line (that outside the boundary) incorrectly.
- * 
- * @param src source line in sub-area-relative coordinates
- * @param boundary full table and target sub-area boundary
- * @return translated and clamped line
- */
-t_line	init_first_line(t_line src, t_line boundary)
-{
-	t_line	dst;
-	int		offset;
-
-	offset = boundary.p1.x;
-	dst.p1.x = src.p1.x + offset;
-	dst.p2.x = src.p2.x + offset;
-	offset = boundary.p1.y;
-	dst.p1.y = src.p1.y + offset;
-	dst.p2.y = src.p2.y + offset;
-	return (dst);
-}
-
-/**
- * Convert a normalized floating-point coordinate to a 2D integer coordinate.
- * 
- * The source value is clamped to [0, 1] and scaled to the size of the
- * selected boundary dimension. Mode 1 selects the y dimension; any other
- * mode selects the x dimension.
+ * The source value is clamped to [0, 1] for both real and imaginary part,
+ * and scaled to the size of the
+ * selected boundary dimension.
  * 
  * The returned coordinate is relative to the boundary origin. This allows
  * the caller to apply the boundary offset separately and prevents the
@@ -72,19 +41,18 @@ t_line	init_first_line(t_line src, t_line boundary)
  * 
  * @param src normalized coordinate to convert
  * @param boundary target rectangular boundary
- * @param mode 1 for y dimension, otherwise x dimension
  * @return converted integer coordinate relative to the boundary origin
  */
-int	float_to_2d_int(float src, t_line boundary, char mode)
+t_2d_int	normal_complex_to_2d_int(t_complex src, t_line boundary)
 {
-	float	dst;
-	int		output;
+	t_complex	normal;
+	t_2d_int	dst;
 
-	dst = f_interval(src, 0, 1);
-	output = (int)f_floor(dst * (boundary.p2.x - boundary.p1.x));
-	if (mode == 1)
-		output = (int)f_floor(dst * (boundary.p2.y - boundary.p1.y));
-	return (output);
+	normal.re = f_interval(src.re, 0, 1);
+	normal.im = f_interval(src.im, 0, 1);
+	dst.x = (int)f_floor(normal.re * (boundary.p2.x - boundary.p1.x) + boundary.p1.x);
+	dst.y = (int)f_floor(normal.im * (boundary.p2.y - boundary.p1.y) + boundary.p1.y);
+	return (dst);
 }
 
 /**
@@ -107,9 +75,7 @@ t_line	init_float_line(t_complex point_1, t_complex point_2,
 {
 	t_line	dst;
 
-	dst.p1.x = float_to_2d_int(point_1.re, boundary, 0) + boundary.p1.x;
-	dst.p1.y = float_to_2d_int(point_1.im, boundary, 1) + boundary.p1.y;
-	dst.p2.x = float_to_2d_int(point_2.re, boundary, 0) + boundary.p1.x;
-	dst.p2.y = float_to_2d_int(point_2.im, boundary, 1) + boundary.p1.y;
+	dst.p1 = normal_complex_to_2d_int(point_1, boundary);
+	dst.p2 = normal_complex_to_2d_int(point_2, boundary);
 	return (dst);
 }

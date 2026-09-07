@@ -17,30 +17,6 @@
 # include "motif_type.h"
 
 /**
- * A line represented by normalized 2D coordinates.
- *
- * The two endpoints are stored as complex numbers, where the real part
- * represents the X coordinate and the imaginary part represents the Y
- * coordinate. The coordinates are interpreted relative to a tile rather
- * than directly as screen pixels.
- *
- * This type is used by the motif renderer to describe reusable geometric
- * shapes that can be scaled and placed inside different tiles.
- * 
- * The scale features for manipulating motif will be implemented in the future.
- *
- * status: internal helper
- *
- * @param p1 first endpoint of the line
- * @param p2 second endpoint of the line
- */
-typedef struct s_fline
-{
-	t_complex	p1;
-	t_complex	p2;
-}	t_fline;
-
-/**
  * Describes how a motif is repeated across a 2D drawing area.
  *
  * The drawing area is divided into a rectangular grid of tiles. Motif
@@ -66,7 +42,7 @@ typedef struct s_tile_format
 {
 	float		tile_size;
 	t_2d_int	tile_counts;
-	t_fline		offset;
+	t_2d_int	offset;
 }	t_tile_format;
 
 /**
@@ -122,8 +98,6 @@ void			view_motif(t_motif_arr *src,
 
 // tile_format.c
 
-t_fline			init_offset_tile_area(size_t width, size_t height,
-					size_t resolution, size_t fixed_length);
 t_tile_format	init_tile_format(size_t width,
 					size_t height, size_t resolution);
 t_2d_int		get_ith_tile_screen(t_tile_format tiles,

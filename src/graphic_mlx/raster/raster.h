@@ -66,12 +66,17 @@ int32_t		get_table_rgba_int32(const t_table_fdf *src, size_t index);
 void		draw_line_generic(mlx_image_t *dst,
 				t_line line, t_line boundary, t_ink32 ink);
 
-// line_thick.c
+// line_x.c
 
+void		draw_endpoint(mlx_image_t *dst,
+				t_line line, t_line boundary, t_ink32 ink);
 void		draw_line_thick_x_plus(mlx_image_t *dst,
 				t_line line, t_line boundary, t_ink32 ink);
 void		draw_line_thick_x_minus(mlx_image_t *dst,
 				t_line line, t_line boundary, t_ink32 ink);
+
+// line_y.c
+
 void		draw_line_thick_y_plus(mlx_image_t *dst,
 				t_line line, t_line boundary, t_ink32 ink);
 void		draw_line_thick_y_minus(mlx_image_t *dst,

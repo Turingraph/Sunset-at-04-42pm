@@ -26,7 +26,7 @@
  * @param src Islamic-art motif configuration containing motif data
  * @param tile screen-space boundary of the tile to render into
  */
-void	draw_motif_mlx_unit(mlx_image_t *img,
+static void	draw_motif_mlx_unit(mlx_image_t *img,
 	t_islamic_art *src, t_line tile)
 {
 	size_t	i;
@@ -66,7 +66,7 @@ void	draw_motif_mlx_unit(mlx_image_t *img,
  * @param src Islamic-art motif configuration
  * @param interier_tile rectangular range of tile indices to render
  */
-void	draw_motif_mlx_loop(mlx_image_t *img,
+static void	draw_motif_mlx_loop(mlx_image_t *img,
 	t_islamic_art *src, t_line interier_tile)
 {
 	t_line		tile;
@@ -74,10 +74,10 @@ void	draw_motif_mlx_loop(mlx_image_t *img,
 	int			iy;
 
 	iy = interier_tile.p1.y;
-	while (iy < interier_tile.p2.y)
+	while (iy < interier_tile.p2.y - 1)
 	{
 		ix = interier_tile.p1.x;
-		while (ix < interier_tile.p2.x)
+		while (ix < interier_tile.p2.x - 1)
 		{
 			tile.p1 = get_ith_tile_screen(src->tiles, ix, iy);
 			tile.p2 = get_ith_tile_screen(src->tiles, ix + 1, iy + 1);

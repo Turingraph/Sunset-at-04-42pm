@@ -34,7 +34,16 @@ void		draw_euler_fdf(t_2d_hook *hook, bool is_draw);
 void		draw_poincare_fdf(t_2d_hook *hook, bool is_draw);
 void		draw_dijkstra_fdf(t_2d_hook *hook, bool is_draw);
 void		draw_warhol_fdf(t_2d_hook *hook, bool is_draw);
-void		draw_araki_fdf(t_2d_hook *hook, bool is_draw);
+void		draw_hirohiko_araki_fdf(t_2d_hook *hook, bool is_draw);
+
+// geometry.c
+
+bool		is_line_in_screen(t_2d_camera camera,
+				t_line src);
+bool		is_circle_in_screen(t_2d_camera camera,
+				t_2d_int src, int radius);
+float		get_fdf_point(t_fdf *fdf, t_2d_int ixiy, size_t dim, char next);
+t_2d_int	world_3d_to_screen_2d(t_2d_camera camera, float x, float y);
 
 // public.c
 
@@ -50,14 +59,9 @@ void		draw_rectangle_fdf(t_line line, int32_t ink,
 void		draw_line_fdf(t_line line, t_ink32 ink,
 				t_2d_camera camera, mlx_image_t *img);
 
-// utils.c
+// verify.c
 
 bool		is_2dhook_valid(const t_2d_hook *src);
-bool		is_line_in_screen(t_2d_camera camera,
-				t_line src);
-bool		is_circle_in_screen(t_2d_camera camera,
-				t_2d_int src, int radius);
-float		get_fdf_point(t_fdf *fdf, t_2d_int ixiy, size_t dim, char next);
-t_2d_int	world_3d_to_screen_2d(t_2d_camera camera, float x, float y);
+
 
 #endif

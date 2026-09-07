@@ -8,7 +8,7 @@ t_gradient	init_gradient()
 
 	dst.cell_channel = D7_HEIGHT;
 	dst.input_start = 0;
-	dst.input_end = 200;
+	dst.input_end = 20;
 	dst.rgba_start.r = 70;
 	dst.rgba_start.g = 75;
 	dst.rgba_start.b = 113;
@@ -28,7 +28,7 @@ int	main(int len, char **str)
 
 	if (len < 2)
 		return (0);
-	table = open_table_fdf_file(str[1], NULL, parse_fdf_line_rgba, true);
+	table = open_table_fdf_file(str[1], NULL, parse_ascii_line_cheche01, true);
 	if (table.col * table.row == 0)
 	{
 		free_table_fdf(&table);
@@ -36,9 +36,9 @@ int	main(int len, char **str)
 	}
 	style.background_color = f_rgba_to_int32(255, 255, 255, 255);
 	style.line_thickness = 1;
-	style.artists = E_KUSAMA;
+	style.artists = E_TOBY_FOX;
 	color_cells_gradient(&table, init_gradient(), true);
-	output = init_fdf(&table, projection_isometric, 0.5);
+	output = init_fdf(&table, NULL, 1.0);
 	view_fdf(&output, style);
 	free_table_fdf(&table);
 	free_fdf(&output);
@@ -46,6 +46,6 @@ int	main(int len, char **str)
 }
 
 /*
-valgrind --leak-check=full --show-leak-kinds=all ./unit_test/out/graphic_mlx/window/fdf.out input_examples/fdf/elem-fract.fdf
+valgrind --leak-check=full --show-leak-kinds=all ./unit_test/out/graphic_mlx/window/indigo.out unit_test/editor/convolve/input_ascii/o_isometric2.txt
 
 */

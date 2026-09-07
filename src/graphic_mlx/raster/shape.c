@@ -50,7 +50,7 @@ static void	draw_horizontal_mlx(mlx_image_t *dst, t_line line,
 	int	start;
 	int	stop;
 
-	if (line.p1.y < boundary.p1.y || line.p1.y > boundary.p2.x)
+	if (line.p1.y < boundary.p1.y || line.p1.y > boundary.p2.y)
 		return ;
 	start = f_max_int(line.p1.x, boundary.p1.x);
 	stop = f_min_int(line.p2.x, boundary.p2.x);
@@ -195,18 +195,15 @@ void	draw_circle(mlx_image_t *dst,
 t_line	init_rectangle(t_line src, t_line boundary)
 {
 	t_line	dst;
-	int		offset;
 
-	offset = boundary.p1.x;
-	dst.p1.x = (int)f_interval_int(f_min_int(src.p1.x, src.p2.x), 0,
-			boundary.p2.x - boundary.p1.x) + offset;
-	dst.p2.x = (int)f_interval_int(f_max_int(src.p1.x, src.p2.x), 0,
-			boundary.p2.x - boundary.p1.x) + offset;
-	offset = boundary.p1.y;
-	dst.p1.y = (int)f_interval_int(f_min_int(src.p1.y, src.p2.y), 0,
-			boundary.p2.y - boundary.p1.y) + offset;
-	dst.p2.y = (int)f_interval_int(f_max_int(src.p1.y, src.p2.y), 0,
-			boundary.p2.y - boundary.p1.y) + offset;
+	dst.p1.x = f_interval_int(f_min_int(src.p1.x, src.p2.x),
+			boundary.p1.x, boundary.p2.x);
+	dst.p2.x = f_interval_int(f_max_int(src.p1.x, src.p2.x),
+			boundary.p1.x, boundary.p2.x);
+	dst.p1.y = f_interval_int(f_min_int(src.p1.y, src.p2.y),
+			boundary.p1.y, boundary.p2.y);
+	dst.p2.y = f_interval_int(f_max_int(src.p1.y, src.p2.y),
+			boundary.p1.y, boundary.p2.y);
 	return (dst);
 }
 
@@ -231,9 +228,17 @@ void	draw_rectangle(mlx_image_t *dst, t_line rectangle,
 	int	i;
 	int	j;
 
-	if (dst != NULL)
-		return ;
 	rectangle = init_rectangle(rectangle, boundary);
+	// write(1, ">>> (", 5);
+	// ft_putnbr_fd(rectangle.p1.x, 1, "0123456789", 1);
+	// write(1, ", ", 2);
+	// ft_putnbr_fd(rectangle.p1.y, 1, "0123456789", 1);
+	// write(1, ") ---> ", 7);
+	// write(1, ">>> (", 5);
+	// ft_putnbr_fd(rectangle.p2.x, 1, "0123456789", 1);
+	// write(1, ", ", 2);
+	// ft_putnbr_fd(rectangle.p2.y, 1, "0123456789", 1);
+	// write(1, ")\n", 2);
 	i = rectangle.p1.x;
 	while (i <= rectangle.p2.x)
 	{

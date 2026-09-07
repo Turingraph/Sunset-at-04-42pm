@@ -57,12 +57,12 @@ void	draw_warhol_fdf(t_2d_hook *hook, bool is_draw)
 
 // time : O(n)
 // space: O(1)
-void	draw_araki_fdf(t_2d_hook *hook, bool is_draw)
+void	draw_hirohiko_araki_fdf(t_2d_hook *hook, bool is_draw)
 {
 	size_t	thickness;
 
 	thickness = hook->master_piece.artstyle.line_thickness;
-	if (hook->master_piece.artstyle.artists != E_ARAKI)
+	if (hook->master_piece.artstyle.artists != E_HIROHIKO_ARAKI)
 		return ;
 	draw_toby_fox_fdf(hook, is_draw);
 	if (is_draw == true)

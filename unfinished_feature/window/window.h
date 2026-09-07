@@ -17,21 +17,13 @@ struct t_fdf
 	float		width;
 };
 
-typedef struct t_fline t_fline;
-
-struct t_fline
-{
-	t_complex	p1;
-	t_complex	p2;
-};
-
 typedef struct t_tile_format t_tile_format;
 
 struct t_tile_format
 {
 	float		tile_size;
 	t_2d_int	tile_counts;
-	t_fline		offset;
+	t_2d_int	offset;
 };
 
 typedef struct t_2d_camera t_2d_camera;
@@ -118,7 +110,7 @@ void	linear_map_fdf_all(t_fdf *src, t_matrix matrix);
 void	draw_motif_mlx(t_2d_hook *hook, bool is_draw);
 
 // tile_format.c
-t_fline	init_offset_tile_area(size_t width, size_t height,
+t_fline	init_offset_tile(size_t width, size_t height,
 	size_t resolution, size_t fixed_length);
 t_tile_format	init_tile_format(size_t width,
 	size_t height, size_t resolution);

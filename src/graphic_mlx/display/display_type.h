@@ -34,6 +34,20 @@ typedef struct s_2d_camera
 
 /*
  * The name of my favorite creators.
+ * E_TERRY_DAVIS and E_EDWIN_CATMULL aren't impremented yet.
+ * 
+ * E_PICASSO = straight line
+ * E_TOBY_FOX = Pixel art inspired grids
+ * E_TUYOKI = Pixel art inspired grids (sometimes smaller than Toby Fox's grid)
+ * E_KUSAMA = circle
+ * E_EULER = E_PICASSO + E_KUSAMA = graph (without hole)
+ * E_POINCARE = donut (circle with hole)
+ * E_DIJKSTRA = E_POINCARE + E_EULER = network (same as Euler but have hole)
+ * E_PIET_MONDRIAN = 4 rectangles on each cells
+ * E_WARHOL = E_TOBY_FOX + E_PICASSO
+ * E_HIROHIKO_ARAKI = E_TOBY_FOX + E_DIJKSTRA (inspired by Jojo's Stand)
+ * E_TERRY_DAVIS = 3D graphic in Temple OS style
+ * E_EDWIN_CATMULL = Z Buffer
  */
 typedef enum t_artists
 {
@@ -45,12 +59,14 @@ typedef enum t_artists
 	E_POINCARE,
 	E_DIJKSTRA,
 	E_WARHOL,
-	E_ARAKI,
+	E_HIROHIKO_ARAKI,
 	E_PIET_MONDRIAN,
+	E_TERRY_DAVIS,
+	E_EDWIN_CATMULL
 }	t_artists;
 
 /*
- * ???
+ * This struct control the drawing style of the Fdf.
  */
 typedef struct s_artstyle32
 {
