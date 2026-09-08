@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   line_y.c                                           :+:      :+:    :+:   */
+/*   line_y_plus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/06 16:24:25 by phsottat          #+#    #+#             */
-/*   Updated: 2026/09/06 18:45:56 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/09/08 13:40:38 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,34 +23,6 @@ static void	draw_line_y_plus(mlx_image_t *dst,
 	int	sign;
 
 	sign = 1;
-	delta_x = line.p2.y - line.p1.y;
-	delta_y = sign * (line.p2.x - line.p1.x);
-	pivot = 2 * delta_y - delta_x;
-	while (dst != NULL && line.p1.y <= line.p2.y)
-	{
-		if (is_in_boundary(line.p1.x, line.p1.y, boundary) == true)
-			mlx_put_pixel(dst, line.p1.x, line.p1.y, color);
-		if (0 < pivot)
-		{
-			pivot -= 2 * delta_x;
-			line.p1.x += sign;
-		}
-		pivot += 2 * delta_y;
-		line.p1.y += 1;
-	}
-}
-
-// time : O(n)
-// space: O(1)
-static void	draw_line_y_minus(mlx_image_t *dst,
-	t_line line, t_line boundary, int32_t color)
-{
-	int	pivot;
-	int	delta_x;
-	int	delta_y;
-	int	sign;
-
-	sign = -1;
 	delta_x = line.p2.y - line.p1.y;
 	delta_y = sign * (line.p2.x - line.p1.x);
 	pivot = 2 * delta_y - delta_x;
@@ -94,28 +66,28 @@ void	draw_line_thick_y_plus(mlx_image_t *dst,
 	}
 }
 
+
 // time : O(n)
 // space: O(1)
-void	draw_line_thick_y_minus(mlx_image_t *dst,
+void	draw_line_thick_y_plus_noend(mlx_image_t *dst,
 	t_line line, t_line boundary, t_ink32 ink)
 {
 	t_line	parallel;
 	size_t	i;
 
-	draw_line_y_minus(dst, line, boundary, ink.color);
+	draw_line_y_plus(dst, line, boundary, ink.color);
 	if (ink.thickness < 2)
 		return ;
-	draw_endpoint(dst, line, boundary, ink);
 	parallel = line;
 	i = 1;
 	while (i < ink.thickness / 2)
 	{
 		parallel.p1.x -= 1;
 		parallel.p2.x -= 1;
-		draw_line_y_minus(dst, parallel, boundary, ink.color);
+		draw_line_y_plus(dst, parallel, boundary, ink.color);
 		line.p1.x += 1;
 		line.p2.x += 1;
-		draw_line_y_minus(dst, line, boundary, ink.color);
+		draw_line_y_plus(dst, line, boundary, ink.color);
 		i += 1;
 	}
 }

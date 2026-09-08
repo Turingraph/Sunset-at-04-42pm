@@ -101,4 +101,15 @@ int	main(void)
 
 /*
 valgrind --leak-check=full --show-leak-kinds=all ./unit_test/out/graphic_mlx/motif/piet_mondrian.out
+
+==2639111== 
+==2639111== LEAK SUMMARY:
+==2639111==    definitely lost: 0 bytes in 1 blocks
+==2639111==    indirectly lost: 0 bytes in 0 blocks
+==2639111==      possibly lost: 0 bytes in 0 blocks
+==2639111==    still reachable: 317,899 bytes in 3,104 blocks
+==2639111==         suppressed: 56 bytes in 2 blocks
+==2639111== 
+==2639111== For lists of detected and suppressed errors, rerun with: -s
+==2639111== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
 */

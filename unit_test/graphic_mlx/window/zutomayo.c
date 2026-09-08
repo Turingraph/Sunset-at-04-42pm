@@ -91,12 +91,12 @@ int	main(int len, char **str)
 	table = open_table_fdf_file(str[1], NULL, parse_ascii_line_cheche01, true);
 	style.background_color = f_rgba_to_int32(0, 0, 0, 255);
 	style.line_thickness = 1;
-	style.artists = E_TUYOKI;
+	style.artists = E_PICASSO;
 	color_cells_gradient(&table, init_ztmy_studyme(), true);
 	color_cells_gradient(&table, init_ztmy_timeleft(), true);
 	scale_multiplication_fdf(&table, 1.0 / 3.0, HEIGHT);
 	color_cells_gradient(&table, init_white_noise(), true);
-	output = init_fdf(&table, NULL, 1.0);
+	output = init_fdf(&table, projection_isometric, 1.0);
 	view_fdf(&output, style);
 	free_table_fdf(&table);
 	free_fdf(&output);
@@ -106,4 +106,14 @@ int	main(int len, char **str)
 /*
 valgrind --leak-check=full --show-leak-kinds=all ./unit_test/out/graphic_mlx/window/zutomayo.out unit_test/editor/convolve/input_ascii/zutomayo_isometric2.txt
 
+==2638489== 
+==2638489== LEAK SUMMARY:
+==2638489==    definitely lost: 0 bytes in 1 blocks
+==2638489==    indirectly lost: 0 bytes in 0 blocks
+==2638489==      possibly lost: 0 bytes in 0 blocks
+==2638489==    still reachable: 317,899 bytes in 3,104 blocks
+==2638489==         suppressed: 56 bytes in 2 blocks
+==2638489== 
+==2638489== For lists of detected and suppressed errors, rerun with: -s
+==2638489== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
 */

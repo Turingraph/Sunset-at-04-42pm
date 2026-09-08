@@ -35,10 +35,11 @@ int	main(int len, char **str)
 		return (0);
 	}
 	style.background_color = f_rgba_to_int32(255, 255, 255, 255);
-	style.line_thickness = 1;
-	style.artists = E_KUSAMA;
+	style.line_thickness = 3;
+	style.artists = E_DIJKSTRA;
 	color_cells_gradient(&table, init_deep_sea(), true);
-	output = init_fdf(&table, projection_cabinet, 0.7);
+	scale_multiplication_fdf(&table, 1.0 / 20.0, HEIGHT);
+	output = init_fdf(&table, projection_isometric, 0.7);
 	view_fdf(&output, style);
 	free_table_fdf(&table);
 	free_fdf(&output);
@@ -48,5 +49,5 @@ int	main(int len, char **str)
 /*
 valgrind --leak-check=full --show-leak-kinds=all ./unit_test/out/graphic_mlx/window/indigo.out unit_test/editor/convolve/input_ascii/o_isometric2.txt
 valgrind --leak-check=full --show-leak-kinds=all ./unit_test/out/graphic_mlx/window/indigo.out unit_test/input/table/00_fdf_to_ascii/elem-fract.txt
-
+valgrind --leak-check=full --show-leak-kinds=all ./unit_test/out/graphic_mlx/window/indigo.out unit_test/editor/convolve/input_ascii/unix_o8.txt
 */

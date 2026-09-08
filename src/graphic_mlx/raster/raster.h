@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 16:33:51 by phsottat          #+#    #+#             */
-/*   Updated: 2026/09/06 17:35:09 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/09/08 13:44:30 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,25 +61,44 @@ int32_t		f_rgba_to_int32(unsigned char r,
 void		color_background_mlx(mlx_image_t *dst, int32_t color);
 int32_t		get_table_rgba_int32(const t_table_fdf *src, size_t index);
 
+// line_generic_noend.c
+
+void		draw_line_generic_noend(mlx_image_t *dst,
+				t_line line, t_line boundary, t_ink32 ink);
+
 // line_generic.c
 
 void		draw_line_generic(mlx_image_t *dst,
 				t_line line, t_line boundary, t_ink32 ink);
 
-// line_x.c
+// line_x_minus.c
+
+void		draw_line_thick_x_minus(mlx_image_t *dst,
+				t_line line, t_line boundary, t_ink32 ink);
+void		draw_line_thick_x_minus_noend(mlx_image_t *dst,
+				t_line line, t_line boundary, t_ink32 ink);
+
+// line_x_plus.c
 
 void		draw_endpoint(mlx_image_t *dst,
 				t_line line, t_line boundary, t_ink32 ink);
 void		draw_line_thick_x_plus(mlx_image_t *dst,
 				t_line line, t_line boundary, t_ink32 ink);
-void		draw_line_thick_x_minus(mlx_image_t *dst,
+void		draw_line_thick_x_plus_noend(mlx_image_t *dst,
 				t_line line, t_line boundary, t_ink32 ink);
 
-// line_y.c
+// line_y_minus.c
+
+void		draw_line_thick_y_minus(mlx_image_t *dst,
+				t_line line, t_line boundary, t_ink32 ink);
+void		draw_line_thick_y_minus_noend(mlx_image_t *dst,
+				t_line line, t_line boundary, t_ink32 ink);
+
+// line_y_plus.c
 
 void		draw_line_thick_y_plus(mlx_image_t *dst,
 				t_line line, t_line boundary, t_ink32 ink);
-void		draw_line_thick_y_minus(mlx_image_t *dst,
+void		draw_line_thick_y_plus_noend(mlx_image_t *dst,
 				t_line line, t_line boundary, t_ink32 ink);
 
 // shape.c

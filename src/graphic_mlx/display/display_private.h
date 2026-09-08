@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/04 19:02:00 by phsottat          #+#    #+#             */
-/*   Updated: 2026/09/06 17:32:46 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/09/08 13:54:10 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ t_line		init_draw_line_x(t_2d_camera camera, t_fdf *fdf, t_2d_int ixiy);
 
 void		draw_kusama_fdf(t_2d_hook *hook, bool is_draw, size_t thickness);
 void		draw_picasso_fdf(t_2d_hook *hook, bool is_draw, size_t thickness);
+void		draw_picasso_fdf_noend(t_2d_hook *hook, bool is_draw,
+				size_t thickness);
 void		draw_toby_fox_fdf(t_2d_hook *hook, bool is_draw);
 void		draw_tuyoki_fdf(t_2d_hook *hook, bool is_draw);
 void		draw_piet_mondrian_fdf(t_2d_hook *hook, bool is_draw);
@@ -51,12 +53,15 @@ void		draw_fdf_mlx(t_2d_hook *hook, bool is_draw);
 
 // unit.c
 
-t_ink32		get_hook_ink32(t_2d_hook *hook, bool is_draw, t_2d_int ixiy, size_t thickness);
+t_ink32		get_hook_ink32(t_2d_hook *hook, bool is_draw,
+				t_2d_int ixiy, size_t thickness);
 void		draw_circle_fdf(t_2d_int point,
 				t_ink32 ink, t_2d_camera camera, mlx_image_t *img);
 void		draw_rectangle_fdf(t_line line, int32_t ink,
 				t_2d_camera camera, mlx_image_t *img);
 void		draw_line_fdf(t_line line, t_ink32 ink,
+				t_2d_camera camera, mlx_image_t *img);
+void		draw_line_fdf_noend(t_line line, t_ink32 ink,
 				t_2d_camera camera, mlx_image_t *img);
 
 // verify.c

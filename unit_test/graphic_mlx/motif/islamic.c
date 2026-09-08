@@ -120,4 +120,14 @@ int	main(void)
 /*
 valgrind --leak-check=full --show-leak-kinds=all ./unit_test/out/graphic_mlx/motif/islamic.out
 
+==2639762== 
+==2639762== LEAK SUMMARY:
+==2639762==    definitely lost: 0 bytes in 1 blocks
+==2639762==    indirectly lost: 0 bytes in 0 blocks
+==2639762==      possibly lost: 0 bytes in 0 blocks
+==2639762==    still reachable: 317,899 bytes in 3,104 blocks
+==2639762==         suppressed: 56 bytes in 2 blocks
+==2639762== 
+==2639762== For lists of detected and suppressed errors, rerun with: -s
+==2639762== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
 */

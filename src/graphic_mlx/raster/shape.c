@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 16:34:22 by phsottat          #+#    #+#             */
-/*   Updated: 2026/09/08 13:02:54 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/09/08 14:22:44 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,10 @@ static void	draw_horizontal_mlx(mlx_image_t *dst, t_line line,
 	int	start;
 	int	stop;
 
-	if (line.p1.y < boundary.p1.y || line.p1.y > boundary.p2.y)
+	if (line.p1.y < boundary.p1.y || line.p1.y >= boundary.p2.y)
 		return ;
 	start = f_max_int(line.p1.x, boundary.p1.x);
-	stop = f_min_int(line.p2.x, boundary.p2.x);
+	stop = f_min_int(line.p2.x, boundary.p2.x - 1);
 	while (start <= stop && dst != NULL)
 	{
 		mlx_put_pixel(dst, start, line.p1.y, color);
