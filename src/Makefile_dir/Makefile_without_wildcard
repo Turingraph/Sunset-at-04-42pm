@@ -13,27 +13,29 @@ BUFFER_SIZE = 42
 .SECONDEXPANSION:
 
 # *** library ***
-LIBRARY = $(patsubst %, lib/%.a, libft green_counts get_next_line linalg load table debug convolve paint debug\
+LIBRARY = $(patsubst %, lib/%.a, libft green_counts get_next_line linalg load table convolve paint\
 		raster motif fdf)
 
 # *** atom src ***
-SRC_libft = $(wildcard utils/libft/*.c)
-SRC_green_counts = $(wildcard utils/green_counts/*.c)
-SRC_get_next_line = $(wildcard input/get_next_line/*.c)
+SRC_libft = $(patsubst %, utils/libft/%, arr.c atoi.c)
+SRC_green_counts = $(patsubst %, utils/green_counts/%, as_int.c complex.c complex_trig.c math.c stats.c utils.c)
+SRC_get_next_line = $(patsubst %, input/get_next_line/%, get_next_line.c public.c utils.c)
 
 # *** composed src ***
-SRC_debug = $(wildcard debug/debug/*.c)
-SRC_linalg = $(wildcard utils/linalg/*.c)
-SRC_load = $(wildcard input/load/*.c)
-SRC_table = $(wildcard input/table/*.c)
+SRC_linalg = $(patsubst %, utils/linalg/%, euclid.c matrix_3d.c matrix.c rotate_3d.c vector_3d.c vector.c)
+SRC_load = $(patsubst %, input/load/%, all_files.c ascii.c fdf.c init.c parse.c rgba.c string.c write_ascii.c write.c)
+SRC_table = $(patsubst %, input/table/%, color.c init.c positive.c public.c scale.c scale_dimension.c shade.c write.c)
 
-SRC_convolve = $(wildcard editor/convolve/*.c)
-SRC_mathart = $(wildcard editor/mathart/*/*.c)
-SRC_paint = $(wildcard editor/paint/*.c)
+SRC_convolve = $(patsubst %, editor/convolve/%, convolve.c kernel.c)
+SRC_paint = $(patsubst %, editor/paint/%, gradient.c utils.c)
 
-SRC_raster = $(wildcard graphic_mlx/raster/*.c)
-SRC_motif = $(wildcard graphic_mlx/motif/*.c)
-SRC_fdf = $(wildcard graphic_mlx/fdf/*.c)
+SRC_raster = $(patsubst %, graphic_mlx/raster/%, color.c  line_generic.c  line_generic_noend.c  line_x_minus.c  line_x_plus.c  line_y_minus.c  line_y_plus.c shape.c  utils.c)
+SRC_motif = $(patsubst %, graphic_mlx/motif/%, draw.c  init.c  motif.c \
+	public.c  tile.c  tile_format.c)
+SRC_fdf = $(patsubst %, graphic_mlx/fdf/%, init.c projection.c utils.c)
+SRC_display = $(patsubst %, graphic_mlx/display/%, draw_etc.c  draw_kusama.c  draw_picasso.c  draw_picasso_noend.c  draw_piet_mondrian.c \
+	draw_toby_fox.c  geometry.c  init_line.c  public.c  unit.c  verify.c)
+SRC_window = $(patsubst %, graphic_mlx/window/%, hook.c init_2d_hook.c public.c verify.c)
 
 #-----------------------------------------------------------------------------------------------
 
@@ -49,12 +51,13 @@ OBJ_load = $(patsubst %.c, obj/%.o, $(SRC_load)) $(OBJ_libft) $(OBJ_get_next_lin
 OBJ_table = $(patsubst %.c, obj/%.o, $(SRC_table)) $(OBJ_load) $(OBJ_green_counts)
 
 OBJ_convolve = $(patsubst %.c, obj/%.o, $(SRC_convolve)) $(OBJ_table) $(OBJ_linalg)
-OBJ_mathart = $(patsubst %.c, obj/%.o, $(SRC_mathart)) $(OBJ_libft) $(OBJ_green_counts)
 OBJ_paint = $(patsubst %.c, obj/%.o, $(SRC_paint)) $(OBJ_green_counts)
 
-OBJ_raster = $(patsubst %.c, obj/%.o, $(SRC_raster)) $(OBJ_green_counts) $(OBJ_libft)
+OBJ_raster = $(patsubst %.c, obj/%.o, $(SRC_raster)) $(OBJ_green_counts) $(OBJ_table)
 OBJ_motif = $(patsubst %.c, obj/%.o, $(SRC_motif)) $(OBJ_raster)
 OBJ_fdf = $(patsubst %.c, obj/%.o, $(SRC_fdf)) $(OBJ_raster) $(OBJ_linalg)
+OBJ_display = $(patsubst %.c, obj/%.o, $(SRC_display)) $(OBJ_fdf)
+OBJ_window = $(patsubst %.c, obj/%.o, $(SRC_window)) $(OBJ_display)
 
 # https://stackoverflow.com/questions/59465799/avoid-gnu-make-automatic-file-deletion
 # This command will preserve the selected files.

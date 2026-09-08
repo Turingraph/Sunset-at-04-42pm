@@ -122,8 +122,7 @@ Note that the i-th row, j-th column, and the integer number match with the 3D po
 
 FdF42 features
 1.	Convert Fdf files as 3D wireframe, by using `./fdf [input file name].fdf` command. (for example `./fdf my_file.fdf`, `./fdf 10-70.fdf` etc.)
-2.	User able to rotate the 3D wireframe in any angle.
-3.	User able to close 3D wireframe window frame by click `ESC` button and/or the cross on the window’s frame
+2.	User able to close 3D wireframe window frame by click `ESC` button and/or the cross on the window’s frame
 
 ## The Additional Features of GrASCIIfi.
 
