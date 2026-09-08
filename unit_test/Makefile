@@ -31,7 +31,7 @@ OUT_motif = $(patsubst %.c, out/%.out, $(SRC_motif))
 OUT_window = $(patsubst %.c, out/%.out, $(SRC_window))
 
 OUT_ALL = $(patsubst %.c, out/%.out,	\
-	$(SRC_get_next_line) $(SRC_convolve) $(SRC_window)\
+	$(SRC_get_next_line) $(SRC_convolve)\
 	$(SRC_load) $(SRC_table) $(SRC_libft) $(SRC_green_counts))
 
 #-----------------------------------------------------------------------------------------------

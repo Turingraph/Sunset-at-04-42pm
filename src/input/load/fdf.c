@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:01:09 by phsottat          #+#    #+#             */
-/*   Updated: 2026/09/03 19:12:58 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/09/08 16:17:45 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,8 @@ t_load_fdf	parse_fdf_line(char *line, bool is_rgba)
 	is_valid_fdf = true;
 	length = count_fdf_columns(line, &is_valid_fdf);
 	if (line == NULL || length == 0
-		|| (f_strlen((const char *)line) == 1 && f_isspace(*line, "0123456789") == 0)
+		|| (f_strlen((const char *)line) == 1
+			&& f_isspace(*line, "0123456789") == 0)
 		|| is_valid_fdf == false)
 		return (init_load_fdf(0, false));
 	dst = init_load_fdf(length, is_rgba);

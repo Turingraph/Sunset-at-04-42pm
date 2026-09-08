@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/04 18:45:56 by phsottat          #+#    #+#             */
-/*   Updated: 2026/09/06 17:33:03 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/09/08 16:24:39 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ typedef struct s_2d_camera
 
 /*
  * The name of my favorite creators.
- * E_TERRY_DAVIS and E_EDWIN_CATMULL aren't impremented yet.
  * 
  * E_PICASSO = straight line
  * E_TOBY_FOX = Pixel art inspired grids
@@ -46,8 +45,6 @@ typedef struct s_2d_camera
  * E_PIET_MONDRIAN = 4 rectangles on each cells
  * E_WARHOL = E_TOBY_FOX + E_PICASSO
  * E_HIROHIKO_ARAKI = E_TOBY_FOX + E_DIJKSTRA (inspired by Jojo's Stand)
- * E_TERRY_DAVIS = 3D graphic in Temple OS style
- * E_EDWIN_CATMULL = Z Buffer
  */
 typedef enum t_artists
 {
@@ -58,11 +55,9 @@ typedef enum t_artists
 	E_EULER,
 	E_POINCARE,
 	E_DIJKSTRA,
+	E_PIET_MONDRIAN,
 	E_WARHOL,
 	E_HIROHIKO_ARAKI,
-	E_PIET_MONDRIAN,
-	E_TERRY_DAVIS,
-	E_EDWIN_CATMULL
 }	t_artists;
 
 /*

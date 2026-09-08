@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/09/08 17:01:02 by phsottat          #+#    #+#             */
+/*   Updated: 2026/09/08 17:33:00 by phsottat         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf.h"
 
 /**
@@ -39,3 +51,16 @@ int32_t	get_fdf_rgba_int32(const t_fdf *src, size_t index)
 	return (r << 24 | g << 16 | b << 8 | a);
 }
 
+// time : O(1)
+// space: O(1)
+bool	is_fdf_valid(const t_fdf *src)
+{
+	if (src == NULL)
+		return (false);
+	if (src->width == 0
+		|| src->row * src->col == 0
+		|| src->x == NULL
+		|| src->y == NULL)
+		return (false);
+	return (true);
+}

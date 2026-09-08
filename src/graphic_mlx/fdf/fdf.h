@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 16:59:48 by phsottat          #+#    #+#             */
-/*   Updated: 2026/09/04 19:03:09 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/09/08 17:50:53 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,7 @@ typedef struct s_fdf
 t_fdf		init_fdf(t_table_fdf *src,
 				t_complex (*projection)(float x, float y, float z),
 				float scale);
-void		free_fdf(t_fdf *src);
-bool		is_fdf_valid(const t_fdf *src);
+t_fdf		free_fdf(t_fdf *src);
 
 // projection.c
 
@@ -64,6 +63,7 @@ t_complex	projection_wave(float x, float y, float z);
 
 // utils.c
 
-int32_t	get_fdf_rgba_int32(const t_fdf *src, size_t index);
+int32_t		get_fdf_rgba_int32(const t_fdf *src, size_t index);
+bool		is_fdf_valid(const t_fdf *src);
 
 #endif

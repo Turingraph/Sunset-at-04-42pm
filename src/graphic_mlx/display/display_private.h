@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/04 19:02:00 by phsottat          #+#    #+#             */
-/*   Updated: 2026/09/08 13:54:10 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/09/08 16:31:07 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,5 @@ void		draw_line_fdf_noend(t_line line, t_ink32 ink,
 // verify.c
 
 bool		is_2dhook_valid(const t_2d_hook *src);
-
 
 #endif

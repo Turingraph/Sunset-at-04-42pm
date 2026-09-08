@@ -6,32 +6,34 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 17:01:50 by phsottat          #+#    #+#             */
-/*   Updated: 2026/09/04 17:50:00 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/09/08 17:31:29 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <time.h>
 #include "window_private.h"
 
 // time : O(1)
 // space: O(1)
-void	hook_pan(mlx_key_data_t keydata, t_2d_camera *camera)
+static void	hook_pan(mlx_key_data_t keydata, t_2d_camera *camera)
 {
+	int	delta;
+
 	if (camera == NULL || is_valid_pan_key(keydata) == false)
 		return ;
+	delta = 20;
 	if (keydata.key == MLX_KEY_UP)
-		camera->offset.y -= 5;
+		camera->offset.y += delta;
 	if (keydata.key == MLX_KEY_DOWN)
-		camera->offset.y += 5;
+		camera->offset.y -= delta;
 	if (keydata.key == MLX_KEY_LEFT)
-		camera->offset.x -= 5;
+		camera->offset.x += delta;
 	if (keydata.key == MLX_KEY_RIGHT)
-		camera->offset.x += 5;
+		camera->offset.x -= delta;
 }
 
 // time : O(n)
 // space: O(1)
-void	hook_zoom(mlx_key_data_t keydata,
+static void	hook_zoom(mlx_key_data_t keydata,
 	t_2d_hook *hook)
 {
 	float		scale;
@@ -52,7 +54,7 @@ void	hook_zoom(mlx_key_data_t keydata,
 
 // time : O(n)
 // space: O(1)
-void	hook_home(mlx_key_data_t keydata,
+static void	hook_home(mlx_key_data_t keydata,
 	t_2d_hook *hook)
 {
 	size_t		len;
@@ -68,32 +70,6 @@ void	hook_home(mlx_key_data_t keydata,
 	vector_scale(hook->master_piece.fdf->y, 1.0 / hook->camera->zoom, len);
 	hook->camera->zoom = 1.0;
 }
-
-// The Inverse Matrix for undo the hook isn't working.
-// void	hook_home(mlx_key_data_t keydata,
-// 	t_2d_hook *hook)
-// {
-// 	t_matrix	undo;
-// 	size_t		len;
-
-// 	if (is_2dhook_valid(hook) == false || hook->camera->zoom < 0.2
-// 		|| keydata.key != MLX_KEY_Q)
-// 		return ;
-// 	undo = init_inverse_3d_matrix(hook->master_piece.fdf->matrix);
-// 	if (undo.arr == NULL)
-// 		return ;
-// 	len = hook->master_piece.fdf->col;
-// 	len *= hook->master_piece.fdf->row;
-// 	hook->camera->offset.x = 0.0;
-// 	hook->camera->offset.y = 0.0;
-// 	vector_scale(hook->master_piece.fdf->x, 1.0 / hook->camera->zoom, len);
-// 	vector_scale(hook->master_piece.fdf->y, 1.0 / hook->camera->zoom, len);
-// 	vector_scale(hook->master_piece.fdf->pos_z, 1.0 / hook->camera->zoom, len);
-// 	hook->camera->zoom = 1.0;
-// 	matrix_3d_product(undo, &(hook->master_piece.fdf->matrix));
-// 	linear_map_fdf_all(hook->master_piece.fdf, undo);
-// 	free(undo.arr);
-// }
 
 /**
  * Handle keyboard input for an interactive FDF view.
@@ -138,19 +114,20 @@ void	hook_home(mlx_key_data_t keydata,
 void	hook_fdf_controller(mlx_key_data_t keydata, void *param)
 {
 	t_2d_hook		*hook;
-	static clock_t	before = 0;
-	clock_t			after;
+	static double	before = 0;
+	double			after;
 
 	hook = (t_2d_hook *)param;
 	if (is_2dhook_valid((const t_2d_hook *)hook) == false
 		|| is_valid_key(keydata) == false)
 		return ;
-	after = clock();
 	if (keydata.key == MLX_KEY_ESCAPE)
 		mlx_close_window(hook->mlx);
-	if (before != 0 && after - before < 1000)
+	after = mlx_get_time();
+	if (before != 0.0 && after - before < 0.166667)
 		return ;
 	before = after;
+	before += 0.166667;
 	draw_fdf_mlx(hook, false);
 	hook_zoom(keydata, hook);
 	hook_pan(keydata, hook->camera);

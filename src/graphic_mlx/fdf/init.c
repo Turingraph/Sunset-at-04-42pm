@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 17:03:06 by phsottat          #+#    #+#             */
-/*   Updated: 2026/09/06 11:39:28 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/09/08 17:43:53 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,73 @@ t_fdf	init_null_fdf(void)
 }
 
 /**
+ * Release all resources owned by an FDF object.
+ *
+ * This function frees the source fdf data.
+ *
+ * view_fdf() does not call free_fdf(). The caller therefore remains
+ * responsible for releasing an FDF object created by init_fdf().
+ *
+ * Calling free_fdf() with NULL is safe.
+ * 
+ * The return data is NULL fdf data.
+ *
+ * time/space: O(1) /  O(1)
+ *
+ * status: public api
+ *
+ * @param src FDF object to release
+ */
+t_fdf	free_fdf(t_fdf *src)
+{
+	if (src == NULL)
+		return (init_null_fdf());
+	free(src->r);
+	free(src->g);
+	free(src->b);
+	free(src->a);
+	free(src->x);
+	free(src->y);
+	src->x = NULL;
+	src->y = NULL;
+	src->r = NULL;
+	src->g = NULL;
+	src->b = NULL;
+	src->a = NULL;
+	src->col = 0;
+	src->row = 0;
+	src->width = 0.0;
+	return (*src);
+}
+
+// time : O(n)
+// space: O(n)
+t_fdf	init_holder_fdf(t_table_fdf *src)
+{
+	t_fdf	dst;
+
+	if (src == NULL || src->row == 0 || src->col == 0)
+		return (init_null_fdf());
+	dst.r = src->r;
+	dst.g = src->g;
+	dst.b = src->b;
+	dst.a = src->a;
+	src->r = NULL;
+	src->g = NULL;
+	src->b = NULL;
+	src->a = NULL;
+	dst.row = src->row;
+	dst.col = src->col;
+	dst.x = malloc_talk(src->row * src->col * sizeof(float),
+			"graphic_mlx/fdf/public.c/init_fdf/\n");
+	dst.y = malloc_talk(src->row * src->col * sizeof(float),
+			"graphic_mlx/fdf/public.c/init_fdf/\n");
+	if (dst.x == NULL || dst.y == NULL)
+		return (free_fdf(&dst));
+	return (dst);
+}
+
+/**
  * Initialize a 3D FDF object from a t_table_fdf table.
  *
  * The returned object owns the position arrays and 3D transformation
@@ -87,18 +154,9 @@ t_fdf	init_fdf(t_table_fdf *src,
 
 	if (src == NULL || src->row * src->col == 0)
 		return (init_null_fdf());
-	dst.r = src->r;
-	dst.g = src->g;
-	dst.b = src->b;
-	dst.a = src->a;
-	src->r = NULL;
-	src->g = NULL;
-	src->b = NULL;
-	src->a = NULL;
-	dst.x = malloc_talk(src->row * src->col * sizeof(float),
-			"graphic_mlx/fdf/public.c/init_fdf/\n");
-	dst.y = malloc_talk(src->row * src->col * sizeof(float),
-			"graphic_mlx/fdf/public.c/init_fdf/\n");
+	dst = init_holder_fdf(src);
+	if (dst.col == 0 || dst.row == 0)
+		return (dst);
 	init_fdf_position(src, dst.x, dst.y, projection);
 	vector_scale(dst.x, scale, src->col * src->row);
 	vector_scale(dst.y, scale, src->col * src->row);
@@ -110,58 +168,4 @@ t_fdf	init_fdf(t_table_fdf *src,
 	dst.row = src->row;
 	dst.col = src->col;
 	return (dst);
-}
-
-/**
- * Release all resources owned by an FDF object.
- *
- * This function frees the source table, position arrays, and
- * transformation matrix owned by the t_fdf object. After this function
- * returns, the object's owned pointers are set to NULL and its matrix
- * dimensions are reset to zero.
- *
- * view_fdf() does not call free_fdf(). The caller therefore remains
- * responsible for releasing an FDF object created by init_fdf().
- *
- * Calling free_fdf() with NULL is safe.
- *
- * time/space: O(1) /  O(1)
- *
- * status: public api
- *
- * @param src FDF object to release
- */
-void	free_fdf(t_fdf *src)
-{
-	if (src == NULL)
-		return ;
-	free(src->r);
-	free(src->g);
-	free(src->b);
-	free(src->a);
-	free(src->x);
-	free(src->y);
-	src->x = NULL;
-	src->y = NULL;
-	src->r = NULL;
-	src->g = NULL;
-	src->b = NULL;
-	src->a = NULL;
-	src->col = 0;
-	src->row = 0;
-	src->width = 0.0;
-}
-
-// time : O(1)
-// space: O(1)
-bool	is_fdf_valid(const t_fdf *src)
-{
-	if (src == NULL)
-		return (false);
-	if (src->width == 0
-		|| src->row * src->col == 0
-		|| src->x == NULL
-		|| src->y == NULL)
-		return (false);
-	return (true);
 }

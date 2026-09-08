@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/06 16:24:25 by phsottat          #+#    #+#             */
-/*   Updated: 2026/09/08 13:40:38 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/09/08 17:26:18 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ void	draw_line_thick_y_plus(mlx_image_t *dst,
 		i += 1;
 	}
 }
-
 
 // time : O(n)
 // space: O(1)

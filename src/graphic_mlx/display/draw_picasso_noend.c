@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw_picasso_noend.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/09/08 16:22:06 by phsottat          #+#    #+#             */
+/*   Updated: 2026/09/08 16:22:15 by phsottat         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "display_private.h"
 
 // time : O(1)
@@ -28,7 +40,8 @@ static void	draw_picassox_fdf_noend_unit(t_2d_hook *hook,
 
 // time : O(n)
 // space: O(1)
-static void	draw_picassox_fdf_noend(t_2d_hook *hook, bool is_draw, size_t thickness)
+static void	draw_picassox_fdf_noend(t_2d_hook *hook, bool is_draw,
+	size_t thickness)
 {
 	t_2d_int	ixiy;
 	t_fdf		src;
@@ -49,7 +62,8 @@ static void	draw_picassox_fdf_noend(t_2d_hook *hook, bool is_draw, size_t thickn
 
 // time : O(n)
 // space: O(1)
-static void	draw_picassoy_fdf_noend(t_2d_hook *hook, bool is_draw, size_t thickness)
+static void	draw_picassoy_fdf_noend(t_2d_hook *hook, bool is_draw,
+	size_t thickness)
 {
 	t_2d_int	ixiy;
 	t_fdf		src;

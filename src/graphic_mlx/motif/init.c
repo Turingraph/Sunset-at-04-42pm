@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/31 16:07:53 by phsottat          #+#    #+#             */
-/*   Updated: 2026/09/06 18:24:30 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/09/08 17:18:00 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,10 @@ t_2d_int	normal_complex_to_2d_int(t_complex src, t_line boundary)
 
 	normal.re = f_interval(src.re, 0, 1);
 	normal.im = f_interval(src.im, 0, 1);
-	dst.x = (int)f_floor(normal.re * (boundary.p2.x - boundary.p1.x) + boundary.p1.x);
-	dst.y = (int)f_floor(normal.im * (boundary.p2.y - boundary.p1.y) + boundary.p1.y);
+	dst.x = (int)f_floor(normal.re * (boundary.p2.x - boundary.p1.x));
+	dst.x += boundary.p1.x;
+	dst.y = (int)f_floor(normal.im * (boundary.p2.y - boundary.p1.y));
+	dst.y += boundary.p1.y;
 	return (dst);
 }
 

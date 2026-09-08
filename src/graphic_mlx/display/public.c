@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/06 11:36:00 by phsottat          #+#    #+#             */
-/*   Updated: 2026/09/06 17:33:30 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/09/08 16:23:34 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,12 @@
  * Draw or erase an FDF object on an MLX image.
  *
  * The FDF is rendered using the current 2D camera and drawing style stored
- * in the supplied hook. Normal FDF rendering draws horizontal and vertical
- * edges between adjacent points. When the drawing style is E_PIXEL_ART,
- * each FDF cell is rendered as a filled rectangle instead.
+ * in the supplied hook.
  *
  * When is_draw is true, the color stored in each FDF cell is used when
  * available. When is_draw is false, the FDF is drawn using the background
  * color, allowing the previous rendering to be erased before updating
  * the object.
- * 
- * ???
  *
  * The hook must contain a valid MLX image, camera, and FDF object.
  *

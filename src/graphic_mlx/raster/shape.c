@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 16:34:22 by phsottat          #+#    #+#             */
-/*   Updated: 2026/09/08 14:22:44 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/09/08 17:25:43 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -229,16 +229,6 @@ void	draw_rectangle(mlx_image_t *dst, t_line rectangle,
 	int	j;
 
 	rectangle = init_rectangle(rectangle, boundary);
-	// write(1, ">>> (", 5);
-	// ft_putnbr_fd(rectangle.p1.x, 1, "0123456789", 1);
-	// write(1, ", ", 2);
-	// ft_putnbr_fd(rectangle.p1.y, 1, "0123456789", 1);
-	// write(1, ") ---> ", 7);
-	// write(1, ">>> (", 5);
-	// ft_putnbr_fd(rectangle.p2.x, 1, "0123456789", 1);
-	// write(1, ", ", 2);
-	// ft_putnbr_fd(rectangle.p2.y, 1, "0123456789", 1);
-	// write(1, ")\n", 2);
 	i = rectangle.p1.x;
 	while (i <= rectangle.p2.x)
 	{
