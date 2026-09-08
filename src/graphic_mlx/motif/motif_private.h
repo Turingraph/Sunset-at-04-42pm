@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 17:14:48 by phsottat          #+#    #+#             */
-/*   Updated: 2026/09/06 17:11:38 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/09/08 12:51:24 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_tile_format
 	float		tile_size;
 	t_2d_int	tile_counts;
 	t_2d_int	offset;
+	t_2d_int	window_size;
 }	t_tile_format;
 
 /**

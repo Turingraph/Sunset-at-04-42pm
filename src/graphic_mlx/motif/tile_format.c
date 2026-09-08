@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 17:23:56 by phsottat          #+#    #+#             */
-/*   Updated: 2026/08/29 17:38:46 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/09/08 12:52:22 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,8 @@ t_tile_format	init_tile_format(size_t window_width,
 			resolution, fixed_side);
 	dst.tile_counts.y = init_alltiles_count(window_height,
 			resolution, fixed_side);
+	dst.window_size.x = window_width;
+	dst.window_size.y = window_height;
 	return (dst);
 }
 
@@ -100,11 +102,10 @@ t_2d_int	get_ith_tile_screen(t_tile_format tiles,
 	int ix, int iy)
 {
 	t_2d_int	output;
-	t_2d_int	screen_xy;
 
-	screen_xy.x = (int)tiles.offset.x;
-	screen_xy.y = (int)tiles.offset.y;
-	output.x = ix * tiles.tile_size + screen_xy.x;
-	output.y = iy * tiles.tile_size + screen_xy.y;
+	output.x = f_min_int(tiles.window_size.x - 1,
+			ix * tiles.tile_size + tiles.offset.x);
+	output.y = f_min_int(tiles.window_size.y - 1,
+			iy * tiles.tile_size + tiles.offset.y);
 	return (output);
 }

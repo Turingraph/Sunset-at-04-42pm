@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 16:34:22 by phsottat          #+#    #+#             */
-/*   Updated: 2026/09/06 18:49:55 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/09/08 13:02:54 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,13 +197,13 @@ t_line	init_rectangle(t_line src, t_line boundary)
 	t_line	dst;
 
 	dst.p1.x = f_interval_int(f_min_int(src.p1.x, src.p2.x),
-			boundary.p1.x, boundary.p2.x);
+			boundary.p1.x, boundary.p2.x - 1);
 	dst.p2.x = f_interval_int(f_max_int(src.p1.x, src.p2.x),
-			boundary.p1.x, boundary.p2.x);
+			boundary.p1.x, boundary.p2.x - 1);
 	dst.p1.y = f_interval_int(f_min_int(src.p1.y, src.p2.y),
-			boundary.p1.y, boundary.p2.y);
+			boundary.p1.y, boundary.p2.y - 1);
 	dst.p2.y = f_interval_int(f_max_int(src.p1.y, src.p2.y),
-			boundary.p1.y, boundary.p2.y);
+			boundary.p1.y, boundary.p2.y - 1);
 	return (dst);
 }
 
