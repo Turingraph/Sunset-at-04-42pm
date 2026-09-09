@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:09:16 by phsottat          #+#    #+#             */
-/*   Updated: 2026/08/29 14:09:19 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/09/09 13:59:19 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ size_t	f_strlen(const char *str)
 	size_t	i;
 
 	i = 0;
-	while (*str != '\0')
+	while (str != NULL && *str != '\0')
 	{
 		i += 1;
 		str += 1;
