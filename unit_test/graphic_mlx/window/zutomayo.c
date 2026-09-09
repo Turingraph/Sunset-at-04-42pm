@@ -81,7 +81,7 @@ int	main(int len, char **str)
 	color_cells_gradient(&table, init_ztmy_timeleft(), true);
 	scale_multiplication_fdf(&table, 1.0 / 3.0, HEIGHT);
 	color_cells_gradient(&table, init_white_noise(), true);
-	output = init_fdf(&table, projection_isometric, 1.0);
+	output = init_fdf(&table, projection_isometric, 2.0);
 	view_fdf(&output, style);
 	free_table_fdf(&table);
 	free_fdf(&output);
@@ -90,6 +90,7 @@ int	main(int len, char **str)
 
 /*
 valgrind --leak-check=full --show-leak-kinds=all ./unit_test/out/graphic_mlx/window/zutomayo.out unit_test/editor/convolve/input_ascii/zutomayo_isometric2.txt
+valgrind --leak-check=full --show-leak-kinds=all ./unit_test/out/graphic_mlx/window/zutomayo.out unit_test/editor/convolve/input_ascii_02/zutomayo_isometric2.txt
 
 ==2638489== 
 ==2638489== LEAK SUMMARY:

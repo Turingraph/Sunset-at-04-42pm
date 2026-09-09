@@ -35,11 +35,11 @@ int	main(int len, char **str)
 		return (0);
 	}
 	style.background_color = f_rgba_to_int32(255, 255, 255, 255);
-	style.line_thickness = 3;
-	style.artists = E_DIJKSTRA;
+	style.line_thickness = 6;
+	style.artists = E_PICASSO;
 	color_cells_gradient(&table, init_deep_sea(), true);
 	scale_multiplication_fdf(&table, 1.0 / 20.0, HEIGHT);
-	output = init_fdf(&table, projection_isometric, 0.7);
+	output = init_fdf(&table, projection_isometric, 1.0);
 	view_fdf(&output, style);
 	free_table_fdf(&table);
 	free_fdf(&output);
