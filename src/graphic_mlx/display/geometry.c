@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/04 18:59:41 by phsottat          #+#    #+#             */
-/*   Updated: 2026/09/08 16:31:00 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/09/09 13:44:09 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,12 @@ bool	is_circle_in_screen(t_2d_camera camera,
  * the requested dimension. The optional next selector retrieves the
  * coordinate of the next point on the X or Y axis.
  *
+ * DIMENSION VALUE of dim
+ *
+ * - 1 returns the X coordinate.
+ *
+ * - Any other value returns the Y coordinate.
+ *
  * NEXT VALUE of next
  *
  * - 0 uses the current FDF point.
@@ -54,18 +60,10 @@ bool	is_circle_in_screen(t_2d_camera camera,
  * - 2 moves to the next point on the Y axis.
  * 
  * - 3 move to the next point on both X and Y axises.
- *
- * DIMENSION VALUE of dim
- *
- * - 1 returns the X coordinate.
- *
- * - 2 returns the Y coordinate.
- *
- * - Any other value returns the Z coordinate.
- *
+ * 
  * time/space: O(1) / O(1)
  *
- * status: public api (outdated doc)
+ * status: internal helper
  *
  * @param fdf FDF object containing transformed point coordinates
  * @param ixiy X/Y index of the FDF point

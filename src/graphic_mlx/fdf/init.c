@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 17:03:06 by phsottat          #+#    #+#             */
-/*   Updated: 2026/09/08 17:43:53 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/09/09 13:53:29 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,24 +126,27 @@ t_fdf	init_holder_fdf(t_table_fdf *src)
 /**
  * Initialize a 3D FDF object from a t_table_fdf table.
  *
- * The returned object owns the position arrays and 3D transformation
- * matrix created from the source table. The source table itself is also
- * owned by the returned t_fdf and must not be freed separately before
- * free_fdf() is called.
+ * The returned object owns the position arrays of each cells of t_table_fdf,
+ * based on the 2D projection of the table (determined by 2D projection
+ * argument e.g. projection_isometric, projection_military etc.
+ * ). If the projection is NULL,
+ * then this function return the orthogonal projection of t_table_fdf.
  *
- * The position arrays represent the X, Y, and Z coordinates used by
+ * The position arrays represent the X, and Y coordinates used by
  * the FDF renderer.
- *
- * This function does not display the object. The caller is responsible
- * for checking the returned object and calling free_fdf() when it is
- * no longer needed.
+ * 
+ * This function use the color of t_table_fdf table.
  *
  * time/space: O(n) / O(n)
  *
- * status: public api (outdated doc)
+ * status: public api
  *
  * @param src source table containing the FDF data
- * @return initialized t_fdf object
+ * @param projection the functional pointer for define the projection of
+ * t_table_fdf as t_fdf.
+ * @param scale for scaling Fdf object.
+ * @return initialized t_fdf object.
+ * @see src/graphic_mlx/fdf/projection.c
  */
 t_fdf	init_fdf(t_table_fdf *src,
 	t_complex (*projection)(float x, float y, float z), float scale)

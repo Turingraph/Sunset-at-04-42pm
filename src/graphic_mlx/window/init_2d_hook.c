@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 17:02:58 by phsottat          #+#    #+#             */
-/*   Updated: 2026/09/03 13:45:27 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/09/09 13:49:46 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ mlx_image_t	*init_mlx_image(mlx_t *mlx)
  *
  * time/space: O(1) / O(1)
  *
- * status: internal helper (outdated doc)
+ * status: internal helper
  *
  * @param mlx MLX window context used by the view
  * @param fdf FDF object to display
