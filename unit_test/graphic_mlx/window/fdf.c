@@ -41,7 +41,7 @@ int	main(int len, char **str)
 	}
 	style.background_color = f_rgba_to_int32(255, 255, 255, 255);
 	style.line_thickness = 1;
-	style.artists = E_KUSAMA;
+	style.artists = E_PICASSO;
 	color_cells_gradient(&table, init_gradient(), true);
 	output = init_fdf(&table, projection_isometric, 0.5);
 	view_fdf(&output, style);
