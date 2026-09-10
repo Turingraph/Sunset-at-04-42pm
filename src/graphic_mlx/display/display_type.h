@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/04 18:45:56 by phsottat          #+#    #+#             */
-/*   Updated: 2026/09/08 16:24:39 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/09/09 13:40:23 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ typedef struct s_2d_camera
 }	t_2d_camera;
 
 /*
- * The name of my favorite creators.
+ * This control how to display Fdf object.
+ * It is based on the name of my favorite creators.
  * 
  * E_PICASSO = straight line
  * E_TOBY_FOX = Pixel art inspired grids
@@ -71,12 +72,13 @@ typedef struct s_artstyle32
 }	t_artstyle32;
 
 /**
- * Describes the object and drawing configuration presented by a view.
+ * Describes the object and drawing configuration presented in window.
  * 
- * A master piece combines the FDF object with the drawing style and
- * background configuration required to display it.
+ * A master piece combines the FDF object with the drawing style,
+ * background configuration and link thickness (as artstyle configuration)
+ * required to display it.
  * 
- * status: outdated doc
+ * status: internal helper
  * 
  * @param artstyle describes how the FDF object is rasterized
  * @param fdf FDF object to display
@@ -93,13 +95,13 @@ typedef struct s_master_piece
  * The hook owns the MLX image and keeps references to the camera and
  * master piece used while the rendering loop is running.
  * 
- * status: outdated doc
+ * status: internal helper
  * 
  * @param mlx MLX window context
  * @param img image used as the rendering target
  * @param camera camera used to transform the displayed object
  * @param master_piece 3D FDF object and drawing
- * configuration displayed by the viewer
+ * configuration displayed by the viewer (inside the img image).
  */
 typedef struct s_2d_hook
 {

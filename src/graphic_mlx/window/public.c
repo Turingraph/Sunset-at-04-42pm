@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 17:03:34 by phsottat          #+#    #+#             */
-/*   Updated: 2026/09/06 11:44:51 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/09/09 13:52:33 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,29 +61,18 @@ void	view_fdf_handle_02(mlx_t *mlx, mlx_image_t *img)
  * - "Left", "Right", "Up", "Down" = Panning the
  * 3D Fdf Object on 2D screen accordingly.
  * 
- * - "1" = rotaing 3D Fdf object on X Axis.
- * 
- * - "2" = rotaing 3D Fdf object on Y Axis.
- * 
- * - "3" = rotaing 3D Fdf object on Z Axis.
- * 
  * - "9" = Zoom in
  * 
  * - "0" = Zoom out
  *
  * time/space: O(n) / O(n)
  *
- * status: public api (outdated doc)
+ * status: public api
  *
  * @param fdf FDF object to display.
  * The default color of the FDF object is black.
  * @param artstyle style used to render the FDF object.
  * The artstyle.color means the background color.
- * @param zoom zoom the Fdf object
- * @param projection define the user defined projection style
- * e.g. projection_isometric, projection_military etc. If NULL,
- * then it operate orthogonal projection.
- * @see graphic_mlx/fdf/projection.c and conformal.c for more details.
  */
 void	view_fdf(t_fdf *fdf, t_artstyle32 artstyle)
 {
