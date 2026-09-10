@@ -1,11 +1,13 @@
 # https://stackoverflow.com/questions/12057852/multiple-makefiles-in-one-directory
 
 all:
-	make -f src/debug.mk
-	make -f unit_test/Makefile
+	$(MAKE) -C src -f debug.mk
+	$(MAKE) -C unit_test -f Makefile
 
 clean:
-	make -f src/debug.mk clean
-	make -f unit_test/Makefile clean
+	$(MAKE) -C src -f debug.mk clean
+	$(MAKE) -C unit_test -f Makefile clean
 
 .PHONY: all clean
+
+# make -f debug.mk all

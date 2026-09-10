@@ -3,7 +3,8 @@
 
 CC = cc -Wall -Wextra -Werror
 BUFFER_SIZE = 42
-LIBRARY = lib/sunset442pm.a
+LIB_DIR = ../include/
+LIBRARY = $(LIB_DIR)sunset442pm.a
 SRC_all = $(wildcard */*/*.c)
 OBJ_all = $(patsubst %.c, obj/%.o, $(SRC_all))
 
@@ -11,11 +12,15 @@ OBJ_all = $(patsubst %.c, obj/%.o, $(SRC_all))
 
 all: $(LIBRARY)
 
-lib/%.a: OBJ_all
+$(LIB_DIR)sunset442pm.a: $(OBJ_all)
 	@mkdir -p $(@D)
 	ar rcs $@ $^
 
 obj/%.o: %.c
+	@mkdir -p $(@D)
+	$(CC) -c $< -o $@
+
+obj/input/get_next_line/%.o: input/get_next_line/%.c
 	@mkdir -p $(@D)
 	$(CC) -D BUFFER_SIZE=$(BUFFER_SIZE) -c $< -o $@
 
@@ -24,6 +29,7 @@ obj/%.o: %.c
 clean:
 	rm -r -f lib/
 	rm -r -f obj/
+	rm -f $(LIB_DIR)sunset442pm.a
 
 re: clean
 	all

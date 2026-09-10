@@ -4,7 +4,8 @@
 
 CC = cc -Wall -Wextra -Werror
 BUFFER_SIZE = 42
-SRC_DIR = src/
+# get_obj_files = $(filter %.o, $1)
+# get_lib_a_files = $(filter %.a, $^)
 
 #-----------------------------------------------------------------------------------------------
 # https://stackoverflow.com/questions/9488256/use-directory-path-of-target-in-list-of-prerequisites-in-makefile
@@ -12,30 +13,28 @@ SRC_DIR = src/
 .SECONDEXPANSION:
 
 # *** library ***
-LIBRARY = $(patsubst %, $(SRC_DIR)lib/%.a, libft green_counts get_next_line linalg load table \
+LIBRARY = $(patsubst %, lib/%.a, libft green_counts get_next_line linalg load table \
 	debug convolve paint debug raster motif fdf display window)
 
 # *** atom src ***
-SRC_libft = $(wildcard $(SRC_DIR)utils/libft/*.c)
-SRC_green_counts = $(wildcard $(SRC_DIR)utils/green_counts/*.c)
-SRC_get_next_line = $(wildcard $(SRC_DIR)input/get_next_line/*.c)
+SRC_libft = $(wildcard utils/libft/*.c)
+SRC_green_counts = $(wildcard utils/green_counts/*.c)
+SRC_get_next_line = $(wildcard input/get_next_line/*.c)
 
 # *** composed src ***
-SRC_debug = $(wildcard $(SRC_DIR)debug/debug/*.c)
-SRC_linalg = $(wildcard $(SRC_DIR)utils/linalg/*.c)
-SRC_load = $(wildcard $(SRC_DIR)input/load/*.c)
-SRC_table = $(wildcard $(SRC_DIR)input/table/*.c)
+SRC_debug = $(wildcard debug/debug/*.c)
+SRC_linalg = $(wildcard utils/linalg/*.c)
+SRC_load = $(wildcard input/load/*.c)
+SRC_table = $(wildcard input/table/*.c)
 
-SRC_convolve = $(wildcard $(SRC_DIR)editor/convolve/*.c)
-SRC_paint = $(wildcard $(SRC_DIR)editor/paint/*.c)
+SRC_convolve = $(wildcard editor/convolve/*.c)
+SRC_paint = $(wildcard editor/paint/*.c)
 
-SRC_raster = $(wildcard $(SRC_DIR)graphic_mlx/raster/*.c)
-SRC_motif = $(wildcard $(SRC_DIR)graphic_mlx/motif/*.c)
-SRC_fdf = $(wildcard $(SRC_DIR)graphic_mlx/fdf/*.c)
-SRC_display = $(wildcard $(SRC_DIR)graphic_mlx/display/*.c)
-SRC_window = $(wildcard $(SRC_DIR)graphic_mlx/window/*.c)
-
-SRC_all = $(wildcard $(SRC_DIR)*/*/*.c)
+SRC_raster = $(wildcard graphic_mlx/raster/*.c)
+SRC_motif = $(wildcard graphic_mlx/motif/*.c)
+SRC_fdf = $(wildcard graphic_mlx/fdf/*.c)
+SRC_display = $(wildcard graphic_mlx/display/*.c)
+SRC_window = $(wildcard graphic_mlx/window/*.c)
 
 #-----------------------------------------------------------------------------------------------
 
@@ -59,8 +58,6 @@ OBJ_fdf = $(patsubst %.c, obj/%.o, $(SRC_fdf)) $(OBJ_raster) $(OBJ_linalg)
 OBJ_display = $(patsubst %.c, obj/%.o, $(SRC_display)) $(OBJ_fdf)
 OBJ_window = $(patsubst %.c, obj/%.o, $(SRC_window)) $(OBJ_display)
 
-OBJ_all = $(patsubst %.c, obj/%.o, $(SRC_all))
-
 # https://stackoverflow.com/questions/59465799/avoid-gnu-make-automatic-file-deletion
 # This command will preserve the selected files.
 # .PRECIOUS: $(OBJ_libft) $(OBJ_get_next_line)
@@ -76,17 +73,17 @@ all: $(LIBRARY)
 # if you have to manipulating the string of the files/folders name according to correct 
 # format like this, for example you might want to split string as arrays of string,
 # with `,` or `/` as the separators.
-$(SRC_DIR)lib/%.a: $$(OBJ_$$(notdir $$(basename $$@)))
+lib/%.a: $$(OBJ_$$(notdir $$(basename $$@)))
 	@mkdir -p $(@D)
 	ar rcs $@ $^
 
 # *** create object files. ***
 # https://stackoverflow.com/questions/1950926/create-directories-using-make-file
-$(SRC_DIR)obj/%.o: %.c
+obj/%.o: %.c
 	@mkdir -p $(@D)
 	$(CC) -c $< -o $@
 
-$(SRC_DIR)obj/input/get_next_line/%.o: input/get_next_line/%.c
+obj/input/get_next_line/%.o: input/get_next_line/%.c
 	@mkdir -p $(@D)
 	$(CC) -D BUFFER_SIZE=$(BUFFER_SIZE) -c $< -o $@
 
@@ -94,8 +91,8 @@ $(SRC_DIR)obj/input/get_next_line/%.o: input/get_next_line/%.c
 # *** clean ***
 # https://askubuntu.com/questions/802996/how-to-remove-directory-with-all-of-its-contents
 clean:
-	rm -r -f $(SRC_DIR)lib/
-	rm -r -f $(SRC_DIR)obj/
+	rm -r -f lib/
+	rm -r -f obj/
 
 # Lol, both Makefile tutorial and Suisei already cover .PHONY
 # https://youtu.be/N029UUlH1Dc?si=8PragRfDm3MzFOBc

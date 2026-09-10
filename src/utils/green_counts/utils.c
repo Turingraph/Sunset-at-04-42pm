@@ -34,6 +34,7 @@ float	f_max3(float a, float b, float c)
 	return (b);
 }
 
+/*
 // time : O(???) but might be O(log(n)), this is an open problem!
 // space: O(1)
 size_t	collatz_max_point(size_t x)
@@ -88,3 +89,4 @@ size_t	binary_search_count(size_t min_input, size_t max_input)
 	}
 	return (count);
 }
+*/
