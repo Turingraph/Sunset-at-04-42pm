@@ -1,0 +1,93 @@
+#include"raster_private.h"
+
+// time : O(1)
+// space: O(1)
+t_2d_int	init_img_size(size_t dst_row, size_t dst_col,
+	size_t src_row, size_t src_col)
+{
+	t_2d_int	position;
+
+	position.x = 0;
+	position.y = 0;
+	if (dst_row < src_row || dst_col < src_col
+		|| src_row * src_col == 0)
+		return (position);
+	if (src_row >= src_col)
+	{
+		position.y = dst_row;
+		position.x = (dst_row * src_col) / src_row;
+		return (position);
+	}
+	position.x = dst_col;
+	position.y = (dst_col * src_row) / src_col;
+	return (position);
+}
+
+// time : O(1)
+// space: O(1)
+t_2d_int	init_offset(size_t dst_row, size_t dst_col,
+	size_t src_row, size_t src_col)
+{
+	t_2d_int	position;
+
+	position.x = 0;
+	position.y = 0;
+	if (dst_row < src_row || dst_col < src_col
+		|| src_row * src_col == 0)
+		return (position);
+	if (src_row >= src_col)
+	{
+		position.y = 0;
+		position.x = (dst_row - (dst_row * src_col) / src_row) / 2 - 1;
+		return (position);
+	}
+	position.x = 0;
+	position.y = (dst_col - (dst_col * src_row) / src_col) / 2 - 1;
+	return (position);
+}
+
+// time : O(1)
+// space: O(1)
+t_line	get_ijth_square_cell(t_2d_int offset, size_t row, size_t col, size_t cell_area)
+{
+	t_line	dst;
+
+	dst.p1.x = offset.x + col * cell_area;
+	dst.p1.y = offset.y + row * cell_area;
+	dst.p2.x = offset.x + (col + 1) * cell_area;
+	dst.p2.y = offset.y + (row + 1) * cell_area;
+	return (dst);
+}
+
+// time : O(n)
+// sapce: O(1)
+void	draw_pixel_art(mlx_image_t *dst, const t_table_fdf *src)
+{
+	size_t		i;
+	size_t		j;
+	t_2d_int	cell_size;
+
+	i = 0;
+	while (src != NULL && i < src->row)
+	{
+		j = 0;
+		while (j < src->col)
+		{
+			cell_size = init_img_size(dst->height,
+				dst->width, src->row, src->col);
+			if (cell_size.x > cell_size.y)
+				cell_size.x = dst->width / src->col;
+			else
+				cell_size.x = dst->height / src->row;
+			draw_rectangle_mlx(dst,
+				get_ijth_square_cell(
+					init_offset(dst->height, dst->width, src->row, src->col),
+					j, i, cell_size.x
+				),
+				get_all_area(dst->height, dst->width).sub_area,
+				get_table_rgba_int32(src, i * src->col + j));
+			j += 1;
+		}
+		i += 1;
+	}
+}

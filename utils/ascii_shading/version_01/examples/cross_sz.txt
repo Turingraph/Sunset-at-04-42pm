@@ -1,0 +1,14 @@
+     z+++s
+    zz+++ss
+   zzz+++sss
+  zzzz+++ssss
+.zzzzz+++sssss.
+z+++++++++++++s
+z+++++++++++++s
+zzzzzz+++ssssss
+"zzzzz+++sssss"
+ "zzzz+++ssss"
+  "zzz+++sss"
+   "zz+++ss"
+    "z+++s"
+     "+++"

@@ -1,0 +1,14 @@
+     J+++L
+    JJ+++LL
+   JJJ+++LLL
+  JJJJ+++LLLL
+.JJJJJ+++LLLLL.
+J+++++++++++++L
+J+++++++++++++L
+JJJJJJ+++LLLLLL
+"JJJJJ+++LLLLL"
+ "JJJJ+++LLLL"
+  "JJJ+++LLL"
+   "JJ+++LL"
+    "J+++L"
+     "+++"

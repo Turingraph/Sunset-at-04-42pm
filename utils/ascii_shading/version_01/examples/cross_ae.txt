@@ -1,0 +1,14 @@
+     a+++e
+    aa+++ee
+   aaa+++eee
+  aaaa+++eeee
+.aaaaa+++eeeee.
+a+++++++++++++e
+a+++++++++++++e
+aaaaaa+++eeeeee
+"aaaaa+++eeeee"
+ "aaaa+++eeee"
+  "aaa+++eee"
+   "aa+++ee"
+    "a+++e"
+     "+++"

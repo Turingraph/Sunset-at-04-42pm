@@ -1,0 +1,14 @@
+     G+++D
+    GG+++DD
+   GGG+++DDD
+  GGGG+++DDDD
+.GGGGG+++DDDDD.
+G+++++++++++++D
+G+++++++++++++D
+GGGGGG+++DDDDDD
+"GGGGG+++DDDDD"
+ "GGGG+++DDDD"
+  "GGG+++DDD"
+   "GG+++DD"
+    "G+++D"
+     "+++"

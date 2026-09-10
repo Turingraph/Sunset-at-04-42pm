@@ -1,0 +1,65 @@
+#include"line.h"
+
+int	main(int len, char **str)
+{
+	t_table_fdf	table;
+	int			output;
+	t_line		line;
+
+	if (len < 3)
+		return (0);
+	output = open_dir_file(str[2], NULL, APPEND);
+	table = open_table_fdf_file(str[1], NULL, parse_fdf_line_rgba, true);
+	line.col = table.col;
+	line.row = table.row;
+	line.x1 = 2;
+	line.x2 = 9;
+	line.y1 = 3;
+	line.y2 = 4;
+	bresenham_line_uchar(table.r, line);
+	bresenham_line_int(table.arr, line);
+	write_table_fdf(output, &table, 2, HEIGHT_RGB);
+	free_table_fdf(&table);
+	return (0);
+}
+
+/*
+valgrind --leak-check=full --show-leak-kinds=all ./coding_examples/bin/editor/line/bresenham_02.out input_examples/fdf/t1.txt input_examples/modified/t1_with_line.fdf
+*/
+
+#include"line.h"
+
+int	main(int len, char **str)
+{
+	t_table_fdf	table;
+	int			output;
+	t_line		line;
+	t_line		boundary;
+	t_ink		ink;
+
+	ink.color = 75;
+	ink.channel = HEIGHT;
+	ink.thickness = 1;
+	if (len < 3)
+		return (0);
+	output = open_dir_file(str[2], NULL, APPEND);
+	table = init_table_fdf(30, 30, false);
+	// table = open_table_fdf_file(str[1], NULL, parse_ascii_line_cheche01, false);
+	boundary.p1.x = 0;
+	boundary.p1.y = 0;
+	boundary.p2.x = table.col - 1;
+	boundary.p2.y = table.row - 1;
+	line.p1.x = 2;
+	line.p1.y = 3;
+	line.p2.x = 10;
+	line.p2.y = 15;
+	draw_straight_line(&table, line, boundary, ink);
+	write_table_ascii_cheche01(output, &table, HEIGHT);
+	free_table_fdf(&table);
+	return (0);
+}
+
+/*
+valgrind --leak-check=full --show-leak-kinds=all ./coding_examples/out/editor/line/bresenham_x.out input_examples/font/isometric2/a.txt input_examples/modified/line_x.txt
+*/
+
