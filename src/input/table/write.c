@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:55:57 by phsottat          #+#    #+#             */
-/*   Updated: 2026/08/31 17:45:40 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/09/11 14:29:47 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,12 +76,12 @@ void	write_table_fdf(int fd, const t_table_fdf *src,
 
 // time : O(n)
 // space: O(n)
-void	wta_rgba(unsigned char input,
+static void	wta_rgba(unsigned char input,
 	const char *dict, int fd, bool is_left)
 {
 	int	output;
 
-	output = (int)f_interval((float)input, 0, 255);
+	output = f_interval_int(input, 0, 255);
 	ft_put_ascii_fd(fd, output, dict, is_left);
 }
 

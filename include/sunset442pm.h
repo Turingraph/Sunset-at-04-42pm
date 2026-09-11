@@ -1,5 +1,17 @@
-#ifndef SUNSET442_H
-# define SUNSET442_H
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sunset442pm.h                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/09/11 14:31:33 by phsottat          #+#    #+#             */
+/*   Updated: 2026/09/11 15:03:11 by phsottat         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef SUNSET442PM_H
+# define SUNSET442PM_H
 
 # include <unistd.h>
 # include <math.h>
@@ -65,64 +77,109 @@ typedef struct t_table_fdf
 }	t_table_fdf;
 
 /* ************************************************************************** */
-/* src/utils/green_counts/green_counts.h */
+/* *** src/utils/green_counts/green_counts.h *** */
 /* ************************************************************************** */
 
+// ... for projection and conformal map
 
-typedef struct t_complex
+/* ************************************************************************** */
+/* *** src/input/table/ *** */
+/* ************************************************************************** */
+
+// init.c
+
+void			free_table_fdf(t_table_fdf *src);
+t_table_fdf		init_table_fdf(size_t row, size_t col, bool is_rgba);
+
+// positive.c
+
+int				get_minmax_from_table_fdf(const t_table_fdf *dst,
+					bool is_max, t_enum_rgba channels);
+void			scale_positive_fdf(t_table_fdf *dst);
+void			scale_relu_fdf(t_table_fdf *dst, int min, int max, int expect);
+
+// public.c
+
+t_table_fdf		open_table_fdf_file(const char *file_name, const char *dir,
+					t_load_fdf (*one_line)(char *line), bool is_rgba);
+
+// scale_dimension.c
+
+unsigned char	*scale_dimension_fdf_rgba(const t_table_fdf *src,
+					size_t s_row, size_t s_col, t_enum_rgba rgba_type);
+int				*scale_dimension_fdf_int(const t_table_fdf *src,
+					size_t s_row, size_t s_col);
+t_table_fdf		scale_dimension_fdf(const t_table_fdf *src,
+					size_t scale_row, size_t scale_col);
+
+// scale.c
+
+void			scale_multiplication_fdf(t_table_fdf *dst,
+					float scale, t_enum_rgba channel);
+void			scale_addition_fdf(t_table_fdf *dst,
+					int input, t_enum_rgba channel);
+void			table_fdf_addition(t_table_fdf *dst,
+					const t_table_fdf *src, t_enum_rgba channel);
+void			table_fdf_hadamard(t_table_fdf *dst,
+					const t_table_fdf *src, t_enum_rgba channel);
+
+// shade.c
+
+void			write_table_ascii_cheche01(int fd,
+					const t_table_fdf *src, t_enum_rgba channel);
+void			write_table_ascii_standard(int fd,
+					const t_table_fdf *src, t_enum_rgba channel);
+void			write_table_ascii_chungaloider(int fd,
+					const t_table_fdf *src, t_enum_rgba channel);
+
+// write.c
+
+void			write_table_fdf(int fd,
+					const t_table_fdf *src, size_t digits, t_write_style mode);
+
+/* ************************************************************************** */
+/* *** src/editor/paint/ *** */
+/* ************************************************************************** */
+
+typedef struct t_rgba
 {
-	float	re;
-	float	im;
-}	t_complex;
+	unsigned char	r;
+	unsigned char	g;
+	unsigned char	b;
+	unsigned char	a;
+}	t_rgba;
 
-// as_int.c
+typedef enum t_7cell_channels
+{
+	D7_RED,
+	D7_GREEN,
+	D7_BLUE,
+	D7_ALPHA,
+	D7_ROW,
+	D7_COL,
+	D7_HEIGHT
+}	t_7cell_channels;
 
-float		f_floor(float num);
-float		f_round(float num);
-float		f_interval(float num, float min, float max);
-float		f_max(float a, float b);
-float		f_min(float a, float b);
+/**
+ * Defines a color gradient over a selected cell property.
+ *
+ * cell_channel selects the property used to determine the gradient position.
+ * input_start and input_end define the affected range.
+ * rgba_start and rgba_end define the colors at the range boundaries.
+ */
+typedef struct t_gradient
+{
+	t_rgba				rgba_start;
+	t_rgba				rgba_end;
+	t_7cell_channels	cell_channel;
+	int					input_start;
+	int					input_end;
+}	t_gradient;
 
-// complex_trig.c
+// gradient.c
 
-t_complex	complex_exp(t_complex a);
-t_complex	complex_sin(t_complex a);
-t_complex	complex_cos(t_complex a);
+void			color_cells_gradient(t_table_fdf *dst,
+					t_gradient gradient_input, bool is_overwrite);
 
-// complex.c
-
-t_complex	complex_multiplication(t_complex a, t_complex b);
-t_complex	complex_square(t_complex a);
-t_complex	complex_cube(t_complex a);
-t_complex	complex_reciprocal(t_complex a);
-float		complex_magnitude(t_complex a, char is_square);
-
-// int.c
-
-int			f_abs_int(int x);
-int			f_max_int(int a, int b);
-int			f_min_int(int a, int b);
-int			f_interval_int(int num, int min, int max);
-
-// math.c
-
-float		f_pow(float x, size_t a);
-float		f_root_finding(float x, size_t a);
-float		f_sin(float x);
-float		f_cos(float x);
-
-// stats.c
-
-float		f_exp(float x);
-float		normal_distribution_function(float std, float means, float x);
-float		f_std(const float *vec_v, size_t dim);
-float		f_sum(const float *vec_v, size_t dim);
-
-// utils.c
-
-size_t		collatz_max_point(size_t x);
-size_t		binary_search_count(size_t min_input, size_t max_input);
-float		f_abs(float x);
-float		f_max3(float a, float b, float c);
 
 #endif

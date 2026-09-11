@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   as_int.c                                           :+:      :+:    :+:   */
+/*   interval.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/29 14:28:55 by phsottat          #+#    #+#             */
-/*   Updated: 2026/08/29 14:30:05 by phsottat         ###   ########.fr       */
+/*   Created: 2026/09/11 14:10:57 by phsottat          #+#    #+#             */
+/*   Updated: 2026/09/11 14:12:37 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,18 +60,11 @@ float	f_interval(float num, float min, float max)
 
 // time : O(1)
 // space: O(1)
-float	f_max(float a, float b)
+int	f_interval_int(int num, int min, int max)
 {
-	if (a > b)
-		return (a);
-	return (b);
-}
-
-// time : O(1)
-// space: O(1)
-float	f_min(float a, float b)
-{
-	if (a < b)
-		return (a);
-	return (b);
+	if (num > max)
+		return (max);
+	if (num < min)
+		return (min);
+	return (num);
 }

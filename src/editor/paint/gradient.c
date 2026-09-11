@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 16:16:49 by phsottat          #+#    #+#             */
-/*   Updated: 2026/08/31 17:45:17 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/09/11 14:28:38 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ unsigned char	gradient_smooth(t_enum_rgba rgba_type,
 	y = (((float)(input_threshold - gradient_input.input_start)) / dx);
 	y *= dy;
 	y += y1;
-	return ((unsigned char)f_interval(f_round(y), 0, 255));
+	return ((int)f_interval_int((int)f_round(y), 0, 255));
 }
 
 // time : O(1)
@@ -66,14 +66,14 @@ int	get_gradient_input(const t_table_fdf *src,
 unsigned char	update_cell_color(unsigned char alpha, bool is_overwrite,
 	unsigned char dst, unsigned char new_color)
 {
-	float			dc;
+	float	dc;
 
 	if (is_overwrite == true)
 		return (new_color);
 	dc = (float)dst - (float)new_color;
 	if (dc < 0)
 		dc *= -1;
-	return ((unsigned char)f_interval(
+	return ((int)f_interval_int(
 			f_round(((dc * alpha) + (new_color * (255 - alpha))) / 255.0),
 			0, 255));
 }
@@ -122,7 +122,7 @@ void	color_cells_gradient_unit(t_table_fdf *dst,
 void	color_cells_gradient(t_table_fdf *dst,
 	t_gradient gradient_input, bool is_overwrite)
 {
-	size_t			i;
+	size_t	i;
 
 	i = 0;
 	while (dst != NULL && i < dst->row * dst->col && dst->arr != NULL)

@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 17:03:06 by phsottat          #+#    #+#             */
-/*   Updated: 2026/09/09 13:53:29 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/09/11 14:10:19 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,7 +167,7 @@ t_fdf	init_fdf(t_table_fdf *src,
 			(const t_table_fdf *)src, false, HEIGHT);
 	max_x = (float)get_minmax_from_table_fdf(
 			(const t_table_fdf *)src, true, HEIGHT);
-	dst.width = f_max3(max_x - min_x, src->row, src->col);
+	dst.width = f_max(max_x - min_x, (float)f_max_int(src->row, src->col));
 	dst.row = src->row;
 	dst.col = src->col;
 	return (dst);

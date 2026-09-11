@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:46:38 by phsottat          #+#    #+#             */
-/*   Updated: 2026/08/29 18:40:48 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/09/11 14:27:18 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,21 +32,21 @@ void	scale_multiplication_fdf(t_table_fdf *dst, float scale,
 	while (dst != NULL && i < dst->row * dst->col)
 	{
 		if (dst->arr != NULL && channels == HEIGHT)
-			dst->arr[i] = (int)f_interval(
-					f_round((float)dst->arr[i] * scale),
+			dst->arr[i] = (int)f_interval_int(
+					f_round(dst->arr[i] * scale),
 					-2147483648.0, 2147483647.0);
 		if (dst->r != NULL && channels == RED)
-			dst->r[i] = (unsigned char)f_interval(
-					(float)dst->r[i] * scale, 0, 255);
+			dst->r[i] = (unsigned char)f_interval_int(
+					dst->r[i] * scale, 0, 255);
 		if (dst->g != NULL && channels == GREEN)
-			dst->g[i] = (unsigned char)f_interval(
-					(float)dst->g[i] * scale, 0, 255);
+			dst->g[i] = (unsigned char)f_interval_int(
+					dst->g[i] * scale, 0, 255);
 		if (dst->b != NULL && channels == BLUE)
-			dst->b[i] = (unsigned char)f_interval(
-					(float)dst->b[i] * scale, 0, 255);
+			dst->b[i] = (unsigned char)f_interval_int(
+					dst->b[i] * scale, 0, 255);
 		if (dst->a != NULL && channels == ALPHA)
-			dst->a[i] = (unsigned char)f_interval(
-					(float)dst->a[i] * scale, 0, 255);
+			dst->a[i] = (unsigned char)f_interval_int(
+					dst->a[i] * scale, 0, 255);
 		i += 1;
 	}
 }

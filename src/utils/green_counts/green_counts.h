@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:28:15 by phsottat          #+#    #+#             */
-/*   Updated: 2026/09/06 13:05:48 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/09/11 14:21:03 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,10 @@ typedef struct t_complex
 	float	im;
 }	t_complex;
 
-// as_int.c
+// abs.c
 
-float		f_floor(float num);
-float		f_round(float num);
-float		f_interval(float num, float min, float max);
-float		f_max(float a, float b);
-float		f_min(float a, float b);
+float		f_abs(float x);
+int			f_abs_int(int x);
 
 // complex_trig.c
 
@@ -44,30 +41,32 @@ t_complex	complex_cube(t_complex a);
 t_complex	complex_reciprocal(t_complex a);
 float		complex_magnitude(t_complex a, char is_square);
 
-// int.c
+// interval.c
 
-int			f_abs_int(int x);
-int			f_max_int(int a, int b);
-int			f_min_int(int a, int b);
+float		f_floor(float num);
+float		f_round(float num);
+float		f_interval(float num, float min, float max);
 int			f_interval_int(int num, int min, int max);
 
-// math.c
+// minmax.c
+
+float		f_max(float a, float b);
+float		f_min(float a, float b);
+int			f_max_int(int a, int b);
+int			f_min_int(int a, int b);
+
+// stats.c
+
+float		normal_distribution_function(float std, float means, float x);
+float		f_std(const float *vec_v, size_t dim);
+float		f_sum(const float *vec_v, size_t dim);
+
+// taylor.c
 
 float		f_pow(float x, size_t a);
 float		f_root_finding(float x, size_t a);
 float		f_sin(float x);
 float		f_cos(float x);
-
-// stats.c
-
 float		f_exp(float x);
-float		normal_distribution_function(float std, float means, float x);
-float		f_std(const float *vec_v, size_t dim);
-float		f_sum(const float *vec_v, size_t dim);
-
-// utils.c
-
-float		f_abs(float x);
-float		f_max3(float a, float b, float c);
 
 #endif

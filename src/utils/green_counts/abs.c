@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   abs.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:29:44 by phsottat          #+#    #+#             */
-/*   Updated: 2026/09/06 12:37:19 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/09/11 14:14:29 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,11 @@ float	f_abs(float x)
 
 // time : O(1)
 // space: O(1)
-float	f_max3(float a, float b, float c)
+int	f_abs_int(int x)
 {
-	if (a >= b && a >= c)
-		return (a);
-	if (b >= a && b >= c)
-		return (b);
-	if (c >= a && c >= b)
-		return (c);
-	return (b);
+	if (x < 0)
+		return (-1 * x);
+	return (x);
 }
 
 /*

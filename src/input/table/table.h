@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:55:09 by phsottat          #+#    #+#             */
-/*   Updated: 2026/08/30 11:52:28 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/09/11 14:35:19 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,6 @@
 # include <stdlib.h>
 # include "../../input/load/load.h"
 # include "../../utils/green_counts/green_counts.h"
-
-// color.c
-
-void			set_table_color(t_table_fdf *dst, t_enum_rgba channel,
-					unsigned char color);
-void			set_table_color_based_on_height(t_table_fdf *dst,
-					t_enum_rgba channel, int min, int max);
 
 // init.c
 
