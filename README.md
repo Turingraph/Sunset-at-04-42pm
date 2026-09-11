@@ -13,6 +13,8 @@ The project is named as Sunset at 4.42pm. It is used for displaying beautiful ar
 5.	Inspiration
 6.	Additional resource
 
+123
+
 ## Installation
 
 First download and build MLX42 library (https://github.com/codam-coding-college/MLX42#download-and-build---mlx42)
