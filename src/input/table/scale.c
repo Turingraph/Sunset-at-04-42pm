@@ -21,30 +21,30 @@
  * 
  * @param dst FDF table to modify
  * @param scale multiplication factor
- * @param channels channel to modify
+ * @param channel channel to modify
  */
 void	scale_multiplication_fdf(t_table_fdf *dst, float scale,
-	t_enum_rgba channels)
+	t_enum_rgba channel)
 {
 	size_t	i;
 
 	i = 0;
 	while (dst != NULL && i < dst->row * dst->col)
 	{
-		if (dst->arr != NULL && channels == HEIGHT)
+		if (dst->arr != NULL && channel == HEIGHT)
 			dst->arr[i] = (int)f_interval_int(
 					f_round(dst->arr[i] * scale),
 					-2147483648.0, 2147483647.0);
-		if (dst->r != NULL && channels == RED)
+		if (dst->r != NULL && channel == RED)
 			dst->r[i] = (unsigned char)f_interval_int(
 					dst->r[i] * scale, 0, 255);
-		if (dst->g != NULL && channels == GREEN)
+		if (dst->g != NULL && channel == GREEN)
 			dst->g[i] = (unsigned char)f_interval_int(
 					dst->g[i] * scale, 0, 255);
-		if (dst->b != NULL && channels == BLUE)
+		if (dst->b != NULL && channel == BLUE)
 			dst->b[i] = (unsigned char)f_interval_int(
 					dst->b[i] * scale, 0, 255);
-		if (dst->a != NULL && channels == ALPHA)
+		if (dst->a != NULL && channel == ALPHA)
 			dst->a[i] = (unsigned char)f_interval_int(
 					dst->a[i] * scale, 0, 255);
 		i += 1;
@@ -60,28 +60,28 @@ void	scale_multiplication_fdf(t_table_fdf *dst, float scale,
  * 
  * @param dst FDF table to modify
  * @param input value to add
- * @param channels channel to modify
+ * @param channel channel to modify
  */
-void	scale_addition_fdf(t_table_fdf *dst, int input, t_enum_rgba channels)
+void	scale_addition_fdf(t_table_fdf *dst, int input, t_enum_rgba channel)
 {
 	size_t	i;
 
 	i = 0;
 	while (dst != NULL && i < dst->row * dst->col)
 	{
-		if (dst->arr != NULL && channels == HEIGHT)
+		if (dst->arr != NULL && channel == HEIGHT)
 			dst->arr[i] = (int)f_interval(
 					f_round(dst->arr[i] + input), -2147483648.0, 2147483647.0);
-		if (dst->r != NULL && channels == RED)
+		if (dst->r != NULL && channel == RED)
 			dst->r[i] = (unsigned char)f_interval(
 					(int)dst->r[i] + input, 0, 255);
-		if (dst->g != NULL && channels == GREEN)
+		if (dst->g != NULL && channel == GREEN)
 			dst->g[i] = (unsigned char)f_interval(
 					(int)dst->g[i] + input, 0, 255);
-		if (dst->b != NULL && channels == BLUE)
+		if (dst->b != NULL && channel == BLUE)
 			dst->b[i] = (unsigned char)f_interval(
 					(int)dst->b[i] + input, 0, 255);
-		if (dst->a != NULL && channels == ALPHA)
+		if (dst->a != NULL && channel == ALPHA)
 			dst->a[i] = (unsigned char)f_interval(
 					(int)dst->a[i] + input, 0, 255);
 		i += 1;
@@ -90,6 +90,7 @@ void	scale_addition_fdf(t_table_fdf *dst, int input, t_enum_rgba channels)
 
 /**
  * Add the selected channel of src to dst element by element.
+ * dst and src should have the same numbers of row times column.
  *
  * time/space: O(n) / O(1)
  * 
@@ -97,7 +98,7 @@ void	scale_addition_fdf(t_table_fdf *dst, int input, t_enum_rgba channels)
  *
  * @param dst FDF table to modify
  * @param src source FDF table
- * @param channels channel to add
+ * @param channel channel to add
  */
 void	table_fdf_addition(t_table_fdf *dst,
 	const t_table_fdf *src, t_enum_rgba channel)
@@ -130,6 +131,7 @@ void	table_fdf_addition(t_table_fdf *dst,
 
 /**
  * Multiply the selected channel of dst by src element by element.
+ * dst and src should have the same numbers of row times column.
  *
  * time/space: O(n) / O(1)
  *
@@ -166,4 +168,22 @@ void	table_fdf_hadamard(t_table_fdf *dst,
 					dst->a[i] * src->a[i], 0, 255);
 		i += 1;
 	}
+}
+
+/**
+ * Copy the channel from source FDF table to the dst FDF table.
+ * dst and src should have the same numbers of row times column.
+ *
+ * time/space: O(n) / O(1)
+ *
+ * status: public api
+ *
+ * @param dst FDF table to modify
+ * @param src source FDF table
+ * @param channel channel to copy
+ */
+void	copy_table_fdf_channel(t_table_fdf *dst, const t_table_fdf *src, t_enum_rgba channel)
+{
+	scale_multiplication_fdf(dst, 0.0, channel);
+	table_fdf_addition(dst, src, channel);
 }

@@ -26,7 +26,7 @@ t_table_fdf		load_table_fdf(const t_load_fdf_arr *src, bool is_rgba);
 // positive.c
 
 int				get_minmax_from_table_fdf(const t_table_fdf *dst,
-					bool is_max, t_enum_rgba channels);
+					bool is_max, t_enum_rgba channel);
 void			scale_positive_fdf(t_table_fdf *dst);
 void			scale_relu_fdf(t_table_fdf *dst, int min, int max, int expect);
 
@@ -53,6 +53,8 @@ void			scale_addition_fdf(t_table_fdf *dst,
 void			table_fdf_addition(t_table_fdf *dst,
 					const t_table_fdf *src, t_enum_rgba channel);
 void			table_fdf_hadamard(t_table_fdf *dst,
+					const t_table_fdf *src, t_enum_rgba channel);
+void			copy_table_fdf_channel(t_table_fdf *dst,
 					const t_table_fdf *src, t_enum_rgba channel);
 
 // shade.c
