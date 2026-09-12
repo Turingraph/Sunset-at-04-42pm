@@ -1,7 +1,19 @@
 #include "paint.h"
 
-// time : O(1)
-// space: O(1)
+/**
+ * Check whether a cell is considered empty
+ * (the integer height of the cell less than or equal to 0).
+ *
+ * time/space: O(1) / O(1)
+ *
+ * status: public api
+ *
+ * @param dst FDF table to check
+ * @param index index of the cell to check
+ *
+ * @return true if the cell contains a value less than or equal to 0,
+ * false otherwise.
+ */
 bool	is_space_fdf(const t_table_fdf *dst, size_t index)
 {
 	if (dst == NULL || dst->arr == NULL || dst->row == 0 || dst->col == 0
@@ -12,8 +24,20 @@ bool	is_space_fdf(const t_table_fdf *dst, size_t index)
 	return (false);
 }
 
-// time : O(1)
-// space: O(1)
+/**
+ * Check whether a cell is located on the boundary of the table
+ * or is adjacent to an empty cell.
+ *
+ * time/space: O(1) / O(1)
+ *
+ * status: public api
+ *
+ * @param dst FDF table to check
+ * @param index index of the cell to check
+ *
+ * @return true if the cell is a positive value located on the table
+ * boundary or adjacent to an empty cell, false otherwise.
+ */
 bool	is_boundary_fdf(const t_table_fdf *dst, size_t index)
 {
 	if (dst == NULL || dst->row == 0 || dst->arr == NULL
@@ -38,8 +62,19 @@ bool	is_boundary_fdf(const t_table_fdf *dst, size_t index)
 	return (false);
 }
 
-// time : O(1)
-// space: O(1)
+/**
+ * Check whether a cell belongs to the chess pattern.
+ *
+ * time/space: O(1) / O(1)
+ *
+ * status: public api
+ *
+ * @param dst FDF table to check
+ * @param index index of the cell to check
+ *
+ * @return true if the cell position belongs to the chess pattern,
+ * false otherwise.
+ */
 bool	is_chess_fdf(const t_table_fdf *dst, size_t index)
 {
 	if (dst == NULL || dst->arr == NULL || dst->row == 0 || dst->col == 0)
@@ -70,16 +105,18 @@ static void	set_cells_color_unit(t_table_fdf *dst, int color,
 }
 
 /**
- * Apply a color to the selected channel of every cells.
+ * Apply a color or height value to the selected channel of every cell.
  *
  * time/space: O(n) / O(1)
  *
  * status: public api
  *
  * @param dst FDF table to modify
- * @param color the color value. The input color is 255 if
- * the color is above 255.
- * @param channel selected color channel
+ * @param color color or height value to apply. The color value is
+ * clamped to the range [0, 255].
+ * @param channel selected color or height channel
+ * @param is_filtered_cell optional callback used to select which cells
+ * are modified. If NULL, every cell is modified.
  */
 void	set_cells_color(t_table_fdf *dst, int color,
 	t_enum_rgba channel, bool (*is_filtered_cell)(const t_table_fdf *dst, size_t index))

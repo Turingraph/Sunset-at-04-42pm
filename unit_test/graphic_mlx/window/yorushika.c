@@ -2,26 +2,6 @@
 
 // time : O(1)
 // space: O(1)
-// t_gradient	init_blue_period()
-// {
-// 	t_gradient	dst;
-
-// 	dst.cell_channel = D7_RED;
-// 	dst.input_start = 40;
-// 	dst.input_end = 45;
-// 	dst.rgba_start.r = 70;
-// 	dst.rgba_start.g = 75;
-// 	dst.rgba_start.b = 113;
-// 	dst.rgba_start.a = 255;
-// 	dst.rgba_end.r = 124;
-// 	dst.rgba_end.g = 213;
-// 	dst.rgba_end.b = 199;
-// 	dst.rgba_end.a = 255;
-// 	return (dst);
-// }
-
-// time : O(1)
-// space: O(1)
 t_gradient	init_white_noise(void)
 {
 	t_gradient	dst;

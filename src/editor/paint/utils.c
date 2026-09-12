@@ -2,7 +2,7 @@
 
 // time : O(1)
 // space: O(1)
-t_complex	get_table_fdf_coordinate(const t_table_fdf *dst, size_t index)
+t_complex	get_table_fdf_coordinate_standard(const t_table_fdf *dst, size_t index)
 {
 	t_complex	y;
 

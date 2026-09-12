@@ -52,7 +52,8 @@ float	*gaussian_kernel_1d(size_t half_dim, float std)
  *
  * status: public api
  *
- * @param half_dim half the kernel width
+ * @param half_dim half the kernel width. If half_dim is less than 1,
+ * then the return output will have dimension equal to 3.
  * @param std_1 standard deviation for the first dimension
  * @param std_2 standard deviation for the second dimension
  * @return generated Gaussian kernel as array of float,
@@ -67,6 +68,8 @@ float	*gaussian_kernel(size_t half_dim, float std_1, float std_2)
 	float		*vec_u;
 	t_matrix	dst;
 
+	if (half_dim < 1)
+		half_dim = 1;
 	vec_v = gaussian_kernel_1d(half_dim, std_1);
 	vec_u = gaussian_kernel_1d(half_dim, std_2);
 	dst = outer_product_matrix(vec_v, vec_u, 2 * half_dim + 1);

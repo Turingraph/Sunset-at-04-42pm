@@ -17,6 +17,11 @@
 # include "../../utils/libft/libft.h"
 # include <fcntl.h>
 
+/**
+ * Defines a color input for t_gradient argument of the function `color_cells_gradient`
+ * 
+ * If the color channel is less than 0, then the color isn't render.
+ */
 typedef struct t_rgba
 {
 	int	r;
@@ -54,30 +59,29 @@ typedef struct t_gradient
 
 // filter.c
 
-bool	is_space_fdf(const t_table_fdf *dst, size_t index);
-bool	is_boundary_fdf(const t_table_fdf *dst, size_t index);
-bool	is_chess_fdf(const t_table_fdf *dst, size_t index);
-void	set_cells_color(t_table_fdf *dst, int color, t_enum_rgba channel,
-			bool (*is_filtered_cell)(const t_table_fdf *dst, size_t index));
+bool		is_space_fdf(const t_table_fdf *dst, size_t index);
+bool		is_boundary_fdf(const t_table_fdf *dst, size_t index);
+bool		is_chess_fdf(const t_table_fdf *dst, size_t index);
+void		set_cells_color(t_table_fdf *dst, int color, t_enum_rgba channel,
+				bool (*is_filtered_cell)(const t_table_fdf *dst, size_t index));
 
 // gradient.c
 
-void	color_cells_gradient(t_table_fdf *dst,
-			t_gradient gradient_input, bool is_overwrite);
+void		color_cells_gradient(t_table_fdf *dst,
+				t_gradient gradient_input, bool is_overwrite);
 
 // length.c
 
-void	setcells_pythagorus_length(const t_table_fdf *dst);
-void	setcells_times_length(const t_table_fdf *dst);
-void	setcells_addition_length(const t_table_fdf *dst);
-void	setcells_maximum_length(const t_table_fdf *dst);
-void	setcells_minimum_length(const t_table_fdf *dst);
+void		setcells_pythagorus_length(const t_table_fdf *dst);
+void		setcells_times_length(const t_table_fdf *dst);
+void		setcells_addition_length(const t_table_fdf *dst);
+void		setcells_maximum_length(const t_table_fdf *dst);
+void		setcells_minimum_length(const t_table_fdf *dst);
 
 // utils.c
 
-t_complex	get_table_fdf_coordinate(const t_table_fdf *dst,
+t_complex	get_table_fdf_coordinate_standard(const t_table_fdf *dst,
 				size_t index);
-int	get_rgba_input(t_enum_rgba rgba_type, t_rgba src);
-
+int			get_rgba_input(t_enum_rgba rgba_type, t_rgba src);
 
 #endif

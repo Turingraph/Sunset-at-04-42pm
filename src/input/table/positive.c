@@ -12,37 +12,6 @@
 
 #include "table_private.h"
 
-// // time : O(1)
-// // space: O(1)
-// int	target_minmax(const t_table_fdf *dst,
-// 	t_enum_rgba channels, size_t index, bool is_bool)
-// {
-// 	if (dst != NULL && index < dst->col * dst->row)
-// 	{
-// 		if (dst->arr != NULL && channels == HEIGHT && is_bool == true)
-// 			return (1);
-// 		if (dst->arr != NULL && channels == HEIGHT && is_bool == false)
-// 			return (dst->arr[index]);
-// 		if (dst->r != NULL && channels == RED && is_bool == true)
-// 			return (1);
-// 		if (dst->r != NULL && channels == RED && is_bool == false)
-// 			return ((int)dst->r[index]);
-// 		if (dst->g != NULL && channels == GREEN && is_bool == true)
-// 			return (1);
-// 		if (dst->g != NULL && channels == GREEN && is_bool == false)
-// 			return ((int)dst->g[index]);
-// 		if (dst->b != NULL && channels == BLUE && is_bool == true)
-// 			return (1);
-// 		if (dst->b != NULL && channels == BLUE && is_bool == false)
-// 			return ((int)dst->b[index]);
-// 		if (dst->a != NULL && channels == ALPHA && is_bool == true)
-// 			return (1);
-// 		if (dst->a != NULL && channels == ALPHA && is_bool == false)
-// 			return ((int)dst->a[index]);
-// 	}
-// 	return (-1);
-// }
-
 /**
  * Get either the minimum or maximum number from src.
  *
@@ -107,10 +76,6 @@ void	scale_positive_fdf(t_table_fdf *dst)
 		y = 0;
 	scale_addition_fdf(dst, y, HEIGHT);
 }
-
-	// write(1, "\nmin(table) = ", 15);
-	// ft_putnbr_fd(y, 1, "0123456789", 1);
-	// write(1, "\n", 1);
 
 /**
  * Making all number that in an interval between minimum target number

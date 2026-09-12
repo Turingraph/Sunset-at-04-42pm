@@ -24,7 +24,7 @@ bool		is_conjugate_exp(const t_table_fdf *dst, size_t index);
 
 // generic.c
 
-t_complex	get_table_fdf_coordinate_small(const t_table_fdf *dst, size_t index);
+t_complex	get_table_fdf_coordinate(const t_table_fdf *dst, size_t index, float zoom);
 bool		is_conjugate_func(const t_table_fdf *dst, size_t index,
 				t_complex (*complex_func)(t_complex a));
 bool		is_conjugate(const t_table_fdf *dst, size_t index);

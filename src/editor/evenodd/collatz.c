@@ -1,7 +1,15 @@
 #include "evenodd.h"
 
-// time : O(???) but might be O(log(n)), this is an open problem!
-// space: O(1)
+/**
+ * Find the maximum value reached by the Collatz sequence of an input.
+ *
+ * time/space: O(???) but might be O(log(n)),
+ * this is an open problem! / O(1)
+ *
+ * status: public api
+ * 
+ * The sequence is limited to 10000 iterations.
+ */
 size_t	collatz_max_point(size_t x)
 {
 	size_t	max;
@@ -24,8 +32,20 @@ size_t	collatz_max_point(size_t x)
 	return (max);
 }
 
-// time : O(???) but might be O(log(n))
-// space: O(1)
+/**
+ * Check whether the maximum point of a cell's magnitude's Collatz sequence,
+ * divided by 7, is odd.
+ *
+ * time/space: O(???) but might be O(log(n)), this is an open problem! / O(1)
+ *
+ * status: public api
+ *
+ * @param dst FDF table to check
+ * @param index index of the cell to check
+ *
+ * @return true if the scaled maximum Collatz point is odd,
+ * false otherwise.
+ */
 bool	is_collatz_odd(const t_table_fdf *dst, size_t index)
 {
 	int			input;
@@ -34,7 +54,7 @@ bool	is_collatz_odd(const t_table_fdf *dst, size_t index)
 
 	if (dst == NULL || index >= dst->row * dst->col)
 		return (false);
-	y = get_table_fdf_coordinate_small(dst, index);
+	y = get_table_fdf_coordinate(dst, index, 1.0);
 	input = f_round(complex_magnitude(y, 0));
 	if (input < 0)
 		input *= -1;
@@ -44,8 +64,21 @@ bool	is_collatz_odd(const t_table_fdf *dst, size_t index)
 	return (true);
 }
 
-// time : O(???) but might be O(log(n))
-// space: O(1)
+/**
+ * Check whether the maximum point of the Collatz sequence generated
+ * from the product of a cell's coordinate components, divided by 7,
+ * is odd.
+ *
+ * time/space: O(???) but might be O(log(n)), this is an open problem! / O(1)
+ *
+ * status: public api
+ *
+ * @param dst FDF table to check
+ * @param index index of the cell to check
+ *
+ * @return true if the scaled maximum Collatz point is odd,
+ * false otherwise.
+ */
 bool	is_collatz_x_odd(const t_table_fdf *dst, size_t index)
 {
 	t_complex	y;
@@ -54,7 +87,7 @@ bool	is_collatz_x_odd(const t_table_fdf *dst, size_t index)
 
 	if (dst == NULL || index >= dst->row * dst->col)
 		return (false);
-	y = get_table_fdf_coordinate_small(dst, index);
+	y = get_table_fdf_coordinate(dst, index, 1.0);
 	input = f_round(y.re) * f_round(y.im);
 	if (input < 0)
 		input *= -1;
