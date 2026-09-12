@@ -16,12 +16,6 @@
 # include <stdlib.h>
 # include "../type/type.h"
 
-typedef struct t_complex
-{
-	float	re;
-	float	im;
-}	t_complex;
-
 // abs.c
 
 float		f_abs(float x);

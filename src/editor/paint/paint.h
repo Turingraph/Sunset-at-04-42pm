@@ -19,10 +19,10 @@
 
 typedef struct t_rgba
 {
-	unsigned char	r;
-	unsigned char	g;
-	unsigned char	b;
-	unsigned char	a;
+	int	r;
+	int	g;
+	int	b;
+	int	a;
 }	t_rgba;
 
 typedef enum t_7cell_channels
@@ -52,32 +52,32 @@ typedef struct t_gradient
 	int					input_end;
 }	t_gradient;
 
+// filter.c
+
+bool	is_space_fdf(const t_table_fdf *dst, size_t index);
+bool	is_boundary_fdf(const t_table_fdf *dst, size_t index);
+bool	is_chess_fdf(const t_table_fdf *dst, size_t index);
+void	set_cells_color(t_table_fdf *dst, int color, t_enum_rgba channel,
+			bool (*is_filtered_cell)(const t_table_fdf *dst, size_t index));
+
 // gradient.c
 
-void			color_cells_gradient(t_table_fdf *dst,
-					t_gradient gradient_input, bool is_overwrite);
+void	color_cells_gradient(t_table_fdf *dst,
+			t_gradient gradient_input, bool is_overwrite);
 
-// // paint.c
-// void	fill_cells_height(
-// 	t_table_fdf *dst,
-// 	int height,
-// 	bool is_overwrite,
-// 	bool (*is_filtered_cell)(const t_table_fdf *dst, size_t index));
-// void	fill_cells_color(
-// 	t_table_fdf *dst,
-// 	unsigned char input_value,
-// 	t_enum_rgba rgba_type,
-// 	bool (*is_filtered_cell)(const t_table_fdf *dst, size_t index));
-// void	generate_cells_color(
-// 	t_table_fdf *dst,
-// 	t_enum_rgba channel,
-// 	bool (*is_filtered_cell)(const t_table_fdf *dst, size_t index),
-// 	int(*gen_color)(const t_table_fdf *dst, size_t index));
-// bool	is_empty_space(const t_table_fdf *src, size_t index);
-// void	paint_table_background(t_table_fdf *dst, t_rgba color);
+// length.c
+
+void	setcells_pythagorus_length(const t_table_fdf *dst);
+void	setcells_times_length(const t_table_fdf *dst);
+void	setcells_addition_length(const t_table_fdf *dst);
+void	setcells_maximum_length(const t_table_fdf *dst);
+void	setcells_minimum_length(const t_table_fdf *dst);
 
 // utils.c
 
-unsigned char	get_rgba_input(t_enum_rgba rgba_type, t_rgba src);
+t_complex	get_table_fdf_coordinate(const t_table_fdf *dst,
+				size_t index);
+int	get_rgba_input(t_enum_rgba rgba_type, t_rgba src);
+
 
 #endif

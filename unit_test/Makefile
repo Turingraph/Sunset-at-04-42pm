@@ -14,6 +14,7 @@ SRC_green_counts = $(wildcard utils/green_counts/*.c)
 
 SRC_convolve = $(wildcard editor/convolve/*.c)
 SRC_paint = $(wildcard editor/paint/*.c)
+SRC_evenodd = $(wildcard editor/evenodd/*.c)
 
 SRC_motif = $(wildcard graphic_mlx/motif/*.c)
 SRC_window = $(wildcard graphic_mlx/window/*.c)
@@ -29,6 +30,7 @@ HELPER_OBJ = $(patsubst %.c, obj/%.o, $(HELPER_SRC))
 OUT_paint = $(patsubst %.c, out/%.out, $(SRC_paint))
 OUT_motif = $(patsubst %.c, out/%.out, $(SRC_motif))
 OUT_window = $(patsubst %.c, out/%.out, $(SRC_window))
+OUT_evenodd = $(patsubst %.c, out/%.out, $(SRC_evenodd))
 
 OUT_ALL = $(patsubst %.c, out/%.out,	\
 	$(SRC_get_next_line) $(SRC_convolve)\
@@ -53,7 +55,7 @@ CLONE_GNL = $(patsubst input/get_next_line/input/%, input/get_next_line/clone_in
 # *** obj, out, and lib ***
 all: all_out all_clone
 
-all_out: $(OUT_ALL) $(OUT_paint) $(OUT_motif) $(OUT_window)
+all_out: $(OUT_ALL) $(OUT_paint) $(OUT_motif) $(OUT_window) $(OUT_evenodd)
 	@echo $^
 
 $(OUT_ALL): out/%.out: obj/%.o
@@ -64,6 +66,11 @@ $(OUT_motif): out/%.out: obj/%.o
 	@mkdir -p $(@D)
 	$(CC) -o $@ $^ -L. ../src/lib/$(basename $(notdir $(call remove_slash, $(dir $@)).c)).a \
 	../include/libmlx42.a -ldl -lglfw -pthread -lm
+
+$(OUT_evenodd): out/%.out: obj/%.o
+	@mkdir -p $(@D)
+	$(CC) -o $@ $^ -L. ../src/lib/$(basename $(notdir $(call remove_slash, $(dir $@)).c)).a \
+	../src/lib/table.a ../src/lib/paint.a ../src/lib/window.a ../include/libmlx42.a -ldl -lglfw -pthread -lm
 
 $(OUT_window): out/%.out: obj/%.o
 	@mkdir -p $(@D)

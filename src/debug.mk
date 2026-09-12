@@ -14,7 +14,7 @@ BUFFER_SIZE = 42
 
 # *** library ***
 LIBRARY = $(patsubst %, lib/%.a, libft green_counts get_next_line linalg load table \
-	debug convolve paint debug raster motif fdf display window)
+	debug convolve paint debug raster motif fdf display window evenodd)
 
 # *** atom src ***
 SRC_libft = $(wildcard utils/libft/*.c)
@@ -29,6 +29,7 @@ SRC_table = $(wildcard input/table/*.c)
 
 SRC_convolve = $(wildcard editor/convolve/*.c)
 SRC_paint = $(wildcard editor/paint/*.c)
+SRC_evenodd = $(wildcard editor/evenodd/*.c)
 
 SRC_raster = $(wildcard graphic_mlx/raster/*.c)
 SRC_motif = $(wildcard graphic_mlx/motif/*.c)
@@ -51,6 +52,7 @@ OBJ_table = $(patsubst %.c, obj/%.o, $(SRC_table)) $(OBJ_load) $(OBJ_green_count
 
 OBJ_convolve = $(patsubst %.c, obj/%.o, $(SRC_convolve)) $(OBJ_table) $(OBJ_linalg)
 OBJ_paint = $(patsubst %.c, obj/%.o, $(SRC_paint)) $(OBJ_green_counts)
+OBJ_evenodd = $(patsubst %.c, obj/%.o, $(SRC_evenodd)) $(OBJ_green_counts) $(OBJ_libft)
 
 OBJ_raster = $(patsubst %.c, obj/%.o, $(SRC_raster)) $(OBJ_green_counts) $(OBJ_table)
 OBJ_motif = $(patsubst %.c, obj/%.o, $(SRC_motif)) $(OBJ_raster)

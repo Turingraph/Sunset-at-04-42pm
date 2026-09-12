@@ -44,9 +44,9 @@ static void	hook_zoom(mlx_key_data_t keydata,
 		return ;
 	len = hook->master_piece.fdf->col;
 	len *= hook->master_piece.fdf->row;
-	scale = 1.01;
+	scale = 1.05;
 	if (keydata.key == MLX_KEY_0)
-		scale = 1.0 / 1.01;
+		scale = 1.0 / scale;
 	hook->camera->zoom *= scale;
 	vector_scale(hook->master_piece.fdf->x, scale, len);
 	vector_scale(hook->master_piece.fdf->y, scale, len);
@@ -124,10 +124,10 @@ void	hook_fdf_controller(mlx_key_data_t keydata, void *param)
 	if (keydata.key == MLX_KEY_ESCAPE)
 		mlx_close_window(hook->mlx);
 	after = mlx_get_time();
-	if (before != 0.0 && after - before < 0.166667)
+	if (before != 0.0 && after - before < 0.366667)
 		return ;
 	before = after;
-	before += 0.166667;
+	before += 0.366667;
 	draw_fdf_mlx(hook, false);
 	hook_zoom(keydata, hook);
 	hook_pan(keydata, hook->camera);

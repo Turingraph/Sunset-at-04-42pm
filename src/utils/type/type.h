@@ -69,4 +69,10 @@ typedef struct t_table_fdf
 	unsigned char	*a;
 }	t_table_fdf;
 
+typedef struct t_complex
+{
+	float	re;
+	float	im;
+}	t_complex;
+
 #endif

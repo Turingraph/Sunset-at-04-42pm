@@ -14,7 +14,7 @@
 
 // time : O(1)
 // space: O(1)
-unsigned char	gradient_smooth(t_enum_rgba rgba_type,
+int	gradient_smooth(t_enum_rgba rgba_type,
 	t_gradient gradient_input, int input_threshold)
 {
 	float	y;
@@ -28,11 +28,13 @@ unsigned char	gradient_smooth(t_enum_rgba rgba_type,
 	y1 = (float)(get_rgba_input(rgba_type, gradient_input.rgba_start));
 	y2 = (float)(get_rgba_input(rgba_type, gradient_input.rgba_end));
 	dx = (float)(gradient_input.input_end - gradient_input.input_start);
+	if (dx == 0)
+		dx = 1;
 	dy = (float)(y2 - y1);
 	y = (((float)(input_threshold - gradient_input.input_start)) / dx);
 	y *= dy;
 	y += y1;
-	return ((int)f_interval_int((int)f_round(y), 0, 255));
+	return (f_interval_int((int)f_round(y), -255, 255));
 }
 
 // time : O(1)
@@ -41,9 +43,9 @@ int	get_gradient_input(const t_table_fdf *src,
 	t_7cell_channels mode, size_t index)
 {
 	if (src == NULL)
-		return (-3);
+		return (-255);
 	if (index >= src->row * src->col)
-		return (-2);
+		return (-255);
 	if (mode == D7_RED && src->r != NULL)
 		return ((int)src->r[index]);
 	if (mode == D7_GREEN && src->g != NULL)
@@ -58,13 +60,13 @@ int	get_gradient_input(const t_table_fdf *src,
 		return ((int)(index % src->col));
 	if (mode == D7_HEIGHT && src->arr != NULL)
 		return ((int)src->arr[index]);
-	return (-1);
+	return (-255);
 }
 
 // time : O(1)
 // space: O(1)
-unsigned char	update_cell_color(unsigned char alpha, bool is_overwrite,
-	unsigned char dst, unsigned char new_color)
+int	update_cell_color(int alpha, bool is_overwrite,
+	int dst, int new_color)
 {
 	float	dc;
 
@@ -73,7 +75,7 @@ unsigned char	update_cell_color(unsigned char alpha, bool is_overwrite,
 	dc = (float)dst - (float)new_color;
 	if (dc < 0)
 		dc *= -1;
-	return ((int)f_interval_int(
+	return (f_interval_int(
 			f_round(((dc * alpha) + (new_color * (255 - alpha))) / 255.0),
 			0, 255));
 }
@@ -94,15 +96,16 @@ void	color_cells_gradient_unit(t_table_fdf *dst,
 	if (gradient_input.input_start <= threshold
 		&& threshold <= gradient_input.input_end)
 	{
-		if (is_overwrite == true && dst->a != NULL)
+		if (is_overwrite == true && dst->a != NULL
+			&& gradient_smooth(ALPHA, gradient_input, threshold) >= 0)
 			dst->a[i] = gradient_smooth(ALPHA, gradient_input, threshold);
-		if (dst->r != NULL)
+		if (dst->r != NULL && gradient_smooth(RED, gradient_input, threshold) >= 0)
 			dst->r[i] = update_cell_color(alpha, is_overwrite, dst->r[i],
 					gradient_smooth(RED, gradient_input, threshold));
-		if (dst->g != NULL)
+		if (dst->g != NULL && gradient_smooth(GREEN, gradient_input, threshold) >= 0)
 			dst->g[i] = update_cell_color(alpha, is_overwrite, dst->g[i],
 					gradient_smooth(GREEN, gradient_input, threshold));
-		if (dst->b != NULL)
+		if (dst->b != NULL && gradient_smooth(BLUE, gradient_input, threshold) >= 0)
 			dst->b[i] = update_cell_color(alpha, is_overwrite, dst->b[i],
 					gradient_smooth(BLUE, gradient_input, threshold));
 	}
