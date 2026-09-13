@@ -27,7 +27,7 @@
  * @return minimum or maximum integer based on the input.
  */
 int	get_minmax_from_table_fdf(const t_table_fdf *src,
-	bool is_max, t_enum_rgba channel)
+	bool is_max, t_fdf_channel channel)
 {
 	int		sign;
 	size_t	i;

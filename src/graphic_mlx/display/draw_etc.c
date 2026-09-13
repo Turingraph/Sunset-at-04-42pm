@@ -19,7 +19,7 @@ void	draw_euler_fdf(t_2d_hook *hook, bool is_draw)
 	size_t	thickness;
 
 	thickness = hook->master_piece.artstyle.line_thickness;
-	if (hook->master_piece.artstyle.artists != E_EULER)
+	if (hook->master_piece.artstyle.artist != E_EULER)
 		return ;
 	draw_picasso_fdf_noend(hook, is_draw, thickness);
 	draw_kusama_fdf(hook, is_draw, thickness * 3 / 2);
@@ -32,7 +32,7 @@ void	draw_poincare_fdf(t_2d_hook *hook, bool is_draw)
 	size_t	thickness;
 
 	thickness = hook->master_piece.artstyle.line_thickness;
-	if (hook->master_piece.artstyle.artists != E_POINCARE)
+	if (hook->master_piece.artstyle.artist != E_POINCARE)
 		return ;
 	draw_kusama_fdf(hook, is_draw, thickness);
 	if (is_draw == true)
@@ -46,7 +46,7 @@ void	draw_dijkstra_fdf(t_2d_hook *hook, bool is_draw)
 	size_t	thickness;
 
 	thickness = hook->master_piece.artstyle.line_thickness;
-	if (hook->master_piece.artstyle.artists != E_DIJKSTRA)
+	if (hook->master_piece.artstyle.artist != E_DIJKSTRA)
 		return ;
 	draw_picasso_fdf_noend(hook, is_draw, thickness);
 	draw_kusama_fdf(hook, is_draw, thickness * 3 / 2);
@@ -61,7 +61,7 @@ void	draw_warhol_fdf(t_2d_hook *hook, bool is_draw)
 	size_t	thickness;
 
 	thickness = hook->master_piece.artstyle.line_thickness;
-	if (hook->master_piece.artstyle.artists != E_WARHOL)
+	if (hook->master_piece.artstyle.artist != E_WARHOL)
 		return ;
 	draw_toby_fox_fdf(hook, is_draw);
 	draw_picasso_fdf(hook, false, thickness * 4 / 5);
@@ -74,7 +74,7 @@ void	draw_hirohiko_araki_fdf(t_2d_hook *hook, bool is_draw)
 	size_t	thickness;
 
 	thickness = hook->master_piece.artstyle.line_thickness;
-	if (hook->master_piece.artstyle.artists != E_HIROHIKO_ARAKI)
+	if (hook->master_piece.artstyle.artist != E_HIROHIKO_ARAKI)
 		return ;
 	draw_toby_fox_fdf(hook, is_draw);
 	if (is_draw == true)

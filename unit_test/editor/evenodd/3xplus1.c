@@ -25,16 +25,16 @@ int	main(void)
 	t_table_fdf		table_base;
 	t_table_fdf		table;
 	t_fdf			output;
-	t_artstyle32	style;
+	t_render_style	style;
 
 	table = init_table_fdf(100, 100, true);
 	table_base = init_table_fdf(100, 100, false);
 	setcells_pythagorus_length(&table);
-	set_cells_color(&table_base, 1, HEIGHT, is_collatz_odd);
+	set_cells_color(&table_base, 1, HEIGHT, is_collatz_odd_length);
 	table_fdf_hadamard(&table, &table_base, HEIGHT);
 	style.background_color = f_rgba_to_int32(0, 0, 0, 255);
 	style.line_thickness = 2;
-	style.artists = E_POINCARE;
+	style.artist = E_POINCARE;
 	color_cells_gradient(&table, init_deep_sea(), true);
 	output = init_fdf(&table, projection_isometric, 0.6);
 	view_fdf(&output, style);

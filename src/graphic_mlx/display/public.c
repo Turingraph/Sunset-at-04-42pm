@@ -39,15 +39,15 @@ void	draw_fdf_mlx(t_2d_hook *hook, bool is_draw)
 	if (is_2dhook_valid(hook) == false)
 		return ;
 	thickness = hook->master_piece.artstyle.line_thickness;
-	if (hook->master_piece.artstyle.artists == E_PICASSO)
+	if (hook->master_piece.artstyle.artist == E_PICASSO)
 		draw_picasso_fdf(hook, is_draw, thickness);
-	if (hook->master_piece.artstyle.artists == E_KUSAMA)
+	if (hook->master_piece.artstyle.artist == E_KUSAMA)
 		draw_kusama_fdf(hook, is_draw, thickness);
-	if (hook->master_piece.artstyle.artists == E_TOBY_FOX)
+	if (hook->master_piece.artstyle.artist == E_TOBY_FOX)
 		draw_toby_fox_fdf(hook, is_draw);
-	if (hook->master_piece.artstyle.artists == E_TUYOKI)
+	if (hook->master_piece.artstyle.artist == E_TUYOKI)
 		draw_tuyoki_fdf(hook, is_draw);
-	if (hook->master_piece.artstyle.artists == E_PIET_MONDRIAN)
+	if (hook->master_piece.artstyle.artist == E_PIET_MONDRIAN)
 		draw_piet_mondrian_fdf(hook, is_draw);
 	draw_hirohiko_araki_fdf(hook, is_draw);
 	draw_dijkstra_fdf(hook, is_draw);

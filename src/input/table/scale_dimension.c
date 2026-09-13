@@ -71,7 +71,7 @@ void	copy_duplicated_row(const int *src, int *dst,
  * @return scaled channel array, or NULL on failure
  */
 unsigned char	*scale_dimension_fdf_rgba(const t_table_fdf *src,
-	size_t s_row, size_t s_col, t_enum_rgba rgba_type)
+	size_t s_row, size_t s_col, t_fdf_channel rgba_type)
 {
 	size_t			i;
 	size_t			ii;

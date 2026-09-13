@@ -87,7 +87,7 @@ bool	is_chess_fdf(const t_table_fdf *dst, size_t index)
 // time : O(1)
 // space: O(1)
 static void	set_cells_color_unit(t_table_fdf *dst, int color,
-	t_enum_rgba channel, size_t i)
+	t_fdf_channel channel, size_t i)
 {
 	unsigned char	cccc;
 
@@ -119,7 +119,7 @@ static void	set_cells_color_unit(t_table_fdf *dst, int color,
  * are modified. If NULL, every cell is modified.
  */
 void	set_cells_color(t_table_fdf *dst, int color,
-	t_enum_rgba channel, bool (*is_filtered_cell)(const t_table_fdf *dst, size_t index))
+	t_fdf_channel channel, bool (*is_filtered_cell)(const t_table_fdf *dst, size_t index))
 {
 	size_t	i;
 

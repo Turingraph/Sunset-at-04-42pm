@@ -64,7 +64,7 @@ int	main(int len, char **str)
 {
 	t_table_fdf		table;
 	t_fdf			output;
-	t_artstyle32	style;
+	t_render_style	style;
 
 	if (len < 2)
 		return (0);

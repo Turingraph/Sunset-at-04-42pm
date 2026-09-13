@@ -24,7 +24,7 @@
  * @param channel channel to convert
  */
 void	write_table_ascii_cheche01(int fd,
-	const t_table_fdf *src, t_enum_rgba channel)
+	const t_table_fdf *src, t_fdf_channel channel)
 {
 	char	*dict;
 
@@ -45,7 +45,7 @@ void	write_table_ascii_cheche01(int fd,
  * @param channel channel to convert
  */
 void	write_table_ascii_standard(int fd,
-	const t_table_fdf *src, t_enum_rgba channel)
+	const t_table_fdf *src, t_fdf_channel channel)
 {
 	char	*dict;
 
@@ -66,7 +66,7 @@ void	write_table_ascii_standard(int fd,
  * @param channel channel to convert
  */
 void	write_table_ascii_chungaloider(int fd,
-	const t_table_fdf *src, t_enum_rgba channel)
+	const t_table_fdf *src, t_fdf_channel channel)
 {
 	char	*dict;
 

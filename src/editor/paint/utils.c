@@ -17,7 +17,7 @@ t_complex	get_table_fdf_coordinate_standard(const t_table_fdf *dst, size_t index
 
 // time : O(1)
 // space: O(1)
-int	get_rgba_input(t_enum_rgba rgba_type, t_rgba src)
+int	get_rgba_input(t_fdf_channel rgba_type, t_rgba src)
 {
 	if (rgba_type == RED)
 		return (src.r);

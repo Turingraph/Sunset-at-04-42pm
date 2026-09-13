@@ -25,7 +25,7 @@ int	main(void)
 	t_table_fdf		table_base;
 	t_table_fdf		table;
 	t_fdf			output;
-	t_artstyle32	style;
+	t_render_style	style;
 
 	table = init_table_fdf(100, 100, true);
 	table_base = init_table_fdf(100, 100, false);
@@ -35,7 +35,7 @@ int	main(void)
 	scale_relu_fdf(&table, 201, 2000, 0);
 	style.background_color = f_rgba_to_int32(0, 0, 0, 255);
 	style.line_thickness = 2;
-	style.artists = E_EULER;
+	style.artist = E_EULER;
 	color_cells_gradient(&table, init_deep_sea(), true);
 	scale_multiplication_fdf(&table, 1.0 / 120.0, HEIGHT);
 	output = init_fdf(&table, projection_isometric, 0.6);

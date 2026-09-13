@@ -9,7 +9,7 @@
  *
  * @param dst FDF table to modify
  */
-void	setcells_pythagorus_length(const t_table_fdf *dst)
+void	setcells_pythagorus_length(t_table_fdf *dst)
 {
 	size_t		i;
 	int			y;
@@ -29,7 +29,7 @@ void	setcells_pythagorus_length(const t_table_fdf *dst)
 
 /**
  * Set each cell to the square root of the product of its standard
- * coordinate components.
+ * complex coordinate components.
  *
  * time/space: O(n) / O(1)
  *
@@ -37,7 +37,7 @@ void	setcells_pythagorus_length(const t_table_fdf *dst)
  *
  * @param dst FDF table to modify
  */
-void	setcells_times_length(const t_table_fdf *dst)
+void	setcells_times_length(t_table_fdf *dst)
 {
 	size_t		i;
 	int			y;
@@ -57,7 +57,7 @@ void	setcells_times_length(const t_table_fdf *dst)
 
 /**
  * Set each cell to the sum of its standard
- * coordinate components.
+ * complex coordinate components.
  *
  * time/space: O(n) / O(1)
  *
@@ -65,7 +65,7 @@ void	setcells_times_length(const t_table_fdf *dst)
  *
  * @param dst FDF table to modify
  */
-void	setcells_addition_length(const t_table_fdf *dst)
+void	setcells_addition_length(t_table_fdf *dst)
 {
 	size_t		i;
 	int			y;
@@ -92,7 +92,7 @@ void	setcells_addition_length(const t_table_fdf *dst)
  *
  * @param dst FDF table to modify
  */
-void	setcells_maximum_length(const t_table_fdf *dst)
+void	setcells_maximum_length(t_table_fdf *dst)
 {
 	size_t		i;
 	t_complex	z;
@@ -117,7 +117,7 @@ void	setcells_maximum_length(const t_table_fdf *dst)
  *
  * @param dst FDF table to modify
  */
-void	setcells_minimum_length(const t_table_fdf *dst)
+void	setcells_minimum_length(t_table_fdf *dst)
 {
 	size_t		i;
 	t_complex	z;

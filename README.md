@@ -1,36 +1,122 @@
 # Description
 
-The project is named as Sunset at 4.42pm. It is used for displaying beautiful artistic 3D Wireframe image based on user text files and user customized graphic configuration.
+The project is named as Sunset at 4.42pm. It is made from C files, header files, Makefile, and MLX42 library. It is used for displaying beautiful artistic 3D Wireframe image based on user text files and user customized graphic configuration.
 
 ...(I will put some image)...
 
 ## Table of Content
 
 1.	Installation
-2.	What is Fdf?
+2.	What is FDF?
 3.	Additional features
 4.	Project Status
 5.	Inspiration
 6.	Additional resource
 
-123
-
 ## Installation
 
-First download and build MLX42 library (https://github.com/codam-coding-college/MLX42#download-and-build---mlx42)
+### General compilation
+
+Run the following command.
 
 ```
-git clone https://github.com/codam-coding-college/MLX42.git
-cd MLX42
-cmake -B build # build here refers to the outputfolder.
-cmake --build build -j4 # or do make -C build -j4
+git clone https://github.com/Turingraph/Sunset-at-04-42pm
+make -f Makefile all
 ```
 
-...
+The output library file is called `sunset442pm.a` (the path is `include/sunset442pm.a`)
 
-## What is Fdf ?
+Note that `include/` directory also contains `subsetat442pm.h` and `libmlx42.a`.
 
-This project is based on FdF42 which is 3D graphic 42 Coding School assignment. The purpose of this assignment is to convert the `.fdf` files with the columns of integer to 3D isometric wireframe, and display it on 2D screen using MLX42 library (https://github.com/codam-coding-college/MLX42/tree/master).
+Make this C file (I will name it as `main.c`) and copy `subsetat442pm.h`, `sunset442pm.a`, and `libmlx42.a` within the same directory.
+
+```
+#include "sunset442pm.h"
+
+// time : O(1)
+// space: O(1)
+t_gradient	init_deep_sea()
+{
+	t_gradient	dst;
+
+	dst.cell_channel = D7_HEIGHT;
+	dst.input_start = 0;
+	dst.input_end = 200;
+	dst.rgba_start.r = 70;
+	dst.rgba_start.g = 75;
+	dst.rgba_start.b = 113;
+	dst.rgba_start.a = 255;
+	dst.rgba_end.r = 124;
+	dst.rgba_end.g = 213;
+	dst.rgba_end.b = 199;
+	dst.rgba_end.a = 255;
+	return (dst);
+}
+
+int	main(void)
+{
+	t_table_fdf		table_base;
+	t_table_fdf		table;
+	t_fdf			output;
+	t_artstyle32	style;
+
+	table = init_table_fdf(100, 100, true);
+	table_base = init_table_fdf(100, 100, false);
+	setcells_pythagorus_length(&table);
+	set_cells_color(&table_base, 30, HEIGHT, is_oddlength_cube);
+	table_fdf_hadamard(&table, &table_base, HEIGHT);
+	scale_relu_fdf(&table, 201, 2000, 0);
+	style.background_color = f_rgba_to_int32(0, 0, 0, 255);
+	style.line_thickness = 2;
+	style.artists = E_EULER;
+	color_cells_gradient(&table, init_deep_sea(), true);
+	scale_multiplication_fdf(&table, 1.0 / 120.0, HEIGHT);
+	output = init_fdf(&table, projection_isometric, 0.6);
+	view_fdf(&output, style);
+	free_table_fdf(&table);
+	free_table_fdf(&table_base);
+	free_fdf(&output);
+	return (0);
+}
+```
+
+Lastly, run
+
+```
+cc -o main.c main.out -L. libmlx42.a sunset442pm.a -ldl -lglfw -pthread -lm
+./main.out
+```
+
+If `libmlx42.a` isn't compatible with your PC, you can read this manual (https://github.com/codam-coding-college/MLX42) for more information about how to install this graphic library.
+
+
+
+### Unit Test
+
+Run the following command.
+
+```
+git clone https://github.com/Turingraph/Sunset-at-04-42pm
+make -f debug.mk all
+```
+
+Then run the specific target files in the module, for examples
+
+```
+$ valgrind --leak-check=full --show-leak-kinds=all ./unit_test/out/editor/convolve/fdf_k.out
+// This file verify that convolution features work correctly and user able to convert the result as FdF files.
+```
+
+```
+$ valgrind --leak-check=full --show-leak-kinds=all ./unit_test/out/input/table/verify_scale_dim_int.out
+// This file verify that scale_dimension_fdf works correctly.
+```
+
+See `doc/contribution/` for more details.
+
+## What is FDF ?
+
+This project is based on FDF42 which is 3D graphic 42 Coding School assignment. The purpose of this assignment is to convert the `.fdf` files with the columns of integer to 3D isometric wireframe, and display it on 2D screen using MLX42 library (https://github.com/codam-coding-college/MLX42/tree/master).
 
 ```
 #include"window.h"
@@ -96,8 +182,8 @@ as this picture.
 
 Note that the i-th row, j-th column, and the integer number match with the 3D points of the 3D isometric wireframe.
 
-FdF42 features
-1.	Convert Fdf files as 3D wireframe, by using `./fdf [input file name]` command. (for example `./fdf my_file.txt`, `./fdf 10-70.fdf` etc.)
+FDF42 features
+1.	Convert FDF files as 3D wireframe, by using `./fdf [input file name]` command. (for example `./fdf my_file.txt`, `./fdf 10-70.fdf` etc.)
 2.	User able to close 3D wireframe window frame by click `ESC` button and/or the cross on the window’s frame
 
 ## Additional features
@@ -207,16 +293,33 @@ as this picture.
 ```
 
 Additional features including
-1.	Converting fdf file as txt file (where ` ` = 0, `'` = 2, ..., `@` = 80 depending on specific ASCII to number map) and vise versa.
-2.	Painting each cells of the 3D Fdf wireframe based on its height, red, green, blue, alpha, x-axis, and/or y-axis value.
-3.	Double the size of the 3D Fdf wireframe.
-4.	Operating convolution on 3D Fdf wireframe's cell.
-5.	User have 2 input parser mode for Fdf files and Txt files.
-6.	User can choose parallel projection, including orthogonal projection, isometric projection, cabinet projection etc., background color, and other rendering style.
+1.	Converting FDF file as txt file (where ` ` = 0, `'` = 2, ..., `@` = 80 depending on specific ASCII to number map) and vise versa.
+2.	Painting each cells of the 3D FDF wireframe based on its height, red, green, blue, alpha, x-axis, and/or y-axis value.
+3.	Scaling the size of the 3D FDF wireframe.
+4.	Operating convolution on 3D FDF wireframe's cell.
+5.	User have 2 input parser mode for FDF files and Txt files.
+6.	User can choose parallel projection, including orthogonal projection, isometric projection, cabinet projection etc., background color, line width and other rendering style.
+7.	User can manipulate t_table_fdf table with table pair addition, hadamard product, ReLU operation etc.
+8.	Suppose a few other features that focus on manipulating `t_table_fdf` data and display accordingly. see `doc/user_manual/` for more details.
 
 ## Project Status
 
-...
+This coding library is release as 1st version.
+
+The following features will be supported in second version version.
+1.	Compatible with OpenGL/GLFW directly without depending on MLX42 library.
+2.	Real time convolution with optimized FFT on both t_table_fdf table and the graphic window.
+3.	Window that support multiple FDF objects.
+4.	User able to display FDF objects with user customized artistic background inspired by Islamic Art, Piet Mondrian art, Kusama art etc.
+5.	User able to draw artistic motif inspired by Islamic Art, Piet Mondrian art, Kusama art etc. on FDF data directly.
+6.	Compatible with Piskel (https://www.piskelapp.com/ , a.k.a. open source Pixel art drawing app).
+
+The following features will be supported in third version version.
+1.	quaternion rotation
+2.	3D collition detection
+3.	Z buffer coloring on multiple FDF object.
+4.	color each FDF cells based on how force interacting with multiple collided FDF objects according to the output of basic 3D FEM solver.
+5.	User can export t_table_fdf table as Blender compatible files (but not vice versa for the sake of UXUI simplicity).
 
 ## Inspiration
 
@@ -272,4 +375,4 @@ This project is named as `Sunset at 4.42pm`, because it is inspired by 42 Coding
 2.	see doc/contribution/ for more details about how to contribute this coding project, the directory structure of this coding project, and the future features of the next version.
 3.	see doc/note/ for more details about some development logs of this coding project.
 
-Note that some input examples of this coding project is generated by Figlet (https://textarttools.com/Figletfontstool/).
+Note that some input examples of this coding project is generated by Figlet (https://textarttools.com/Figletfontstool/). I might add additional Figlet inspired ASCII art calligraphy in Thai, Spanish, Japanese, Katakana written Spanish, Thai written Japanese, neography etc.

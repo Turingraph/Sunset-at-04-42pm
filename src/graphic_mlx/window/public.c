@@ -41,13 +41,12 @@ void	view_fdf_handle_02(mlx_t *mlx, mlx_image_t *img)
 }
 
 /**
- * Display an FDF object in an interactive 2D MLX window.
+ * Display an FDF object in an interactive a 1920x1080 MLX window.
  *
- * The FDF object is scaled to fit the viewing area and optionally
- * transformed by the initial 3D transformation specified by
- * view_config. The drawing style controls how the FDF object is
- * rendered, while view_config controls the background and initial
- * viewing configuration.
+ * The FDF object is scaled to fit the viewing area.
+ * The drawing style controls how the FDF object is
+ * rendered (setting line thickness, background color,
+ * and rendering style inspired by famous creators).
  *
  * The view supports interactive manipulation through the registered
  * FDF keyboard controller.
@@ -72,9 +71,8 @@ void	view_fdf_handle_02(mlx_t *mlx, mlx_image_t *img)
  * @param fdf FDF object to display.
  * The default color of the FDF object is black.
  * @param artstyle style used to render the FDF object.
- * The artstyle.color means the background color.
  */
-void	view_fdf(t_fdf *fdf, t_artstyle32 artstyle)
+void	view_fdf(t_fdf *fdf, t_render_style artstyle)
 {
 	mlx_t			*mlx;
 	t_2d_hook		hook;

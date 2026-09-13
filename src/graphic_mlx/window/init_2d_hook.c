@@ -84,7 +84,7 @@ mlx_image_t	*init_mlx_image(mlx_t *mlx)
  * @param artstyle style used to render the FDF object
  * @return initialized 2D FDF rendering context
  */
-t_2d_hook	init_2d_hook(mlx_t *mlx, t_fdf *fdf, t_artstyle32 artstyle)
+t_2d_hook	init_2d_hook(mlx_t *mlx, t_fdf *fdf, t_render_style artstyle)
 {
 	t_2d_hook	dst;
 

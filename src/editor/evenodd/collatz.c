@@ -2,13 +2,13 @@
 
 /**
  * Find the maximum value reached by the Collatz sequence of an input.
+ * The sequence is limited to 10000 iterations.
  *
- * time/space: O(???) but might be O(log(n)),
+ * time/space: O(s, where s is less than 10000),
  * this is an open problem! / O(1)
  *
  * status: public api
  * 
- * The sequence is limited to 10000 iterations.
  */
 size_t	collatz_max_point(size_t x)
 {
@@ -36,7 +36,7 @@ size_t	collatz_max_point(size_t x)
  * Check whether the maximum point of a cell's magnitude's Collatz sequence,
  * divided by 7, is odd.
  *
- * time/space: O(???) but might be O(log(n)), this is an open problem! / O(1)
+ * time/space: O(s, where s is less than 10000) / O(1)
  *
  * status: public api
  *
@@ -46,7 +46,7 @@ size_t	collatz_max_point(size_t x)
  * @return true if the scaled maximum Collatz point is odd,
  * false otherwise.
  */
-bool	is_collatz_odd(const t_table_fdf *dst, size_t index)
+bool	is_collatz_odd_length(const t_table_fdf *dst, size_t index)
 {
 	int			input;
 	size_t		max;
@@ -69,7 +69,7 @@ bool	is_collatz_odd(const t_table_fdf *dst, size_t index)
  * from the product of a cell's coordinate components, divided by 7,
  * is odd.
  *
- * time/space: O(???) but might be O(log(n)), this is an open problem! / O(1)
+ * time/space: O(s, where s is less than 10000) / O(1)
  *
  * status: public api
  *
@@ -79,7 +79,7 @@ bool	is_collatz_odd(const t_table_fdf *dst, size_t index)
  * @return true if the scaled maximum Collatz point is odd,
  * false otherwise.
  */
-bool	is_collatz_x_odd(const t_table_fdf *dst, size_t index)
+bool	is_collatz_odd_product(const t_table_fdf *dst, size_t index)
 {
 	t_complex	y;
 	int			input;

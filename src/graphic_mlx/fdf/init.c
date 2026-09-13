@@ -98,7 +98,7 @@ t_fdf	free_fdf(t_fdf *src)
 
 // time : O(n)
 // space: O(n)
-t_fdf	init_holder_fdf(t_table_fdf *src)
+t_fdf	init_placeholder_fdf(t_table_fdf *src)
 {
 	t_fdf	dst;
 
@@ -124,19 +124,21 @@ t_fdf	init_holder_fdf(t_table_fdf *src)
 }
 
 /**
- * Initialize a 3D FDF object from a t_table_fdf table.
+ * Initialize a FDF object from a t_table_fdf table.
  *
- * The returned object owns the position arrays of each cells of t_table_fdf,
+ * The returned FDF object owns the 2D position arrays of each cells of t_table_fdf,
  * based on the 2D projection of the table (determined by 2D projection
  * argument e.g. projection_isometric, projection_military etc.
  * ). If the projection is NULL,
- * then this function return the orthogonal projection of t_table_fdf.
+ * then this function return the simple orthogonal projection of t_table_fdf.
  *
- * The position arrays represent the X, and Y coordinates used by
- * the FDF renderer.
+ * This function use the color of t_table_fdf table,
+ * instead of deep copy and/or shallow copy the color of t_table_fdf table, for
+ * preventing double free issues and preventing using too many malloc than needed.
+ *
+ * The future version of this program will support 3D related features e.g.
+ * quaternion rotation, 3D collision detection etc. but not now for the sake of development simplicity.
  * 
- * This function use the color of t_table_fdf table.
- *
  * time/space: O(n) / O(n)
  *
  * status: public api
@@ -157,7 +159,7 @@ t_fdf	init_fdf(t_table_fdf *src,
 
 	if (src == NULL || src->row * src->col == 0)
 		return (init_null_fdf());
-	dst = init_holder_fdf(src);
+	dst = init_placeholder_fdf(src);
 	if (dst.col == 0 || dst.row == 0)
 		return (dst);
 	init_fdf_position(src, dst.x, dst.y, projection);

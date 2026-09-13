@@ -23,7 +23,7 @@ char			f_isspace(char s, const char *space);
 size_t			f_strlen(const char *str);
 void			*malloc_talk(size_t elem_size, const char *comment);
 unsigned char	*get_rgba_of_table_fdf(const t_table_fdf *src,
-					t_enum_rgba rgba_type);
+					t_fdf_channel rgba_type);
 
 // atoi.c
 

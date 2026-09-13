@@ -17,6 +17,6 @@
 
 // public.c
 
-void		view_fdf(t_fdf *fdf, t_artstyle32 drawing_style);
+void		view_fdf(t_fdf *fdf, t_render_style drawing_style);
 
 #endif

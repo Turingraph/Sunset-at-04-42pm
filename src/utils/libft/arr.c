@@ -66,7 +66,7 @@ void	*malloc_talk(size_t elem_size, const char *comment)
  * @return pointer to the requested channel array, or NULL if unavailable
  */
 unsigned char	*get_rgba_of_table_fdf(const t_table_fdf *src,
-	t_enum_rgba rgba_type)
+	t_fdf_channel rgba_type)
 {
 	if (src == NULL)
 		return (NULL);

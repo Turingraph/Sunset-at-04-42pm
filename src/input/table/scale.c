@@ -24,7 +24,7 @@
  * @param channel channel to modify
  */
 void	scale_multiplication_fdf(t_table_fdf *dst, float scale,
-	t_enum_rgba channel)
+	t_fdf_channel channel)
 {
 	size_t	i;
 
@@ -62,7 +62,7 @@ void	scale_multiplication_fdf(t_table_fdf *dst, float scale,
  * @param input value to add
  * @param channel channel to modify
  */
-void	scale_addition_fdf(t_table_fdf *dst, int input, t_enum_rgba channel)
+void	scale_addition_fdf(t_table_fdf *dst, int input, t_fdf_channel channel)
 {
 	size_t	i;
 
@@ -101,7 +101,7 @@ void	scale_addition_fdf(t_table_fdf *dst, int input, t_enum_rgba channel)
  * @param channel channel to add
  */
 void	table_fdf_addition(t_table_fdf *dst,
-	const t_table_fdf *src, t_enum_rgba channel)
+	const t_table_fdf *src, t_fdf_channel channel)
 {
 	size_t	i;
 
@@ -142,7 +142,7 @@ void	table_fdf_addition(t_table_fdf *dst,
  * @param channel channel to multiply
  */
 void	table_fdf_hadamard(t_table_fdf *dst,
-	const t_table_fdf *src, t_enum_rgba channel)
+	const t_table_fdf *src, t_fdf_channel channel)
 {
 	size_t	i;
 
@@ -182,7 +182,7 @@ void	table_fdf_hadamard(t_table_fdf *dst,
  * @param src source FDF table
  * @param channel channel to copy
  */
-void	copy_table_fdf_channel(t_table_fdf *dst, const t_table_fdf *src, t_enum_rgba channel)
+void	copy_table_fdf_channel(t_table_fdf *dst, const t_table_fdf *src, t_fdf_channel channel)
 {
 	scale_multiplication_fdf(dst, 0.0, channel);
 	table_fdf_addition(dst, src, channel);

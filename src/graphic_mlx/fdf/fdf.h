@@ -18,20 +18,19 @@
 # include "../../input/table/table.h"
 
 /**
- * FDF object containing source data (t_table_fdf) and its transformed positions.
+ * FDF object containing the 2D projected representation data of the 
+ * t_table_fdf data.
  * 
- * The source table stores the original FDF data. The position arrays
- * represent the coordinates used for rendering and may be modified by
- * transformations without changing the source table.
- * 
- * @param src source FDF table
- * @param pos_x transformed x coordinates for each FDF cell
- * @param pos_y transformed y coordinates for each FDF cell
- * @param pos_z transformed z coordinates for each FDF cell
- * @param matrix 3D transformation matrix associated with the object.
- * This matrix is used for undo every linear transformation
- * when user press "Q" button.
- * @param width current width of the transformed FDF object
+ * @param r the red channel of each FdF cell.
+ * @param g the green channel of each FdF cell.
+ * @param b the blue channel of each FdF cell.
+ * @param a the alpha channel of each FdF cell.
+ * @param row the numbers of all row of the FdF object which correlated to the y axis.
+ * @param col the numbers of all column of the FdF object which correlated to the x axis.
+ * @param x x coordinates for each FDF cell according to the 2D projected representation.
+ * @param y y coordinates for each FDF cell according to the 2D projected representation.
+ * @param width current width of the transformed FDF object, for scaling the Fdf object
+ * with the suitable scaling factor relative to the window height and width.
  */
 typedef struct s_fdf
 {

@@ -33,21 +33,23 @@ typedef struct s_2d_camera
 }	t_2d_camera;
 
 /*
- * This control how to display Fdf object.
- * It is based on the name of my favorite creators.
- * 
- * E_PICASSO = straight line
- * E_TOBY_FOX = Pixel art inspired grids
- * E_TUYOKI = Pixel art inspired grids (sometimes smaller than Toby Fox's grid)
- * E_KUSAMA = circle
- * E_EULER = E_PICASSO + E_KUSAMA = graph (without hole)
- * E_POINCARE = donut (circle with hole)
- * E_DIJKSTRA = E_POINCARE + E_EULER = network (same as Euler but have hole)
- * E_PIET_MONDRIAN = 4 rectangles on each cells
- * E_WARHOL = E_TOBY_FOX + E_PICASSO
- * E_HIROHIKO_ARAKI = E_TOBY_FOX + E_DIJKSTRA (inspired by Jojo's Stand)
+ * Defines the artistic rendering pattern used to display an FDF object.
+ *
+ * The names are inspired by artist, mathematicians, and creators whose
+ * visual or conceptual style influences the corresponding renderer.
+ *
+ * E_PICASSO       = straight lines
+ * E_TOBY_FOX      = pixel-art inspired grids
+ * E_TUYOKI        = smaller pixel-art inspired grids
+ * E_KUSAMA        = circles
+ * E_EULER         = lines + circles
+ * E_POINCARE      = circles with holes
+ * E_DIJKSTRA      = lines + circles with holes
+ * E_PIET_MONDRIAN = four rectangles per cell
+ * E_WARHOL        = pixel-art grids + straight lines
+ * E_HIROHIKO_ARAKI = pixel-art grids + network pattern
  */
-typedef enum t_artists
+typedef enum t_art_style
 {
 	E_PICASSO,
 	E_TOBY_FOX,
@@ -59,17 +61,17 @@ typedef enum t_artists
 	E_PIET_MONDRIAN,
 	E_WARHOL,
 	E_HIROHIKO_ARAKI,
-}	t_artists;
+}	t_art_style;
 
 /*
  * This struct control the drawing style of the Fdf.
  */
-typedef struct s_artstyle32
+typedef struct s_render_style
 {
 	int32_t		background_color;
 	size_t		line_thickness;
-	t_artists	artists;
-}	t_artstyle32;
+	t_art_style	artist;
+}	t_render_style;
 
 /**
  * Describes the object and drawing configuration presented in window.
@@ -85,7 +87,7 @@ typedef struct s_artstyle32
  */
 typedef struct s_master_piece
 {
-	t_artstyle32	artstyle;
+	t_render_style	artstyle;
 	t_fdf			*fdf;
 }	t_master_piece;
 

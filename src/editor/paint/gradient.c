@@ -14,7 +14,7 @@
 
 // time : O(1)
 // space: O(1)
-int	gradient_smooth(t_enum_rgba rgba_type,
+int	gradient_smooth(t_fdf_channel rgba_type,
 	t_gradient gradient_input, int input_threshold)
 {
 	float	y;
@@ -40,7 +40,7 @@ int	gradient_smooth(t_enum_rgba rgba_type,
 // time : O(1)
 // space: O(1)
 int	get_gradient_input(const t_table_fdf *src,
-	t_7cell_channels mode, size_t index)
+	t_gradient_channel mode, size_t index)
 {
 	if (src == NULL)
 		return (-255);

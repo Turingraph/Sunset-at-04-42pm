@@ -29,14 +29,14 @@
  *
  * - HEIGHT selects the height (arr, Z) component.
  */
-typedef enum t_enum_rgba
+typedef enum t_fdf_channel
 {
 	RED,
 	GREEN,
 	BLUE,
 	ALPHA,
 	HEIGHT
-}	t_enum_rgba;
+}	t_fdf_channel;
 
 /**
  * Stores the height and optional RGBA color components of an FDF table.

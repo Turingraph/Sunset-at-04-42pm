@@ -24,8 +24,8 @@ t_table_fdf		init_table_fdf(size_t row, size_t col, bool is_rgba);
 
 // positive.c
 
-int				get_minmax_from_table_fdf(const t_table_fdf *dst,
-					bool is_max, t_enum_rgba channel);
+int				get_minmax_from_table_fdf(const t_table_fdf *src,
+					bool is_max, t_fdf_channel channel);
 void			scale_positive_fdf(t_table_fdf *dst);
 void			scale_relu_fdf(t_table_fdf *dst, int min, int max, int expect);
 
@@ -37,7 +37,7 @@ t_table_fdf		open_table_fdf_file(const char *file_name, const char *dir,
 // scale_dimension.c
 
 unsigned char	*scale_dimension_fdf_rgba(const t_table_fdf *src,
-					size_t s_row, size_t s_col, t_enum_rgba rgba_type);
+					size_t s_row, size_t s_col, t_fdf_channel rgba_type);
 int				*scale_dimension_fdf_int(const t_table_fdf *src,
 					size_t s_row, size_t s_col);
 t_table_fdf		scale_dimension_fdf(const t_table_fdf *src,
@@ -46,24 +46,24 @@ t_table_fdf		scale_dimension_fdf(const t_table_fdf *src,
 // scale.c
 
 void			scale_multiplication_fdf(t_table_fdf *dst,
-					float scale, t_enum_rgba channel);
+					float scale, t_fdf_channel channel);
 void			scale_addition_fdf(t_table_fdf *dst,
-					int input, t_enum_rgba channel);
+					int input, t_fdf_channel channel);
 void			table_fdf_addition(t_table_fdf *dst,
-					const t_table_fdf *src, t_enum_rgba channel);
+					const t_table_fdf *src, t_fdf_channel channel);
 void			table_fdf_hadamard(t_table_fdf *dst,
-					const t_table_fdf *src, t_enum_rgba channel);
+					const t_table_fdf *src, t_fdf_channel channel);
 void			copy_table_fdf_channel(t_table_fdf *dst,
-					const t_table_fdf *src, t_enum_rgba channel);
+					const t_table_fdf *src, t_fdf_channel channel);
 
 // shade.c
 
 void			write_table_ascii_cheche01(int fd,
-					const t_table_fdf *src, t_enum_rgba channel);
+					const t_table_fdf *src, t_fdf_channel channel);
 void			write_table_ascii_standard(int fd,
-					const t_table_fdf *src, t_enum_rgba channel);
+					const t_table_fdf *src, t_fdf_channel channel);
 void			write_table_ascii_chungaloider(int fd,
-					const t_table_fdf *src, t_enum_rgba channel);
+					const t_table_fdf *src, t_fdf_channel channel);
 
 // write.c
 

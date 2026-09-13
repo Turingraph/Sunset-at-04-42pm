@@ -30,7 +30,7 @@ typedef struct t_rgba
 	int	a;
 }	t_rgba;
 
-typedef enum t_7cell_channels
+typedef enum t_gradient_channel
 {
 	D7_RED,
 	D7_GREEN,
@@ -39,7 +39,7 @@ typedef enum t_7cell_channels
 	D7_ROW,
 	D7_COL,
 	D7_HEIGHT
-}	t_7cell_channels;
+}	t_gradient_channel;
 
 /**
  * Defines a color gradient over a selected cell property.
@@ -52,7 +52,7 @@ typedef struct t_gradient
 {
 	t_rgba				rgba_start;
 	t_rgba				rgba_end;
-	t_7cell_channels	cell_channel;
+	t_gradient_channel	cell_channel;
 	int					input_start;
 	int					input_end;
 }	t_gradient;
@@ -62,7 +62,7 @@ typedef struct t_gradient
 bool		is_space_fdf(const t_table_fdf *dst, size_t index);
 bool		is_boundary_fdf(const t_table_fdf *dst, size_t index);
 bool		is_chess_fdf(const t_table_fdf *dst, size_t index);
-void		set_cells_color(t_table_fdf *dst, int color, t_enum_rgba channel,
+void		set_cells_color(t_table_fdf *dst, int color, t_fdf_channel channel,
 				bool (*is_filtered_cell)(const t_table_fdf *dst, size_t index));
 
 // gradient.c
@@ -72,16 +72,16 @@ void		color_cells_gradient(t_table_fdf *dst,
 
 // length.c
 
-void		setcells_pythagorus_length(const t_table_fdf *dst);
-void		setcells_times_length(const t_table_fdf *dst);
-void		setcells_addition_length(const t_table_fdf *dst);
-void		setcells_maximum_length(const t_table_fdf *dst);
-void		setcells_minimum_length(const t_table_fdf *dst);
+void		setcells_pythagorus_length(t_table_fdf *dst);
+void		setcells_times_length(t_table_fdf *dst);
+void		setcells_addition_length(t_table_fdf *dst);
+void		setcells_maximum_length(t_table_fdf *dst);
+void		setcells_minimum_length(t_table_fdf *dst);
 
 // utils.c
 
 t_complex	get_table_fdf_coordinate_standard(const t_table_fdf *dst,
 				size_t index);
-int			get_rgba_input(t_enum_rgba rgba_type, t_rgba src);
+int			get_rgba_input(t_fdf_channel rgba_type, t_rgba src);
 
 #endif

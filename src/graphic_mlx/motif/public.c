@@ -43,7 +43,7 @@ void	view_motif_handle_02(mlx_t *mlx, mlx_image_t *img)
 /**
  * Display a motif as a tiled 2D composition in an MLX window.
  *
- * Creates a 1440x810 static MLX window, initializes the rendering image and tile
+ * Creates a 1920x1080 static MLX window, initializes the rendering image and tile
  * format, fills the image with the requested motif, and keeps the window
  * open until the MLX loop terminates.
  *
@@ -54,12 +54,12 @@ void	view_motif_handle_02(mlx_t *mlx, mlx_image_t *img)
  *
  * time/space: O(n) / O(n)
  *
- * status: public api
- *
  * @param src motif array to render (as Islamic Art,
  * Kusama art, Piet Mondrian inspired art etc.)
  * @param background_color background colour of the rendered composition
- * @param resolution tile subdivision resolution (equal to or less than 10)
+ * @param resolution tile subdivision resolution (equal to or less than 10).
+ * If the resolution more than 10, then resolution equal to 10, given that 1920 < 2^n when 10 < n
+ * If the resolution is equal to 0, then there will be only 1 tile, given that 1 = 2^0.
  */
 void	view_motif(t_motif_arr *src,
 	int32_t background_color, size_t resolution)

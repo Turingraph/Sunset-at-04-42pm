@@ -88,7 +88,7 @@ static void	wta_rgba(unsigned char input,
 // time : O(n)
 // space: O(n)
 void	write_table_ascii(int fd, const t_table_fdf *src,
-	t_enum_rgba channel, const char *dict)
+	t_fdf_channel channel, const char *dict)
 {
 	size_t			i;
 	size_t			j;

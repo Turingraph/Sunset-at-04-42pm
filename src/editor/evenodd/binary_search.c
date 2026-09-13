@@ -1,7 +1,18 @@
 #include "evenodd.h"
 
-// time : O(log(n))
-// space: O(1)
+/**
+ * Count the number of iterations required by a binary-search procedure
+ * to locate min_input within the range [0, max_input].
+ *
+ * If min_input is greater than max_input, their values are exchanged
+ * before performing the search.
+ *
+ * time/space: O(log(n)) / O(1)
+ *
+ * @param min_input target value to search for
+ * @param max_input upper bound of the search range
+ * @return number of binary-search iterations
+ */
 size_t	binary_search_count(size_t min_input, size_t max_input)
 {
 	size_t	min;
@@ -32,8 +43,12 @@ size_t	binary_search_count(size_t min_input, size_t max_input)
 }
 
 /**
- * Check whether the binary-search count of a cell's coordinate
- * magnitude is odd.
+ * Check whether the number of iterations of a binary-search procedure
+ * is odd when searching for the rounded magnitude of a cell's complex
+ * coordinate within the table's diagonal-length range.
+ *
+ * The coordinate magnitude is used as the search target, while the
+ * rounded diagonal length of the table is used as the upper bound.
  *
  * time/space: O(log(n)) / O(1)
  *
@@ -42,9 +57,10 @@ size_t	binary_search_count(size_t min_input, size_t max_input)
  * @param dst FDF table to check
  * @param index index of the cell to check
  *
- * @return true if the binary-search count is odd, false otherwise.
+ * @return true if the binary-search iteration count is odd,
+ * false otherwise.
  */
-bool	is_binary_search_odd(const t_table_fdf *dst, size_t index)
+bool	is_binary_search_length_odd(const t_table_fdf *dst, size_t index)
 {
 	int			input;
 	size_t		max;
@@ -64,8 +80,15 @@ bool	is_binary_search_odd(const t_table_fdf *dst, size_t index)
 }
 
 /**
- * Check whether the binary-search count of the product of a cell's
- * coordinate components is odd.
+ * Check whether the number of iterations of a binary-search procedure
+ * is odd when searching for the absolute product of a cell's rounded
+ * real and imaginary coordinates within the table's cell-count range.
+ *
+ * The search target is:
+ *
+ *     |round(Re(z)) * round(Im(z))|
+ *
+ * and the upper bound is the total number of cells in the table.
  *
  * time/space: O(log(n)) / O(1)
  *
@@ -74,9 +97,10 @@ bool	is_binary_search_odd(const t_table_fdf *dst, size_t index)
  * @param dst FDF table to check
  * @param index index of the cell to check
  *
- * @return true if the binary-search count is odd, false otherwise.
+ * @return true if the binary-search iteration count is odd,
+ * false otherwise.
  */
-bool	is_binary_search_x_odd(const t_table_fdf *dst, size_t index)
+bool	is_binary_search_product_odd(const t_table_fdf *dst, size_t index)
 {
 	t_complex	y;
 	int			input;

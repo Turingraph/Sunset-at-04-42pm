@@ -24,7 +24,7 @@ int	main(int len, char **str)
 {
 	t_table_fdf		table;
 	t_fdf			output;
-	t_artstyle32	style;
+	t_render_style	style;
 
 	if (len < 2)
 		return (0);
@@ -36,7 +36,7 @@ int	main(int len, char **str)
 	}
 	style.background_color = f_rgba_to_int32(255, 255, 255, 255);
 	style.line_thickness = 6;
-	style.artists = E_PICASSO;
+	style.artist = E_PICASSO;
 	color_cells_gradient(&table, init_deep_sea(), true);
 	scale_multiplication_fdf(&table, 1.0 / 20.0, HEIGHT);
 	output = init_fdf(&table, projection_isometric, 1.0);

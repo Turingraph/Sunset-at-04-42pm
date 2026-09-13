@@ -22,13 +22,13 @@ void		hook_fdf_controller(mlx_key_data_t keydata, void *param);
 // init_2d_hook.c
 
 t_2d_camera	init_2d_camera(size_t window_width, size_t window_height);
-t_2d_hook	init_2d_hook(mlx_t *mlx, t_fdf *fdf, t_artstyle32 artstyle);
+t_2d_hook	init_2d_hook(mlx_t *mlx, t_fdf *fdf, t_render_style artstyle);
 void		scale_fdf_as_window_object(t_fdf *src,
 				size_t fixed_window_size);
 
 // public.c
 
-void		view_fdf(t_fdf *fdf, t_artstyle32 artstyle);
+void		view_fdf(t_fdf *fdf, t_render_style artstyle);
 
 // verify.c
 
