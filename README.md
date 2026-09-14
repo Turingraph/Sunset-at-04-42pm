@@ -316,10 +316,13 @@ The following features will be supported in second version version.
 
 The following features will be supported in third version version.
 1.	quaternion rotation
-2.	3D collition detection
-3.	Z buffer coloring on multiple FDF object.
-4.	color each FDF cells based on how force interacting with multiple collided FDF objects according to the output of basic 3D FEM solver.
-5.	User can export t_table_fdf table as Blender compatible files (but not vice versa for the sake of UXUI simplicity).
+2.	Z buffer coloring on multiple FDF object.
+3.	simple optic light physics
+4.	User can export t_table_fdf table as Blender compatible files (but not vice versa for the sake of UXUI simplicity).
+
+The following features will be supported in 4-th version version.
+1.	3D collition detection
+2.	color each FDF cells based on how force interacting with multiple collided FDF objects according to the output of basic 3D FEM solver.
 
 ## Inspiration
 
@@ -368,6 +371,10 @@ In my case, I feel that
 I often feel that the smaller and the bigger letters have the same color, but sometimes there is some exception for example, q is pink, but Q is gold yellow.
 
 This project is named as `Sunset at 4.42pm`, because it is inspired by 42 Coding School and the number 42 reminds me of sunset at 4.42pm.
+
+## Attribution (unfinished)
+
+...
 
 ## Additional resource
 
