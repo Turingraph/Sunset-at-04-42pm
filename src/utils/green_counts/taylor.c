@@ -6,14 +6,18 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:29:28 by phsottat          #+#    #+#             */
-/*   Updated: 2026/09/11 14:15:20 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/09/14 11:59:35 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "green_counts.h"
 
-// time : O(1)
-// space: O(1)
+/**
+ * compute x^a with a iterations.
+ * 
+ * status: public api
+ * 
+ */
 float	f_pow(float x, size_t a)
 {
 	size_t	i;
@@ -34,8 +38,13 @@ float	f_pow(float x, size_t a)
 // Newton method approximates x ^ (1 / a) where a >= 1
 // x_(n+1) = x_n - f(x_n) / f'(x_n)
 // where f(x) = x^a - c, such that x^a = f(x) + c, x^a = c
-// time : O(1)
-// space: O(1)
+
+/**
+ * if a == 0, then y = 0, else y = x^(1 / a) using 8 iterations newton method.
+ * 
+ * status: public api
+ * 
+ */
 float	f_root_finding(float x, size_t a)
 {
 	float	y;
@@ -57,13 +66,6 @@ float	f_root_finding(float x, size_t a)
 }
 
 /*
-You can use Laylor series to approximate Trigonometry function.
-https://blog.devgenius.io/
-the-magic-behind-trigonometric-functions-using-
-taylor-series-in-programming-f4cae34d3729
-*/
-
-/*
 // time : O(1)
 // space: O(1)
 float	f_sin(float x)
@@ -79,6 +81,20 @@ float	f_cos(float x)
 }
 */
 
+/*
+You can use Laylor series to approximate Trigonometry function.
+https://blog.devgenius.io/
+the-magic-behind-trigonometric-functions-using-
+taylor-series-in-programming-f4cae34d3729
+*/
+
+/**
+ * if -1.0 < x < 1.0, then return x
+ * else return sin(x) with 8 iterations Taylor series
+ * 
+ * status: public api
+ * 
+ */
 float	f_sin(float x)
 {
 	float	y;
@@ -108,8 +124,12 @@ float	f_sin(float x)
 	return (y);
 }
 
-// time : O(n)
-// space: O(1)
+/**
+ * compute cos(x) = sin(x + 3.1415 / 2.0)
+ * 
+ * status: public api
+ * 
+ */
 float	f_cos(float x)
 {
 	return (f_sin(x + 3.1415 / 2.0));
@@ -143,8 +163,12 @@ Reference
 3.	https://youtu.be/Cqi-b3nQdKM?si=qxGl29v81BEl0xbz
 */
 
-// time : O(1)
-// space: O(1)
+/**
+ * compute e^x with 8 iterations Taylor series
+ * 
+ * status: public api
+ * 
+ */
 float	f_exp(float x)
 {
 	float	y;

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   binary_search.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/09/14 11:31:43 by phsottat          #+#    #+#             */
+/*   Updated: 2026/09/14 11:32:22 by phsottat         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "evenodd.h"
 
 /**
@@ -8,6 +20,8 @@
  * before performing the search.
  *
  * time/space: O(log(n)) / O(1)
+ *
+ * status: public api
  *
  * @param min_input target value to search for
  * @param max_input upper bound of the search range
@@ -73,7 +87,8 @@ bool	is_binary_search_length_odd(const t_table_fdf *dst, size_t index)
 	if (input < 0)
 		input *= -1;
 	max = binary_search_count((size_t)input,
-		(size_t)f_round(f_root_finding(dst->row * dst->row + dst->col * dst->col, 2)));
+		(size_t)f_round(
+				f_root_finding(dst->row * dst->row + dst->col * dst->col, 2)));
 	if (max % 2 == 0)
 		return (false);
 	return (true);

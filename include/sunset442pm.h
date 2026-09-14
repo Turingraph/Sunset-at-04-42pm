@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 14:31:33 by phsottat          #+#    #+#             */
-/*   Updated: 2026/09/11 15:03:11 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/09/14 12:14:09 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,142 @@ typedef struct t_complex
 	float	re;
 	float	im;
 }	t_complex;
+
+/* ************************************************************************** */
+/* src/utils/green_counts/ */
+/* ************************************************************************** */
+
+/**
+ * compute |x|
+ */
+float	f_abs(float x);
+
+/**
+ * compute e^(a.re + a.im)
+ */
+t_complex	complex_exp(t_complex a);
+
+/**
+ * compute cos(a.re + a.im)
+ */
+t_complex	complex_cos(t_complex a);
+
+/**
+ * compute sin(a.re + a.im)
+ */
+t_complex	complex_sin(t_complex a);
+
+/**
+ * compute (a.re + a.im) * (b.re + b.im)
+ */
+t_complex	complex_multiplication(t_complex a, t_complex b);
+
+/**
+ * compute (a.re + a.im)^2
+ */
+t_complex	complex_square(t_complex a);
+
+/**
+ * compute (a.re + a.im)^3
+ */
+t_complex	complex_cube(t_complex a);
+
+/**
+ * if a.re + a.im equal to 0, return 0
+ * compute 1 / (a.re + a.im)
+ */
+t_complex	complex_reciprocal(t_complex a);
+
+/**
+ * compute |a.re + a.im|
+ */
+float	complex_magnitude(t_complex a, char is_square);
+
+/** 
+ * convert any float number to integer by floor function.
+ */
+float	f_floor(float num);
+
+/** 
+ * convert any float number to integer by round the number.
+ */
+float	f_round(float num);
+
+/**
+ * if (num < min), return min.
+ * if (num > max), return max.
+ * else return num
+ */
+float	f_interval(float num, float min, float max);
+
+/** 
+ * if a > b, return b, else return a.
+ */
+float	f_max(float a, float b);
+
+/** 
+ * if a < b, return b, else return a.
+ */
+float	f_min(float a, float b);
+
+/**
+ * compute normal distribution bell curve function.
+ * 
+ * @param std standard deviation
+ * @param means average score
+ * @param x x value
+ */
+float	normal_distribution_function(float std, float means, float x);
+
+/**
+ * compute the standard deviation of the given dataset from the input array.
+ * 
+ * @param vec_v array
+ * @param dim the length of the array
+ */
+float	f_std(const float *vec_v, size_t dim);
+
+/**
+ * compute the total sum of the given dataset from the input array.
+ * 
+ * @param vec_v array
+ * @param dim the length of the array
+ */
+float	f_sum(const float *vec_v, size_t dim);
+
+/**
+ * compute x^a with a iterations.
+ */
+float		f_pow(float x, size_t a);
+
+/**
+ * if a == 0, then y = 0, else y = x^(1 / a) using 8 iterations newton method.
+ */
+float		f_root_finding(float x, size_t a);
+
+/**
+ * if -1.0 < x < 1.0, then return x
+ * else return sin(x) with 8 iterations Taylor series
+ */
+float		f_sin(float x);
+
+/**
+ * compute cos(x) = sin(x + 3.1415 / 2.0)
+ */
+float		f_cos(float x);
+
+/**
+ * compute e^x with 8 iterations Taylor series
+ */
+float		f_exp(float x);
+
+/**
+ * compute the outer product of 2 vector, for image convolution.
+ * 
+ * time/space: O(n^2) / O(n^2)
+ */
+t_matrix	outer_product_matrix(const float *vec_v,
+	const float *vec_u, size_t dim);
 
 /* ************************************************************************** */
 /* *** src/input/table/ *** */
@@ -386,6 +522,21 @@ float	*gaussian_kernel(size_t half_dim, float std_1, float std_2);
 /* ************************************************************************** */
 
 /**
+ * Count the number of iterations required by a binary-search procedure
+ * to locate min_input within the range [0, max_input].
+ *
+ * If min_input is greater than max_input, their values are exchanged
+ * before performing the search.
+ *
+ * time/space: O(log(n)) / O(1)
+ *
+ * @param min_input target value to search for
+ * @param max_input upper bound of the search range
+ * @return number of binary-search iterations
+ */
+size_t	binary_search_count(size_t min_input, size_t max_input);
+
+/**
  * Check whether the number of iterations of a binary-search procedure
  * is odd when searching for the rounded magnitude of a cell's complex
  * coordinate within the table's diagonal-length range.
@@ -423,6 +574,18 @@ bool	is_binary_search_length_odd(const t_table_fdf *dst, size_t index);
  * false otherwise.
  */
 bool	is_binary_search_product_odd(const t_table_fdf *dst, size_t index);
+
+/**
+ * Find the maximum value reached by the Collatz sequence of an input.
+ * The sequence is limited to 10000 iterations.
+ *
+ * time/space: O(s, where s is less than 10000),
+ * this is an open problem! / O(1)
+ *
+ * status: public api
+ * 
+ */
+size_t	collatz_max_point(size_t x);
 
 /**
  * Check whether the maximum point of a cell's magnitude's Collatz sequence,

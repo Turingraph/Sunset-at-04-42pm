@@ -6,14 +6,18 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:29:13 by phsottat          #+#    #+#             */
-/*   Updated: 2026/09/04 17:45:52 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/09/14 12:07:54 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "green_counts.h"
 
-// time : O(1)
-// space: O(1)
+/**
+ * compute (a.re + a.im) * (b.re + b.im)
+ * 
+ * status: public api
+ * 
+ */
 t_complex	complex_multiplication(t_complex a, t_complex b)
 {
 	t_complex	dst;
@@ -23,15 +27,23 @@ t_complex	complex_multiplication(t_complex a, t_complex b)
 	return (dst);
 }
 
-// time : O(1)
-// space: O(1)
+/**
+ * compute (a.re + a.im)^2
+ * 
+ * status: public api
+ * 
+ */
 t_complex	complex_square(t_complex a)
 {
 	return (complex_multiplication(a, a));
 }
 
-// time : O(1)
-// space: O(1)
+/**
+ * compute (a.re + a.im)^3
+ * 
+ * status: public api
+ * 
+ */
 t_complex	complex_cube(t_complex a)
 {
 	return (complex_multiplication(a,
@@ -40,8 +52,14 @@ t_complex	complex_cube(t_complex a)
 
 // https://math.stackexchange.com/questions/3872891/
 // multiplicative-inverse-of-complex-numbers-proof
-// time : O(1)
-// space: O(1)
+
+/**
+ * if a.re + a.im equal to 0, return 0
+ * compute 1 / (a.re + a.im)
+ * 
+ * status: public api
+ * 
+ */
 t_complex	complex_reciprocal(t_complex a)
 {
 	t_complex	dst;
@@ -55,8 +73,12 @@ t_complex	complex_reciprocal(t_complex a)
 	return (dst);
 }
 
-// time : O(1)
-// space: O(1)
+/**
+ * compute |a.re + a.im|
+ * 
+ * status: public api
+ * 
+ */
 float	complex_magnitude(t_complex a, char is_square)
 {
 	float	y;

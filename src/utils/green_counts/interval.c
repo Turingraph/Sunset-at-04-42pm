@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 14:10:57 by phsottat          #+#    #+#             */
-/*   Updated: 2026/09/11 14:12:37 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/09/14 12:04:19 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,12 @@
 // https://stackoverflow.com/questions/41856771/
 // write-your-own-implementation-of-maths-floor-function-c
 
-// time : O(1)
-// space: O(1)
+/** 
+ * convert any float number to integer by floor function.
+ * 
+ * status: public api
+ * 
+ */
 float	f_floor(float num)
 {
 	long long	n;
@@ -31,8 +35,12 @@ float	f_floor(float num)
 	return (d);
 }
 
-// time : O(1)
-// space: O(1)
+/** 
+ * convert any float number to integer by round the number.
+ * 
+ * status: public api
+ * 
+ */
 float	f_round(float num)
 {
 	float	floor;
@@ -47,8 +55,14 @@ float	f_round(float num)
 	return (floor + 1);
 }
 
-// time : O(1)
-// space: O(1)
+/**
+ * if (num < min), return min.
+ * if (num > max), return max.
+ * else return num
+ * 
+ * status: public api
+ * 
+ */
 float	f_interval(float num, float min, float max)
 {
 	if (num > max)
@@ -58,8 +72,15 @@ float	f_interval(float num, float min, float max)
 	return (num);
 }
 
-// time : O(1)
-// space: O(1)
+/**
+ * it use int instead of float
+ * if (num < min), return min.
+ * if (num > max), return max.
+ * else return num
+ * 
+ * status: internal helper
+ * 
+ */
 int	f_interval_int(int num, int min, int max)
 {
 	if (num > max)

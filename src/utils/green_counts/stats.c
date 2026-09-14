@@ -6,14 +6,21 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:29:38 by phsottat          #+#    #+#             */
-/*   Updated: 2026/09/11 14:14:59 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/09/14 11:59:47 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "green_counts.h"
 
-// time : O(n)
-// space: O(1)
+/**
+ * compute normal distribution bell curve function.
+ * 
+ * status: public api
+ * 
+ * @param std standard deviation
+ * @param means average score
+ * @param x x value
+ */
 float	normal_distribution_function(float std, float means, float x)
 {
 	float	up;
@@ -31,8 +38,15 @@ float	normal_distribution_function(float std, float means, float x)
 // https://www.khanacademy.org/math/statistics-probability/
 // summarizing-quantitative-data/variance-standard-deviation-population/
 // a/calculating-standard-deviation-step-by-step
-// time : O(n)
-// space: O(1)
+
+/**
+ * compute the standard deviation of the given dataset from the input array.
+ * 
+ * status: public api
+ * 
+ * @param vec_v array
+ * @param dim the length of the array
+ */
 float	f_std(const float *vec_v, size_t dim)
 {
 	size_t	i;
@@ -54,8 +68,14 @@ float	f_std(const float *vec_v, size_t dim)
 	return (y);
 }
 
-// time : O(n)
-// space: O(1)
+/**
+ * compute the total sum of the given dataset from the input array.
+ * 
+ * status: public api
+ * 
+ * @param vec_v array
+ * @param dim the length of the array
+ */
 float	f_sum(const float *vec_v, size_t dim)
 {
 	float	y;

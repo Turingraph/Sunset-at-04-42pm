@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:34:06 by phsottat          #+#    #+#             */
-/*   Updated: 2026/08/30 14:29:03 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/09/14 12:13:58 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,13 @@ t_matrix	init_matrix(size_t row, size_t col, float scale)
 	return (dst);
 }
 
-// time : O(n^2)
-// space: O(n^2)
+/**
+ * compute the outer product of 2 vector, for image convolution.
+ * 
+ * time/space: O(n^2) / O(n^2)
+ * 
+ * status: public api
+ */
 t_matrix	outer_product_matrix(const float *vec_v,
 	const float *vec_u, size_t dim)
 {

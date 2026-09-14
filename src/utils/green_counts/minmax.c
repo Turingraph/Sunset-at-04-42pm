@@ -6,14 +6,18 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:28:55 by phsottat          #+#    #+#             */
-/*   Updated: 2026/09/11 14:12:25 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/09/14 12:01:06 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "green_counts.h"
 
-// time : O(1)
-// space: O(1)
+/** 
+ * if a > b, return b, else return a.
+ * 
+ * status: public api
+ * 
+ */
 float	f_max(float a, float b)
 {
 	if (a > b)
@@ -21,8 +25,12 @@ float	f_max(float a, float b)
 	return (b);
 }
 
-// time : O(1)
-// space: O(1)
+/** 
+ * if a < b, return b, else return a.
+ * 
+ * status: public api
+ * 
+ */
 float	f_min(float a, float b)
 {
 	if (a < b)
@@ -30,8 +38,13 @@ float	f_min(float a, float b)
 	return (b);
 }
 
-// time : O(1)
-// space: O(1)
+/** 
+ * it use int instead of float
+ * if a > b, return b, else return a.
+ * 
+ * status: internal helper
+ * 
+ */
 int	f_max_int(int a, int b)
 {
 	if (a > b)
@@ -39,8 +52,13 @@ int	f_max_int(int a, int b)
 	return (b);
 }
 
-// time : O(1)
-// space: O(1)
+/**
+ * it use int instead of float 
+ * if a < b, return b, else return a.
+ * 
+ * status: internal helper
+ * 
+ */
 int	f_min_int(int a, int b)
 {
 	if (a < b)
