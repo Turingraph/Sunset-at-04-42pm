@@ -53,7 +53,7 @@ bool	is_re2_diff_im2_odd_func(const t_table_fdf *dst, size_t index,
 
 	if (dst == NULL || index >= dst->row * dst->col)
 		return (false);
-	y = get_table_fdf_coordinate(dst, index, 0.1);
+	y = get_table_fdf_coordinate(dst, index, 0.5);
 	if (complex_func != NULL)
 		y = complex_func(y);
 	product = (int)f_round(y.re * y.re - y.im * y.im);

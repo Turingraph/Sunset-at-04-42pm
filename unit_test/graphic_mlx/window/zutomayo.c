@@ -76,7 +76,7 @@ int	main(int len, char **str)
 	}
 	style.background_color = f_rgba_to_int32(0, 0, 0, 255);
 	style.line_thickness = 1;
-	style.artists = E_PICASSO;
+	style.artist = E_PICASSO;
 	color_cells_gradient(&table, init_ztmy_studyme(), true);
 	color_cells_gradient(&table, init_ztmy_timeleft(), true);
 	scale_multiplication_fdf(&table, 1.0 / 3.0, HEIGHT);

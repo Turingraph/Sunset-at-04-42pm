@@ -29,16 +29,16 @@ int	main(void)
 
 	table = init_table_fdf(100, 100, true);
 	table_base = init_table_fdf(100, 100, false);
-	setcells_pythagorus_length(&table);
+	setcells_maximum_length(&table);
 	set_cells_color(&table_base, 30, HEIGHT, is_oddlength_cube);
 	table_fdf_hadamard(&table, &table_base, HEIGHT);
-	scale_relu_fdf(&table, 201, 2000, 0);
+	// scale_relu_fdf(&table, 201, 2000, 0);
 	style.background_color = f_rgba_to_int32(0, 0, 0, 255);
 	style.line_thickness = 2;
-	style.artist = E_EULER;
+	style.artist = E_TOBY_FOX;
 	color_cells_gradient(&table, init_deep_sea(), true);
 	scale_multiplication_fdf(&table, 1.0 / 120.0, HEIGHT);
-	output = init_fdf(&table, projection_isometric, 0.6);
+	output = init_fdf(&table, NULL, 0.6);
 	view_fdf(&output, style);
 	free_table_fdf(&table);
 	free_table_fdf(&table_base);
