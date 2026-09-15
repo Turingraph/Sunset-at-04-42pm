@@ -29,7 +29,7 @@ int	main(void)
 
 	table = init_table_fdf(100, 100, true);
 	table_base = init_table_fdf(100, 100, false);
-	setcells_maximum_length(&table);
+	setcells_pythagorus_length(&table);
 	set_cells_color(&table_base, 30, HEIGHT, is_oddlength_cube);
 	table_fdf_hadamard(&table, &table_base, HEIGHT);
 	// scale_relu_fdf(&table, 201, 2000, 0);
