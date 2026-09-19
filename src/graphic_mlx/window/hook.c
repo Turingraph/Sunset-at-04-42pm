@@ -20,7 +20,7 @@ static void	hook_pan(mlx_key_data_t keydata, t_2d_camera *camera)
 
 	if (camera == NULL || is_valid_pan_key(keydata) == false)
 		return ;
-	delta = 20;
+	delta = 40;
 	if (keydata.key == MLX_KEY_UP)
 		camera->offset.y += delta;
 	if (keydata.key == MLX_KEY_DOWN)
@@ -44,7 +44,7 @@ static void	hook_zoom(mlx_key_data_t keydata,
 		return ;
 	len = hook->master_piece.fdf->col;
 	len *= hook->master_piece.fdf->row;
-	scale = 1.05;
+	scale = ZOOM_LEVEL;
 	if (keydata.key == MLX_KEY_0)
 		scale = 1.0 / scale;
 	hook->camera->zoom *= scale;

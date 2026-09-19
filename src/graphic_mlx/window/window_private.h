@@ -15,6 +15,10 @@
 
 # include "../display/display.h"
 
+# ifndef ZOOM_LEVEL
+#  define ZOOM_LEVEL 1.1
+# endif
+
 // hook.c
 
 void		hook_fdf_controller(mlx_key_data_t keydata, void *param);

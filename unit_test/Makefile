@@ -3,8 +3,6 @@
 
 CC = cc -Wall -Wextra -Werror
 remove_slash = $(patsubst %/,%,$1)
-# get_obj_files = $(filter %.o, $1)
-# get_lib_a_files = $(filter %.a, $^)
 
 SRC_get_next_line = $(wildcard input/get_next_line/*.c)
 SRC_load = $(wildcard input/load/*.c)
@@ -19,20 +17,20 @@ SRC_evenodd = $(wildcard editor/evenodd/*.c)
 SRC_motif = $(wildcard graphic_mlx/motif/*.c)
 SRC_window = $(wildcard graphic_mlx/window/*.c)
 
-SRC_HELPER_libft = $(wildcard ../src/utils/libft/*.c)
-SRC_HELPER_get_next_line = $(wildcard ../src/input/get_next_line/*.c)
-OBJ_HELPER_libft = $(patsubst ../src/%.c, ../src/obj/%.o, $(SRC_HELPER_libft))
-OBJ_HELPER_get_next_line = $(patsubst ../src/%.c, ../src/obj/%.o, $(SRC_HELPER_get_next_line))
-
-HELPER_SRC = $(wildcard test_helpers/*.c)
-HELPER_OBJ = $(patsubst %.c, obj/%.o, $(HELPER_SRC))
-
 OUT_paint = $(patsubst %.c, out/%.out, $(SRC_paint))
 OUT_motif = $(patsubst %.c, out/%.out, $(SRC_motif))
 OUT_window = $(patsubst %.c, out/%.out, $(SRC_window))
 OUT_evenodd = $(patsubst %.c, out/%.out, $(SRC_evenodd))
 
-OUT_ALL = $(patsubst %.c, out/%.out,	\
+LIB_GRAPHIC = $(patsubst %, ../include/%.a, libmlx42)
+GRAPHIC_CONFIG = -ldl -lglfw -pthread
+LIB_paint = $(patsubst %, ../src/lib/%.a, paint table)
+LIB_motif = $(patsubst %, ../src/lib/%.a, motif) $(LIB_GRAPHIC)
+LIB_window = $(patsubst %, ../src/lib/%.a, paint table window) $(LIB_GRAPHIC)
+LIB_evenodd = $(patsubst %, ../src/lib/%.a, paint table window evenodd) $(LIB_GRAPHIC)
+
+OUT_LIB = $(OUT_motif) $(OUT_window) $(OUT_evenodd)
+OUT_BASIC = $(patsubst %.c, out/%.out,	\
 	$(SRC_get_next_line) $(SRC_convolve)\
 	$(SRC_load) $(SRC_table) $(SRC_libft) $(SRC_green_counts))
 
@@ -55,31 +53,20 @@ CLONE_GNL = $(patsubst input/get_next_line/input/%, input/get_next_line/clone_in
 # *** obj, out, and lib ***
 all: all_out all_clone
 
-all_out: $(OUT_ALL) $(OUT_paint) $(OUT_motif) $(OUT_window) $(OUT_evenodd)
+all_out: $(OUT_BASIC) $(OUT_LIB)
 	@echo $^
 
-$(OUT_ALL): out/%.out: obj/%.o
+$(OUT_LIB): out/%.out: obj/%.o
 	@mkdir -p $(@D)
-	$(CC) -o $@ $^ -L. ../src/lib/debug.a ../src/lib/$(notdir $(call remove_slash, $(dir $@))).a -lm
+	$(CC) -o $@ $^ -L. $(LIB_$(notdir $(call remove_slash, $(dir $@)))) $(GRAPHIC_CONFIG)
 
-$(OUT_motif): out/%.out: obj/%.o
+$(OUT_BASIC): out/%.out: obj/%.o
 	@mkdir -p $(@D)
-	$(CC) -o $@ $^ -L. ../src/lib/$(basename $(notdir $(call remove_slash, $(dir $@)).c)).a \
-	../include/libmlx42.a -ldl -lglfw -pthread -lm
-
-$(OUT_evenodd): out/%.out: obj/%.o
-	@mkdir -p $(@D)
-	$(CC) -o $@ $^ -L. ../src/lib/$(basename $(notdir $(call remove_slash, $(dir $@)).c)).a \
-	../src/lib/table.a ../src/lib/paint.a ../src/lib/window.a ../include/libmlx42.a -ldl -lglfw -pthread -lm
-
-$(OUT_window): out/%.out: obj/%.o
-	@mkdir -p $(@D)
-	$(CC) -o $@ $^ -L. ../src/lib/$(basename $(notdir $(call remove_slash, $(dir $@)).c)).a \
-	../src/lib/table.a ../src/lib/paint.a ../include/libmlx42.a -ldl -lglfw -pthread -lm
+	$(CC) -o $@ $^ -L. ../src/lib/debug.a ../src/lib/$(notdir $(call remove_slash, $(dir $@))).a
 
 $(OUT_paint): out/%.out: obj/%.o
 	@mkdir -p $(@D)
-	$(CC) -o $@ $^ -L. ../src/lib/table.a ../src/lib/$(notdir $(call remove_slash, $(dir $@))).a -lm
+	$(CC) -o $@ $^ -L. $(LIB_paint)
 
 obj/%.o: %.c
 	@mkdir -p $(@D)
