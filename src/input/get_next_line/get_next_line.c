@@ -1,107 +1,104 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/29 14:36:47 by phsottat          #+#    #+#             */
-/*   Updated: 2026/08/29 14:38:38 by phsottat         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#include "get_next_line.h"
 
-#include "get_next_line_private.h"
-
-// time : O(n)
-// space: O(n)
-t_temperance	*ace_of_cup(size_t capacity, t_temperance **cup)
+/**
+ * Find the first occurrence of a character in a string.
+ * Returns the position after the character, or the string length
+ * when the character is not found.
+ *
+ * time/space: O(n) / O(1)
+ *
+ * status: public api
+ *
+ * @param src string to search
+ * @param a character to search for
+ *
+ * @return position after a, or string length if a is not found
+ */
+size_t	index_a_in_str(const char *src, char a)
 {
-	if (cup == NULL)
-		return (NULL);
-	*cup = (t_temperance *)malloc(sizeof(t_temperance));
-	if (*cup == NULL)
-		return (NULL);
-	(*cup)->length = 0;
-	(*cup)->capacity = capacity;
-	(*cup)->arr = ace_of_coin("\0", 0, capacity);
-	if ((*cup)->arr == NULL)
+	size_t	i;
+
+	if (src == NULL)
+		return (0);
+	i = 0;
+	while (src[i] != '\0')
 	{
-		free(*cup);
-		return (NULL);
+		if (src[i] == a)
+			return (i + 1);
+		i += 1;
 	}
-	return (*cup);
+	return (i);
 }
 
-// time : O(1)
-// space: O(1)
-t_dream	the_lost_treasure(t_dream *ambition, char **coin, t_temperance **angel)
+/**
+ * Read text from a file descriptor into a dynamic string.
+ * Continues reading until the requested stop character is found
+ * or a buffer cannot be allocated.
+ *
+ * time/space: O(n) / O(n)
+ *
+ * status: public api
+ *
+ * @param fd file descriptor to read from
+ * @param dst dynamic string to append the text to
+ * @param buffer_length number of characters to read at a time
+ */
+void	fetch_text(int fd, t_dynamic_str *dst, size_t buffer_length)
 {
-	if (angel != NULL && *(angel) != NULL)
+	char	*buff;
+	bool	continue_line;
+
+	continue_line = true;
+	while (continue_line == true && dst != NULL && dst->str != NULL)
 	{
-		free((*angel)->arr);
-		free((*angel));
-		*angel = NULL;
+		buff = clone_string(sizeof(char) * buffer_length, NULL);
+		if (buff == NULL)
+			continue_line = false;
+		else
+		{
+			read(fd, buff, buffer_length);
+			concat_dynamic_str(dst, buff);
+			if (index_a_in_str(buff, '\0') < buffer_length)
+				continue_line = false;
+		}
+		free(buff);
 	}
-	if (coin != NULL)
-	{
-		free(*coin);
-		*coin = NULL;
-	}
-	if (ambition == NULL)
-		return (STOP_GNL);
-	*ambition = STOP_GNL;
-	return (STOP_GNL);
 }
 
-// time : O(n)
-// space: O(n)
-t_dream	king_gnu(char **coin, t_dream *ambition,
-	t_dream anchor, t_temperance **angel)
+/**
+ * Read the next line from a file descriptor.
+ * Preserves unread text between calls when continuation is enabled.
+ *
+ * time/space: O(n) / O(n)
+ *
+ * status: public api
+ *
+ * @param fd file descriptor to read from
+ * @param is_continue whether unread text should be preserved for the next call
+ *
+ * @return newly allocated string ending at '\n', or NULL on allocation failure
+ */
+char	*get_next_line(int fd, bool is_continue)
 {
-	if (anchor == CONTINUE)
-		*ambition = CONTINUE;
-	if (anchor == STOP_GNL || BUFFER_SIZE <= 0 || *ambition == STOP_GNL)
-		return (the_lost_treasure(ambition, coin, angel));
-	if (ace_of_cup(1, angel) == NULL)
-		return (the_lost_treasure(ambition, coin, angel));
-	if (*coin != NULL)
-	{
-		if (three_of_cups(angel, *coin) == NULL)
-			return (the_lost_treasure(ambition, coin, angel));
-		if (*coin != NULL)
-			free(*coin);
-		*coin = NULL;
-	}
-	return (CONTINUE);
-}
+	char			*dst;
+	static char		*prev_str = NULL;
+	t_dynamic_str	dyn_str;
+	size_t			length;
 
-// time : O(n)
-// space: O(n)
-char	the_chariot(int fd, t_dream *ambition, t_temperance **angel)
-{
-	t_dream	stop;
-	char	*coin;
-
-	if (*ambition != CONTINUE)
-		return (STOP_CHARIOT);
-	stop = CONTINUE;
-	while (stop == CONTINUE)
-	{
-		coin = ace_of_coin("\0", 0, BUFFER_SIZE);
-		if (coin == NULL)
-			return (king_gnu(NULL, ambition, 2, angel));
-		read(fd, coin, BUFFER_SIZE);
-		if (three_of_cups(angel, coin) == NULL
-			|| knight_of_coin(coin, '\n') < BUFFER_SIZE)
-			stop = STOP_NEWLINE;
-		if (knight_of_coin(coin, '\0') < BUFFER_SIZE)
-			*ambition = STOP_CHARIOT;
-		free(coin);
-	}
-	if (*angel == NULL)
-	{
-		*ambition = STOP_GNL;
-		return (STOP_GNL);
-	}
-	return (CONTINUE);
+	dyn_str = init_dynamic_str(1);
+	if (dyn_str.str == NULL)
+		return (NULL);
+	concat_dynamic_str(&dyn_str, prev_str);
+	if (prev_str == NULL)
+		fetch_text(fd, &dyn_str, BUFFER_SIZE);
+	free(prev_str);
+	prev_str = NULL;
+	length = index_a_in_str(dyn_str.str, '\n');
+	dst = clone_string(length, dyn_str.str);
+	if (is_continue == true)
+		prev_str = clone_string(dyn_str.length - length, dyn_str.str + length);
+	else
+		close(fd);
+	free(dyn_str.str);
+	return (dst);
 }

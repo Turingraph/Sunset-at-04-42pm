@@ -115,6 +115,6 @@ char	**load_file_as_strarr(int fd, size_t total_lines)
 		dst[i] = get_next_line(fd, true);
 		i += 1;
 	}
-	get_next_line(fd, false);
+	free(get_next_line(fd, false));
 	return (dst);
 }

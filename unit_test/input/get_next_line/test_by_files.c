@@ -9,7 +9,7 @@ int	main(void)
 	int		fd;
 	char	**load;
 	char	*arr[] = {
-		"42_no_nl",
+		"41_no_nl",
 		"41_with_nl",
 		"42_no_nl",
 		"42_with_nl",
@@ -46,6 +46,12 @@ int	main(void)
 				write_strarr((const char **)load, length_of_strarr((const char **)load), fd);
 				if (assert_files(arr[i], arr[i], src_dir, dst_dir) == true)
 					score += 1;
+				else
+				{
+					write(1, ">>> ", 4);
+					ft_putnbr_fd(i, 1, "0123456789", 1);
+					write(1, "\n", 1);
+				}
 			}
 			else
 				write(1, ">>> Empty Set\n", 15);

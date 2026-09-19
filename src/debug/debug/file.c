@@ -17,6 +17,7 @@ size_t	total_lines_of_file(int fd)
 		line = get_next_line(fd, true);
 		total_lines += 1;
 	}
+	free(get_next_line(fd, false));
 	return (total_lines);
 }
 
@@ -58,7 +59,7 @@ bool	is_file_empty(int fd)
 	if (actual_y == NULL)
 		return (true);
 	free(actual_y);
-	get_next_line(fd, false);
+	free(get_next_line(fd, false));
 	return (false);
 }
 
@@ -72,7 +73,7 @@ char	*assert_gnl_and_line(char *actual_line,
 		|| f_strlen(actual_line) != f_strlen(expected_line))
 	{
 		free(actual_line);
-		get_next_line(fd, false);
+		free(get_next_line(fd, false));
 		return (NULL);
 	}
 	free(actual_line);
@@ -104,7 +105,7 @@ bool	assert_file_with_strarr(int fd, const char **strarr, size_t total_lines)
 	}
 	len = length_of_strarr(strarr);
 	free(line);
-	get_next_line(fd, false);
+	free(get_next_line(fd, false));
 	if (i == len)
 		return (true);
 	return (false);
