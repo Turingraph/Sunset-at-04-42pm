@@ -102,16 +102,6 @@ int	convolve_unit(const t_table_fdf *src, size_t index,
 	return (output);
 }
 
-	// write(1, ">>> ", 4);
-	// ft_putnbr_fd(index, 1, "0123456789", 3);
-	// write(1, " => ", 4);
-	// ft_putnbr_fd(f_sum(src_kernel.arr, dim * dim), 1, "0123456789", 3);
-	// write(1, " / ", 3);
-	// ft_putnbr_fd((dim * dim), 1, "0123456789", 3);
-	// write(1, " = ", 3);
-	// ft_putnbr_fd(output, 1, "0123456789", 3);
-	// write(1, "\n", 1);
-
 /**
  * Apply a convolution kernel to HEIGHT channels.
  * 

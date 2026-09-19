@@ -12,6 +12,21 @@
 
 #include "libft.h"
 
+// time : O(n)
+// space: O(1)
+static size_t	sf_strlen(const char *str)
+{
+	size_t	i;
+
+	i = 0;
+	while (str != NULL && *str != '\0')
+	{
+		i += 1;
+		str += 1;
+	}
+	return (i);
+}
+
 /**
  * Allocate and initialize a memory block with zero values.
  * Print a message to stdout if allocation fails and comment is provided.
@@ -39,7 +54,7 @@ void	*malloc_talk(size_t elem_size, const char *comment)
 		if (comment != NULL && *comment != '\0')
 		{
 			write(1, "Malloc Fail: ", 14);
-			write(1, comment, f_strlen(comment));
+			write(1, comment, sf_strlen(comment));
 		}
 	}
 	d = (unsigned char *)dst;
@@ -79,4 +94,31 @@ unsigned char	*get_rgba_of_table_fdf(const t_table_fdf *src,
 	if (src->a != NULL && rgba_type == ALPHA)
 		return (src->a);
 	return (NULL);
+}
+
+/**
+ * Get the standard coordinate of a cell in the FDF table.
+ *
+ * time/space: O(1) / O(1)
+ *
+ * status: internal helper
+ * 
+ * @param dst FDF table containing the cell
+ * @param index index of the cell
+ * @param zoom coordinate scaling factor
+ * @return complex coordinate of the selected cell.
+ */
+t_complex	get_table_fdf_coordinate(const t_table_fdf *dst, size_t index, float zoom)
+{
+	t_complex	y;
+
+	y.re = 0;
+	y.im = 0;
+	if (dst == NULL || dst->row == 0 || dst->col == 0)
+		return (y);
+	y.re = (float)dst->col / 2.0 - (float)index / (float)dst->col;
+	y.im = (float)(index % dst->col) - (float)dst->row / 2.0;
+	y.re *= zoom;
+	y.im *= zoom;
+	return (y);
 }

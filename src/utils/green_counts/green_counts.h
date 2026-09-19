@@ -14,7 +14,7 @@
 # define GREEN_COUNTS_H
 
 # include <stdlib.h>
-# include "../type/type.h"
+# include "../libft/type.h"
 
 // abs.c
 

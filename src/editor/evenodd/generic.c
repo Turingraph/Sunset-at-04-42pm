@@ -1,33 +1,6 @@
 #include "evenodd.h"
 
 /**
- * Get the standard coordinate of a cell in the FDF table.
- *
- * time/space: O(1) / O(1)
- *
- * status: internal helper
- * 
- * @param dst FDF table containing the cell
- * @param index index of the cell
- * @param zoom coordinate scaling factor
- * @return complex coordinate of the selected cell.
- */
-t_complex	get_table_fdf_coordinate(const t_table_fdf *dst, size_t index, float zoom)
-{
-	t_complex	y;
-
-	y.re = 0;
-	y.im = 0;
-	if (dst == NULL || dst->row == 0 || dst->col == 0)
-		return (y);
-	y.re = (float)dst->col / 2.0 - (float)index / (float)dst->col;
-	y.im = (float)(index % dst->col) - (float)dst->row / 2.0;
-	y.re *= zoom;
-	y.im *= zoom;
-	return (y);
-}
-
-/**
  * Compute z' = complex_func(the complex coordinate of the cell).
  * Then check whether Re(z')^2 - Im(z')^2 produces an odd integer.
  *

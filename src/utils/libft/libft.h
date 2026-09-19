@@ -15,20 +15,13 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include "../type/type.h"
+# include "type.h"
 
 // arr.c
 
-char			f_isspace(char s, const char *space);
-size_t			f_strlen(const char *str);
 void			*malloc_talk(size_t elem_size, const char *comment);
 unsigned char	*get_rgba_of_table_fdf(const t_table_fdf *src,
 					t_fdf_channel rgba_type);
-
-// atoi.c
-
-int				f_atoi(const char *src, bool *is_int,
-					const char *base, size_t digits);
-size_t			ft_putnbr_fd(int n, int fd, const char *base, size_t digits);
+t_complex		get_table_fdf_coordinate(const t_table_fdf *dst, size_t index, float zoom);
 
 #endif
