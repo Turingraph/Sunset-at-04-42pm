@@ -50,7 +50,7 @@ int	main(void)
 	table_base = init_table_fdf(120, 120, false);
 	set_cells_color(&table_base, 3, HEIGHT, is_oddlength_x2shadow);
 	table = init_table_fdf(120, 120, true);
-	setcells_maximum_length(&table);
+	space_coloring_max_xy(&table);
 	table_fdf_hadamard(&table, &table_base, HEIGHT);
 	style.background_color = f_rgba_to_int32(0, 0, 0, 255);
 	style.line_thickness = 2;

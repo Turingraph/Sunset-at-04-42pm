@@ -70,13 +70,13 @@ void		set_cells_color(t_table_fdf *dst, int color, t_fdf_channel channel,
 void		color_cells_gradient(t_table_fdf *dst,
 				t_gradient gradient_input, bool is_overwrite);
 
-// length.c
+// space+coloring.c
 
-void		setcells_pythagorus_length(t_table_fdf *dst);
-void		setcells_times_length(t_table_fdf *dst);
-void		setcells_addition_length(t_table_fdf *dst);
-void		setcells_maximum_length(t_table_fdf *dst);
-void		setcells_minimum_length(t_table_fdf *dst);
+void		space_coloring_pythagorus(t_table_fdf *dst);
+void		space_coloring_root_xy(t_table_fdf *dst);
+void		space_coloring_x_plus_y(t_table_fdf *dst);
+void		space_coloring_max_xy(t_table_fdf *dst);
+void		space_coloring_min_xy(t_table_fdf *dst);
 
 // utils.c
 

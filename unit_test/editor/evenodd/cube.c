@@ -29,7 +29,7 @@ int	main(void)
 
 	table = init_table_fdf(120, 120, true);
 	table_base = init_table_fdf(120, 120, false);
-	setcells_pythagorus_length(&table);
+	space_coloring_pythagorus(&table);
 	set_cells_color(&table_base, 30, HEIGHT, is_ormod_sin);
 	table_fdf_hadamard(&table, &table_base, HEIGHT);
 	scale_relu_fdf(&table, 216, 2000, 0);

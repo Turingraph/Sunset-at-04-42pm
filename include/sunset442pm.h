@@ -1055,7 +1055,7 @@ void		color_cells_gradient(t_table_fdf *dst,
  *
  * @param dst FDF table to modify
  */
-void		setcells_pythagorus_length(t_table_fdf *dst);
+void		space_coloring_pythagorus(t_table_fdf *dst);
 
 /**
  * Set each cell to the square root of the product of its standard
@@ -1065,7 +1065,7 @@ void		setcells_pythagorus_length(t_table_fdf *dst);
  *
  * @param dst FDF table to modify
  */
-void		setcells_times_length(t_table_fdf *dst);
+void		space_coloring_root_xy(t_table_fdf *dst);
 
 /**
  * Set each cell to the sum of its standard
@@ -1075,7 +1075,7 @@ void		setcells_times_length(t_table_fdf *dst);
  *
  * @param dst FDF table to modify
  */
-void		setcells_addition_length(t_table_fdf *dst);
+void		space_coloring_x_plus_y(t_table_fdf *dst);
 
 /**
  * Set each cell to the maximum of its standard coordinate components.
@@ -1084,7 +1084,7 @@ void		setcells_addition_length(t_table_fdf *dst);
  *
  * @param dst FDF table to modify
  */
-void		setcells_maximum_length(t_table_fdf *dst);
+void		space_coloring_max_xy(t_table_fdf *dst);
 
 /**
  * Set each cell to the minimum of its standard coordinate components.
@@ -1093,7 +1093,7 @@ void		setcells_maximum_length(t_table_fdf *dst);
  *
  * @param dst FDF table to modify
  */
-void		setcells_minimum_length(t_table_fdf *dst);
+void		space_coloring_min_xy(t_table_fdf *dst);
 
 /* ************************************************************************** */
 /* *** src/graphic_mlx/fdf/ *** */

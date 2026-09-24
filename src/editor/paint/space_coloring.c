@@ -9,7 +9,7 @@
  *
  * @param dst FDF table to modify
  */
-void	setcells_pythagorus_length(t_table_fdf *dst)
+void	space_coloring_pythagorus(t_table_fdf *dst)
 {
 	size_t		i;
 	int			y;
@@ -37,7 +37,7 @@ void	setcells_pythagorus_length(t_table_fdf *dst)
  *
  * @param dst FDF table to modify
  */
-void	setcells_times_length(t_table_fdf *dst)
+void	space_coloring_root_xy(t_table_fdf *dst)
 {
 	size_t		i;
 	int			y;
@@ -65,7 +65,7 @@ void	setcells_times_length(t_table_fdf *dst)
  *
  * @param dst FDF table to modify
  */
-void	setcells_addition_length(t_table_fdf *dst)
+void	space_coloring_x_plus_y(t_table_fdf *dst)
 {
 	size_t		i;
 	int			y;
@@ -92,7 +92,7 @@ void	setcells_addition_length(t_table_fdf *dst)
  *
  * @param dst FDF table to modify
  */
-void	setcells_maximum_length(t_table_fdf *dst)
+void	space_coloring_max_xy(t_table_fdf *dst)
 {
 	size_t		i;
 	t_complex	z;
@@ -117,7 +117,7 @@ void	setcells_maximum_length(t_table_fdf *dst)
  *
  * @param dst FDF table to modify
  */
-void	setcells_minimum_length(t_table_fdf *dst)
+void	space_coloring_min_xy(t_table_fdf *dst)
 {
 	size_t		i;
 	t_complex	z;

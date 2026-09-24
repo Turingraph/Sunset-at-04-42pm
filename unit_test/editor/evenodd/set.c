@@ -27,7 +27,7 @@ int	main(void)
 	t_render_style	style;
 
 	table = init_table_fdf(120, 120, true);
-	setcells_maximum_length(&table);
+	space_coloring_max_xy(&table);
 	style.background_color = f_rgba_to_int32(0, 0, 0, 255);
 	style.line_thickness = 2;
 	style.artist = E_TOBY_FOX;
