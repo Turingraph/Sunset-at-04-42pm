@@ -248,6 +248,45 @@ typedef struct t_matrix
 }	t_matrix;
 
 /* ************************************************************************** */
+/* *** src/input/get_next_line/ *** */
+/* ************************************************************************** */
+
+typedef enum t_file_mode
+{
+	READ = O_RDONLY,
+	APPEND = O_WRONLY | O_CREAT | O_APPEND,
+}	t_file_mode;
+
+/**
+ * Read the next line from a file descriptor.
+ * Preserves unread text between calls when continuation is enabled.
+ *
+ * time/space: O(n) / O(n)
+ *
+ * @param fd file descriptor to read from
+ * @param is_continue whether unread text should be preserved for the next call
+ *
+ * @return newly allocated string ending at '\n', or NULL on allocation failure
+ */
+char			*get_next_line(int fd, bool is_continue);
+
+/**
+ * Open a file using an optional directory and file name.
+ * Uses whichever path argument is provided when the other is NULL.
+ * Concatenates both paths when both are provided.
+ *
+ * time/space: O(n) / O(n)
+ *
+ * @param file_name name or path of the file to open
+ * @param dir directory or path prefix of the file
+ * @param file_mode file access mode
+ *
+ * @return file descriptor on success, or -1 on failure
+ */
+int				open_dir_file(const char *file_name,
+					const char *dir, t_file_mode file_mode);
+
+/* ************************************************************************** */
 /* *** src/input/load/ *** */
 /* ************************************************************************** */
 
