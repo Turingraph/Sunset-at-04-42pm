@@ -1,7 +1,7 @@
 #include "evenodd.h"
 
 /**
- * Check whether the ax^2 or ay^2 of the cell is an even value.
+ * Check whether the ax^2 and ay^2 of the cell is an odd value.
  *
  * time/space: O(1) / O(1)
  *
@@ -18,7 +18,7 @@ bool	is_ormod_x2(const t_table_fdf *dst, size_t index)
 }
 
 /**
- * Check whether the ax^3 or ay^3 of the cell is an even value.
+ * Check whether the ax^3 and ay^3 of the cell is an odd value.
  *
  * time/space: O(1) / O(1)
  *
@@ -35,7 +35,7 @@ bool	is_ormod_x3(const t_table_fdf *dst, size_t index)
 }
 
 /**
- * Check whether the ax^4 or ay^4 of the cell is an even value.
+ * Check whether the ax^4 and ay^4 of the cell is an odd value.
  *
  * time/space: O(1) / O(1)
  *
@@ -52,7 +52,7 @@ bool	is_ormod_x4(const t_table_fdf *dst, size_t index)
 }
 
 /**
- * Check whether the ax^5 or ay^5 of the cell is an even value.
+ * Check whether the ax^5 and ay^5 of the cell is an odd value.
  *
  * time/space: O(1) / O(1)
  *
@@ -69,7 +69,7 @@ bool	is_ormod_x5(const t_table_fdf *dst, size_t index)
 }
 
 /**
- * Check whether the ax^6 or ay^6 of the cell is an even value.
+ * Check whether the ax^6 and ay^6 of the cell is an odd value.
  *
  * time/space: O(1) / O(1)
  *

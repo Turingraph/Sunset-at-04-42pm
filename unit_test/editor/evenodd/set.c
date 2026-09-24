@@ -8,7 +8,7 @@ t_gradient	init_deep_sea()
 
 	dst.cell_channel = D7_HEIGHT;
 	dst.input_start = 0;
-	dst.input_end = 10;
+	dst.input_end = 216;
 	dst.rgba_start.r = 70;
 	dst.rgba_start.g = 75;
 	dst.rgba_start.b = 113;
@@ -22,23 +22,24 @@ t_gradient	init_deep_sea()
 
 int	main(void)
 {
-	t_table_fdf		table_base;
+	t_table_fdf		table;
 	t_fdf			output;
 	t_render_style	style;
 
-	table_base = init_table_fdf(161, 161, true);
-	set_cells_color(&table_base, 10, HEIGHT, is_ormod_sin);
+	table = init_table_fdf(120, 120, true);
+	setcells_maximum_length(&table);
 	style.background_color = f_rgba_to_int32(0, 0, 0, 255);
 	style.line_thickness = 2;
 	style.artist = E_TOBY_FOX;
-	color_cells_gradient(&table_base, init_deep_sea(), true);
-	output = init_fdf(&table_base, NULL, 0.6);
+	color_cells_gradient(&table, init_deep_sea(), true);
+	scale_multiplication_fdf(&table, 1.0 / 120.0, HEIGHT);
+	output = init_fdf(&table, NULL, 0.6);
 	view_fdf(&output, style);
-	free_table_fdf(&table_base);
+	free_table_fdf(&table);
 	free_fdf(&output);
 	return (0);
 }
 
 /*
-valgrind --leak-check=full --show-leak-kinds=all ./unit_test/out/editor/evenodd/base.out
+valgrind --leak-check=full --show-leak-kinds=all ./unit_test/out/editor/evenodd/set.out
 */

@@ -126,7 +126,7 @@ bool	is_oddlength(const t_table_fdf *dst, size_t index)
  * coordinate before calculating its magnitude
  * @param zoom scaling both the real and imaginary part by a zoom factor.
  *
- * @return true if z.re is even or z.im is even, false otherwise.
+ * @return true if z.re is even and z.im is even, false otherwise.
  */
 bool	is_ormod_func(const t_table_fdf *dst, size_t index,
 	t_complex (*complex_func)(t_complex a), float zoom)
@@ -142,7 +142,7 @@ bool	is_ormod_func(const t_table_fdf *dst, size_t index,
 		y.re *= -1;
 	if (y.im < 0)
 		y.im *= -1;
-	if ((int)y.re % 2 == 0 || (int)y.im % 2 == 0)
+	if ((int)y.re % 2 == 1 && (int)y.im % 2 == 1)
 		return (true);
 	return (false);
 }

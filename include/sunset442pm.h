@@ -631,7 +631,7 @@ bool		is_collatz_odd_product(const t_table_fdf *dst, size_t index);
 
 /**
  * Check whether the maximum point of the Collatz sequence generated
- * from the absolute number of the x or y of a cell's coordinate components,
+ * from the absolute number of the x and y of a cell's coordinate components,
  * divided by 7, is odd.
  *
  * time/space: O(s, where s is less than 10000) / O(1)
@@ -716,7 +716,7 @@ bool		is_oddlength(const t_table_fdf *dst, size_t index);
 
 /**
  * Compute z' = complex_func(the complex coordinate of the cell).
- * Then check whether z.re is even or z.im is even
+ * Then check whether z.re is even and z.im is even
  * 
  * If complex_func is not NULL, then complex_func is identity function.
  *
@@ -728,7 +728,7 @@ bool		is_oddlength(const t_table_fdf *dst, size_t index);
  * coordinate before calculating its magnitude
  * @param zoom scaling both the real and imaginary part by a zoom factor.
  *
- * @return true if z.re is even or z.im is even, false otherwise.
+ * @return true if z.re is even and z.im is even, false otherwise.
  */
 bool		is_ormod_func(const t_table_fdf *dst, size_t index,
 				t_complex (*complex_func)(t_complex a), float zoom);
@@ -799,7 +799,7 @@ bool		is_oddlength_x5(const t_table_fdf *dst, size_t index);
 bool		is_oddlength_x6(const t_table_fdf *dst, size_t index);
 
 /**
- * Check whether the ax^2 or ay^2 of the cell is an even value.
+ * Check whether the ax^2 and ay^2 of the cell is an odd value.
  *
  * time/space: O(1) / O(1)
  * 
@@ -811,7 +811,7 @@ bool		is_oddlength_x6(const t_table_fdf *dst, size_t index);
 bool		is_ormod_x2(const t_table_fdf *dst, size_t index);
 
 /**
- * Check whether the ax^3 or ay^3 of the cell is an even value.
+ * Check whether the ax^3 and ay^3 of the cell is an odd value.
  *
  * time/space: O(1) / O(1)
  * 
@@ -823,7 +823,7 @@ bool		is_ormod_x2(const t_table_fdf *dst, size_t index);
 bool		is_ormod_x3(const t_table_fdf *dst, size_t index);
 
 /**
- * Check whether the ax^4 or ay^4 of the cell is an even value.
+ * Check whether the ax^4 and ay^4 of the cell is an odd value.
  *
  * time/space: O(1) / O(1)
  * 
@@ -835,7 +835,7 @@ bool		is_ormod_x3(const t_table_fdf *dst, size_t index);
 bool		is_ormod_x4(const t_table_fdf *dst, size_t index);
 
 /**
- * Check whether the ax^5 or ay^5 of the cell is an even value.
+ * Check whether the ax^5 and ay^5 of the cell is an odd value.
  *
  * time/space: O(1) / O(1)
  * 
@@ -847,7 +847,7 @@ bool		is_ormod_x4(const t_table_fdf *dst, size_t index);
 bool		is_ormod_x5(const t_table_fdf *dst, size_t index);
 
 /**
- * Check whether the ax^6 or ay^6 of the cell is an even value.
+ * Check whether the ax^6 and ay^6 of the cell is an odd value.
  *
  * time/space: O(1) / O(1)
  * 
@@ -912,7 +912,7 @@ bool		is_oddlength_cos(const t_table_fdf *dst, size_t index);
 
 /**
  * Check whether the magnitude of the sin of a cell's
- * x or y is an even value.
+ * x and y is an odd value.
  *
  * time/space: O(1) / O(1)
  * 
@@ -925,7 +925,7 @@ bool		is_ormod_sin(const t_table_fdf *dst, size_t index);
 
 /**
  * Check whether the magnitude of the cos of a cell's
- * x or y is an even value.
+ * x and y is an odd value.
  *
  * time/space: O(1) / O(1)
  * 

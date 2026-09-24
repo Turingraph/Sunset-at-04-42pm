@@ -49,7 +49,7 @@ void	setcells_times_length(t_table_fdf *dst)
 	while (i < dst->row * dst->col)
 	{
 		z = get_table_fdf_coordinate(dst, i, 1);
-		y = z.re * z.im;
+		y = f_abs(z.re * z.im);
 		dst->arr[i] = (int)f_round(f_root_finding(y, 2));
 		i += 1;
 	}
@@ -77,7 +77,7 @@ void	setcells_addition_length(t_table_fdf *dst)
 	while (i < dst->row * dst->col)
 	{
 		z = get_table_fdf_coordinate(dst, i, 1);
-		y = z.re + z.im;
+		y = f_abs(z.re) + f_abs(z.im);
 		dst->arr[i] = (int)f_round(y);
 		i += 1;
 	}
@@ -103,7 +103,7 @@ void	setcells_maximum_length(t_table_fdf *dst)
 	while (i < dst->row * dst->col)
 	{
 		z = get_table_fdf_coordinate(dst, i, 1);
-		dst->arr[i] = f_max_int(z.re, z.im);
+		dst->arr[i] = f_max_int(f_abs(z.re), f_abs(z.im));
 		i += 1;
 	}
 }
@@ -128,7 +128,7 @@ void	setcells_minimum_length(t_table_fdf *dst)
 	while (i < dst->row * dst->col)
 	{
 		z = get_table_fdf_coordinate(dst, i, 1);
-		dst->arr[i] = f_min_int(z.re, z.im);
+		dst->arr[i] = f_min_int(f_abs(z.re), f_abs(z.im));
 		i += 1;
 	}
 }

@@ -38,7 +38,7 @@ bool	is_oddlength_cos(const t_table_fdf *dst, size_t index)
 
 /**
  * Check whether the magnitude of the sin of a cell's
- * x or y is an even value.
+ * x and y is an odd value.
  *
  * time/space: O(1) / O(1)
  *
@@ -56,7 +56,7 @@ bool	is_ormod_sin(const t_table_fdf *dst, size_t index)
 
 /**
  * Check whether the magnitude of the cos of a cell's
- * x or y is an even value.
+ * x and y is an odd value.
  *
  * time/space: O(1) / O(1)
  *
