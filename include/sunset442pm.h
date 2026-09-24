@@ -18,6 +18,7 @@
 # include <stdlib.h>
 # include <stdbool.h>
 # include "MLX42.h"
+# include <fcntl.h>
 
 /* ************************************************************************** */
 /* src/utils/type/type.h */
