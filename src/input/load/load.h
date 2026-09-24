@@ -19,7 +19,6 @@
 
 /*
 Note that
-*	load.h is for utilized by only src/input/table module and not by the user.
 *	load_debug.h is for checking if src/input/load/ works as expected.
 */
 

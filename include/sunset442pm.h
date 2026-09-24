@@ -222,6 +222,123 @@ t_matrix	outer_product_matrix(const float *vec_v,
 	const float *vec_u, size_t dim);
 
 /* ************************************************************************** */
+/* *** src/input/load/ *** */
+/* ************************************************************************** */
+
+/**
+ * Convert a string representing an integer in a given base.
+ *
+ * A leading '-' is interpreted as a negative sign.
+ * The resulting value must fit within the range of an int.
+ *
+ * time/space: O(1) / O(1)
+ * 
+ * @param src the string to convert
+ * @param is_int set to false if conversion fails
+ * @param base the numeric base used for conversion
+ * @param digits maximum number of characters to convert
+ *
+ * @return converted integer, or -1 if conversion fails or overflows
+ */
+int	f_atoi(const char *src, bool *is_int, const char *base, size_t digits);
+
+/**
+ * Write an integer to a file descriptor using the specified base.
+ *
+ * The output is padded with the first character of base until it
+ * reaches digits characters.
+ *
+ * time/space: O(n) / O(1)
+ * 
+ * @param n integer to write
+ * @param fd file descriptor used for output
+ * @param base numeric base used for representation, return 0 if base is NULL
+ * @param digits minimum number of characters to write
+ *
+ * @return number of characters written
+ */
+size_t	ft_putnbr_fd(int n, int fd, const char *base, size_t digits);
+
+/**
+ * Parse an ASCII-art line using the Cheche01 character ramp.
+ * This function is intended to be used with `open_table_fdf_file`
+ *
+ * time/space: O(n) / O(n)
+ * 
+ * @param line input line
+ * 
+ * @return loaded data input array as t_load_fdf
+ * 
+ * @see see: src/input/table/public.c
+ */
+t_load_fdf	parse_ascii_line_cheche01(char *line);
+
+/**
+ * Parse an ASCII-art line using the standard character ramp.
+ * This function is intended to be used with `open_table_fdf_file`
+ *
+ * time/space: O(n) / O(n)
+ * 
+ * @param line input line
+ * 
+ * @return loaded data input array as t_load_fdf
+ * 
+ * @see see: src/input/table/public.c
+ */
+t_load_fdf	parse_ascii_line_standard(char *line);
+
+/**
+ * Parse an ASCII-art line using the Chungaloider brightness ramp.
+ * This function is intended to be used with `open_table_fdf_file`
+ *
+ * time/space: O(n) / O(n)
+ *
+ * @param line input line
+ * 
+ * @return loaded data input array as t_load_fdf
+ * 
+ * @see see: src/input/table/public.c
+ * 
+ * @see see: https://stackoverflow.com/questions/30097953/
+ *      ascii-art-sorting-an-array-of-ascii-characters-by-brightness-levels-c-c
+ */
+t_load_fdf	parse_ascii_line_chungaloider(char *line);
+
+/**
+ * Parse an FDF line as colorful data.
+ * This function is intended to be used with `open_table_fdf_file`
+ *
+ * time/space: O(n) / O(n)
+ *
+ * status: public api
+ * 
+ * @param line input line
+ * 
+ * @return loaded data input array as t_load_fdf
+ * 
+ * @see see: src/input/table/public.c
+ * 
+ */
+t_load_fdf	parse_fdf_line_rgba(char *line);
+
+/**
+ * Parse an FDF line as black and white data.
+ * This function is intended to be used with `open_table_fdf_file`
+ *
+ * time/space: O(n) / O(n)
+ *
+ * status: public api
+ * 
+ * @param line input line
+ * 
+ * @return loaded data input array as t_load_fdf
+ * 
+ * @see see: src/input/table/public.c
+ * 
+ */
+t_load_fdf	parse_fdf_line_bw(char *line);
+
+/* ************************************************************************** */
 /* *** src/input/table/ *** */
 /* ************************************************************************** */
 
@@ -230,8 +347,6 @@ t_matrix	outer_product_matrix(const float *vec_v,
  *
  * time/space: O(1) / O(1)
  * 
- * status: public api
- *
  * @param src the target t_table_fdf array
  */
 void			free_table_fdf(t_table_fdf *src);
@@ -241,8 +356,6 @@ void			free_table_fdf(t_table_fdf *src);
  *
  * time/space: O(n) / O(n)
  * 
- * status: public api
- *
  * @param row row of the target table (corresponding to y position)
  * @param col row of the target table (corresponding to x position)
  * @param is_rgba if true, allocate storage for the RGBA channels;
@@ -257,8 +370,6 @@ t_table_fdf		init_table_fdf(size_t row, size_t col, bool is_rgba);
  *
  * time/space: O(n) / O(1)
  * 
- * status: public api
- *
  * @param src the input t_table_fdf array
  * @param is_max if is_max == true, then return maximum number, 
  * else return minimum number.
@@ -274,8 +385,6 @@ int				get_minmax_from_table_fdf(const t_table_fdf *src,
  *
  * time/space: O(n) / O(1)
  * 
- * status: public api
- *
  * @param dst the input t_table_fdf array
  */
 void			scale_positive_fdf(t_table_fdf *dst);
@@ -286,8 +395,6 @@ void			scale_positive_fdf(t_table_fdf *dst);
  *
  * time/space: O(n) / O(1)
  * 
- * status: public api
- *
  * @param dst the input t_table_fdf array
  * @param min the minimum target number
  * @param max the maximum target number
@@ -386,8 +493,6 @@ void			scale_addition_fdf(t_table_fdf *dst,
  *
  * time/space: O(n) / O(1)
  * 
- * status: public api
- *
  * @param dst FDF table to modify
  * @param src source FDF table
  * @param channel channel to add
