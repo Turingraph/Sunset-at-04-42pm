@@ -27,7 +27,7 @@ int	main(void)
 	t_render_style	style;
 
 	table_base = init_table_fdf(161, 161, true);
-	set_cells_color(&table_base, 10, HEIGHT, is_ormod_sin);
+	set_cells_color(&table_base, 10, HEIGHT, is_andmod_sin);
 	style.background_color = f_rgba_to_int32(0, 0, 0, 255);
 	style.line_thickness = 2;
 	style.artist = E_TOBY_FOX;

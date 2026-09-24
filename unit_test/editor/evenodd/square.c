@@ -28,7 +28,7 @@ t_gradient	init_deep_sea()
 
 	dst.cell_channel = D7_HEIGHT;
 	dst.input_start = 0;
-	dst.input_end = 216;
+	dst.input_end = 250;
 	dst.rgba_start.r = 70;
 	dst.rgba_start.g = 75;
 	dst.rgba_start.b = 113;
@@ -47,9 +47,9 @@ int	main(void)
 	t_render_style	style;
 	t_table_fdf		table_base;
 
-	table_base = init_table_fdf(120, 120, false);
-	set_cells_color(&table_base, 3, HEIGHT, is_oddlength_x2shadow);
-	table = init_table_fdf(120, 120, true);
+	table_base = init_table_fdf(300, 300, false);
+	set_cells_color(&table_base, 3, HEIGHT, is_andmod_x3);
+	table = init_table_fdf(300, 300, true);
 	space_coloring_max_xy(&table);
 	table_fdf_hadamard(&table, &table_base, HEIGHT);
 	style.background_color = f_rgba_to_int32(0, 0, 0, 255);
@@ -67,5 +67,6 @@ int	main(void)
 }
 
 /*
-valgrind --leak-check=full --show-leak-kinds=all ./unit_test/out/editor/evenodd/square.out
+valgrind --leak-check=full --show-leak-kinds=all
+./unit_test/out/editor/evenodd/square.out
 */

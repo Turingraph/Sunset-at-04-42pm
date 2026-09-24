@@ -128,7 +128,7 @@ bool	is_oddlength(const t_table_fdf *dst, size_t index)
  *
  * @return true if z.re is even and z.im is even, false otherwise.
  */
-bool	is_ormod_func(const t_table_fdf *dst, size_t index,
+bool	is_andmod_func(const t_table_fdf *dst, size_t index,
 	t_complex (*complex_func)(t_complex a), float zoom)
 {
 	t_complex	y;

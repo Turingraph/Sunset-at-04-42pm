@@ -120,6 +120,21 @@ t_complex	complex_multiplication(t_complex a, t_complex b);
 t_complex	complex_square(t_complex a);
 
 /**
+ * compute (a.re + a.im)^4
+ */
+t_complex	complex_x4(t_complex a);
+
+/**
+ * compute (a.re + a.im)^5
+ */
+t_complex	complex_x5(t_complex a);
+
+/**
+ * compute (a.re + a.im)^6
+ */
+t_complex	complex_x6(t_complex a);
+
+/**
  * compute (a.re + a.im)^3
  */
 t_complex	complex_cube(t_complex a);
@@ -222,8 +237,118 @@ t_matrix	outer_product_matrix(const float *vec_v,
 	const float *vec_u, size_t dim);
 
 /* ************************************************************************** */
+/* src/utils/linalg/ */
+/* ************************************************************************** */
+
+typedef struct t_matrix
+{
+	size_t	row;
+	size_t	col;
+	float	*arr;
+}	t_matrix;
+
+/* ************************************************************************** */
 /* *** src/input/load/ *** */
 /* ************************************************************************** */
+
+/**
+ * Defines the writing mode used when serializing FDF data as fdf file as text
+ * file with decimal numbers.
+ *
+ * - HEIGHT_ONLY writes only the height value of each FDF cell.
+ *
+ * - HEIGHT_RGBA writes the height value together with a full RGBA color.
+ *
+ * - HEIGHT_RGB writes the height value together with an RGB color,
+ * without an explicit alpha component.
+ */
+typedef enum t_write_style
+{
+	HEIGHT_ONLY,
+	HEIGHT_RGBA,
+	HEIGHT_RGB
+}	t_write_style;
+
+/**
+ * Describes the parsing status of a loaded FDF value.
+ *
+ * - CORRECT indicates that the corresponding value was parsed successfully.
+ *
+ * - NOT_DECIMAL indicates that the height value is not a valid decimal integer.
+ *
+ * - NOT_HEX indicates that the color value is not a valid hexadecimal value.
+ *
+ * - EMPTY indicates that the corresponding input value is empty.
+ */
+typedef enum t_load_warning
+{
+	CORRECT,
+	NOT_DECIMAL,
+	NOT_HEX,
+	EMPTY
+}	t_load_warning;
+
+/**
+ * Temporary FDF data produced while parsing one input line.
+ *
+ * The arrays store the height and optional color components extracted
+ * from the input line. length specifies the number of FDF cells stored
+ * in the arrays.
+ *
+ * int_warn stores the parsing status of the height values.
+ *
+ * rgb_warn stores the parsing status of the color values.
+ * 
+ * If int_warn and/or rgb_warn are NOT_DECIMAL and/or NOT_HEX, then 
+ * load_all_fdf_lines stops and open_table_fdf_file return empty output.
+ *
+ * status: internal data type
+ *
+ * @param arr array containing the parsed height values
+ * @param r array containing the red color components
+ * @param g array containing the green color components
+ * @param b array containing the blue color components
+ * @param a array containing the alpha color components
+ * @param length number of FDF cells stored in the arrays
+ * @param int_warn parsing status of the height values
+ * @param rgb_warn parsing status of the color values
+ */
+typedef struct t_load_fdf
+{
+	int				*arr;
+	unsigned char	*r;
+	unsigned char	*g;
+	unsigned char	*b;
+	unsigned char	*a;
+	size_t			length;
+	t_load_warning	int_warn;
+	t_load_warning	rgb_warn;
+}	t_load_fdf;
+
+/**
+ * Dynamic array containing temporary FDF data produced while loading
+ * an FDF file.
+ *
+ * arr points to the allocated t_load_fdf elements. length specifies
+ * the number of elements currently stored, while capacity specifies
+ * the total number of elements that can be stored before reallocation
+ * is required.
+ *
+ * time/space: O(1) / O(1) for the structure itself.
+ * 
+ * status: internal data type
+ *
+ * @param arr dynamic array of loaded FDF data
+ * @param length number of t_load_fdf elements currently stored
+ * @param capacity number of t_load_fdf elements that can currently
+ * be stored in the allocated array
+ */
+typedef struct t_load_fdf_arr
+{
+	t_load_fdf	*arr;
+	size_t		length;
+	size_t		capacity;
+}	t_load_fdf_arr;
 
 /**
  * Convert a string representing an integer in a given base.
@@ -693,7 +818,7 @@ bool		is_binary_search_product_odd(const t_table_fdf *dst, size_t index);
  * @return true if the scaled maximum Collatz point is odd,
  * false otherwise.
  */
-bool		is_binary_search_ormod(const t_table_fdf *dst, size_t index);
+bool		is_binary_search_andmod(const t_table_fdf *dst, size_t index);
 
 /**
  * Find the maximum value reached by the Collatz sequence of an input.
@@ -747,7 +872,7 @@ bool		is_collatz_odd_product(const t_table_fdf *dst, size_t index);
  * @return true if the scaled maximum Collatz point is odd,
  * false otherwise.
  */
-bool		is_collatz_odd_ormod(const t_table_fdf *dst, size_t index);
+bool		is_collatz_odd_andmod(const t_table_fdf *dst, size_t index);
 
 /**
  * Compute z' = complex_func(the complex coordinate of the cell).
@@ -835,7 +960,7 @@ bool		is_oddlength(const t_table_fdf *dst, size_t index);
  *
  * @return true if z.re is even and z.im is even, false otherwise.
  */
-bool		is_ormod_func(const t_table_fdf *dst, size_t index,
+bool		is_andmod_func(const t_table_fdf *dst, size_t index,
 				t_complex (*complex_func)(t_complex a), float zoom);
 
 /**
@@ -913,7 +1038,7 @@ bool		is_oddlength_x6(const t_table_fdf *dst, size_t index);
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool		is_ormod_x2(const t_table_fdf *dst, size_t index);
+bool		is_andmod_x2(const t_table_fdf *dst, size_t index);
 
 /**
  * Check whether the ax^3 and ay^3 of the cell is an odd value.
@@ -925,7 +1050,7 @@ bool		is_ormod_x2(const t_table_fdf *dst, size_t index);
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool		is_ormod_x3(const t_table_fdf *dst, size_t index);
+bool		is_andmod_x3(const t_table_fdf *dst, size_t index);
 
 /**
  * Check whether the ax^4 and ay^4 of the cell is an odd value.
@@ -937,7 +1062,7 @@ bool		is_ormod_x3(const t_table_fdf *dst, size_t index);
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool		is_ormod_x4(const t_table_fdf *dst, size_t index);
+bool		is_andmod_x4(const t_table_fdf *dst, size_t index);
 
 /**
  * Check whether the ax^5 and ay^5 of the cell is an odd value.
@@ -949,7 +1074,7 @@ bool		is_ormod_x4(const t_table_fdf *dst, size_t index);
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool		is_ormod_x5(const t_table_fdf *dst, size_t index);
+bool		is_andmod_x5(const t_table_fdf *dst, size_t index);
 
 /**
  * Check whether the ax^6 and ay^6 of the cell is an odd value.
@@ -961,7 +1086,7 @@ bool		is_ormod_x5(const t_table_fdf *dst, size_t index);
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool		is_ormod_x6(const t_table_fdf *dst, size_t index);
+bool		is_andmod_x6(const t_table_fdf *dst, size_t index);
 
 /**
  * Check whether constant times magnitude of the square of a cell's
@@ -988,6 +1113,34 @@ bool		is_oddlength_x2shadow(const t_table_fdf *dst, size_t index);
  * @return true if the calculated value is odd, false otherwise.
  */
 bool		is_oddlength_x3shadow(const t_table_fdf *dst, size_t index);
+
+/**
+ * Check whether the ax^2 and ay^2 of the cell is an odd value.
+ *
+ * time/space: O(1) / O(1)
+ *
+ * status: public api
+ *
+ * @param dst FDF table to check
+ * @param index index of the cell to check
+ *
+ * @return true if the calculated value is odd, false otherwise.
+ */
+bool	is_andmod_x2shadow(const t_table_fdf *dst, size_t index);
+
+/**
+ * Check whether the ax^3 and ay^3 of the cell is an odd value.
+ *
+ * time/space: O(1) / O(1)
+ *
+ * status: public api
+ *
+ * @param dst FDF table to check
+ * @param index index of the cell to check
+ *
+ * @return true if the calculated value is odd, false otherwise.
+ */
+bool	is_andmod_x3shadow(const t_table_fdf *dst, size_t index);
 
 /**
  * Check whether the magnitude of the sin of a cell's
@@ -1026,7 +1179,7 @@ bool		is_oddlength_cos(const t_table_fdf *dst, size_t index);
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool		is_ormod_sin(const t_table_fdf *dst, size_t index);
+bool		is_andmod_sin(const t_table_fdf *dst, size_t index);
 
 /**
  * Check whether the magnitude of the cos of a cell's
@@ -1039,7 +1192,7 @@ bool		is_ormod_sin(const t_table_fdf *dst, size_t index);
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool		is_ormod_cos(const t_table_fdf *dst, size_t index);
+bool		is_andmod_cos(const t_table_fdf *dst, size_t index);
 
 /* ************************************************************************** */
 /* *** src/editor/paint/ *** */
@@ -1199,6 +1352,26 @@ void		space_coloring_max_xy(t_table_fdf *dst);
  * @param dst FDF table to modify
  */
 void		space_coloring_min_xy(t_table_fdf *dst);
+
+/* ************************************************************************** */
+/* *** src/graphic_mlx/raster/ *** */
+/* ************************************************************************** */
+
+/**
+ * Describes the rendering properties of a 2D motif or FDF drawing.
+ * 
+ * color stores the 32-bit drawing color. type determines how the associated
+ * geometry or FDF data is rendered. thickness controls the size of the
+ * rendered primitive where applicable.
+ * 
+ * @param color 32-bit drawing color
+ * @param thickness size parameter used by the selected rendering type
+ */
+typedef struct s_ink32
+{
+	int32_t		color;
+	size_t		thickness;
+}	t_ink32;
 
 /* ************************************************************************** */
 /* *** src/graphic_mlx/fdf/ *** */
@@ -1462,7 +1635,7 @@ typedef struct s_render_style
 void	view_fdf(t_fdf *fdf, t_render_style artstyle);
 
 /* ************************************************************************** */
-/* *** src/graphic_mlx/window/ *** */
+/* *** src/graphic_mlx/motif/ *** */
 /* ************************************************************************** */
 
 /**

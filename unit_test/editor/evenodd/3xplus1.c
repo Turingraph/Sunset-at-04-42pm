@@ -30,7 +30,7 @@ int	main(void)
 	table = init_table_fdf(100, 100, true);
 	table_base = init_table_fdf(100, 100, false);
 	space_coloring_pythagorus(&table);
-	set_cells_color(&table_base, 1, HEIGHT, is_binary_search_ormod);
+	set_cells_color(&table_base, 1, HEIGHT, is_binary_search_andmod);
 	table_fdf_hadamard(&table, &table_base, HEIGHT);
 	style.background_color = f_rgba_to_int32(0, 0, 0, 255);
 	style.line_thickness = 2;

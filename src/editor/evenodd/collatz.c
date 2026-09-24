@@ -124,7 +124,7 @@ bool	is_collatz_odd_product(const t_table_fdf *dst, size_t index)
  * @return true if the scaled maximum Collatz point is odd,
  * false otherwise.
  */
-bool	is_collatz_odd_ormod(const t_table_fdf *dst, size_t index)
+bool	is_collatz_odd_andmod(const t_table_fdf *dst, size_t index)
 {
 	t_complex	y;
 	size_t		max_x;

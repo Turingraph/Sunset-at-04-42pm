@@ -49,9 +49,9 @@ bool	is_oddlength_cos(const t_table_fdf *dst, size_t index)
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool	is_ormod_sin(const t_table_fdf *dst, size_t index)
+bool	is_andmod_sin(const t_table_fdf *dst, size_t index)
 {
-	return (is_ormod_func(dst, index, complex_sin, 0.075));
+	return (is_andmod_func(dst, index, complex_sin, 0.075));
 }
 
 /**
@@ -67,7 +67,7 @@ bool	is_ormod_sin(const t_table_fdf *dst, size_t index)
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool	is_ormod_cos(const t_table_fdf *dst, size_t index)
+bool	is_andmod_cos(const t_table_fdf *dst, size_t index)
 {
-	return (is_ormod_func(dst, index, complex_cos, 0.075));
+	return (is_andmod_func(dst, index, complex_cos, 0.075));
 }

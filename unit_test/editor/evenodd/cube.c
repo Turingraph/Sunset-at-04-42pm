@@ -30,7 +30,7 @@ int	main(void)
 	table = init_table_fdf(120, 120, true);
 	table_base = init_table_fdf(120, 120, false);
 	space_coloring_pythagorus(&table);
-	set_cells_color(&table_base, 30, HEIGHT, is_ormod_sin);
+	set_cells_color(&table_base, 30, HEIGHT, is_andmod_sin);
 	table_fdf_hadamard(&table, &table_base, HEIGHT);
 	scale_relu_fdf(&table, 216, 2000, 0);
 	style.background_color = f_rgba_to_int32(0, 0, 0, 255);
