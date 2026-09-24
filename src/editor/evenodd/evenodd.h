@@ -6,19 +6,20 @@
 
 // binary_search.c
 
+size_t		binary_search_count(size_t min_input, size_t max_input);
 bool		is_binary_search_length_odd(const t_table_fdf *dst, size_t index);
 bool		is_binary_search_product_odd(const t_table_fdf *dst, size_t index);
 bool		is_binary_search_ormod(const t_table_fdf *dst, size_t index);
 
 // collatz.c
 
+size_t		collatz_max_point(size_t x);
 bool		is_collatz_odd_length(const t_table_fdf *dst, size_t index);
 bool		is_collatz_odd_product(const t_table_fdf *dst, size_t index);
 bool		is_collatz_odd_ormod(const t_table_fdf *dst, size_t index);
 
 // generic.c
 
-t_complex	get_table_fdf_coordinate(const t_table_fdf *dst, size_t index, float zoom);
 bool		is_re2_diff_im2_odd_func(const t_table_fdf *dst, size_t index,
 				t_complex (*complex_func)(t_complex a), float zoom);
 bool		is_re2_diff_im2_odd(const t_table_fdf *dst, size_t index);

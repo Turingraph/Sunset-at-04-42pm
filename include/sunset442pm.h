@@ -529,12 +529,12 @@ float	*gaussian_kernel(size_t half_dim, float std_1, float std_2);
  * before performing the search.
  *
  * time/space: O(log(n)) / O(1)
- *
+ * 
  * @param min_input target value to search for
  * @param max_input upper bound of the search range
  * @return number of binary-search iterations
  */
-size_t	binary_search_count(size_t min_input, size_t max_input);
+size_t		binary_search_count(size_t min_input, size_t max_input);
 
 /**
  * Check whether the number of iterations of a binary-search procedure
@@ -545,14 +545,14 @@ size_t	binary_search_count(size_t min_input, size_t max_input);
  * rounded diagonal length of the table is used as the upper bound.
  *
  * time/space: O(log(n)) / O(1)
- *
+ * 
  * @param dst FDF table to check
  * @param index index of the cell to check
  *
  * @return true if the binary-search iteration count is odd,
  * false otherwise.
  */
-bool	is_binary_search_length_odd(const t_table_fdf *dst, size_t index);
+bool		is_binary_search_length_odd(const t_table_fdf *dst, size_t index);
 
 /**
  * Check whether the number of iterations of a binary-search procedure
@@ -566,14 +566,14 @@ bool	is_binary_search_length_odd(const t_table_fdf *dst, size_t index);
  * and the upper bound is the total number of cells in the table.
  *
  * time/space: O(log(n)) / O(1)
- *
+ * 
  * @param dst FDF table to check
  * @param index index of the cell to check
  *
  * @return true if the binary-search iteration count is odd,
  * false otherwise.
  */
-bool	is_binary_search_product_odd(const t_table_fdf *dst, size_t index);
+bool		is_binary_search_product_odd(const t_table_fdf *dst, size_t index);
 
 /**
  * Check whether the number of iterations of a binary-search procedure
@@ -581,16 +581,14 @@ bool	is_binary_search_product_odd(const t_table_fdf *dst, size_t index);
  * real or imaginary coordinates within the table's cell-count range.
  *
  * time/space: O(s, where s is less than 10000) / O(1)
- *
- * status: public api
- *
+ * 
  * @param dst FDF table to check
  * @param index index of the cell to check
  *
  * @return true if the scaled maximum Collatz point is odd,
  * false otherwise.
  */
-bool	is_binary_search_ormod(const t_table_fdf *dst, size_t index);
+bool		is_binary_search_ormod(const t_table_fdf *dst, size_t index);
 
 /**
  * Find the maximum value reached by the Collatz sequence of an input.
@@ -598,25 +596,23 @@ bool	is_binary_search_ormod(const t_table_fdf *dst, size_t index);
  *
  * time/space: O(s, where s is less than 10000),
  * this is an open problem! / O(1)
- *
- * status: public api
- * 
+ *  
  */
-size_t	collatz_max_point(size_t x);
+size_t		collatz_max_point(size_t x);
 
 /**
  * Check whether the maximum point of a cell's magnitude's Collatz sequence,
  * divided by 7, is odd.
  *
  * time/space: O(s, where s is less than 10000) / O(1)
- *
+ * 
  * @param dst FDF table to check
  * @param index index of the cell to check
  *
  * @return true if the scaled maximum Collatz point is odd,
  * false otherwise.
  */
-bool	is_collatz_odd_length(const t_table_fdf *dst, size_t index);
+bool		is_collatz_odd_length(const t_table_fdf *dst, size_t index);
 
 /**
  * Check whether the maximum point of the Collatz sequence generated
@@ -624,14 +620,14 @@ bool	is_collatz_odd_length(const t_table_fdf *dst, size_t index);
  * is odd.
  *
  * time/space: O(s, where s is less than 10000) / O(1)
- *
+ * 
  * @param dst FDF table to check
  * @param index index of the cell to check
  *
  * @return true if the scaled maximum Collatz point is odd,
  * false otherwise.
  */
-bool	is_collatz_odd_product(const t_table_fdf *dst, size_t index);
+bool		is_collatz_odd_product(const t_table_fdf *dst, size_t index);
 
 /**
  * Check whether the maximum point of the Collatz sequence generated
@@ -639,16 +635,14 @@ bool	is_collatz_odd_product(const t_table_fdf *dst, size_t index);
  * divided by 7, is odd.
  *
  * time/space: O(s, where s is less than 10000) / O(1)
- *
- * status: public api
- *
+ * 
  * @param dst FDF table to check
  * @param index index of the cell to check
  *
  * @return true if the scaled maximum Collatz point is odd,
  * false otherwise.
  */
-bool	is_collatz_odd_ormod(const t_table_fdf *dst, size_t index);
+bool		is_collatz_odd_ormod(const t_table_fdf *dst, size_t index);
 
 /**
  * Compute z' = complex_func(the complex coordinate of the cell).
@@ -657,9 +651,7 @@ bool	is_collatz_odd_ormod(const t_table_fdf *dst, size_t index);
  * If complex_func is not NULL, then complex_func is identity function.
  *
  * time/space: O(1) / O(1)
- *
- * status: public api
- *
+ * 
  * @param dst FDF table to check
  * @param index index of the cell to check
  * @param complex_func optional complex function applied to the cell
@@ -669,24 +661,22 @@ bool	is_collatz_odd_ormod(const t_table_fdf *dst, size_t index);
  * @return true if the rounded calculated value is odd,
  * false otherwise.
  */
-bool	is_re2_diff_im2_odd_func(const t_table_fdf *dst, size_t index,
-	t_complex (*complex_func)(t_complex a), float zoom);
+bool		is_re2_diff_im2_odd_func(const t_table_fdf *dst, size_t index,
+				t_complex (*complex_func)(t_complex a), float zoom);
 
 /**
  * Compute z' = the complex coordinate of the cell.
  * Then check whether Re(z')^2 - Im(z')^2 produces an odd integer.
  *
  * time/space: O(1) / O(1)
- *
- * status: public api
- *
+ * 
  * @param dst FDF table to check
  * @param index index of the cell to check
  *
  * @return true if the rounded calculated value is odd,
  * false otherwise.
  */
-bool	is_re2_diff_im2_odd(const t_table_fdf *dst, size_t index);
+bool		is_re2_diff_im2_odd(const t_table_fdf *dst, size_t index);
 
 /**
  * Compute z' = complex_func(the complex coordinate of the cell).
@@ -694,11 +684,8 @@ bool	is_re2_diff_im2_odd(const t_table_fdf *dst, size_t index);
  * 
  * If complex_func is not NULL, then complex_func is identity function.
  *
- * time : O(1)
- * space: O(1)
- *
- * status: public api
- *
+ * time/space: O(1) / O(1)
+ * 
  * @param dst FDF table to check
  * @param index index of the cell to check
  * @param complex_func optional complex function applied to the cell
@@ -708,8 +695,8 @@ bool	is_re2_diff_im2_odd(const t_table_fdf *dst, size_t index);
  * @return true if the rounded coordinate magnitude is odd,
  * false otherwise.
  */
-bool	is_oddlength_func(const t_table_fdf *dst, size_t index,
-	t_complex (*complex_func)(t_complex a), float zoom);
+bool		is_oddlength_func(const t_table_fdf *dst, size_t index,
+				t_complex (*complex_func)(t_complex a), float zoom);
 
 /**
  * Compute z' = complex_func(the complex coordinate of the cell).
@@ -717,153 +704,237 @@ bool	is_oddlength_func(const t_table_fdf *dst, size_t index,
  * 
  * If complex_func is not NULL, then complex_func is identity function.
  *
- * time : O(1)
- * space: O(1)
- *
- * status: public api
- *
+ * time/space: O(1) / O(1)
+ * 
  * @param dst FDF table to check
  * @param index index of the cell to check
  *
  * @return true if the rounded coordinate magnitude is odd,
  * false otherwise.
  */
-bool	is_oddlength(const t_table_fdf *dst, size_t index);
+bool		is_oddlength(const t_table_fdf *dst, size_t index);
 
 /**
- * Check whether the magnitude of the square of a cell's
+ * Compute z' = complex_func(the complex coordinate of the cell).
+ * Then check whether z.re is even or z.im is even
+ * 
+ * If complex_func is not NULL, then complex_func is identity function.
+ *
+ * time/space: O(1) / O(1)
+ * 
+ * @param dst FDF table to check
+ * @param index index of the cell to check
+ * @param complex_func optional complex function applied to the cell
+ * coordinate before calculating its magnitude
+ * @param zoom scaling both the real and imaginary part by a zoom factor.
+ *
+ * @return true if z.re is even or z.im is even, false otherwise.
+ */
+bool		is_ormod_func(const t_table_fdf *dst, size_t index,
+				t_complex (*complex_func)(t_complex a), float zoom);
+
+/**
+ * Check whether constant times magnitude of the square of a cell's
  * complex coordinate is an odd value.
  *
  * time/space: O(1) / O(1)
- *
+ * 
  * @param dst FDF table to check
  * @param index index of the cell to check
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool	is_oddlength_square(const t_table_fdf *dst, size_t index);
+bool		is_oddlength_x2(const t_table_fdf *dst, size_t index);
 
 /**
- * Check whether the magnitude of the cube of a cell's
+ * Check whether constant times magnitude of the cube of a cell's
  * complex coordinate is an odd value.
  *
  * time/space: O(1) / O(1)
- *
+ * 
  * @param dst FDF table to check
  * @param index index of the cell to check
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool	is_oddlength_cube(const t_table_fdf *dst, size_t index);
+bool		is_oddlength_x3(const t_table_fdf *dst, size_t index);
+
+/**
+ * Check whether constant times magnitude of the 4-th power of a cell's
+ * complex coordinate is an odd value.
+ *
+ * time/space: O(1) / O(1)
+ * 
+ * @param dst FDF table to check
+ * @param index index of the cell to check
+ *
+ * @return true if the calculated value is odd, false otherwise.
+ */
+bool		is_oddlength_x4(const t_table_fdf *dst, size_t index);
+
+/**
+ * Check whether constant times magnitude of the 5-th power of a cell's
+ * complex coordinate is an odd value.
+ *
+ * time/space: O(1) / O(1)
+ * 
+ * @param dst FDF table to check
+ * @param index index of the cell to check
+ *
+ * @return true if the calculated value is odd, false otherwise.
+ */
+bool		is_oddlength_x5(const t_table_fdf *dst, size_t index);
+
+/**
+ * Check whether constant times magnitude of the 6-th power of a cell's
+ * complex coordinate is an odd value.
+ *
+ * time/space: O(1) / O(1)
+ * 
+ * @param dst FDF table to check
+ * @param index index of the cell to check
+ *
+ * @return true if the calculated value is odd, false otherwise.
+ */
+bool		is_oddlength_x6(const t_table_fdf *dst, size_t index);
+
+/**
+ * Check whether the ax^2 or ay^2 of the cell is an even value.
+ *
+ * time/space: O(1) / O(1)
+ * 
+ * @param dst FDF table to check
+ * @param index index of the cell to check
+ *
+ * @return true if the calculated value is odd, false otherwise.
+ */
+bool		is_ormod_x2(const t_table_fdf *dst, size_t index);
+
+/**
+ * Check whether the ax^3 or ay^3 of the cell is an even value.
+ *
+ * time/space: O(1) / O(1)
+ * 
+ * @param dst FDF table to check
+ * @param index index of the cell to check
+ *
+ * @return true if the calculated value is odd, false otherwise.
+ */
+bool		is_ormod_x3(const t_table_fdf *dst, size_t index);
+
+/**
+ * Check whether the ax^4 or ay^4 of the cell is an even value.
+ *
+ * time/space: O(1) / O(1)
+ * 
+ * @param dst FDF table to check
+ * @param index index of the cell to check
+ *
+ * @return true if the calculated value is odd, false otherwise.
+ */
+bool		is_ormod_x4(const t_table_fdf *dst, size_t index);
+
+/**
+ * Check whether the ax^5 or ay^5 of the cell is an even value.
+ *
+ * time/space: O(1) / O(1)
+ * 
+ * @param dst FDF table to check
+ * @param index index of the cell to check
+ *
+ * @return true if the calculated value is odd, false otherwise.
+ */
+bool		is_ormod_x5(const t_table_fdf *dst, size_t index);
+
+/**
+ * Check whether the ax^6 or ay^6 of the cell is an even value.
+ *
+ * time/space: O(1) / O(1)
+ * 
+ * @param dst FDF table to check
+ * @param index index of the cell to check
+ *
+ * @return true if the calculated value is odd, false otherwise.
+ */
+bool		is_ormod_x6(const t_table_fdf *dst, size_t index);
+
+/**
+ * Check whether constant times magnitude of the square of a cell's
+ * complex coordinate is an odd value.
+ *
+ * time/space: O(1) / O(1)
+ * 
+ * @param dst FDF table to check
+ * @param index index of the cell to check
+ *
+ * @return true if the calculated value is odd, false otherwise.
+ */
+bool		is_oddlength_x2shadow(const t_table_fdf *dst, size_t index);
+
+/**
+ * Check whether constant times magnitude of the cube of a cell's
+ * complex coordinate is an odd value.
+ *
+ * time/space: O(1) / O(1)
+ * 
+ * @param dst FDF table to check
+ * @param index index of the cell to check
+ *
+ * @return true if the calculated value is odd, false otherwise.
+ */
+bool		is_oddlength_x3shadow(const t_table_fdf *dst, size_t index);
 
 /**
  * Check whether the magnitude of the sin of a cell's
  * complex coordinate is an odd value.
  *
  * time/space: O(1) / O(1)
- *
+ * 
  * @param dst FDF table to check
  * @param index index of the cell to check
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool	is_oddlength_sin(const t_table_fdf *dst, size_t index);
+bool		is_oddlength_sin(const t_table_fdf *dst, size_t index);
 
 /**
  * Check whether the magnitude of the cos of a cell's
  * complex coordinate is an odd value.
  *
  * time/space: O(1) / O(1)
- *
- * @param dst FDF table to check
- * @param index index of the cell to check
- *
- * @return true if the calculated value is odd, false otherwise.
- */
-bool	is_oddlength_cos(const t_table_fdf *dst, size_t index);
-
-/**
- * Check whether the magnitude of exponential of a cell's
- * complex coordinate is an odd value.
- *
- * time/space: O(1) / O(1)
- *
+ * 
  * @param dst FDF table to check
  * @param index index of the cell to check
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool	is_oddlength_exp(const t_table_fdf *dst, size_t index);
+bool		is_oddlength_cos(const t_table_fdf *dst, size_t index);
 
 /**
- * Check whether the real-part square minus the imaginary-part square
- * of the squared cell coordinate is odd.
- * 
+ * Check whether the magnitude of the sin of a cell's
+ * x or y is an even value.
+ *
  * time/space: O(1) / O(1)
- * 
- * status: public api
  * 
  * @param dst FDF table to check
  * @param index index of the cell to check
+ *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool	is_re2_diff_im2_square(const t_table_fdf *dst, size_t index);
+bool		is_ormod_sin(const t_table_fdf *dst, size_t index);
 
 /**
- * Check whether the real-part square minus the imaginary-part square
- * of the cubed cell coordinate is odd.
- * 
+ * Check whether the magnitude of the cos of a cell's
+ * x or y is an even value.
+ *
  * time/space: O(1) / O(1)
- * 
- * status: public api
  * 
  * @param dst FDF table to check
  * @param index index of the cell to check
+ *
  * @return true if the calculated value is odd, false otherwise.
-*/
-bool	is_re2_diff_im2_cube(const t_table_fdf *dst, size_t index);
-
-/**
- * Check whether the real-part square minus the imaginary-part square
- * of the sin of the cell coordinate is odd.
- * 
- * time/space: O(1) / O(1)
- * 
- * status: public api
- * 
- * @param dst FDF table to check
- * @param index index of the cell to check
- * @return true if the calculated value is odd, false otherwise.
-*/
-bool	is_re2_diff_im2_sin(const t_table_fdf *dst, size_t index);
-
-/**
- * Check whether the real-part square minus the imaginary-part square
- * of the cos of the cell coordinate is odd.
- * 
- * time/space: O(1) / O(1)
- * 
- * status: public api
- * 
- * @param dst FDF table to check
- * @param index index of the cell to check
- * @return true if the calculated value is odd, false otherwise.
-*/
-bool	is_re2_diff_im2_cos(const t_table_fdf *dst, size_t index);
-
-/**
- * Check whether the real-part square minus the imaginary-part square
- * of the exponent of the cell coordinate is odd.
- * 
- * time/space: O(1) / O(1)
- * 
- * status: public api
- * 
- * @param dst FDF table to check
- * @param index index of the cell to check
- * @return true if the calculated value is odd, false otherwise.
-*/
-bool	is_re2_diff_im2_exp(const t_table_fdf *dst, size_t index);
+ */
+bool		is_ormod_cos(const t_table_fdf *dst, size_t index);
 
 /* ************************************************************************** */
 /* *** src/editor/paint/ *** */
