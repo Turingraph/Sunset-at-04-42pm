@@ -27,29 +27,6 @@ t_complex	complex_multiplication(t_complex a, t_complex b)
 	return (dst);
 }
 
-/**
- * compute (a.re + a.im)^2
- * 
- * status: public api
- * 
- */
-t_complex	complex_square(t_complex a)
-{
-	return (complex_multiplication(a, a));
-}
-
-/**
- * compute (a.re + a.im)^3
- * 
- * status: public api
- * 
- */
-t_complex	complex_cube(t_complex a)
-{
-	return (complex_multiplication(a,
-			complex_multiplication(a, a)));
-}
-
 // https://math.stackexchange.com/questions/3872891/
 // multiplicative-inverse-of-complex-numbers-proof
 

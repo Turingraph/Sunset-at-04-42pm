@@ -108,3 +108,38 @@ bool	is_collatz_odd_product(const t_table_fdf *dst, size_t index)
 		return (false);
 	return (true);
 }
+
+/**
+ * Check whether the maximum point of the Collatz sequence generated
+ * from the absolute number of the x or y of a cell's coordinate components,
+ * divided by 7, is odd.
+ *
+ * time/space: O(s, where s is less than 10000) / O(1)
+ *
+ * status: public api
+ *
+ * @param dst FDF table to check
+ * @param index index of the cell to check
+ *
+ * @return true if the scaled maximum Collatz point is odd,
+ * false otherwise.
+ */
+bool	is_collatz_odd_ormod(const t_table_fdf *dst, size_t index)
+{
+	t_complex	y;
+	size_t		max_x;
+	size_t		max_y;
+
+	if (dst == NULL || index >= dst->row * dst->col)
+		return (false);
+	y = get_table_fdf_coordinate(dst, index, 1.0);
+	if (y.re < 0)
+		y.re *= -1;
+	if (y.im < 0)
+		y.im *= -1;
+	max_x = collatz_max_point((size_t)y.re) / 7;
+	max_y = collatz_max_point((size_t)y.im) / 7;
+	if (max_x % 2 == 0 || max_y % 2 == 0)
+		return (false);
+	return (true);
+}

@@ -23,27 +23,22 @@ t_gradient	init_deep_sea()
 int	main(void)
 {
 	t_table_fdf		table_base;
-	t_table_fdf		table;
 	t_fdf			output;
 	t_render_style	style;
 
-	table = init_table_fdf(100, 100, true);
-	table_base = init_table_fdf(100, 100, false);
-	setcells_pythagorus_length(&table);
-	set_cells_color(&table_base, 1, HEIGHT, is_binary_search_ormod);
-	table_fdf_hadamard(&table, &table_base, HEIGHT);
+	table_base = init_table_fdf(161, 161, true);
+	set_cells_color(&table_base, 10, HEIGHT, is_oddlength_x2shadow);
 	style.background_color = f_rgba_to_int32(0, 0, 0, 255);
 	style.line_thickness = 2;
-	style.artist = E_TOBY_FOX;
-	color_cells_gradient(&table, init_deep_sea(), true);
-	output = init_fdf(&table, NULL, 0.6);
+	style.artist = E_PICASSO;
+	color_cells_gradient(&table_base, init_deep_sea(), true);
+	output = init_fdf(&table_base, projection_cabinet, 0.6);
 	view_fdf(&output, style);
-	free_table_fdf(&table);
 	free_table_fdf(&table_base);
 	free_fdf(&output);
 	return (0);
 }
 
 /*
-valgrind --leak-check=full --show-leak-kinds=all ./unit_test/out/editor/evenodd/3xplus1.out
+valgrind --leak-check=full --show-leak-kinds=all ./unit_test/out/editor/evenodd/base.out
 */

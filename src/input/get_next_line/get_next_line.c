@@ -63,6 +63,7 @@ void	fetch_text(int fd, t_dynamic_str *dst, size_t buffer_length)
 		}
 		free(buff);
 	}
+	close(fd);
 }
 
 /**
@@ -97,8 +98,6 @@ char	*get_next_line(int fd, bool is_continue)
 	dst = clone_string(length, dyn_str.str);
 	if (is_continue == true)
 		prev_str = clone_string(dyn_str.length - length, dyn_str.str + length);
-	else
-		close(fd);
 	free(dyn_str.str);
 	return (dst);
 }

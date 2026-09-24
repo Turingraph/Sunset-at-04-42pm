@@ -1,8 +1,7 @@
 #include "evenodd.h"
 
 /**
- * Check whether the magnitude of the square of a cell's
- * complex coordinate is an odd value.
+ * Check whether the ax^2 or ay^2 of the cell is an even value.
  *
  * time/space: O(1) / O(1)
  *
@@ -13,14 +12,13 @@
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool	is_oddlength_square(const t_table_fdf *dst, size_t index)
+bool	is_ormod_x2(const t_table_fdf *dst, size_t index)
 {
-	return (is_oddlength_func(dst, index, complex_square));
+	return (is_ormod_func(dst, index, complex_square, 0.075));
 }
 
 /**
- * Check whether the magnitude of the cube of a cell's
- * complex coordinate is an odd value.
+ * Check whether the ax^3 or ay^3 of the cell is an even value.
  *
  * time/space: O(1) / O(1)
  *
@@ -31,14 +29,13 @@ bool	is_oddlength_square(const t_table_fdf *dst, size_t index)
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool	is_oddlength_cube(const t_table_fdf *dst, size_t index)
+bool	is_ormod_x3(const t_table_fdf *dst, size_t index)
 {
-	return (is_oddlength_func(dst, index, complex_cube));
+	return (is_ormod_func(dst, index, complex_cube, 0.05));
 }
 
 /**
- * Check whether the magnitude of the sin of a cell's
- * complex coordinate is an odd value.
+ * Check whether the ax^4 or ay^4 of the cell is an even value.
  *
  * time/space: O(1) / O(1)
  *
@@ -49,14 +46,13 @@ bool	is_oddlength_cube(const t_table_fdf *dst, size_t index)
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool	is_oddlength_sin(const t_table_fdf *dst, size_t index)
+bool	is_ormod_x4(const t_table_fdf *dst, size_t index)
 {
-	return (is_oddlength_func(dst, index, complex_sin));
+	return (is_ormod_func(dst, index, complex_x4, 0.5));
 }
 
 /**
- * Check whether the magnitude of the cos of a cell's
- * complex coordinate is an odd value.
+ * Check whether the ax^5 or ay^5 of the cell is an even value.
  *
  * time/space: O(1) / O(1)
  *
@@ -67,14 +63,13 @@ bool	is_oddlength_sin(const t_table_fdf *dst, size_t index)
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool	is_oddlength_cos(const t_table_fdf *dst, size_t index)
+bool	is_ormod_x5(const t_table_fdf *dst, size_t index)
 {
-	return (is_oddlength_func(dst, index, complex_cos));
+	return (is_ormod_func(dst, index, complex_x5, 0.05));
 }
 
 /**
- * Check whether the magnitude of exponential of a cell's
- * complex coordinate is an odd value.
+ * Check whether the ax^6 or ay^6 of the cell is an even value.
  *
  * time/space: O(1) / O(1)
  *
@@ -85,7 +80,7 @@ bool	is_oddlength_cos(const t_table_fdf *dst, size_t index)
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool	is_oddlength_exp(const t_table_fdf *dst, size_t index)
+bool	is_ormod_x6(const t_table_fdf *dst, size_t index)
 {
-	return (is_oddlength_func(dst, index, complex_exp));
+	return (is_ormod_func(dst, index, complex_x6, 0.03));
 }

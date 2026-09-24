@@ -8,7 +8,7 @@ t_gradient	init_deep_sea()
 
 	dst.cell_channel = D7_HEIGHT;
 	dst.input_start = 0;
-	dst.input_end = 200;
+	dst.input_end = 216;
 	dst.rgba_start.r = 70;
 	dst.rgba_start.g = 75;
 	dst.rgba_start.b = 113;
@@ -27,18 +27,18 @@ int	main(void)
 	t_fdf			output;
 	t_render_style	style;
 
-	table = init_table_fdf(100, 100, true);
-	table_base = init_table_fdf(100, 100, false);
+	table = init_table_fdf(120, 120, true);
+	table_base = init_table_fdf(120, 120, false);
 	setcells_pythagorus_length(&table);
-	set_cells_color(&table_base, 30, HEIGHT, is_oddlength_cube);
+	set_cells_color(&table_base, 30, HEIGHT, is_ormod_sin);
 	table_fdf_hadamard(&table, &table_base, HEIGHT);
-	// scale_relu_fdf(&table, 201, 2000, 0);
+	scale_relu_fdf(&table, 216, 2000, 0);
 	style.background_color = f_rgba_to_int32(0, 0, 0, 255);
 	style.line_thickness = 2;
-	style.artist = E_TOBY_FOX;
+	style.artist = E_PICASSO;
 	color_cells_gradient(&table, init_deep_sea(), true);
 	scale_multiplication_fdf(&table, 1.0 / 120.0, HEIGHT);
-	output = init_fdf(&table, NULL, 0.6);
+	output = init_fdf(&table, projection_cabinet, 0.6);
 	view_fdf(&output, style);
 	free_table_fdf(&table);
 	free_table_fdf(&table_base);

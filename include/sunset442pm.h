@@ -576,6 +576,23 @@ bool	is_binary_search_length_odd(const t_table_fdf *dst, size_t index);
 bool	is_binary_search_product_odd(const t_table_fdf *dst, size_t index);
 
 /**
+ * Check whether the number of iterations of a binary-search procedure
+ * is even when searching for the absolute value of a cell's rounded
+ * real or imaginary coordinates within the table's cell-count range.
+ *
+ * time/space: O(s, where s is less than 10000) / O(1)
+ *
+ * status: public api
+ *
+ * @param dst FDF table to check
+ * @param index index of the cell to check
+ *
+ * @return true if the scaled maximum Collatz point is odd,
+ * false otherwise.
+ */
+bool	is_binary_search_ormod(const t_table_fdf *dst, size_t index);
+
+/**
  * Find the maximum value reached by the Collatz sequence of an input.
  * The sequence is limited to 10000 iterations.
  *
@@ -617,6 +634,23 @@ bool	is_collatz_odd_length(const t_table_fdf *dst, size_t index);
 bool	is_collatz_odd_product(const t_table_fdf *dst, size_t index);
 
 /**
+ * Check whether the maximum point of the Collatz sequence generated
+ * from the absolute number of the x or y of a cell's coordinate components,
+ * divided by 7, is odd.
+ *
+ * time/space: O(s, where s is less than 10000) / O(1)
+ *
+ * status: public api
+ *
+ * @param dst FDF table to check
+ * @param index index of the cell to check
+ *
+ * @return true if the scaled maximum Collatz point is odd,
+ * false otherwise.
+ */
+bool	is_collatz_odd_ormod(const t_table_fdf *dst, size_t index);
+
+/**
  * Compute z' = complex_func(the complex coordinate of the cell).
  * Then check whether Re(z')^2 - Im(z')^2 produces an odd integer.
  *
@@ -630,12 +664,13 @@ bool	is_collatz_odd_product(const t_table_fdf *dst, size_t index);
  * @param index index of the cell to check
  * @param complex_func optional complex function applied to the cell
  * coordinate before calculating the value
+ * @param zoom scaling both the real and imaginary part by a zoom factor.
  *
  * @return true if the rounded calculated value is odd,
  * false otherwise.
  */
 bool	is_re2_diff_im2_odd_func(const t_table_fdf *dst, size_t index,
-	t_complex (*complex_func)(t_complex a));
+	t_complex (*complex_func)(t_complex a), float zoom);
 
 /**
  * Compute z' = the complex coordinate of the cell.
@@ -668,12 +703,13 @@ bool	is_re2_diff_im2_odd(const t_table_fdf *dst, size_t index);
  * @param index index of the cell to check
  * @param complex_func optional complex function applied to the cell
  * coordinate before calculating its magnitude
+ * @param zoom scaling both the real and imaginary part by a zoom factor.
  *
  * @return true if the rounded coordinate magnitude is odd,
  * false otherwise.
  */
 bool	is_oddlength_func(const t_table_fdf *dst, size_t index,
-	t_complex (*complex_func)(t_complex a));
+	t_complex (*complex_func)(t_complex a), float zoom);
 
 /**
  * Compute z' = complex_func(the complex coordinate of the cell).
