@@ -90,7 +90,7 @@ int	main(void)
 	{
 		table = open_table_fdf_file(arr[i], src_dir, parse_ascii_line_standard, false);
 		scale_positive_fdf(&table);
-		fdf_dst = open_dir_file(arrdst[i], dst_dir, APPEND);
+		fdf_dst = open_dir_file(arrdst[i], dst_dir, E_WRITE);
 		if(fdf_dst > -1)
 		{
 			write(1, "\n*** ", 5);

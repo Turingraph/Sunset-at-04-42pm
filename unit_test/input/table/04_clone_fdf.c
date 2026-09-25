@@ -33,7 +33,7 @@ int	main(void)
 	while (i < max_score)
 	{
 		table = open_table_fdf_file(arr[i], src_dir, parse_fdf_line_bw, false);
-		fdf_dst = open_dir_file(arr[i], dst_dir, APPEND);
+		fdf_dst = open_dir_file(arr[i], dst_dir, E_WRITE);
 		if (fdf_dst > -1)
 		{
 			write_table_fdf(fdf_dst, &table, 1, HEIGHT_ONLY);

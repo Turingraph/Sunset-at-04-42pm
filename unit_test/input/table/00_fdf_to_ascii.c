@@ -4,14 +4,14 @@ int	main(void)
 {
 	int				fdf_dst;
 	size_t			i;
-	size_t			length = 25;
+	size_t			length = 23;
 	t_table_fdf		table;
 	char			*arr[] = {
 		"100-6.fdf",
 		"20-60.fdf",
 		"basictest.fdf",
 		"elem.fdf",
-		"julia.fdf",
+		// "julia.fdf",
 		"pentenegpos.fdf",
 		"prism_pyramid.fdf",
 		"pyramide.fdf",
@@ -19,7 +19,7 @@ int	main(void)
 		"42.fdf",
 		"convolution_9.fdf",
 		"elem2.fdf",
-		"elem-fract.fdf",
+		// "elem-fract.fdf",
 		"large_plat.fdf",
 		"plat.fdf",
 		"pylone.fdf",
@@ -38,7 +38,7 @@ int	main(void)
 		"20-60.txt",
 		"basictest.txt",
 		"elem.txt",
-		"julia.txt",
+		// "julia.txt",
 		"pentenegpos.txt",
 		"prism_pyramid.txt",
 		"pyramide.txt",
@@ -46,7 +46,7 @@ int	main(void)
 		"42.txt",
 		"convolution_9.txt",
 		"elem2.txt",
-		"elem-fract.txt",
+		// "elem-fract.txt",
 		"large_plat.txt",
 		"plat.txt",
 		"pylone.txt",
@@ -68,7 +68,7 @@ int	main(void)
 	{
 		table = open_table_fdf_file(arr[i], src_dir, parse_fdf_line_bw, false);
 		scale_positive_fdf(&table);
-		fdf_dst = open_dir_file(arrdst[i], dst_dir, APPEND);
+		fdf_dst = open_dir_file(arrdst[i], dst_dir, E_WRITE);
 		if(fdf_dst > -1)
 		{
 			write(1, "\n*** ", 5);

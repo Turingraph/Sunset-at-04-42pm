@@ -32,14 +32,14 @@ bool	assert_files(const char *file_name_1, const char *file_name_2,
 	char	**strarr_2;
 	bool	result;
 
-	fd = open_dir_file(file_name_1, dir_name_1, READ);
+	fd = open_dir_file(file_name_1, dir_name_1, E_READ);
 	length = total_lines_of_file(fd);
-	fd = open_dir_file(file_name_2, dir_name_2, READ);
+	fd = open_dir_file(file_name_2, dir_name_2, E_READ);
 	if (length != total_lines_of_file(fd))
 		return (false);
-	fd = open_dir_file(file_name_1, dir_name_1, READ);
+	fd = open_dir_file(file_name_1, dir_name_1, E_READ);
 	strarr_1 = load_file_as_strarr(fd, length);
-	fd = open_dir_file(file_name_2, dir_name_2, READ);
+	fd = open_dir_file(file_name_2, dir_name_2, E_READ);
 	strarr_2 = load_file_as_strarr(fd, length);
 	result = assert_strarr((const char **)strarr_1, (const char **)strarr_2, length, true);
 	free_2d_arr((void **)strarr_1, length);

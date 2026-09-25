@@ -22,12 +22,12 @@ int	main(void)
 	scale_multiplication_fdf(&table_a, 10, HEIGHT);
 	table_b = scale_dimension_fdf(&table_a, 3, 3);
 
-	output_fd = open_dir_file(output_dir_1, NULL, APPEND);
+	output_fd = open_dir_file(output_dir_1, NULL, E_WRITE);
 	write_table_ascii_cheche01(output_fd, &table_b, HEIGHT);
 	close(output_fd);
 
 	table_c = convolve_fdf(&table_b, ker.arr, ker_dim);
-	output_fd = open_dir_file(output_dir_2, NULL, APPEND);
+	output_fd = open_dir_file(output_dir_2, NULL, E_WRITE);
 	write_table_ascii_cheche01(output_fd, &table_c, HEIGHT);
 	close(output_fd);
 

@@ -31,8 +31,8 @@ typedef struct t_dynamic_str
 
 typedef enum t_file_mode
 {
-	READ = O_RDONLY,
-	APPEND = O_WRONLY | O_CREAT | O_APPEND,
+	E_READ = O_RDONLY,
+	E_WRITE = O_WRONLY,
 }	t_file_mode;
 
 // dynamic_str.c

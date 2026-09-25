@@ -53,7 +53,7 @@ int	main(void)
 	while (i < max_score)
 	{
 		fdf_file = open_fdf_file(arr[i], src_dir, parse_ascii_line_cheche01);
-		clone_examples = open_dir_file(arr[i], dst_dir, APPEND);
+		clone_examples = open_dir_file(arr[i], dst_dir, E_WRITE);
 		if (clone_examples > -1)
 		{
 			write_load_ascii_arr_cheche01(clone_examples, &fdf_file);

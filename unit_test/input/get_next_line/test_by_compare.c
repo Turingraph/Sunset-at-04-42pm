@@ -252,7 +252,7 @@ int	main(void)
 	i = 0;
 	while (i < max_score)
 	{
-		fd = open_dir_file(arr[i].file_name, src_dir, READ);
+		fd = open_dir_file(arr[i].file_name, src_dir, E_READ);
 		if (arr[i].read_entire_file == true)
 		{
 			if (assert_file_with_strarr(fd, (const char **)(arr[i].arr), 0) == true)

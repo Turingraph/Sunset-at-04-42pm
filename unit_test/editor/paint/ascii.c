@@ -74,7 +74,7 @@ int	main(void)
 	i = 0;
 	while (i < length)
 	{
-		output = open_dir_file(arr[i], dst, APPEND);
+		output = open_dir_file(arr[i], dst, E_WRITE);
 		table_a = open_table_fdf_file(arr[i], src,
 				parse_ascii_line_chungaloider, true);
         color_cells_gradient(&table_a, init_gradient(), true);
