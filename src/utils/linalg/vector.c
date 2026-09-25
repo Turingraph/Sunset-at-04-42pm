@@ -63,7 +63,7 @@ float	dot_product(const float *vec_v, const float *vec_u, size_t dim)
 	float	y;
 	size_t	i;
 
-	if (vec_v == NULL || vec_u != NULL)
+	if (vec_v == NULL || vec_u == NULL)
 		return (0);
 	y = 0;
 	i = 0;
