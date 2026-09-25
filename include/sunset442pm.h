@@ -229,14 +229,6 @@ float		f_cos(float x);
  */
 float		f_exp(float x);
 
-/**
- * compute the outer product of 2 vector, for image convolution.
- * 
- * time/space: O(n^2) / O(n^2)
- */
-t_matrix	outer_product_matrix(const float *vec_v,
-	const float *vec_u, size_t dim);
-
 /* ************************************************************************** */
 /* src/utils/linalg/ */
 /* ************************************************************************** */
@@ -247,6 +239,14 @@ typedef struct t_matrix
 	size_t	col;
 	float	*arr;
 }	t_matrix;
+
+/**
+ * compute the outer product of 2 vector, for image convolution.
+ * 
+ * time/space: O(n^2) / O(n^2)
+ */
+t_matrix	outer_product_matrix(const float *vec_v,
+	const float *vec_u, size_t dim);
 
 /* ************************************************************************** */
 /* *** src/input/get_next_line/ *** */
@@ -1412,6 +1412,27 @@ typedef struct s_ink32
 	int32_t		color;
 	size_t		thickness;
 }	t_ink32;
+
+/**
+ * Pack individual RGBA channels into a 32-bit color value.
+ *
+ * The channels are packed in RGBA order, with red as the most
+ * significant byte and alpha as the least significant byte.
+ *
+ * time/space: O(1) / O(1)
+ *
+ * status: public api
+ *
+ * @param r red channel value
+ * @param g green channel value
+ * @param b blue channel value
+ * @param a alpha channel value
+ * @return packed 32-bit RGBA color
+ * @see https://github.com/codam-coding-college/MLX42/blob/master/docs/Colors.md
+ * to understand how to use color with MLX42 graphic library.
+ */
+int32_t	f_rgba_to_int32(unsigned char r,
+	unsigned char g, unsigned char b, unsigned char a);
 
 /* ************************************************************************** */
 /* *** src/graphic_mlx/fdf/ *** */
