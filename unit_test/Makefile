@@ -53,7 +53,7 @@ CLONE_GNL = $(patsubst input/get_next_line/input/%, input/get_next_line/clone_in
 # *** obj, out, and lib ***
 all: all_out all_clone
 
-all_out: $(OUT_BASIC) $(OUT_LIB)
+all_out: $(OUT_BASIC) $(OUT_LIB) $(OUT_paint)
 	@echo $^
 
 $(OUT_LIB): out/%.out: obj/%.o

@@ -1,7 +1,8 @@
 #include "get_next_line.h"
 
 /**
- * Open a file using an optional directory and file name.
+ * Open a file using an optional directory and file name
+ * as [directory/file_name].
  * Uses whichever path argument is provided when the other is NULL.
  * Concatenates both paths when both are provided.
  *

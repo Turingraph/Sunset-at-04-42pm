@@ -31,9 +31,6 @@ clean:
 	rm -r -f obj/
 	rm -f $(LIB_DIR)sunset442pm.a
 
-re: clean
-	all
-
 # Lol, both Makefile tutorial and Suisei already cover .PHONY
 # https://youtu.be/N029UUlH1Dc?si=8PragRfDm3MzFOBc
-.PHONY: all clean re
+.PHONY: all clean

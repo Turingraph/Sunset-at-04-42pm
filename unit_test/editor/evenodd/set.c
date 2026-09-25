@@ -2,7 +2,7 @@
 
 // time : O(1)
 // space: O(1)
-t_gradient	init_deep_sea()
+t_gradient	init_deep_wood()
 {
 	t_gradient	dst;
 
@@ -27,11 +27,11 @@ int	main(void)
 	t_render_style	style;
 
 	table = init_table_fdf(120, 120, true);
-	space_coloring_max_xy(&table);
+	paint_space(&table, HEIGHT, cell_metric_max_xy);
 	style.background_color = f_rgba_to_int32(0, 0, 0, 255);
 	style.line_thickness = 2;
 	style.artist = E_TOBY_FOX;
-	color_cells_gradient(&table, init_deep_sea(), true);
+	color_cells_gradient(&table, init_deep_wood(), true);
 	scale_multiplication_fdf(&table, 1.0 / 120.0, HEIGHT);
 	output = init_fdf(&table, NULL, 0.6);
 	view_fdf(&output, style);

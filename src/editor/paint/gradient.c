@@ -14,7 +14,7 @@
 
 // time : O(1)
 // space: O(1)
-int	gradient_smooth(t_fdf_channel rgba_type,
+static int	gradient_smooth(t_fdf_channel rgba_type,
 	t_gradient gradient_input, int input_threshold)
 {
 	float	y;
@@ -39,7 +39,7 @@ int	gradient_smooth(t_fdf_channel rgba_type,
 
 // time : O(1)
 // space: O(1)
-int	get_gradient_input(const t_table_fdf *src,
+static int	get_gradient_input(const t_table_fdf *src,
 	t_gradient_channel mode, size_t index)
 {
 	if (src == NULL)
@@ -65,7 +65,7 @@ int	get_gradient_input(const t_table_fdf *src,
 
 // time : O(1)
 // space: O(1)
-int	update_cell_color(int alpha, bool is_overwrite,
+static int	update_cell_color(int alpha, bool is_overwrite,
 	int dst, int new_color)
 {
 	float	dc;
@@ -82,7 +82,7 @@ int	update_cell_color(int alpha, bool is_overwrite,
 
 // time : O(1)
 // space: O(1)
-void	color_cells_gradient_unit(t_table_fdf *dst,
+static void	color_cells_gradient_unit(t_table_fdf *dst,
 	t_gradient gradient_input, bool is_overwrite, size_t i)
 {
 	int				threshold;

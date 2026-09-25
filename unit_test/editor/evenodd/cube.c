@@ -2,13 +2,13 @@
 
 // time : O(1)
 // space: O(1)
-t_gradient	init_deep_sea()
+t_gradient	init_deep_wood()
 {
 	t_gradient	dst;
 
 	dst.cell_channel = D7_HEIGHT;
 	dst.input_start = 0;
-	dst.input_end = 216;
+	dst.input_end = 300;
 	dst.rgba_start.r = 70;
 	dst.rgba_start.g = 75;
 	dst.rgba_start.b = 113;
@@ -20,6 +20,26 @@ t_gradient	init_deep_sea()
 	return (dst);
 }
 
+// time : O(1)
+// space: O(1)
+t_gradient	init_white_noise()
+{
+	t_gradient	dst;
+
+	dst.cell_channel = D7_HEIGHT;
+	dst.input_start = 0;
+	dst.input_end = 0;
+	dst.rgba_start.r = 0;
+	dst.rgba_start.g = 0;
+	dst.rgba_start.b = 0;
+	dst.rgba_start.a = 255;
+	dst.rgba_end.r = 0;
+	dst.rgba_end.g = 0;
+	dst.rgba_end.b = 0;
+	dst.rgba_end.a = 255;
+	return (dst);
+}
+
 int	main(void)
 {
 	t_table_fdf		table_base;
@@ -27,18 +47,18 @@ int	main(void)
 	t_fdf			output;
 	t_render_style	style;
 
-	table = init_table_fdf(120, 120, true);
-	table_base = init_table_fdf(120, 120, false);
-	space_coloring_pythagorus(&table);
-	set_cells_color(&table_base, 30, HEIGHT, is_andmod_sin);
+	table = init_table_fdf(300, 300, true);
+	table_base = init_table_fdf(300, 300, false);
+	paint_space(&table, HEIGHT, cell_metric_pythagoras);
+	set_cells_color(&table_base, 1, HEIGHT, is_andmod_x3);
 	table_fdf_hadamard(&table, &table_base, HEIGHT);
-	scale_relu_fdf(&table, 216, 2000, 0);
 	style.background_color = f_rgba_to_int32(0, 0, 0, 255);
 	style.line_thickness = 2;
-	style.artist = E_PICASSO;
-	color_cells_gradient(&table, init_deep_sea(), true);
+	style.artist = E_TOBY_FOX;
+	color_cells_gradient(&table, init_deep_wood(), true);
+	color_cells_gradient(&table, init_white_noise(), true);
 	scale_multiplication_fdf(&table, 1.0 / 120.0, HEIGHT);
-	output = init_fdf(&table, projection_cabinet, 0.6);
+	output = init_fdf(&table, NULL, 0.6);
 	view_fdf(&output, style);
 	free_table_fdf(&table);
 	free_table_fdf(&table_base);

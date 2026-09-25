@@ -2,7 +2,7 @@
 
 // time : O(1)
 // space: O(1)
-t_gradient	init_deep_sea()
+t_gradient	init_deep_wood()
 {
 	t_gradient	dst;
 
@@ -37,7 +37,7 @@ int	main(int len, char **str)
 	style.background_color = f_rgba_to_int32(255, 255, 255, 255);
 	style.line_thickness = 1;
 	style.artist = E_EULER;
-	color_cells_gradient(&table, init_deep_sea(), true);
+	color_cells_gradient(&table, init_deep_wood(), true);
 	scale_multiplication_fdf(&table, 1.0, HEIGHT);
 	output = init_fdf(&table, projection_military, 0.5);
 	view_fdf(&output, style);
