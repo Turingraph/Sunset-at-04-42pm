@@ -111,7 +111,8 @@ int	cell_metric_fermat_theorem(const t_table_fdf *dst, size_t index)
 	y = get_table_fdf_coordinate(dst, index, 1.0);
 	a = (int)f_pow(f_abs(y.re), 3);
 	b = (int)f_pow(f_abs(y.im), 3);
-	c = (int)f_floor(f_root_finding((float)(a + b), 3));
+	c = a + b;
+	c = (int)f_round(f_root_finding((float)c, 3));
 	c = (int)f_pow((int)c, 3);
-	return (a + b - c);
+	return (f_abs_int(a + b - c) * f_min_int(dst->col, dst->row));
 }
