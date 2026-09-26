@@ -772,6 +772,18 @@ t_table_fdf	convolve_fdf(const t_table_fdf *src, float *kernel,
 				size_t dim);
 
 /**
+ * Create a 1D Gaussian Blur kernel.
+ *
+ * time/space: O(n) / O(n)
+ *
+ * @param half_dim the half dimension of the kernel.
+ * @param std standard deviation arguments.
+ * @return allocated 1D kernel with 2 * half_dim + 1 items,
+ * or NULL if allocation fails
+ */
+float	*gaussian_kernel_1d(size_t half_dim, float std);
+
+/**
  * Create a 2D Blur Gaussian kernel from two 1D Gaussian kernels.
  *
  * time/space: O(n^2) / O(n^2)
@@ -787,6 +799,57 @@ t_table_fdf	convolve_fdf(const t_table_fdf *src, float *kernel,
  *  for more details
  */
 float	*gaussian_kernel(size_t half_dim, float std_1, float std_2);
+
+/**
+ * Create a 1D kernel with an inner region and an outer region.
+ *
+ * The inner region is centered on the kernel and uses inner_num.
+ * Remaining elements on both sides use outer_num.
+ * 
+ * time/space: O(n) / O(n)
+ *
+ * @param inner_dim dimension of the inner region.
+ * @param outer_dim dimension of the resulting kernel.
+ * @param inner_num value utilized by the inner region.
+ * @param outer_num value utilized by the outer region.
+ * @return allocated 1D kernel, or NULL if allocation fails
+ */
+float	*edge_kernel_1d(size_t inner_dim, size_t outer_dim,
+	float inner_num, float outer_num);
+
+/**
+ * Define the outer number for edge-detection/sharp convolution kernel.
+ * 
+ * time/space: O(1) / O(1)
+ * 
+ * @param inner_dim dimension of the inner region.
+ * @param outer_dim dimension of the outer region.
+ * @param input value utilized by the inner region.
+ * @param kernel_sum if kernel_sum = 1 means sharp, 0 means edge detection.
+ * @return value utilized by the outer region.
+ * @see Image convolution tutorial https://www.youtube.com/live/8rrHTtUzyZA?si=UZVlq0cpb2X95MZN
+ * for more details.
+ */
+float	define_outer_num(float inner_dim, float outer_dim, float input, float kernel_sum);
+
+/**
+ * Create a square edge-detection/sharp convolution kernel.
+ * The resulting kernel has odd dimensions, with a minimum dimension of 3.
+ * If inner_dim is greater than outer_dim, the dimensions are swapped.
+ * 
+ * time/space: O(n^2) / O(n^2)
+ * 
+ * status: public api
+ * 
+ * @param inner_dim dimension of the inner region.
+ * @param outer_dim dimension of the resulting square kernel.
+ * @param input value utilized by the inner region.
+ * @param kernel_sum if kernel_sum = 1 means sharp, 0 means edge detection.
+ * @return allocated square edge kernel, or NULL if allocation fails
+ * @see Image convolution tutorial https://www.youtube.com/live/8rrHTtUzyZA?si=UZVlq0cpb2X95MZN
+ * for more details.
+ */
+float	*edge_kernel(size_t inner_dim, size_t outer_dim, float input, float kernel_sum);
 
 /* ************************************************************************** */
 /* *** src/editor/evenodd/ *** */

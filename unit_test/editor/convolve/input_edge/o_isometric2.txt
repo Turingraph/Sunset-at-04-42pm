@@ -1,0 +1,66 @@
+ ;|=?1iii1=z^_  ;v?==;;;z=1iii1?=v;  _|==?v;                ^|vvviiv^                ;|=?1iii1=s^_  ;v?==;;;s=1iii1?=v;  _|==?v;                ^|vvviiv^               
+ .^v=?+i=z=zv;. ;^v+iv||z=z=i+?=v^; .^i++i^.           . ._v^vvv^|v;^_^_ .           .^v=?+i=s=sv;. ;^v+iv||s=s=i+?=v^; .^i++i^.           . ._v^vvv^|v;^_^_ .          
+ _;|vzz+=z=++|_ _.|v+|+i+=z=+zz||__ _vvzi|__            ._|zii+v|;^^;i|_.            _;|vss+=s=++|_ _.|v+|+i+=s=+ss||__ _vvsi|__            ._|sii+v|;^^;i|_.           
+  __|+=1==i+zv|._  |v+vz+i==1=+|. __viziv_.            ._|+1?+ii;  _iz|v_.            __|+=1==i+sv|._  |v+vs+i==1=+|. __visiv_.            ._|+1?+ii;  _is|v_.          
+ . ._|vi1+i+1iv|_;_;+iz?ii+?iv|;__;viiiv_. .        . ._|vz=T?z||_ _|||+v_. .        . ._|vi1+i+1iv|_;_;+is?ii+?iv|;__;viiiv_. .        . ._|vs=T?s||_ _|||+v_. .       
+    ._|v=z+==1z+v;;|vz?==+z=v|._ .vi=iv_.            ._|+z=11=+i|. _.v+=iv_.            ._|v=s+==1s+v;;|vs?==+s=v|._ .vi=iv_.            ._|+s=11=+i|. _.v+=iv_.        
+     ._|+=?==+++zzzz++i==?=+|. _.|i=iv_.            ._|v=z+iii+=v|._ .vi=iv_.            ._|+=?==+++ssss++i==?=+|. _.|i=iv_.            ._|v=s+iii+=v|._ .vi=iv_.       
+    . ._|vi1+ii======ii+?iv|;__;viiiv_. .        . ._|vi1+iiii+1iv|;__;viiiv_. .        . ._|vi1+ii======ii+?iv|;__;viiiv_. .        . ._|vi1+iiii+1iv|;__;viiiv_. .    
+       ._|v=z+=zzTTzz=i+zv|._ .vi=iv_.            ._|+=1===ii===1=+|. _.|i=iv_.            ._|v=s+=ssTTss=i+sv|._ .vi=iv_.            ._|+=1===ii===1=+|. _.|i=iv_.     
+        ._|+=?===ii=z=?zi^  _.|i=iv_.            ._|v=z+=zzTTzz=+z=v|._ .vi=iv_.            ._|+=?===ii=s=?si^  _.|i=iv_.            ._|v=s+=ssTTss=+s=v|._ .vi=iv_.    
+       . ._|vi1+iii===+=|| .;viiiv_. .        . ._|vi1+ii======ii+1iv|;__;viiiv_. .        . ._|vi1+iii===+=|| .;viiiv_. .        . ._|vi1+ii======ii+1iv|;__;viiiv_. . 
+          ._|v=z+iiz==+iv|;_|i=iv_.            ._|+=?==i++zzzz++i==1=+|. _.|iziv_.            ._|v=s+iis==+iv|;_|i=iv_.            ._|+=?==i++ssss++i==1=+|. _.|isiv_.  
+           ._|+z=11?z=ziv;^iiziv_.            ._|v=ziz=?zi|;;|iz?==+z=v|._ .|vziv_.            ._|+s=11?s=siv;^iisiv_.            ._|v=sis=?si|;;|is?==+s=v|._ .|vsiv_. 
+          . ._|vz=Tz=+v|vvvziiv_. .        . ._|vi?i===+=|;.^v+vz?ii+1iv|;. |v++v|_. .        . ._|vs=Ts=+v|vvvsiiv_. .        . ._|vi?i===+=|;.^v+vs?ii+1iv|;. |v++v|;_
+             ..|+?===zi|vvzzi|_.            __|+=1z=zz=+iv|_.^|+vz+i==1z+i_;|v+==+|_.            ..|+?===si|vvssi|_.            __|+=1s=ss=+iv|_.^|+vs+i==1s+i_;|v+==+v^
+              ..^ivzzi+vviii;..            _;|vzz+=zzz=z+v^^v|+|+i+=z=+zziv^^v+=zzv|__            ..^ivssi+vviii;..            _;|vss+=sss=s+v^^v|+|+i+=s=+ssiv^^v+=s+++
+              ..^iivi|i||||^;_.            .^v=?+i=zz=++^|^v?iiv||z=z=i+=+=v^|^+z?iv^.            ..^iivi|i||||^;_.            .^v=?+i=ss=++^|^v?iiv||s=s=i+=+=v^|^+s=1?
+              ..^+vviv^;^;;v^_.            ;v??1iiv1T=v;;;^+1T=;;;z=Tiii1T?+^;;;i?T?v;            ..^+vviv^;^;;v^_.            ;v??1iiv1T=v;;;^+1T=;;;s=Tiii1T?+^;;;isT$
+             ..|+??+ii;  .i+|v_.           ;v??1iii1z?+|  v=1z=;;;z=Tiii1=1zv  |+?z?v;           ..|+??+ii;  .i+|v_.           ;v??1iii1s?+|  v=1s=;;;s=Tiii1=1sv  |+=T$
+          . ._|vz=T?z||_ _|||+v_. .        .^v=?+i=z=+i|. ^|z+iv||z=z=i+=z+|^ .||=+v^.        . ._|vs=T?s||_ _|||+v_. .        .^v=?+i=s=+i|. ^|s+iv||s=s=i+=s+|^ .||s=?
+           ._|+z=11=+i|. _.v+=iv_.         _;|vzz+===+i^. _.|i+|+i+=z=+zzv|._ .|v+iv__         ._|+s=11=+i|. _.v+=iv_.         _;|vss+===+i^. _.|i+|+i+=s=+ssv|._ .|v+vs
+          ._|v=z+iii+=v|._ .vi=iv_.         __|+=1==i+zv|._  |v+vz+i==1=+|. _.|iziv_.         ._|v=s+iii+=v|._ .vi=iv_.         __|+=1==i+sv|._  |v+vs+i==1=+|. _.|isvi^
+       . ._|vi1+iiii+1iv|;__;viiiv_. .     . ._|vi1+i+1iv|_;_;+iz?ii+?iv|;__;viiiv_. .     . ._|vi1+iiii+1iv|;__;viiiv_. .     . ._|vi1+i+1iv|_;_;+is?ii+?iv|;__;viiiv^_
+        ._|+=1===ii===1=+|. _.|i=iv_.         ._|v=z+==1z+v;;|vz?==+z=v|._ .vi=iv_.         ._|+=1===ii===1=+|. _.|i=iv_.         ._|v=s+==1s+v;;|vs?==+s=v|._ .vi=iv_. 
+       ._|v=z+=zzTTzz=+z=v|._ .vi=iv_.         ._|+=?==+++zzzz++i==?=+|. _.|i=iv_.         ._|v=s+=ssTTss=+s=v|._ .vi=iv_.         ._|+=?==+++ssss++i==?=+|. _.|i=iv_.  
+    . ._|vi1+ii======ii+1iv|;__;viiiv_. .     . ._|vi1+ii======ii+?iv|;__;viiiv_. .     . ._|vi1+ii======ii+1iv|;__;viiiv_. .     . ._|vi1+ii======ii+?iv|;__;viiiv_. . 
+     ._|+=?==i++zzzz++i==1=+|. _.|iziv_.         ._|v=z+=zzTTzz=i+zv|._ .vi=iv_.         ._|+=?==i++ssss++i==1=+|. _.|isiv_.         ._|v=s+=ssTTss=i+sv|._ .vi=iv_.    
+    ._|v=ziz=?zi|;;|iz?==+z=v|._ .|vziv_.         ._|+=?===ii=z=?zi^  _.|i=iv_.         ._|v=sis=?si|;;|is?==+s=v|._ .|vsiv_.         ._|+=?===ii=s=?si^  _.|i=iv_.     
+ . ._|vi?i===+=|;.^v+vz?ii+1iv|;. |v++v|_. .     . ._|vi1+iii===+=|| .;viiiv_. .     . ._|vi?i===+=|;.^v+vs?ii+1iv|;. |v++v|_. .     . ._|vi1+iii===+=|| .;viiiv_. .    
+  __|+=1z=zz=+iv|_.^|+vz+i==1z+i_;|v+==+|_.         ._|v=z+iiz==+iv|;_|i=iv_.         __|+=1s=ss=+iv|_.^|+vs+i==1s+i_;|v+==+|_.         ._|v=s+iis==+iv|;_|i=iv_.       
+ _;|vzz+=zzz=z+v^^v|+|+i+=z=+zziv^^v+=zzv|__         ._|+z=11?z=ziv;^iiziv_.         _;|vss+=sss=s+v^^v|+|+i+=s=+ssiv^^v+=ssv|__         ._|+s=11?s=siv;^iisiv_.        
+ .^v=?+i=zz=++^|^v?iiv||z=z=i+=+=v^|^+z?iv^.        . ._|vz=Tz=+v|vvvziiv_. .        .^v=?+i=ss=++^|^v?iiv||s=s=i+=+=v^|^+s?iv^.        . ._|vs=Ts=+v|vvvsiiv_. .       
+ ;v??1iiv1T=v;;;^+1T=;;;z=Tiii1T?+^;;;i?T?v;           ..|+?===zi|vvzzi|_.           ;v??1iiv1T=v;;;^+1T=;;;s=Tiii1T?+^;;;i?T?v;           ..|+?===si|vvssi|_.          
+ ;v??1iii1z?+|  v=1z=;;;z=Tiii1=1zv  |+?z?v;            ..^ivzzi+vviii;..            ;v??1iii1s?+|  v=1s=;;;s=Tiii1=1sv  |+?s?v;            ..^ivssi+vviii;..           
+ .^v=?+i=z=+i|. ^|z+iv||z=z=i+=z+|^ .||=+v^.            ..^iivi|i||||^;_.            .^v=?+i=s=+i|. ^|s+iv||s=s=i+=s+|^ .||=+v^.            ..^iivi|i||||^;_.           
+ _;|vzz+===+i^. _.|i+|+i+=z=+zzv|._ .|v+iv__            ..^+vviv^;^;;v^_.            _;|vss+===+i^. _.|i+|+i+=s=+ssv|._ .|v+iv__            ..^+vviv^;^;;v^_.           
+  __|+=1==i+zv|._  |v+vz+i==1=+|. _.|iziv_.            ..|+??+ii;  .i+|v_.            __|+=1==i+sv|._  |v+vs+i==1=+|. _.|isiv_.            ..|+??+ii;  .i+|v_.          
+ . ._|vi1+i+1iv|_;_;+iz?ii+?iv|;__;viiiv_. .        . ._|vz=T?z||_ _|||+v_. .        . ._|vi1+i+1iv|_;_;+is?ii+?iv|;__;viiiv_. .        . ._|vs=T?s||_ _|||+v_. .       
+    ._|v=z+==1z+v;;|vz?==+z=v|._ .vi=iv_.            ._|+z=11=+i|. _.v+=iv_.            ._|v=s+==1s+v;;|vs?==+s=v|._ .vi=iv_.            ._|+s=11=+i|. _.v+=iv_.        
+     ._|+=?==+++zzzz++i==?=+|. _.|i=iv_.            ._|v=z+iii+=v|._ .vi=iv_.            ._|+=?==+++ssss++i==?=+|. _.|i=iv_.            ._|v=s+iii+=v|._ .vi=iv_.       
+    . ._|vi1+ii======ii+?iv|;__;viiiv_. .        . ._|vi1+iiii+1iv|;__;viiiv_. .        . ._|vi1+ii======ii+?iv|;__;viiiv_. .        . ._|vi1+iiii+1iv|;__;viiiv_. .    
+       ._|v=z+=zzTTzz=i+zv|._ .vi=iv_.            ._|+=1===ii===1=+|. _.|i=iv_.            ._|v=s+=ssTTss=i+sv|._ .vi=iv_.            ._|+=1===ii===1=+|. _.|i=iv_.     
+        ._|+=?===ii=z=?zi^  _.|i=iv_.            ._|v=z+=zzTTzz=+z=v|._ .vi=iv_.            ._|+=?===ii=s=?si^  _.|i=iv_.            ._|v=s+=ssTTss=+s=v|._ .vi=iv_.    
+       . ._|vi1+iii===+=|| .;viiiv_. .        . ._|vi1+ii======ii+1iv|;__;viiiv_. .        . ._|vi1+iii===+=|| .;viiiv_. .        . ._|vi1+ii======ii+1iv|;__;viiiv_. . 
+          ._|v=z+iiz==+iv|;_|i=iv_.            ._|+=?==i++zzzz++i==1=+|. _.|iziv_.            ._|v=s+iis==+iv|;_|i=iv_.            ._|+=?==i++ssss++i==1=+|. _.|isiv_.  
+           ._|+z=11?z=ziv;^iiziv_.            ._|v=ziz=?zi|;;|iz?==+z=v|._ .|vziv_.            ._|+s=11?s=siv;^iisiv_.            ._|v=sis=?si|;;|is?==+s=v|._ .|vsiv_. 
+          . ._|vz=Tz=+v|vvvziiv_. .        . ._|vi?i===+=|;.^v+vz?ii+1iv|;. |v++v|_. .        . ._|vs=Ts=+v|vvvsiiv_. .        . ._|vi?i===+=|;.^v+vs?ii+1iv|;. |v++v|;_
+             ..|+?===zi|vvzzi|_.            __|+=1z=zz=+iv|_.^|+vz+i==1z+i_;|v+==+|_.            ..|+?===si|vvssi|_.            __|+=1s=ss=+iv|_.^|+vs+i==1s+i_;|v+==+v^
+              ..^ivzzi+vviii;..            _;|vzz+=zzz=z+v^^v|+|+i+=z=+zziv^^v+=zzv|__            ..^ivssi+vviii;..            _;|vss+=sss=s+v^^v|+|+i+=s=+ssiv^^v+=s+++
+              ..^iivi|i||||^;_.            .^v=?+i=zz=++^|^v?iiv||z=z=i+=+=v^|^+z?iv^.            ..^iivi|i||||^;_.            .^v=?+i=ss=++^|^v?iiv||s=s=i+=+=v^|^+s=1?
+              ..^+vviv^;^;;v^_.            ;v??1iiv1T=v;;;^+1T=;;;z=Tiii1T?+^;;;i?T?v;            ..^+vviv^;^;;v^_.            ;v??1iiv1T=v;;;^+1T=;;;s=Tiii1T?+^;;;isT$
+             ..|+??+ii;  .i+|v_.           ;v??1iii1z?+|  v=1z=;;;z=Tiii1=1zv  |+?z?v;           ..|+??+ii;  .i+|v_.           ;v??1iii1s?+|  v=1s=;;;s=Tiii1=1sv  |+=T$
+          . ._|vz=T?z||_ _|||+v_. .        .^v=?+i=z=+i|. ^|z+iv||z=z=i+=z+|^ .||=+v^.        . ._|vs=T?s||_ _|||+v_. .        .^v=?+i=s=+i|. ^|s+iv||s=s=i+=s+|^ .||s=?
+           ._|+z=11=+i|. _.v+=iv_.         _;|vzz+===+i^. _.|i+|+i+=z=+zzv|._ .|v+iv__         ._|+s=11=+i|. _.v+=iv_.         _;|vss+===+i^. _.|i+|+i+=s=+ssv|._ .|v+vs
+          ._|v=z+iii+=v|._ .vi=iv_.         __|+=1==i+zv|._  |v+vz+i==1=+|. _.|iziv_.         ._|v=s+iii+=v|._ .vi=iv_.         __|+=1==i+sv|._  |v+vs+i==1=+|. _.|isvi^
+       . ._|vi1+iiii+1iv|;__;viiiv_. .     . ._|vi1+i+1iv|_;_;+iz?ii+?iv|;__;viiiv_. .     . ._|vi1+iiii+1iv|;__;viiiv_. .     . ._|vi1+i+1iv|_;_;+is?ii+?iv|;__;viiiv^_
+        ._|+=1===ii===1=+|. _.|i=iv_.         ._|v=z+==1z+v;;|vz?==+z=v|._ .vi=iv_.         ._|+=1===ii===1=+|. _.|i=iv_.         ._|v=s+==1s+v;;|vs?==+s=v|._ .vi=iv_. 
+       ._|v=z+=zzTTzz=+z=v|._ .vi=iv_.         ._|+=?==+++zzzz++i==?=+|. _.|i=iv_.         ._|v=s+=ssTTss=+s=v|._ .vi=iv_.         ._|+=?==+++ssss++i==?=+|. _.|i=iv_.  
+    . ._|vi1+ii======ii+1iv|;__;viiiv_. .     . ._|vi1+ii======ii+?iv|;__;viiiv_. .     . ._|vi1+ii======ii+1iv|;__;viiiv_. .     . ._|vi1+ii======ii+?iv|;__;viiiv_. . 
+     ._|+=?==i++zzzz++i==1=+|. _.|iziv_.         ._|v=z+=zzTTzz=i+zv|._ .vi=iv_.         ._|+=?==i++ssss++i==1=+|. _.|isiv_.         ._|v=s+=ssTTss=i+sv|._ .vi=iv_.    
+    ._|v=ziz=?zi|;;|iz?==+z=v|._ .|vziv_.         ._|+=?===ii=z=?zi^  _.|i=iv_.         ._|v=sis=?si|;;|is?==+s=v|._ .|vsiv_.         ._|+=?===ii=s=?si^  _.|i=iv_.     
+ . ._|vi?i===+=|;.^v+vz?ii+1iv|;. |v++v|_. .     . ._|vi1+iii===+=|| .;viiiv_. .     . ._|vi?i===+=|;.^v+vs?ii+1iv|;. |v++v|_. .     . ._|vi1+iii===+=|| .;viiiv_. .    
+  __|+=1z=zz=+iv|_.;|+vz+i==1z+v__|vi==+|__         ._vvz+iiiz==+iv|;_^iziv_.         __|+=1s=ss=+iv|_.;|+vs+i==1s+v__|vi==+|__         ._vvs+iiis==+iv|;_^isiv_.       
+ _;|vzz+=zzz=ziv;;v|+|+i+=z=+zziv;;v+zzzv|;_         ._|++z??=+=ziv;^v|ziv_.         _;|vss+=sss=siv;;v|+|+i+=s=+ssiv;;v+sssv|;_         ._|++s??=+=siv;^v|siv_.        
+ .^v=?+i=+?1zz^||iz=iv||z=z=ii=?zi|v|v??=v^.        . .;v+1111?zz^||iz=ii^. .        .^v=?+i=+?1ss^||is=iv||s=s=ii=?si|v|v??=v^.        . .;v+1111?ss^||is=ii^. .       
+ ;|=?1iii1??=v||i?T?z;;;z=1iii111?i||v=1?=|;           _^+?hh3=zv||i?T?z^_           ;|=?1iii1??=v||i?T?s;;;s=1iii111?i||v=1?=|;           _^+?hh3=sv||i?T?s^_          

@@ -36,10 +36,11 @@ int	main(int len, char **str)
 	}
 	style.background_color = f_rgba_to_int32(255, 255, 255, 255);
 	style.line_thickness = 1;
-	style.artist = E_EULER;
+	style.artist = E_TOBY_FOX;
+	scale_relu_fdf(&table, 0, 30, 0);
 	color_cells_gradient(&table, init_deep_wood(), true);
 	scale_multiplication_fdf(&table, 1.0, HEIGHT);
-	output = init_fdf(&table, projection_military, 0.5);
+	output = init_fdf(&table, NULL, 1.0);
 	view_fdf(&output, style);
 	free_table_fdf(&table);
 	free_fdf(&output);

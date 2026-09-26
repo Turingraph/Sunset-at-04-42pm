@@ -1,0 +1,18 @@
+iiiiiiivvv|^      ^|vvviiiiiiiiiiiiiiiiivvv|^      ^|vvviiiiiiiiiiiiiiiiivvv|^      ^|vvviiiiiiiiiiiiiiiiivvv|^      ^|vvviiiiiiiiii
+|||||||^iv^;;    ;;^vi^|||||||||||||||||^iv^;;    ;;^vi^|||||||||||||||||^iv^;;    ;;^vi^|||||||||||||||||^iv^;;    ;;^vi^||||||||||
+^^^^^^;|vzv||_  _||vzv|;^^^^^^^^^^^^^^^;|vzv||_  _||vzv|;^^^^^^^^^^^^^^^;|vsv||_  _||vsv|;^^^^^^^^^^^^^^^;|vsv||_  _||vsv|;^^^^^^^^^
+.....  ;i+z+^.  .^+z+i;  .............  ;i+z+^.  .^+z+i;  .............  ;i+s+^.  .^+s+i;  .............  ;i+s+^.  .^+s+i;  ........
+    _.__izv||_  _||vzi__._           _.__izv||_  _||vzi__._           _.__isv||_  _||vsi__._           _.__isv||_  _||vsi__._       
+     ..|vziv__  __vizv|..             ..|vziv__  __vizv|..             ..|vsiv__  __visv|..             ..|vsiv__  __visv|..        
+    ._|iziv_      _viziv_.           ._|iziv_      _viziv_.           ._|isiv_      _visiv_.           ._|isiv_      _visiv_.       
+ . ._viiiv;________;viiiv_. .     . ._viiiv;________;viiiv_. .     . ._viiiv;________;viiiv_. .     . ._viiiv;________;viiiv_. .    
+  ._vi=iv__ ^viiv^ __vi=iv_.       ._vi=iv__ ^viiv^ __vi=iv_.       ._vi=iv__ ^viiv^ __vi=iv_.       ._vi=iv__ ^viiv^ __vi=iv_.     
+ ._vi=iv_ _^^+11+^^_ _vi=iv_.     ._vi=iv_ _^^+11+^^_ _vi=iv_.     ._vi=iv_ _^^+11+^^_ _vi=iv_.     ._vi=iv_ _^^+11+^^_ _vi=iv_.    
+_;viiiv_. ;^vzTTzv^; ._viiiv_.   ._viiiv_. ;^vzTTzv^; ._viiiv_.   ._viiiv_. ;^vsTTsv^; ._viiiv_.   ._viiiv_. ;^vsTTsv^; ._viiiv_. . 
+vvvziv_.   v+?33?+v   ._viziv_..._viziv_.   v+?33?+v   ._viziv_..._visiv_.   v+?33?+v   ._visiv_..._visiv_.   v+?33?+v   ._visiv_.  
++z+vv_.    ;vzTTzv;    ._vv+i|...|i+vv_.    ;vzTTzv;    ._vv+i|...|i+vv_.    ;vsTTsv;    ._vv+i|...|i+vv_.    ;vsTTsv;    ._vv+i|_. 
+Tzzv;.   ..|vizziv|..   .;v?i+^^^+i?v;.   ..|vizziv|..   .;v?i+^^^+i?v;.   ..|vissiv|..   .;v?i+^^^+i?v;.   ..|vissiv|..   .;v?i+|_ 
+FT+v_   .||vv||||vv||.   _iz1?iii?1zi_   .||vv||||vv||.   _iz1?iii?1si_   .||vv||||vv||.   _is1?iii?1si_   .||vv||||vv||.   _is1?s| 
+$1+v_  _|^+zvi||ivz+^|_  _iz=1+++1=zi_  _|^+zvi||ivz+^|_  _iz=1+++1=si_  _|^+svi||ivs+^|_  _is=1+++1=si_  _|^+svi||ivs+^|_  _is=Tsv;
+h1+v_  .v++T+v||v+T++v.  _izz?iii?zzi_  .v++T+v||v+T++v.  _izz?iii?ssi_  .v++T+v||v+T++v.  _iss?iii?ssi_  .v++T+v||v+T++v.  _iss?+i^
+h1+v_  ;i11T1+^^+1T11i;  _v+1TzzzT1+v_  ;i11T1+^^+1T11i;  _v+1TzzzT1+v_  ;i11T1+^^+1T11i;  _v+1TsssT1+v_  ;i11T1+^^+1T11i;  _v+1T=sv

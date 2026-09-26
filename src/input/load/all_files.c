@@ -105,7 +105,7 @@ t_load_fdf_arr	load_all_fdf_lines(int fd,
 		line = get_next_line(fd, true);
 	}
 	free(line);
-	get_next_line(fd, false);
+	free(get_next_line(fd, false));
 	close(fd);
 	return (dst);
 }
