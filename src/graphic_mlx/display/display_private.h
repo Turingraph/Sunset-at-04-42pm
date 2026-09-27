@@ -24,19 +24,7 @@ t_line		init_draw_line_x(t_2d_camera camera, t_fdf *fdf, t_2d_int ixiy);
 
 void		draw_kusama_fdf(t_2d_hook *hook, bool is_draw, size_t thickness);
 void		draw_picasso_fdf(t_2d_hook *hook, bool is_draw, size_t thickness);
-void		draw_picasso_fdf_noend(t_2d_hook *hook, bool is_draw,
-				size_t thickness);
 void		draw_toby_fox_fdf(t_2d_hook *hook, bool is_draw);
-void		draw_tuyoki_fdf(t_2d_hook *hook, bool is_draw);
-void		draw_piet_mondrian_fdf(t_2d_hook *hook, bool is_draw);
-
-// draw_etc.c
-
-void		draw_euler_fdf(t_2d_hook *hook, bool is_draw);
-void		draw_poincare_fdf(t_2d_hook *hook, bool is_draw);
-void		draw_dijkstra_fdf(t_2d_hook *hook, bool is_draw);
-void		draw_warhol_fdf(t_2d_hook *hook, bool is_draw);
-void		draw_hirohiko_araki_fdf(t_2d_hook *hook, bool is_draw);
 
 // geometry.c
 
@@ -60,8 +48,6 @@ void		draw_circle_fdf(t_2d_int point,
 void		draw_rectangle_fdf(t_line line, int32_t ink,
 				t_2d_camera camera, mlx_image_t *img);
 void		draw_line_fdf(t_line line, t_ink32 ink,
-				t_2d_camera camera, mlx_image_t *img);
-void		draw_line_fdf_noend(t_line line, t_ink32 ink,
 				t_2d_camera camera, mlx_image_t *img);
 
 // verify.c

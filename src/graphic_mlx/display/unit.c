@@ -79,17 +79,3 @@ void	draw_line_fdf(t_line line, t_ink32 ink,
 		draw_circle_fdf(line.p2, ink, camera, dst);
 	}
 }
-
-// time : O(1)
-// space: O(1)
-void	draw_line_fdf_noend(t_line line, t_ink32 ink,
-	t_2d_camera camera, mlx_image_t *dst)
-{
-	t_line	boundary;
-
-	boundary.p1.x = 0;
-	boundary.p1.y = 0;
-	boundary.p2 = camera.window_size;
-	if (is_line_in_screen(camera, line) == true)
-		draw_line_generic_noend(dst, line, boundary, ink);
-}

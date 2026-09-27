@@ -92,28 +92,3 @@ void	draw_toby_fox_fdf(t_2d_hook *hook, bool is_draw)
 		ixiy.x += 1;
 	}
 }
-
-// time : O(n)
-// space: O(1)
-void	draw_tuyoki_fdf(t_2d_hook *hook, bool is_draw)
-{
-	t_2d_int	ixiy;
-	t_fdf		src;
-	t_ink32		ink;
-	t_line		line;
-
-	src = *hook->master_piece.fdf;
-	ixiy.x = 0;
-	while (0 < src.row - 1 && ixiy.x < (int)src.col - 1)
-	{
-		ixiy.y = 0;
-		while (ixiy.y < (int)src.row - 1)
-		{
-			ink = get_hook_ink32(hook, is_draw, ixiy, 0);
-			line = get_bigger_rectangle_from_hook(hook, false, ixiy);
-			draw_rectangle_fdf(line, ink.color, *hook->camera, hook->img);
-			ixiy.y += 1;
-		}
-		ixiy.x += 1;
-	}
-}

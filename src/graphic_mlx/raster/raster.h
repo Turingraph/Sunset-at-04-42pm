@@ -61,11 +61,6 @@ int32_t		f_rgba_to_int32(unsigned char r,
 void		color_background_mlx(mlx_image_t *dst, int32_t color);
 int32_t		get_table_rgba_int32(const t_table_fdf *src, size_t index);
 
-// line_generic_noend.c
-
-void		draw_line_generic_noend(mlx_image_t *dst,
-				t_line line, t_line boundary, t_ink32 ink);
-
 // line_generic.c
 
 void		draw_line_generic(mlx_image_t *dst,
