@@ -79,7 +79,7 @@ int	main(void)
 	color_cells_gradient(&table, init_all(), true);
 	style.background_color = f_rgba_to_int32(0, 0, 0, 255);
 	style.thickness = 3;
-	style.shape_2d = E_KUSAMA;
+	style.shape_2d = E_CIRCLE;
 	i = 0;
 	while (i < 24)
 	{

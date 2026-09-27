@@ -33,44 +33,13 @@ typedef struct s_2d_camera
 }	t_2d_camera;
 
 /*
- * Defines the artistic rendering pattern used to display an FDF object.
- *
- * The names are inspired by shape_2d, mathematicians, and creators whose
- * visual or conceptual style influences the corresponding renderer.
- *
- * E_PICASSO       = straight lines
- * E_TOBY_FOX      = pixel-art inspired grids
- * E_TUYOKI        = smaller pixel-art inspired grids
- * E_KUSAMA        = circles
- * E_EULER         = lines + circles
- * E_POINCARE      = circles with holes
- * E_DIJKSTRA      = lines + circles with holes
- * E_PIET_MONDRIAN = four rectangles per cell
- * E_WARHOL        = pixel-art grids + straight lines
- * E_HIROHIKO_ARAKI = pixel-art grids + network pattern
- */
-typedef enum t_art_style
-{
-	E_PICASSO,
-	E_TOBY_FOX,
-	E_TUYOKI,
-	E_KUSAMA,
-	E_EULER,
-	E_POINCARE,
-	E_DIJKSTRA,
-	E_PIET_MONDRIAN,
-	E_WARHOL,
-	E_HIROHIKO_ARAKI,
-}	t_art_style;
-
-/*
  * This struct control the drawing style of the Fdf.
  */
 typedef struct s_render_style
 {
 	int32_t		background_color;
 	size_t		thickness;
-	t_art_style	shape_2d;
+	t_2d_shape	shape_2d;
 }	t_render_style;
 
 /**

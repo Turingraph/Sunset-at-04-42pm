@@ -56,7 +56,7 @@ int	main(int len, char **str)
 	}
 	style.background_color = f_rgba_to_int32(0, 0, 0, 255);
 	style.line_thickness = 1;
-	style.artists = E_TOBY_FOX;
+	style.artists = E_RECTANGLE;
 	color_cells_gradient(&table, init_gradient(), true);
 	output = init_fdf(&table, NULL, 1.0);
 	view_fdf(&output, style);

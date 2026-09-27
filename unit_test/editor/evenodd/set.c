@@ -30,7 +30,7 @@ int	main(void)
 	paint_space(&table, HEIGHT, cell_metric_max_xy);
 	style.background_color = f_rgba_to_int32(0, 0, 0, 255);
 	style.thickness = 2;
-	style.shape_2d = E_TOBY_FOX;
+	style.shape_2d = E_RECTANGLE;
 	color_cells_gradient(&table, init_deep_wood(), true);
 	scale_multiplication_fdf(&table, 1.0 / 120.0, HEIGHT);
 	output = init_fdf(&table, NULL, 0.6);

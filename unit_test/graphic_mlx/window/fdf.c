@@ -53,7 +53,7 @@ int	main(int len, char **str)
 	}
 	style.background_color = f_rgba_to_int32(255, 255, 255, 255);
 	style.thickness = 1;
-	style.shape_2d = E_PICASSO;
+	style.shape_2d = E_LINE;
 	color_cells_gradient(&table, init_gradient(), true);
 	output = init_fdf(&table, projection_isometric, 0.5);
 	view_fdf(&output, style);

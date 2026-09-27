@@ -90,7 +90,7 @@ int	main(void)
 	}
 	style.background_color = f_rgba_to_int32(0, 0, 0, 255);
 	style.thickness = 2;
-	style.shape_2d = E_KUSAMA;
+	style.shape_2d = E_CIRCLE;
 	color_cells_gradient(&table, init_popart(), true);
 	color_cells_gradient(&table, init_feeling_blue(), true);
 	color_cells_gradient(&table, init_deep_wood(), true);

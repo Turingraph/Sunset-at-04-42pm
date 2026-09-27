@@ -30,7 +30,7 @@ int	main(void)
 	set_cells_color(&table_base, 10, HEIGHT, is_andmod_sin);
 	style.background_color = f_rgba_to_int32(0, 0, 0, 255);
 	style.thickness = 2;
-	style.shape_2d = E_TOBY_FOX;
+	style.shape_2d = E_RECTANGLE;
 	color_cells_gradient(&table_base, init_deep_wood(), true);
 	output = init_fdf(&table_base, NULL, 0.6);
 	view_fdf(&output, style);

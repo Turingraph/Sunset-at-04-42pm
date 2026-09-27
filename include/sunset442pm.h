@@ -2007,23 +2007,23 @@ t_complex	projection_wave(float x, float y, float z);
  * This control how to display Fdf object.
  * It is based on the name of my favorite creators.
  * 
- * E_PICASSO = straight line
- * E_TOBY_FOX = Pixel art inspired grids
+ * E_LINE = straight line
+ * E_RECTANGLE = Pixel art inspired grids
  * E_TUYOKI = Pixel art inspired grids (sometimes smaller than Toby Fox's grid)
- * E_KUSAMA = circle
- * E_EULER = E_PICASSO + E_KUSAMA = graph (without hole)
+ * E_CIRCLE = circle
+ * E_EULER = E_LINE + E_CIRCLE = graph (without hole)
  * E_POINCARE = donut (circle with hole)
  * E_DIJKSTRA = E_POINCARE + E_EULER = network (same as Euler but have hole)
  * E_PIET_MONDRIAN = 4 rectangles on each cells
- * E_WARHOL = E_TOBY_FOX + E_PICASSO
- * E_HIROHIKO_ARAKI = E_TOBY_FOX + E_DIJKSTRA (inspired by Jojo's Stand)
+ * E_WARHOL = E_RECTANGLE + E_LINE
+ * E_HIROHIKO_ARAKI = E_RECTANGLE + E_DIJKSTRA (inspired by Jojo's Stand)
  */
 typedef enum t_art_style
 {
-	E_PICASSO,
-	E_TOBY_FOX,
+	E_LINE,
+	E_RECTANGLE,
 	E_TUYOKI,
-	E_KUSAMA,
+	E_CIRCLE,
 	E_EULER,
 	E_POINCARE,
 	E_DIJKSTRA,

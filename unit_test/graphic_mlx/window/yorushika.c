@@ -76,7 +76,7 @@ int	main(int len, char **str)
 	}
 	style.background_color = f_rgba_to_int32(34, 79, 112, 255);
 	style.thickness = 2;
-	style.shape_2d = E_KUSAMA;
+	style.shape_2d = E_CIRCLE;
 	color_cells_gradient(&table, init_feeling_blue(), true);
 	color_cells_gradient(&table, init_popart(), true);
 	scale_multiplication_fdf(&table, 1.0 / 20.0, HEIGHT);

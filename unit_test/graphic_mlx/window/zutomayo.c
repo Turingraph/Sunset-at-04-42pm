@@ -76,7 +76,7 @@ int	main(int len, char **str)
 	}
 	style.background_color = f_rgba_to_int32(0, 0, 0, 255);
 	style.thickness = 1;
-	style.shape_2d = E_TOBY_FOX;
+	style.shape_2d = E_RECTANGLE;
 	color_cells_gradient(&table, init_ztmy_studyme(), true);
 	color_cells_gradient(&table, init_ztmy_timeleft(), true);
 	scale_multiplication_fdf(&table, 1.0 / 3.0, HEIGHT);
