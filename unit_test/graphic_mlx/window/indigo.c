@@ -35,8 +35,8 @@ int	main(int len, char **str)
 		return (0);
 	}
 	style.background_color = f_rgba_to_int32(255, 255, 255, 255);
-	style.line_thickness = 1;
-	style.artist = E_TOBY_FOX;
+	style.thickness = 1;
+	style.shape_2d = E_TOBY_FOX;
 	scale_relu_fdf(&table, 0, 30, 0);
 	color_cells_gradient(&table, init_deep_wood(), true);
 	scale_multiplication_fdf(&table, 1.0, HEIGHT);

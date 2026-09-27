@@ -84,7 +84,7 @@ void	draw_toby_fox_fdf(t_2d_hook *hook, bool is_draw)
 		ixiy.y = 0;
 		while (ixiy.y < (int)src.row - 1)
 		{
-			ink = get_hook_ink32(hook, is_draw, ixiy, 0);
+			ink = get_hook_ink32(hook, is_draw, ixiy);
 			line = get_bigger_rectangle_from_hook(hook, true, ixiy);
 			draw_rectangle_fdf(line, ink.color, *hook->camera, hook->img);
 			ixiy.y += 1;

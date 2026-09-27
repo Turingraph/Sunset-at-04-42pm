@@ -89,8 +89,8 @@ int	main(void)
 		i += 1;
 	}
 	style.background_color = f_rgba_to_int32(0, 0, 0, 255);
-	style.line_thickness = 2;
-	style.artist = E_KUSAMA;
+	style.thickness = 2;
+	style.shape_2d = E_KUSAMA;
 	color_cells_gradient(&table, init_popart(), true);
 	color_cells_gradient(&table, init_feeling_blue(), true);
 	color_cells_gradient(&table, init_deep_wood(), true);

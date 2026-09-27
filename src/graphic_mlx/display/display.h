@@ -17,7 +17,7 @@
 
 // public.c
 
-void		draw_fdf_mlx(t_2d_hook *hook, bool is_draw);
+void		draw_fdfmlx(t_2d_hook *hook, bool is_draw);
 
 // utils.c
 

@@ -32,17 +32,14 @@
  * @param hook FDF view context containing the image, camera, and FDF object
  * @param is_draw true to draw the FDF, false to erase it
  */
-void	draw_fdf_mlx(t_2d_hook *hook, bool is_draw)
+void	draw_fdfmlx(t_2d_hook *hook, bool is_draw)
 {
-	size_t	thickness;
-
 	if (is_2dhook_valid(hook) == false)
 		return ;
-	thickness = hook->master_piece.artstyle.line_thickness;
-	if (hook->master_piece.artstyle.artist == E_PICASSO)
-		draw_picasso_fdf(hook, is_draw, thickness);
-	if (hook->master_piece.artstyle.artist == E_KUSAMA)
-		draw_kusama_fdf(hook, is_draw, thickness);
-	if (hook->master_piece.artstyle.artist == E_TOBY_FOX)
+	if (hook->master_piece.artstyle.shape_2d == E_PICASSO)
+		draw_picasso_fdf(hook, is_draw);
+	if (hook->master_piece.artstyle.shape_2d == E_KUSAMA)
+		draw_kusama_fdf(hook, is_draw);
+	if (hook->master_piece.artstyle.shape_2d == E_TOBY_FOX)
 		draw_toby_fox_fdf(hook, is_draw);
 }

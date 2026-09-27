@@ -15,12 +15,12 @@
 // time : O(1)
 // space: O(1)
 static void	draw_kusama_fdf_unit(t_2d_hook *hook,
-	bool is_draw, t_2d_int ixiy, size_t thickness)
+	bool is_draw, t_2d_int ixiy)
 {
 	t_2d_int	position;
 	t_ink32		ink;
 
-	ink = get_hook_ink32(hook, is_draw, ixiy, thickness);
+	ink = get_hook_ink32(hook, is_draw, ixiy);
 	position = world_3d_to_screen_2d(*hook->camera,
 			get_fdf_point(hook->master_piece.fdf, ixiy, 1, 0),
 			get_fdf_point(hook->master_piece.fdf, ixiy, 2, 0));
@@ -29,7 +29,7 @@ static void	draw_kusama_fdf_unit(t_2d_hook *hook,
 
 // time : O(n)
 // space: O(1)
-void	draw_kusama_fdf(t_2d_hook *hook, bool is_draw, size_t thickness)
+void	draw_kusama_fdf(t_2d_hook *hook, bool is_draw)
 {
 	t_2d_int	ixiy;
 	t_fdf		src;
@@ -41,7 +41,7 @@ void	draw_kusama_fdf(t_2d_hook *hook, bool is_draw, size_t thickness)
 		ixiy.y = 0;
 		while (ixiy.y < (int)src.row)
 		{
-			draw_kusama_fdf_unit(hook, is_draw, ixiy, thickness);
+			draw_kusama_fdf_unit(hook, is_draw, ixiy);
 			ixiy.y += 1;
 		}
 		ixiy.x += 1;

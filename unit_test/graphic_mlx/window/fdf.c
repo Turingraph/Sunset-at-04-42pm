@@ -52,8 +52,8 @@ int	main(int len, char **str)
 		return (0);
 	}
 	style.background_color = f_rgba_to_int32(255, 255, 255, 255);
-	style.line_thickness = 1;
-	style.artist = E_PICASSO;
+	style.thickness = 1;
+	style.shape_2d = E_PICASSO;
 	color_cells_gradient(&table, init_gradient(), true);
 	output = init_fdf(&table, projection_isometric, 0.5);
 	view_fdf(&output, style);
@@ -63,6 +63,8 @@ int	main(int len, char **str)
 }
 
 /*
-valgrind --leak-check=full --show-leak-kinds=all ./unit_test/out/graphic_mlx/window/fdf.out input_examples/fdf/elem-fract.fdf
+valgrind --leak-check=full --show-leak-kinds=all 
+
+./unit_test/out/graphic_mlx/window/fdf.out input_examples/fdf/elem-fract.fdf
 
 */

@@ -22,8 +22,8 @@ t_line		init_draw_line_x(t_2d_camera camera, t_fdf *fdf, t_2d_int ixiy);
 
 // draw_*.c
 
-void		draw_kusama_fdf(t_2d_hook *hook, bool is_draw, size_t thickness);
-void		draw_picasso_fdf(t_2d_hook *hook, bool is_draw, size_t thickness);
+void		draw_kusama_fdf(t_2d_hook *hook, bool is_draw);
+void		draw_picasso_fdf(t_2d_hook *hook, bool is_draw);
 void		draw_toby_fox_fdf(t_2d_hook *hook, bool is_draw);
 
 // geometry.c
@@ -37,12 +37,11 @@ t_2d_int	world_3d_to_screen_2d(t_2d_camera camera, float x, float y);
 
 // public.c
 
-void		draw_fdf_mlx(t_2d_hook *hook, bool is_draw);
+void		draw_fdfmlx(t_2d_hook *hook, bool is_draw);
 
 // unit.c
 
-t_ink32		get_hook_ink32(t_2d_hook *hook, bool is_draw,
-				t_2d_int ixiy, size_t thickness);
+t_ink32		get_hook_ink32(t_2d_hook *hook, bool is_draw, t_2d_int ixiy);
 void		draw_circle_fdf(t_2d_int point,
 				t_ink32 ink, t_2d_camera camera, mlx_image_t *img);
 void		draw_rectangle_fdf(t_line line, int32_t ink,

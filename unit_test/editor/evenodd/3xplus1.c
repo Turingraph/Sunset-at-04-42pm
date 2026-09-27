@@ -33,8 +33,8 @@ int	main(void)
 	set_cells_color(&table_base, 1, HEIGHT, is_binary_search_andmod);
 	table_fdf_hadamard(&table, &table_base, HEIGHT);
 	style.background_color = f_rgba_to_int32(0, 0, 0, 255);
-	style.line_thickness = 2;
-	style.artist = E_TOBY_FOX;
+	style.thickness = 2;
+	style.shape_2d = E_TOBY_FOX;
 	color_cells_gradient(&table, init_deep_wood(), true);
 	output = init_fdf(&table, NULL, 0.6);
 	view_fdf(&output, style);

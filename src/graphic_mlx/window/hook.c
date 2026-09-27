@@ -128,9 +128,9 @@ void	hook_fdf_controller(mlx_key_data_t keydata, void *param)
 		return ;
 	before = after;
 	before += 0.366667;
-	draw_fdf_mlx(hook, false);
+	draw_fdfmlx(hook, false);
 	hook_zoom(keydata, hook);
 	hook_pan(keydata, hook->camera);
 	hook_home(keydata, hook);
-	draw_fdf_mlx(hook, true);
+	draw_fdfmlx(hook, true);
 }

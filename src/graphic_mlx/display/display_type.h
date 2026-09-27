@@ -35,7 +35,7 @@ typedef struct s_2d_camera
 /*
  * Defines the artistic rendering pattern used to display an FDF object.
  *
- * The names are inspired by artist, mathematicians, and creators whose
+ * The names are inspired by shape_2d, mathematicians, and creators whose
  * visual or conceptual style influences the corresponding renderer.
  *
  * E_PICASSO       = straight lines
@@ -69,8 +69,8 @@ typedef enum t_art_style
 typedef struct s_render_style
 {
 	int32_t		background_color;
-	size_t		line_thickness;
-	t_art_style	artist;
+	size_t		thickness;
+	t_art_style	shape_2d;
 }	t_render_style;
 
 /**

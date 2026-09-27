@@ -14,14 +14,13 @@
 
 // time : O(1)
 // space: O(1)
-t_ink32	get_hook_ink32(t_2d_hook *hook, bool is_draw, t_2d_int ixiy,
-	size_t thickness)
+t_ink32	get_hook_ink32(t_2d_hook *hook, bool is_draw, t_2d_int ixiy)
 {
 	t_ink32		ink;
 	t_fdf		*fdf;
 
 	fdf = hook->master_piece.fdf;
-	ink.thickness = thickness;
+	ink.thickness = hook->master_piece.artstyle.thickness;
 	ink.color = hook->master_piece.artstyle.background_color;
 	if (is_draw == true)
 		ink.color = get_fdf_rgba_int32((const t_fdf *)fdf,

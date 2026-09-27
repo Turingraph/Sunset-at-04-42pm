@@ -2038,8 +2038,8 @@ typedef enum t_art_style
 typedef struct s_render_style
 {
 	int32_t		background_color;
-	size_t		line_thickness;
-	t_art_style	artist;
+	size_t		thickness;
+	t_art_style	shape_2d;
 }	t_render_style;
 
 /* ************************************************************************** */

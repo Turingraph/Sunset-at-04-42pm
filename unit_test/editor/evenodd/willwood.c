@@ -78,8 +78,8 @@ int	main(void)
 	table_fdf_hadamard(&table, &table_base, HEIGHT);
 	color_cells_gradient(&table, init_all(), true);
 	style.background_color = f_rgba_to_int32(0, 0, 0, 255);
-	style.line_thickness = 3;
-	style.artist = E_KUSAMA;
+	style.thickness = 3;
+	style.shape_2d = E_KUSAMA;
 	i = 0;
 	while (i < 24)
 	{
