@@ -28,12 +28,11 @@ int	main(void)
 
 	table_base = init_table_fdf(161, 161, true);
 	set_cells_color(&table_base, 10, HEIGHT, is_andmod_sin);
-	style.background_color = f_rgba_to_int32(0, 0, 0, 255);
 	style.thickness = 2;
 	style.shape_2d = E_RECTANGLE;
 	color_cells_gradient(&table_base, init_deep_wood(), true);
 	output = init_fdf(&table_base, NULL, 0.6);
-	view_fdf(&output, style);
+	view_fdf(&output, style, f_rgba_to_int32(0, 0, 0, 255));
 	free_table_fdf(&table_base);
 	free_fdf(&output);
 	return (0);

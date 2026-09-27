@@ -74,7 +74,6 @@ int	main(int len, char **str)
 		free_table_fdf(&table);
 		return (0);
 	}
-	style.background_color = f_rgba_to_int32(34, 79, 112, 255);
 	style.thickness = 2;
 	style.shape_2d = E_CIRCLE;
 	color_cells_gradient(&table, init_feeling_blue(), true);
@@ -82,7 +81,7 @@ int	main(int len, char **str)
 	scale_multiplication_fdf(&table, 1.0 / 20.0, HEIGHT);
 	color_cells_gradient(&table, init_white_noise(), true);
 	output = init_fdf(&table, projection_military, 1.0);
-	view_fdf(&output, style);
+	view_fdf(&output, style, f_rgba_to_int32(34, 79, 112, 255));
 	free_table_fdf(&table);
 	free_fdf(&output);
 	return (0);

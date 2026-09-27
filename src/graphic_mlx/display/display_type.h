@@ -37,7 +37,6 @@ typedef struct s_2d_camera
  */
 typedef struct s_render_style
 {
-	int32_t		background_color;
 	size_t		thickness;
 	t_2d_shape	shape_2d;
 }	t_render_style;
@@ -63,6 +62,7 @@ typedef struct s_2d_hook
 	t_2d_camera		*camera;
 	t_render_style	artstyle;
 	t_fdf			*fdf;
+	int32_t			background_color;
 }	t_2d_hook;
 
 #endif

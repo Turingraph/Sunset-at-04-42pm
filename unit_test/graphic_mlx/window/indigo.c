@@ -34,14 +34,13 @@ int	main(int len, char **str)
 		free_table_fdf(&table);
 		return (0);
 	}
-	style.background_color = f_rgba_to_int32(255, 255, 255, 255);
 	style.thickness = 1;
 	style.shape_2d = E_RECTANGLE;
 	scale_relu_fdf(&table, 0, 30, 0);
 	color_cells_gradient(&table, init_deep_wood(), true);
 	scale_multiplication_fdf(&table, 1.0, HEIGHT);
 	output = init_fdf(&table, NULL, 1.0);
-	view_fdf(&output, style);
+	view_fdf(&output, style, f_rgba_to_int32(255, 255, 255, 255));
 	free_table_fdf(&table);
 	free_fdf(&output);
 	return (0);

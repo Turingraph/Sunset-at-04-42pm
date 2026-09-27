@@ -77,7 +77,6 @@ int	main(void)
 	set_cells_color(&table_base, 1, HEIGHT, is_oddlength_x2shadow);
 	table_fdf_hadamard(&table, &table_base, HEIGHT);
 	color_cells_gradient(&table, init_all(), true);
-	style.background_color = f_rgba_to_int32(0, 0, 0, 255);
 	style.thickness = 3;
 	style.shape_2d = E_CIRCLE;
 	i = 0;
@@ -91,7 +90,7 @@ int	main(void)
 	color_cells_gradient(&table, init_white_noise(), true);
 	scale_multiplication_fdf(&table, 1.0 / 30.0, HEIGHT);
 	output = init_fdf(&table, projection_cabinet, 1.3);
-	view_fdf(&output, style);
+	view_fdf(&output, style, f_rgba_to_int32(0, 0, 0, 255));
 	free_table_fdf(&table);
 	free_table_fdf(&table_base);
 	free_fdf(&output);

@@ -82,9 +82,10 @@ mlx_image_t	*init_mlx_image(mlx_t *mlx)
  * @param mlx MLX window context used by the view
  * @param fdf FDF object to display
  * @param artstyle style used to render the FDF object
+ * @param background_color the background color of the window scene.
  * @return initialized 2D FDF rendering context
  */
-t_2d_hook	init_2d_hook(mlx_t *mlx, t_fdf *fdf, t_render_style artstyle)
+t_2d_hook	init_2d_hook(mlx_t *mlx, t_fdf *fdf, t_render_style artstyle, int32_t background_color)
 {
 	t_2d_hook	dst;
 
@@ -93,6 +94,7 @@ t_2d_hook	init_2d_hook(mlx_t *mlx, t_fdf *fdf, t_render_style artstyle)
 	dst.fdf = fdf;
 	dst.artstyle = artstyle;
 	dst.img = init_mlx_image(mlx);
+	dst.background_color = background_color;
 	return (dst);
 }
 
