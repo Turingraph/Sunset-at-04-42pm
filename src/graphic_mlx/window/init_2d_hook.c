@@ -85,7 +85,7 @@ mlx_image_t	*init_mlx_image(mlx_t *mlx)
  * @param background_color the background color of the window scene.
  * @return initialized 2D FDF rendering context
  */
-t_2d_hook	init_2d_hook(mlx_t *mlx, t_fdf *fdf, t_render_style artstyle, int32_t background_color)
+t_2d_hook	init_2d_hook(mlx_t *mlx, t_fdf *fdf, t_fdf_render artstyle, int32_t background_color)
 {
 	t_2d_hook	dst;
 

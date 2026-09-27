@@ -24,7 +24,7 @@ int	main(void)
 {
 	t_table_fdf		table;
 	t_fdf			output;
-	t_render_style	style;
+	t_fdf_render	style;
 
 	table = init_table_fdf(120, 120, true);
 	paint_space(&table, HEIGHT, cell_metric_max_xy);

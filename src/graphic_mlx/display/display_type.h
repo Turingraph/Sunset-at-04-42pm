@@ -39,7 +39,7 @@ typedef struct s_render_style
 {
 	size_t		thickness;
 	t_2d_shape	shape_2d;
-}	t_render_style;
+}	t_fdf_render;
 
 /**
  * Runtime state required by the 2D MLX viewer.
@@ -60,7 +60,7 @@ typedef struct s_2d_hook
 	mlx_t			*mlx;
 	mlx_image_t		*img;
 	t_2d_camera		*camera;
-	t_render_style	artstyle;
+	t_fdf_render	artstyle;
 	t_fdf			*fdf;
 	int32_t			background_color;
 }	t_2d_hook;

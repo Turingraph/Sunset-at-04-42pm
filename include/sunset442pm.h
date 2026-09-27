@@ -2040,7 +2040,7 @@ typedef struct s_render_style
 	int32_t		background_color;
 	size_t		thickness;
 	t_art_style	shape_2d;
-}	t_render_style;
+}	t_fdf_render;
 
 /* ************************************************************************** */
 /* *** src/graphic_mlx/window/ *** */
@@ -2076,7 +2076,7 @@ typedef struct s_render_style
  * The default color of the FDF object is black.
  * @param artstyle style used to render the FDF object.
  */
-void	view_fdf(t_fdf *fdf, t_render_style artstyle);
+void	view_fdf(t_fdf *fdf, t_fdf_render artstyle);
 
 /* ************************************************************************** */
 /* *** src/graphic_mlx/motif/ *** */

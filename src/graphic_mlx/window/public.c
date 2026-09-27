@@ -70,10 +70,10 @@ void	view_fdf_handle_02(mlx_t *mlx, mlx_image_t *img)
  *
  * @param fdf FDF object to display.
  * The default color of the FDF object is black.
- * @param render_style style used to render the FDF object.
+ * @param fdf_render style used to render the FDF object.
  * @param background_color the background color of the window scene.
  */
-void	view_fdf(t_fdf *fdf, t_render_style render_style,
+void	view_fdf(t_fdf *fdf, t_fdf_render fdf_render,
 	int32_t background_color)
 {
 	mlx_t			*mlx;
@@ -85,7 +85,7 @@ void	view_fdf(t_fdf *fdf, t_render_style render_style,
 	window_width = 1920;
 	window_height = 1080;
 	mlx = mlx_init(window_width, window_height, "Sunset at 4:42pm", true);
-	hook = init_2d_hook(mlx, fdf, render_style, background_color);
+	hook = init_2d_hook(mlx, fdf, fdf_render, background_color);
 	if (view_fdf_handle_00(mlx, hook.img) == false)
 		return ;
 	camera = init_2d_camera(window_width, window_height);

@@ -17,6 +17,6 @@
 
 // public.c
 
-void		view_fdf(t_fdf *fdf, t_render_style drawing_style, int32_t background_color);
+void		view_fdf(t_fdf *fdf, t_fdf_render drawing_style, int32_t background_color);
 
 #endif

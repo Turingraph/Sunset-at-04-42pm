@@ -24,7 +24,7 @@ int	main(int len, char **str)
 {
 	t_table_fdf		table;
 	t_fdf			output;
-	t_render_style	style;
+	t_fdf_render	style;
 
 	if (len < 2)
 		return (0);

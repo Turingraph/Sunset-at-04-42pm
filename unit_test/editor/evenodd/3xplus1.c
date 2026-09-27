@@ -25,7 +25,7 @@ int	main(void)
 	t_table_fdf		table_base;
 	t_table_fdf		table;
 	t_fdf			output;
-	t_render_style	style;
+	t_fdf_render	style;
 
 	table = init_table_fdf(100, 100, true);
 	table_base = init_table_fdf(100, 100, false);

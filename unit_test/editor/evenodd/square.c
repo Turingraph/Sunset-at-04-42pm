@@ -44,7 +44,7 @@ int	main(void)
 {
 	t_table_fdf		table;
 	t_fdf			output;
-	t_render_style	style;
+	t_fdf_render	style;
 	t_table_fdf		table_base;
 
 	table_base = init_table_fdf(300, 300, false);
