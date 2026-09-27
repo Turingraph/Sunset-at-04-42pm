@@ -88,7 +88,8 @@ int	main(int len, char **str)
 }
 
 /*
-valgrind --leak-check=full --show-leak-kinds=all ./unit_test/out/graphic_mlx/window/zutomayo.out unit_test/editor/convolve/input_ascii/zutomayo_isometric2.txt
+valgrind --leak-check=full --show-leak-kinds=all 
+./unit_test/out/graphic_mlx/window/zutomayo.out unit_test/editor/convolve/input_ascii/zutomayo_isometric2.txt
 valgrind --leak-check=full --show-leak-kinds=all ./unit_test/out/graphic_mlx/window/zutomayo.out unit_test/editor/convolve/input_ascii_02/zutomayo_isometric2.txt
 
 ==2638489== 

@@ -20,7 +20,7 @@ static void	hook_pan(mlx_key_data_t keydata, t_2d_camera *camera)
 
 	if (camera == NULL || is_valid_pan_key(keydata) == false)
 		return ;
-	delta = 40;
+	delta = 100 * camera->zoom;
 	if (keydata.key == MLX_KEY_UP)
 		camera->offset.y += delta;
 	if (keydata.key == MLX_KEY_DOWN)
