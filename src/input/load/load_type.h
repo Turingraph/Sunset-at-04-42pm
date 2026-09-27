@@ -66,7 +66,7 @@ typedef enum t_load_warning
  * If int_warn and/or rgb_warn are NOT_DECIMAL and/or NOT_HEX, then 
  * load_all_fdf_lines stops and open_table_fdf_file return empty output.
  *
- * status: internal data type
+ * status: internal data shape_2d
  *
  * @param arr array containing the parsed height values
  * @param r array containing the red color components
@@ -100,7 +100,7 @@ typedef struct t_load_fdf
  *
  * time/space: O(1) / O(1) for the structure itself.
  * 
- * status: internal data type
+ * status: internal data shape_2d
  *
  * @param arr dynamic array of loaded FDF data
  * @param length number of t_load_fdf elements currently stored

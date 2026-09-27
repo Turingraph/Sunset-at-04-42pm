@@ -36,11 +36,11 @@ static void	draw_motif_mlx_unit(mlx_image_t *img,
 	i = 0;
 	while (i < src->motif->length)
 	{
-		if (arr[i].type == E_LINE)
+		if (arr[i].shape_2d == E_LINE)
 			draw_polygon_unittile(img, &(arr[i].polygon), arr[i].ink, tile);
-		else if (arr[i].type == E_CIRCLE)
+		else if (arr[i].shape_2d == E_CIRCLE)
 			draw_circle_unittile(img, &(arr[i].polygon), arr[i].ink, tile);
-		else if (arr[i].type == E_RECTANGLE)
+		else if (arr[i].shape_2d == E_RECTANGLE)
 			draw_rectangle_unittile(img, &(arr[i].polygon),
 				arr[i].ink.color, tile);
 		i += 1;

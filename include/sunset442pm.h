@@ -21,7 +21,7 @@
 # include <fcntl.h>
 
 /* ************************************************************************** */
-/* src/utils/type/type.h */
+/* src/utils/shape_2d/shape_2d.h */
 /* ************************************************************************** */
 
 /**
@@ -343,7 +343,7 @@ typedef enum t_load_warning
  * If int_warn and/or rgb_warn are NOT_DECIMAL and/or NOT_HEX, then 
  * load_all_fdf_lines stops and open_table_fdf_file return empty output.
  *
- * status: internal data type
+ * status: internal data shape_2d
  *
  * @param arr array containing the parsed height values
  * @param r array containing the red color components
@@ -377,7 +377,7 @@ typedef struct t_load_fdf
  *
  * time/space: O(1) / O(1) for the structure itself.
  * 
- * status: internal data type
+ * status: internal data shape_2d
  *
  * @param arr dynamic array of loaded FDF data
  * @param length number of t_load_fdf elements currently stored
@@ -1783,12 +1783,12 @@ int	cell_metric_fermat_theorem(const t_table_fdf *dst, size_t index);
 /**
  * Describes the rendering properties of a 2D motif or FDF drawing.
  * 
- * color stores the 32-bit drawing color. type determines how the associated
+ * color stores the 32-bit drawing color. shape_2d determines how the associated
  * geometry or FDF data is rendered. thickness controls the size of the
  * rendered primitive where applicable.
  * 
  * @param color 32-bit drawing color
- * @param thickness size parameter used by the selected rendering type
+ * @param thickness size parameter used by the selected rendering shape_2d
  */
 typedef struct s_ink32
 {
@@ -2103,7 +2103,7 @@ typedef struct s_2d_polygon
 /**
  * Supported 2D motif and rendering types.
  * 
- * The type determines how the motif geometry or FDF data is interpreted
+ * The shape_2d determines how the motif geometry or FDF data is interpreted
  * by the raster layer.
  * 
  * ENUM TYPE
@@ -2133,7 +2133,7 @@ typedef struct s_motif
 {
 	t_2d_polygon	polygon;
 	t_ink32			ink;
-	t_2d_shape		type;
+	t_2d_shape		shape_2d;
 }	t_motif;
 
 /**

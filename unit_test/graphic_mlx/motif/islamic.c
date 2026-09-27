@@ -73,42 +73,42 @@ int	main(void)
 			{
 				.polygon = thickline_arr_00,
 				.ink = ink,
-				.type = E_LINE,
+				.shape_2d = E_LINE,
 			},
 			{
 				.polygon = thickline_arr_01,
 				.ink = ink,
-				.type = E_LINE,
+				.shape_2d = E_LINE,
 			},
 			{
 				.polygon = thickline_arr_02,
 				.ink = ink,
-				.type = E_LINE,
+				.shape_2d = E_LINE,
 			},
 			{
 				.polygon = thickline_arr_03,
 				.ink = ink,
-				.type = E_LINE,
+				.shape_2d = E_LINE,
 			},
 			{
 				.polygon = polygon_00,
 				.ink = ink2,
-				.type = E_LINE,
+				.shape_2d = E_LINE,
 			},
 			{
 				.polygon = polygon_01,
 				.ink = ink2,
-				.type = E_LINE,
+				.shape_2d = E_LINE,
 			},
 			{
 				.polygon = polygon_02,
 				.ink = ink2,
-				.type = E_LINE,
+				.shape_2d = E_LINE,
 			},
 			{
 				.polygon = polygon_03,
 				.ink = ink2,
-				.type = E_LINE,
+				.shape_2d = E_LINE,
 			},
 		}
 	};

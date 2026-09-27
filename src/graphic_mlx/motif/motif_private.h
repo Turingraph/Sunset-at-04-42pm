@@ -27,7 +27,7 @@
  * the origin. This makes it possible to position a repeated motif
  * pattern without changing the motif itself.
  *
- * This type belongs to the motif renderer and is independent of FDF
+ * This shape_2d belongs to the motif renderer and is independent of FDF
  * data. It can therefore be used to build repeated geometric patterns
  * such as lines, circles, rectangles, Islamic geometric art, or other
  * tile-based drawings.
@@ -58,7 +58,7 @@ typedef struct s_tile_format
 * across the drawing area. The background color is used to fill the
 * area behind the rendered motif.
 *
-* This type belongs to the motif renderer and does not depend on FDF
+* This shape_2d belongs to the motif renderer and does not depend on FDF
 * data.
 *
 * status: internal helper

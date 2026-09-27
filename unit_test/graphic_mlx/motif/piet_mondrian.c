@@ -60,37 +60,37 @@ int	main(void)
 			{
 				.polygon = polygon_00,
 				.ink = ink_white,
-				.type = E_RECTANGLE
+				.shape_2d = E_RECTANGLE
 			},
 			{
 				.polygon = polygon_01,
 				.ink = ink_coco,
-				.type = E_RECTANGLE
+				.shape_2d = E_RECTANGLE
 			},
 			{
 				.polygon = polygon_02,
 				.ink = ink_blue,
-				.type = E_RECTANGLE
+				.shape_2d = E_RECTANGLE
 			},
 			{
 				.polygon = polygon_03,
 				.ink = ink_red,
-				.type = E_RECTANGLE
+				.shape_2d = E_RECTANGLE
 			},
 			{
 				.polygon = polygon_04,
 				.ink = ink_white,
-				.type = E_RECTANGLE
+				.shape_2d = E_RECTANGLE
 			},
 			{
 				.polygon = polygon_05,
 				.ink = ink_white,
-				.type = E_RECTANGLE
+				.shape_2d = E_RECTANGLE
 			},
 			{
 				.polygon = polygon_06,
 				.ink = ink_coco,
-				.type = E_RECTANGLE
+				.shape_2d = E_RECTANGLE
 			},
 		}
 	};
