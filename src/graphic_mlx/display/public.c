@@ -32,7 +32,7 @@
  * @param hook FDF view context containing the image, camera, and FDF object
  * @param is_draw true to draw the FDF, false to erase it
  */
-void	draw_fdfmlx(t_2d_hook *hook, bool is_draw)
+void	draw_fdf_mlx(t_2d_hook *hook, bool is_draw)
 {
 	if (is_2dhook_valid(hook) == false)
 		return ;

@@ -37,7 +37,7 @@ t_2d_int	world_3d_to_screen_2d(t_2d_camera camera, float x, float y);
 
 // public.c
 
-void		draw_fdfmlx(t_2d_hook *hook, bool is_draw);
+void		draw_fdf_mlx(t_2d_hook *hook, bool is_draw);
 
 // unit.c
 

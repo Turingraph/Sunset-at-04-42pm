@@ -90,7 +90,7 @@ void	view_fdf(t_fdf *fdf, t_render_style artstyle)
 	hook.camera = &camera;
 	scale_fdf_as_window_object(fdf, f_max(window_width, window_height));
 	color_background_mlx(hook.img, artstyle.background_color);
-	draw_fdfmlx(&hook, true);
+	draw_fdf_mlx(&hook, true);
 	if (-1 == view_fdf_handle_01(mlx, hook.img))
 	{
 		mlx_terminate(mlx);

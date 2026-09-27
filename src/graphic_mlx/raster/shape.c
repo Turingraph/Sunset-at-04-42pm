@@ -44,7 +44,7 @@ t_line	define_circle_line(t_2d_int point, int ix, int iy, char mode)
 
 // time : O(n)
 // space: O(1)
-static void	draw_horizontal_mlx(mlx_image_t *dst, t_line line,
+static void	draw_horizontal(mlx_image_t *dst, t_line line,
 	int32_t color, t_line boundary)
 {
 	int	start;
@@ -136,7 +136,7 @@ Reference
  * 
  * The circle is rasterized using integer arithmetic and four horizontal
  * spans are drawn for each calculated point. Pixels outside the boundary
- * are clipped by draw_horizontal_mlx().
+ * are clipped by draw_horizontal().
  * 
  * This function also used for drawing the end point of straight line.
  * 
@@ -165,13 +165,13 @@ void	draw_circle(mlx_image_t *dst,
 	while (dst != NULL && ix <= -1 * iy)
 	{
 		line = define_circle_line(point, ix, iy, 0);
-		draw_horizontal_mlx(dst, line, ink.color, boundary);
+		draw_horizontal(dst, line, ink.color, boundary);
 		line = define_circle_line(point, ix, iy, 1);
-		draw_horizontal_mlx(dst, line, ink.color, boundary);
+		draw_horizontal(dst, line, ink.color, boundary);
 		line = define_circle_line(point, ix, iy, 2);
-		draw_horizontal_mlx(dst, line, ink.color, boundary);
+		draw_horizontal(dst, line, ink.color, boundary);
 		line = define_circle_line(point, ix, iy, 3);
-		draw_horizontal_mlx(dst, line, ink.color, boundary);
+		draw_horizontal(dst, line, ink.color, boundary);
 		if (pivot > 0)
 			iy += 1;
 		if (pivot > 0)
