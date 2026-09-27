@@ -36,10 +36,10 @@ void	draw_fdf_mlx(t_2d_hook *hook, bool is_draw)
 {
 	if (is_2dhook_valid(hook) == false)
 		return ;
-	if (hook->master_piece.artstyle.shape_2d == E_LINE)
+	if (hook->artstyle.shape_2d == E_LINE)
 		draw_picasso_fdf(hook, is_draw);
-	if (hook->master_piece.artstyle.shape_2d == E_CIRCLE)
+	if (hook->artstyle.shape_2d == E_CIRCLE)
 		draw_kusama_fdf(hook, is_draw);
-	if (hook->master_piece.artstyle.shape_2d == E_RECTANGLE)
+	if (hook->artstyle.shape_2d == E_RECTANGLE)
 		draw_toby_fox_fdf(hook, is_draw);
 }

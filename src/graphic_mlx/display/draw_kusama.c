@@ -22,8 +22,8 @@ static void	draw_kusama_fdf_unit(t_2d_hook *hook,
 
 	ink = get_hook_ink32(hook, is_draw, ixiy);
 	position = world_3d_to_screen_2d(*hook->camera,
-			get_fdf_point(hook->master_piece.fdf, ixiy, 1, 0),
-			get_fdf_point(hook->master_piece.fdf, ixiy, 2, 0));
+			get_fdf_point(hook->fdf, ixiy, 1, 0),
+			get_fdf_point(hook->fdf, ixiy, 2, 0));
 	draw_circle_fdf(position, ink, *hook->camera, hook->img);
 }
 
@@ -34,7 +34,7 @@ void	draw_kusama_fdf(t_2d_hook *hook, bool is_draw)
 	t_2d_int	ixiy;
 	t_fdf		src;
 
-	src = *hook->master_piece.fdf;
+	src = *hook->fdf;
 	ixiy.x = 0;
 	while (0 < src.row && ixiy.x < (int)src.col)
 	{

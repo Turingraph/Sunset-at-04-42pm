@@ -28,11 +28,11 @@ t_line	get_rectangle_from_hook(t_2d_hook *hook, bool mode, t_2d_int ixiy)
 		r = 2;
 	}
 	rec.p1 = world_3d_to_screen_2d(*hook->camera,
-			get_fdf_point(hook->master_piece.fdf, ixiy, 1, l),
-			get_fdf_point(hook->master_piece.fdf, ixiy, 2, l));
+			get_fdf_point(hook->fdf, ixiy, 1, l),
+			get_fdf_point(hook->fdf, ixiy, 2, l));
 	rec.p2 = world_3d_to_screen_2d(*hook->camera,
-			get_fdf_point(hook->master_piece.fdf, ixiy, 1, r),
-			get_fdf_point(hook->master_piece.fdf, ixiy, 2, r));
+			get_fdf_point(hook->fdf, ixiy, 1, r),
+			get_fdf_point(hook->fdf, ixiy, 2, r));
 	return (rec);
 }
 
@@ -77,7 +77,7 @@ void	draw_toby_fox_fdf(t_2d_hook *hook, bool is_draw)
 	t_ink32		ink;
 	t_line		line;
 
-	src = *hook->master_piece.fdf;
+	src = *hook->fdf;
 	ixiy.x = 0;
 	while (0 < src.row - 1 && ixiy.x < (int)src.col - 1)
 	{

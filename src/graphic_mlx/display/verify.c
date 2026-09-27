@@ -20,7 +20,7 @@ bool	is_2dhook_valid(const t_2d_hook *src)
 		|| src->camera == NULL
 		|| src->img == NULL
 		|| src->mlx == NULL
-		|| is_fdf_valid(src->master_piece.fdf) == false)
+		|| is_fdf_valid(src->fdf) == false)
 		return (false);
 	return (true);
 }

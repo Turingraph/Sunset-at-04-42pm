@@ -90,8 +90,8 @@ t_2d_hook	init_2d_hook(mlx_t *mlx, t_fdf *fdf, t_render_style artstyle)
 
 	dst.mlx = mlx;
 	dst.camera = NULL;
-	dst.master_piece.fdf = fdf;
-	dst.master_piece.artstyle = artstyle;
+	dst.fdf = fdf;
+	dst.artstyle = artstyle;
 	dst.img = init_mlx_image(mlx);
 	return (dst);
 }

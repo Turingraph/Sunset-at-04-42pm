@@ -21,7 +21,7 @@ static void	draw_picassoy_fdf_unit(t_2d_hook *hook,
 	t_ink32		ink;
 
 	ink = get_hook_ink32(hook, is_draw, ixiy);
-	line = init_draw_line_y(*hook->camera, hook->master_piece.fdf, ixiy);
+	line = init_draw_line_y(*hook->camera, hook->fdf, ixiy);
 	draw_line_fdf(line, ink, *(hook->camera), hook->img);
 }
 
@@ -34,7 +34,7 @@ static void	draw_picassox_fdf_unit(t_2d_hook *hook,
 	t_ink32		ink;
 
 	ink = get_hook_ink32(hook, is_draw, ixiy);
-	line = init_draw_line_x(*hook->camera, hook->master_piece.fdf, ixiy);
+	line = init_draw_line_x(*hook->camera, hook->fdf, ixiy);
 	draw_line_fdf(line, ink, *(hook->camera), hook->img);
 }
 
@@ -45,7 +45,7 @@ static void	draw_picassox_fdf(t_2d_hook *hook, bool is_draw)
 	t_2d_int	ixiy;
 	t_fdf		src;
 
-	src = *hook->master_piece.fdf;
+	src = *hook->fdf;
 	ixiy.x = 0;
 	while (0 < src.row && ixiy.x < (int)src.col - 1)
 	{
@@ -66,7 +66,7 @@ static void	draw_picassoy_fdf(t_2d_hook *hook, bool is_draw)
 	t_2d_int	ixiy;
 	t_fdf		src;
 
-	src = *hook->master_piece.fdf;
+	src = *hook->fdf;
 	ixiy.x = 0;
 	while (1 < src.row && ixiy.x < (int)src.col)
 	{
