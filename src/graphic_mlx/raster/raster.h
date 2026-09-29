@@ -67,7 +67,6 @@ typedef struct s_ink32
  * - E_CIRCLE draws circular geometry.
  * 
  * - E_LINE draws polygon edges as lines.
- * 
  */
 typedef enum t_2d_shape
 {

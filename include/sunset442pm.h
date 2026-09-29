@@ -1797,14 +1797,33 @@ typedef struct s_ink32
 }	t_ink32;
 
 /**
+ * Supported 2D motif and rendering types.
+ * 
+ * The type determines how the motif geometry or FDF data is interpreted
+ * by the raster layer.
+ * 
+ * ENUM TYPE
+ * 
+ * - E_RECTANGLE draws rectangular geometry.
+ * 
+ * - E_CIRCLE draws circular geometry.
+ * 
+ * - E_LINE draws polygon edges as lines.
+ */
+typedef enum t_2d_shape
+{
+	E_RECTANGLE,
+	E_CIRCLE,
+	E_LINE,
+}	t_2d_shape;
+
+/**
  * Pack individual RGBA channels into a 32-bit color value.
  *
  * The channels are packed in RGBA order, with red as the most
  * significant byte and alpha as the least significant byte.
  *
  * time/space: O(1) / O(1)
- *
- * status: public api
  *
  * @param r red channel value
  * @param g green channel value
@@ -2004,42 +2023,12 @@ t_complex	projection_wave(float x, float y, float z);
 /* ************************************************************************** */
 
 /*
- * This control how to display Fdf object.
- * It is based on the name of my favorite creators.
- * 
- * E_LINE = straight line
- * E_RECTANGLE = Pixel art inspired grids
- * E_TUYOKI = Pixel art inspired grids (sometimes smaller than Toby Fox's grid)
- * E_CIRCLE = circle
- * E_EULER = E_LINE + E_CIRCLE = graph (without hole)
- * E_POINCARE = donut (circle with hole)
- * E_DIJKSTRA = E_POINCARE + E_EULER = network (same as Euler but have hole)
- * E_PIET_MONDRIAN = 4 rectangles on each cells
- * E_WARHOL = E_RECTANGLE + E_LINE
- * E_HIROHIKO_ARAKI = E_RECTANGLE + E_DIJKSTRA (inspired by Jojo's Stand)
- */
-typedef enum t_art_style
-{
-	E_LINE,
-	E_RECTANGLE,
-	E_TUYOKI,
-	E_CIRCLE,
-	E_EULER,
-	E_POINCARE,
-	E_DIJKSTRA,
-	E_PIET_MONDRIAN,
-	E_WARHOL,
-	E_HIROHIKO_ARAKI,
-}	t_art_style;
-
-/*
  * This struct control the drawing style of the Fdf.
  */
 typedef struct s_render_style
 {
-	int32_t		background_color;
 	size_t		thickness;
-	t_art_style	shape_2d;
+	t_2d_shape	shape_2d;
 }	t_fdf_render;
 
 /* ************************************************************************** */
@@ -2047,7 +2036,7 @@ typedef struct s_render_style
 /* ************************************************************************** */
 
 /**
- * Display an FDF object in an interactive 1920x1080 MLX window.
+ * Display an FDF object in an interactive a 1920x1080 MLX window.
  *
  * The FDF object is scaled to fit the viewing area.
  * The drawing style controls how the FDF object is
@@ -2061,10 +2050,10 @@ typedef struct s_render_style
  * 
  * - "ESC" = close the MLX window
  * 
- * - "Q" = reset FDF object
+ * - "Q" = reset 3D Fdf object
  * 
  * - "Left", "Right", "Up", "Down" = Panning the
- * FDF Object on 2D screen accordingly.
+ * 3D Fdf Object on 2D screen accordingly.
  * 
  * - "9" = Zoom in
  * 
@@ -2072,11 +2061,15 @@ typedef struct s_render_style
  *
  * time/space: O(n) / O(n)
  *
+ * status: public api
+ *
  * @param fdf FDF object to display.
  * The default color of the FDF object is black.
- * @param artstyle style used to render the FDF object.
+ * @param fdf_render style used to render the FDF object.
+ * @param background_color the background color of the window scene.
  */
-void	view_fdf(t_fdf *fdf, t_fdf_render artstyle);
+void	view_fdf(t_fdf *fdf, t_fdf_render fdf_render,
+			int32_t background_color);
 
 /* ************************************************************************** */
 /* *** src/graphic_mlx/motif/ *** */
@@ -2099,28 +2092,6 @@ typedef struct s_2d_polygon
 	size_t		length;
 	bool		is_loop;
 }	t_2d_polygon;
-
-/**
- * Supported 2D motif and rendering types.
- * 
- * The shape_2d determines how the motif geometry or FDF data is interpreted
- * by the raster layer.
- * 
- * ENUM TYPE
- * 
- * - E_RECTANGLE draws rectangular geometry.
- * 
- * - E_CIRCLE draws circular geometry.
- * 
- * - E_LINE draws polygon edges as lines.
- * 
- */
-typedef enum t_2d_shape
-{
-	E_RECTANGLE,
-	E_CIRCLE,
-	E_LINE,
-}	t_2d_shape;
 
 /**
  * Reusable 2D drawing motif composed of geometry and drawing properties.
