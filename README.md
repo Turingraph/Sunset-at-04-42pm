@@ -1,9 +1,3 @@
-To Do Now
-1.	Optimize line
-2.	Fix header file
-3.	Fixing calligraphy fanart accordingly
-4.	More examples.
-
 # Description
 
 The project is named as Sunset at 4.42pm. It is made from C files, header files, Makefile, and MLX42 library. It is used for displaying beautiful artistic 3D Wireframe image based on user text files and user customized graphic configuration.
@@ -125,7 +119,7 @@ See `doc/contribution/` for more details.
 This project is based on FDF42 which is 3D graphic 42 Coding School assignment. The purpose of this assignment is to convert the `.fdf` files with the columns of integer to 3D isometric wireframe, and display it on 2D screen using MLX42 library (https://github.com/codam-coding-college/MLX42/tree/master).
 
 ```
-#include"window.h"
+#include "sunset442pm.h"
 
 // time : O(1)
 // space: O(1)
@@ -147,17 +141,29 @@ t_gradient	init_gradient()
 	return (dst);
 }
 
+// time : O(n)
+// space: O(1)
+bool	is_fdf_name(const char *str)
+{
+	size_t	len;
+
+	len = f_strlen(str);
+	if (len < 5
+		|| str[len - 1] != 'f'
+		|| str[len - 2] != 'd'
+		|| str[len - 3] != 'f'
+		|| str[len - 4] != '.')
+		return (false);
+	return (true);
+}
+
 int	main(int len, char **str)
 {
 	t_table_fdf		table;
 	t_fdf			output;
-	t_artstyle32	style;
+	t_fdf_render	style;
 
-	if (len < 2 || f_strlen(str[1]) < 5
-		|| str[1][f_strlen(str[1]) - 1] != 'f'
-		|| str[1][f_strlen(str[1]) - 2] != 'd'
-		|| str[1][f_strlen(str[1]) - 3] != 'f'
-		|| str[1][f_strlen(str[1]) - 4] != '.')
+	if (len < 2 || is_fdf_name(str[1]) == false)
 		return (0);
 	table = open_table_fdf_file(str[1], NULL, parse_fdf_line_rgba, true);
 	if (table.col * table.row == 0)
@@ -166,18 +172,17 @@ int	main(int len, char **str)
 		free_table_fdf(&table);
 		return (0);
 	}
-	style.background_color = f_rgba_to_int32(255, 255, 255, 255);
-	style.line_thickness = 1;
-	style.artists = E_LINE;
+	style.thickness = 1;
+	style.shape_2d = E_LINE;
 	color_cells_gradient(&table, init_gradient(), true);
 	output = init_fdf(&table, projection_isometric, 0.5);
-	view_fdf(&output, style);
+	view_fdf(&output, style, f_rgba_to_int32(255, 255, 255, 255));
 	free_table_fdf(&table);
 	free_fdf(&output);
 	return (0);
 }
 
-./fdf input_examples/fdf/42.fdf
+./unit_test/out/graphic_mlx/window/fdf.out input_examples/fdf/42.fdf
 ```
 
 as this picture.
@@ -199,7 +204,7 @@ User can also convert `txt` file (including Figlet output), for examples `input_
 using this code
 
 ```
-#include"window.h"
+#include "sunset442pm.h"
 
 // time : O(1)
 // space: O(1)
@@ -265,7 +270,7 @@ int	main(int len, char **str)
 {
 	t_table_fdf		table;
 	t_fdf			output;
-	t_artstyle32	style;
+	t_fdf_render	style;
 
 	if (len < 2)
 		return (0);
@@ -275,21 +280,20 @@ int	main(int len, char **str)
 		free_table_fdf(&table);
 		return (0);
 	}
-	style.background_color = f_rgba_to_int32(0, 0, 0, 255);
-	style.line_thickness = 1;
-	style.artists = E_LINE;
+	style.thickness = 3;
+	style.shape_2d = E_LINE;
 	color_cells_gradient(&table, init_ztmy_studyme(), true);
 	color_cells_gradient(&table, init_ztmy_timeleft(), true);
 	scale_multiplication_fdf(&table, 1.0 / 3.0, HEIGHT);
 	color_cells_gradient(&table, init_white_noise(), true);
 	output = init_fdf(&table, projection_isometric, 1.0);
-	view_fdf(&output, style);
+	view_fdf(&output, style, f_rgba_to_int32(0, 0, 0, 255));
 	free_table_fdf(&table);
 	free_fdf(&output);
 	return (0);
 }
 
-./fdf input_examples/convolve/zutomayo_isometric2.txt
+valgrind --leak-check=full --show-leak-kinds=all ./unit_test/out/graphic_mlx/window/zutomayo.out unit_test/editor/convolve/input_ascii/zutomayo_isometric2.txt
 ```
 
 as this picture.
