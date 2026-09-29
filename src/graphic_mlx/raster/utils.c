@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "raster.h"
+#include "raster_private.h"
 
 /**
  * This function is used for checking if x and y position is in the boundary.

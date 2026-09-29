@@ -1,4 +1,4 @@
-#include "raster.h"
+#include "raster_private.h"
 
 /**
  * Draw a filled circle using the midpoint circle algorithm.
@@ -183,7 +183,3 @@ void	draw_circle_half_down(mlx_image_t *dst,
 		pivot += 2 * ix + 1;
 	}
 }
-
-/*
-
-*/

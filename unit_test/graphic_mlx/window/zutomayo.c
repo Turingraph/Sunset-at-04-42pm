@@ -74,7 +74,7 @@ int	main(int len, char **str)
 		free_table_fdf(&table);
 		return (0);
 	}
-	style.thickness = 6;
+	style.thickness = 3;
 	style.shape_2d = E_LINE;
 	color_cells_gradient(&table, init_ztmy_studyme(), true);
 	color_cells_gradient(&table, init_ztmy_timeleft(), true);

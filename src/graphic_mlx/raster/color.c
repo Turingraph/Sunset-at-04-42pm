@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "raster.h"
+#include "raster_private.h"
 
 /**
  * Pack individual RGBA channels into a 32-bit color value.

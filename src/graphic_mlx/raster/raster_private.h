@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RASTER_H
-# define RASTER_H
+#ifndef RASTER_PRIVATE_H
+# define RASTER_PRIVATE_H
 
 # include "../../utils/green_counts/green_counts.h"
 # include "../../utils/libft/libft.h"
@@ -76,8 +76,24 @@ typedef enum t_2d_shape
 	E_LINE,
 }	t_2d_shape;
 
+// circle_partial.c
+
+void		draw_circle_half_left(mlx_image_t *dst,
+				t_2d_int point, t_ink32 ink, t_line boundary);
+void		draw_circle_half_right(mlx_image_t *dst,
+				t_2d_int point, t_ink32 ink, t_line boundary);
+void		draw_circle_half_up(mlx_image_t *dst,
+				t_2d_int point, t_ink32 ink, t_line boundary);
+void		draw_circle_half_down(mlx_image_t *dst,
+				t_2d_int point, t_ink32 ink, t_line boundary);
+
+
 // circle.c
 
+t_line		define_circle_line(t_2d_int point, int ix,
+				int iy, char mode);
+void		draw_horizontal(mlx_image_t *dst, t_line line,
+				int32_t color, t_line boundary);
 void		draw_circle(mlx_image_t *dst,
 				t_2d_int point, t_ink32 ink, t_line boundary);
 
@@ -93,8 +109,23 @@ int32_t		get_table_rgba_int32(const t_table_fdf *src, size_t index);
 void		draw_line_generic(mlx_image_t *dst,
 				t_line line, t_line boundary, t_ink32 ink);
 
+// line_x.c
+
+void		draw_line_thick_x_minus(mlx_image_t *dst,
+				t_line line, t_line boundary, t_ink32 ink);
+void		draw_line_thick_x_plus(mlx_image_t *dst,
+				t_line line, t_line boundary, t_ink32 ink);
+
+// line_y.c
+
+void		draw_line_thick_y_minus(mlx_image_t *dst,
+				t_line line, t_line boundary, t_ink32 ink);
+void		draw_line_thick_y_plus(mlx_image_t *dst,
+				t_line line, t_line boundary, t_ink32 ink);
+
 // utils.c
 
+bool		is_in_boundary(int x, int y, t_line boundary);
 void		draw_rectangle(mlx_image_t *dst, t_line rectangle,
 				t_line boundary, int32_t ink);
 
