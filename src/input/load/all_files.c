@@ -99,9 +99,10 @@ t_load_fdf_arr	load_all_fdf_lines(int fd,
 	{
 		item = parse_line(line);
 		load_fdf_arr_push(&dst, &item);
-		free(line);
-		if (is_load_fdf_arr_valid(&dst, (int)dst.length - 1) == false)
+		if (line[0] != '\n'
+			&& is_load_fdf_arr_valid(&dst, (int)dst.length - 1) == false)
 			is_valid = false;
+		free(line);
 		line = get_next_line(fd, true);
 	}
 	free(line);

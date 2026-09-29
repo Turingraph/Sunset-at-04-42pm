@@ -118,9 +118,23 @@ t_load_fdf	parse_ascii_line(char *line, const char *dict)
 {
 	t_load_fdf	dst;
 
-	dst = init_load_fdf(knight_of_coin((const char *)line, '\n'), 0);
+	dst = init_load_fdf(knight_of_coin((const char *)line, '\n'), false);
 	if (dst.int_warn == EMPTY)
+	{
+		free_load_fdf(&dst);
+		dst.a = NULL;
+		dst.r = NULL;
+		dst.g = NULL;
+		dst.b = NULL;
+		dst.arr = malloc_talk(sizeof(int) * 1, "parse_ascii_line\n");
+		dst.length = 1;
+		if (dst.arr == NULL)
+			return (init_load_fdf(0, false));
+		dst.arr[0] = 0;
+		dst.int_warn = CORRECT;
+		dst.rgb_warn = CORRECT;
 		return (dst);
+	}
 	line_to_ascii_arr((const char *)line, dict, dst.arr, dst.length);
 	return (dst);
 }
