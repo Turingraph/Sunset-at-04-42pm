@@ -84,7 +84,7 @@ void	view_fdf(t_fdf *fdf, t_fdf_render fdf_render,
 
 	window_width = 1920;
 	window_height = 1080;
-	mlx = mlx_init(window_width, window_height, "Sunset at 4:42pm", true);
+	mlx = mlx_init(window_width, window_height, "Sunset at 13:46pm", true);
 	hook = init_2d_hook(mlx, fdf, fdf_render, background_color);
 	if (view_fdf_handle_00(mlx, hook.img) == false)
 		return ;

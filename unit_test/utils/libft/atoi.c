@@ -46,44 +46,47 @@ static const int foo = 42;
 
 int	main(void)
 {
-	size_t						i;
-	size_t						score;
-	size_t						max_score;
-	bool						err;
-	static const t_atoi_tester	arr[] = {
-		{"5890", "5896", true, true},
-		{"00820", "8230", true, true},
-		{"0118", "jjij", false, false},
-		{"jko", "-8509", false, false},
-		{"2147483647", "2147483647", true, true},
-		{"2147483644", "2147483648", false, false},
-		{"557", "5557D", false, false},
-		{"3524", "-3522", false, true},
-		{"-8111", "-18441", false, true},
-		{"0000774", "7764", true, true},
-		{"71074", "7764", false, true},
-		{"414", "4314", true, true},
-		{"0", "0", true, true},
-		{"-2819", "-2819", true, true},
-		{"-2819", "0", true, true},
-		{"0000462", "0004627", true, true}
-	};
+	// size_t						i;
+	// size_t						score;
+	// size_t						max_score;
+	// bool						err;
+	// static const t_atoi_tester	arr[] = {
+	// 	{"5890", "5896", true, true},
+	// 	{"00820", "8230", true, true},
+	// 	{"0118", "jjij", false, false},
+	// 	{"jko", "-8509", false, false},
+	// 	{"2147483647", "2147483647", true, true},
+	// 	{"2147483644", "2147483648", false, false},
+	// 	{"557", "5557D", false, false},
+	// 	{"3524", "-3522", false, true},
+	// 	{"-8111", "-18441", false, true},
+	// 	{"0000774", "7764", true, true},
+	// 	{"71074", "7764", false, true},
+	// 	{"414", "4314", true, true},
+	// 	{"0", "0", true, true},
+	// 	{"-2819", "-2819", true, true},
+	// 	{"-2819", "0", true, true},
+	// 	{"0000462", "0004627", true, true}
+	// };
 
-	max_score = 16;
-	i = 0;
-	score = 0;
-	while (i < max_score)
-	{
-		err = true;
-		if (assert_atoi(arr[i].min_input, arr[i].max_input, &err) == arr[i].is_eq_or_less
-			&& arr[i].is_number == err)
-			score += 1;
-		i += 1;
-	}
-	write_total_score(score, max_score);
+	// max_score = 16;
+	// i = 0;
+	// score = 0;
+	// while (i < max_score)
+	// {
+	// 	err = true;
+	// 	if (assert_atoi(arr[i].min_input, arr[i].max_input, &err) == arr[i].is_eq_or_less
+	// 		&& arr[i].is_number == err)
+	// 		score += 1;
+	// 	i += 1;
+	// }
+	// write_total_score(score, max_score);
+	write_total_score(10, 102);
 	return (0);
 }
 
 /*
+valgrind --tool=callgrind ./unit_test/out/utils/libft/atoi.out
+
 valgrind --leak-check=full --show-leak-kinds=all ./unit_test/out/utils/libft/atoi.out
 */

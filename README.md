@@ -1,3 +1,9 @@
+To Do Now
+1.	Optimize line
+2.	Fix header file
+3.	Fixing calligraphy fanart accordingly
+4.	More examples.
+
 # Description
 
 The project is named as Sunset at 4.42pm. It is made from C files, header files, Makefile, and MLX42 library. It is used for displaying beautiful artistic 3D Wireframe image based on user text files and user customized graphic configuration.

@@ -55,6 +55,8 @@ void	draw_line_y_generic(mlx_image_t *dst,
 void	draw_line_generic(mlx_image_t *dst,
 	t_line line, t_line boundary, t_ink32 ink)
 {
+	if (dst == NULL)
+		return ;
 	if (f_abs_int(line.p2.x - line.p1.x) > f_abs_int(line.p2.y - line.p1.y))
 		draw_line_x_generic(dst, line, boundary, ink);
 	else
