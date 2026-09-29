@@ -476,8 +476,6 @@ t_load_fdf	parse_ascii_line_chungaloider(char *line);
  *
  * time/space: O(n) / O(n)
  *
- * status: public api
- * 
  * @param line input line
  * 
  * @return loaded data input array as t_load_fdf
@@ -493,8 +491,6 @@ t_load_fdf	parse_fdf_line_rgba(char *line);
  *
  * time/space: O(n) / O(n)
  *
- * status: public api
- * 
  * @param line input line
  * 
  * @return loaded data input array as t_load_fdf
@@ -756,8 +752,6 @@ void			write_table_fdf(int fd,
  *
  * time/space: O(n * m^2) / O(n)
  * 
- * status: public api (unchecked)
- *
  * @param src source FDF table
  * @param kernel convolution kernel.
  * @param dim the dimension (number of row and column) of the square kernel.
@@ -838,8 +832,6 @@ float	define_outer_num(float inner_dim, float outer_dim, float input, float kern
  * If inner_dim is greater than outer_dim, the dimensions are swapped.
  * 
  * time/space: O(n^2) / O(n^2)
- * 
- * status: public api
  * 
  * @param inner_dim dimension of the inner region.
  * @param outer_dim dimension of the resulting square kernel.
@@ -1223,8 +1215,6 @@ bool		is_oddlength_x3shadow(const t_table_fdf *dst, size_t index);
  *
  * time/space: O(1) / O(1)
  *
- * status: public api
- *
  * @param dst FDF table to check
  * @param index index of the cell to check
  *
@@ -1236,8 +1226,6 @@ bool	is_andmod_x2shadow(const t_table_fdf *dst, size_t index);
  * Check whether the ax^3 and ay^3 of the cell is an odd value.
  *
  * time/space: O(1) / O(1)
- *
- * status: public api
  *
  * @param dst FDF table to check
  * @param index index of the cell to check
@@ -1418,8 +1406,6 @@ void		color_cells_gradient(t_table_fdf *dst,
  * 
  * time/space: O(n) + O(cell_metric) / O(1)
  * 
- * status: public api
- * 
  * @param dst destination FDF table to paint
  * @param channel FDF channel to paint
  * @param cell_metric optional function to calculate the value of each cell
@@ -1433,8 +1419,6 @@ void	paint_space(t_table_fdf *dst, t_fdf_channel channel,
  * 
  * time/space: O(1) / O(1)
  * 
- * status: public api
- * 
  * @param dst source FDF table
  * @param index index of the cell
  * @return |re| + |im| + |zd3| - |re + im + zd3|
@@ -1446,8 +1430,6 @@ int	cell_metric_triangle_inequality_3d(const t_table_fdf *dst, size_t index);
 * in the 3d space
 * 
 * time/space: O(1) / O(1)
-* 
-* status: public api
 * 
 * @param dst source FDF table
 * @param index index of the cell
@@ -1461,8 +1443,6 @@ int	cell_metric_pythagoras_3d(const t_table_fdf *dst, size_t index);
  * 
  * time/space: O(1) / O(1)
  * 
- * status: public api
- * 
  * @param dst source FDF table
  * @param index index of the cell
  * @return maximum of |re|, |im|, and zd3
@@ -1475,8 +1455,6 @@ int	cell_metric_max_xyz(const t_table_fdf *dst, size_t index);
  * 
  * time/space: O(1) / O(1)
  * 
- * status: public api
- * 
  * @param dst source FDF table
  * @param index index of the cell
  * @return sqrt(|re * im|)
@@ -1487,8 +1465,6 @@ int	cell_metric_root_xyz(const t_table_fdf *dst, size_t index);
  * Calculate the absolute value of the sum of x, y, and z.
  * 
  * time/space: O(1) / O(1)
- * 
- * status: public api
  * 
  * @param dst source FDF table
  * @param index index of the cell
@@ -1502,8 +1478,6 @@ int	cell_metric_addsub_3d(const t_table_fdf *dst, size_t index);
  * 
  * time/space: O(1) / O(1)
  * 
- * status: public api
- * 
  * @param dst source FDF table
  * @param index index of the cell
  * @return |re| + |im| - |re + im|
@@ -1514,8 +1488,6 @@ int	cell_metric_triangle_inequality(const t_table_fdf *dst, size_t index);
  * Calculate the different between (x + y) / 2 - (xy)^(1/2)
  * 
  * time/space: O(1) / O(1)
- * 
- * status: public api
  * 
  * @param dst source FDF table
  * @param index index of the cell
@@ -1528,8 +1500,6 @@ int	cell_metric_amgm_inequality(const t_table_fdf *dst, size_t index);
  * 
  * time/space: O(1) / O(1)
  * 
- * status: public api
- * 
  * @param dst source FDF table
  * @param index index of the cell
  * @return (x + y + z) / 3 - (xyz)^(1/3)
@@ -1540,8 +1510,6 @@ int	cell_metric_amgm_inequality_3d(const t_table_fdf *dst, size_t index);
  * Calculate the (re + im)^2
  * 
  * time/space: O(1) / O(1)
- * 
- * status: public api
  * 
  * @param dst source FDF table
  * @param index index of the cell
@@ -1554,8 +1522,6 @@ int	cell_metric_x_plus_y_square(const t_table_fdf *dst, size_t index);
  * 
  * time/space: O(1) / O(1)
  * 
- * status: public api
- * 
  * @param dst source FDF table
  * @param index index of the cell
  * @return x^2 + y^2 + z^2 - (x + y + z)^2
@@ -1566,8 +1532,6 @@ int	cell_metric_cauchy_schwarz_inequality_3d(const t_table_fdf *dst, size_t inde
  * Calculate the minimum absolute component of a cell coordinate.
  * 
  * time/space: O(1) / O(1)
- * 
- * status: public api
  * 
  * @param dst source FDF table
  * @param index index of the cell
@@ -1581,8 +1545,6 @@ int	cell_metric_min_xy(const t_table_fdf *dst, size_t index);
  * 
  * time/space: O(1) / O(1)
  * 
- * status: public api
- * 
  * @param dst source FDF table
  * @param index index of the cell
  * @return minimum of |re|, |im|, and zd3
@@ -1595,8 +1557,6 @@ int	cell_metric_min_xyz(const t_table_fdf *dst, size_t index);
  * 
  * time/space: O(1) / O(1)
  * 
- * status: public api
- * 
  * @param dst source FDF table
  * @param index index of the cell
  * @return min(row, col) * min(cos(re / a), cos(im / a))
@@ -1608,8 +1568,6 @@ int	cell_metric_mincos(const t_table_fdf *dst, size_t index);
  * cell coordinate.
  * 
  * time/space: O(1) / O(1)
- * 
- * status: public api
  * 
  * @param dst source FDF table
  * 
@@ -1625,8 +1583,6 @@ int	cell_metric_minecos(const t_table_fdf *dst, size_t index);
  * 
  * time/space: O(1) / O(1)
  * 
- * status: public api
- * 
  * @param dst source FDF table
  * @param index index of the cell
  * @return min(re(exp(z)), im(exp(z)))
@@ -1639,8 +1595,6 @@ int	cell_metric_minexp(const t_table_fdf *dst, size_t index);
  * 
  * time/space: O(1) / O(1)
  * 
- * status: public api
- * 
  * @param dst source FDF table
  * @param index index of the cell
  * @return min(row, col) * max(sin(re / a), sin(im / a))
@@ -1652,8 +1606,6 @@ int	cell_metric_maxsin(const t_table_fdf *dst, size_t index);
  * cell coordinate.
  * 
  * time/space: O(1) / O(1)
- * 
- * status: public api
  * 
  * @param dst source FDF table
  * 
@@ -1669,8 +1621,6 @@ int	cell_metric_maxesin(const t_table_fdf *dst, size_t index);
  * 
  * time/space: O(1) / O(1)
  * 
- * status: public api
- * 
  * @param dst source FDF table
  * @param index index of the cell
  * @return min(row, col) * max(cos(re / a), cos(im / a))
@@ -1682,8 +1632,6 @@ int	cell_metric_maxcos(const t_table_fdf *dst, size_t index);
  * cell coordinate.
  * 
  * time/space: O(1) / O(1)
- * 
- * status: public api
  * 
  * @param dst source FDF table
  * 
@@ -1699,8 +1647,6 @@ int	cell_metric_maxecos(const t_table_fdf *dst, size_t index);
  * 
  * time/space: O(1) / O(1)
  * 
- * status: public api
- * 
  * @param dst source FDF table
  * @param index index of the cell
  * @return max(re(exp(z)), im(exp(z)))
@@ -1713,8 +1659,6 @@ int	cell_metric_maxexp(const t_table_fdf *dst, size_t index);
 * 
 * time/space: O(1) / O(1)
 * 
-* status: public api
-* 
 * @param dst source FDF table
 * @param index index of the cell
 * @return Euclidean distance from the origin
@@ -1725,8 +1669,6 @@ int	cell_metric_pythagoras(const t_table_fdf *dst, size_t index);
  * Calculate the maximum absolute component of a cell coordinate.
  * 
  * time/space: O(1) / O(1)
- * 
- * status: public api
  * 
  * @param dst source FDF table
  * @param index index of the cell
@@ -1740,8 +1682,6 @@ int	cell_metric_max_xy(const t_table_fdf *dst, size_t index);
  * 
  * time/space: O(1) / O(1)
  * 
- * status: public api
- * 
  * @param dst source FDF table
  * @param index index of the cell
  * @return |re + im|
@@ -1754,8 +1694,6 @@ int	cell_metric_addsub(const t_table_fdf *dst, size_t index);
  * 
  * time/space: O(1) / O(1)
  * 
- * status: public api
- * 
  * @param dst source FDF table
  * @param index index of the cell
  * @return sqrt(|re * im|)
@@ -1767,8 +1705,6 @@ int	cell_metric_root_xy(const t_table_fdf *dst, size_t index);
  * floor 3rd root of a^3 + b^3
  * 
  * time/space: O(1) / O(1)
- * 
- * status: public api
  * 
  * @param dst source FDF table
  * @param index index of the cell
@@ -2060,8 +1996,6 @@ typedef struct s_render_style
  * - "0" = Zoom out
  *
  * time/space: O(n) / O(n)
- *
- * status: public api
  *
  * @param fdf FDF object to display.
  * The default color of the FDF object is black.
