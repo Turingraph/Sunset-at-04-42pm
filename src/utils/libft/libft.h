@@ -24,5 +24,6 @@ unsigned char	*get_rgba_of_table_fdf(const t_table_fdf *src,
 					t_fdf_channel rgba_type);
 t_complex		get_table_fdf_coordinate(const t_table_fdf *dst, size_t index, float zoom);
 bool			check_multiplication_overflow(size_t col, size_t row);
+bool			check_multiplication_overflow_uint32_t(uint32_t col, uint32_t row);
 
 #endif

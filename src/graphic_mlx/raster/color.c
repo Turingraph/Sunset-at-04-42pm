@@ -54,8 +54,11 @@ void	color_background_mlx(mlx_image_t *dst, int32_t color)
 	int32_t	i;
 	int32_t	j;
 
+	if (dst == NULL
+		|| check_multiplication_overflow_uint32_t(dst->width, dst->height) == false)
+		return ;
 	i = 0;
-	while (dst != NULL && i < (int32_t)dst->height)
+	while (i < (int32_t)dst->height)
 	{
 		j = 0;
 		while (j < (int32_t)dst->width)
@@ -89,7 +92,8 @@ int32_t	get_table_rgba_int32(const t_table_fdf *src, size_t index)
 	int32_t	b;
 	int32_t	a;
 
-	if (src == NULL || index >= src->row * src->col)
+	if (src == NULL || check_multiplication_overflow(src->col, src->row) == false
+		|| index >= src->row * src->col)
 		return (0);
 	r = 0;
 	g = 0;

@@ -34,7 +34,9 @@ int32_t	get_fdf_rgba_int32(const t_fdf *src, size_t index)
 	int32_t	b;
 	int32_t	a;
 
-	if (src == NULL || index >= src->row * src->col)
+	if (src == NULL
+		|| check_multiplication_overflow(src->col, src->row) == false
+		|| index >= src->row * src->col)
 		return (0);
 	r = 0;
 	g = 0;
@@ -58,7 +60,7 @@ bool	is_fdf_valid(const t_fdf *src)
 	if (src == NULL)
 		return (false);
 	if (src->width == 0
-		|| src->row * src->col == 0
+		|| check_multiplication_overflow(src->col, src->row) == false
 		|| src->x == NULL
 		|| src->y == NULL)
 		return (false);

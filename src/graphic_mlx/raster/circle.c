@@ -155,10 +155,12 @@ void	draw_circle(mlx_image_t *dst,
 	int		pivot;
 	t_line	line;
 
+	if (dst == NULL || check_multiplication_overflow_uint32_t(dst->width, dst->height) == false)
+		return ;
 	pivot = ink.thickness * -1;
 	iy = -1 * ink.thickness;
 	ix = 0;
-	while (dst != NULL && ix <= -1 * iy)
+	while (ix <= -1 * iy)
 	{
 		line = define_circle_line(point, ix, iy, 0);
 		draw_horizontal(dst, line, ink.color, boundary);

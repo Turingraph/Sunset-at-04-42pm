@@ -79,18 +79,17 @@ void	view_fdf(t_fdf *fdf, t_fdf_render fdf_render,
 	mlx_t			*mlx;
 	t_2d_hook		hook;
 	t_2d_camera		camera;
-	size_t			window_width;
-	size_t			window_height;
 
-	window_width = 1920;
-	window_height = 1080;
-	mlx = mlx_init(window_width, window_height, "Sunset at 4:42 pm", true);
+	if (is_fdf_valid(fdf) == false)
+		return ;
+	mlx = mlx_init(SUNSET_WINDOW_WIDTH,
+		SUNSET_WINDOW_HEIGHT, "Sunset at 4:42 pm", true);
 	hook = init_2d_hook(mlx, fdf, fdf_render, background_color);
 	if (view_fdf_handle_00(mlx, hook.img) == false)
 		return ;
-	camera = init_2d_camera(window_width, window_height);
+	camera = init_2d_camera(SUNSET_WINDOW_WIDTH, SUNSET_WINDOW_HEIGHT);
 	hook.camera = &camera;
-	scale_fdf_as_window_object(fdf, f_max(window_width, window_height));
+	scale_fdf_as_window_object(fdf, f_max(SUNSET_WINDOW_WIDTH, SUNSET_WINDOW_HEIGHT));
 	color_background_mlx(hook.img, background_color);
 	draw_fdf_mlx(&hook, true);
 	if (-1 == view_fdf_handle_01(mlx, hook.img))

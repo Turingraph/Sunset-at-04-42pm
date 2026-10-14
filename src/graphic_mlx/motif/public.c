@@ -67,18 +67,15 @@ void	view_motif(t_motif_arr *src,
 	mlx_t			*mlx;
 	mlx_image_t		*img;
 	t_islamic_art	drawing_context;
-	size_t			window_width;
-	size_t			window_height;
 
-	window_width = 1920;
-	window_height = 1080;
-	mlx = mlx_init(window_width, window_height, "Sunset at 4:42pm", true);
+	mlx = mlx_init(SUNSET_WINDOW_WIDTH,
+		SUNSET_WINDOW_HEIGHT, "Sunset at 4:42pm", true);
 	img = mlx_new_image(mlx, mlx->width, mlx->height);
 	if (view_motif_handle_00(mlx, img) == false)
 		return ;
 	color_background_mlx(img, background_color);
 	drawing_context.motif = src;
-	drawing_context.tiles = init_tile_format(window_width, window_height,
+	drawing_context.tiles = init_tile_format(SUNSET_WINDOW_WIDTH, SUNSET_WINDOW_HEIGHT,
 			resolution);
 	draw_motif_mlx(img, &drawing_context);
 	if (-1 == view_motif_handle_01(mlx, img))

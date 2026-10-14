@@ -83,6 +83,8 @@ void	draw_rectangle(mlx_image_t *dst, t_line rectangle,
 	int	i;
 	int	j;
 
+	if (dst == NULL || check_multiplication_overflow_uint32_t(dst->width, dst->height) == false)
+		return ;
 	rectangle = init_rectangle(rectangle, boundary);
 	i = rectangle.p1.x;
 	while (i <= rectangle.p2.x)

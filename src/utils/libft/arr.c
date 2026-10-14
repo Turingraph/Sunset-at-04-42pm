@@ -33,7 +33,7 @@ static size_t	sf_strlen(const char *str)
  *
  * time/space: O(n) / O(n)
  *
- * status: public api
+ * status: internal helper
  * 
  * @param elem_size size of the memory block in bytes
  * @param comment message to print when allocation fails
@@ -73,7 +73,7 @@ void	*malloc_talk(size_t elem_size, const char *comment)
  *
  * time/space: O(1) / O(1)
  * 
- * status: public api
+ * status: internal helper
  *
  * @param src the input t_table_fdf array
  * @param rgba_type RGBA channel to retrieve
@@ -101,7 +101,7 @@ unsigned char	*get_rgba_of_table_fdf(const t_table_fdf *src,
  *
  * time/space: O(1) / O(1)
  *
- * status: internal helper
+ * status: public api
  * 
  * @param dst FDF table containing the cell
  * @param index index of the cell
@@ -142,11 +142,10 @@ Reference
  *
  * time/space: O(1) / O(1)
  *
- * status: internal helper
+ * status: public api
  * 
  * @param col   The 1st number.
  * @param row   The 2nd number.
- *
  * @return true if the product are valid, greater than 0, and the index is within
  *         bounds; false otherwise.
  */
@@ -154,6 +153,27 @@ bool	check_multiplication_overflow(size_t col, size_t row)
 {
 	if (col == 0 || row == 0 || col > SIZE_MAX / row
 		|| row > SIZE_MAX / col)
+		return (false);
+	return (true);
+}
+
+/**
+ * Check whether the product of 2 uint32_t type number cause integeroverflow,
+ * or output 0 or not.
+ *
+ * time/space: O(1) / O(1)
+ *
+ * status: public api
+ * 
+ * @param col   The 1st number.
+ * @param row   The 2nd number.
+ * @return true if the product are valid, greater than 0, and the index is within
+ *         bounds; false otherwise.
+ */
+bool	check_multiplication_overflow_uint32_t(uint32_t col, uint32_t row)
+{
+	if (col == 0 || row == 0 || col > UINT32_MAX / row
+		|| row > UINT32_MAX / col)
 		return (false);
 	return (true);
 }

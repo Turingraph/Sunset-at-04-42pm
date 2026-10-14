@@ -21,7 +21,7 @@ void	init_fdf_position(const t_table_fdf *src, float *arr_x,
 	t_complex	dst;
 
 	if (src == NULL || arr_x == NULL || arr_y == NULL
-		|| src->row == 0 || src->col == 0)
+		|| check_multiplication_overflow(src->col, src->row) == false)
 		return ;
 	i = 0;
 	while (i < src->row * src->col)
@@ -102,7 +102,8 @@ t_fdf	init_placeholder_fdf(t_table_fdf *src)
 {
 	t_fdf	dst;
 
-	if (src == NULL || src->row == 0 || src->col == 0)
+	if (src == NULL
+		|| check_multiplication_overflow(src->col, src->row) == false)
 		return (init_null_fdf());
 	dst.r = src->r;
 	dst.g = src->g;
@@ -157,7 +158,7 @@ t_fdf	init_fdf(t_table_fdf *src,
 	float	max_x;
 	float	min_x;
 
-	if (src == NULL || src->row * src->col == 0)
+	if (src == NULL || check_multiplication_overflow(src->col, src->row) == false)
 		return (init_null_fdf());
 	dst = init_placeholder_fdf(src);
 	if (dst.col == 0 || dst.row == 0)
