@@ -15,6 +15,7 @@
 
 # include "stdlib.h"
 # include "../green_counts/green_counts.h"
+# include "../libft/libft.h"
 
 typedef struct t_matrix
 {

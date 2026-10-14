@@ -316,24 +316,6 @@ Additional features including
 
 This coding library is release as 1st version.
 
-The following features will be supported in second version version.
-1.	Compatible with OpenGL/GLFW directly without depending on MLX42 library.
-2.	Real time convolution with optimized FFT on both t_table_fdf table and the graphic window.
-3.	Window that support multiple FDF objects.
-4.	User able to display FDF objects with user customized artistic background inspired by Islamic Art, Piet Mondrian art, Kusama art etc.
-5.	User able to draw artistic motif inspired by Islamic Art, Piet Mondrian art, Kusama art etc. on FDF data directly.
-6.	Compatible with Piskel (https://www.piskelapp.com/ , a.k.a. open source Pixel art drawing app).
-
-The following features will be supported in third version version.
-1.	quaternion rotation
-2.	Z buffer coloring on multiple FDF object.
-3.	simple optic light physics
-4.	User can export t_table_fdf table as Blender compatible files (but not vice versa for the sake of UXUI simplicity).
-
-The following features will be supported in 4-th version version.
-1.	3D collition detection
-2.	color each FDF cells based on how force interacting with multiple collided FDF objects according to the output of basic 3D FEM solver.
-
 ## Inspiration
 
 This project name as `Sunset at 4.42pm`. It is inspired by 42 Coding School, Graffiti art, ASCII art, Calligraphy art, Figlet, Linear Algebra, and my personal experience with grapheme color synesthesia.

@@ -57,15 +57,17 @@ t_table_fdf	init_table_fdf(size_t row, size_t col, bool is_rgba)
 {
 	t_table_fdf	dst;
 
-	dst.arr = malloc_talk(sizeof(int) * row * col,
-			"input/table/init.c/init_table_fdf\n");
+	dst.arr = NULL;
+	if (check_2d_index_overflow(0, col, row) == true)
+		dst.arr = malloc_talk(sizeof(int) * row * col,
+				"input/table/init.c/init_table_fdf\n");
 	dst.row = row;
 	dst.col = col;
 	dst.r = NULL;
 	dst.g = NULL;
 	dst.b = NULL;
 	dst.a = NULL;
-	if (is_rgba == true)
+	if (is_rgba == true && check_2d_index_overflow(0, col, row) == true)
 	{
 		dst.r = malloc_talk(sizeof(unsigned char) * row * col,
 				"input/table/init.c/init_table_fdf\n");
@@ -76,7 +78,7 @@ t_table_fdf	init_table_fdf(size_t row, size_t col, bool is_rgba)
 		dst.a = malloc_talk(sizeof(unsigned char) * row * col,
 				"input/table/init.c/init_table_fdf\n");
 	}
-	if (dst.arr == NULL || dst.col < 1 || dst.row < 1)
+	if (dst.arr == NULL)
 		free_table_fdf(&dst);
 	return (dst);
 }
@@ -105,6 +107,7 @@ void	load_rgba_for_table_fdf(const t_load_fdf *src,
 	t_table_fdf *dst, size_t row, size_t col)
 {
 	if (src != NULL && dst != NULL
+		&& check_2d_index_overflow(col, dst->col, dst->row) == true
 		&& row < dst->row && col < dst->col && col < src->length)
 	{
 		if (src->r != NULL && dst->r != NULL)

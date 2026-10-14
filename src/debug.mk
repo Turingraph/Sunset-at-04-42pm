@@ -46,7 +46,7 @@ OBJ_get_next_line = $(patsubst %.c, obj/%.o, $(SRC_get_next_line))
 
 # *** composed obj ***
 OBJ_debug = $(patsubst %.c, obj/%.o, $(SRC_debug)) $(OBJ_load)
-OBJ_linalg = $(patsubst %.c, obj/%.o, $(SRC_linalg)) $(OBJ_green_counts)
+OBJ_linalg = $(patsubst %.c, obj/%.o, $(SRC_linalg)) $(OBJ_green_counts) $(OBJ_libft)
 OBJ_load = $(patsubst %.c, obj/%.o, $(SRC_load)) $(OBJ_libft) $(OBJ_get_next_line)
 OBJ_table = $(patsubst %.c, obj/%.o, $(SRC_table)) $(OBJ_load) $(OBJ_green_counts)
 

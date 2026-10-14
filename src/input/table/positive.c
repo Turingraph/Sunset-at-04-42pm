@@ -38,7 +38,8 @@ int	get_minmax_from_table_fdf(const t_table_fdf *src,
 	if (is_max == false)
 		sign = -1;
 	i = 0;
-	while (src != NULL && i < src->row * src->col)
+	while (src != NULL
+		&& check_2d_index_overflow(i, src->col, src->row) == true)
 	{
 		if (channel == HEIGHT && src->arr != NULL
 			&& sign * y < sign * src->arr[i])
@@ -102,7 +103,8 @@ void	scale_relu_fdf(t_table_fdf *dst, int min, int max, int expect)
 		max = temp;
 	}
 	i = 0;
-	while (dst != NULL && dst->arr != NULL && i < dst->row * dst->col)
+	while (dst != NULL && dst->arr != NULL
+		&& check_2d_index_overflow(i, dst->col, dst->row) == true)
 	{
 		if (min <= dst->arr[i] && dst->arr[i] <= max)
 			dst->arr[i] = expect;

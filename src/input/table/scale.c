@@ -29,7 +29,7 @@ void	scale_multiplication_fdf(t_table_fdf *dst, float scale,
 	size_t	i;
 
 	i = 0;
-	while (dst != NULL && i < dst->row * dst->col)
+	while (dst != NULL && check_2d_index_overflow(i, dst->col, dst->row) == true)
 	{
 		if (dst->arr != NULL && channel == HEIGHT)
 			dst->arr[i] = (int)f_interval_int(
@@ -67,7 +67,7 @@ void	scale_addition_fdf(t_table_fdf *dst, int input, t_fdf_channel channel)
 	size_t	i;
 
 	i = 0;
-	while (dst != NULL && i < dst->row * dst->col)
+	while (dst != NULL && check_2d_index_overflow(i, dst->col, dst->row) == true)
 	{
 		if (dst->arr != NULL && channel == HEIGHT)
 			dst->arr[i] = (int)f_interval(
@@ -106,7 +106,9 @@ void	table_fdf_addition(t_table_fdf *dst,
 	size_t	i;
 
 	i = 0;
-	while (src != NULL && dst != NULL && i < dst->row * dst->col
+	while (src != NULL && dst != NULL 
+		&& check_2d_index_overflow(i, dst->col, dst->row) == true
+		&& check_2d_index_overflow(i, src->col, src->row) == true
 		&& dst->row * dst->col == src->row * src->col)
 	{
 		if (src->arr != NULL && dst->arr != NULL && channel == HEIGHT)
@@ -147,7 +149,9 @@ void	table_fdf_hadamard(t_table_fdf *dst,
 	size_t	i;
 
 	i = 0;
-	while (src != NULL && dst != NULL && i < dst->row * dst->col
+	while (src != NULL && dst != NULL
+		&& check_2d_index_overflow(i, dst->col, dst->row) == true
+		&& check_2d_index_overflow(i, src->col, src->row) == true
 		&& dst->row * dst->col == src->row * src->col)
 	{
 		if (src->arr != NULL && dst->arr != NULL && channel == HEIGHT)

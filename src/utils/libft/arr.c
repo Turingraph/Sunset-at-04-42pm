@@ -122,3 +122,42 @@ t_complex	get_table_fdf_coordinate(const t_table_fdf *dst, size_t index, float z
 	y.im *= zoom;
 	return (y);
 }
+
+/*
+Size_t is an unsigned integer that is able to hold the largest possible size
+of a piece of data or index for the system that you're using.
+It's defined differently on different platforms, so it is a portable type.
+
+The standard says that SIZE_MAX must be at least 65535.
+
+Reference
+*	https://www.reddit.com/r/C_Programming/comments/97efnl/
+	i_dont_understand_size_t/
+*	https://stackoverflow.com/questions/22514803/maximum-size-of-size-t
+*/
+
+/**
+ * Check whether a 1D index is valid for a 2D table.
+ *
+ * Verifies that the given column and row dimensions are nonzero,
+ * their product does not overflow size_t, and the index is within
+ * the total number of elements in the table.
+ *
+ * time/space: O(1) / O(1)
+ *
+ * status: internal helper
+ * 
+ * @param index The 1D index to validate.
+ * @param col   The number of columns in the table.
+ * @param row   The number of rows in the table.
+ *
+ * @return true if the dimensions are valid and the index is within
+ *         bounds; false otherwise.
+ */
+bool	check_2d_index_overflow(size_t index, size_t col, size_t row)
+{
+	if (col == 0 || row == 0 || col > SIZE_MAX / row
+		|| row > SIZE_MAX / col || index >= col * row)
+		return (false);
+	return (true);
+}

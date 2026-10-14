@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include <stdbool.h>
+# include <stdint.h>
 
 /**
  * Identifies the data component stored in a t_table_fdf array.

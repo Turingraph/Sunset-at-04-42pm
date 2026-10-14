@@ -21,7 +21,7 @@ size_t	index_a_in_str(const char *src, char a)
 	if (src == NULL)
 		return (0);
 	i = 0;
-	while (src[i] != '\0')
+	while (src[i] != '\0' && i < SIZE_MAX)
 	{
 		if (src[i] == a)
 			return (i + 1);

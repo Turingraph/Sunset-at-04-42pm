@@ -16,7 +16,8 @@
 // space: O(1)
 int	clamped(const t_table_fdf *src, int ix, int iy)
 {
-	if (src == NULL || src->arr == NULL || src->row * src->col == 0)
+	if (src == NULL || src->arr == NULL || src->row == 0
+		|| src->col == 0)
 		return (0);
 	if (ix < 0)
 		ix = 0;

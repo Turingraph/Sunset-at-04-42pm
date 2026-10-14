@@ -53,7 +53,9 @@ void	write_table_fdf(int fd, const t_table_fdf *src,
 	size_t	j;
 
 	i = 0;
-	while (src != NULL && src->arr != NULL && i < src->row && fd > -1)
+	while (src != NULL && src->arr != NULL
+		&& i < src->row
+		&& check_2d_index_overflow(i, src->col, src->row) == true && fd > -1)
 	{
 		j = 0;
 		while (j < src->col)
@@ -76,7 +78,7 @@ void	write_table_fdf(int fd, const t_table_fdf *src,
 
 // time : O(n)
 // space: O(n)
-static void	wta_rgba(unsigned char input,
+static void	write_rgba_ascii(unsigned char input,
 	const char *dict, int fd, bool is_left)
 {
 	int	output;
@@ -96,7 +98,8 @@ void	write_table_ascii(int fd, const t_table_fdf *src,
 	bool			left_char;
 
 	i = 0;
-	while (src != NULL && i < src->row && fd > -1)
+	while (src != NULL && i < src->row
+		&& check_2d_index_overflow(i, src->col, src->row) && fd > -1)
 	{
 		j = 0;
 		while (j < src->col)
@@ -109,7 +112,7 @@ void	write_table_ascii(int fd, const t_table_fdf *src,
 				ft_put_ascii_fd(fd,
 					(int)src->arr[i * src->col + j], dict, left_char);
 			else if (arr != NULL && channel != HEIGHT)
-				wta_rgba(arr[i * src->col + j], dict, fd, left_char);
+				write_rgba_ascii(arr[i * src->col + j], dict, fd, left_char);
 			j += 1;
 		}
 		write(fd, "\n", 1);
