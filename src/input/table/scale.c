@@ -28,8 +28,10 @@ void	scale_multiplication_fdf(t_table_fdf *dst, float scale,
 {
 	size_t	i;
 
+	if (dst == NULL || check_multiplication_overflow(dst->col, dst->row) == false)
+		return ;
 	i = 0;
-	while (dst != NULL && check_2d_index_overflow(i, dst->col, dst->row) == true)
+	while (i < dst->col * dst->row)
 	{
 		if (dst->arr != NULL && channel == HEIGHT)
 			dst->arr[i] = (int)f_interval_int(
@@ -66,8 +68,10 @@ void	scale_addition_fdf(t_table_fdf *dst, int input, t_fdf_channel channel)
 {
 	size_t	i;
 
+	if (dst == NULL || check_multiplication_overflow(dst->col, dst->row) == false)
+		return ;
 	i = 0;
-	while (dst != NULL && check_2d_index_overflow(i, dst->col, dst->row) == true)
+	while (i < dst->col * dst->row)
 	{
 		if (dst->arr != NULL && channel == HEIGHT)
 			dst->arr[i] = (int)f_interval(
@@ -105,11 +109,13 @@ void	table_fdf_addition(t_table_fdf *dst,
 {
 	size_t	i;
 
+	if (src == NULL || dst == NULL
+		|| check_multiplication_overflow(dst->col, dst->row) == false
+		|| check_multiplication_overflow(src->col, src->row) == false
+		|| dst->row * dst->col != src->row * src->col)
+		return ;
 	i = 0;
-	while (src != NULL && dst != NULL 
-		&& check_2d_index_overflow(i, dst->col, dst->row) == true
-		&& check_2d_index_overflow(i, src->col, src->row) == true
-		&& dst->row * dst->col == src->row * src->col)
+	while (i < dst->col * dst->row)
 	{
 		if (src->arr != NULL && dst->arr != NULL && channel == HEIGHT)
 			dst->arr[i] = (int)f_interval(
@@ -148,11 +154,13 @@ void	table_fdf_hadamard(t_table_fdf *dst,
 {
 	size_t	i;
 
+	if (src == NULL || dst == NULL
+		|| check_multiplication_overflow(dst->col, dst->row) == false
+		|| check_multiplication_overflow(src->col, src->row) == false
+		|| dst->row * dst->col != src->row * src->col)
+		return ;
 	i = 0;
-	while (src != NULL && dst != NULL
-		&& check_2d_index_overflow(i, dst->col, dst->row) == true
-		&& check_2d_index_overflow(i, src->col, src->row) == true
-		&& dst->row * dst->col == src->row * src->col)
+	while (i < dst->col * dst->row)
 	{
 		if (src->arr != NULL && dst->arr != NULL && channel == HEIGHT)
 			dst->arr[i] = (int)f_interval(

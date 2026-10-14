@@ -25,7 +25,9 @@ bool	is_re2_diff_im2_odd_func(const t_table_fdf *dst, size_t index,
 	t_complex	y;
 	int			product;
 
-	if (dst == NULL || index >= dst->row * dst->col)
+	if (dst == NULL
+		|| check_multiplication_overflow(dst->col, dst->row) == false
+		|| index >= dst->col * dst->row)
 		return (false);
 	y = get_table_fdf_coordinate(dst, index, zoom);
 	if (complex_func != NULL)
@@ -79,7 +81,9 @@ bool	is_oddlength_func(const t_table_fdf *dst, size_t index,
 {
 	t_complex	y;
 
-	if (dst == NULL || index >= dst->row * dst->col)
+	if (dst == NULL
+		|| check_multiplication_overflow(dst->col, dst->row) == false
+		|| index >= dst->col * dst->row)
 		return (false);
 	y = get_table_fdf_coordinate(dst, index, zoom);
 	if (complex_func != NULL)
@@ -133,7 +137,9 @@ bool	is_andmod_func(const t_table_fdf *dst, size_t index,
 {
 	t_complex	y;
 
-	if (dst == NULL || index >= dst->row * dst->col)
+	if (dst == NULL
+		|| check_multiplication_overflow(dst->col, dst->row) == false
+		|| index >= dst->col * dst->row)
 		return (false);
 	y = get_table_fdf_coordinate(dst, index, zoom);
 	if (complex_func != NULL)

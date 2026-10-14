@@ -16,7 +16,7 @@ int	cell_metric_pythagoras(const t_table_fdf *dst, size_t index)
 {
 	t_complex	y;
 
-	if (dst == NULL || index >= dst->row * dst->col)
+	if (dst == NULL || check_multiplication_overflow(dst->col, dst->row) == false || index >= dst->col * dst->row)
 		return (false);
 	y = get_table_fdf_coordinate(dst, index, 1.0);
 	return ((int)complex_magnitude(y, 0));
@@ -37,7 +37,7 @@ int	cell_metric_max_xy(const t_table_fdf *dst, size_t index)
 {
 	t_complex	y;
 
-	if (dst == NULL || index >= dst->row * dst->col)
+	if (dst == NULL || check_multiplication_overflow(dst->col, dst->row) == false || index >= dst->col * dst->row)
 		return (false);
 	y = get_table_fdf_coordinate(dst, index, 1.0);
 	return ((int)(f_max(f_abs(y.re), f_abs(y.im))));
@@ -59,7 +59,7 @@ int	cell_metric_addsub(const t_table_fdf *dst, size_t index)
 {
 	t_complex	y;
 
-	if (dst == NULL || index >= dst->row * dst->col)
+	if (dst == NULL || check_multiplication_overflow(dst->col, dst->row) == false || index >= dst->col * dst->row)
 		return (false);
 	y = get_table_fdf_coordinate(dst, index, 1.0);
 	return ((int)f_abs(y.re + y.im));
@@ -81,7 +81,7 @@ int	cell_metric_root_xy(const t_table_fdf *dst, size_t index)
 {
 	t_complex	y;
 
-	if (dst == NULL || index >= dst->row * dst->col)
+	if (dst == NULL || check_multiplication_overflow(dst->col, dst->row) == false || index >= dst->col * dst->row)
 		return (false);
 	y = get_table_fdf_coordinate(dst, index, 1.0);
 	return ((int)f_round(f_root_finding(f_abs(y.re * y.im), 2)));
@@ -106,7 +106,7 @@ int	cell_metric_fermat_theorem(const t_table_fdf *dst, size_t index)
 	int			b;
 	int			c;
 
-	if (dst == NULL || index >= dst->row * dst->col)
+	if (dst == NULL || check_multiplication_overflow(dst->col, dst->row) == false || index >= dst->col * dst->row)
 		return (false);
 	y = get_table_fdf_coordinate(dst, index, 1.0);
 	a = (int)f_pow(f_abs(y.re), 3);

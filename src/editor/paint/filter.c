@@ -16,8 +16,8 @@
  */
 bool	is_space_fdf(const t_table_fdf *dst, size_t index)
 {
-	if (dst == NULL || dst->arr == NULL || dst->row == 0 || dst->col == 0
-		|| index > dst->row * dst->col)
+	if (dst == NULL || dst->arr == NULL
+		|| check_multiplication_overflow(dst->col, dst->row) == false || index >= dst->col * dst->row)
 		return (false);
 	if (dst->arr[index] <= 0)
 		return (true);
@@ -40,8 +40,7 @@ bool	is_space_fdf(const t_table_fdf *dst, size_t index)
  */
 bool	is_boundary_fdf(const t_table_fdf *dst, size_t index)
 {
-	if (dst == NULL || dst->row == 0 || dst->arr == NULL
-		|| dst->col == 0 || index > dst->row * dst->col)
+	if (dst == NULL || check_multiplication_overflow(dst->col, dst->row) == false || index >= dst->col * dst->row)
 		return (false);
 	if (dst->arr[index] > 0 && (index % dst->col == 0
 			|| index % dst->col == dst->col - 1
@@ -77,7 +76,8 @@ bool	is_boundary_fdf(const t_table_fdf *dst, size_t index)
  */
 bool	is_chess_fdf(const t_table_fdf *dst, size_t index)
 {
-	if (dst == NULL || dst->arr == NULL || dst->row == 0 || dst->col == 0)
+	if (dst == NULL || dst->arr == NULL
+		|| check_multiplication_overflow(dst->col, dst->row) == false)
 		return (false);
 	if ((index % dst->col + index / dst->col) % 2 == 1)
 		return (true);
@@ -123,6 +123,8 @@ void	set_cells_color(t_table_fdf *dst, int color,
 {
 	size_t	i;
 
+	if (check_multiplication_overflow(dst->col, dst->row) == false)
+		return ;
 	i = 0;
 	while (dst != NULL && i < dst->row * dst->col)
 	{

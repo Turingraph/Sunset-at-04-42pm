@@ -137,27 +137,23 @@ Reference
 */
 
 /**
- * Check whether a 1D index is valid for a 2D table.
- *
- * Verifies that the given column and row dimensions are nonzero,
- * their product does not overflow size_t, and the index is within
- * the total number of elements in the table.
+ * Check whether the product of 2 size_t type number cause integeroverflow,
+ * or output 0 or not.
  *
  * time/space: O(1) / O(1)
  *
  * status: internal helper
  * 
- * @param index The 1D index to validate.
- * @param col   The number of columns in the table.
- * @param row   The number of rows in the table.
+ * @param col   The 1st number.
+ * @param row   The 2nd number.
  *
- * @return true if the dimensions are valid and the index is within
+ * @return true if the product are valid, greater than 0, and the index is within
  *         bounds; false otherwise.
  */
-bool	check_2d_index_overflow(size_t index, size_t col, size_t row)
+bool	check_multiplication_overflow(size_t col, size_t row)
 {
 	if (col == 0 || row == 0 || col > SIZE_MAX / row
-		|| row > SIZE_MAX / col || index >= col * row)
+		|| row > SIZE_MAX / col)
 		return (false);
 	return (true);
 }

@@ -19,7 +19,7 @@ int	cell_metric_triangle_inequality_3d(const t_table_fdf *dst, size_t index)
 	int			y_min;
 	int			zd3;
 
-	if (dst == NULL || index >= dst->row * dst->col)
+	if (dst == NULL || check_multiplication_overflow(dst->col, dst->row) == false || index >= dst->col * dst->row)
 		return (false);
 	zd3 = 0;
 	if (dst->arr != NULL)
@@ -48,7 +48,7 @@ int	cell_metric_pythagoras_3d(const t_table_fdf *dst, size_t index)
 	int			zd3;
 	int			distance;
 
-	if (dst == NULL || index >= dst->row * dst->col)
+	if (dst == NULL || check_multiplication_overflow(dst->col, dst->row) == false || index >= dst->col * dst->row)
 		return (false);
 	zd3 = 0;
 	if (dst->arr != NULL)
@@ -76,7 +76,7 @@ int	cell_metric_max_xyz(const t_table_fdf *dst, size_t index)
 	int			max_2d;
 	int			zd3;
 
-	if (dst == NULL || index >= dst->row * dst->col)
+	if (dst == NULL || check_multiplication_overflow(dst->col, dst->row) == false || index >= dst->col * dst->row)
 		return (false);
 	zd3 = 0;
 	if (dst->arr != NULL)
@@ -103,7 +103,7 @@ int	cell_metric_root_xyz(const t_table_fdf *dst, size_t index)
 	t_complex	y;
 	int			zd3;
 
-	if (dst == NULL || index >= dst->row * dst->col)
+	if (dst == NULL || check_multiplication_overflow(dst->col, dst->row) == false || index >= dst->col * dst->row)
 		return (false);
 	y = get_table_fdf_coordinate(dst, index, 1.0);
 	zd3 = 0;
@@ -131,7 +131,7 @@ int	cell_metric_addsub_3d(const t_table_fdf *dst, size_t index)
 	t_complex	y;
 	int			zd3;
 
-	if (dst == NULL || index >= dst->row * dst->col)
+	if (dst == NULL || check_multiplication_overflow(dst->col, dst->row) == false || index >= dst->col * dst->row)
 		return (false);
 	zd3 = 0;
 	if (dst->arr != NULL)

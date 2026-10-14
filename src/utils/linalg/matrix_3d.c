@@ -53,8 +53,8 @@ void	matrix_3d_product(t_matrix src, t_matrix *dst)
 	size_t	i;
 
 	if (src.arr == NULL || dst == NULL
-		|| check_2d_index_overflow(0, src.col, src.row) == false
-		|| check_2d_index_overflow(0, dst->col, dst->row) == false
+		|| check_multiplication_overflow(src.col, src.row) == false
+		|| check_multiplication_overflow(dst->col, dst->row) == false
 		|| dst->arr == NULL || src.col * src.row < 9
 		|| src.col * src.row != dst->col * dst->row)
 		return ;
@@ -84,7 +84,7 @@ float	matrix_det_3d(t_matrix src)
 	float	y;
 
 	if (src.arr == NULL
-		|| check_2d_index_overflow(0, src.col, src.row) == false
+		|| check_multiplication_overflow(src.col, src.row) == false
 		|| src.col * src.row < 9)
 		return (0.0);
 	a = src.arr;

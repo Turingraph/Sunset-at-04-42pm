@@ -38,9 +38,9 @@ t_table_fdf		open_table_fdf_file(const char *file_name, const char *dir,
 // scale_dimension.c
 
 unsigned char	*scale_dimension_fdf_rgba(const t_table_fdf *src,
-					size_t s_row, size_t s_col, t_fdf_channel rgba_type);
+					size_t scale_row, size_t s_col, t_fdf_channel rgba_type);
 int				*scale_dimension_fdf_int(const t_table_fdf *src,
-					size_t s_row, size_t s_col);
+					size_t scale_row, size_t s_col);
 t_table_fdf		scale_dimension_fdf(const t_table_fdf *src,
 					size_t scale_row, size_t scale_col);
 

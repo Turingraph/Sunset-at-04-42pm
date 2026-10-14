@@ -15,7 +15,7 @@ int	cell_metric_min_xy(const t_table_fdf *dst, size_t index)
 {
 	t_complex	y;
 
-	if (dst == NULL || index >= dst->row * dst->col)
+	if (dst == NULL || check_multiplication_overflow(dst->col, dst->row) == false || index >= dst->col * dst->row)
 		return (false);
 	y = get_table_fdf_coordinate(dst, index, 1.0);
 	return ((int)(f_min(f_abs(y.re), f_abs(y.im))));
@@ -39,7 +39,7 @@ int	cell_metric_min_xyz(const t_table_fdf *dst, size_t index)
 	int			min_2d;
 	int			zd3;
 
-	if (dst == NULL || index >= dst->row * dst->col)
+	if (dst == NULL || check_multiplication_overflow(dst->col, dst->row) == false || index >= dst->col * dst->row)
 		return (false);
 	zd3 = 0;
 	if (dst->arr != NULL)
@@ -67,7 +67,7 @@ int	cell_metric_mincos(const t_table_fdf *dst, size_t index)
 	float		s;
 	float		f;
 
-	if (dst == NULL || index >= dst->row * dst->col)
+	if (dst == NULL || check_multiplication_overflow(dst->col, dst->row) == false || index >= dst->col * dst->row)
 		return (0);
 	s = f_min((float)dst->col, (float)dst->row);
 	y = get_table_fdf_coordinate(dst, index, 1.0);
@@ -95,7 +95,7 @@ int	cell_metric_minecos(const t_table_fdf *dst, size_t index)
 {
 	t_complex	y;
 
-	if (dst == NULL || index >= dst->row * dst->col)
+	if (dst == NULL || check_multiplication_overflow(dst->col, dst->row) == false || index >= dst->col * dst->row)
 		return (0);
 	y = get_table_fdf_coordinate(dst, index, 1.0);
 	y = complex_cos(y);
@@ -118,7 +118,7 @@ int	cell_metric_minexp(const t_table_fdf *dst, size_t index)
 {
 	t_complex	y;
 
-	if (dst == NULL || index >= dst->row * dst->col)
+	if (dst == NULL || check_multiplication_overflow(dst->col, dst->row) == false || index >= dst->col * dst->row)
 		return (0);
 	y = get_table_fdf_coordinate(dst, index, 1.0);
 	y = complex_exp(y);

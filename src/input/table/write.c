@@ -55,7 +55,7 @@ void	write_table_fdf(int fd, const t_table_fdf *src,
 	i = 0;
 	while (src != NULL && src->arr != NULL
 		&& i < src->row
-		&& check_2d_index_overflow(i, src->col, src->row) == true && fd > -1)
+		&& check_multiplication_overflow(src->col, src->row) == true && i < src->col * src->row && fd > -1)
 	{
 		j = 0;
 		while (j < src->col)
@@ -99,7 +99,7 @@ void	write_table_ascii(int fd, const t_table_fdf *src,
 
 	i = 0;
 	while (src != NULL && i < src->row
-		&& check_2d_index_overflow(i, src->col, src->row) && fd > -1)
+		&& check_multiplication_overflow(src->col, src->row) && fd > -1)
 	{
 		j = 0;
 		while (j < src->col)

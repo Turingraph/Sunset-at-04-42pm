@@ -127,6 +127,8 @@ void	color_cells_gradient(t_table_fdf *dst,
 {
 	size_t	i;
 
+	if (check_multiplication_overflow(dst->col, dst->row) == false)
+		return ;
 	i = 0;
 	while (dst != NULL && i < dst->row * dst->col && dst->arr != NULL)
 	{

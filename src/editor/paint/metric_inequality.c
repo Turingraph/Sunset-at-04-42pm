@@ -18,7 +18,7 @@ int	cell_metric_triangle_inequality(const t_table_fdf *dst, size_t index)
 	int			y_max;
 	int			y_min;
 
-	if (dst == NULL || index >= dst->row * dst->col)
+	if (dst == NULL || check_multiplication_overflow(dst->col, dst->row) == false || index >= dst->col * dst->row)
 		return (false);
 	y = get_table_fdf_coordinate(dst, index, 1.0);
 	y_max = f_abs(y.re) + f_abs(y.im);
@@ -43,7 +43,7 @@ int	cell_metric_amgm_inequality(const t_table_fdf *dst, size_t index)
 	int			y_max;
 	int			y_min;
 
-	if (dst == NULL || index >= dst->row * dst->col)
+	if (dst == NULL || check_multiplication_overflow(dst->col, dst->row) == false || index >= dst->col * dst->row)
 		return (false);
 	y = get_table_fdf_coordinate(dst, index, 1.0);
 	y_max = (int)(f_abs(y.re + y.im) / 2.0);
@@ -69,7 +69,7 @@ int	cell_metric_amgm_inequality_3d(const t_table_fdf *dst, size_t index)
 	int			y_min;
 	int			zd3;
 
-	if (dst == NULL || index >= dst->row * dst->col)
+	if (dst == NULL || check_multiplication_overflow(dst->col, dst->row) == false || index >= dst->col * dst->row)
 		return (false);
 	zd3 = 0;
 	if (dst->arr != NULL)
@@ -95,7 +95,7 @@ int	cell_metric_x_plus_y_square(const t_table_fdf *dst, size_t index)
 {
 	t_complex	y;
 
-	if (dst == NULL || index >= dst->row * dst->col)
+	if (dst == NULL || check_multiplication_overflow(dst->col, dst->row) == false || index >= dst->col * dst->row)
 		return (false);
 	y = get_table_fdf_coordinate(dst, index, 1.0);
 	return ((int)((y.re + y.im) * (y.re + y.im)));
@@ -119,7 +119,7 @@ int	cell_metric_cauchy_schwarz_inequality_3d(const t_table_fdf *dst, size_t inde
 	int			y_max;
 	int			y_min;
 
-	if (dst == NULL || index >= dst->row * dst->col)
+	if (dst == NULL || check_multiplication_overflow(dst->col, dst->row) == false || index >= dst->col * dst->row)
 		return (false);
 	zd3 = 0;
 	if (dst->arr != NULL)

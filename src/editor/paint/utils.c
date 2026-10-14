@@ -37,7 +37,8 @@ void	paint_space(t_table_fdf *dst, t_fdf_channel channel,
 	t_complex		z;
 	unsigned char	*rgba;
 
-	if (dst == NULL || dst->arr == NULL || dst->row == 0 || dst->col == 0)
+	if (dst == NULL || dst->arr == NULL
+		|| check_multiplication_overflow(dst->col, dst->row) == false)
 		return ;
 	rgba = get_rgba_of_table_fdf(dst, channel);
 	i = 0;

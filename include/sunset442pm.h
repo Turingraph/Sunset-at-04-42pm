@@ -587,35 +587,36 @@ t_table_fdf		open_table_fdf_file(const char *file_name, const char *dir,
  * If src == NULL or src do not contains the target color,
  *  this function will return the array with 0 as the default instead.
  *
- * time/space: O(row * s_row * col * s_col) / O(row * s_row * col * s_col)
+ * time/space: O(n^2) / O(n^2)
  *
  * @param src source FDF table
- * @param s_row row scaling factor
- * @param s_col column scaling factor
+ * @param scale_row row scaling factor
+ * @param scale_col column scaling factor
  * @param rgba_type RGBA channel to scale
  * @return scaled channel array, or NULL on failure
  */
 unsigned char	*scale_dimension_fdf_rgba(const t_table_fdf *src,
-					size_t s_row, size_t s_col, t_fdf_channel rgba_type);
+	size_t scale_row, size_t scale_col, t_fdf_channel rgba_type);
 
 /**
  * Scale an HEIGHT channel by duplicating its rows and columns.
  *
- * time/space: O(row * s_row * col * s_col) / O(row * s_row * col * s_col)
+ * time/space: O(n^2) / O(n^2)
  *
  * @param src source FDF table
- * @param s_row row scaling factor
- * @param s_col column scaling factor
+ * @param scale_row row scaling factor
+ * @param scale_col column scaling factor
  * @return scaled height integer array, or NULL on failure
  */
-int				*scale_dimension_fdf_int(const t_table_fdf *src,
-					size_t s_row, size_t s_col);
+int	*scale_dimension_fdf_int(const t_table_fdf *src,
+	size_t scale_row, size_t scale_col);
 
 /**
  * Scale an FDF table by duplicating its rows and columns.
  *
- * time/space: O(row * scale_row * col * scale_col) /
- * O(row * scale_row * col * scale_col)
+ * time/space: O(n^4)
+ *
+ * status: public api
  *
  * @param src source FDF table
  * @param scale_row row scaling factor

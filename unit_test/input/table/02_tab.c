@@ -61,4 +61,13 @@ int	main(void)
 /*
 valgrind --leak-check=full --show-leak-kinds=all ./unit_test/out/input/table/02_tab.out
 
+==197923== 
+==197923== HEAP SUMMARY:
+==197923==     in use at exit: 0 bytes in 0 blocks
+==197923==   total heap usage: 187,846 allocs, 187,846 frees, 5,858,296,385 bytes allocated
+==197923== 
+==197923== All heap blocks were freed -- no leaks are possible
+==197923== 
+==197923== For lists of detected and suppressed errors, rerun with: -s
+==197923== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
 */

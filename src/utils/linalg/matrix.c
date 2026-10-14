@@ -35,7 +35,7 @@ t_matrix	init_matrix(size_t row, size_t col, float scale)
 	dst.row = row;
 	dst.col = col;
 	dst.arr = NULL;
-	if (check_2d_index_overflow(0, col, row) == true)
+	if (check_multiplication_overflow(col, row) == true)
 		dst.arr = (float *)malloc(sizeof(float) * row * col);
 	if (dst.arr == NULL)
 	{
@@ -84,7 +84,7 @@ t_matrix	outer_product_matrix(const float *vec_v,
 bool	is_matrix_valid(const t_matrix *src)
 {
 	if (src == NULL || src->arr == NULL
-		|| check_2d_index_overflow(0, src->col, src->row) == false
+		|| check_multiplication_overflow(src->col, src->row) == false
 		|| src->col * src->row == 0)
 		return (false);
 	return (true);
