@@ -60,7 +60,6 @@ typedef struct t_gradient
 // filter.c
 
 bool	is_space_fdf(const t_table_fdf *dst, size_t index);
-bool	is_boundary_fdf(const t_table_fdf *dst, size_t index);
 bool	is_chess_fdf(const t_table_fdf *dst, size_t index);
 void	set_cells_color(t_table_fdf *dst, int color, t_fdf_channel channel,
 			bool (*is_filtered_cell)(const t_table_fdf *dst, size_t index));
