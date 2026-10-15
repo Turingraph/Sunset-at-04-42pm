@@ -57,6 +57,11 @@ typedef struct t_gradient
 	int					input_end;
 }	t_gradient;
 
+// boundary.c
+
+bool	is_boundary_fdf(const t_table_fdf *dst, size_t index, int threshold);
+int		count_neighbor_fdf(const t_table_fdf *dst, size_t index, int threshold);
+
 // filter.c
 
 bool	is_space_fdf(const t_table_fdf *dst, size_t index);

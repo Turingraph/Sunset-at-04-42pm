@@ -25,43 +25,6 @@ bool	is_space_fdf(const t_table_fdf *dst, size_t index)
 }
 
 /**
- * Check whether a cell is located on the boundary of the table
- * or is adjacent to an empty cell.
- *
- * time/space: O(1) / O(1)
- *
- * status: public api
- *
- * @param dst FDF table to check
- * @param index index of the cell to check
- *
- * @return true if the cell is a positive value located on the table
- * boundary or adjacent to an empty cell, false otherwise.
- */
-bool	is_boundary_fdf(const t_table_fdf *dst, size_t index)
-{
-	if (dst == NULL || check_multiplication_overflow(dst->col, dst->row) == false || index >= dst->col * dst->row)
-		return (false);
-	if (dst->arr[index] > 0 && (index % dst->col == 0
-			|| index % dst->col == dst->col - 1
-			|| index / dst->col == 0 || index / dst->col == dst->row - 1))
-		return (true);
-	if (dst->arr[index] > 0 && index + dst->col + 1 < dst->row * dst->col
-		&& (int)index - (int)dst->col - 1 >= 0 && (
-			dst->arr[index + 1] <= 0
-			|| dst->arr[(int)index - 1] <= 0
-			|| dst->arr[(int)index + (int)dst->col + 1] <= 0
-			|| dst->arr[(int)index + (int)dst->col - 1] <= 0
-			|| dst->arr[(int)index - (int)dst->col + 1] <= 0
-			|| dst->arr[(int)index - (int)dst->col - 1] <= 0
-			|| dst->arr[(int)index + (int)dst->col] <= 0
-			|| dst->arr[(int)index - (int)dst->col] <= 0
-		))
-		return (true);
-	return (false);
-}
-
-/**
  * Check whether a cell belongs to the chess pattern.
  *
  * time/space: O(1) / O(1)

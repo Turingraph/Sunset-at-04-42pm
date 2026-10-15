@@ -24,7 +24,7 @@ OUT_evenodd = $(patsubst %.c, out/%.out, $(SRC_evenodd))
 
 LIB_GRAPHIC = $(patsubst %, ../include/%.a, libmlx42)
 GRAPHIC_CONFIG = -ldl -lglfw -pthread
-LIB_paint = $(patsubst %, ../src/lib/%.a, paint table)
+LIB_paint = $(patsubst %, ../src/lib/%.a, paint table debug)
 LIB_motif = $(patsubst %, ../src/lib/%.a, motif) $(LIB_GRAPHIC)
 LIB_window = $(patsubst %, ../src/lib/%.a, paint table window) $(LIB_GRAPHIC)
 LIB_evenodd = $(patsubst %, ../src/lib/%.a, paint table window evenodd) $(LIB_GRAPHIC)

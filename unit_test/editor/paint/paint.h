@@ -3,5 +3,6 @@
 
 #include "../../../src/editor/paint/paint.h"
 #include "../../../src/input/table/table.h"
+#include "../../../src/debug/debug/debug.h"
 
 #endif
