@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:54:20 by phsottat          #+#    #+#             */
-/*   Updated: 2026/08/29 14:54:24 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/16 16:50:57 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,7 @@
 void	write_table_ascii_cheche01(int fd,
 	const t_table_fdf *src, t_fdf_channel channel)
 {
-	char	*dict;
-
-	dict = " `'.,:_-;~!^\"\\|)rvcilj+xnzt>=]*?}17JTC23"
+	const char	*dict = " `'.,:_-;~!^\"\\|)rvcilj+xnzt>=]*?}17JTC23" \
 		"%Yoyhk4$5IF&XVUGZEwemqdgPKO980DQRHNB#WM@";
 	write_table_ascii(fd, src, channel, dict);
 }
