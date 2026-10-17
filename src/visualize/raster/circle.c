@@ -44,7 +44,7 @@ t_line	define_circle_line(t_2d_int point, int ix, int iy, char mode)
 
 // time : O(n)
 // space: O(1)
-void	draw_horizontal(mlx_image_t *dst, t_line line,
+void	raster_line_horizontal(mlx_image_t *dst, t_line line,
 	int32_t color, t_line boundary)
 {
 	int	start;
@@ -147,7 +147,7 @@ Reference
  * @see https://www.youtube.com/watch?v=hpiILbMkF9w
  * for learning how Midpoint circle works.
 */
-void	draw_circle(mlx_image_t *dst,
+void	raster_circle(mlx_image_t *dst,
 	t_2d_int point, t_ink32 ink, t_line boundary)
 {
 	int		ix;
@@ -163,13 +163,13 @@ void	draw_circle(mlx_image_t *dst,
 	while (ix <= -1 * iy)
 	{
 		line = define_circle_line(point, ix, iy, 0);
-		draw_horizontal(dst, line, ink.color, boundary);
+		raster_line_horizontal(dst, line, ink.color, boundary);
 		line = define_circle_line(point, ix, iy, 1);
-		draw_horizontal(dst, line, ink.color, boundary);
+		raster_line_horizontal(dst, line, ink.color, boundary);
 		line = define_circle_line(point, ix, iy, 2);
-		draw_horizontal(dst, line, ink.color, boundary);
+		raster_line_horizontal(dst, line, ink.color, boundary);
 		line = define_circle_line(point, ix, iy, 3);
-		draw_horizontal(dst, line, ink.color, boundary);
+		raster_line_horizontal(dst, line, ink.color, boundary);
 		if (pivot > 0)
 			iy += 1;
 		if (pivot > 0)

@@ -38,7 +38,7 @@ int	main(void)
 	style.shape_2d = E_RECTANGLE;
 	scale_multiplication_fdf(&table, 1.0 / 120.0, HEIGHT);
 	output = init_fdf(&table, NULL, 0.6);
-	view_fdf(&output, style, f_rgba_to_int32(0, 0, 0, 255));
+	view_fdf(&output, style, int32_from_rgba(0, 0, 0, 255));
 	free_table_fdf(&table);
 	free_fdf(&output);
 	return (0);

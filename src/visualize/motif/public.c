@@ -73,7 +73,7 @@ void	view_motif(t_motif_arr *src,
 	img = mlx_new_image(mlx, mlx->width, mlx->height);
 	if (view_motif_handle_00(mlx, img) == false)
 		return ;
-	color_background_mlx(img, background_color);
+	raster_color_background(img, background_color);
 	drawing_context.motif = src;
 	drawing_context.tiles = init_tile_format(SUNSET_WINDOW_WIDTH, SUNSET_WINDOW_HEIGHT,
 			resolution);

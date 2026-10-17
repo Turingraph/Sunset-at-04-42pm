@@ -42,7 +42,7 @@ void	draw_circle_fdf(t_2d_int point,
 	boundary.p1.x = 0;
 	boundary.p1.y = 0;
 	boundary.p2 = camera.window_size;
-	draw_circle(dst, point, ink, boundary);
+	raster_circle(dst, point, ink, boundary);
 }
 
 // time : O(1)
@@ -57,7 +57,7 @@ void	draw_rectangle_fdf(t_line line, int32_t ink,
 	boundary.p1.x = 0;
 	boundary.p1.y = 0;
 	boundary.p2 = camera.window_size;
-	draw_rectangle(dst, line, boundary, ink);
+	raster_rectangle(dst, line, boundary, ink);
 }
 
 // time : O(1)
@@ -71,7 +71,7 @@ void	draw_line_fdf(t_line line, t_ink32 ink,
 	boundary.p1.y = 0;
 	boundary.p2 = camera.window_size;
 	if (is_line_in_screen(camera, line) == true)
-		draw_line_generic(dst, line, boundary, ink);
+		raster_line(dst, line, boundary, ink);
 	else
 	{
 		draw_circle_fdf(line.p1, ink, camera, dst);

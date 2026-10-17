@@ -66,7 +66,7 @@ int	main(void)
 	set_cells_color(&table_base, 30, HEIGHT, is_oddlength_cube);
 	table_fdf_hadamard(&table, &table_base, HEIGHT);
 	scale_relu_fdf(&table, 201, 2000, 0);
-	style.background_color = f_rgba_to_int32(0, 0, 0, 255);
+	style.background_color = rgba_to_int32(0, 0, 0, 255);
 	style.line_thickness = 2;
 	style.artists = E_EULER;
 	color_cells_gradient(&table, init_deep_sea(), true);
@@ -176,7 +176,7 @@ int	main(int len, char **str)
 	style.shape_2d = E_LINE;
 	color_cells_gradient(&table, init_gradient(), true);
 	output = init_fdf(&table, projection_isometric, 0.5);
-	view_fdf(&output, style, f_rgba_to_int32(255, 255, 255, 255));
+	view_fdf(&output, style, rgba_to_int32(255, 255, 255, 255));
 	free_table_fdf(&table);
 	free_fdf(&output);
 	return (0);
@@ -287,7 +287,7 @@ int	main(int len, char **str)
 	scale_multiplication_fdf(&table, 1.0 / 3.0, HEIGHT);
 	color_cells_gradient(&table, init_white_noise(), true);
 	output = init_fdf(&table, projection_isometric, 1.0);
-	view_fdf(&output, style, f_rgba_to_int32(0, 0, 0, 255));
+	view_fdf(&output, style, rgba_to_int32(0, 0, 0, 255));
 	free_table_fdf(&table);
 	free_fdf(&output);
 	return (0);

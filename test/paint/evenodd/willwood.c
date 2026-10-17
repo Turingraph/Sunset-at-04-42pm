@@ -70,8 +70,8 @@ int	main(void)
 	size_t			i;
 
 	wood = init_deep_wood();
-	table = init_table_fdf(300, 300, true);
-	table_base = init_table_fdf(300, 300, false);
+	table = init_table_fdf(30, 30, true);
+	table_base = init_table_fdf(30, 30, false);
 	paint_space(&table, HEIGHT, cell_metric_amgm_inequality);
 	paint_space(&table, HEIGHT, cell_metric_pythagoras_3d);
 	set_cells_color(&table_base, 1, HEIGHT, is_oddlength_x2shadow);
@@ -90,7 +90,7 @@ int	main(void)
 	color_cells_gradient(&table, init_white_noise(), true);
 	scale_multiplication_fdf(&table, 1.0 / 30.0, HEIGHT);
 	output = init_fdf(&table, projection_cabinet, 1.3);
-	view_fdf(&output, style, f_rgba_to_int32(0, 0, 0, 255));
+	view_fdf(&output, style, int32_from_rgba(0, 0, 0, 255));
 	free_table_fdf(&table);
 	free_table_fdf(&table_base);
 	free_fdf(&output);
@@ -98,6 +98,5 @@ int	main(void)
 }
 
 /*
-valgrind --leak-check=full --show-leak-kinds=all 
-./test/out/paint/evenodd/willwood.out
+valgrind --leak-check=full --show-leak-kinds=all ./test/out/paint/evenodd/willwood.out
 */

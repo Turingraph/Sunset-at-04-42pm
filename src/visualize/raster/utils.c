@@ -77,7 +77,7 @@ t_line	init_rectangle(t_line src, t_line boundary)
  * @param boundary drawing boundary used to restrict the rectangle
  * @param ink 32-bit RGBA color used to fill the rectangle
  */
-void	draw_rectangle(mlx_image_t *dst, t_line rectangle,
+void	raster_rectangle(mlx_image_t *dst, t_line rectangle,
 	t_line boundary, int32_t ink)
 {
 	int	i;

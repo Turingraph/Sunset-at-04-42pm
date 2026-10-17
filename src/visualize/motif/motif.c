@@ -41,7 +41,7 @@ void	draw_circle_unittile(mlx_image_t *dst,
 		line = init_float_line(polygon->arr[i], polygon->arr[i], boundary);
 		point.x = line.p1.x;
 		point.y = line.p1.y;
-		draw_circle(dst, point, ink, boundary);
+		raster_circle(dst, point, ink, boundary);
 		i += 1;
 	}
 }
@@ -72,14 +72,14 @@ void	draw_polygon_unittile(mlx_image_t *dst, const t_2d_polygon *polygon,
 	while (dst != NULL && polygon != NULL && i < polygon->length - 1)
 	{
 		line = init_float_line(polygon->arr[i], polygon->arr[i + 1], boundary);
-		draw_line_generic(dst, line, boundary, ink);
+		raster_line(dst, line, boundary, ink);
 		i += 1;
 	}
 	if (dst != NULL && polygon != NULL
 		&& i == polygon->length - 1 && polygon->is_loop == true)
 	{
 		line = init_float_line(polygon->arr[i], polygon->arr[0], boundary);
-		draw_line_generic(dst, line, boundary, ink);
+		raster_line(dst, line, boundary, ink);
 	}
 }
 
@@ -110,7 +110,7 @@ void	draw_rectangle_unittile(mlx_image_t *dst,
 		&& polygon->length > 0 && i < polygon->length - 1)
 	{
 		line = init_float_line(polygon->arr[i], polygon->arr[i + 1], boundary);
-		draw_rectangle(dst, line, boundary, ink);
+		raster_rectangle(dst, line, boundary, ink);
 		i += 1;
 	}
 	if (dst != NULL && polygon != NULL
@@ -118,6 +118,6 @@ void	draw_rectangle_unittile(mlx_image_t *dst,
 		&& polygon->is_loop == true)
 	{
 		line = init_float_line(polygon->arr[i], polygon->arr[0], boundary);
-		draw_rectangle(dst, line, boundary, ink);
+		raster_rectangle(dst, line, boundary, ink);
 	}
 }

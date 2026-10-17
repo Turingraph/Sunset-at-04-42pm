@@ -1844,7 +1844,7 @@ typedef enum t_2d_shape
  * @see https://github.com/codam-coding-college/MLX42/blob/master/docs/Colors.md
  * to understand how to use color with MLX42 graphic library.
  */
-int32_t	f_rgba_to_int32(unsigned char r,
+int32_t	int32_from_rgba(unsigned char r,
 	unsigned char g, unsigned char b, unsigned char a);
 
 /* ************************************************************************** */

@@ -36,16 +36,16 @@ int	main(void)
 		{.x = 23.0 / 24.0, .y = 23.0 / 24.0},
 	};
 	t_ink32			ink_coco = {
-		.color = f_rgba_to_int32(192, 192, 0, 255),
+		.color = int32_from_rgba(192, 192, 0, 255),
 		.thickness = 30};
 	t_ink32			ink_red = {
-		.color = f_rgba_to_int32(255, 0, 0, 255),
+		.color = int32_from_rgba(255, 0, 0, 255),
 		.thickness = 20};
 	t_ink32			ink_white = {
-		.color = f_rgba_to_int32(255, 255, 255, 255),
+		.color = int32_from_rgba(255, 255, 255, 255),
 		.thickness = 20};
 	t_ink32			ink_blue = {
-		.color = f_rgba_to_int32(0, 100, 255, 255),
+		.color = int32_from_rgba(0, 100, 255, 255),
 		.thickness = 20};
 	t_2d_polygon	polygon_00 = {.arr = square_00, .is_loop = false, .length = 2};
 	t_2d_polygon	polygon_01 = {.arr = square_01, .is_loop = false, .length = 2};
@@ -95,7 +95,7 @@ int	main(void)
 		}
 	};
 
-	view_motif(&piet_mondrian, f_rgba_to_int32(0, 0, 0, 255), 3);
+	view_motif(&piet_mondrian, int32_from_rgba(0, 0, 0, 255), 3);
 	return (0);
 }
 

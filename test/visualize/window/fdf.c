@@ -55,7 +55,7 @@ int	main(int len, char **str)
 	style.shape_2d = E_LINE;
 	color_cells_gradient(&table, init_gradient(), true);
 	output = init_fdf(&table, projection_isometric, 0.5);
-	view_fdf(&output, style, f_rgba_to_int32(255, 255, 255, 255));
+	view_fdf(&output, style, int32_from_rgba(255, 255, 255, 255));
 	free_table_fdf(&table);
 	free_fdf(&output);
 	return (0);
