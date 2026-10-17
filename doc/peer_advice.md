@@ -9,7 +9,7 @@
 	1.	Using MACRO instead of Magic variable
 	2.	Spotting if you use the multiple words to express same meaning e.g. xyz and 3d etc.
 	3.	name as "common_subtype" and OOP style i.e. object_action_subtype.
-	4.	name should not be too long e.g. name as test instead of unit_test etc.
+	4.	name should not be too long e.g. name as test instead of test etc.
 	5.	read Unix philosophy and OpenCV
 	6.	you might want to try Docygen
 5.	ChatGPT advice

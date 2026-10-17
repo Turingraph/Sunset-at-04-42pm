@@ -2,11 +2,11 @@
 
 all:
 	$(MAKE) -C src -f debug.mk
-	$(MAKE) -C unit_test -f Makefile
+	$(MAKE) -C test -f Makefile
 
 clean:
 	$(MAKE) -C src -f debug.mk clean
-	$(MAKE) -C unit_test -f Makefile clean
+	$(MAKE) -C test -f Makefile clean
 
 re:
 	make -f debug.mk clean

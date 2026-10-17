@@ -103,12 +103,12 @@ make -f debug.mk all
 Then run the specific target files in the module, for examples
 
 ```
-$ valgrind --leak-check=full --show-leak-kinds=all ./unit_test/out/editor/convolve/fdf_k.out
+$ valgrind --leak-check=full --show-leak-kinds=all ./test/out/editor/convolve/fdf_k.out
 // This file verify that convolution features work correctly and user able to convert the result as FdF files.
 ```
 
 ```
-$ valgrind --leak-check=full --show-leak-kinds=all ./unit_test/out/input/table/verify_scale_dim_int.out
+$ valgrind --leak-check=full --show-leak-kinds=all ./test/out/input/table/verify_scale_dim_int.out
 // This file verify that scale_dimension_fdf works correctly.
 ```
 
@@ -182,7 +182,7 @@ int	main(int len, char **str)
 	return (0);
 }
 
-./unit_test/out/graphic_mlx/window/fdf.out input_examples/fdf/42.fdf
+./test/out/graphic_mlx/window/fdf.out input_examples/fdf/42.fdf
 ```
 
 as this picture.
@@ -293,7 +293,7 @@ int	main(int len, char **str)
 	return (0);
 }
 
-valgrind --leak-check=full --show-leak-kinds=all ./unit_test/out/graphic_mlx/window/zutomayo.out unit_test/editor/convolve/input_ascii/zutomayo_isometric2.txt
+valgrind --leak-check=full --show-leak-kinds=all ./test/out/graphic_mlx/window/zutomayo.out test/editor/convolve/input_ascii/zutomayo_isometric2.txt
 ```
 
 as this picture.
