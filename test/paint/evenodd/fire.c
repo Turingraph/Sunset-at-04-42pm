@@ -103,5 +103,5 @@ int	main(void)
 
 
 /*
-valgrind --leak-check=full --show-leak-kinds=all ./test/out/editor/evenodd/fire.out
+valgrind --leak-check=full --show-leak-kinds=all ./test/out/paint/evenodd/fire.out
 */

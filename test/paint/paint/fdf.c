@@ -24,7 +24,7 @@ int	main(void)
 {
 	t_table_fdf	table_a;
 	int			output;
-	char		*dst = "test/editor/paint/input_fdf/";
+	char		*dst = "test/paint/paint/input_fdf/";
 	char		*src = "corpus/ascii/";
 	char		*arr_src[] = {
 		"apartment_goofy.txt",
@@ -86,6 +86,6 @@ int	main(void)
 }
 
 /*
-valgrind --leak-check=full --show-leak-kinds=all ./test/out/editor/paint/fdf.out
+valgrind --leak-check=full --show-leak-kinds=all ./test/out/paint/paint/fdf.out
 
 */

@@ -10,9 +10,9 @@ SRC_table = $(wildcard input/table/*.c)
 SRC_libft = $(wildcard utils/libft/*.c)
 SRC_taylor = $(wildcard utils/taylor/*.c)
 
-SRC_convolve = $(wildcard editor/convolve/*.c)
-SRC_paint = $(wildcard editor/paint/*.c)
-SRC_evenodd = $(wildcard editor/evenodd/*.c)
+SRC_convolve = $(wildcard paint/convolve/*.c)
+SRC_paint = $(wildcard paint/paint/*.c)
+SRC_evenodd = $(wildcard paint/evenodd/*.c)
 
 SRC_motif = $(wildcard visualize/motif/*.c)
 SRC_window = $(wildcard visualize/window/*.c)

@@ -8,7 +8,7 @@ int	main(void)
 	t_matrix	kernel;
 	size_t		half_dim;
 	int			output;
-	char		*dst = "test/editor/convolve/input_ascii/";
+	char		*dst = "test/paint/convolve/input_ascii/";
 	char		*src = "corpus/ascii/";
 	char		*arr[] = {
 		"apartment_goofy.txt",
@@ -62,6 +62,6 @@ int	main(void)
 }
 
 /*
-valgrind --leak-check=full --show-leak-kinds=all ./test/out/editor/convolve/ascii.out
+valgrind --leak-check=full --show-leak-kinds=all ./test/out/paint/convolve/ascii.out
 
 */

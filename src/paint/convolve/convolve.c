@@ -49,7 +49,7 @@ static t_matrix	init_src_kernel_int(const t_table_fdf *src,
 	dst.col = dim;
 	dst.row = dim;
 	dst.arr = malloc_talk(sizeof(float) * dim * dim,
-			"editor/convolve/convolve_height.c/init_src_kernel_int\n");
+			"paint/convolve/convolve_height.c/init_src_kernel_int\n");
 	if (dst.arr == NULL)
 		return (dst);
 	i = 0;

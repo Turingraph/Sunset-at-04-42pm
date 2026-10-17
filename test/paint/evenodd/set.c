@@ -8,7 +8,7 @@ t_gradient	init_deep_wood()
 
 	dst.cell_channel = D7_HEIGHT;
 	dst.input_start = 0;
-	dst.input_end = 10;
+	dst.input_end = 216;
 	dst.rgba_start.r = 70;
 	dst.rgba_start.g = 75;
 	dst.rgba_start.b = 113;
@@ -22,22 +22,23 @@ t_gradient	init_deep_wood()
 
 int	main(void)
 {
-	t_table_fdf		table_base;
+	t_table_fdf		table;
 	t_fdf			output;
 	t_fdf_render	style;
 
-	table_base = init_table_fdf(161, 161, true);
-	set_cells_color(&table_base, 10, HEIGHT, is_andmod_sin);
+	table = init_table_fdf(120, 120, true);
+	paint_space(&table, HEIGHT, cell_metric_max_xy);
 	style.thickness = 2;
 	style.shape_2d = E_RECTANGLE;
-	color_cells_gradient(&table_base, init_deep_wood(), true);
-	output = init_fdf(&table_base, NULL, 0.6);
+	color_cells_gradient(&table, init_deep_wood(), true);
+	scale_multiplication_fdf(&table, 1.0 / 120.0, HEIGHT);
+	output = init_fdf(&table, NULL, 0.6);
 	view_fdf(&output, style, f_rgba_to_int32(0, 0, 0, 255));
-	free_table_fdf(&table_base);
+	free_table_fdf(&table);
 	free_fdf(&output);
 	return (0);
 }
 
 /*
-valgrind --leak-check=full --show-leak-kinds=all ./test/out/editor/evenodd/base.out
+valgrind --leak-check=full --show-leak-kinds=all ./test/out/paint/evenodd/set.out
 */

@@ -1,5 +1,5 @@
 
-1.	finish testing src/editor/paint/boundary.c
+1.	finish testing src/paint/paint/boundary.c
 2.	rename the API
 
 What should good API looks like (according to ChatGPT)?

@@ -3,10 +3,12 @@
 int	main(void)
 {
 	t_table_fdf	table_a;
+	t_table_fdf	table_b;
 	t_table_fdf	table_c;
+	size_t		half_dim;
 	int			output;
-	char		*dst_dir = "test/editor/convolve/input_edge_2/";
-	char		*src_dir = "test/editor/convolve/input_ascii/";
+	char		*dst_dir = "test/paint/convolve/input_ascii/";
+	char		*src_dir = "corpus/ascii/";
 	char		*arr[] = {
 		"apartment_goofy.txt",
 		"bangkok_usa_frag.txt",
@@ -29,30 +31,27 @@ int	main(void)
 		"unix_o8.txt",
 		"zutomayo_isometric2.txt"};
 	size_t	  i;
-	size_t	  length = 20;
-	float	*edge;
+	size_t	  length = 20;	// max = 24
 
-	edge = edge_kernel(3, 7, 1, 0);
+	half_dim = 5;
 	i = 0;
 	while (i < length)
 	{
 		output = open_dir_file(arr[i], dst_dir, E_WRITE);
 		table_a = open_table_fdf_file(arr[i], src_dir,
 				parse_ascii_line_cheche01, false);
-		scale_multiplication_fdf(&table_a, 3.0, HEIGHT);
-		table_c = convolve_fdf(&table_a, edge, 5);
-		// scale_positive_fdf(&table_c);
+		table_b = scale_dimension_fdf(&table_a, 3, 3);
+		table_c = convolve_fdf(&table_b, NULL, half_dim);
 		write_table_ascii_cheche01(output, &table_c, HEIGHT);
 		free_table_fdf(&table_a);
+		free_table_fdf(&table_b);
 		free_table_fdf(&table_c);
-		close(output);
 		i += 1;
 	}
-	free(edge);
 	return (0);
 }
 
 /*
-valgrind --leak-check=full --show-leak-kinds=all ./test/out/editor/convolve/edge.out
+valgrind --leak-check=full --show-leak-kinds=all ./test/out/paint/convolve/ascii.out
 
 */

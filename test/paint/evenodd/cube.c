@@ -2,6 +2,26 @@
 
 // time : O(1)
 // space: O(1)
+t_gradient	init_deep_wood()
+{
+	t_gradient	dst;
+
+	dst.cell_channel = D7_HEIGHT;
+	dst.input_start = 0;
+	dst.input_end = 300;
+	dst.rgba_start.r = 70;
+	dst.rgba_start.g = 75;
+	dst.rgba_start.b = 113;
+	dst.rgba_start.a = 255;
+	dst.rgba_end.r = 124;
+	dst.rgba_end.g = 213;
+	dst.rgba_end.b = 199;
+	dst.rgba_end.a = 255;
+	return (dst);
+}
+
+// time : O(1)
+// space: O(1)
 t_gradient	init_white_noise()
 {
 	t_gradient	dst;
@@ -20,37 +40,17 @@ t_gradient	init_white_noise()
 	return (dst);
 }
 
-// time : O(1)
-// space: O(1)
-t_gradient	init_deep_wood()
-{
-	t_gradient	dst;
-
-	dst.cell_channel = D7_HEIGHT;
-	dst.input_start = 0;
-	dst.input_end = 250;
-	dst.rgba_start.r = 70;
-	dst.rgba_start.g = 75;
-	dst.rgba_start.b = 113;
-	dst.rgba_start.a = 255;
-	dst.rgba_end.r = 124;
-	dst.rgba_end.g = 213;
-	dst.rgba_end.b = 199;
-	dst.rgba_end.a = 255;
-	return (dst);
-}
-
 int	main(void)
 {
+	t_table_fdf		table_base;
 	t_table_fdf		table;
 	t_fdf			output;
 	t_fdf_render	style;
-	t_table_fdf		table_base;
 
-	table_base = init_table_fdf(300, 300, false);
-	set_cells_color(&table_base, 3, HEIGHT, is_andmod_x3);
 	table = init_table_fdf(300, 300, true);
-	paint_space(&table, HEIGHT, cell_metric_max_xy);
+	table_base = init_table_fdf(300, 300, false);
+	paint_space(&table, HEIGHT, cell_metric_pythagoras);
+	set_cells_color(&table_base, 1, HEIGHT, is_andmod_x3);
 	table_fdf_hadamard(&table, &table_base, HEIGHT);
 	style.thickness = 2;
 	style.shape_2d = E_RECTANGLE;
@@ -66,6 +66,5 @@ int	main(void)
 }
 
 /*
-valgrind --leak-check=full --show-leak-kinds=all
-./test/out/editor/evenodd/square.out
+valgrind --leak-check=full --show-leak-kinds=all ./test/out/paint/evenodd/cube.out
 */

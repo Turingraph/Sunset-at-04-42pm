@@ -47,7 +47,7 @@ int	main(int len, char **str)
 }
 
 /*
-valgrind --leak-check=full --show-leak-kinds=all ./test/out/visualize/window/indigo.out test/editor/convolve/input_ascii/o_isometric2.txt
+valgrind --leak-check=full --show-leak-kinds=all ./test/out/visualize/window/indigo.out test/paint/convolve/input_ascii/o_isometric2.txt
 valgrind --leak-check=full --show-leak-kinds=all ./test/out/visualize/window/indigo.out test/input/table/00_fdf_to_ascii/elem-fract.txt
-valgrind --leak-check=full --show-leak-kinds=all ./test/out/visualize/window/indigo.out test/editor/convolve/input_ascii/unix_o8.txt
+valgrind --leak-check=full --show-leak-kinds=all ./test/out/visualize/window/indigo.out test/paint/convolve/input_ascii/unix_o8.txt
 */

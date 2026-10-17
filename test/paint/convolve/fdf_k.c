@@ -6,7 +6,7 @@ int	main(void)
 	t_table_fdf	table_b;
 	size_t		half_dim;
 	int			output;
-	char		*dst_dir = "test/editor/convolve/fdf_k/";
+	char		*dst_dir = "test/paint/convolve/fdf_k/";
 	char		*src_dir = "corpus/fdf/";
 	char			*arr[] = {
 		"100-6.fdf",			// 0
@@ -54,7 +54,7 @@ int	main(void)
 }
 
 /*
-valgrind --leak-check=full --show-leak-kinds=all ./test/out/editor/convolve/fdf_k.out
+valgrind --leak-check=full --show-leak-kinds=all ./test/out/paint/convolve/fdf_k.out
 
 start:  15:37:40
 finish: 15:43:12

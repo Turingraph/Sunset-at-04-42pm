@@ -29,5 +29,5 @@ To Do List
 2.	Spotting if you use the multiple words to express same meaning e.g. xyz and 3d etc.
 3.	name as "common_subtype" and OOP style i.e. object_action_subtype.
 4.	name should not be too long e.g. name as test instead of test etc.
-5.	Separate the editor/paint/ as editor/paint/ and editor/set_value/ (or something)
+5.	Separate the paint/paint/ as paint/paint/ and paint/set_value/ (or something)
 

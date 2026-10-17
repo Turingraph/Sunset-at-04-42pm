@@ -99,5 +99,5 @@ int	main(void)
 
 /*
 valgrind --leak-check=full --show-leak-kinds=all 
-./test/out/editor/evenodd/willwood.out
+./test/out/paint/evenodd/willwood.out
 */

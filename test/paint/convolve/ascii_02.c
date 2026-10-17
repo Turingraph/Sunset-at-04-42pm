@@ -7,7 +7,7 @@ int	main(void)
 	t_table_fdf	table_c;
 	size_t		half_dim;
 	int			output;
-	char		*dst_dir = "test/editor/convolve/input_ascii_02/";
+	char		*dst_dir = "test/paint/convolve/input_ascii_02/";
 	char		*src_dir = "corpus/ascii/";
 	char		*arr[] = {
 		"apartment_goofy.txt",
@@ -52,6 +52,6 @@ int	main(void)
 }
 
 /*
-valgrind --leak-check=full --show-leak-kinds=all ./test/out/editor/convolve/ascii_02.out
+valgrind --leak-check=full --show-leak-kinds=all ./test/out/paint/convolve/ascii_02.out
 
 */

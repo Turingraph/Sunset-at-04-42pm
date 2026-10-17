@@ -100,6 +100,6 @@ int	main(void)
 }
 
 /*
-valgrind --leak-check=full --show-leak-kinds=all ./test/out/editor/paint/count_neighbor.out
+valgrind --leak-check=full --show-leak-kinds=all ./test/out/paint/paint/count_neighbor.out
 
 */

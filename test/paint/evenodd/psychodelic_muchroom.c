@@ -46,6 +46,6 @@ int	main(void)
 
 /*
 valgrind --leak-check=full --show-leak-kinds=all 
-./test/out/editor/evenodd/psychodelic_muchroom.out
+./test/out/paint/evenodd/psychodelic_muchroom.out
 
 */

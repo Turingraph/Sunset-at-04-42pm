@@ -23,26 +23,21 @@ t_gradient	init_deep_wood()
 int	main(void)
 {
 	t_table_fdf		table_base;
-	t_table_fdf		table;
 	t_fdf			output;
 	t_fdf_render	style;
 
-	table = init_table_fdf(100, 100, true);
-	table_base = init_table_fdf(100, 100, false);
-	paint_space(&table, HEIGHT, cell_metric_pythagoras);
-	set_cells_color(&table_base, 1, HEIGHT, is_binary_search_andmod);
-	table_fdf_hadamard(&table, &table_base, HEIGHT);
+	table_base = init_table_fdf(161, 161, true);
+	set_cells_color(&table_base, 10, HEIGHT, is_andmod_sin);
 	style.thickness = 2;
 	style.shape_2d = E_RECTANGLE;
-	color_cells_gradient(&table, init_deep_wood(), true);
-	output = init_fdf(&table, NULL, 0.6);
+	color_cells_gradient(&table_base, init_deep_wood(), true);
+	output = init_fdf(&table_base, NULL, 0.6);
 	view_fdf(&output, style, f_rgba_to_int32(0, 0, 0, 255));
-	free_table_fdf(&table);
 	free_table_fdf(&table_base);
 	free_fdf(&output);
 	return (0);
 }
 
 /*
-valgrind --leak-check=full --show-leak-kinds=all ./test/out/editor/evenodd/3xplus1.out
+valgrind --leak-check=full --show-leak-kinds=all ./test/out/paint/evenodd/base.out
 */

@@ -27,9 +27,9 @@ SRC_linalg = $(wildcard utils/linalg/*.c)
 SRC_load = $(wildcard input/load/*.c)
 SRC_table = $(wildcard input/table/*.c)
 
-SRC_convolve = $(wildcard editor/convolve/*.c)
-SRC_paint = $(wildcard editor/paint/*.c)
-SRC_evenodd = $(wildcard editor/evenodd/*.c)
+SRC_convolve = $(wildcard paint/convolve/*.c)
+SRC_paint = $(wildcard paint/paint/*.c)
+SRC_evenodd = $(wildcard paint/evenodd/*.c)
 
 SRC_raster = $(wildcard visualize/raster/*.c)
 SRC_motif = $(wildcard visualize/motif/*.c)

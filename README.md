@@ -103,7 +103,7 @@ make -f debug.mk all
 Then run the specific target files in the module, for examples
 
 ```
-$ valgrind --leak-check=full --show-leak-kinds=all ./test/out/editor/convolve/fdf_k.out
+$ valgrind --leak-check=full --show-leak-kinds=all ./test/out/paint/convolve/fdf_k.out
 // This file verify that convolution features work correctly and user able to convert the result as FdF files.
 ```
 
@@ -293,7 +293,7 @@ int	main(int len, char **str)
 	return (0);
 }
 
-valgrind --leak-check=full --show-leak-kinds=all ./test/out/visualize/window/zutomayo.out test/editor/convolve/input_ascii/zutomayo_isometric2.txt
+valgrind --leak-check=full --show-leak-kinds=all ./test/out/visualize/window/zutomayo.out test/paint/convolve/input_ascii/zutomayo_isometric2.txt
 ```
 
 as this picture.

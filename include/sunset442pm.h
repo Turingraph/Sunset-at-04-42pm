@@ -791,7 +791,7 @@ void			write_table_fdf(int fd,
 					const t_table_fdf *src, size_t digits, t_write_style mode);
 
 /* ************************************************************************** */
-/* *** src/editor/convolve/ *** */
+/* *** src/paint/convolve/ *** */
 /* ************************************************************************** */
 
 /**
@@ -897,7 +897,7 @@ float	define_outer_num(float inner_dim, float outer_dim, float input, float kern
 float	*edge_kernel(size_t inner_dim, size_t outer_dim, float input, float kernel_sum);
 
 /* ************************************************************************** */
-/* *** src/editor/evenodd/ *** */
+/* *** src/paint/evenodd/ *** */
 /* ************************************************************************** */
 
 /**
@@ -1340,7 +1340,7 @@ bool		is_andmod_sin(const t_table_fdf *dst, size_t index);
 bool		is_andmod_cos(const t_table_fdf *dst, size_t index);
 
 /* ************************************************************************** */
-/* *** src/editor/paint/ *** */
+/* *** src/paint/paint/ *** */
 /* ************************************************************************** */
 
 /**

@@ -7,9 +7,9 @@ int	main(void)
 	t_table_fdf	table_c;
 	size_t		ker_dim;
 	int			output_fd;
-	char		*input_dir = "test/editor/convolve/suisei/figlet.txt";
-	char		*output_dir_1 = "test/editor/convolve/suisei/scale_dim.txt";
-	char		*output_dir_2 = "test/editor/convolve/suisei/convolve.txt";
+	char		*input_dir = "test/paint/convolve/suisei/figlet.txt";
+	char		*output_dir_1 = "test/paint/convolve/suisei/scale_dim.txt";
+	char		*output_dir_2 = "test/paint/convolve/suisei/convolve.txt";
 	t_matrix	ker;
 
 	ker_dim = 5;
@@ -39,5 +39,5 @@ int	main(void)
 }
 
 /*
-valgrind --leak-check=full --show-leak-kinds=all ./test/out/editor/convolve/suisei.out
+valgrind --leak-check=full --show-leak-kinds=all ./test/out/paint/convolve/suisei.out
 */

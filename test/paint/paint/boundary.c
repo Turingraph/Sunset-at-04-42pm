@@ -83,6 +83,6 @@ int	main(void)
 }
 
 /*
-valgrind --leak-check=full --show-leak-kinds=all ./test/out/editor/paint/boundary.out
+valgrind --leak-check=full --show-leak-kinds=all ./test/out/paint/paint/boundary.out
 
 */
