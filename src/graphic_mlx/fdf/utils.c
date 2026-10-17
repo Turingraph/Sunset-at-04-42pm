@@ -66,3 +66,17 @@ bool	is_fdf_valid(const t_fdf *src)
 		return (false);
 	return (true);
 }
+
+// time : O(n)
+// space: O(1)
+void	vector_scale(float *update_v, float s, size_t dim)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < dim && update_v != NULL)
+	{
+		update_v[i] *= s;
+		i += 1;
+	}
+}

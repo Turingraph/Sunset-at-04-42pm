@@ -14,7 +14,6 @@
 # define FDF_H
 
 # include "../raster/raster.h"
-# include "../../utils/linalg/linalg.h"
 # include "../../input/table/table.h"
 
 /**
@@ -64,5 +63,6 @@ t_complex	projection_wave(float x, float y, float z);
 
 int32_t		get_fdf_rgba_int32(const t_fdf *src, size_t index);
 bool		is_fdf_valid(const t_fdf *src);
+void	vector_scale(float *update_v, float s, size_t dim);
 
 #endif

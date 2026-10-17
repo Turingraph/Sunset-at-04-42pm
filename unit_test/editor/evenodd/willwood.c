@@ -98,5 +98,6 @@ int	main(void)
 }
 
 /*
-valgrind --leak-check=full --show-leak-kinds=all ./unit_test/out/editor/evenodd/willwood.out
+valgrind --leak-check=full --show-leak-kinds=all 
+./unit_test/out/editor/evenodd/willwood.out
 */

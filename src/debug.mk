@@ -46,17 +46,16 @@ OBJ_get_next_line = $(patsubst %.c, obj/%.o, $(SRC_get_next_line))
 
 # *** composed obj ***
 OBJ_debug = $(patsubst %.c, obj/%.o, $(SRC_debug)) $(OBJ_load)
-OBJ_linalg = $(patsubst %.c, obj/%.o, $(SRC_linalg)) $(OBJ_taylor) $(OBJ_libft)
 OBJ_load = $(patsubst %.c, obj/%.o, $(SRC_load)) $(OBJ_libft) $(OBJ_get_next_line)
 OBJ_table = $(patsubst %.c, obj/%.o, $(SRC_table)) $(OBJ_load) $(OBJ_taylor)
 
-OBJ_convolve = $(patsubst %.c, obj/%.o, $(SRC_convolve)) $(OBJ_table) $(OBJ_linalg)
+OBJ_convolve = $(patsubst %.c, obj/%.o, $(SRC_convolve)) $(OBJ_table)
 OBJ_paint = $(patsubst %.c, obj/%.o, $(SRC_paint)) $(OBJ_taylor)
 OBJ_evenodd = $(patsubst %.c, obj/%.o, $(SRC_evenodd)) $(OBJ_taylor) $(OBJ_libft)
 
 OBJ_raster = $(patsubst %.c, obj/%.o, $(SRC_raster)) $(OBJ_taylor) $(OBJ_table)
 OBJ_motif = $(patsubst %.c, obj/%.o, $(SRC_motif)) $(OBJ_raster)
-OBJ_fdf = $(patsubst %.c, obj/%.o, $(SRC_fdf)) $(OBJ_raster) $(OBJ_linalg)
+OBJ_fdf = $(patsubst %.c, obj/%.o, $(SRC_fdf)) $(OBJ_raster)
 OBJ_display = $(patsubst %.c, obj/%.o, $(SRC_display)) $(OBJ_fdf)
 OBJ_window = $(patsubst %.c, obj/%.o, $(SRC_window)) $(OBJ_display)
 
