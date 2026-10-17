@@ -17,11 +17,15 @@
 # include "../libft/libft.h"
 
 # ifndef MAXIMUM_ERROR
-#  define MAXIMUM_ERROR 1e-4
+#  define MAXIMUM_ERROR 1e-8
 # endif
 
 # ifndef MAXIMUM_TERM
-#  define MAXIMUM_TERM 8
+#  define MAXIMUM_TERM 24
+# endif
+
+# ifndef PI
+#  define PI 3.141592653589
 # endif
 
 // complex_polynomial.c
@@ -46,16 +50,16 @@ float		complex_magnitude(t_2d_float a, char is_square);
 
 // stats.c
 
-float		normal_distribution(float std, float means, float x);
+double		normal_distribution(double std, double means, double x);
 float		f_std(const float *vec_v, size_t dim);
 float		f_sum(const float *vec_v, size_t dim);
 
 // taylor.c
 
-float		f_pow(float x, size_t a);
-float		f_root_finding(float x, size_t a);
-float		f_sin(float x);
-float		f_cos(float x);
-float		f_exp(float x);
+double		f_pow(double x, size_t a);
+double		f_root_finding(double x, size_t a);
+double		f_sin(double x);
+double		f_cos(double x);
+double		f_exp(double x);
 
 #endif

@@ -21,13 +21,13 @@
  * @param means average score
  * @param x x value
  */
-float	normal_distribution(float std, float means, float x)
+double	normal_distribution(double std, double means, double x)
 {
-	float	up;
-	float	down;
-	float	pi;
+	double	up;
+	double	down;
+	double	pi;
 
-	pi = 3.1415;
+	pi = PI;
 	if (std == 0)
 		return (0);
 	down = std * f_root_finding(2 * pi, 2);
