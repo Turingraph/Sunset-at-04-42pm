@@ -237,7 +237,7 @@ float	f_min(float a, float b);
  * @param means average score
  * @param x x value
  */
-float	normal_distribution_function(float std, float means, float x);
+float	normal_distribution(float std, float means, float x);
 
 /**
  * compute the standard deviation of the given dataset from the input array.

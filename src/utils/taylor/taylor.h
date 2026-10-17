@@ -14,7 +14,7 @@
 # define TAYLOR_H
 
 # include <stdlib.h>
-# include "../libft/type.h"
+# include "../libft/libft.h"
 
 # ifndef MAXIMUM_ERROR
 #  define MAXIMUM_ERROR 1e-4
@@ -23,11 +23,6 @@
 # ifndef MAXIMUM_TERM
 #  define MAXIMUM_TERM 8
 # endif
-
-// abs.c
-
-float		f_abs(float x);
-int			f_abs_int(int x);
 
 // complex_polynomial.c
 
@@ -49,23 +44,9 @@ t_2d_float	complex_multiplication(t_2d_float a, t_2d_float b);
 t_2d_float	complex_reciprocal(t_2d_float a);
 float		complex_magnitude(t_2d_float a, char is_square);
 
-// interval.c
-
-float		f_floor(float num);
-float		f_round(float num);
-float		f_interval(float num, float min, float max);
-int			f_interval_int(int num, int min, int max);
-
-// minmax.c
-
-float		f_max(float a, float b);
-float		f_min(float a, float b);
-int			f_max_int(int a, int b);
-int			f_min_int(int a, int b);
-
 // stats.c
 
-float		normal_distribution_function(float std, float means, float x);
+float		normal_distribution(float std, float means, float x);
 float		f_std(const float *vec_v, size_t dim);
 float		f_sum(const float *vec_v, size_t dim);
 

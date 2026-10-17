@@ -21,7 +21,7 @@
  * @param means average score
  * @param x x value
  */
-float	normal_distribution_function(float std, float means, float x)
+float	normal_distribution(float std, float means, float x)
 {
 	float	up;
 	float	down;

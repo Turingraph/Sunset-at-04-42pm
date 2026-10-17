@@ -32,7 +32,7 @@ float	test_cube(float x)
 // space: O(1)
 float	test_normal(float x)
 {
-	return (normal_distribution_function(1, 2, x));
+	return (normal_distribution(1, 2, x));
 }
 
 // time : O(n)

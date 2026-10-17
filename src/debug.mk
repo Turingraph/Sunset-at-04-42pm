@@ -41,17 +41,17 @@ SRC_window = $(wildcard visualize/window/*.c)
 
 # *** elementary obj ***
 OBJ_libft = $(patsubst %.c, obj/%.o, $(SRC_libft))
-OBJ_taylor = $(patsubst %.c, obj/%.o, $(SRC_taylor))
+OBJ_taylor = $(patsubst %.c, obj/%.o, $(SRC_taylor)) $(OBJ_libft)
 OBJ_get_next_line = $(patsubst %.c, obj/%.o, $(SRC_get_next_line))
 
 # *** composed obj ***
 OBJ_debug = $(patsubst %.c, obj/%.o, $(SRC_debug)) $(OBJ_load)
 OBJ_load = $(patsubst %.c, obj/%.o, $(SRC_load)) $(OBJ_libft) $(OBJ_get_next_line)
-OBJ_table = $(patsubst %.c, obj/%.o, $(SRC_table)) $(OBJ_load) $(OBJ_taylor)
+OBJ_table = $(patsubst %.c, obj/%.o, $(SRC_table)) $(OBJ_load)
 
-OBJ_convolve = $(patsubst %.c, obj/%.o, $(SRC_convolve)) $(OBJ_table)
+OBJ_convolve = $(patsubst %.c, obj/%.o, $(SRC_convolve)) $(OBJ_table) $(OBJ_taylor)
 OBJ_paint = $(patsubst %.c, obj/%.o, $(SRC_paint)) $(OBJ_taylor)
-OBJ_evenodd = $(patsubst %.c, obj/%.o, $(SRC_evenodd)) $(OBJ_taylor) $(OBJ_libft)
+OBJ_evenodd = $(patsubst %.c, obj/%.o, $(SRC_evenodd)) $(OBJ_taylor)
 
 OBJ_raster = $(patsubst %.c, obj/%.o, $(SRC_raster)) $(OBJ_taylor) $(OBJ_table)
 OBJ_motif = $(patsubst %.c, obj/%.o, $(SRC_motif)) $(OBJ_raster)

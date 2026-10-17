@@ -30,9 +30,9 @@ float	*gaussian_kernel_1d(size_t half_dim, float std)
 	i = 0;
 	while (i <= half_dim)
 	{
-		kernel[half_dim - i] = normal_distribution_function(
+		kernel[half_dim - i] = normal_distribution(
 				std, 0, (-1.0) * (float)(i));
-		kernel[half_dim + i] = normal_distribution_function(std, 0, (float)(i));
+		kernel[half_dim + i] = normal_distribution(std, 0, (float)(i));
 		i += 1;
 	}
 	sum = f_sum((const float *)kernel, 2 * half_dim + 1);
