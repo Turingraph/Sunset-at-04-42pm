@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "green_counts.h"
+#include "taylor.h"
 
 /** 
  * if a > b, return b, else return a.

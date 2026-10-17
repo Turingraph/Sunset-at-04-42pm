@@ -13,12 +13,12 @@ BUFFER_SIZE = 42
 .SECONDEXPANSION:
 
 # *** library ***
-LIBRARY = $(patsubst %, lib/%.a, libft green_counts get_next_line linalg load table \
+LIBRARY = $(patsubst %, lib/%.a, libft taylor get_next_line linalg load table \
 	debug convolve paint debug raster motif fdf display window evenodd)
 
 # *** atom src ***
 SRC_libft = $(wildcard utils/libft/*.c)
-SRC_green_counts = $(wildcard utils/green_counts/*.c)
+SRC_taylor = $(wildcard utils/taylor/*.c)
 SRC_get_next_line = $(wildcard input/get_next_line/*.c)
 
 # *** composed src ***
@@ -41,20 +41,20 @@ SRC_window = $(wildcard graphic_mlx/window/*.c)
 
 # *** elementary obj ***
 OBJ_libft = $(patsubst %.c, obj/%.o, $(SRC_libft))
-OBJ_green_counts = $(patsubst %.c, obj/%.o, $(SRC_green_counts))
+OBJ_taylor = $(patsubst %.c, obj/%.o, $(SRC_taylor))
 OBJ_get_next_line = $(patsubst %.c, obj/%.o, $(SRC_get_next_line))
 
 # *** composed obj ***
 OBJ_debug = $(patsubst %.c, obj/%.o, $(SRC_debug)) $(OBJ_load)
-OBJ_linalg = $(patsubst %.c, obj/%.o, $(SRC_linalg)) $(OBJ_green_counts) $(OBJ_libft)
+OBJ_linalg = $(patsubst %.c, obj/%.o, $(SRC_linalg)) $(OBJ_taylor) $(OBJ_libft)
 OBJ_load = $(patsubst %.c, obj/%.o, $(SRC_load)) $(OBJ_libft) $(OBJ_get_next_line)
-OBJ_table = $(patsubst %.c, obj/%.o, $(SRC_table)) $(OBJ_load) $(OBJ_green_counts)
+OBJ_table = $(patsubst %.c, obj/%.o, $(SRC_table)) $(OBJ_load) $(OBJ_taylor)
 
 OBJ_convolve = $(patsubst %.c, obj/%.o, $(SRC_convolve)) $(OBJ_table) $(OBJ_linalg)
-OBJ_paint = $(patsubst %.c, obj/%.o, $(SRC_paint)) $(OBJ_green_counts)
-OBJ_evenodd = $(patsubst %.c, obj/%.o, $(SRC_evenodd)) $(OBJ_green_counts) $(OBJ_libft)
+OBJ_paint = $(patsubst %.c, obj/%.o, $(SRC_paint)) $(OBJ_taylor)
+OBJ_evenodd = $(patsubst %.c, obj/%.o, $(SRC_evenodd)) $(OBJ_taylor) $(OBJ_libft)
 
-OBJ_raster = $(patsubst %.c, obj/%.o, $(SRC_raster)) $(OBJ_green_counts) $(OBJ_table)
+OBJ_raster = $(patsubst %.c, obj/%.o, $(SRC_raster)) $(OBJ_taylor) $(OBJ_table)
 OBJ_motif = $(patsubst %.c, obj/%.o, $(SRC_motif)) $(OBJ_raster)
 OBJ_fdf = $(patsubst %.c, obj/%.o, $(SRC_fdf)) $(OBJ_raster) $(OBJ_linalg)
 OBJ_display = $(patsubst %.c, obj/%.o, $(SRC_display)) $(OBJ_fdf)

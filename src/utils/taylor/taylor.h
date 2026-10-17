@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   green_counts.h                                     :+:      :+:    :+:   */
+/*   taylor.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GREEN_COUNTS_H
-# define GREEN_COUNTS_H
+#ifndef TAYLOR_H
+# define TAYLOR_H
 
 # include <stdlib.h>
 # include "../libft/type.h"

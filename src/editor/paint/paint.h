@@ -13,7 +13,7 @@
 #ifndef PAINT_H
 # define PAINT_H
 
-# include "../../utils/green_counts/green_counts.h"
+# include "../../utils/taylor/taylor.h"
 # include "../../utils/libft/libft.h"
 # include <fcntl.h>
 

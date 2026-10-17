@@ -139,7 +139,7 @@ bool	check_multiplication_overflow(size_t col, size_t row);
 bool	check_multiplication_overflow_uint32_t(uint32_t col, uint32_t row);
 
 /* ************************************************************************** */
-/* src/utils/green_counts/ */
+/* src/utils/taylor/ */
 /* ************************************************************************** */
 
 /**

@@ -8,7 +8,7 @@ SRC_get_next_line = $(wildcard input/get_next_line/*.c)
 SRC_load = $(wildcard input/load/*.c)
 SRC_table = $(wildcard input/table/*.c)
 SRC_libft = $(wildcard utils/libft/*.c)
-SRC_green_counts = $(wildcard utils/green_counts/*.c)
+SRC_taylor = $(wildcard utils/taylor/*.c)
 
 SRC_convolve = $(wildcard editor/convolve/*.c)
 SRC_paint = $(wildcard editor/paint/*.c)
@@ -32,7 +32,7 @@ LIB_evenodd = $(patsubst %, ../src/lib/%.a, paint table window evenodd) $(LIB_GR
 OUT_LIB = $(OUT_motif) $(OUT_window) $(OUT_evenodd)
 OUT_BASIC = $(patsubst %.c, out/%.out,	\
 	$(SRC_get_next_line) $(SRC_convolve)\
-	$(SRC_load) $(SRC_table) $(SRC_libft) $(SRC_green_counts))
+	$(SRC_load) $(SRC_table) $(SRC_libft) $(SRC_taylor))
 
 #-----------------------------------------------------------------------------------------------
 # *** get input clone file ***
