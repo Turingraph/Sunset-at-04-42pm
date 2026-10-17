@@ -100,7 +100,7 @@ int	main(void)
 }
 
 /*
-valgrind --leak-check=full --show-leak-kinds=all ./test/out/graphic_mlx/motif/piet_mondrian.out
+valgrind --leak-check=full --show-leak-kinds=all ./test/out/visualize/motif/piet_mondrian.out
 
 ==2639111== 
 ==2639111== LEAK SUMMARY:

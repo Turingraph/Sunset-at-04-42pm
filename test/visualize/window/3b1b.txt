@@ -66,6 +66,6 @@ int	main(int len, char **str)
 }
 
 /*
-valgrind --leak-check=full --show-leak-kinds=all ./test/out/graphic_mlx/window/3b1b.out test/editor/convolve/input_ascii/o_isometric2.txt
+valgrind --leak-check=full --show-leak-kinds=all ./test/out/visualize/window/3b1b.out test/editor/convolve/input_ascii/o_isometric2.txt
 
 */

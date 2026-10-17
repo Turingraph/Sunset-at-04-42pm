@@ -118,7 +118,7 @@ int	main(void)
 }
 
 /*
-valgrind --leak-check=full --show-leak-kinds=all ./test/out/graphic_mlx/motif/islamic.out
+valgrind --leak-check=full --show-leak-kinds=all ./test/out/visualize/motif/islamic.out
 
 ==2639762== 
 ==2639762== LEAK SUMMARY:

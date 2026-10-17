@@ -116,9 +116,9 @@ t_fdf	init_placeholder_fdf(t_table_fdf *src)
 	dst.row = src->row;
 	dst.col = src->col;
 	dst.x = malloc_talk(src->row * src->col * sizeof(float),
-			"graphic_mlx/fdf/public.c/init_fdf/\n");
+			"visualize/fdf/public.c/init_fdf/\n");
 	dst.y = malloc_talk(src->row * src->col * sizeof(float),
-			"graphic_mlx/fdf/public.c/init_fdf/\n");
+			"visualize/fdf/public.c/init_fdf/\n");
 	if (dst.x == NULL || dst.y == NULL)
 		return (free_fdf(&dst));
 	return (dst);
@@ -149,7 +149,7 @@ t_fdf	init_placeholder_fdf(t_table_fdf *src)
  * t_table_fdf as t_fdf.
  * @param scale for scaling Fdf object.
  * @return initialized t_fdf object.
- * @see src/graphic_mlx/fdf/projection.c
+ * @see src/visualize/fdf/projection.c
  */
 t_fdf	init_fdf(t_table_fdf *src,
 	t_2d_float (*projection)(float x, float y, float z), float scale)

@@ -31,11 +31,11 @@ SRC_convolve = $(wildcard editor/convolve/*.c)
 SRC_paint = $(wildcard editor/paint/*.c)
 SRC_evenodd = $(wildcard editor/evenodd/*.c)
 
-SRC_raster = $(wildcard graphic_mlx/raster/*.c)
-SRC_motif = $(wildcard graphic_mlx/motif/*.c)
-SRC_fdf = $(wildcard graphic_mlx/fdf/*.c)
-SRC_display = $(wildcard graphic_mlx/display/*.c)
-SRC_window = $(wildcard graphic_mlx/window/*.c)
+SRC_raster = $(wildcard visualize/raster/*.c)
+SRC_motif = $(wildcard visualize/motif/*.c)
+SRC_fdf = $(wildcard visualize/fdf/*.c)
+SRC_display = $(wildcard visualize/display/*.c)
+SRC_window = $(wildcard visualize/window/*.c)
 
 #-----------------------------------------------------------------------------------------------
 

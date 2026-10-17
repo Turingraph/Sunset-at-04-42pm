@@ -15,7 +15,7 @@
 
 
 /* ************************************************************************** */
-/* *** src/graphic_mlx/raster/ *** */
+/* *** src/visualize/raster/ *** */
 /* ************************************************************************** */
 
 /**
@@ -75,7 +75,7 @@ int32_t	f_rgba_to_int32(unsigned char r,
 	unsigned char g, unsigned char b, unsigned char a);
 
 /* ************************************************************************** */
-/* *** src/graphic_mlx/fdf/ *** */
+/* *** src/visualize/fdf/ *** */
 /* ************************************************************************** */
 
 /**
@@ -147,7 +147,7 @@ t_fdf	free_fdf(t_fdf *src);
  * t_table_fdf as t_fdf.
  * @param scale for scaling Fdf object.
  * @return initialized t_fdf object.
- * @see src/graphic_mlx/fdf/projection.c
+ * @see src/visualize/fdf/projection.c
  */
 t_fdf	init_fdf(t_table_fdf *src,
 	t_2d_float (*projection)(float x, float y, float z), float scale);
@@ -257,7 +257,7 @@ t_2d_float	projection_orthogonal(float x, float y, float z);
 t_2d_float	projection_wave(float x, float y, float z);
 
 /* ************************************************************************** */
-/* *** src/graphic_mlx/display/ *** */
+/* *** src/visualize/display/ *** */
 /* ************************************************************************** */
 
 /*
@@ -270,7 +270,7 @@ typedef struct s_render_style
 }	t_fdf_render;
 
 /* ************************************************************************** */
-/* *** src/graphic_mlx/window/ *** */
+/* *** src/visualize/window/ *** */
 /* ************************************************************************** */
 
 /**
@@ -308,7 +308,7 @@ void	view_fdf(t_fdf *fdf, t_fdf_render fdf_render,
 			int32_t background_color);
 
 /* ************************************************************************** */
-/* *** src/graphic_mlx/motif/ *** */
+/* *** src/visualize/motif/ *** */
 /* ************************************************************************** */
 
 /**

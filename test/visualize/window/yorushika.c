@@ -88,6 +88,6 @@ int	main(int len, char **str)
 }
 
 /*
-valgrind --leak-check=full --show-leak-kinds=all ./test/out/graphic_mlx/window/yorushika.out test/editor/convolve/input_ascii/rain_with_cappuccino_rozzo.txt
+valgrind --leak-check=full --show-leak-kinds=all ./test/out/visualize/window/yorushika.out test/editor/convolve/input_ascii/rain_with_cappuccino_rozzo.txt
 
 */

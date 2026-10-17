@@ -2,7 +2,7 @@
 version: 1
 creator: callgrind-3.22.0
 pid: 179491
-cmd:  ./test/out/graphic_mlx/window/zutomayo.out test/editor/convolve/input_ascii/zutomayo_isometric2.txt
+cmd:  ./test/out/visualize/window/zutomayo.out test/editor/convolve/input_ascii/zutomayo_isometric2.txt
 part: 1
 
 
@@ -5434,7 +5434,7 @@ cfn=(530) _dl_init
 calls=1 81 
 0 5237
 0 3
-cob=(13) /home/pc/Desktop/GrASCIIfi/test/out/graphic_mlx/window/zutomayo.out
+cob=(13) /home/pc/Desktop/GrASCIIfi/test/out/visualize/window/zutomayo.out
 cfi=(196) ???
 cfn=(684) (below main)
 calls=1 0 

@@ -14,8 +14,8 @@ SRC_convolve = $(wildcard editor/convolve/*.c)
 SRC_paint = $(wildcard editor/paint/*.c)
 SRC_evenodd = $(wildcard editor/evenodd/*.c)
 
-SRC_motif = $(wildcard graphic_mlx/motif/*.c)
-SRC_window = $(wildcard graphic_mlx/window/*.c)
+SRC_motif = $(wildcard visualize/motif/*.c)
+SRC_window = $(wildcard visualize/window/*.c)
 
 OUT_paint = $(patsubst %.c, out/%.out, $(SRC_paint))
 OUT_motif = $(patsubst %.c, out/%.out, $(SRC_motif))

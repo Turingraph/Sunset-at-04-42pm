@@ -182,7 +182,7 @@ int	main(int len, char **str)
 	return (0);
 }
 
-./test/out/graphic_mlx/window/fdf.out corpus/fdf/42.fdf
+./test/out/visualize/window/fdf.out corpus/fdf/42.fdf
 ```
 
 as this picture.
@@ -293,7 +293,7 @@ int	main(int len, char **str)
 	return (0);
 }
 
-valgrind --leak-check=full --show-leak-kinds=all ./test/out/graphic_mlx/window/zutomayo.out test/editor/convolve/input_ascii/zutomayo_isometric2.txt
+valgrind --leak-check=full --show-leak-kinds=all ./test/out/visualize/window/zutomayo.out test/editor/convolve/input_ascii/zutomayo_isometric2.txt
 ```
 
 as this picture.

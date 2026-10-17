@@ -24,6 +24,6 @@ int	main(void)
 }
 
 /*
-valgrind --leak-check=full --show-leak-kinds=all ./test/out/graphic_mlx/motif/kusama.out
+valgrind --leak-check=full --show-leak-kinds=all ./test/out/visualize/motif/kusama.out
 
 */
