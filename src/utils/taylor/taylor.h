@@ -16,6 +16,14 @@
 # include <stdlib.h>
 # include "../libft/type.h"
 
+# ifndef MAXIMUM_ERROR
+#  define MAXIMUM_ERROR 1e-4
+# endif
+
+# ifndef MAXIMUM_TERM
+#  define MAXIMUM_TERM 8
+# endif
+
 // abs.c
 
 float		f_abs(float x);

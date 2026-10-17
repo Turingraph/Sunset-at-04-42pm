@@ -56,7 +56,7 @@ float	f_root_finding(float x, size_t a)
 	y = x;
 	i = 0;
 	err = (f_pow(y, a) - x) / ((float)a * f_pow(y, a - 1));
-	while (f_abs(err) > 1e-4 && i < 8)
+	while (f_abs(err) > MAXIMUM_ERROR && i < MAXIMUM_TERM)
 	{
 		y -= err;
 		err = (f_pow(y, a) - x) / ((float)a * f_pow(y, a - 1));
@@ -111,7 +111,7 @@ float	f_sin(float x)
 	term = x;
 	div = 1;
 	y = 0;
-	while (div != 0 && f_abs(term / div) > 1e-4 && i < 8)
+	while (div != 0 && f_abs(term / div) > MAXIMUM_ERROR && i < MAXIMUM_TERM)
 	{
 		if (i % 2 == 0)
 			y += term / div;
@@ -180,7 +180,7 @@ float	f_exp(float x)
 	term = x;
 	y = 1;
 	i = 1;
-	while (div != 0 && f_abs(term / div) > 1e-4 && i < 8)
+	while (div != 0 && f_abs(term / div) > MAXIMUM_ERROR && i < MAXIMUM_TERM)
 	{
 		y += term / div;
 		term *= x;
