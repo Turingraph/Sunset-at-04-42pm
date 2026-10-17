@@ -108,18 +108,18 @@ unsigned char	*get_rgba_of_table_fdf(const t_table_fdf *src,
  * @param zoom coordinate scaling factor
  * @return complex coordinate of the selected cell.
  */
-t_complex	get_table_fdf_coordinate(const t_table_fdf *dst, size_t index, float zoom)
+t_2d_float	get_table_fdf_coordinate(const t_table_fdf *dst, size_t index, float zoom)
 {
-	t_complex	y;
+	t_2d_float	y;
 
-	y.re = 0;
-	y.im = 0;
+	y.x = 0;
+	y.y = 0;
 	if (dst == NULL || dst->row == 0 || dst->col == 0)
 		return (y);
-	y.re = (float)dst->col / 2.0 - (float)(index % dst->col);
-	y.im = (float)(index / dst->col) - (float)dst->row / 2.0;
-	y.re *= zoom;
-	y.im *= zoom;
+	y.x = (float)dst->col / 2.0 - (float)(index % dst->col);
+	y.y = (float)(index / dst->col) - (float)dst->row / 2.0;
+	y.x *= zoom;
+	y.y *= zoom;
 	return (y);
 }
 

@@ -29,7 +29,7 @@
  */
 typedef struct s_2d_polygon
 {
-	t_complex	*arr;
+	t_2d_float	*arr;
 	size_t		length;
 	bool		is_loop;
 }	t_2d_polygon;

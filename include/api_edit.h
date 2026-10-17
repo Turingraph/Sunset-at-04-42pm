@@ -69,15 +69,15 @@ typedef struct t_table_fdf
 }	t_table_fdf;
 
 /**
- * Sometimes t_complex is used for describing 2D xy position.
+ * Sometimes t_2d_float is used for describing 2D xy position.
  * @param re correspond to x axis position.
  * @param im correspond to y axis position.
  */
-typedef struct t_complex
+typedef struct t_2d_float
 {
 	float	re;
 	float	im;
-}	t_complex;
+}	t_2d_float;
 
 /**
  * The SUNSET_WINDOW_WIDTH and SUNSET_WINDOW_HEIGHT is used for
@@ -427,7 +427,7 @@ void		color_cells_gradient(t_table_fdf *dst,
 
 /**
  * Paint a table FDF channel using the value of each cell from
- * the origin in the complex plane, as |z.re + z.im|.
+ * the origin in the complex plane, as |z.x + z.im|.
  * If cell_metric is not NULL, its output will be utilized instead
  * of the default complex-plane distance.
  * 

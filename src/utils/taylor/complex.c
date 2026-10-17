@@ -13,17 +13,17 @@
 #include "taylor.h"
 
 /**
- * compute (a.re + a.im) * (b.re + b.im)
+ * compute (a.x + a.y) * (b.x + b.y)
  * 
  * status: public api
  * 
  */
-t_complex	complex_multiplication(t_complex a, t_complex b)
+t_2d_float	complex_multiplication(t_2d_float a, t_2d_float b)
 {
-	t_complex	dst;
+	t_2d_float	dst;
 
-	dst.re = a.re * b.re - a.im * b.im;
-	dst.im = a.re * b.im + a.im * b.re;
+	dst.x = a.x * b.x - a.y * b.y;
+	dst.y = a.x * b.y + a.y * b.x;
 	return (dst);
 }
 
@@ -31,36 +31,36 @@ t_complex	complex_multiplication(t_complex a, t_complex b)
 // multiplicative-inverse-of-complex-numbers-proof
 
 /**
- * if a.re + a.im equal to 0, return 0
- * compute 1 / (a.re + a.im)
+ * if a.x + a.y equal to 0, return 0
+ * compute 1 / (a.x + a.y)
  * 
  * status: public api
  * 
  */
-t_complex	complex_reciprocal(t_complex a)
+t_2d_float	complex_reciprocal(t_2d_float a)
 {
-	t_complex	dst;
+	t_2d_float	dst;
 
-	dst.re = 0;
-	dst.im = 0;
-	if ((a.re < 0.01 && a.re > -0.01) && (a.im < 0.01 && a.im > -0.01))
+	dst.x = 0;
+	dst.y = 0;
+	if ((a.x < 0.01 && a.x > -0.01) && (a.y < 0.01 && a.y > -0.01))
 		return (dst);
-	dst.re = a.re / (a.re * a.re + a.im * a.im);
-	dst.im = -1 * a.im / (a.re * a.re + a.im * a.im);
+	dst.x = a.x / (a.x * a.x + a.y * a.y);
+	dst.y = -1 * a.y / (a.x * a.x + a.y * a.y);
 	return (dst);
 }
 
 /**
- * compute |a.re + a.im|
+ * compute |a.x + a.im|
  * 
  * status: public api
  * 
  */
-float	complex_magnitude(t_complex a, char is_square)
+float	complex_magnitude(t_2d_float a, char is_square)
 {
 	float	y;
 
-	y = a.re * a.re + a.im * a.im;
+	y = a.x * a.x + a.y * a.y;
 	if (is_square > 0)
 		return (y);
 	return (f_root_finding(y, 2));

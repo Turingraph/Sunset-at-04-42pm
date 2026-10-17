@@ -80,7 +80,7 @@ void			draw_motif_mlx(mlx_image_t *img, t_islamic_art *src);
 // init.c
 
 bool			is_islamic_art_valid(const t_islamic_art *src);
-t_line			init_float_line(t_complex point_1, t_complex point_2,
+t_line			init_float_line(t_2d_float point_1, t_2d_float point_2,
 					t_line boundary);
 
 // motif.c

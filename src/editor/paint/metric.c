@@ -14,7 +14,7 @@
 */
 int	cell_metric_pythagoras(const t_table_fdf *dst, size_t index)
 {
-	t_complex	y;
+	t_2d_float	y;
 
 	if (dst == NULL || check_multiplication_overflow(dst->col, dst->row) == false || index >= dst->col * dst->row)
 		return (false);
@@ -35,12 +35,12 @@ int	cell_metric_pythagoras(const t_table_fdf *dst, size_t index)
  */
 int	cell_metric_max_xy(const t_table_fdf *dst, size_t index)
 {
-	t_complex	y;
+	t_2d_float	y;
 
 	if (dst == NULL || check_multiplication_overflow(dst->col, dst->row) == false || index >= dst->col * dst->row)
 		return (false);
 	y = get_table_fdf_coordinate(dst, index, 1.0);
-	return ((int)(f_max(f_abs(y.re), f_abs(y.im))));
+	return ((int)(f_max(f_abs(y.x), f_abs(y.y))));
 }
 
 /**
@@ -57,12 +57,12 @@ int	cell_metric_max_xy(const t_table_fdf *dst, size_t index)
  */
 int	cell_metric_addsub(const t_table_fdf *dst, size_t index)
 {
-	t_complex	y;
+	t_2d_float	y;
 
 	if (dst == NULL || check_multiplication_overflow(dst->col, dst->row) == false || index >= dst->col * dst->row)
 		return (false);
 	y = get_table_fdf_coordinate(dst, index, 1.0);
-	return ((int)f_abs(y.re + y.im));
+	return ((int)f_abs(y.x + y.y));
 }
 
 /**
@@ -79,12 +79,12 @@ int	cell_metric_addsub(const t_table_fdf *dst, size_t index)
  */
 int	cell_metric_root_xy(const t_table_fdf *dst, size_t index)
 {
-	t_complex	y;
+	t_2d_float	y;
 
 	if (dst == NULL || check_multiplication_overflow(dst->col, dst->row) == false || index >= dst->col * dst->row)
 		return (false);
 	y = get_table_fdf_coordinate(dst, index, 1.0);
-	return ((int)f_round(f_root_finding(f_abs(y.re * y.im), 2)));
+	return ((int)f_round(f_root_finding(f_abs(y.x * y.y), 2)));
 }
 
 /**
@@ -101,7 +101,7 @@ int	cell_metric_root_xy(const t_table_fdf *dst, size_t index)
  */
 int	cell_metric_fermat_theorem(const t_table_fdf *dst, size_t index)
 {
-	t_complex	y;
+	t_2d_float	y;
 	int			a;
 	int			b;
 	int			c;
@@ -109,8 +109,8 @@ int	cell_metric_fermat_theorem(const t_table_fdf *dst, size_t index)
 	if (dst == NULL || check_multiplication_overflow(dst->col, dst->row) == false || index >= dst->col * dst->row)
 		return (false);
 	y = get_table_fdf_coordinate(dst, index, 1.0);
-	a = (int)f_pow(f_abs(y.re), 3);
-	b = (int)f_pow(f_abs(y.im), 3);
+	a = (int)f_pow(f_abs(y.x), 3);
+	b = (int)f_pow(f_abs(y.y), 3);
 	c = a + b;
 	c = (int)f_round(f_root_finding((float)c, 3));
 	c = (int)f_pow((int)c, 3);

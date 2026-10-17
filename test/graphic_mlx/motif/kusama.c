@@ -2,8 +2,8 @@
 
 int	main(void)
 {
-	t_complex	arr[] = {
-		{.re = 0.5, .im = 0.5},
+	t_2d_float	arr[] = {
+		{.x = 0.5, .y = 0.5},
 	};
 	t_ink32			ink = {
 		.color = f_rgba_to_int32(0, 0, 0, 255),

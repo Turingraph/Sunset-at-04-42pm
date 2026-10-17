@@ -150,7 +150,7 @@ t_fdf	free_fdf(t_fdf *src);
  * @see src/graphic_mlx/fdf/projection.c
  */
 t_fdf	init_fdf(t_table_fdf *src,
-	t_complex (*projection)(float x, float y, float z), float scale);
+	t_2d_float (*projection)(float x, float y, float z), float scale);
 
 /**
  * Apply an isometric projection to a 3D point.
@@ -171,7 +171,7 @@ t_fdf	init_fdf(t_table_fdf *src,
  * @param z z-coordinate of the 3D point
  * @return 2D complex point containing the projected coordinates
  */
-t_complex	projection_isometric(float x, float y, float z);
+t_2d_float	projection_isometric(float x, float y, float z);
 
 /**
  * Apply a military projection to a 3D point.
@@ -192,7 +192,7 @@ t_complex	projection_isometric(float x, float y, float z);
  * @param z z-coordinate of the 3D point
  * @return 2D complex point containing the projected coordinates
  */
-t_complex	projection_military(float x, float y, float z);
+t_2d_float	projection_military(float x, float y, float z);
 
 /**
  * Apply a cabinet projection to a 3D point.
@@ -213,7 +213,7 @@ t_complex	projection_military(float x, float y, float z);
  * @param z z-coordinate of the 3D point
  * @return 2D complex point containing the projected coordinates
  */
-t_complex	projection_cabinet(float x, float y, float z);
+t_2d_float	projection_cabinet(float x, float y, float z);
 
 /**
  * Apply an orthogonal projection to a 3D point.
@@ -233,7 +233,7 @@ t_complex	projection_cabinet(float x, float y, float z);
  * @param z z-coordinate of the 3D point
  * @return 2D complex point containing the projected coordinates
  */
-t_complex	projection_orthogonal(float x, float y, float z);
+t_2d_float	projection_orthogonal(float x, float y, float z);
 
 /**
  * Apply a wave projection to a 3D point.
@@ -254,7 +254,7 @@ t_complex	projection_orthogonal(float x, float y, float z);
  * @param z z-coordinate of the 3D point
  * @return 2D complex point containing the projected coordinates
  */
-t_complex	projection_wave(float x, float y, float z);
+t_2d_float	projection_wave(float x, float y, float z);
 
 /* ************************************************************************** */
 /* *** src/graphic_mlx/display/ *** */
@@ -324,7 +324,7 @@ void	view_fdf(t_fdf *fdf, t_fdf_render fdf_render,
  */
 typedef struct s_2d_polygon
 {
-	t_complex	*arr;
+	t_2d_float	*arr;
 	size_t		length;
 	bool		is_loop;
 }	t_2d_polygon;

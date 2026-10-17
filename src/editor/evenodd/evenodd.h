@@ -21,13 +21,13 @@ bool		is_collatz_odd_andmod(const t_table_fdf *dst, size_t index);
 // generic.c
 
 bool		is_re2_diff_im2_odd_func(const t_table_fdf *dst, size_t index,
-				t_complex (*complex_func)(t_complex a), float zoom);
+				t_2d_float (*complex_func)(t_2d_float a), float zoom);
 bool		is_re2_diff_im2_odd(const t_table_fdf *dst, size_t index);
 bool		is_oddlength_func(const t_table_fdf *dst, size_t index,
-				t_complex (*complex_func)(t_complex a), float zoom);
+				t_2d_float (*complex_func)(t_2d_float a), float zoom);
 bool		is_oddlength(const t_table_fdf *dst, size_t index);
 bool		is_andmod_func(const t_table_fdf *dst, size_t index,
-				t_complex (*complex_func)(t_complex a), float zoom);
+				t_2d_float (*complex_func)(t_2d_float a), float zoom);
 
 // polynomial_andmod.c
 

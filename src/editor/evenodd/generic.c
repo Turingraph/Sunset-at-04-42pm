@@ -20,9 +20,9 @@
  * false otherwise.
  */
 bool	is_re2_diff_im2_odd_func(const t_table_fdf *dst, size_t index,
-	t_complex (*complex_func)(t_complex a), float zoom)
+	t_2d_float (*complex_func)(t_2d_float a), float zoom)
 {
-	t_complex	y;
+	t_2d_float	y;
 	int			product;
 
 	if (dst == NULL
@@ -32,7 +32,7 @@ bool	is_re2_diff_im2_odd_func(const t_table_fdf *dst, size_t index,
 	y = get_table_fdf_coordinate(dst, index, zoom);
 	if (complex_func != NULL)
 		y = complex_func(y);
-	product = (int)f_round(y.re * y.re - y.im * y.im);
+	product = (int)f_round(y.x * y.x - y.y * y.y);
 	if (product % 2 == 0)
 		return (false);
 	return (true);
@@ -77,9 +77,9 @@ bool	is_re2_diff_im2_odd(const t_table_fdf *dst, size_t index)
  * false otherwise.
  */
 bool	is_oddlength_func(const t_table_fdf *dst, size_t index,
-	t_complex (*complex_func)(t_complex a), float zoom)
+	t_2d_float (*complex_func)(t_2d_float a), float zoom)
 {
-	t_complex	y;
+	t_2d_float	y;
 
 	if (dst == NULL
 		|| check_multiplication_overflow(dst->col, dst->row) == false
@@ -116,7 +116,7 @@ bool	is_oddlength(const t_table_fdf *dst, size_t index)
 
 /**
  * Compute z' = complex_func(the complex coordinate of the cell).
- * Then check whether z.re is even or z.im is even
+ * Then check whether z.x is even or z.y is even
  * 
  * If complex_func is not NULL, then complex_func is identity function.
  *
@@ -130,12 +130,12 @@ bool	is_oddlength(const t_table_fdf *dst, size_t index)
  * coordinate before calculating its magnitude
  * @param zoom scaling both the real and imaginary part by a zoom factor.
  *
- * @return true if z.re is even and z.im is even, false otherwise.
+ * @return true if z.x is even and z.y is even, false otherwise.
  */
 bool	is_andmod_func(const t_table_fdf *dst, size_t index,
-	t_complex (*complex_func)(t_complex a), float zoom)
+	t_2d_float (*complex_func)(t_2d_float a), float zoom)
 {
-	t_complex	y;
+	t_2d_float	y;
 
 	if (dst == NULL
 		|| check_multiplication_overflow(dst->col, dst->row) == false
@@ -144,11 +144,11 @@ bool	is_andmod_func(const t_table_fdf *dst, size_t index,
 	y = get_table_fdf_coordinate(dst, index, zoom);
 	if (complex_func != NULL)
 		y = complex_func(y);
-	if (y.re < 0)
-		y.re *= -1;
-	if (y.im < 0)
-		y.im *= -1;
-	if ((int)y.re % 2 == 1 && (int)y.im % 2 == 1)
+	if (y.x < 0)
+		y.x *= -1;
+	if (y.y < 0)
+		y.y *= -1;
+	if ((int)y.x % 2 == 1 && (int)y.y % 2 == 1)
 		return (true);
 	return (false);
 }

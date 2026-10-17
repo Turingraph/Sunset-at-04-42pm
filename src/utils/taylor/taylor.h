@@ -31,23 +31,23 @@ int			f_abs_int(int x);
 
 // complex_polynomial.c
 
-t_complex	complex_square(t_complex a);
-t_complex	complex_cube(t_complex a);
-t_complex	complex_x4(t_complex a);
-t_complex	complex_x5(t_complex a);
-t_complex	complex_x6(t_complex a);
+t_2d_float	complex_square(t_2d_float a);
+t_2d_float	complex_cube(t_2d_float a);
+t_2d_float	complex_x4(t_2d_float a);
+t_2d_float	complex_x5(t_2d_float a);
+t_2d_float	complex_x6(t_2d_float a);
 
 // complex_trig.c
 
-t_complex	complex_exp(t_complex a);
-t_complex	complex_sin(t_complex a);
-t_complex	complex_cos(t_complex a);
+t_2d_float	complex_exp(t_2d_float a);
+t_2d_float	complex_sin(t_2d_float a);
+t_2d_float	complex_cos(t_2d_float a);
 
 // complex.c
 
-t_complex	complex_multiplication(t_complex a, t_complex b);
-t_complex	complex_reciprocal(t_complex a);
-float		complex_magnitude(t_complex a, char is_square);
+t_2d_float	complex_multiplication(t_2d_float a, t_2d_float b);
+t_2d_float	complex_reciprocal(t_2d_float a);
+float		complex_magnitude(t_2d_float a, char is_square);
 
 // interval.c
 

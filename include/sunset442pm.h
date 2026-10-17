@@ -76,15 +76,15 @@ typedef struct t_table_fdf
 }	t_table_fdf;
 
 /**
- * Sometimes t_complex is used for describing 2D xy position.
+ * Sometimes t_2d_float is used for describing 2D xy position.
  * @param re correspond to x axis position.
  * @param im correspond to y axis position.
  */
-typedef struct t_complex
+typedef struct t_2d_float
 {
 	float	re;
 	float	im;
-}	t_complex;
+}	t_2d_float;
 
 /**
  * The SUNSET_WINDOW_WIDTH and SUNSET_WINDOW_HEIGHT is used for
@@ -110,7 +110,7 @@ typedef struct t_complex
  * @param zoom coordinate scaling factor
  * @return complex coordinate of the selected cell.
  */
-t_complex	get_table_fdf_coordinate(const t_table_fdf *dst, size_t index, float zoom);
+t_2d_float	get_table_fdf_coordinate(const t_table_fdf *dst, size_t index, float zoom);
 
 /**
  * Check whether the product of 2 size_t type number cause integeroverflow,
@@ -148,60 +148,60 @@ bool	check_multiplication_overflow_uint32_t(uint32_t col, uint32_t row);
 float	f_abs(float x);
 
 /**
- * compute e^(a.re + a.im)
+ * compute e^(a.x + a.y)
  */
-t_complex	complex_exp(t_complex a);
+t_2d_float	complex_exp(t_2d_float a);
 
 /**
- * compute cos(a.re + a.im)
+ * compute cos(a.x + a.y)
  */
-t_complex	complex_cos(t_complex a);
+t_2d_float	complex_cos(t_2d_float a);
 
 /**
- * compute sin(a.re + a.im)
+ * compute sin(a.x + a.y)
  */
-t_complex	complex_sin(t_complex a);
+t_2d_float	complex_sin(t_2d_float a);
 
 /**
- * compute (a.re + a.im) * (b.re + b.im)
+ * compute (a.x + a.y) * (b.x + b.y)
  */
-t_complex	complex_multiplication(t_complex a, t_complex b);
+t_2d_float	complex_multiplication(t_2d_float a, t_2d_float b);
 
 /**
- * compute (a.re + a.im)^2
+ * compute (a.x + a.y)^2
  */
-t_complex	complex_square(t_complex a);
+t_2d_float	complex_square(t_2d_float a);
 
 /**
- * compute (a.re + a.im)^4
+ * compute (a.x + a.y)^4
  */
-t_complex	complex_x4(t_complex a);
+t_2d_float	complex_x4(t_2d_float a);
 
 /**
- * compute (a.re + a.im)^5
+ * compute (a.x + a.y)^5
  */
-t_complex	complex_x5(t_complex a);
+t_2d_float	complex_x5(t_2d_float a);
 
 /**
- * compute (a.re + a.im)^6
+ * compute (a.x + a.y)^6
  */
-t_complex	complex_x6(t_complex a);
+t_2d_float	complex_x6(t_2d_float a);
 
 /**
- * compute (a.re + a.im)^3
+ * compute (a.x + a.y)^3
  */
-t_complex	complex_cube(t_complex a);
+t_2d_float	complex_cube(t_2d_float a);
 
 /**
- * if a.re + a.im equal to 0, return 0
- * compute 1 / (a.re + a.im)
+ * if a.x + a.y equal to 0, return 0
+ * compute 1 / (a.x + a.y)
  */
-t_complex	complex_reciprocal(t_complex a);
+t_2d_float	complex_reciprocal(t_2d_float a);
 
 /**
- * compute |a.re + a.im|
+ * compute |a.x + a.im|
  */
-float	complex_magnitude(t_complex a, char is_square);
+float	complex_magnitude(t_2d_float a, char is_square);
 
 /** 
  * convert any float number to integer by floor function.
@@ -1041,7 +1041,7 @@ bool		is_collatz_odd_andmod(const t_table_fdf *dst, size_t index);
  * false otherwise.
  */
 bool		is_re2_diff_im2_odd_func(const t_table_fdf *dst, size_t index,
-				t_complex (*complex_func)(t_complex a), float zoom);
+				t_2d_float (*complex_func)(t_2d_float a), float zoom);
 
 /**
  * Compute z' = the complex coordinate of the cell.
@@ -1075,7 +1075,7 @@ bool		is_re2_diff_im2_odd(const t_table_fdf *dst, size_t index);
  * false otherwise.
  */
 bool		is_oddlength_func(const t_table_fdf *dst, size_t index,
-				t_complex (*complex_func)(t_complex a), float zoom);
+				t_2d_float (*complex_func)(t_2d_float a), float zoom);
 
 /**
  * Compute z' = complex_func(the complex coordinate of the cell).
@@ -1095,7 +1095,7 @@ bool		is_oddlength(const t_table_fdf *dst, size_t index);
 
 /**
  * Compute z' = complex_func(the complex coordinate of the cell).
- * Then check whether z.re is even and z.im is even
+ * Then check whether z.x is even and z.y is even
  * 
  * If complex_func is not NULL, then complex_func is identity function.
  *
@@ -1107,10 +1107,10 @@ bool		is_oddlength(const t_table_fdf *dst, size_t index);
  * coordinate before calculating its magnitude
  * @param zoom scaling both the real and imaginary part by a zoom factor.
  *
- * @return true if z.re is even and z.im is even, false otherwise.
+ * @return true if z.x is even and z.y is even, false otherwise.
  */
 bool		is_andmod_func(const t_table_fdf *dst, size_t index,
-				t_complex (*complex_func)(t_complex a), float zoom);
+				t_2d_float (*complex_func)(t_2d_float a), float zoom);
 
 /**
  * Check whether constant times magnitude of the square of a cell's
@@ -1475,7 +1475,7 @@ void		color_cells_gradient(t_table_fdf *dst,
 
 /**
  * Paint a table FDF channel using the value of each cell from
- * the origin in the complex plane, as |z.re + z.im|.
+ * the origin in the complex plane, as |z.x + z.im|.
  * If cell_metric is not NULL, its output will be utilized instead
  * of the default complex-plane distance.
  * 
@@ -1648,7 +1648,7 @@ int	cell_metric_mincos(const t_table_fdf *dst, size_t index);
  * 
  * @param index index of the cell
  * 
- * @return min(cos(z).re, cos(z).im)
+ * @return min(cos(z).x, cos(z).y)
  */
 int	cell_metric_minecos(const t_table_fdf *dst, size_t index);
 
@@ -1686,7 +1686,7 @@ int	cell_metric_maxsin(const t_table_fdf *dst, size_t index);
  * 
  * @param index index of the cell
  * 
- * @return max(sin(z).re, sin(z).im)
+ * @return max(sin(z).x, sin(z).y)
  */
 int	cell_metric_maxesin(const t_table_fdf *dst, size_t index);
 
@@ -1712,7 +1712,7 @@ int	cell_metric_maxcos(const t_table_fdf *dst, size_t index);
  * 
  * @param index index of the cell
  * 
- * @return max(cos(z).re, cos(z).im)
+ * @return max(cos(z).x, cos(z).y)
  */
 int	cell_metric_maxecos(const t_table_fdf *dst, size_t index);
 
@@ -1923,7 +1923,7 @@ t_fdf	free_fdf(t_fdf *src);
  * @see src/graphic_mlx/fdf/projection.c
  */
 t_fdf	init_fdf(t_table_fdf *src,
-	t_complex (*projection)(float x, float y, float z), float scale);
+	t_2d_float (*projection)(float x, float y, float z), float scale);
 
 /**
  * Apply an isometric projection to a 3D point.
@@ -1944,7 +1944,7 @@ t_fdf	init_fdf(t_table_fdf *src,
  * @param z z-coordinate of the 3D point
  * @return 2D complex point containing the projected coordinates
  */
-t_complex	projection_isometric(float x, float y, float z);
+t_2d_float	projection_isometric(float x, float y, float z);
 
 /**
  * Apply a military projection to a 3D point.
@@ -1965,7 +1965,7 @@ t_complex	projection_isometric(float x, float y, float z);
  * @param z z-coordinate of the 3D point
  * @return 2D complex point containing the projected coordinates
  */
-t_complex	projection_military(float x, float y, float z);
+t_2d_float	projection_military(float x, float y, float z);
 
 /**
  * Apply a cabinet projection to a 3D point.
@@ -1986,7 +1986,7 @@ t_complex	projection_military(float x, float y, float z);
  * @param z z-coordinate of the 3D point
  * @return 2D complex point containing the projected coordinates
  */
-t_complex	projection_cabinet(float x, float y, float z);
+t_2d_float	projection_cabinet(float x, float y, float z);
 
 /**
  * Apply an orthogonal projection to a 3D point.
@@ -2006,7 +2006,7 @@ t_complex	projection_cabinet(float x, float y, float z);
  * @param z z-coordinate of the 3D point
  * @return 2D complex point containing the projected coordinates
  */
-t_complex	projection_orthogonal(float x, float y, float z);
+t_2d_float	projection_orthogonal(float x, float y, float z);
 
 /**
  * Apply a wave projection to a 3D point.
@@ -2027,7 +2027,7 @@ t_complex	projection_orthogonal(float x, float y, float z);
  * @param z z-coordinate of the 3D point
  * @return 2D complex point containing the projected coordinates
  */
-t_complex	projection_wave(float x, float y, float z);
+t_2d_float	projection_wave(float x, float y, float z);
 
 /* ************************************************************************** */
 /* *** src/graphic_mlx/display/ *** */
@@ -2097,7 +2097,7 @@ void	view_fdf(t_fdf *fdf, t_fdf_render fdf_render,
  */
 typedef struct s_2d_polygon
 {
-	t_complex	*arr;
+	t_2d_float	*arr;
 	size_t		length;
 	bool		is_loop;
 }	t_2d_polygon;

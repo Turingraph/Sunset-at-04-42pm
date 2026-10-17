@@ -62,7 +62,7 @@ bool	is_collatz_odd_length(const t_table_fdf *dst, size_t index)
 {
 	int			input;
 	size_t		max;
-	t_complex	y;
+	t_2d_float	y;
 
 	if (dst == NULL || check_multiplication_overflow(dst->col, dst->row) == false || index >= dst->col * dst->row)
 		return (false);
@@ -93,14 +93,14 @@ bool	is_collatz_odd_length(const t_table_fdf *dst, size_t index)
  */
 bool	is_collatz_odd_product(const t_table_fdf *dst, size_t index)
 {
-	t_complex	y;
+	t_2d_float	y;
 	int			input;
 	size_t		max;
 
 	if (dst == NULL || check_multiplication_overflow(dst->col, dst->row) == false || index >= dst->col * dst->row)
 		return (false);
 	y = get_table_fdf_coordinate(dst, index, 1.0);
-	input = f_round(y.re) * f_round(y.im);
+	input = f_round(y.x) * f_round(y.y);
 	if (input < 0)
 		input *= -1;
 	max = collatz_max_point((size_t)input) / 7;
@@ -126,19 +126,19 @@ bool	is_collatz_odd_product(const t_table_fdf *dst, size_t index)
  */
 bool	is_collatz_odd_andmod(const t_table_fdf *dst, size_t index)
 {
-	t_complex	y;
+	t_2d_float	y;
 	size_t		max_x;
 	size_t		max_y;
 
 	if (dst == NULL || check_multiplication_overflow(dst->col, dst->row) == false || index >= dst->col * dst->row)
 		return (false);
 	y = get_table_fdf_coordinate(dst, index, 1.0);
-	if (y.re < 0)
-		y.re *= -1;
-	if (y.im < 0)
-		y.im *= -1;
-	max_x = collatz_max_point((size_t)y.re) / 7;
-	max_y = collatz_max_point((size_t)y.im) / 7;
+	if (y.x < 0)
+		y.x *= -1;
+	if (y.y < 0)
+		y.y *= -1;
+	max_x = collatz_max_point((size_t)y.x) / 7;
+	max_y = collatz_max_point((size_t)y.y) / 7;
 	if (max_x % 2 == 0 || max_y % 2 == 0)
 		return (false);
 	return (true);

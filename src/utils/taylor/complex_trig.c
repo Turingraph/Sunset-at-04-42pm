@@ -16,17 +16,17 @@
 // Euler%27s_formula?_x_tr_sl=en&_x_tr_tl=th&_x_tr_hl=th&_x_tr_pto=tc
 
 /**
- * compute e^(a.re + a.im)
+ * compute e^(a.x + a.y)
  * 
  * status: public api
  * 
  */
-t_complex	complex_exp(t_complex a)
+t_2d_float	complex_exp(t_2d_float a)
 {
-	t_complex	dst;
+	t_2d_float	dst;
 
-	dst.re = f_cos(a.im) * f_exp(a.re);
-	dst.im = f_sin(a.im) * f_exp(a.re);
+	dst.x = f_cos(a.y) * f_exp(a.x);
+	dst.y = f_sin(a.y) * f_exp(a.x);
 	return (dst);
 }
 
@@ -54,51 +54,51 @@ Reference
 */
 
 /**
- * compute cos(a.re + a.im)
+ * compute cos(a.x + a.y)
  * 
  * status: public api
  * 
  */
-t_complex	complex_cos(t_complex a)
+t_2d_float	complex_cos(t_2d_float a)
 {
-	t_complex	y;
-	t_complex	x1;
-	t_complex	x2;
-	t_complex	e1;
-	t_complex	e2;
+	t_2d_float	y;
+	t_2d_float	x1;
+	t_2d_float	x2;
+	t_2d_float	e1;
+	t_2d_float	e2;
 
-	x1.re = -1 * a.re;
-	x1.im = a.im;
+	x1.x = -1 * a.x;
+	x1.y = a.y;
 	e1 = complex_exp(x1);
-	x2.re = a.re;
-	x2.im = -1 * a.im;
+	x2.x = a.x;
+	x2.y = -1 * a.y;
 	e2 = complex_exp(x2);
-	y.re = (e1.re + e2.re) / 2;
-	y.im = (e1.im + e2.im) / 2;
+	y.x = (e1.x + e2.x) / 2;
+	y.y = (e1.y + e2.y) / 2;
 	return (y);
 }
 
 /**
- * compute sin(a.re + a.im)
+ * compute sin(a.x + a.y)
  * 
  * status: public api
  * 
  */
-t_complex	complex_sin(t_complex a)
+t_2d_float	complex_sin(t_2d_float a)
 {
-	t_complex	y;
-	t_complex	x1;
-	t_complex	x2;
-	t_complex	e1;
-	t_complex	e2;
+	t_2d_float	y;
+	t_2d_float	x1;
+	t_2d_float	x2;
+	t_2d_float	e1;
+	t_2d_float	e2;
 
-	x1.re = a.re;
-	x1.im = -1 * a.im;
+	x1.x = a.x;
+	x1.y = -1 * a.y;
 	e1 = complex_exp(x1);
-	x2.re = -1 * a.re;
-	x2.im = a.im;
+	x2.x = -1 * a.x;
+	x2.y = a.y;
 	e2 = complex_exp(x2);
-	y.re = (e1.re - e2.re) / 2;
-	y.im = (e1.im - e2.im) / 2;
+	y.x = (e1.x - e2.x) / 2;
+	y.y = (e1.y - e2.y) / 2;
 	return (y);
 }

@@ -70,11 +70,11 @@ typedef struct t_table_fdf
 	unsigned char	*a;
 }	t_table_fdf;
 
-typedef struct t_complex
+typedef struct t_2d_float
 {
-	float	re;
-	float	im;
-}	t_complex;
+	float	x;
+	float	y;
+}	t_2d_float;
 
 /**
  * The SUNSET_WINDOW_WIDTH and SUNSET_WINDOW_HEIGHT is used for

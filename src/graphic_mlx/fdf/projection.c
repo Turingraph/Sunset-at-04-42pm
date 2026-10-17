@@ -41,12 +41,12 @@ Reference
  * @param z z-coordinate of the 3D point
  * @return 2D complex point containing the projected coordinates
  */
-t_complex	projection_isometric(float x, float y, float z)
+t_2d_float	projection_isometric(float x, float y, float z)
 {
-	t_complex	dst;
+	t_2d_float	dst;
 
-	dst.re = 0.866 * x - 0.866 * y;
-	dst.im = 0.5 * x + 0.5 * y - z;
+	dst.x = 0.866 * x - 0.866 * y;
+	dst.y = 0.5 * x + 0.5 * y - z;
 	return (dst);
 }
 
@@ -71,12 +71,12 @@ t_complex	projection_isometric(float x, float y, float z)
  * @param z z-coordinate of the 3D point
  * @return 2D complex point containing the projected coordinates
  */
-t_complex	projection_military(float x, float y, float z)
+t_2d_float	projection_military(float x, float y, float z)
 {
-	t_complex	dst;
+	t_2d_float	dst;
 
-	dst.re = 0.707 * x - 0.707 * y;
-	dst.im = 0.707 * x + 0.707 * y - z;
+	dst.x = 0.707 * x - 0.707 * y;
+	dst.y = 0.707 * x + 0.707 * y - z;
 	return (dst);
 }
 
@@ -101,12 +101,12 @@ t_complex	projection_military(float x, float y, float z)
  * @param z z-coordinate of the 3D point
  * @return 2D complex point containing the projected coordinates
  */
-t_complex	projection_cabinet(float x, float y, float z)
+t_2d_float	projection_cabinet(float x, float y, float z)
 {
-	t_complex	dst;
+	t_2d_float	dst;
 
-	dst.re = x - 0.353 * y;
-	dst.im = 0.707 * y - z;
+	dst.x = x - 0.353 * y;
+	dst.y = 0.707 * y - z;
 	return (dst);
 }
 
@@ -130,12 +130,12 @@ t_complex	projection_cabinet(float x, float y, float z)
  * @param z z-coordinate of the 3D point
  * @return 2D complex point containing the projected coordinates
  */
-t_complex	projection_orthogonal(float x, float y, float z)
+t_2d_float	projection_orthogonal(float x, float y, float z)
 {
-	t_complex	dst;
+	t_2d_float	dst;
 
-	dst.re = x;
-	dst.im = y - z;
+	dst.x = x;
+	dst.y = y - z;
 	return (dst);
 }
 
@@ -160,11 +160,11 @@ t_complex	projection_orthogonal(float x, float y, float z)
  * @param z z-coordinate of the 3D point
  * @return 2D complex point containing the projected coordinates
  */
-t_complex	projection_wave(float x, float y, float z)
+t_2d_float	projection_wave(float x, float y, float z)
 {
-	t_complex	dst;
+	t_2d_float	dst;
 
-	dst.re = x;
-	dst.im = z * f_cos(x) + y - z;
+	dst.x = x;
+	dst.y = z * f_cos(x) + y - z;
 	return (dst);
 }

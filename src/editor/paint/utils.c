@@ -17,7 +17,7 @@ int	get_rgba_input(t_fdf_channel rgba_type, t_rgba src)
 
 /**
  * Paint a table FDF channel using the value of each cell from
- * the origin in the complex plane, as |z.re + z.im|.
+ * the origin in the complex plane, as |z.x + z.im|.
  * If cell_metric is not NULL, its output will be utilized instead
  * of the default complex-plane distance.
  * 
@@ -34,7 +34,7 @@ void	paint_space(t_table_fdf *dst, t_fdf_channel channel,
 {
 	size_t			i;
 	int				y;
-	t_complex		z;
+	t_2d_float		z;
 	unsigned char	*rgba;
 
 	if (dst == NULL || dst->arr == NULL
@@ -45,7 +45,7 @@ void	paint_space(t_table_fdf *dst, t_fdf_channel channel,
 	while (i < dst->row * dst->col)
 	{
 		z = get_table_fdf_coordinate(dst, i, 1);
-		y = (int)(f_abs(z.re) + f_abs(z.im));
+		y = (int)(f_abs(z.x) + f_abs(z.y));
 		y = (int)f_round(f_root_finding(y, 2));
 		if (cell_metric != NULL)
 			y = cell_metric(dst, i);

@@ -14,7 +14,7 @@
  */
 int	cell_metric_maxsin(const t_table_fdf *dst, size_t index)
 {
-	t_complex	y;
+	t_2d_float	y;
 	float		s;
 	float		f;
 
@@ -25,9 +25,9 @@ int	cell_metric_maxsin(const t_table_fdf *dst, size_t index)
 	if (f < 1)
 		f = 1;
 	y = get_table_fdf_coordinate(dst, index, 1.0);
-	y.re = f_abs(y.re);
-	y.im = f_abs(y.im);
-	return ((int)(s * f_max(f_sin(y.re / f), f_sin(y.im / f))));
+	y.x = f_abs(y.x);
+	y.y = f_abs(y.y);
+	return ((int)(s * f_max(f_sin(y.x / f), f_sin(y.y / f))));
 }
 
 /**
@@ -42,19 +42,19 @@ int	cell_metric_maxsin(const t_table_fdf *dst, size_t index)
  * 
  * @param index index of the cell
  * 
- * @return max(sin(z).re, sin(z).im)
+ * @return max(sin(z).x, sin(z).y)
  */
 int	cell_metric_maxesin(const t_table_fdf *dst, size_t index)
 {
-	t_complex	y;
+	t_2d_float	y;
 
 	if (dst == NULL || check_multiplication_overflow(dst->col, dst->row) == false || index >= dst->col * dst->row)
 		return (0);
 	y = get_table_fdf_coordinate(dst, index, 1.0);
 	y = complex_sin(y);
-	y.re = f_abs(y.re);
-	y.im = f_abs(y.im);
-	return ((int)(f_max(y.re, y.im)));
+	y.x = f_abs(y.x);
+	y.y = f_abs(y.y);
+	return ((int)(f_max(y.x, y.y)));
 }
 
 /**
@@ -71,7 +71,7 @@ int	cell_metric_maxesin(const t_table_fdf *dst, size_t index)
  */
 int	cell_metric_maxcos(const t_table_fdf *dst, size_t index)
 {
-	t_complex	y;
+	t_2d_float	y;
 	float		s;
 	float		f;
 
@@ -82,9 +82,9 @@ int	cell_metric_maxcos(const t_table_fdf *dst, size_t index)
 	f = f_max((float)dst->col, (float)dst->row);
 	if (f < 1)
 		f = 1;
-	y.re = f_abs(y.re);
-	y.im = f_abs(y.im);
-	return ((int)(s * f_max(f_cos(y.re / f), f_cos(y.im / f))));
+	y.x = f_abs(y.x);
+	y.y = f_abs(y.y);
+	return ((int)(s * f_max(f_cos(y.x / f), f_cos(y.y / f))));
 }
 
 /**
@@ -99,19 +99,19 @@ int	cell_metric_maxcos(const t_table_fdf *dst, size_t index)
  * 
  * @param index index of the cell
  * 
- * @return max(cos(z).re, cos(z).im)
+ * @return max(cos(z).x, cos(z).y)
  */
 int	cell_metric_maxecos(const t_table_fdf *dst, size_t index)
 {
-	t_complex	y;
+	t_2d_float	y;
 
 	if (dst == NULL || check_multiplication_overflow(dst->col, dst->row) == false || index >= dst->col * dst->row)
 		return (0);
 	y = get_table_fdf_coordinate(dst, index, 1.0);
 	y = complex_cos(y);
-	y.re = f_abs(y.re);
-	y.im = f_abs(y.im);
-	return ((int)(f_max(y.re, y.im)));
+	y.x = f_abs(y.x);
+	y.y = f_abs(y.y);
+	return ((int)(f_max(y.x, y.y)));
 }
 
 /**
@@ -128,14 +128,14 @@ int	cell_metric_maxecos(const t_table_fdf *dst, size_t index)
  */
 int	cell_metric_maxexp(const t_table_fdf *dst, size_t index)
 {
-	t_complex	y;
+	t_2d_float	y;
 
 	if (dst == NULL || check_multiplication_overflow(dst->col, dst->row) == false || index >= dst->col * dst->row)
 		return (0);
 	y = get_table_fdf_coordinate(dst, index, 1.0);
 	y = complex_exp(y);
-	y.re = f_abs(y.re);
-	y.im = f_abs(y.im);
-	return ((int)(f_max(y.re, y.im)));
+	y.x = f_abs(y.x);
+	y.y = f_abs(y.y);
+	return ((int)(f_max(y.x, y.y)));
 }
 

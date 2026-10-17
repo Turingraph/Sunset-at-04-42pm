@@ -47,17 +47,17 @@ typedef struct s_fdf
 // init.c
 
 t_fdf		init_fdf(t_table_fdf *src,
-				t_complex (*projection)(float x, float y, float z),
+				t_2d_float (*projection)(float x, float y, float z),
 				float scale);
 t_fdf		free_fdf(t_fdf *src);
 
 // projection.c
 
-t_complex	projection_isometric(float x, float y, float z);
-t_complex	projection_military(float x, float y, float z);
-t_complex	projection_cabinet(float x, float y, float z);
-t_complex	projection_orthogonal(float x, float y, float z);
-t_complex	projection_wave(float x, float y, float z);
+t_2d_float	projection_isometric(float x, float y, float z);
+t_2d_float	projection_military(float x, float y, float z);
+t_2d_float	projection_cabinet(float x, float y, float z);
+t_2d_float	projection_orthogonal(float x, float y, float z);
+t_2d_float	projection_wave(float x, float y, float z);
 
 // utils.c
 

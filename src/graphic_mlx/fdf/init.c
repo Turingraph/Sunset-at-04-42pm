@@ -15,10 +15,10 @@
 // time : O(n)
 // space: O(1)
 void	init_fdf_position(const t_table_fdf *src, float *arr_x,
-	float *arr_y, t_complex (*projection)(float x, float y, float z))
+	float *arr_y, t_2d_float (*projection)(float x, float y, float z))
 {
 	size_t		i;
-	t_complex	dst;
+	t_2d_float	dst;
 
 	if (src == NULL || arr_x == NULL || arr_y == NULL
 		|| check_multiplication_overflow(src->col, src->row) == false)
@@ -26,14 +26,14 @@ void	init_fdf_position(const t_table_fdf *src, float *arr_x,
 	i = 0;
 	while (i < src->row * src->col)
 	{
-		dst.re = (float)(i % src->col) - (float)(src->col / 2);
-		dst.im = (float)(i / src->col) - (float)(src->row / 2);
+		dst.x = (float)(i % src->col) - (float)(src->col / 2);
+		dst.y = (float)(i / src->col) - (float)(src->row / 2);
 		if (src->arr == NULL && projection != NULL)
-			dst = projection(dst.re, dst.im, 0.0);
+			dst = projection(dst.x, dst.y, 0.0);
 		else if (projection != NULL)
-			dst = projection(dst.re, dst.im, src->arr[i]);
-		arr_x[i] = dst.re;
-		arr_y[i] = dst.im;
+			dst = projection(dst.x, dst.y, src->arr[i]);
+		arr_x[i] = dst.x;
+		arr_y[i] = dst.y;
 		i += 1;
 	}
 }
@@ -152,7 +152,7 @@ t_fdf	init_placeholder_fdf(t_table_fdf *src)
  * @see src/graphic_mlx/fdf/projection.c
  */
 t_fdf	init_fdf(t_table_fdf *src,
-	t_complex (*projection)(float x, float y, float z), float scale)
+	t_2d_float (*projection)(float x, float y, float z), float scale)
 {
 	t_fdf	dst;
 	float	max_x;

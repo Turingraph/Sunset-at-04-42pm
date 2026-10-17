@@ -43,16 +43,16 @@ bool	is_islamic_art_valid(const t_islamic_art *src)
  * @param boundary target rectangular boundary
  * @return converted integer coordinate relative to the boundary origin
  */
-t_2d_int	normal_complex_to_2d_int(t_complex src, t_line boundary)
+t_2d_int	normal_complex_to_2d_int(t_2d_float src, t_line boundary)
 {
-	t_complex	normal;
+	t_2d_float	normal;
 	t_2d_int	dst;
 
-	normal.re = f_interval(src.re, 0, 1);
-	normal.im = f_interval(src.im, 0, 1);
-	dst.x = (int)f_floor(normal.re * (boundary.p2.x - boundary.p1.x));
+	normal.x = f_interval(src.x, 0, 1);
+	normal.y = f_interval(src.y, 0, 1);
+	dst.x = (int)f_floor(normal.x * (boundary.p2.x - boundary.p1.x));
 	dst.x += boundary.p1.x;
-	dst.y = (int)f_floor(normal.im * (boundary.p2.y - boundary.p1.y));
+	dst.y = (int)f_floor(normal.y * (boundary.p2.y - boundary.p1.y));
 	dst.y += boundary.p1.y;
 	return (dst);
 }
@@ -72,7 +72,7 @@ t_2d_int	normal_complex_to_2d_int(t_complex src, t_line boundary)
  * @param boundary target rectangular boundary
  * @return integer line mapped to the boundary
  */
-t_line	init_float_line(t_complex point_1, t_complex point_2,
+t_line	init_float_line(t_2d_float point_1, t_2d_float point_2,
 	t_line boundary)
 {
 	t_line	dst;

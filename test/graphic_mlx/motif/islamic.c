@@ -5,37 +5,37 @@ int	main(void)
 	float		u_0 = 0.25;
 	float		u_1 = 0.396447;
 	float		u_2 = 0.08579;
-	t_complex	shape_00[] = {
-		{.re = 0, .im = 2 * u_0},
-		{.re = u_0, .im = u_1},
-		{.re = u_0, .im = u_0},
-		{.re = u_1, .im = u_0},
-		{.re = 2 * u_0, .im = 0},
-		{.re = 0, .im = 0}
+	t_2d_float	shape_00[] = {
+		{.x = 0, .y = 2 * u_0},
+		{.x = u_0, .y = u_1},
+		{.x = u_0, .y = u_0},
+		{.x = u_1, .y = u_0},
+		{.x = 2 * u_0, .y = 0},
+		{.x = 0, .y = 0}
 	};
-	t_complex	shape_01[] = {
-		{.re = 1 - 0, .im = 2 * u_0},
-		{.re = 1 - u_0, .im = u_1},
-		{.re = 1 - u_0, .im = u_0},
-		{.re = 1 - u_1, .im = u_0},
-		{.re = 1 - 2 * u_0, .im = 0},
-		{.re = 1 - 0, .im = 0}
+	t_2d_float	shape_01[] = {
+		{.x = 1 - 0, .y = 2 * u_0},
+		{.x = 1 - u_0, .y = u_1},
+		{.x = 1 - u_0, .y = u_0},
+		{.x = 1 - u_1, .y = u_0},
+		{.x = 1 - 2 * u_0, .y = 0},
+		{.x = 1 - 0, .y = 0}
 	};
-	t_complex	shape_02[] = {
-		{.re = 0, .im = 1 - 2 * u_0},
-		{.re = u_0, .im = 1 - u_1},
-		{.re = u_0, .im = 1 - u_0},
-		{.re = u_1, .im = 1 - u_0},
-		{.re = 2 * u_0, .im = 1 - 0},
-		{.re = 0, .im = 1 - 0}
+	t_2d_float	shape_02[] = {
+		{.x = 0, .y = 1 - 2 * u_0},
+		{.x = u_0, .y = 1 - u_1},
+		{.x = u_0, .y = 1 - u_0},
+		{.x = u_1, .y = 1 - u_0},
+		{.x = 2 * u_0, .y = 1 - 0},
+		{.x = 0, .y = 1 - 0}
 	};
-	t_complex	shape_03[] = {
-		{.re = 1 - 0, .im = 1 - 2 * u_0},
-		{.re = 1 - u_0, .im = 1 - u_1},
-		{.re = 1 - u_0, .im = 1 - u_0},
-		{.re = 1 - u_1, .im = 1 - u_0},
-		{.re = 1 - 2 * u_0, .im = 1 - 0},
-		{.re = 1 - 0, .im = 1 - 0}
+	t_2d_float	shape_03[] = {
+		{.x = 1 - 0, .y = 1 - 2 * u_0},
+		{.x = 1 - u_0, .y = 1 - u_1},
+		{.x = 1 - u_0, .y = 1 - u_0},
+		{.x = 1 - u_1, .y = 1 - u_0},
+		{.x = 1 - 2 * u_0, .y = 1 - 0},
+		{.x = 1 - 0, .y = 1 - 0}
 	};
 	t_ink32			ink = {
 		.color = (170 << 24 | 28 << 16 | 65 << 8 | 255),
@@ -47,21 +47,21 @@ int	main(void)
 	t_2d_polygon	polygon_01 = {.arr = shape_01, .is_loop = false, .length = 5};
 	t_2d_polygon	polygon_02 = {.arr = shape_02, .is_loop = false, .length = 5};
 	t_2d_polygon	polygon_03 = {.arr = shape_03, .is_loop = false, .length = 5};
-	t_complex		thickline_00[] = {
-		{.re = u_2, .im = 0},
-		{.re = 2 * u_0, .im = 1}
+	t_2d_float		thickline_00[] = {
+		{.x = u_2, .y = 0},
+		{.x = 2 * u_0, .y = 1}
 	};
-	t_complex		thickline_01[] = {
-		{.re = 2 * u_0, .im = 1},
-		{.re = 1 - u_2, .im = 0}
+	t_2d_float		thickline_01[] = {
+		{.x = 2 * u_0, .y = 1},
+		{.x = 1 - u_2, .y = 0}
 	};
-	t_complex		thickline_02[] = {
-		{.re = u_2, .im = 1},
-		{.re = 2 * u_0, .im = 0}
+	t_2d_float		thickline_02[] = {
+		{.x = u_2, .y = 1},
+		{.x = 2 * u_0, .y = 0}
 	};
-	t_complex		thickline_03[] = {
-		{.re = 2 * u_0, .im = 0},
-		{.re = 1 - u_2, .im = 1}
+	t_2d_float		thickline_03[] = {
+		{.x = 2 * u_0, .y = 0},
+		{.x = 1 - u_2, .y = 1}
 	};
 	t_2d_polygon	thickline_arr_00 = {.arr = thickline_00, .is_loop = false, .length = 2};
 	t_2d_polygon	thickline_arr_01 = {.arr = thickline_01, .is_loop = false, .length = 2};
