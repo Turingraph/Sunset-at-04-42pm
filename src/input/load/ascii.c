@@ -118,7 +118,7 @@ t_load_fdf	parse_ascii(char *line, const char *dict)
 {
 	t_load_fdf	dst;
 
-	dst = init_load_fdf(knight_of_coin((const char *)line, '\n'), false);
+	dst = init_load_fdf(index_a_in_str((const char *)line, '\n', false), false);
 	if (dst.int_warn == EMPTY)
 	{
 		free_load_fdf(&dst);

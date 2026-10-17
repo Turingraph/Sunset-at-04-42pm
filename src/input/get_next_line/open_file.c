@@ -28,7 +28,7 @@ int	open_dir_file(const char *file_name, const char *dir, t_file_mode file_mode)
 	if (dir != NULL && file_name == NULL)
 		return (open(dir, file_mode));
 	file = init_dynamic_str(
-			index_a_in_str(file_name, '\0') + index_a_in_str(dir, '\0'));
+			index_a_in_str(file_name, '\0', true) + index_a_in_str(dir, '\0', true));
 	concat_dynamic_str(&file, dir);
 	concat_dynamic_str(&file, file_name);
 	if (file.str == NULL)
@@ -36,29 +36,6 @@ int	open_dir_file(const char *file_name, const char *dir, t_file_mode file_mode)
 	dst = open(file.str, file_mode);
 	free(file.str);
 	return (dst);
-}
-
-/**
- * Count how many characters that the string have before 
- * encounter the target characters and/or '\0'.
- * 
- * time/space: O(n) / O(1)
- * 
- * status: public api
- * 
- * @param str string
- * @param stop the target character
- * 
- * @return a number of all characters before the target character and/or '\0'
- */
-size_t	knight_of_coin(const char *str, char stop)
-{
-	size_t	i;
-
-	i = 0;
-	while (str != NULL && str[i] != '\0' && str[i] != stop)
-		i += 1;
-	return (i);
 }
 
 /**

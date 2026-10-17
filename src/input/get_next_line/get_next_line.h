@@ -42,7 +42,7 @@ char			*clone_string(size_t length, const char *src);
 t_dynamic_str	init_dynamic_str(size_t length);
 bool			push_dynamic_str(t_dynamic_str *dst, char src);
 void			concat_dynamic_str(t_dynamic_str *dst, const char *src);
-size_t			index_a_in_str(const char *src, char a);
+size_t			index_a_in_str(const char *src, char a, bool is_after);
 
 // get_next_line.c
 
@@ -53,6 +53,5 @@ char			*get_next_line(int fd, bool is_continue);
 
 int				open_dir_file(const char *file_name,
 					const char *dir, t_file_mode file_mode);
-size_t			knight_of_coin(const char *str, char stop);
 
 #endif

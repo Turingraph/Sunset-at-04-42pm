@@ -2,8 +2,8 @@
 
 /**
  * Find the first occurrence of a character in a string.
- * Returns the position after the character, or the string length
- * when the character is not found.
+ * Returns the position of or after the character,
+ * or the string length when the character is not found.
  *
  * time/space: O(n) / O(1)
  *
@@ -11,10 +11,11 @@
  *
  * @param src string to search
  * @param a character to search for
- *
- * @return position after a, or string length if a is not found
+ * @param is_after if true and found the character, then return i + 1,
+ * if false and found the character, then return i.
+ * @return position of or after a, or string length if a is not found
  */
-size_t	index_a_in_str(const char *src, char a)
+size_t	index_a_in_str(const char *src, char a, bool is_after)
 {
 	size_t	i;
 
@@ -23,8 +24,10 @@ size_t	index_a_in_str(const char *src, char a)
 	i = 0;
 	while (src[i] != '\0' && i < SIZE_MAX)
 	{
-		if (src[i] == a)
+		if (src[i] == a && is_after == true)
 			return (i + 1);
+		if (src[i] == a && is_after == false)
+			return (i);
 		i += 1;
 	}
 	return (i);
@@ -58,7 +61,7 @@ void	fetch_text(int fd, t_dynamic_str *dst, size_t buffer_length)
 		{
 			read(fd, buff, buffer_length);
 			concat_dynamic_str(dst, buff);
-			if (index_a_in_str(buff, '\0') < buffer_length)
+			if (index_a_in_str(buff, '\0', true) < buffer_length)
 				continue_line = false;
 		}
 		free(buff);
@@ -94,7 +97,7 @@ char	*get_next_line(int fd, bool is_continue)
 		fetch_text(fd, &dyn_str, BUFFER_SIZE);
 	free(prev_str);
 	prev_str = NULL;
-	length = index_a_in_str(dyn_str.str, '\n');
+	length = index_a_in_str(dyn_str.str, '\n', true);
 	dst = clone_string(length, dyn_str.str);
 	if (is_continue == true)
 		prev_str = clone_string(dyn_str.length - length, dyn_str.str + length);
