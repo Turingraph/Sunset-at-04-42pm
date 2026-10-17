@@ -27,7 +27,7 @@ int	main(void)
 	i = 0;
 	while (i < max_score)
 	{
-		table = open_table_fdf_file(arr[i], src_dir, parse_fdf_line_bw, false);
+		table = open_table_fdf_file(arr[i], src_dir, parse_decimal_bw, false);
 		write_table_fdf(1, &table, 1, HEIGHT_ONLY);
 		if (table.col * table.row == 0)
 			score += 1;

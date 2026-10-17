@@ -12,7 +12,7 @@ int		compare_string_ascii(const char *str_1, const char *str_2, size_t n)
 	if ((str_1 == NULL && str_2 != NULL) || (str_1 != NULL && str_2 == NULL))
 		return (-1);
 	while (i < n && *str_1 != '\0'
-		&& mirror_tune(*str_1, true) == mirror_tune(*str_2, true))
+		&& f_ctomirror(*str_1, true) == f_ctomirror(*str_2, true))
 	{
 		i += 1;
 		str_1 += 1;
@@ -22,7 +22,7 @@ int		compare_string_ascii(const char *str_1, const char *str_2, size_t n)
 		while (*str_2 == '\n')
 			str_2 += 1;
 	}
-	return (mirror_tune(*str_1, true) - mirror_tune(*str_2, true));
+	return (f_ctomirror(*str_1, true) - f_ctomirror(*str_2, true));
 }
 
 // time : O(n)

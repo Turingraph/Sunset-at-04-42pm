@@ -38,7 +38,7 @@ int	main(void)
 	{
 		output = open_dir_file(arr[i], dst_dir, E_WRITE);
 		table_a = open_table_fdf_file(arr[i], src_dir,
-				parse_ascii_line_cheche01, false);
+				parse_ascii_cheche01, false);
 		scale_multiplication_fdf(&table_a, 3.0, HEIGHT);
 		table_c = convolve_fdf(&table_a, edge, 5);
 		// scale_positive_fdf(&table_c);

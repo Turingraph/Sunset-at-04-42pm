@@ -220,9 +220,9 @@ int	main(void)
 		while (k < 2)
 		{
 			if (k == 0)
-				fdf_file = open_fdf_file(arr[i].file_name, src_dir, parse_fdf_line_bw);
+				fdf_file = open_fdf_file(arr[i].file_name, src_dir, parse_decimal_bw);
 			else
-				fdf_file = open_fdf_file(arr[i].file_name, src_dir, parse_fdf_line_rgba);
+				fdf_file = open_fdf_file(arr[i].file_name, src_dir, parse_decimal_rgba);
 			if (fdf_file.length == arr[i].length)
 			{
 				is_correct = true;

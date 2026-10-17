@@ -39,7 +39,7 @@ int	main(void)
 	i = 0;
 	while (i < length)
 	{
-		table = open_table_fdf_file(arr[i], src_dir, parse_fdf_line_bw, false);
+		table = open_table_fdf_file(arr[i], src_dir, parse_decimal_bw, false);
 		scale_positive_fdf(&table);
 		fdf_dst = open_dir_file(arr[i], dst_dir, E_WRITE);
 		if(fdf_dst > -1)

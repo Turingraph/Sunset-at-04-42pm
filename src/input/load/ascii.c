@@ -16,7 +16,7 @@
 
 // time : O(1)
 // space: O(1)
-char	mirror_tune(char a, bool is_left)
+char	f_ctomirror(char a, bool is_left)
 {
 	size_t	i;
 	char	*left_dict;
@@ -50,7 +50,7 @@ int	f_ctoi(char a, const char *dict)
 	if (a == '\0')
 		return (0);
 	i = 0;
-	while (dict[i] != '\0' && dict[i] != a && dict[i] != mirror_tune(a, true))
+	while (dict[i] != '\0' && dict[i] != a && dict[i] != f_ctomirror(a, true))
 		i += 1;
 	return ((int)i);
 }
@@ -85,8 +85,8 @@ void	ft_put_ascii_fd(int fd, int cell, const char *dict, bool is_left)
 			i += 1;
 		if (dict[i] == '\0' && i > 0)
 			i -= 1;
-		left_twin = mirror_tune(dict[i], true);
-		right_twin = mirror_tune(dict[i], false);
+		left_twin = f_ctomirror(dict[i], true);
+		right_twin = f_ctomirror(dict[i], false);
 		if (is_left == true)
 			write(fd, &left_twin, 1);
 		if (is_left == false)
@@ -114,7 +114,7 @@ int	*line_to_ascii_arr(const char *line,
 
 // time : O(n)
 // space: O(n)
-t_load_fdf	parse_ascii_line(char *line, const char *dict)
+t_load_fdf	parse_ascii(char *line, const char *dict)
 {
 	t_load_fdf	dst;
 
@@ -126,7 +126,7 @@ t_load_fdf	parse_ascii_line(char *line, const char *dict)
 		dst.r = NULL;
 		dst.g = NULL;
 		dst.b = NULL;
-		dst.arr = malloc_talk(sizeof(int) * 1, "parse_ascii_line\n");
+		dst.arr = malloc_talk(sizeof(int) * 1, "parse_ascii\n");
 		dst.length = 1;
 		if (dst.arr == NULL)
 			return (init_load_fdf(0, false));

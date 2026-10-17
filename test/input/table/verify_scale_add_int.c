@@ -253,9 +253,9 @@ int	main(void)
 		while (k < 2)
 		{
 			if (k == 0)
-				table = open_table_fdf_file(arr[i].file_name, src_dir, parse_fdf_line_bw, false);
+				table = open_table_fdf_file(arr[i].file_name, src_dir, parse_decimal_bw, false);
 			else
-				table = open_table_fdf_file(arr[i].file_name, src_dir, parse_fdf_line_rgba, true);
+				table = open_table_fdf_file(arr[i].file_name, src_dir, parse_decimal_rgba, true);
 			scale_addition_fdf(&table, scale_arr[i], HEIGHT);
 			if (table.row * table.col == arr[i].length && table.arr != NULL
 				&& compare_intarr(table.arr, arr[i].arr[0].arr, arr[i].length) == 0)

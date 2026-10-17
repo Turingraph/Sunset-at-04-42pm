@@ -45,11 +45,11 @@ void			free_load_fdf_arr(t_load_fdf_arr *src);
 
 // parse.c
 
-t_load_fdf		parse_ascii_line_cheche01(char *line);
-t_load_fdf		parse_ascii_line_standard(char *line);
-t_load_fdf		parse_ascii_line_chungaloider(char *line);
-t_load_fdf		parse_fdf_line_rgba(char *line);
-t_load_fdf		parse_fdf_line_bw(char *line);
+t_load_fdf		parse_ascii_cheche01(char *line);
+t_load_fdf		parse_ascii_standard(char *line);
+t_load_fdf		parse_ascii_chungaloider(char *line);
+t_load_fdf		parse_decimal_rgba(char *line);
+t_load_fdf		parse_decimal_bw(char *line);
 
 // string.c
 

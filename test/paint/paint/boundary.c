@@ -55,7 +55,7 @@ int	main(void)
 	t_table_fdf	table;
 
 	// a
-	table = open_table_fdf_file(file_a, input_dir, parse_fdf_line_bw, false);
+	table = open_table_fdf_file(file_a, input_dir, parse_decimal_bw, false);
 	set_cells_color(&table, 99, HEIGHT, boundary_test);
 	if (table.col * table.row == length_a
 		&& compare_intarr(table.arr, correct_a, length_a) == 0)
@@ -63,7 +63,7 @@ int	main(void)
 	free_table_fdf(&table);
 
 	// b
-	table = open_table_fdf_file(file_b, input_dir, parse_fdf_line_bw, false);
+	table = open_table_fdf_file(file_b, input_dir, parse_decimal_bw, false);
 	set_cells_color(&table, 99, HEIGHT, boundary_test);
 	if (table.col * table.row == length_b
 		&& compare_intarr(table.arr, correct_b, length_b) == 0)
@@ -71,7 +71,7 @@ int	main(void)
 	free_table_fdf(&table);
 
 	// c
-	table = open_table_fdf_file(file_c, input_dir, parse_fdf_line_bw, false);
+	table = open_table_fdf_file(file_c, input_dir, parse_decimal_bw, false);
 	set_cells_color(&table, 99, HEIGHT, boundary_test);
 	if (table.col * table.row == length_c
 		&& compare_intarr(table.arr, correct_c, length_c) == 0)

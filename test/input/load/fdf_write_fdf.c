@@ -33,11 +33,11 @@ int	main(void)
 	i = 0;
 	while (i < max_score)
 	{
-		fdf_file = open_fdf_file(arr[i], src_dir, parse_fdf_line_bw);
+		fdf_file = open_fdf_file(arr[i], src_dir, parse_decimal_bw);
 		clone_examples = open_dir_file(arr[i], dst_dir, E_WRITE);
 		if (clone_examples > -1)
 		{
-			write_load_fdf_arr(clone_examples, &fdf_file, 1, HEIGHT_ONLY);
+			inspect_decimal(clone_examples, &fdf_file, 1, HEIGHT_ONLY);
 			if (assert_files(arr[i], arr[i], src_dir, dst_dir) == true)
 				score += 1;
 			else

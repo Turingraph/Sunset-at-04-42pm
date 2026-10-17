@@ -14,7 +14,7 @@
 
 // time : O(n)
 // space: O(n)
-void	write_load_fdf(int fd, const t_load_fdf *src,
+static void	inspect_fdf_unit(int fd, const t_load_fdf *src,
 		size_t digits, t_write_style mode)
 {
 	size_t	i;
@@ -43,7 +43,7 @@ void	write_load_fdf(int fd, const t_load_fdf *src,
 
 // time : O(n)
 // space: O(n)
-void	write_load_fdf_arr(int fd,
+void	inspect_decimal(int fd,
 		const t_load_fdf_arr *src, size_t digits, t_write_style mode)
 {
 	size_t	i;
@@ -51,7 +51,7 @@ void	write_load_fdf_arr(int fd,
 	i = 0;
 	while (src != NULL && i < src->length && src->arr != NULL)
 	{
-		write_load_fdf(fd, (const t_load_fdf *)&(src->arr[i]), digits, mode);
+		inspect_fdf_unit(fd, (const t_load_fdf *)&(src->arr[i]), digits, mode);
 		i += 1;
 	}
 }

@@ -54,7 +54,7 @@ int	main(void)
 	i = 0;
 	while (i < max_score)
 	{
-		table = open_table_fdf_file(arr[i], src_dir, parse_ascii_line_cheche01, is_rgb);
+		table = open_table_fdf_file(arr[i], src_dir, parse_ascii_cheche01, is_rgb);
 		clone_examples = open_dir_file(arr[i], dst_dir, E_WRITE);
 		if (clone_examples > -1)
 		{

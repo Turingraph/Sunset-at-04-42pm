@@ -489,7 +489,7 @@ size_t	ft_putnbr_fd(int n, int fd, const char *base, size_t digits);
  * 
  * @see see: src/input/table/public.c
  */
-t_load_fdf	parse_ascii_line_cheche01(char *line);
+t_load_fdf	parse_ascii_cheche01(char *line);
 
 /**
  * Parse an ASCII-art line using the standard character ramp.
@@ -503,7 +503,7 @@ t_load_fdf	parse_ascii_line_cheche01(char *line);
  * 
  * @see see: src/input/table/public.c
  */
-t_load_fdf	parse_ascii_line_standard(char *line);
+t_load_fdf	parse_ascii_standard(char *line);
 
 /**
  * Parse an ASCII-art line using the Chungaloider brightness ramp.
@@ -520,7 +520,7 @@ t_load_fdf	parse_ascii_line_standard(char *line);
  * @see see: https://stackoverflow.com/questions/30097953/
  *      ascii-art-sorting-an-array-of-ascii-characters-by-brightness-levels-c-c
  */
-t_load_fdf	parse_ascii_line_chungaloider(char *line);
+t_load_fdf	parse_ascii_chungaloider(char *line);
 
 /**
  * Parse an FDF line as colorful data.
@@ -535,7 +535,7 @@ t_load_fdf	parse_ascii_line_chungaloider(char *line);
  * @see see: src/input/table/public.c
  * 
  */
-t_load_fdf	parse_fdf_line_rgba(char *line);
+t_load_fdf	parse_decimal_rgba(char *line);
 
 /**
  * Parse an FDF line as black and white data.
@@ -550,7 +550,7 @@ t_load_fdf	parse_fdf_line_rgba(char *line);
  * @see see: src/input/table/public.c
  * 
  */
-t_load_fdf	parse_fdf_line_bw(char *line);
+t_load_fdf	parse_decimal_bw(char *line);
 
 /* ************************************************************************** */
 /* *** src/input/table/ *** */
@@ -623,8 +623,8 @@ void			scale_relu_fdf(t_table_fdf *dst, int min, int max, int expect);
  * 
  * @param file_name the input file
  * @param dir the directory of the input file
- * @param one_line loading style, including parse_ascii_line_standard for
- * loading file as ASCII art, parse_fdf_line_rgba as colorful Fdf file etc.
+ * @param one_line loading style, including parse_ascii_standard for
+ * loading file as ASCII art, parse_decimal_rgba as colorful Fdf file etc.
  * @param is_rgba if is_rgba == true, then the program using malloc 
  * for initializing rgba color.
  * @return return the array that contains rgba and height of the height map.

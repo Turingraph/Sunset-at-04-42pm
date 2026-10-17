@@ -88,7 +88,7 @@ int	main(void)
 	i = 0;
 	while (i < length)
 	{
-		table = open_table_fdf_file(arr[i], src_dir, parse_ascii_line_standard, false);
+		table = open_table_fdf_file(arr[i], src_dir, parse_ascii_standard, false);
 		scale_positive_fdf(&table);
 		fdf_dst = open_dir_file(arrdst[i], dst_dir, E_WRITE);
 		if(fdf_dst > -1)

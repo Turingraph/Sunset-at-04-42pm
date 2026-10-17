@@ -352,9 +352,9 @@ int	main(void)
 		while (k < 2)
 		{
 			if (k == 0)
-				table = open_table_fdf_file(arr[i].file_name, src_dir, parse_fdf_line_bw, false);
+				table = open_table_fdf_file(arr[i].file_name, src_dir, parse_decimal_bw, false);
 			else
-				table = open_table_fdf_file(arr[i].file_name, src_dir, parse_fdf_line_rgba, true);
+				table = open_table_fdf_file(arr[i].file_name, src_dir, parse_decimal_rgba, true);
 			
 			table_large = scale_dimension_fdf(&table, arr[i].scale_row, arr[i].scale_col);
 			if (table_large.row * table_large.col == arr[i].scale_row * arr[i].scale_col * arr[i].row * arr[i].col

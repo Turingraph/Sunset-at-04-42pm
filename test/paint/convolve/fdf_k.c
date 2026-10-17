@@ -43,7 +43,7 @@ int	main(void)
 	{
 		output = open_dir_file(arr[i], dst_dir, E_WRITE);
 		table_a = open_table_fdf_file(arr[i], src_dir,
-				parse_fdf_line_bw, false);
+				parse_decimal_bw, false);
 		table_b = convolve_fdf(&table_a, NULL, half_dim);
 		write_table_fdf(output, &table_b, 1, HEIGHT_ONLY);
 		free_table_fdf(&table_a);

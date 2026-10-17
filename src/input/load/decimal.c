@@ -86,7 +86,7 @@ size_t	count_fdf_columns(const char *line, bool *is_valid_fdf)
 
 // time : O(n)
 // space: O(n)
-void	parse_fdf_line_loop(t_load_fdf *dst, size_t length,
+void	parse_decimal_loop(t_load_fdf *dst, size_t length,
 	bool *is_int, char *line)
 {
 	size_t	i;
@@ -112,7 +112,7 @@ void	parse_fdf_line_loop(t_load_fdf *dst, size_t length,
 
 // time : O(n)
 // space: O(n)
-t_load_fdf	parse_fdf_line(char *line, bool is_rgba)
+t_load_fdf	parse_decimal(char *line, bool is_rgba)
 {
 	t_load_fdf	dst;
 	size_t		length;
@@ -130,7 +130,7 @@ t_load_fdf	parse_fdf_line(char *line, bool is_rgba)
 	if (dst.arr == NULL)
 		return (dst);
 	is_int = true;
-	parse_fdf_line_loop(&dst, length, &is_int, line);
+	parse_decimal_loop(&dst, length, &is_int, line);
 	if (is_int == false)
 		dst.int_warn = NOT_DECIMAL;
 	return (dst);

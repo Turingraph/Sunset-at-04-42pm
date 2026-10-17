@@ -21,8 +21,8 @@
  * 
  * @param file_name the input file
  * @param dir the directory of the input file
- * @param one_line loading style, including parse_ascii_line_standard for
- * loading file as ASCII art, parse_fdf_line_rgba as colorful Fdf file etc.
+ * @param one_line loading style, including parse_ascii_standard for
+ * loading file as ASCII art, parse_decimal_rgba as colorful Fdf file etc.
  * @param is_rgba if is_rgba == true, then the program using malloc 
  * for initializing rgba color.
  * @return return the array that contains rgba and height of the height map.

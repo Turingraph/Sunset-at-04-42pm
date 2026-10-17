@@ -76,7 +76,7 @@ int	main(void)
 	{
 		output = open_dir_file(arr[i], dst, E_WRITE);
 		table_a = open_table_fdf_file(arr[i], src,
-				parse_ascii_line_chungaloider, true);
+				parse_ascii_chungaloider, true);
         color_cells_gradient(&table_a, init_gradient(), true);
         color_cells_gradient(&table_a, init_gradient_2(), true);
 		scale_multiplication_fdf(&table_a, 1.0 / 3.0, RED);

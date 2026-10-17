@@ -23,7 +23,7 @@ t_load_fdf_arr	open_fdf_file(const char *file_name, const char *dir,
 					t_load_fdf (*parse_line)(char *line));
 
 // ascii.c
-char			mirror_tune(char a, bool is_left);
+char			f_ctomirror(char a, bool is_left);
 
 // atoi.c
 
@@ -37,11 +37,11 @@ void			free_load_fdf_arr(t_load_fdf_arr *src);
 
 // parse.c
 
-t_load_fdf		parse_ascii_line_cheche01(char *line);
-t_load_fdf		parse_ascii_line_standard(char *line);
-t_load_fdf		parse_ascii_line_chungaloider(char *line);
-t_load_fdf		parse_fdf_line_rgba(char *line);
-t_load_fdf		parse_fdf_line_bw(char *line);
+t_load_fdf		parse_ascii_cheche01(char *line);
+t_load_fdf		parse_ascii_standard(char *line);
+t_load_fdf		parse_ascii_chungaloider(char *line);
+t_load_fdf		parse_decimal_rgba(char *line);
+t_load_fdf		parse_decimal_bw(char *line);
 
 // string.c
 
@@ -50,16 +50,16 @@ size_t			f_strlen(const char *str);
 
 // write_ascii.c
 
-void			write_load_ascii_arr_cheche01(int fd,
+void			inspect_ascii_cheche01(int fd,
 					const t_load_fdf_arr *src);
-void			write_load_ascii_arr_standard(int fd,
+void			inspect_ascii_standard(int fd,
 					const t_load_fdf_arr *src);
-void			write_load_ascii_arr_chungaloider(int fd,
+void			inspect_ascii_chungaloider(int fd,
 					const t_load_fdf_arr *src);
 
 // write.c
 
-void			write_load_fdf_arr(int fd, const t_load_fdf_arr *src,
+void			inspect_decimal(int fd, const t_load_fdf_arr *src,
 					size_t digits, t_write_style write_style);
 
 #endif

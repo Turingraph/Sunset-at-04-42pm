@@ -48,7 +48,7 @@ int	main(int len, char **str)
 
 	if (len < 2)
 		return (0);
-	table = open_table_fdf_file(str[1], NULL, parse_ascii_line_cheche01, true);
+	table = open_table_fdf_file(str[1], NULL, parse_ascii_cheche01, true);
 	if (table.col * table.row == 0)
 	{
 		free_table_fdf(&table);
