@@ -46,7 +46,7 @@ int	main(void)
 		"y.txt",
 		"z.txt"
 	};
-	char	*src_dir = "input_examples/figlet_rozzo/";
+	char	*src_dir = "corpus/figlet_rozzo/";
 	char	*dst_dir = "test/input/table/clone_input_ascii/";
 
     is_rgb = false;

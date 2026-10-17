@@ -1,4 +1,4 @@
-`input_examples/` contains all of the compatible inputs file for this Git repo.
+`corpus/` contains all of the compatible inputs file for this Git repo.
 
 There are 2 types of compatible files
 1.	`.fdf` file (where it contains the integers separated by space. for represent 3D isometric/prism object, you can also add 8 digits hex number for specify the cells).

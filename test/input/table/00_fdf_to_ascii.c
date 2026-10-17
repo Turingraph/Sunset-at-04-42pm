@@ -60,7 +60,7 @@ int	main(void)
 		"pyra.txt",
 		"t2.txt",
 	};
-	char	*src_dir = "input_examples/fdf/";
+	char	*src_dir = "corpus/fdf/";
 	char	*dst_dir = "test/input/table/00_fdf_to_ascii/";
 
 	i = 0;

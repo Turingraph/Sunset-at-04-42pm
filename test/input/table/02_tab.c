@@ -33,7 +33,7 @@ int	main(void)
 		"pyra.fdf",
 		"t2.fdf",
 	};
-	char	*src_dir = "input_examples/fdf/";
+	char	*src_dir = "corpus/fdf/";
 	char	*dst_dir = "test/input/table/02_tab/";
 
 	i = 0;

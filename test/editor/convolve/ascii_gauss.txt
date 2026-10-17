@@ -9,7 +9,7 @@ int	main(void)
 	size_t		half_dim;
 	int			output;
 	char		*dst = "test/editor/convolve/input_ascii/";
-	char		*src = "input_examples/ascii/";
+	char		*src = "corpus/ascii/";
 	char		*arr[] = {
 		"apartment_goofy.txt",
 		"bangkok_usa_frag.txt",

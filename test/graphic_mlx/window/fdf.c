@@ -64,6 +64,6 @@ int	main(int len, char **str)
 /*
 valgrind --leak-check=full --show-leak-kinds=all 
 
-./test/out/graphic_mlx/window/fdf.out input_examples/fdf/elem-fract.fdf
+./test/out/graphic_mlx/window/fdf.out corpus/fdf/elem-fract.fdf
 
 */

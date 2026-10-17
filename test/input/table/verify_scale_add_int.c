@@ -231,7 +231,7 @@ int	main(void)
 			"pyra.fdf", 729
 		},
 	};
-	char	*src_dir = "input_examples/fdf/";
+	char	*src_dir = "corpus/fdf/";
 	int	scale_arr[] = {
 		44,
 		13,

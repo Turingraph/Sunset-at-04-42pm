@@ -182,7 +182,7 @@ int	main(int len, char **str)
 	return (0);
 }
 
-./test/out/graphic_mlx/window/fdf.out input_examples/fdf/42.fdf
+./test/out/graphic_mlx/window/fdf.out corpus/fdf/42.fdf
 ```
 
 as this picture.
@@ -199,7 +199,7 @@ FDF42 features
 
 ## Additional features
 
-User can also convert `txt` file (including Figlet output), for examples `input_examples/convolve/zutomayo_isometric2.txt`
+User can also convert `txt` file (including Figlet output), for examples `corpus/convolve/zutomayo_isometric2.txt`
 
 using this code
 

@@ -6,7 +6,7 @@ int	main(void)
 	t_table_fdf	table_b;
 	int			output;
 	char		*dst_dir = "test/input/table/06_scale_dim/";
-	char		*src_dir = "input_examples/ascii/";
+	char		*src_dir = "corpus/ascii/";
 	char		*arr[] = {
 		"apartment_goofy.txt",
 		"bangkok_usa_frag.txt",

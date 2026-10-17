@@ -82,7 +82,7 @@ int	main(void)
 		"y.fdf",
 		"z.fdf"
 	};
-	char	*src_dir = "input_examples/figlet_rozzo/";
+	char	*src_dir = "corpus/figlet_rozzo/";
 	char	*dst_dir = "test/input/table/01_ascii_to_fdf/";
 
 	i = 0;

@@ -37,15 +37,15 @@ OUT_BASIC = $(patsubst %.c, out/%.out,	\
 #-----------------------------------------------------------------------------------------------
 # *** get input clone file ***
 
-INPUT_FIGLET = $(wildcard ../input_examples/figlet_rozzo/*)
-INPUT_FDF = $(wildcard ../input_examples/fdf/*)
+INPUT_FIGLET = $(wildcard ../corpus/figlet_rozzo/*)
+INPUT_FDF = $(wildcard ../corpus/fdf/*)
 INPUT_GNL = $(wildcard input/get_next_line/input/*)
 
-CLONE_FIGLET_LOAD = $(patsubst ../input_examples/figlet_rozzo/%, input/load/clone_input_ascii/%, $(INPUT_FIGLET))
-CLONE_FIGLET_TABLE = $(patsubst ../input_examples/figlet_rozzo/%, input/table/clone_input_ascii/%, $(INPUT_FIGLET))
+CLONE_FIGLET_LOAD = $(patsubst ../corpus/figlet_rozzo/%, input/load/clone_input_ascii/%, $(INPUT_FIGLET))
+CLONE_FIGLET_TABLE = $(patsubst ../corpus/figlet_rozzo/%, input/table/clone_input_ascii/%, $(INPUT_FIGLET))
 CLONE_FIGLET = $(CLONE_FIGLET_LOAD) $(CLONE_FIGLET_TABLE)
-CLONE_FDF_LOAD = $(patsubst ../input_examples/fdf/%, input/load/clone_input_fdf/%, $(INPUT_FDF))
-CLONE_FDF_TABLE = $(patsubst ../input_examples/fdf/%, input/table/clone_input_fdf/%, $(INPUT_FDF))
+CLONE_FDF_LOAD = $(patsubst ../corpus/fdf/%, input/load/clone_input_fdf/%, $(INPUT_FDF))
+CLONE_FDF_TABLE = $(patsubst ../corpus/fdf/%, input/table/clone_input_fdf/%, $(INPUT_FDF))
 CLONE_FDF = $(CLONE_FDF_LOAD) $(CLONE_FDF_TABLE)
 CLONE_GNL = $(patsubst input/get_next_line/input/%, input/get_next_line/clone_input/%, $(INPUT_GNL))
 
@@ -78,11 +78,11 @@ obj/%.o: %.c
 all_clone: $(CLONE_FDF) $(CLONE_FIGLET) $(CLONE_GNL)
 	@echo $^
 
-$(CLONE_FDF): ../input_examples/fdf/$(notdir $@)
+$(CLONE_FDF): ../corpus/fdf/$(notdir $@)
 	@mkdir -p $(@D)
 	touch $@
 
-$(CLONE_FIGLET): ../input_examples/figlet_rozzo/$(notdir $@)
+$(CLONE_FIGLET): ../corpus/figlet_rozzo/$(notdir $@)
 	@mkdir -p $(@D)
 	touch $@
 

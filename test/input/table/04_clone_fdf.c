@@ -25,7 +25,7 @@ int	main(void)
 		"pnp_flat.fdf",
 		"pylone.fdf",
 	};
-	char	*src_dir = "input_examples/fdf/";
+	char	*src_dir = "corpus/fdf/";
 	char	*dst_dir = "test/input/table/clone_input_fdf/";
 
 	score = 0;

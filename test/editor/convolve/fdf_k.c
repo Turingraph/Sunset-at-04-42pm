@@ -7,7 +7,7 @@ int	main(void)
 	size_t		half_dim;
 	int			output;
 	char		*dst_dir = "test/editor/convolve/fdf_k/";
-	char		*src_dir = "input_examples/fdf/";
+	char		*src_dir = "corpus/fdf/";
 	char			*arr[] = {
 		"100-6.fdf",			// 0
 		"20-60.fdf",			// 1

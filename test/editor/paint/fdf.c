@@ -25,7 +25,7 @@ int	main(void)
 	t_table_fdf	table_a;
 	int			output;
 	char		*dst = "test/editor/paint/input_fdf/";
-	char		*src = "input_examples/ascii/";
+	char		*src = "corpus/ascii/";
 	char		*arr_src[] = {
 		"apartment_goofy.txt",
 		"bangkok_usa_frag.txt",

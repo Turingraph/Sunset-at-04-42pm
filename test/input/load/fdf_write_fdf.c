@@ -26,7 +26,7 @@ int	main(void)
 		"pylone.fdf",
 		// "julia.fdf"
 	};
-	char	*src_dir = "input_examples/fdf/";
+	char	*src_dir = "corpus/fdf/";
 	char	*dst_dir = "test/input/load/clone_input_fdf/";
 
 	score = 0;
