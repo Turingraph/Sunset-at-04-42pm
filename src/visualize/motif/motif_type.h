@@ -37,14 +37,14 @@ typedef struct s_2d_polygon
 /**
  * Reusable 2D drawing motif composed of geometry and drawing properties.
  *
- * polygon provides the geometric data while ink describes how that geometry
+ * polygon provides the geometric data while raster_style describes how that geometry
  * should be rendered. A motif can therefore be reused with different
  * positions, transformations, or drawing operations.
  */
 typedef struct s_motif
 {
 	t_2d_polygon	polygon;
-	t_ink32			ink;
+	t_raster_style	raster_style;
 	t_2d_shape		shape_2d;
 }	t_motif;
 

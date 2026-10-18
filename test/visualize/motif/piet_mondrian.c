@@ -35,16 +35,16 @@ int	main(void)
 		{.x = 21.0 / 24.0, .y = 22.0 / 24.0},
 		{.x = 23.0 / 24.0, .y = 23.0 / 24.0},
 	};
-	t_ink32			ink_coco = {
+	t_raster_style			raster_style_coco = {
 		.color = rgba32_from_char(192, 192, 0, 255),
 		.thickness = 30};
-	t_ink32			ink_red = {
+	t_raster_style			raster_style_red = {
 		.color = rgba32_from_char(255, 0, 0, 255),
 		.thickness = 20};
-	t_ink32			ink_white = {
+	t_raster_style			raster_style_white = {
 		.color = rgba32_from_char(255, 255, 255, 255),
 		.thickness = 20};
-	t_ink32			ink_blue = {
+	t_raster_style			raster_style_blue = {
 		.color = rgba32_from_char(0, 100, 255, 255),
 		.thickness = 20};
 	t_2d_polygon	polygon_00 = {.arr = square_00, .is_loop = false, .length = 2};
@@ -59,37 +59,37 @@ int	main(void)
 		.arr = (t_motif []){
 			{
 				.polygon = polygon_00,
-				.ink = ink_white,
+				.raster_style = raster_style_white,
 				.shape_2d = E_RECTANGLE
 			},
 			{
 				.polygon = polygon_01,
-				.ink = ink_coco,
+				.raster_style = raster_style_coco,
 				.shape_2d = E_RECTANGLE
 			},
 			{
 				.polygon = polygon_02,
-				.ink = ink_blue,
+				.raster_style = raster_style_blue,
 				.shape_2d = E_RECTANGLE
 			},
 			{
 				.polygon = polygon_03,
-				.ink = ink_red,
+				.raster_style = raster_style_red,
 				.shape_2d = E_RECTANGLE
 			},
 			{
 				.polygon = polygon_04,
-				.ink = ink_white,
+				.raster_style = raster_style_white,
 				.shape_2d = E_RECTANGLE
 			},
 			{
 				.polygon = polygon_05,
-				.ink = ink_white,
+				.raster_style = raster_style_white,
 				.shape_2d = E_RECTANGLE
 			},
 			{
 				.polygon = polygon_06,
-				.ink = ink_coco,
+				.raster_style = raster_style_coco,
 				.shape_2d = E_RECTANGLE
 			},
 		}

@@ -32,7 +32,7 @@ typedef struct s_ink32
 {
 	int32_t		color;
 	size_t		thickness;
-}	t_ink32;
+}	t_raster_style;
 
 /**
  * Supported 2D motif and rendering types.
@@ -339,7 +339,7 @@ typedef struct s_2d_polygon
 typedef struct s_motif
 {
 	t_2d_polygon	polygon;
-	t_ink32			ink;
+	t_raster_style			ink;
 	t_2d_shape		shape_2d;
 }	t_motif;
 

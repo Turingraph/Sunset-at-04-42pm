@@ -15,7 +15,7 @@
 // time : O(n)
 // space: O(1)
 static void	raster_linex(mlx_image_t *dst,
-	t_line line, t_line boundary, t_ink32 ink)
+	t_line line, t_line boundary, t_raster_style raster_style)
 {
 	t_2d_int	temp;
 
@@ -26,15 +26,15 @@ static void	raster_linex(mlx_image_t *dst,
 		line.p1 = temp;
 	}
 	if (line.p2.y - line.p1.y < 0)
-		raster_linex_minus(dst, line, boundary, ink);
+		raster_linex_minus(dst, line, boundary, raster_style);
 	else
-		raster_linex_plus(dst, line, boundary, ink);
+		raster_linex_plus(dst, line, boundary, raster_style);
 }
 
 // time : O(n)
 // space: O(1)
 static void	raster_liney(mlx_image_t *dst,
-	t_line line, t_line boundary, t_ink32 ink)
+	t_line line, t_line boundary, t_raster_style raster_style)
 {
 	t_2d_int	temp;
 
@@ -45,20 +45,20 @@ static void	raster_liney(mlx_image_t *dst,
 		line.p1 = temp;
 	}
 	if (line.p2.x - line.p1.x < 0)
-		raster_liney_minus(dst, line, boundary, ink);
+		raster_liney_minus(dst, line, boundary, raster_style);
 	else
-		raster_liney_plus(dst, line, boundary, ink);
+		raster_liney_plus(dst, line, boundary, raster_style);
 }
 
 // time : O(n)
 // space: O(1)
 void	raster_line(mlx_image_t *dst,
-	t_line line, t_line boundary, t_ink32 ink)
+	t_line line, t_line boundary, t_raster_style raster_style)
 {
 	if (dst == NULL || check_multiplication_overflow_uint32_t(dst->width, dst->height) == false)
 		return ;
 	if (f_abs_int(line.p2.x - line.p1.x) > f_abs_int(line.p2.y - line.p1.y))
-		raster_linex(dst, line, boundary, ink);
+		raster_linex(dst, line, boundary, raster_style);
 	else
-		raster_liney(dst, line, boundary, ink);
+		raster_liney(dst, line, boundary, raster_style);
 }

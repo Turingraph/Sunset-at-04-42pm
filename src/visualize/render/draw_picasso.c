@@ -18,11 +18,11 @@ static void	draw_picassoy_fdf_unit(t_2d_hook *hook,
 	bool is_draw, t_2d_int ixiy)
 {
 	t_line		line;
-	t_ink32		ink;
+	t_raster_style		raster_style;
 
-	ink = get_hook_ink32(hook, is_draw, ixiy);
+	raster_style = hook_to_raster(hook, is_draw, ixiy);
 	line = init_draw_line_y(*hook->camera, hook->fdf, ixiy);
-	draw_line_fdf(line, ink, *(hook->camera), hook->img);
+	draw_line_fdf(line, raster_style, *(hook->camera), hook->img);
 }
 
 // time : O(1)
@@ -31,11 +31,11 @@ static void	draw_picassox_fdf_unit(t_2d_hook *hook,
 	bool is_draw, t_2d_int ixiy)
 {
 	t_line		line;
-	t_ink32		ink;
+	t_raster_style		raster_style;
 
-	ink = get_hook_ink32(hook, is_draw, ixiy);
+	raster_style = hook_to_raster(hook, is_draw, ixiy);
 	line = init_draw_line_x(*hook->camera, hook->fdf, ixiy);
-	draw_line_fdf(line, ink, *(hook->camera), hook->img);
+	draw_line_fdf(line, raster_style, *(hook->camera), hook->img);
 }
 
 // time : O(n)

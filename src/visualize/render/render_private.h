@@ -41,12 +41,12 @@ void		draw_fdf_mlx(t_2d_hook *hook, bool is_draw);
 
 // unit.c
 
-t_ink32		get_hook_ink32(t_2d_hook *hook, bool is_draw, t_2d_int ixiy);
+t_raster_style		hook_to_raster(t_2d_hook *hook, bool is_draw, t_2d_int ixiy);
 void		draw_circle_fdf(t_2d_int point,
-				t_ink32 ink, t_2d_camera camera, mlx_image_t *img);
+				t_raster_style ink, t_2d_camera camera, mlx_image_t *img);
 void		draw_rectangle_fdf(t_line line, int32_t ink,
 				t_2d_camera camera, mlx_image_t *img);
-void		draw_line_fdf(t_line line, t_ink32 ink,
+void		draw_line_fdf(t_line line, t_raster_style ink,
 				t_2d_camera camera, mlx_image_t *img);
 
 // verify.c

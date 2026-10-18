@@ -36,11 +36,11 @@ typedef struct s_line
  * @param color 32-bit drawing color
  * @param thickness size parameter used by the selected rendering shape_2d
  */
-typedef struct s_ink32
+typedef struct t_raster_style
 {
 	int32_t		color;
 	size_t		thickness;
-}	t_ink32;
+}	t_raster_style;
 
 /**
  * Supported 2D motif and rendering types.

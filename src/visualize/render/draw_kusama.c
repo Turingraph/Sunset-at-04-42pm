@@ -18,13 +18,13 @@ static void	draw_kusama_fdf_unit(t_2d_hook *hook,
 	bool is_draw, t_2d_int ixiy)
 {
 	t_2d_int	position;
-	t_ink32		ink;
+	t_raster_style		raster_style;
 
-	ink = get_hook_ink32(hook, is_draw, ixiy);
+	raster_style = hook_to_raster(hook, is_draw, ixiy);
 	position = world_3d_to_screen_2d(*hook->camera,
 			get_fdf_point(hook->fdf, ixiy, 1, 0),
 			get_fdf_point(hook->fdf, ixiy, 2, 0));
-	draw_circle_fdf(position, ink, *hook->camera, hook->img);
+	draw_circle_fdf(position, raster_style, *hook->camera, hook->img);
 }
 
 // time : O(n)

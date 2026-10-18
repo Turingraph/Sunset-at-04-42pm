@@ -24,36 +24,36 @@
  * 
  * @param dst destination MLX image
  * @param point the point of circle
- * @param ink contains both color and the size of the circle.
+ * @param raster_style contains both color and the size of the circle.
  * @param boundary drawable area used to clip the circle
  * @see https://www.youtube.com/watch?v=hpiILbMkF9w
  * for learning how Midpoint circle works.
 */
 static void	raster_circle_half_l(mlx_image_t *dst,
-	t_2d_int point, t_ink32 ink, t_line boundary)
+	t_2d_int point, t_raster_style raster_style, t_line boundary)
 {
 	int		ix;
 	int		iy;
 	int		pivot;
 	t_line	line;
 
-	pivot = ink.thickness * -1;
-	iy = -1 * ink.thickness;
+	pivot = raster_style.thickness * -1;
+	iy = -1 * raster_style.thickness;
 	ix = 0;
 	while (dst != NULL && ix <= -1 * iy)
 	{
 		line = init_circle_line(point, ix, iy, 0);
 		line.p2.x = point.x;
-		raster_line_horizontal(dst, line, ink.color, boundary);
+		raster_line_horizontal(dst, line, raster_style.color, boundary);
 		line = init_circle_line(point, ix, iy, 1);
 		line.p2.x = point.x;
-		raster_line_horizontal(dst, line, ink.color, boundary);
+		raster_line_horizontal(dst, line, raster_style.color, boundary);
 		line = init_circle_line(point, ix, iy, 2);
 		line.p2.x = point.x;
-		raster_line_horizontal(dst, line, ink.color, boundary);
+		raster_line_horizontal(dst, line, raster_style.color, boundary);
 		line = init_circle_line(point, ix, iy, 3);
 		line.p2.x = point.x;
-		raster_line_horizontal(dst, line, ink.color, boundary);
+		raster_line_horizontal(dst, line, raster_style.color, boundary);
 		if (pivot > 0)
 			iy += 1;
 		if (pivot > 0)
@@ -74,36 +74,36 @@ static void	raster_circle_half_l(mlx_image_t *dst,
  * 
  * @param dst destination MLX image
  * @param point the point of circle
- * @param ink contains both color and the size of the circle.
+ * @param raster_style contains both color and the size of the circle.
  * @param boundary drawable area used to clip the circle
  * @see https://www.youtube.com/watch?v=hpiILbMkF9w
  * for learning how Midpoint circle works.
 */
 static void	raster_circle_half_r(mlx_image_t *dst,
-	t_2d_int point, t_ink32 ink, t_line boundary)
+	t_2d_int point, t_raster_style raster_style, t_line boundary)
 {
 	int		ix;
 	int		iy;
 	int		pivot;
 	t_line	line;
 
-	pivot = ink.thickness * -1;
-	iy = -1 * ink.thickness;
+	pivot = raster_style.thickness * -1;
+	iy = -1 * raster_style.thickness;
 	ix = 0;
 	while (dst != NULL && ix <= -1 * iy)
 	{
 		line = init_circle_line(point, ix, iy, 0);
 		line.p1.x = point.x;
-		raster_line_horizontal(dst, line, ink.color, boundary);
+		raster_line_horizontal(dst, line, raster_style.color, boundary);
 		line = init_circle_line(point, ix, iy, 1);
 		line.p1.x = point.x;
-		raster_line_horizontal(dst, line, ink.color, boundary);
+		raster_line_horizontal(dst, line, raster_style.color, boundary);
 		line = init_circle_line(point, ix, iy, 2);
 		line.p1.x = point.x;
-		raster_line_horizontal(dst, line, ink.color, boundary);
+		raster_line_horizontal(dst, line, raster_style.color, boundary);
 		line = init_circle_line(point, ix, iy, 3);
 		line.p1.x = point.x;
-		raster_line_horizontal(dst, line, ink.color, boundary);
+		raster_line_horizontal(dst, line, raster_style.color, boundary);
 		if (pivot > 0)
 			iy += 1;
 		if (pivot > 0)
@@ -116,12 +116,12 @@ static void	raster_circle_half_r(mlx_image_t *dst,
 // time : O(n)
 // space: O(1)
 static void	raster_endpoint_x(mlx_image_t *dst,
-	t_line line, t_line boundary, t_ink32 ink)
+	t_line line, t_line boundary, t_raster_style raster_style)
 {
-	ink.thickness /= 2;
-	ink.thickness -= 1;
-	raster_circle_half_l(dst, line.p1, ink, boundary);
-	raster_circle_half_r(dst, line.p2, ink, boundary);
+	raster_style.thickness /= 2;
+	raster_style.thickness -= 1;
+	raster_circle_half_l(dst, line.p1, raster_style, boundary);
+	raster_circle_half_r(dst, line.p2, raster_style, boundary);
 }
 
 /*
@@ -137,7 +137,7 @@ void	draw_line()
 {
 	while (i <= x2 - x1)
 	{
-		dst[yi * col + i] = ink;
+		dst[yi * col + i] = raster_style;
 		if (high - mid < mid - low)
 			yi += 1;
 		i += 1;
@@ -190,25 +190,25 @@ static void	raster_linex_plus_unit(mlx_image_t *dst,
 // time : O(n)
 // space: O(1)
 void	raster_linex_plus(mlx_image_t *dst,
-	t_line line, t_line boundary, t_ink32 ink)
+	t_line line, t_line boundary, t_raster_style raster_style)
 {
 	t_line	parallel;
 	size_t	i;
 
-	raster_linex_plus_unit(dst, line, boundary, ink.color);
-	if (ink.thickness < 2)
+	raster_linex_plus_unit(dst, line, boundary, raster_style.color);
+	if (raster_style.thickness < 2)
 		return ;
-	raster_endpoint_x(dst, line, boundary, ink);
+	raster_endpoint_x(dst, line, boundary, raster_style);
 	parallel = line;
 	i = 1;
-	while (i < ink.thickness / 2)
+	while (i < raster_style.thickness / 2)
 	{
 		parallel.p1.y -= 1;
 		parallel.p2.y -= 1;
-		raster_linex_plus_unit(dst, parallel, boundary, ink.color);
+		raster_linex_plus_unit(dst, parallel, boundary, raster_style.color);
 		line.p1.y += 1;
 		line.p2.y += 1;
-		raster_linex_plus_unit(dst, line, boundary, ink.color);
+		raster_linex_plus_unit(dst, line, boundary, raster_style.color);
 		i += 1;
 	}
 }
@@ -244,25 +244,25 @@ static void	raster_linex_minus_unit(mlx_image_t *dst,
 // time : O(n)
 // space: O(1)
 void	raster_linex_minus(mlx_image_t *dst,
-	t_line line, t_line boundary, t_ink32 ink)
+	t_line line, t_line boundary, t_raster_style raster_style)
 {
 	t_line	parallel;
 	size_t	i;
 
-	raster_linex_minus_unit(dst, line, boundary, ink.color);
-	if (ink.thickness < 2)
+	raster_linex_minus_unit(dst, line, boundary, raster_style.color);
+	if (raster_style.thickness < 2)
 		return ;
-	raster_endpoint_x(dst, line, boundary, ink);
+	raster_endpoint_x(dst, line, boundary, raster_style);
 	parallel = line;
 	i = 1;
-	while (i < ink.thickness / 2)
+	while (i < raster_style.thickness / 2)
 	{
 		parallel.p1.y -= 1;
 		parallel.p2.y -= 1;
-		raster_linex_minus_unit(dst, parallel, boundary, ink.color);
+		raster_linex_minus_unit(dst, parallel, boundary, raster_style.color);
 		line.p1.y += 1;
 		line.p2.y += 1;
-		raster_linex_minus_unit(dst, line, boundary, ink.color);
+		raster_linex_minus_unit(dst, line, boundary, raster_style.color);
 		i += 1;
 	}
 }

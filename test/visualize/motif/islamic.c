@@ -37,10 +37,10 @@ int	main(void)
 		{.x = 1 - 2 * u_0, .y = 1 - 0},
 		{.x = 1 - 0, .y = 1 - 0}
 	};
-	t_ink32			ink = {
+	t_raster_style			raster_style = {
 		.color = (170 << 24 | 28 << 16 | 65 << 8 | 255),
 		.thickness = 30};
-	t_ink32			ink2 = {
+	t_raster_style			raster_style2 = {
 		.color = (63 << 24 | 29 << 16 | 56 << 8 | 255),
 		.thickness = 20};
 	t_2d_polygon	polygon_00 = {.arr = shape_00, .is_loop = false, .length = 5};
@@ -72,42 +72,42 @@ int	main(void)
 		.arr = (t_motif []){
 			{
 				.polygon = thickline_arr_00,
-				.ink = ink,
+				.raster_style = raster_style,
 				.shape_2d = E_LINE,
 			},
 			{
 				.polygon = thickline_arr_01,
-				.ink = ink,
+				.raster_style = raster_style,
 				.shape_2d = E_LINE,
 			},
 			{
 				.polygon = thickline_arr_02,
-				.ink = ink,
+				.raster_style = raster_style,
 				.shape_2d = E_LINE,
 			},
 			{
 				.polygon = thickline_arr_03,
-				.ink = ink,
+				.raster_style = raster_style,
 				.shape_2d = E_LINE,
 			},
 			{
 				.polygon = polygon_00,
-				.ink = ink2,
+				.raster_style = raster_style2,
 				.shape_2d = E_LINE,
 			},
 			{
 				.polygon = polygon_01,
-				.ink = ink2,
+				.raster_style = raster_style2,
 				.shape_2d = E_LINE,
 			},
 			{
 				.polygon = polygon_02,
-				.ink = ink2,
+				.raster_style = raster_style2,
 				.shape_2d = E_LINE,
 			},
 			{
 				.polygon = polygon_03,
-				.ink = ink2,
+				.raster_style = raster_style2,
 				.shape_2d = E_LINE,
 			},
 		}

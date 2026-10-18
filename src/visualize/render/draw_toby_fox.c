@@ -37,7 +37,7 @@ void	draw_toby_fox_fdf(t_2d_hook *hook, bool is_draw)
 {
 	t_2d_int	ixiy;
 	t_fdf_projection2d		src;
-	t_ink32		ink;
+	t_raster_style		raster_style;
 	t_line		line;
 
 	src = *hook->fdf;
@@ -47,9 +47,9 @@ void	draw_toby_fox_fdf(t_2d_hook *hook, bool is_draw)
 		ixiy.y = 0;
 		while (ixiy.y < (int)src.row - 1)
 		{
-			ink = get_hook_ink32(hook, is_draw, ixiy);
+			raster_style = hook_to_raster(hook, is_draw, ixiy);
 			line = draw_toby_fox_fdf_unit(hook, ixiy);
-			draw_rectangle_fdf(line, ink.color, *hook->camera, hook->img);
+			draw_rectangle_fdf(line, raster_style.color, *hook->camera, hook->img);
 			ixiy.y += 1;
 		}
 		ixiy.x += 1;

@@ -22,7 +22,7 @@ t_line		init_circle_line(t_2d_int point, int ix,
 void		raster_line_horizontal(mlx_image_t *dst, t_line line,
 				int32_t color, t_line boundary);
 void		raster_circle(mlx_image_t *dst,
-				t_2d_int point, t_ink32 ink, t_line boundary);
+				t_2d_int point, t_raster_style raster_style, t_line boundary);
 
 // color.c
 
@@ -34,26 +34,26 @@ int32_t		rgba32_from_table(const t_fdf_table *src, size_t index);
 // line_generic.c
 
 void		raster_line(mlx_image_t *dst,
-				t_line line, t_line boundary, t_ink32 ink);
+				t_line line, t_line boundary, t_raster_style raster_style);
 
 // line_x.c
 
 void		raster_linex_minus(mlx_image_t *dst,
-				t_line line, t_line boundary, t_ink32 ink);
+				t_line line, t_line boundary, t_raster_style raster_style);
 void		raster_linex_plus(mlx_image_t *dst,
-				t_line line, t_line boundary, t_ink32 ink);
+				t_line line, t_line boundary, t_raster_style raster_style);
 
 // line_y.c
 
 void		raster_liney_minus(mlx_image_t *dst,
-				t_line line, t_line boundary, t_ink32 ink);
+				t_line line, t_line boundary, t_raster_style raster_style);
 void		raster_liney_plus(mlx_image_t *dst,
-				t_line line, t_line boundary, t_ink32 ink);
+				t_line line, t_line boundary, t_raster_style raster_style);
 
 // utils.c
 
 bool		is_in_boundary(int x, int y, t_line boundary);
 void		raster_rectangle(mlx_image_t *dst, t_line rectangle,
-				t_line boundary, int32_t ink);
+				t_line boundary, int32_t color);
 
 #endif

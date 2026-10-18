@@ -5,7 +5,7 @@ int	main(void)
 	t_2d_float	arr[] = {
 		{.x = 0.5, .y = 0.5},
 	};
-	t_ink32			ink = {
+	t_raster_style			raster_style = {
 		.color = rgba32_from_char(0, 0, 0, 255),
 		.thickness = 20};
 	t_2d_polygon	circle_arr = {.arr = arr, .is_loop = false, .length = 1};
@@ -14,7 +14,7 @@ int	main(void)
 		.arr = (t_motif []){
 			{
 				.polygon = circle_arr,
-				.ink = ink,
+				.raster_style = raster_style,
 				.shape_2d = E_CIRCLE
 			}
 		}

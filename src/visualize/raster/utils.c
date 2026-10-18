@@ -75,10 +75,10 @@ t_line	init_rectangle(t_line src, t_line boundary)
  * @param dst destination MLX image
  * @param rectangle rectangular area to fill
  * @param boundary drawing boundary used to restrict the rectangle
- * @param ink 32-bit RGBA color used to fill the rectangle
+ * @param color 32-bit RGBA color used to fill the rectangle
  */
 void	raster_rectangle(mlx_image_t *dst, t_line rectangle,
-	t_line boundary, int32_t ink)
+	t_line boundary, int32_t color)
 {
 	int	i;
 	int	j;
@@ -92,7 +92,7 @@ void	raster_rectangle(mlx_image_t *dst, t_line rectangle,
 		j = rectangle.p1.y;
 		while (j <= rectangle.p2.y)
 		{
-			mlx_put_pixel(dst, i, j, ink);
+			mlx_put_pixel(dst, i, j, color);
 			j += 1;
 		}
 		i += 1;
