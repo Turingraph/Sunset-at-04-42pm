@@ -49,19 +49,6 @@ bool	is_valid_pan_key(mlx_key_data_t keydata)
 
 // time : O(1)
 // space: O(1)
-bool	is_valid_rotate_key(mlx_key_data_t keydata)
-{
-	if ((keydata.action == MLX_PRESS
-			|| keydata.action == MLX_REPEAT)
-		&& (keydata.key == MLX_KEY_1
-			|| keydata.key == MLX_KEY_2
-			|| keydata.key == MLX_KEY_3))
-		return (true);
-	return (false);
-}
-
-// time : O(1)
-// space: O(1)
 bool	is_valid_zoom_key(mlx_key_data_t keydata, float zoom)
 {
 	if ((keydata.action == MLX_PRESS

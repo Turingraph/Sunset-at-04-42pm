@@ -21,7 +21,7 @@
 
 // hook.c
 
-void		hook_fdf_controller(mlx_key_data_t keydata, void *param);
+void		hook_controller(mlx_key_data_t keydata, void *param);
 
 // init_2d_hook.c
 
@@ -38,7 +38,6 @@ void		view_fdf(t_fdf_proj2d *fdf, t_fdf_render artstyle, int32_t background_colo
 
 bool		is_valid_key(mlx_key_data_t keydata);
 bool		is_valid_pan_key(mlx_key_data_t keydata);
-bool		is_valid_rotate_key(mlx_key_data_t keydata);
 bool		is_valid_zoom_key(mlx_key_data_t keydata, float zoom);
 
 #endif

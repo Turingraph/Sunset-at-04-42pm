@@ -53,7 +53,7 @@ t_2d_camera	init_2d_camera(size_t window_width, size_t window_height)
  * @param mlx MLX window context used to create the image
  * @return newly created MLX image, or NULL on failure
  */
-mlx_image_t	*init_mlx_image(mlx_t *mlx)
+static mlx_image_t	*create_mlx_image(mlx_t *mlx)
 {
 	mlx_image_t	*dst;
 
@@ -93,7 +93,7 @@ t_2d_hook	init_2d_hook(mlx_t *mlx, t_fdf_proj2d *fdf, t_fdf_render artstyle, int
 	dst.camera = NULL;
 	dst.fdf = fdf;
 	dst.artstyle = artstyle;
-	dst.img = init_mlx_image(mlx);
+	dst.img = create_mlx_image(mlx);
 	dst.background_color = background_color;
 	return (dst);
 }

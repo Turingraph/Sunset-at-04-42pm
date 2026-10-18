@@ -284,7 +284,7 @@ typedef struct s_render_style
  * The view supports interactive manipulation through the registered
  * FDF keyboard controller.
  *
- * Available keyboard input is handled by hook_fdf_controller(), including
+ * Available keyboard input is handled by hook_controller(), including
  * 
  * - "ESC" = close the MLX window
  * 

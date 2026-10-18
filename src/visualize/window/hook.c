@@ -54,7 +54,7 @@ static void	hook_zoom(mlx_key_data_t keydata,
 
 // time : O(n)
 // space: O(1)
-static void	hook_home(mlx_key_data_t keydata,
+static void	hook_reset(mlx_key_data_t keydata,
 	t_2d_hook *hook)
 {
 	size_t		len;
@@ -111,7 +111,7 @@ static void	hook_home(mlx_key_data_t keydata,
  * @param keydata keyboard event received from MLX
  * @param param pointer to the active FDF view context
  */
-void	hook_fdf_controller(mlx_key_data_t keydata, void *param)
+void	hook_controller(mlx_key_data_t keydata, void *param)
 {
 	t_2d_hook		*hook;
 	static double	before = 0;
@@ -131,6 +131,6 @@ void	hook_fdf_controller(mlx_key_data_t keydata, void *param)
 	render_fdf(hook, false);
 	hook_zoom(keydata, hook);
 	hook_pan(keydata, hook->camera);
-	hook_home(keydata, hook);
+	hook_reset(keydata, hook);
 	render_fdf(hook, true);
 }

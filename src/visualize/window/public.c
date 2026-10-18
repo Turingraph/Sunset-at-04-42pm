@@ -13,7 +13,7 @@
 #include "window_private.h"
 
 // This function is only used for view_fdf.
-bool	view_fdf_handle_00(mlx_t *mlx, mlx_image_t *img)
+static bool	view_fdf_handle_00(mlx_t *mlx, mlx_image_t *img)
 {
 	if (img == NULL)
 	{
@@ -25,7 +25,7 @@ bool	view_fdf_handle_00(mlx_t *mlx, mlx_image_t *img)
 }
 
 // This function is only used for view_fdf.
-int32_t	view_fdf_handle_01(mlx_t *mlx, mlx_image_t *img)
+static int32_t	view_fdf_handle_01(mlx_t *mlx, mlx_image_t *img)
 {
 	return (mlx_image_to_window(mlx, img,
 			((int)mlx->width - (int)img->width) / 2,
@@ -33,7 +33,7 @@ int32_t	view_fdf_handle_01(mlx_t *mlx, mlx_image_t *img)
 }
 
 // This function is only used for view_fdf.
-void	view_fdf_handle_02(mlx_t *mlx, mlx_image_t *img)
+static void	view_fdf_handle_02(mlx_t *mlx, mlx_image_t *img)
 {
 	mlx_loop(mlx);
 	mlx_delete_image(mlx, img);
@@ -51,7 +51,7 @@ void	view_fdf_handle_02(mlx_t *mlx, mlx_image_t *img)
  * The view supports interactive manipulation through the registered
  * FDF keyboard controller.
  *
- * Available keyboard input is handled by hook_fdf_controller(), including
+ * Available keyboard input is handled by hook_controller(), including
  * 
  * - "ESC" = close the MLX window
  * 
@@ -97,6 +97,6 @@ void	view_fdf(t_fdf_proj2d *fdf, t_fdf_render fdf_render,
 		mlx_terminate(mlx);
 		return ;
 	}
-	mlx_key_hook(mlx, &hook_fdf_controller, &hook);
+	mlx_key_hook(mlx, &hook_controller, &hook);
 	view_fdf_handle_02(mlx, hook.img);
 }
