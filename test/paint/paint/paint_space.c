@@ -54,7 +54,7 @@ int	main(void)
 	write_with_paint_space(0, "addsub_3d.txt", &table, cell_metric_addsub_3d);
 	write_with_paint_space(0, "x_plus_y_square.txt", &table, cell_metric_x_plus_y_square);
 	write_with_paint_space(0, "min_xyz.txt", &table, cell_metric_min_xyz);
-	free_table_fdf(&table);
+	destroy_table_fdf(&table);
 	return (0);
 }
 

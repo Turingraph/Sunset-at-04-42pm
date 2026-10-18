@@ -56,7 +56,7 @@ int	main(void)
 			else
 				write(1, ">>> Empty Set\n", 15);
 			if (load != NULL)
-				free_2d_arr((void **)load, length_of_strarr((const char **)load));
+				destroy_2d_arr((void **)load, length_of_strarr((const char **)load));
 		}
 		i += 1;
 	}

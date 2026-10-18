@@ -19,7 +19,7 @@
 
 // init.c
 
-void			free_table_fdf(t_table_fdf *src);
+void			destroy_table_fdf(t_table_fdf *src);
 t_table_fdf		init_table_fdf(size_t row, size_t col, bool is_rgba);
 t_table_fdf		load_table_fdf(const t_load_fdf_arr *src, bool is_rgba);
 

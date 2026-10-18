@@ -130,8 +130,8 @@ Your examples use:
 ```
 init_table_fdf(...)
 init_fdf(...)
-free_table_fdf(...)
-free_fdf(...)
+destroy_table_fdf(...)
+destroy_fdf(...)
 ```
 
 These names are perfectly understandable in isolation. Many C developers use `init`, `free`, and similar verbs regularly.

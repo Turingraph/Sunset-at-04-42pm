@@ -91,9 +91,9 @@ int	main(void)
 	scale_multiplication_fdf(&table, 1.0 / 30.0, HEIGHT);
 	output = init_fdf(&table, projection_cabinet, 1.3);
 	view_fdf(&output, style, int32_from_rgba(0, 0, 0, 255));
-	free_table_fdf(&table);
-	free_table_fdf(&table_base);
-	free_fdf(&output);
+	destroy_table_fdf(&table);
+	destroy_table_fdf(&table_base);
+	destroy_fdf(&output);
 	return (0);
 }
 

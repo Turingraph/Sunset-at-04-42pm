@@ -81,7 +81,7 @@ int	main(void)
         color_cells_gradient(&table_a, init_gradient_2(), true);
 		scale_multiplication_fdf(&table_a, 1.0 / 3.0, RED);
 		write_table_ascii_standard(output, &table_a, RED);
-		free_table_fdf(&table_a);
+		destroy_table_fdf(&table_a);
 		i += 1;
 	}
 	return (0);

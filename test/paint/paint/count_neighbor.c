@@ -67,7 +67,7 @@ int	main(void)
 	else
 		write(1, "a false\n", 8);
 	// write_table_fdf(1, &table, 1, HEIGHT_ONLY);
-	free_table_fdf(&table);
+	destroy_table_fdf(&table);
 
 	// b
 	table = open_table_fdf_file(file_b, input_dir, parse_decimal_bw, false);
@@ -80,7 +80,7 @@ int	main(void)
 		y += 1;
 	else
 		write(1, "b false\n", 8);
-	free_table_fdf(&table);
+	destroy_table_fdf(&table);
 
 	// c
 	table = open_table_fdf_file(file_c, input_dir, parse_decimal_bw, false);
@@ -93,7 +93,7 @@ int	main(void)
 		y += 1;
 	else
 		write(1, "c false\n", 8);
-	free_table_fdf(&table);
+	destroy_table_fdf(&table);
 
 	write_score(y, max_score);
 	return (0);

@@ -370,7 +370,7 @@ t_load_fdf	parse_decimal_bw(char *line);
  * 
  * @param src the target t_table_fdf array
  */
-void			free_table_fdf(t_table_fdf *src);
+void			destroy_table_fdf(t_table_fdf *src);
 // void			destroy_table_fdf(t_table_fdf *src);
 
 /**

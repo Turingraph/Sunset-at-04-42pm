@@ -60,7 +60,7 @@ int	main(void)
 	if (table.col * table.row == length_a
 		&& assert_intarr(table.arr, correct_a, length_a) == true)
 		y += 1;
-	free_table_fdf(&table);
+	destroy_table_fdf(&table);
 
 	// b
 	table = open_table_fdf_file(file_b, input_dir, parse_decimal_bw, false);
@@ -68,7 +68,7 @@ int	main(void)
 	if (table.col * table.row == length_b
 		&& assert_intarr(table.arr, correct_b, length_b) == true)
 		y += 1;
-	free_table_fdf(&table);
+	destroy_table_fdf(&table);
 
 	// c
 	table = open_table_fdf_file(file_c, input_dir, parse_decimal_bw, false);
@@ -76,7 +76,7 @@ int	main(void)
 	if (table.col * table.row == length_c
 		&& assert_intarr(table.arr, correct_c, length_c) == true)
 		y += 1;
-	free_table_fdf(&table);
+	destroy_table_fdf(&table);
 
 	write_score(y, max_score);
 	return (0);

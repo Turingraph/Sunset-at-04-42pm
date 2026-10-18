@@ -37,10 +37,10 @@ t_table_fdf	open_table_fdf_file(const char *file_name, const char *dir,
 	src = open_fdf_file(file_name, dir, one_line);
 	if (is_load_fdf_arr_valid(&src, (int)src.length - 1) == false)
 	{
-		free_load_fdf_arr(&src);
+		destroy_load_fdf_arr(&src);
 		return (init_table_fdf(0, 0, false));
 	}
 	dst = load_table_fdf(&src, is_rgba);
-	free_load_fdf_arr(&src);
+	destroy_load_fdf_arr(&src);
 	return (dst);
 }

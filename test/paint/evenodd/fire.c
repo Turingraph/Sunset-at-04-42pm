@@ -95,9 +95,9 @@ int	main(void)
 	color_cells_gradient(&table, init_deep_wood(), true);
 	output = init_fdf(&table, projection_cabinet, 0.6);
 	view_fdf(&output, style, int32_from_rgba(0, 0, 0, 255));
-	free_table_fdf(&table2);
-	free_table_fdf(&table);
-	free_fdf(&output);
+	destroy_table_fdf(&table2);
+	destroy_table_fdf(&table);
+	destroy_fdf(&output);
 	return (0);
 }
 

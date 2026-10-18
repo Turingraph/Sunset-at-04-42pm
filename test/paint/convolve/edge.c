@@ -43,8 +43,8 @@ int	main(void)
 		table_c = convolve_fdf(&table_a, edge, 5);
 		// scale_positive_fdf(&table_c);
 		write_table_ascii_cheche01(output, &table_c, HEIGHT);
-		free_table_fdf(&table_a);
-		free_table_fdf(&table_c);
+		destroy_table_fdf(&table_a);
+		destroy_table_fdf(&table_c);
 		close(output);
 		i += 1;
 	}

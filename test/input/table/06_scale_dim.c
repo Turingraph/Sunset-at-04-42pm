@@ -39,8 +39,8 @@ int	main(void)
 				parse_ascii_cheche01, false);
 		table_b = scale_dimension_fdf(&table_a, 3, 3);
 		write_table_ascii_cheche01(output, &table_b, HEIGHT);
-		free_table_fdf(&table_a);
-		free_table_fdf(&table_b);
+		destroy_table_fdf(&table_a);
+		destroy_table_fdf(&table_b);
 		i += 1;
 	}
 	return (0);

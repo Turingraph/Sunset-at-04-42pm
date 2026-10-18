@@ -37,7 +37,7 @@ int	main(void)
 			write(1, arr[i], f_strlen(arr[i]));
 			write(1, "\n", 1);
 		}
-		free_table_fdf(&table);
+		destroy_table_fdf(&table);
 		i += 1;
 	}
 	write_score(score, max_score);

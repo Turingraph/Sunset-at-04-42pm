@@ -44,7 +44,7 @@ void	write_file_not_exists(const char *src)
 
 // time : O(n)
 // space: O(1)
-void	free_2d_arr(void **arr, size_t len)
+void	destroy_2d_arr(void **arr, size_t len)
 {
 	while (len > 0 && arr != NULL)
 	{

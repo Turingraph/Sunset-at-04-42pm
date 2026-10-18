@@ -255,7 +255,7 @@ int	main(void)
 				ft_putnbr_fd(k, 1, "012346789", 1);
 				write(1, "\n", 1);
 			}
-            free_table_fdf(&table);
+            destroy_table_fdf(&table);
 			k += 1;
 		}
 		i += 1;

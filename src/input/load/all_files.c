@@ -57,8 +57,8 @@ t_load_fdf_arr	load_fdf_arr_push(t_load_fdf_arr *src, t_load_fdf *item)
 
 	if (src == NULL || src->arr == NULL || item == NULL)
 	{
-		free_load_fdf(item);
-		free_load_fdf_arr(src);
+		destroy_load_fdf(item);
+		destroy_load_fdf_arr(src);
 		return (init_load_fdf_arr(0));
 	}
 	if (src->length < src->capacity)
@@ -74,7 +74,7 @@ t_load_fdf_arr	load_fdf_arr_push(t_load_fdf_arr *src, t_load_fdf *item)
 		*src = dst;
 		return (load_fdf_arr_push(src, item));
 	}
-	free_load_fdf(item);
+	destroy_load_fdf(item);
 	return (*src);
 }
 

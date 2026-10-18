@@ -66,7 +66,7 @@ int	main(void)
 				write(1, "\n", 1);
 			}
 		}
-		free_load_fdf_arr(&fdf_file);
+		destroy_load_fdf_arr(&fdf_file);
 		i += 1;
 	}
 	write_score(score, max_score);

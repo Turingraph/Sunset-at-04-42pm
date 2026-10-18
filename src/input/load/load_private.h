@@ -44,9 +44,9 @@ t_load_fdf		parse_decimal(char *line, bool is_rgb);
 
 // init.c
 
-void			*free_load_fdf(t_load_fdf *src);
+void			*destroy_load_fdf(t_load_fdf *src);
 t_load_fdf		init_load_fdf(size_t line_len, bool is_rgb);
-void			free_load_fdf_arr(t_load_fdf_arr *src);
+void			destroy_load_fdf_arr(t_load_fdf_arr *src);
 t_load_fdf_arr	init_load_fdf_arr(size_t length);
 
 // parse.c

@@ -49,7 +49,7 @@ typedef struct s_fdf
 t_fdf		init_fdf(t_table_fdf *src,
 				t_2d_float (*projection)(float x, float y, float z),
 				float scale);
-t_fdf		free_fdf(t_fdf *src);
+t_fdf		destroy_fdf(t_fdf *src);
 
 // projection.c
 

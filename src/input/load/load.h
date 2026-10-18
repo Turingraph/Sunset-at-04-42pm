@@ -41,7 +41,7 @@ size_t			ft_putnbr_fd(int n, int fd, const char *base, size_t digits);
 
 // init.c
 
-void			free_load_fdf_arr(t_load_fdf_arr *src);
+void			destroy_load_fdf_arr(t_load_fdf_arr *src);
 
 // parse.c
 

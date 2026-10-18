@@ -34,8 +34,8 @@ int	main(void)
 	scale_multiplication_fdf(&table, 1.0 / 120.0, HEIGHT);
 	output = init_fdf(&table, NULL, 0.6);
 	view_fdf(&output, style, int32_from_rgba(0, 0, 0, 255));
-	free_table_fdf(&table);
-	free_fdf(&output);
+	destroy_table_fdf(&table);
+	destroy_fdf(&output);
 	return (0);
 }
 

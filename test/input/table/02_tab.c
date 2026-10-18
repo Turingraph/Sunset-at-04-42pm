@@ -52,7 +52,7 @@ int	main(void)
 		}
 		else
 			write_file_not_exists(arr[i]);
-		free_table_fdf(&table);
+		destroy_table_fdf(&table);
 		i += 1;
 	}
 	return (0);

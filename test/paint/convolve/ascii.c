@@ -43,9 +43,9 @@ int	main(void)
 		table_b = scale_dimension_fdf(&table_a, 3, 3);
 		table_c = convolve_fdf(&table_b, NULL, half_dim);
 		write_table_ascii_cheche01(output, &table_c, HEIGHT);
-		free_table_fdf(&table_a);
-		free_table_fdf(&table_b);
-		free_table_fdf(&table_c);
+		destroy_table_fdf(&table_a);
+		destroy_table_fdf(&table_b);
+		destroy_table_fdf(&table_c);
 		i += 1;
 	}
 	return (0);

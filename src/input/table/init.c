@@ -21,7 +21,7 @@
  *
  * @param src the target t_table_fdf array
  */
-void	free_table_fdf(t_table_fdf *src)
+void	destroy_table_fdf(t_table_fdf *src)
 {
 	if (src == NULL)
 		return ;
@@ -79,7 +79,7 @@ t_table_fdf	init_table_fdf(size_t row, size_t col, bool is_rgba)
 				"input/table/init.c/init_table_fdf\n");
 	}
 	if (dst.arr == NULL)
-		free_table_fdf(&dst);
+		destroy_table_fdf(&dst);
 	return (dst);
 }
 

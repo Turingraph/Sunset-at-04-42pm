@@ -32,9 +32,9 @@ int	main(void)
 	close(output_fd);
 
 	free(ker.arr);
-	free_table_fdf(&table_a);
-	free_table_fdf(&table_b);
-	free_table_fdf(&table_c);
+	destroy_table_fdf(&table_a);
+	destroy_table_fdf(&table_b);
+	destroy_table_fdf(&table_c);
 	return (0);
 }
 

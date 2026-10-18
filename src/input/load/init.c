@@ -14,7 +14,7 @@
 
 // time : O(1)
 // space: O(1)
-void	*free_load_fdf(t_load_fdf *src)
+void	*destroy_load_fdf(t_load_fdf *src)
 {
 	if (src == NULL)
 		return (NULL);
@@ -77,7 +77,7 @@ t_load_fdf	init_load_fdf(size_t line_len, bool is_rgb)
  *
  * @param src the target array with t_load_fdf_arr shape_2d.
  */
-void	free_load_fdf_arr(t_load_fdf_arr *src)
+void	destroy_load_fdf_arr(t_load_fdf_arr *src)
 {
 	size_t	i;
 
@@ -88,7 +88,7 @@ void	free_load_fdf_arr(t_load_fdf_arr *src)
 		i = 0;
 		while (i < src->capacity)
 		{
-			free_load_fdf(&(src->arr[i]));
+			destroy_load_fdf(&(src->arr[i]));
 			i += 1;
 		}
 		free(src->arr);

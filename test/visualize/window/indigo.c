@@ -31,7 +31,7 @@ int	main(int len, char **str)
 	table = open_table_fdf_file(str[1], NULL, parse_ascii_cheche01, true);
 	if (table.col * table.row == 0)
 	{
-		free_table_fdf(&table);
+		destroy_table_fdf(&table);
 		return (0);
 	}
 	style.thickness = 1;
@@ -41,8 +41,8 @@ int	main(int len, char **str)
 	scale_multiplication_fdf(&table, 1.0, HEIGHT);
 	output = init_fdf(&table, NULL, 1.0);
 	view_fdf(&output, style, int32_from_rgba(255, 255, 255, 255));
-	free_table_fdf(&table);
-	free_fdf(&output);
+	destroy_table_fdf(&table);
+	destroy_fdf(&output);
 	return (0);
 }
 

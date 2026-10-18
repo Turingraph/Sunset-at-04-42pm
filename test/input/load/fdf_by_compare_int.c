@@ -244,7 +244,7 @@ int	main(void)
 					write(1, "\n", 1);
 				}
 			}
-			free_load_fdf_arr(&fdf_file);
+			destroy_load_fdf_arr(&fdf_file);
 			k += 1;
 		}
 		i += 1;

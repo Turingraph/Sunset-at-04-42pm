@@ -46,14 +46,14 @@ int	main(void)
 		table_a = open_table_fdf_file(arr[i], src,
 				parse_ascii_chungaloider, false);
 		table_b = scale_dimension_fdf((const t_table_fdf *)&table_a, 3, 3);
-		free_table_fdf(&table_a);
+		destroy_table_fdf(&table_a);
 		if (i % 2 == 0)
 			table_a = convolve_hight(&table_b, kernel);
 		else
 			table_a = convolve_hight(&table_b, kernel_2);
 		write_table_ascii_cheche01(output, &table_a, HEIGHT);
-		free_table_fdf(&table_a);
-		free_table_fdf(&table_b);
+		destroy_table_fdf(&table_a);
+		destroy_table_fdf(&table_b);
 		i += 1;
 	}
 	free_matrix(&kernel);

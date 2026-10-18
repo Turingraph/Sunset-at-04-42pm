@@ -34,8 +34,8 @@ scale_multiplication_fdf(&table, 1.0 / 120.0, HEIGHT);
 output = init_fdf(&table, projection_isometric, 0.6);
 view_fdf(&output, style);
 
-free_table_fdf(&table);
-free_fdf(&output);
+destroy_table_fdf(&table);
+destroy_fdf(&output);
 ```
 
 Source: [Sunset-at-04-42pm README](<https://github.com/Turingraph/Sunset-at-04-42pm>). 【turn1view0】
@@ -95,8 +95,8 @@ Your examples use names such as:
 init_table_fdf(...)
 init_fdf(...)
 view_fdf(...)
-free_table_fdf(...)
-free_fdf(...)
+destroy_table_fdf(...)
+destroy_fdf(...)
 ```
 
 These are recognizable, but they raise a design question: what exactly distinguishes _initializing_ an object from _creating_ one, and what distinguishes _viewing_ an object from _rendering_ it?
@@ -543,7 +543,7 @@ table = init_table_fdf(100, 100, true);
 
 /* Use table. */
 
-free_table_fdf(&table);
+destroy_table_fdf(&table);
 ```
 
 And:
@@ -555,7 +555,7 @@ output = init_fdf(&table, projection_isometric, 0.6);
 
 /* Use output. */
 
-free_fdf(&output);
+destroy_fdf(&output);
 ```
 
 These functions return objects by value, and the corresponding cleanup functions release their resources.
@@ -864,7 +864,7 @@ surface_destroy(...)
 
 These names should have clearly documented responsibilities.
 
-Avoid retaining both `free_table_fdf()` and `free_fdf()` solely because they were implemented at different times. If they release different kinds of objects, their distinct type names should make that difference clear.
+Avoid retaining both `destroy_table_fdf()` and `destroy_fdf()` solely because they were implemented at different times. If they release different kinds of objects, their distinct type names should make that difference clear.
 
 ### Priority 4: Improve type and enum naming
 
@@ -949,7 +949,7 @@ For example:
 | Current name | Proposed name | Rationale | Status |
 | --- | --- | --- | --- |
 | `init_table_fdf` | `surface_create` | Align construction terminology | Proposed |
-| `free_table_fdf` | `surface_destroy` | Align lifecycle terminology | Proposed |
+| `destroy_table_fdf` | `surface_destroy` | Align lifecycle terminology | Proposed |
 | `scale_dimension_fdf` | `surface_resize` | Clarify dimensional changes | Needs verification |
 | `scale_multiplication_fdf` | `surface_scale` | Simplify numerical operation | Needs verification |
 | `view_fdf` | `fdf_render` | Clarify rendering responsibility | Needs verification |

@@ -563,7 +563,7 @@ t_load_fdf	parse_decimal_bw(char *line);
  * 
  * @param src the target t_table_fdf array
  */
-void			free_table_fdf(t_table_fdf *src);
+void			destroy_table_fdf(t_table_fdf *src);
 
 /**
  * Define t_table_fdf as array with only 0.
@@ -1884,10 +1884,10 @@ typedef struct s_fdf
  *
  * This function frees the source fdf data.
  *
- * view_fdf() does not call free_fdf(). The caller therefore remains
+ * view_fdf() does not call destroy_fdf(). The caller therefore remains
  * responsible for releasing an FDF object created by init_fdf().
  *
- * Calling free_fdf() with NULL is safe.
+ * Calling destroy_fdf() with NULL is safe.
  * 
  * The return data is NULL fdf data.
  *
@@ -1895,7 +1895,7 @@ typedef struct s_fdf
  *
  * @param src FDF object to release
  */
-t_fdf	free_fdf(t_fdf *src);
+t_fdf	destroy_fdf(t_fdf *src);
 
 /**
  * Initialize a FDF object from a t_table_fdf table.

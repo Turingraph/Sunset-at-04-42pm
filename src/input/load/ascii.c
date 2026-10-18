@@ -121,7 +121,7 @@ t_load_fdf	parse_ascii(char *line, const char *dict)
 	dst = init_load_fdf(index_a_in_str((const char *)line, '\n', false), false);
 	if (dst.int_warn == EMPTY)
 	{
-		free_load_fdf(&dst);
+		destroy_load_fdf(&dst);
 		dst.a = NULL;
 		dst.r = NULL;
 		dst.g = NULL;

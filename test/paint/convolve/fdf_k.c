@@ -46,8 +46,8 @@ int	main(void)
 				parse_decimal_bw, false);
 		table_b = convolve_fdf(&table_a, NULL, half_dim);
 		write_table_fdf(output, &table_b, 1, HEIGHT_ONLY);
-		free_table_fdf(&table_a);
-		free_table_fdf(&table_b);
+		destroy_table_fdf(&table_a);
+		destroy_table_fdf(&table_b);
 		i += 1;
 	}
 	return (0);

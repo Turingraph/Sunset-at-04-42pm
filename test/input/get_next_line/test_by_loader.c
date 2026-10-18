@@ -45,7 +45,7 @@ int	main(void)
 			write(1, arr[i].file_name, f_strlen(arr[i].file_name));
 			write(1, "\tall\n", 6);
 		}
-		free_2d_arr((void **)load, length_of_strarr((const char **)load));
+		destroy_2d_arr((void **)load, length_of_strarr((const char **)load));
 
 		fd = open_dir_file(arr[i].file_name, src_dir, E_READ);
 		load = file_to_strarr(fd, 1);
@@ -58,7 +58,7 @@ int	main(void)
 			write(1, arr[i].file_name, f_strlen(arr[i].file_name));
 			write(1, "\t1\n", 3);
 		}
-		free_2d_arr((void **)load, length_of_strarr((const char **)load));
+		destroy_2d_arr((void **)load, length_of_strarr((const char **)load));
 
 		fd = open_dir_file(arr[i].file_name, src_dir, E_READ);
 		load = file_to_strarr(fd, 3);
@@ -71,7 +71,7 @@ int	main(void)
 			write(1, arr[i].file_name, f_strlen(arr[i].file_name));
 			write(1, "\t3\n", 3);
 		}
-		free_2d_arr((void **)load, length_of_strarr((const char **)load));
+		destroy_2d_arr((void **)load, length_of_strarr((const char **)load));
 		i += 1;
 	}
 	write_score(score, max_score * 3);

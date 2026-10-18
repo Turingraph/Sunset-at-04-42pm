@@ -48,7 +48,7 @@ int	main(int len, char **str)
 	if (table.col * table.row == 0)
 	{
 		write(1, "File might be invalid and/or Malloc returns NULL.\n", 51);
-		free_table_fdf(&table);
+		destroy_table_fdf(&table);
 		return (0);
 	}
 	style.thickness = 1;
@@ -56,8 +56,8 @@ int	main(int len, char **str)
 	color_cells_gradient(&table, init_gradient(), true);
 	output = init_fdf(&table, projection_isometric, 0.5);
 	view_fdf(&output, style, int32_from_rgba(255, 255, 255, 255));
-	free_table_fdf(&table);
-	free_fdf(&output);
+	destroy_table_fdf(&table);
+	destroy_fdf(&output);
 	return (0);
 }
 

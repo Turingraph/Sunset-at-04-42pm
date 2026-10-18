@@ -79,7 +79,7 @@ int	main(void)
 				parse_ascii_chungaloider, true);
         color_cells_gradient(&table_a, init_gradient(), true);
 		write_table_fdf(output, &table_a, 1, HEIGHT_RGBA);
-		free_table_fdf(&table_a);
+		destroy_table_fdf(&table_a);
 		i += 1;
 	}
 	return (0);

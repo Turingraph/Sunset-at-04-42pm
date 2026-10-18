@@ -61,10 +61,10 @@ t_fdf	init_null_fdf(void)
  *
  * This function frees the source fdf data.
  *
- * view_fdf() does not call free_fdf(). The caller therefore remains
+ * view_fdf() does not call destroy_fdf(). The caller therefore remains
  * responsible for releasing an FDF object created by init_fdf().
  *
- * Calling free_fdf() with NULL is safe.
+ * Calling destroy_fdf() with NULL is safe.
  * 
  * The return data is NULL fdf data.
  *
@@ -74,7 +74,7 @@ t_fdf	init_null_fdf(void)
  *
  * @param src FDF object to release
  */
-t_fdf	free_fdf(t_fdf *src)
+t_fdf	destroy_fdf(t_fdf *src)
 {
 	if (src == NULL)
 		return (init_null_fdf());
@@ -120,7 +120,7 @@ t_fdf	init_placeholder_fdf(t_table_fdf *src)
 	dst.y = malloc_talk(src->row * src->col * sizeof(float),
 			"visualize/fdf/public.c/init_fdf/\n");
 	if (dst.x == NULL || dst.y == NULL)
-		return (free_fdf(&dst));
+		return (destroy_fdf(&dst));
 	return (dst);
 }
 

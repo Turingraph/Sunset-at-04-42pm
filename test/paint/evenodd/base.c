@@ -33,8 +33,8 @@ int	main(void)
 	color_cells_gradient(&table_base, init_deep_wood(), true);
 	output = init_fdf(&table_base, NULL, 0.6);
 	view_fdf(&output, style, int32_from_rgba(0, 0, 0, 255));
-	free_table_fdf(&table_base);
-	free_fdf(&output);
+	destroy_table_fdf(&table_base);
+	destroy_fdf(&output);
 	return (0);
 }
 
