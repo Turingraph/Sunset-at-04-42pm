@@ -13,7 +13,7 @@
 #include "table_private.h"
 
 /**
- * Load target file as t_table_fdf 5 rgba and height integer array data.
+ * Load target file as t_fdf_table 5 rgba and height integer array data.
  *
  * time/space: O(n) / O(n)
  *
@@ -28,19 +28,19 @@
  * @return return the array that contains rgba and height of the height map.
  * @see src/input/load/parse.c
  */
-t_table_fdf	open_table_fdf_file(const char *file_name, const char *dir,
+t_fdf_table	open_fdf_table_file(const char *file_name, const char *dir,
 	t_load_fdf (*one_line)(char *line), bool is_rgba)
 {
-	t_table_fdf		dst;
+	t_fdf_table		dst;
 	t_load_fdf_arr	src;
 
 	src = open_fdf_file(file_name, dir, one_line);
 	if (is_load_fdf_arr_valid(&src, (int)src.length - 1) == false)
 	{
 		destroy_load_fdf_arr(&src);
-		return (init_table_fdf(0, 0, false));
+		return (create_fdf_table(0, 0, false));
 	}
-	dst = load_table_fdf(&src, is_rgba);
+	dst = load_fdf_table(&src, is_rgba);
 	destroy_load_fdf_arr(&src);
 	return (dst);
 }

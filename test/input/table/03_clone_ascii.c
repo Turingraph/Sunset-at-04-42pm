@@ -7,7 +7,7 @@ int	main(void)
     size_t          is_rgb;
 	size_t			score;
 	size_t			max_score = 36;
-	t_table_fdf     table;
+	t_fdf_table     table;
 	char			*arr[] = {
 		"0.txt",
 		"1.txt",
@@ -54,7 +54,7 @@ int	main(void)
 	i = 0;
 	while (i < max_score)
 	{
-		table = open_table_fdf_file(arr[i], src_dir, parse_ascii_cheche01, is_rgb);
+		table = open_fdf_table_file(arr[i], src_dir, parse_ascii_cheche01, is_rgb);
 		clone_examples = open_dir_file(arr[i], dst_dir, E_WRITE);
 		if (clone_examples > -1)
 		{
@@ -70,7 +70,7 @@ int	main(void)
 		}
 		else
 			write_file_not_exists(arr[i]);
-		destroy_table_fdf(&table);
+		destroy_fdf_table(&table);
 		i += 1;
 	}
 	write_score(score, max_score);

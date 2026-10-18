@@ -93,7 +93,7 @@ I also add the additional features, including
 	1.	Support arbitrary `txt` files, in order to convert Figlet and/or other ASCII art file into FdF File using `input/`
 	2.	Handle with `synesthesia.txt` using `synesthesia/`
 2.	Input Editor (`src/editor/`, this folder is only responsible for editing and copy input fdf file)
-	1.	Can color FdF files based on `paint/paint.c/paint_gradient_fdf(t_table_fdf *table, t_gradient *gradient, char direction);` function where `gradient` including 1st color, 2nd color, 1st x position, 2nd x position, and `direction` choose one out of 3 Axises.
+	1.	Can color FdF files based on `paint/paint.c/paint_gradient_fdf(t_fdf_table *table, t_gradient *gradient, char direction);` function where `gradient` including 1st color, 2nd color, 1st x position, 2nd x position, and `direction` choose one out of 3 Axises.
 	2.	Can blur FdF files using convolution from `convolution/`
 3.	Graphic Command
 	1.	`--z_buffer` command allow user to do Z Buffer calculation, so the only surface of the object that are in front of another surface will be shown accordingly, and the color is based on the angle between cross project vector of 2D triangles, and the light vector.
@@ -256,12 +256,12 @@ I might ranks the brightness of the characters e.g. `a`, `B`, `ห`, `พ`, `ไ
 
 ChatGPT warn me to use 1D array over 2D array when deal with large input. Several Stackoverflow from this post ( https://stackoverflow.com/questions/17259877/1d-or-2d-array-whats-faster ) also recommend everyone to use 1D over 2D array because 1D array is faster (because calculating `arr[col * i + j]` is faster than calculate `arr[i][j]` when `arr` is dynamic array) and use less memory (because there computer do not have to use extra space for pointer of the pointer). However, both 1D static array and 2d static array use equal amount of time and space to operate for the same task. The only reason to use 2D array over 1D array is when deal with static array, small size input data, and for making debugging easier.
 
-However, my `t_table_fdf` use 2D array for reducing debugging difficulty.
+However, my `t_fdf_table` use 2D array for reducing debugging difficulty.
 
 ```
-typedef struct t_table_fdf t_table_fdf;
+typedef struct t_fdf_table t_fdf_table;
 
-struct t_table_fdf
+struct t_fdf_table
 {
 	size_t			row;
 	size_t			col;

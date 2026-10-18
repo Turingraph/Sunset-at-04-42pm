@@ -75,12 +75,12 @@ void	*malloc_talk(size_t elem_size, const char *comment)
  * 
  * status: internal helper
  *
- * @param src the input t_table_fdf array
+ * @param src the input t_fdf_table array
  * @param rgba_type RGBA channel to retrieve
  *
  * @return pointer to the requested channel array, or NULL if unavailable
  */
-unsigned char	*get_rgba_of_table_fdf(const t_table_fdf *src,
+unsigned char	*get_rgba_of_fdf_table(const t_fdf_table *src,
 	t_fdf_channel rgba_type)
 {
 	if (src == NULL)
@@ -108,7 +108,7 @@ unsigned char	*get_rgba_of_table_fdf(const t_table_fdf *src,
  * @param zoom coordinate scaling factor
  * @return complex coordinate of the selected cell.
  */
-t_2d_float	get_table_fdf_coordinate(const t_table_fdf *dst, size_t index, float zoom)
+t_2d_float	get_fdf_table_coordinate(const t_fdf_table *dst, size_t index, float zoom)
 {
 	t_2d_float	y;
 

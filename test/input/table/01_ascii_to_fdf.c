@@ -5,7 +5,7 @@ int	main(void)
 	int				fdf_dst;
 	size_t			i;
 	size_t			length = 36;
-	t_table_fdf		table;
+	t_fdf_table		table;
 	char			*arr[] = {
 		"0.txt",
 		"1.txt",
@@ -88,7 +88,7 @@ int	main(void)
 	i = 0;
 	while (i < length)
 	{
-		table = open_table_fdf_file(arr[i], src_dir, parse_ascii_standard, false);
+		table = open_fdf_table_file(arr[i], src_dir, parse_ascii_standard, false);
 		scale_positive_fdf(&table);
 		fdf_dst = open_dir_file(arrdst[i], dst_dir, E_WRITE);
 		if(fdf_dst > -1)
@@ -96,12 +96,12 @@ int	main(void)
 			write(1, "\n*** ", 5);
 			write(1, arr[i], f_strlen(arr[i]));
 			write(1, " ***\n", 5);
-			write_table_fdf(1, &table, 3, HEIGHT_ONLY);
-			write_table_fdf(fdf_dst, &table, 1, HEIGHT_ONLY);
+			write_fdf_table(1, &table, 3, HEIGHT_ONLY);
+			write_fdf_table(fdf_dst, &table, 1, HEIGHT_ONLY);
 		}
 		else
 			write_file_not_exists(arr[i]);
-		destroy_table_fdf(&table);
+		destroy_fdf_table(&table);
 		i += 1;
 	}
 	return (0);

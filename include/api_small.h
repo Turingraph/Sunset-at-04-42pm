@@ -170,7 +170,7 @@ float		f_exp(float x);
  * @return true if the cell is a positive value located on the table
  * boundary or adjacent to an empty cell, false otherwise.
  */
-bool	is_boundary_fdf(const t_table_fdf *dst, size_t index, int threshold);
+bool	is_boundary_fdf(const t_fdf_table *dst, size_t index, int threshold);
 
 /**
  * Counts the neighboring cells whose values exceed a given threshold.
@@ -190,7 +190,7 @@ bool	is_boundary_fdf(const t_table_fdf *dst, size_t index, int threshold);
  * @return The number of valid neighboring cells whose values exceed the
  * threshold, ranging from 0 to 8. Returns 0 if the FDF table is invalid.
  */
-int	count_neighbor_fdf(const t_table_fdf *dst, size_t index, int threshold);
+int	count_neighbor_fdf(const t_fdf_table *dst, size_t index, int threshold);
 
 /**
  * Check whether a cell is considered empty
@@ -204,7 +204,7 @@ int	count_neighbor_fdf(const t_table_fdf *dst, size_t index, int threshold);
  * @return true if the cell contains a value less than or equal to 0,
  * false otherwise.
  */
-bool		is_space_fdf(const t_table_fdf *dst, size_t index);
+bool		is_space_fdf(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether a cell belongs to the chess pattern.
@@ -217,7 +217,7 @@ bool		is_space_fdf(const t_table_fdf *dst, size_t index);
  * @return true if the cell position belongs to the chess pattern,
  * false otherwise.
  */
-bool		is_chess_fdf(const t_table_fdf *dst, size_t index);
+bool		is_chess_fdf(const t_fdf_table *dst, size_t index);
 
 
 /* ************************************************************************** */
@@ -255,7 +255,7 @@ size_t		binary_search_count(size_t min_input, size_t max_input);
  * @return true if the binary-search iteration count is odd,
  * false otherwise.
  */
-bool		is_binary_search_length_odd(const t_table_fdf *dst, size_t index);
+bool		is_binary_search_length_odd(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether the number of iterations of a binary-search procedure
@@ -276,7 +276,7 @@ bool		is_binary_search_length_odd(const t_table_fdf *dst, size_t index);
  * @return true if the binary-search iteration count is odd,
  * false otherwise.
  */
-bool		is_binary_search_product_odd(const t_table_fdf *dst, size_t index);
+bool		is_binary_search_product_odd(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether the number of iterations of a binary-search procedure
@@ -291,7 +291,7 @@ bool		is_binary_search_product_odd(const t_table_fdf *dst, size_t index);
  * @return true if the scaled maximum Collatz point is odd,
  * false otherwise.
  */
-bool		is_binary_search_andmod(const t_table_fdf *dst, size_t index);
+bool		is_binary_search_andmod(const t_fdf_table *dst, size_t index);
 
 /**
  * Find the maximum value reached by the Collatz sequence of an input.
@@ -315,7 +315,7 @@ size_t		collatz_max_point(size_t x);
  * @return true if the scaled maximum Collatz point is odd,
  * false otherwise.
  */
-bool		is_collatz_odd_length(const t_table_fdf *dst, size_t index);
+bool		is_collatz_odd_length(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether the maximum point of the Collatz sequence generated
@@ -330,7 +330,7 @@ bool		is_collatz_odd_length(const t_table_fdf *dst, size_t index);
  * @return true if the scaled maximum Collatz point is odd,
  * false otherwise.
  */
-bool		is_collatz_odd_product(const t_table_fdf *dst, size_t index);
+bool		is_collatz_odd_product(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether the maximum point of the Collatz sequence generated
@@ -345,7 +345,7 @@ bool		is_collatz_odd_product(const t_table_fdf *dst, size_t index);
  * @return true if the scaled maximum Collatz point is odd,
  * false otherwise.
  */
-bool		is_collatz_odd_andmod(const t_table_fdf *dst, size_t index);
+bool		is_collatz_odd_andmod(const t_fdf_table *dst, size_t index);
 
 /**
  * Compute z' = complex_func(the complex coordinate of the cell).
@@ -364,7 +364,7 @@ bool		is_collatz_odd_andmod(const t_table_fdf *dst, size_t index);
  * @return true if the rounded calculated value is odd,
  * false otherwise.
  */
-bool		is_re2_diff_im2_odd_func(const t_table_fdf *dst, size_t index,
+bool		is_re2_diff_im2_odd_func(const t_fdf_table *dst, size_t index,
 				t_2d_float (*complex_func)(t_2d_float a), float zoom);
 
 /**
@@ -379,7 +379,7 @@ bool		is_re2_diff_im2_odd_func(const t_table_fdf *dst, size_t index,
  * @return true if the rounded calculated value is odd,
  * false otherwise.
  */
-bool		is_re2_diff_im2_odd(const t_table_fdf *dst, size_t index);
+bool		is_re2_diff_im2_odd(const t_fdf_table *dst, size_t index);
 
 /**
  * Compute z' = complex_func(the complex coordinate of the cell).
@@ -398,7 +398,7 @@ bool		is_re2_diff_im2_odd(const t_table_fdf *dst, size_t index);
  * @return true if the rounded coordinate magnitude is odd,
  * false otherwise.
  */
-bool		is_oddlength_func(const t_table_fdf *dst, size_t index,
+bool		is_oddlength_func(const t_fdf_table *dst, size_t index,
 				t_2d_float (*complex_func)(t_2d_float a), float zoom);
 
 /**
@@ -415,7 +415,7 @@ bool		is_oddlength_func(const t_table_fdf *dst, size_t index,
  * @return true if the rounded coordinate magnitude is odd,
  * false otherwise.
  */
-bool		is_oddlength(const t_table_fdf *dst, size_t index);
+bool		is_oddlength(const t_fdf_table *dst, size_t index);
 
 /**
  * Compute z' = complex_func(the complex coordinate of the cell).
@@ -433,7 +433,7 @@ bool		is_oddlength(const t_table_fdf *dst, size_t index);
  *
  * @return true if z.x is even and z.y is even, false otherwise.
  */
-bool		is_andmod_func(const t_table_fdf *dst, size_t index,
+bool		is_andmod_func(const t_fdf_table *dst, size_t index,
 				t_2d_float (*complex_func)(t_2d_float a), float zoom);
 
 /**
@@ -447,7 +447,7 @@ bool		is_andmod_func(const t_table_fdf *dst, size_t index,
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool		is_oddlength_x2(const t_table_fdf *dst, size_t index);
+bool		is_oddlength_x2(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether constant times magnitude of the cube of a cell's
@@ -460,7 +460,7 @@ bool		is_oddlength_x2(const t_table_fdf *dst, size_t index);
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool		is_oddlength_x3(const t_table_fdf *dst, size_t index);
+bool		is_oddlength_x3(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether constant times magnitude of the 4-th power of a cell's
@@ -473,7 +473,7 @@ bool		is_oddlength_x3(const t_table_fdf *dst, size_t index);
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool		is_oddlength_x4(const t_table_fdf *dst, size_t index);
+bool		is_oddlength_x4(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether constant times magnitude of the 5-th power of a cell's
@@ -486,7 +486,7 @@ bool		is_oddlength_x4(const t_table_fdf *dst, size_t index);
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool		is_oddlength_x5(const t_table_fdf *dst, size_t index);
+bool		is_oddlength_x5(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether constant times magnitude of the 6-th power of a cell's
@@ -499,7 +499,7 @@ bool		is_oddlength_x5(const t_table_fdf *dst, size_t index);
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool		is_oddlength_x6(const t_table_fdf *dst, size_t index);
+bool		is_oddlength_x6(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether the ax^2 and ay^2 of the cell is an odd value.
@@ -511,7 +511,7 @@ bool		is_oddlength_x6(const t_table_fdf *dst, size_t index);
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool		is_andmod_x2(const t_table_fdf *dst, size_t index);
+bool		is_andmod_x2(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether the ax^3 and ay^3 of the cell is an odd value.
@@ -523,7 +523,7 @@ bool		is_andmod_x2(const t_table_fdf *dst, size_t index);
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool		is_andmod_x3(const t_table_fdf *dst, size_t index);
+bool		is_andmod_x3(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether the ax^4 and ay^4 of the cell is an odd value.
@@ -535,7 +535,7 @@ bool		is_andmod_x3(const t_table_fdf *dst, size_t index);
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool		is_andmod_x4(const t_table_fdf *dst, size_t index);
+bool		is_andmod_x4(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether the ax^5 and ay^5 of the cell is an odd value.
@@ -547,7 +547,7 @@ bool		is_andmod_x4(const t_table_fdf *dst, size_t index);
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool		is_andmod_x5(const t_table_fdf *dst, size_t index);
+bool		is_andmod_x5(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether the ax^6 and ay^6 of the cell is an odd value.
@@ -559,7 +559,7 @@ bool		is_andmod_x5(const t_table_fdf *dst, size_t index);
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool		is_andmod_x6(const t_table_fdf *dst, size_t index);
+bool		is_andmod_x6(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether constant times magnitude of the square of a cell's
@@ -572,7 +572,7 @@ bool		is_andmod_x6(const t_table_fdf *dst, size_t index);
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool		is_oddlength_x2shadow(const t_table_fdf *dst, size_t index);
+bool		is_oddlength_x2shadow(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether constant times magnitude of the cube of a cell's
@@ -585,7 +585,7 @@ bool		is_oddlength_x2shadow(const t_table_fdf *dst, size_t index);
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool		is_oddlength_x3shadow(const t_table_fdf *dst, size_t index);
+bool		is_oddlength_x3shadow(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether the ax^2 and ay^2 of the cell is an odd value.
@@ -597,7 +597,7 @@ bool		is_oddlength_x3shadow(const t_table_fdf *dst, size_t index);
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool	is_andmod_x2shadow(const t_table_fdf *dst, size_t index);
+bool	is_andmod_x2shadow(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether the ax^3 and ay^3 of the cell is an odd value.
@@ -609,7 +609,7 @@ bool	is_andmod_x2shadow(const t_table_fdf *dst, size_t index);
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool	is_andmod_x3shadow(const t_table_fdf *dst, size_t index);
+bool	is_andmod_x3shadow(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether the magnitude of the sin of a cell's
@@ -622,7 +622,7 @@ bool	is_andmod_x3shadow(const t_table_fdf *dst, size_t index);
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool		is_oddlength_sin(const t_table_fdf *dst, size_t index);
+bool		is_oddlength_sin(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether the magnitude of the cos of a cell's
@@ -635,7 +635,7 @@ bool		is_oddlength_sin(const t_table_fdf *dst, size_t index);
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool		is_oddlength_cos(const t_table_fdf *dst, size_t index);
+bool		is_oddlength_cos(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether the magnitude of the sin of a cell's
@@ -648,7 +648,7 @@ bool		is_oddlength_cos(const t_table_fdf *dst, size_t index);
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool		is_andmod_sin(const t_table_fdf *dst, size_t index);
+bool		is_andmod_sin(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether the magnitude of the cos of a cell's
@@ -661,7 +661,7 @@ bool		is_andmod_sin(const t_table_fdf *dst, size_t index);
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool		is_andmod_cos(const t_table_fdf *dst, size_t index);
+bool		is_andmod_cos(const t_fdf_table *dst, size_t index);
 
 /* ************************************************************************** */
 /* *** src/paint/paint/ *** */
@@ -680,8 +680,8 @@ bool		is_andmod_cos(const t_table_fdf *dst, size_t index);
  * @param channel FDF channel to paint
  * @param cell_metric optional function to calculate the value of each cell
  */
-void	paint_space(t_table_fdf *dst, t_fdf_channel channel,
-	int (*cell_metric)(const t_table_fdf *dst, size_t index));
+void	paint_space(t_fdf_table *dst, t_fdf_channel channel,
+	int (*cell_metric)(const t_fdf_table *dst, size_t index));
 
 /**
  * Calculate the difference between the sum of the absolute
@@ -693,7 +693,7 @@ void	paint_space(t_table_fdf *dst, t_fdf_channel channel,
  * @param index index of the cell
  * @return |re| + |im| + |zd3| - |re + im + zd3|
  */
-int	cell_metric_triangle_inequality_3d(const t_table_fdf *dst, size_t index);
+int	cell_metric_triangle_inequality_3d(const t_fdf_table *dst, size_t index);
 
 /**
 * Calculate the Euclidean distance of a cell from the origin
@@ -705,7 +705,7 @@ int	cell_metric_triangle_inequality_3d(const t_table_fdf *dst, size_t index);
 * @param index index of the cell
 * @return Euclidean distance from the origin
 */
-int	cell_metric_pythagoras_3d(const t_table_fdf *dst, size_t index);
+int	cell_metric_pythagoras_3d(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the maximum absolute component of a cell coordinate
@@ -717,7 +717,7 @@ int	cell_metric_pythagoras_3d(const t_table_fdf *dst, size_t index);
  * @param index index of the cell
  * @return maximum of |re|, |im|, and zd3
  */
-int	cell_metric_max_xyz(const t_table_fdf *dst, size_t index);
+int	cell_metric_max_xyz(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the square root of the absolute product of the
@@ -729,7 +729,7 @@ int	cell_metric_max_xyz(const t_table_fdf *dst, size_t index);
  * @param index index of the cell
  * @return sqrt(|re * im|)
  */
-int	cell_metric_root_xyz(const t_table_fdf *dst, size_t index);
+int	cell_metric_root_xyz(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the absolute value of the sum of x, y, and z.
@@ -740,7 +740,7 @@ int	cell_metric_root_xyz(const t_table_fdf *dst, size_t index);
  * @param index index of the cell
  * @return |x + y + z|
  */
-int	cell_metric_addsub_3d(const t_table_fdf *dst, size_t index);
+int	cell_metric_addsub_3d(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the difference between the sum of the absolute
@@ -752,7 +752,7 @@ int	cell_metric_addsub_3d(const t_table_fdf *dst, size_t index);
  * @param index index of the cell
  * @return |re| + |im| - |re + im|
  */
-int	cell_metric_triangle_inequality(const t_table_fdf *dst, size_t index);
+int	cell_metric_triangle_inequality(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the different between (x + y) / 2 - (xy)^(1/2)
@@ -763,7 +763,7 @@ int	cell_metric_triangle_inequality(const t_table_fdf *dst, size_t index);
  * @param index index of the cell
  * @return (x + y) / 2 - (xy)^(1/2)
  */
-int	cell_metric_amgm_inequality(const t_table_fdf *dst, size_t index);
+int	cell_metric_amgm_inequality(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the (x + y + z) / 3 - (xyz)^(1/3)
@@ -774,7 +774,7 @@ int	cell_metric_amgm_inequality(const t_table_fdf *dst, size_t index);
  * @param index index of the cell
  * @return (x + y + z) / 3 - (xyz)^(1/3)
  */
-int	cell_metric_amgm_inequality_3d(const t_table_fdf *dst, size_t index);
+int	cell_metric_amgm_inequality_3d(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the (re + im)^2
@@ -785,7 +785,7 @@ int	cell_metric_amgm_inequality_3d(const t_table_fdf *dst, size_t index);
  * @param index index of the cell
  * @return (re + im)^2
  */
-int	cell_metric_x_plus_y_square(const t_table_fdf *dst, size_t index);
+int	cell_metric_x_plus_y_square(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the x^2 + y^2 + z^2 - (x + y + z)^2
@@ -796,7 +796,7 @@ int	cell_metric_x_plus_y_square(const t_table_fdf *dst, size_t index);
  * @param index index of the cell
  * @return x^2 + y^2 + z^2 - (x + y + z)^2
  */
-int	cell_metric_cauchy_schwarz_inequality_3d(const t_table_fdf *dst, size_t index);
+int	cell_metric_cauchy_schwarz_inequality_3d(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the minimum absolute component of a cell coordinate.
@@ -807,7 +807,7 @@ int	cell_metric_cauchy_schwarz_inequality_3d(const t_table_fdf *dst, size_t inde
  * @param index index of the cell
  * @return minimum of |re| and |im|
  */
-int	cell_metric_min_xy(const t_table_fdf *dst, size_t index);
+int	cell_metric_min_xy(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the minimum absolute component of a cell coordinate
@@ -819,7 +819,7 @@ int	cell_metric_min_xy(const t_table_fdf *dst, size_t index);
  * @param index index of the cell
  * @return minimum of |re|, |im|, and zd3
  */
-int	cell_metric_min_xyz(const t_table_fdf *dst, size_t index);
+int	cell_metric_min_xyz(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the minimum cosine value of the real and imaginary
@@ -831,7 +831,7 @@ int	cell_metric_min_xyz(const t_table_fdf *dst, size_t index);
  * @param index index of the cell
  * @return min(row, col) * min(cos(re / a), cos(im / a))
  */
-int	cell_metric_mincos(const t_table_fdf *dst, size_t index);
+int	cell_metric_mincos(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the minimum component of the complex cosine of a
@@ -845,7 +845,7 @@ int	cell_metric_mincos(const t_table_fdf *dst, size_t index);
  * 
  * @return min(cos(z).x, cos(z).y)
  */
-int	cell_metric_minecos(const t_table_fdf *dst, size_t index);
+int	cell_metric_minecos(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the minimum component of the complex exponential
@@ -857,7 +857,7 @@ int	cell_metric_minecos(const t_table_fdf *dst, size_t index);
  * @param index index of the cell
  * @return min(re(exp(z)), im(exp(z)))
  */
-int	cell_metric_minexp(const t_table_fdf *dst, size_t index);
+int	cell_metric_minexp(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the maximum sine value of the real and imaginary
@@ -869,7 +869,7 @@ int	cell_metric_minexp(const t_table_fdf *dst, size_t index);
  * @param index index of the cell
  * @return min(row, col) * max(sin(re / a), sin(im / a))
  */
-int	cell_metric_maxsin(const t_table_fdf *dst, size_t index);
+int	cell_metric_maxsin(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the maximum component of the complex sine of a
@@ -883,7 +883,7 @@ int	cell_metric_maxsin(const t_table_fdf *dst, size_t index);
  * 
  * @return max(sin(z).x, sin(z).y)
  */
-int	cell_metric_maxesin(const t_table_fdf *dst, size_t index);
+int	cell_metric_maxesin(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the maximum cosine value of the real and imaginary
@@ -895,7 +895,7 @@ int	cell_metric_maxesin(const t_table_fdf *dst, size_t index);
  * @param index index of the cell
  * @return min(row, col) * max(cos(re / a), cos(im / a))
  */
-int	cell_metric_maxcos(const t_table_fdf *dst, size_t index);
+int	cell_metric_maxcos(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the maximum component of the complex cosine of a
@@ -909,7 +909,7 @@ int	cell_metric_maxcos(const t_table_fdf *dst, size_t index);
  * 
  * @return max(cos(z).x, cos(z).y)
  */
-int	cell_metric_maxecos(const t_table_fdf *dst, size_t index);
+int	cell_metric_maxecos(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the maximum component of the complex exponential
@@ -921,7 +921,7 @@ int	cell_metric_maxecos(const t_table_fdf *dst, size_t index);
  * @param index index of the cell
  * @return max(re(exp(z)), im(exp(z)))
  */
-int	cell_metric_maxexp(const t_table_fdf *dst, size_t index);
+int	cell_metric_maxexp(const t_fdf_table *dst, size_t index);
 
 /**
 * Calculate the Euclidean distance of a cell from the origin
@@ -933,7 +933,7 @@ int	cell_metric_maxexp(const t_table_fdf *dst, size_t index);
 * @param index index of the cell
 * @return Euclidean distance from the origin
 */
-int	cell_metric_pythagoras(const t_table_fdf *dst, size_t index);
+int	cell_metric_pythagoras(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the maximum absolute component of a cell coordinate.
@@ -944,7 +944,7 @@ int	cell_metric_pythagoras(const t_table_fdf *dst, size_t index);
  * @param index index of the cell
  * @return maximum of |re| and |im|
  */
-int	cell_metric_max_xy(const t_table_fdf *dst, size_t index);
+int	cell_metric_max_xy(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the absolute value of the sum of the real and
@@ -956,7 +956,7 @@ int	cell_metric_max_xy(const t_table_fdf *dst, size_t index);
  * @param index index of the cell
  * @return |re + im|
  */
-int	cell_metric_addsub(const t_table_fdf *dst, size_t index);
+int	cell_metric_addsub(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the square root of the absolute product of the
@@ -968,7 +968,7 @@ int	cell_metric_addsub(const t_table_fdf *dst, size_t index);
  * @param index index of the cell
  * @return sqrt(|re * im|)
  */
-int	cell_metric_root_xy(const t_table_fdf *dst, size_t index);
+int	cell_metric_root_xy(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the a^3 + b^3 - c^3 where a,b,c are integer and c is the
@@ -980,6 +980,6 @@ int	cell_metric_root_xy(const t_table_fdf *dst, size_t index);
  * @param index index of the cell
  * @return a^3 + b^3 - floor((a^3 + b^3)^(1/3))
  */
-int	cell_metric_fermat_theorem(const t_table_fdf *dst, size_t index);
+int	cell_metric_fermat_theorem(const t_fdf_table *dst, size_t index);
 
 #endif

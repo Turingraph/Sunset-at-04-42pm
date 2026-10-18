@@ -38,26 +38,26 @@ bool	is_fdf_name(const char *str)
 
 int	main(int len, char **str)
 {
-	t_table_fdf		table;
-	t_fdf			output;
+	t_fdf_table		table;
+	t_fdf_projection2d			output;
 	t_fdf_render	style;
 
 	if (len < 2 || is_fdf_name(str[1]) == false)
 		return (0);
-	table = open_table_fdf_file(str[1], NULL, parse_decimal_rgba, true);
+	table = open_fdf_table_file(str[1], NULL, parse_decimal_rgba, true);
 	if (table.col * table.row == 0)
 	{
 		write(1, "File might be invalid and/or Malloc returns NULL.\n", 51);
-		destroy_table_fdf(&table);
+		destroy_fdf_table(&table);
 		return (0);
 	}
 	style.thickness = 1;
 	style.shape_2d = E_LINE;
 	color_cells_gradient(&table, init_gradient(), true);
-	output = init_fdf(&table, projection_isometric, 0.5);
+	output = create_fdf_projection2d(&table, projection_isometric, 0.5);
 	view_fdf(&output, style, int32_from_rgba(255, 255, 255, 255));
-	destroy_table_fdf(&table);
-	destroy_fdf(&output);
+	destroy_fdf_table(&table);
+	destroy_fdf_projection2d(&output);
 	return (0);
 }
 

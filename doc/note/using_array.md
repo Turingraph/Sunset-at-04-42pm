@@ -30,9 +30,9 @@ ChatGPT warn me to use 1D array over 2D array when deal with large input. Severa
 So I change this
 
 ```
-typedef struct t_table_fdf t_table_fdf;
+typedef struct t_fdf_table t_fdf_table;
 
-struct t_table_fdf
+struct t_fdf_table
 {
 	size_t			row;
 	size_t			col;
@@ -47,7 +47,7 @@ struct t_table_fdf
 to this.
 
 ```
-typedef struct t_table_fdf
+typedef struct t_fdf_table
 {
 	size_t			row;
 	size_t			col;
@@ -56,5 +56,5 @@ typedef struct t_table_fdf
 	unsigned char	*g;
 	unsigned char	*b;
 	unsigned char	*a;
-}	t_table_fdf;
+}	t_fdf_table;
 ```

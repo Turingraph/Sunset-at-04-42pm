@@ -14,7 +14,7 @@
 
 // time : O(1)
 // space: O(1)
-void	write_rgba_fdf(int fd, const t_table_fdf *src, size_t index)
+void	write_rgba_fdf(int fd, const t_fdf_table *src, size_t index)
 {
 	if (fd > -1 && src != NULL)
 	{
@@ -46,7 +46,7 @@ void	write_rgba_fdf(int fd, const t_table_fdf *src, size_t index)
  * @param digits number of digits for height values
  * @param mode output format
  */
-void	write_table_fdf(int fd, const t_table_fdf *src,
+void	write_fdf_table(int fd, const t_fdf_table *src,
 	size_t digits, t_write_style mode)
 {
 	size_t	i;
@@ -89,7 +89,7 @@ static void	write_rgba_ascii(unsigned char input,
 
 // time : O(n)
 // space: O(n)
-void	write_table_ascii(int fd, const t_table_fdf *src,
+void	write_table_ascii(int fd, const t_fdf_table *src,
 	t_fdf_channel channel, const char *dict)
 {
 	size_t			i;
@@ -107,7 +107,7 @@ void	write_table_ascii(int fd, const t_table_fdf *src,
 			left_char = true;
 			if (j >= src->col / 2)
 				left_char = false;
-			arr = get_rgba_of_table_fdf(src, channel);
+			arr = get_rgba_of_fdf_table(src, channel);
 			if (src->arr != NULL && channel == HEIGHT)
 				ft_put_ascii_fd(fd,
 					(int)src->arr[i * src->col + j], dict, left_char);

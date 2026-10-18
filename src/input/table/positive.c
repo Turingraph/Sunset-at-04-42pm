@@ -19,14 +19,14 @@
  * 
  * status: public api
  *
- * @param src the input t_table_fdf array
+ * @param src the input t_fdf_table array
  * @param is_max if is_max == true, then return maximum number, 
  * else return minimum number.
  * @param channels RGBA channel to inspect
  * 
  * @return minimum or maximum integer based on the input.
  */
-int	get_minmax_from_table_fdf(const t_table_fdf *src,
+int	get_minmax_from_fdf_table(const t_fdf_table *src,
 	bool is_max, t_fdf_channel channel)
 {
 	int		sign;
@@ -59,19 +59,19 @@ int	get_minmax_from_table_fdf(const t_table_fdf *src,
 }
 
 /**
- * Adding some number, such that every number in t_table_fdf become positive.
+ * Adding some number, such that every number in t_fdf_table become positive.
  *
  * time/space: O(n) / O(1)
  * 
  * status: public api
  *
- * @param dst the input t_table_fdf array
+ * @param dst the input t_fdf_table array
  */
-void	scale_positive_fdf(t_table_fdf *dst)
+void	scale_positive_fdf(t_fdf_table *dst)
 {
 	int	y;
 
-	y = get_minmax_from_table_fdf((const t_table_fdf *)dst, false, HEIGHT);
+	y = get_minmax_from_fdf_table((const t_fdf_table *)dst, false, HEIGHT);
 	if (y < 0 && y > -2147483648)
 		y *= -1;
 	else if (y == -2147483648)
@@ -87,12 +87,12 @@ void	scale_positive_fdf(t_table_fdf *dst)
  * 
  * status: public api
  *
- * @param dst the input t_table_fdf array
+ * @param dst the input t_fdf_table array
  * @param min the minimum target number
  * @param max the maximum target number
  * @param expect the expected number
  */
-void	scale_relu_fdf(t_table_fdf *dst, int min, int max, int expect)
+void	scale_relu_fdf(t_fdf_table *dst, int min, int max, int expect)
 {
 	size_t	i;
 	int		temp;

@@ -69,7 +69,7 @@ t_load_fdf	init_load_fdf(size_t line_len, bool is_rgb)
 
 /**
  * Free the array after it load an FDF file.
- * Intended for internal use by open_table_fdf_file().
+ * Intended for internal use by open_fdf_table_file().
  *
  * time/space: O(n) / O(1)
  * 
@@ -100,7 +100,7 @@ void	destroy_load_fdf_arr(t_load_fdf_arr *src)
 
 /**
  * Initializing array for loading an FDF file.
- * Intended for internal use by open_table_fdf_file().
+ * Intended for internal use by open_fdf_table_file().
  *
  * time/space: O(1) / O(n)
  * 

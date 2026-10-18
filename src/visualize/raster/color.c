@@ -85,7 +85,7 @@ void	raster_color_background(mlx_image_t *dst, int32_t color)
  * @param index element index whose RGBA channels are combined
  * @return packed 32-bit RGBA color, or 0 if src is NULL or index is invalid
  */
-int32_t	int32_from_rgbafdf(const t_table_fdf *src, size_t index)
+int32_t	int32_from_rgbafdf(const t_fdf_table *src, size_t index)
 {
 	int32_t	r;
 	int32_t	g;

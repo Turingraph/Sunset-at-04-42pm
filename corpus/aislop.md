@@ -1,6 +1,6 @@
 Yes. I think this is a **very sensible post-3-Sep extension**, and it fits your architecture better than it might initially appear.
 
-The key is to treat Piskel as an **input format/source**, not as something that should infect `t_table_fdf` with Piskel-specific concepts.
+The key is to treat Piskel as an **input format/source**, not as something that should infect `t_fdf_table` with Piskel-specific concepts.
 
 Piskel itself is fundamentally a pixel-art/sprite editor and supports PNG/GIF/spritesheet export; its `.piskel` saved representation also contains structured information such as dimensions, layers, frame count, and encoded PNG data. ([Piskel][1])
 
@@ -66,7 +66,7 @@ Then a PNG exported from Piskel, another pixel-art editor, or even an ordinary i
 Your existing:
 
 ```c
-t_table_fdf
+t_fdf_table
 {
     size_t row;
     size_t col;
@@ -105,7 +105,7 @@ Piskel PNG
    ↓
 RGBA
    ↓
-t_table_fdf
+t_fdf_table
 ```
 
 That gives you an interesting property:
@@ -164,7 +164,7 @@ Although Piskel has its own `.piskel` save format, Piskel's ordinary export work
 So your first implementation could simply support:
 
 ```text
-PNG → t_table_fdf → FDF/TXT
+PNG → t_fdf_table → FDF/TXT
 ```
 
 rather than:
@@ -206,7 +206,7 @@ You could eventually have:
                    │
 Piskel/PNG ─→ Image→Table
                    │
-                   └──→ t_table_fdf
+                   └──→ t_fdf_table
                               │
               ┌───────────────┼───────────────┐
               ▼               ▼               ▼
@@ -267,7 +267,7 @@ Instead, make the boundary:
       ↓
 parser/converter
       ↓
-t_table_fdf
+t_fdf_table
       ↓
 existing library
 ```
@@ -277,7 +277,7 @@ So:
 ```text
 FDF ────────┐
 PNG ────────┤
-Piskel ─────┤──→ t_table_fdf
+Piskel ─────┤──→ t_fdf_table
 TXT ────────┘
 ```
 
@@ -289,13 +289,13 @@ That's a good thing.
 
 ### And there's a particularly nice connection to your current project
 
-You've already discovered that `t_table_fdf` becomes problematic if it starts carrying:
+You've already discovered that `t_fdf_table` becomes problematic if it starts carrying:
 
 > coordinates + zoom + rendering + mathematical functions + sampling policy + 3D information...
 
 So don't repeat that mistake with Piskel.
 
-Make Piskel an **input adapter**, not a new responsibility of `t_table_fdf`.
+Make Piskel an **input adapter**, not a new responsibility of `t_fdf_table`.
 
 I'd therefore put this on your post-September roadmap approximately as:
 
@@ -304,8 +304,8 @@ After 3 Sep
 
 1. Stabilize current API
 2. Improve documentation/manual
-3. PNG → grayscale → t_table_fdf
-4. t_table_fdf → TXT/FDF
+3. PNG → grayscale → t_fdf_table
+4. t_fdf_table → TXT/FDF
 5. Test conversion with Piskel-exported pixel art
 6. Optional: RGBA preservation
 7. Optional: .piskel native parser

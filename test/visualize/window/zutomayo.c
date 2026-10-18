@@ -62,16 +62,16 @@ t_gradient	init_ztmy_studyme()
 
 int	main(int len, char **str)
 {
-	t_table_fdf		table;
-	t_fdf			output;
+	t_fdf_table		table;
+	t_fdf_projection2d			output;
 	t_fdf_render	style;
 
 	if (len < 2)
 		return (0);
-	table = open_table_fdf_file(str[1], NULL, parse_ascii_cheche01, true);
+	table = open_fdf_table_file(str[1], NULL, parse_ascii_cheche01, true);
 	if (table.col * table.row == 0)
 	{
-		destroy_table_fdf(&table);
+		destroy_fdf_table(&table);
 		return (0);
 	}
 	style.thickness = 3;
@@ -80,10 +80,10 @@ int	main(int len, char **str)
 	color_cells_gradient(&table, init_ztmy_timeleft(), true);
 	scale_multiplication_fdf(&table, 1.0 / 3.0, HEIGHT);
 	color_cells_gradient(&table, init_white_noise(), true);
-	output = init_fdf(&table, NULL, 1.0);
+	output = create_fdf_projection2d(&table, NULL, 1.0);
 	view_fdf(&output, style, int32_from_rgba(0, 0, 0, 255));
-	destroy_table_fdf(&table);
-	destroy_fdf(&output);
+	destroy_fdf_table(&table);
+	destroy_fdf_projection2d(&output);
 	return (0);
 }
 

@@ -2,8 +2,8 @@
 
 int	main(void)
 {
-	t_table_fdf	table_a;
-	t_table_fdf	table_c;
+	t_fdf_table	table_a;
+	t_fdf_table	table_c;
 	int			output;
 	char		*dst_dir = "test/paint/convolve/input_edge_2/";
 	char		*src_dir = "test/paint/convolve/input_ascii/";
@@ -37,14 +37,14 @@ int	main(void)
 	while (i < length)
 	{
 		output = open_dir_file(arr[i], dst_dir, E_WRITE);
-		table_a = open_table_fdf_file(arr[i], src_dir,
+		table_a = open_fdf_table_file(arr[i], src_dir,
 				parse_ascii_cheche01, false);
 		scale_multiplication_fdf(&table_a, 3.0, HEIGHT);
 		table_c = convolve_fdf(&table_a, edge, 5);
 		// scale_positive_fdf(&table_c);
 		write_table_ascii_cheche01(output, &table_c, HEIGHT);
-		destroy_table_fdf(&table_a);
-		destroy_table_fdf(&table_c);
+		destroy_fdf_table(&table_a);
+		destroy_fdf_table(&table_c);
 		close(output);
 		i += 1;
 	}

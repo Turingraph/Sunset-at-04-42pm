@@ -7,7 +7,7 @@
 
 /**
  * a pair of integer (x, y) for representing a 2D point, 2D coordinate,
- * and/or the size of row and column of t_table_fdf.
+ * and/or the size of row and column of t_fdf_table.
  */
 typedef struct s_2d_int
 {

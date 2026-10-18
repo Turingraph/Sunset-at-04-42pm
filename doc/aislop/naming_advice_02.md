@@ -22,7 +22,7 @@ Your examples contain names such as:
 set_cells_color(...)
 color_cells_gradient(...)
 scale_multiplication_fdf(...)
-table_fdf_hadamard(...)
+fdf_table_hadamard(...)
 ```
 
 An experienced developer might wonder why these functions use different word orders and grammatical structures.
@@ -128,10 +128,10 @@ This is more consequential than inconsistent word order because it makes the API
 Your examples use:
 
 ```
-init_table_fdf(...)
-init_fdf(...)
-destroy_table_fdf(...)
-destroy_fdf(...)
+create_fdf_table(...)
+create_fdf_projection2d(...)
+destroy_fdf_table(...)
+destroy_fdf_projection2d(...)
 ```
 
 These names are perfectly understandable in isolation. Many C developers use `init`, `free`, and similar verbs regularly.
@@ -141,8 +141,8 @@ However, they raise a question about the library's resource-management model.
 Consider:
 
 ```
-t_table_fdf table = init_table_fdf(300, 300, false);
-t_fdf output = init_fdf(&table, projection_isometric, 0.6);
+t_fdf_table table = create_fdf_table(300, 300, false);
+t_fdf output = create_fdf_projection2d(&table, projection_isometric, 0.6);
 ```
 
 A developer might wonder:
@@ -183,7 +183,7 @@ They encounter:
 scale_multiplication_fdf(...)
 scale_relu_fdf(...)
 scale_positive_fdf(...)
-table_fdf_hadamard(...)
+fdf_table_hadamard(...)
 ```
 
 They might reasonably ask:
@@ -202,7 +202,7 @@ For example, consider these two possible APIs.
 ```
 scale_multiplication_fdf(...);
 scale_relu_fdf(...);
-table_fdf_hadamard(...);
+fdf_table_hadamard(...);
 apply_convolution_fdf(...);
 ```
 
@@ -318,7 +318,7 @@ However, a user-friendly graphics API should make it clear which operations:
 Consider:
 
 ```
-table_fdf_hadamard(&table, &table_base, HEIGHT);
+fdf_table_hadamard(&table, &table_base, HEIGHT);
 scale_multiplication_fdf(&table, 1.0 / 120.0, HEIGHT);
 color_cells_gradient(&table, gradient, true);
 ```
@@ -460,7 +460,7 @@ I think this distinction is important because it is easy to become overly critic
 
 Some features of your naming style are reasonable and worth preserving.
 
-### Mathematical names such as `table_fdf_hadamard`
+### Mathematical names such as `fdf_table_hadamard`
 
 Although its word order differs from some of your other functions, the name identifies the mathematical operation and its data domain.
 

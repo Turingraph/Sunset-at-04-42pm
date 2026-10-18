@@ -12,7 +12,7 @@
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool	is_andmod_x2(const t_table_fdf *dst, size_t index)
+bool	is_andmod_x2(const t_fdf_table *dst, size_t index)
 {
 	return (is_andmod_func(dst, index, complex_square, 0.075));
 }
@@ -29,7 +29,7 @@ bool	is_andmod_x2(const t_table_fdf *dst, size_t index)
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool	is_andmod_x3(const t_table_fdf *dst, size_t index)
+bool	is_andmod_x3(const t_fdf_table *dst, size_t index)
 {
 	return (is_andmod_func(dst, index, complex_cube, 0.05));
 }
@@ -46,7 +46,7 @@ bool	is_andmod_x3(const t_table_fdf *dst, size_t index)
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool	is_andmod_x4(const t_table_fdf *dst, size_t index)
+bool	is_andmod_x4(const t_fdf_table *dst, size_t index)
 {
 	return (is_andmod_func(dst, index, complex_x4, 0.5));
 }
@@ -63,7 +63,7 @@ bool	is_andmod_x4(const t_table_fdf *dst, size_t index)
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool	is_andmod_x5(const t_table_fdf *dst, size_t index)
+bool	is_andmod_x5(const t_fdf_table *dst, size_t index)
 {
 	return (is_andmod_func(dst, index, complex_x5, 0.05));
 }
@@ -80,7 +80,7 @@ bool	is_andmod_x5(const t_table_fdf *dst, size_t index)
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool	is_andmod_x6(const t_table_fdf *dst, size_t index)
+bool	is_andmod_x6(const t_fdf_table *dst, size_t index)
 {
 	return (is_andmod_func(dst, index, complex_x6, 0.03));
 }

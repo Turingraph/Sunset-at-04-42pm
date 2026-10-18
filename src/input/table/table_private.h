@@ -19,58 +19,58 @@
 
 // init.c
 
-void			destroy_table_fdf(t_table_fdf *src);
-t_table_fdf		init_table_fdf(size_t row, size_t col, bool is_rgba);
-t_table_fdf		load_table_fdf(const t_load_fdf_arr *src, bool is_rgba);
+void			destroy_fdf_table(t_fdf_table *src);
+t_fdf_table		create_fdf_table(size_t row, size_t col, bool is_rgba);
+t_fdf_table		load_fdf_table(const t_load_fdf_arr *src, bool is_rgba);
 
 // positive.c
 
-int				get_minmax_from_table_fdf(const t_table_fdf *dst,
+int				get_minmax_from_fdf_table(const t_fdf_table *dst,
 					bool is_max, t_fdf_channel channel);
-void			scale_positive_fdf(t_table_fdf *dst);
-void			scale_relu_fdf(t_table_fdf *dst, int min, int max, int expect);
+void			scale_positive_fdf(t_fdf_table *dst);
+void			scale_relu_fdf(t_fdf_table *dst, int min, int max, int expect);
 
 // public.c
 
-t_table_fdf		open_table_fdf_file(const char *file_name, const char *dir,
+t_fdf_table		open_fdf_table_file(const char *file_name, const char *dir,
 					t_load_fdf (*one_line)(char *line), bool is_rgba);
 
 // scale_dimension.c
 
-unsigned char	*scale_dimension_fdf_rgba(const t_table_fdf *src,
+unsigned char	*scale_dimension_fdf_rgba(const t_fdf_table *src,
 					size_t scale_row, size_t s_col, t_fdf_channel rgba_type);
-int				*scale_dimension_fdf_int(const t_table_fdf *src,
+int				*scale_dimension_fdf_int(const t_fdf_table *src,
 					size_t scale_row, size_t s_col);
-t_table_fdf		scale_dimension_fdf(const t_table_fdf *src,
+t_fdf_table		scale_dimension_fdf(const t_fdf_table *src,
 					size_t scale_row, size_t scale_col);
 
 // scale.c
 
-void			scale_multiplication_fdf(t_table_fdf *dst,
+void			scale_multiplication_fdf(t_fdf_table *dst,
 					float scale, t_fdf_channel channel);
-void			scale_addition_fdf(t_table_fdf *dst,
+void			scale_addition_fdf(t_fdf_table *dst,
 					int input, t_fdf_channel channel);
-void			table_fdf_addition(t_table_fdf *dst,
-					const t_table_fdf *src, t_fdf_channel channel);
-void			table_fdf_hadamard(t_table_fdf *dst,
-					const t_table_fdf *src, t_fdf_channel channel);
-void			copy_table_fdf_channel(t_table_fdf *dst,
-					const t_table_fdf *src, t_fdf_channel channel);
+void			fdf_table_addition(t_fdf_table *dst,
+					const t_fdf_table *src, t_fdf_channel channel);
+void			fdf_table_hadamard(t_fdf_table *dst,
+					const t_fdf_table *src, t_fdf_channel channel);
+void			copy_fdf_table_channel(t_fdf_table *dst,
+					const t_fdf_table *src, t_fdf_channel channel);
 
 // shade.c
 
 void			write_table_ascii_cheche01(int fd,
-					const t_table_fdf *src, t_fdf_channel channel);
+					const t_fdf_table *src, t_fdf_channel channel);
 void			write_table_ascii_standard(int fd,
-					const t_table_fdf *src, t_fdf_channel channel);
+					const t_fdf_table *src, t_fdf_channel channel);
 void			write_table_ascii_chungaloider(int fd,
-					const t_table_fdf *src, t_fdf_channel channel);
+					const t_fdf_table *src, t_fdf_channel channel);
 
 // write.c
 
-void			write_table_fdf(int fd,
-					const t_table_fdf *src, size_t digits, t_write_style mode);
-void			write_table_ascii(int fd, const t_table_fdf *src,
+void			write_fdf_table(int fd,
+					const t_fdf_table *src, size_t digits, t_write_style mode);
+void			write_table_ascii(int fd, const t_fdf_table *src,
 					t_fdf_channel channel, const char *dict);
 
 #endif

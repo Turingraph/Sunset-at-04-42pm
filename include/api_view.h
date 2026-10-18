@@ -80,7 +80,7 @@ int32_t	int32_from_rgba(unsigned char r,
 
 /**
  * FDF object containing the 2D projected representation data of the 
- * t_table_fdf data.
+ * t_fdf_table data.
  * 
  * @param r the red channel of each FdF cell.
  * @param g the green channel of each FdF cell.
@@ -93,7 +93,7 @@ int32_t	int32_from_rgba(unsigned char r,
  * @param width current width of the transformed FDF object, for scaling the Fdf object
  * with the suitable scaling factor relative to the window height and width.
  */
-typedef struct s_fdf
+typedef struct t_fdf_projection
 {
 	unsigned char	*r;
 	unsigned char	*g;
@@ -104,17 +104,17 @@ typedef struct s_fdf
 	float			*x;
 	float			*y;
 	float			width;
-}	t_fdf;
+}	t_fdf_projection2d;
 
 /**
  * Release all resources owned by an FDF object.
  *
  * This function frees the source fdf data.
  *
- * view_fdf() does not call destroy_fdf(). The caller therefore remains
- * responsible for releasing an FDF object created by init_fdf().
+ * view_fdf() does not call destroy_fdf_projection2d(). The caller therefore remains
+ * responsible for releasing an FDF object created by create_fdf_projection2d().
  *
- * Calling destroy_fdf() with NULL is safe.
+ * Calling destroy_fdf_projection2d() with NULL is safe.
  * 
  * The return data is NULL fdf data.
  *
@@ -122,19 +122,19 @@ typedef struct s_fdf
  *
  * @param src FDF object to release
  */
-t_fdf	destroy_fdf(t_fdf *src);
+t_fdf_projection2d	destroy_fdf_projection2d(t_fdf_projection2d *src);
 
 /**
- * Initialize a FDF object from a t_table_fdf table.
+ * Initialize a FDF object from a t_fdf_table table.
  *
- * The returned FDF object owns the 2D position arrays of each cells of t_table_fdf,
+ * The returned FDF object owns the 2D position arrays of each cells of t_fdf_table,
  * based on the 2D projection of the table (determined by 2D projection
  * argument e.g. projection_isometric, projection_military etc.
  * ). If the projection is NULL,
- * then this function return the simple orthogonal projection of t_table_fdf.
+ * then this function return the simple orthogonal projection of t_fdf_table.
  *
- * This function use the color of t_table_fdf table,
- * instead of deep copy and/or shallow copy the color of t_table_fdf table, for
+ * This function use the color of t_fdf_table table,
+ * instead of deep copy and/or shallow copy the color of t_fdf_table table, for
  * preventing double free issues and preventing using too many malloc than needed.
  *
  * The future version of this program will support 3D related features e.g.
@@ -144,12 +144,12 @@ t_fdf	destroy_fdf(t_fdf *src);
  *
  * @param src source table containing the FDF data
  * @param projection the functional pointer for define the projection of
- * t_table_fdf as t_fdf.
+ * t_fdf_table as t_fdf_projection2d.
  * @param scale for scaling Fdf object.
- * @return initialized t_fdf object.
+ * @return initialized t_fdf_projection2d object.
  * @see src/visualize/fdf/projection.c
  */
-t_fdf	init_fdf(t_table_fdf *src,
+t_fdf_projection2d	create_fdf_projection2d(t_fdf_table *src,
 	t_2d_float (*projection)(float x, float y, float z), float scale);
 
 /**
@@ -304,7 +304,7 @@ typedef struct s_render_style
  * @param fdf_render style used to render the FDF object.
  * @param background_color the background color of the window scene.
  */
-void	view_fdf(t_fdf *fdf, t_fdf_render fdf_render,
+void	view_fdf(t_fdf_projection2d *fdf, t_fdf_render fdf_render,
 			int32_t background_color);
 
 /* ************************************************************************** */

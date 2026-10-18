@@ -2,8 +2,8 @@
 
 int	main(void)
 {
-	t_table_fdf	table_a;
-	t_table_fdf	table_b;
+	t_fdf_table	table_a;
+	t_fdf_table	table_b;
 	size_t		half_dim;
 	int			output;
 	char		*dst_dir = "test/paint/convolve/fdf_k/";
@@ -42,12 +42,12 @@ int	main(void)
 	while (i < length)
 	{
 		output = open_dir_file(arr[i], dst_dir, E_WRITE);
-		table_a = open_table_fdf_file(arr[i], src_dir,
+		table_a = open_fdf_table_file(arr[i], src_dir,
 				parse_decimal_bw, false);
 		table_b = convolve_fdf(&table_a, NULL, half_dim);
-		write_table_fdf(output, &table_b, 1, HEIGHT_ONLY);
-		destroy_table_fdf(&table_a);
-		destroy_table_fdf(&table_b);
+		write_fdf_table(output, &table_b, 1, HEIGHT_ONLY);
+		destroy_fdf_table(&table_a);
+		destroy_fdf_table(&table_b);
 		i += 1;
 	}
 	return (0);

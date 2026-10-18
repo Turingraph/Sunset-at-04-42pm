@@ -58,7 +58,7 @@ size_t	collatz_max_point(size_t x)
  * @return true if the scaled maximum Collatz point is odd,
  * false otherwise.
  */
-bool	is_collatz_odd_length(const t_table_fdf *dst, size_t index)
+bool	is_collatz_odd_length(const t_fdf_table *dst, size_t index)
 {
 	int			input;
 	size_t		max;
@@ -66,7 +66,7 @@ bool	is_collatz_odd_length(const t_table_fdf *dst, size_t index)
 
 	if (dst == NULL || check_multiplication_overflow(dst->col, dst->row) == false || index >= dst->col * dst->row)
 		return (false);
-	y = get_table_fdf_coordinate(dst, index, 1.0);
+	y = get_fdf_table_coordinate(dst, index, 1.0);
 	input = f_round(complex_magnitude(y, 0));
 	if (input < 0)
 		input *= -1;
@@ -91,7 +91,7 @@ bool	is_collatz_odd_length(const t_table_fdf *dst, size_t index)
  * @return true if the scaled maximum Collatz point is odd,
  * false otherwise.
  */
-bool	is_collatz_odd_product(const t_table_fdf *dst, size_t index)
+bool	is_collatz_odd_product(const t_fdf_table *dst, size_t index)
 {
 	t_2d_float	y;
 	int			input;
@@ -99,7 +99,7 @@ bool	is_collatz_odd_product(const t_table_fdf *dst, size_t index)
 
 	if (dst == NULL || check_multiplication_overflow(dst->col, dst->row) == false || index >= dst->col * dst->row)
 		return (false);
-	y = get_table_fdf_coordinate(dst, index, 1.0);
+	y = get_fdf_table_coordinate(dst, index, 1.0);
 	input = f_round(y.x) * f_round(y.y);
 	if (input < 0)
 		input *= -1;
@@ -124,7 +124,7 @@ bool	is_collatz_odd_product(const t_table_fdf *dst, size_t index)
  * @return true if the scaled maximum Collatz point is odd,
  * false otherwise.
  */
-bool	is_collatz_odd_andmod(const t_table_fdf *dst, size_t index)
+bool	is_collatz_odd_andmod(const t_fdf_table *dst, size_t index)
 {
 	t_2d_float	y;
 	size_t		max_x;
@@ -132,7 +132,7 @@ bool	is_collatz_odd_andmod(const t_table_fdf *dst, size_t index)
 
 	if (dst == NULL || check_multiplication_overflow(dst->col, dst->row) == false || index >= dst->col * dst->row)
 		return (false);
-	y = get_table_fdf_coordinate(dst, index, 1.0);
+	y = get_fdf_table_coordinate(dst, index, 1.0);
 	if (y.x < 0)
 		y.x *= -1;
 	if (y.y < 0)

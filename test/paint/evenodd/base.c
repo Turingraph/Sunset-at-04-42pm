@@ -22,19 +22,19 @@ t_gradient	init_deep_wood()
 
 int	main(void)
 {
-	t_table_fdf		table_base;
-	t_fdf			output;
+	t_fdf_table		table_base;
+	t_fdf_projection2d			output;
 	t_fdf_render	style;
 
-	table_base = init_table_fdf(161, 161, true);
+	table_base = create_fdf_table(161, 161, true);
 	set_cells_color(&table_base, 10, HEIGHT, is_andmod_sin);
 	style.thickness = 2;
 	style.shape_2d = E_RECTANGLE;
 	color_cells_gradient(&table_base, init_deep_wood(), true);
-	output = init_fdf(&table_base, NULL, 0.6);
+	output = create_fdf_projection2d(&table_base, NULL, 0.6);
 	view_fdf(&output, style, int32_from_rgba(0, 0, 0, 255));
-	destroy_table_fdf(&table_base);
-	destroy_fdf(&output);
+	destroy_fdf_table(&table_base);
+	destroy_fdf_projection2d(&output);
 	return (0);
 }
 

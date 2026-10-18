@@ -43,7 +43,7 @@ t_gradient	init_gradient_2()
 
 int	main(void)
 {
-	t_table_fdf	table_a;
+	t_fdf_table	table_a;
 	int			output;
 	char		*dst = "test/paint/paint/input_ascii/";
 	char		*src = "corpus/ascii/";
@@ -75,13 +75,13 @@ int	main(void)
 	while (i < length)
 	{
 		output = open_dir_file(arr[i], dst, E_WRITE);
-		table_a = open_table_fdf_file(arr[i], src,
+		table_a = open_fdf_table_file(arr[i], src,
 				parse_ascii_chungaloider, true);
         color_cells_gradient(&table_a, init_gradient(), true);
         color_cells_gradient(&table_a, init_gradient_2(), true);
 		scale_multiplication_fdf(&table_a, 1.0 / 3.0, RED);
 		write_table_ascii_standard(output, &table_a, RED);
-		destroy_table_fdf(&table_a);
+		destroy_fdf_table(&table_a);
 		i += 1;
 	}
 	return (0);

@@ -17,13 +17,13 @@
 t_ink32	get_hook_ink32(t_2d_hook *hook, bool is_draw, t_2d_int ixiy)
 {
 	t_ink32		ink;
-	t_fdf		*fdf;
+	t_fdf_projection2d		*fdf;
 
 	fdf = hook->fdf;
 	ink.thickness = hook->artstyle.thickness;
 	ink.color = hook->background_color;
 	if (is_draw == true)
-		ink.color = get_fdf_rgba_int32((const t_fdf *)fdf,
+		ink.color = get_fdf_rgba_int32((const t_fdf_projection2d *)fdf,
 				ixiy.y * fdf->col + ixiy.x);
 	else
 		ink.color = hook->background_color;

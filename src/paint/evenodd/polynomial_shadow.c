@@ -13,7 +13,7 @@
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool	is_oddlength_x2shadow(const t_table_fdf *dst, size_t index)
+bool	is_oddlength_x2shadow(const t_fdf_table *dst, size_t index)
 {
 	return (is_oddlength_func(dst, index, complex_square, 0.1));
 }
@@ -31,7 +31,7 @@ bool	is_oddlength_x2shadow(const t_table_fdf *dst, size_t index)
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool	is_oddlength_x3shadow(const t_table_fdf *dst, size_t index)
+bool	is_oddlength_x3shadow(const t_fdf_table *dst, size_t index)
 {
 	return (is_oddlength_func(dst, index, complex_cube, 0.05));
 }
@@ -48,7 +48,7 @@ bool	is_oddlength_x3shadow(const t_table_fdf *dst, size_t index)
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool	is_andmod_x2shadow(const t_table_fdf *dst, size_t index)
+bool	is_andmod_x2shadow(const t_fdf_table *dst, size_t index)
 {
 	return (is_andmod_func(dst, index, complex_square, 0.03));
 }
@@ -65,7 +65,7 @@ bool	is_andmod_x2shadow(const t_table_fdf *dst, size_t index)
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool	is_andmod_x3shadow(const t_table_fdf *dst, size_t index)
+bool	is_andmod_x3shadow(const t_fdf_table *dst, size_t index)
 {
 	return (is_andmod_func(dst, index, complex_cube, 0.03));
 }

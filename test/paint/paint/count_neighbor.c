@@ -1,13 +1,13 @@
 #include"paint.h"
 
-int	conway_test(const t_table_fdf *dst, size_t index)
+int	conway_test(const t_fdf_table *dst, size_t index)
 {
 	if (dst->arr[index] <= 0)
 		return (-1 * (count_neighbor_fdf(dst, index, 0) + 1));
 	return ((count_neighbor_fdf(dst, index, 0) + 1));
 }
 
-int	cell_metric_positive(const t_table_fdf *dst, size_t index)
+int	cell_metric_positive(const t_fdf_table *dst, size_t index)
 {
 	if (dst->arr[index] <= 0)
 		return (-1 * dst->arr[index]);
@@ -53,10 +53,10 @@ int	main(void)
 	size_t	y = 0;
 	size_t	max_score = 3;
 	char	*input_dir = "test/input/table/01_ascii_to_fdf/";
-	t_table_fdf	table;
+	t_fdf_table	table;
 
 	// a
-	table = open_table_fdf_file(file_a, input_dir, parse_decimal_bw, false);
+	table = open_fdf_table_file(file_a, input_dir, parse_decimal_bw, false);
 	paint_space(&table, HEIGHT, conway_test);
 	paint_space(&table, HEIGHT, cell_metric_positive);
 	scale_addition_fdf(&table, -1, HEIGHT);
@@ -66,11 +66,11 @@ int	main(void)
 		y += 1;
 	else
 		write(1, "a false\n", 8);
-	// write_table_fdf(1, &table, 1, HEIGHT_ONLY);
-	destroy_table_fdf(&table);
+	// write_fdf_table(1, &table, 1, HEIGHT_ONLY);
+	destroy_fdf_table(&table);
 
 	// b
-	table = open_table_fdf_file(file_b, input_dir, parse_decimal_bw, false);
+	table = open_fdf_table_file(file_b, input_dir, parse_decimal_bw, false);
 	paint_space(&table, HEIGHT, conway_test);
 	paint_space(&table, HEIGHT, cell_metric_positive);
 	scale_addition_fdf(&table, -1, HEIGHT);
@@ -80,10 +80,10 @@ int	main(void)
 		y += 1;
 	else
 		write(1, "b false\n", 8);
-	destroy_table_fdf(&table);
+	destroy_fdf_table(&table);
 
 	// c
-	table = open_table_fdf_file(file_c, input_dir, parse_decimal_bw, false);
+	table = open_fdf_table_file(file_c, input_dir, parse_decimal_bw, false);
 	paint_space(&table, HEIGHT, conway_test);
 	paint_space(&table, HEIGHT, cell_metric_positive);
 	scale_addition_fdf(&table, -1, HEIGHT);
@@ -93,7 +93,7 @@ int	main(void)
 		y += 1;
 	else
 		write(1, "c false\n", 8);
-	destroy_table_fdf(&table);
+	destroy_fdf_table(&table);
 
 	write_score(y, max_score);
 	return (0);

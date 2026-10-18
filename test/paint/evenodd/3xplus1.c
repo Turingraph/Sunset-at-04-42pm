@@ -22,24 +22,24 @@ t_gradient	init_deep_wood()
 
 int	main(void)
 {
-	t_table_fdf		table_base;
-	t_table_fdf		table;
-	t_fdf			output;
+	t_fdf_table		table_base;
+	t_fdf_table		table;
+	t_fdf_projection2d			output;
 	t_fdf_render	style;
 
-	table = init_table_fdf(100, 100, true);
-	table_base = init_table_fdf(100, 100, false);
+	table = create_fdf_table(100, 100, true);
+	table_base = create_fdf_table(100, 100, false);
 	paint_space(&table, HEIGHT, cell_metric_pythagoras);
 	set_cells_color(&table_base, 1, HEIGHT, is_binary_search_andmod);
-	table_fdf_hadamard(&table, &table_base, HEIGHT);
+	fdf_table_hadamard(&table, &table_base, HEIGHT);
 	style.thickness = 2;
 	style.shape_2d = E_RECTANGLE;
 	color_cells_gradient(&table, init_deep_wood(), true);
-	output = init_fdf(&table, NULL, 0.6);
+	output = create_fdf_projection2d(&table, NULL, 0.6);
 	view_fdf(&output, style, int32_from_rgba(0, 0, 0, 255));
-	destroy_table_fdf(&table);
-	destroy_table_fdf(&table_base);
-	destroy_fdf(&output);
+	destroy_fdf_table(&table);
+	destroy_fdf_table(&table_base);
+	destroy_fdf_projection2d(&output);
 	return (0);
 }
 

@@ -55,27 +55,27 @@ t_gradient	init_deep_sea()
 
 int	main(void)
 {
-	t_table_fdf		table_base;
-	t_table_fdf		table;
+	t_fdf_table		table_base;
+	t_fdf_table		table;
 	t_fdf			output;
 	t_artstyle32	style;
 
-	table = init_table_fdf(100, 100, true);
-	table_base = init_table_fdf(100, 100, false);
+	table = create_fdf_table(100, 100, true);
+	table_base = create_fdf_table(100, 100, false);
 	setcells_pythagorus_length(&table);
 	set_cells_color(&table_base, 30, HEIGHT, is_oddlength_cube);
-	table_fdf_hadamard(&table, &table_base, HEIGHT);
+	fdf_table_hadamard(&table, &table_base, HEIGHT);
 	scale_relu_fdf(&table, 201, 2000, 0);
 	style.background_color = rgba_to_int32(0, 0, 0, 255);
 	style.line_thickness = 2;
 	style.artists = E_EULER;
 	color_cells_gradient(&table, init_deep_sea(), true);
 	scale_multiplication_fdf(&table, 1.0 / 120.0, HEIGHT);
-	output = init_fdf(&table, projection_isometric, 0.6);
+	output = create_fdf_projection2d(&table, projection_isometric, 0.6);
 	view_fdf(&output, style);
-	destroy_table_fdf(&table);
-	destroy_table_fdf(&table_base);
-	destroy_fdf(&output);
+	destroy_fdf_table(&table);
+	destroy_fdf_table(&table_base);
+	destroy_fdf_projection2d(&output);
 	return (0);
 }
 ```
@@ -159,26 +159,26 @@ bool	is_fdf_name(const char *str)
 
 int	main(int len, char **str)
 {
-	t_table_fdf		table;
+	t_fdf_table		table;
 	t_fdf			output;
 	t_fdf_render	style;
 
 	if (len < 2 || is_fdf_name(str[1]) == false)
 		return (0);
-	table = open_table_fdf_file(str[1], NULL, parse_decimal_rgba, true);
+	table = open_fdf_table_file(str[1], NULL, parse_decimal_rgba, true);
 	if (table.col * table.row == 0)
 	{
 		write(1, "File might be invalid and/or Malloc returns NULL.\n", 51);
-		destroy_table_fdf(&table);
+		destroy_fdf_table(&table);
 		return (0);
 	}
 	style.thickness = 1;
 	style.shape_2d = E_LINE;
 	color_cells_gradient(&table, init_gradient(), true);
-	output = init_fdf(&table, projection_isometric, 0.5);
+	output = create_fdf_projection2d(&table, projection_isometric, 0.5);
 	view_fdf(&output, style, rgba_to_int32(255, 255, 255, 255));
-	destroy_table_fdf(&table);
-	destroy_fdf(&output);
+	destroy_fdf_table(&table);
+	destroy_fdf_projection2d(&output);
 	return (0);
 }
 
@@ -268,16 +268,16 @@ t_gradient	init_ztmy_studyme()
 
 int	main(int len, char **str)
 {
-	t_table_fdf		table;
+	t_fdf_table		table;
 	t_fdf			output;
 	t_fdf_render	style;
 
 	if (len < 2)
 		return (0);
-	table = open_table_fdf_file(str[1], NULL, parse_ascii_cheche01, true);
+	table = open_fdf_table_file(str[1], NULL, parse_ascii_cheche01, true);
 	if (table.col * table.row == 0)
 	{
-		destroy_table_fdf(&table);
+		destroy_fdf_table(&table);
 		return (0);
 	}
 	style.thickness = 3;
@@ -286,10 +286,10 @@ int	main(int len, char **str)
 	color_cells_gradient(&table, init_ztmy_timeleft(), true);
 	scale_multiplication_fdf(&table, 1.0 / 3.0, HEIGHT);
 	color_cells_gradient(&table, init_white_noise(), true);
-	output = init_fdf(&table, projection_isometric, 1.0);
+	output = create_fdf_projection2d(&table, projection_isometric, 1.0);
 	view_fdf(&output, style, rgba_to_int32(0, 0, 0, 255));
-	destroy_table_fdf(&table);
-	destroy_fdf(&output);
+	destroy_fdf_table(&table);
+	destroy_fdf_projection2d(&output);
 	return (0);
 }
 
@@ -309,8 +309,8 @@ Additional features including
 4.	Operating convolution on 3D FDF wireframe's cell.
 5.	User have 2 input parser mode for FDF files and Txt files.
 6.	User can choose parallel projection, including orthogonal projection, isometric projection, cabinet projection etc., background color, line width and other rendering style.
-7.	User can manipulate t_table_fdf table with table pair addition, hadamard product, ReLU operation etc.
-8.	Suppose a few other features that focus on manipulating `t_table_fdf` data and display accordingly. see `doc/user_manual/` for more details.
+7.	User can manipulate t_fdf_table table with table pair addition, hadamard product, ReLU operation etc.
+8.	Suppose a few other features that focus on manipulating `t_fdf_table` data and display accordingly. see `doc/user_manual/` for more details.
 
 ## Project Status
 

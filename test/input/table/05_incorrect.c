@@ -5,7 +5,7 @@ int	main(void)
 	size_t			i;
 	size_t			score;
 	size_t			max_score = 13;
-	t_table_fdf     table;
+	t_fdf_table     table;
 	char			*arr[] = {
 		"10-2.fdf",
 		"10-70.fdf",
@@ -27,8 +27,8 @@ int	main(void)
 	i = 0;
 	while (i < max_score)
 	{
-		table = open_table_fdf_file(arr[i], src_dir, parse_decimal_bw, false);
-		write_table_fdf(1, &table, 1, HEIGHT_ONLY);
+		table = open_fdf_table_file(arr[i], src_dir, parse_decimal_bw, false);
+		write_fdf_table(1, &table, 1, HEIGHT_ONLY);
 		if (table.col * table.row == 0)
 			score += 1;
 		else
@@ -37,7 +37,7 @@ int	main(void)
 			write(1, arr[i], f_strlen(arr[i]));
 			write(1, "\n", 1);
 		}
-		destroy_table_fdf(&table);
+		destroy_fdf_table(&table);
 		i += 1;
 	}
 	write_score(score, max_score);

@@ -14,7 +14,7 @@
 
 // time : O(1)
 // space: O(1)
-static int	clamped(const t_table_fdf *src, int ix, int iy)
+static int	clamped(const t_fdf_table *src, int ix, int iy)
 {
 	if (ix < 0)
 		ix = 0;
@@ -39,7 +39,7 @@ static size_t	get_convolve_index(size_t dim, size_t col, int i, int j)
 
 // time : O(n^2)
 // space: O(n^2)
-static t_matrix	init_src_kernel_int(const t_table_fdf *src,
+static t_matrix	init_src_kernel_int(const t_fdf_table *src,
 	size_t dim, int ix, int iy)
 {
 	t_matrix	dst;
@@ -71,7 +71,7 @@ static t_matrix	init_src_kernel_int(const t_table_fdf *src,
 
 // time : O(m^2)
 // space: O(m^2)
-static int	convolve_unit(const t_table_fdf *src, size_t index,
+static int	convolve_unit(const t_fdf_table *src, size_t index,
 	float *kernel, size_t dim)
 {
 	t_matrix	src_kernel;
@@ -120,24 +120,24 @@ static int	convolve_unit(const t_table_fdf *src, size_t index,
  * @see 3B1B convolution video https://youtu.be/KuXjwB4LzSA?si=9DNIvf9SS2SX4jET
  * for more details
  */
-t_table_fdf	convolve_fdf(const t_table_fdf *src, float *kernel,
+t_fdf_table	convolve_fdf(const t_fdf_table *src, float *kernel,
 	size_t dim)
 {
-	t_table_fdf	dst;
+	t_fdf_table	dst;
 	size_t		i;
 
 	if (src == NULL || src->arr == NULL
 		|| 2147483647 <= dim
 		|| check_multiplication_overflow(src->col, src->row) == false
 		|| check_multiplication_overflow(dim, dim) == false)
-		return (init_table_fdf(0, 0, false));
+		return (create_fdf_table(0, 0, false));
 	if (dim % 2 == 0)
 		dim += 1;
 	if (dim < 3)
 		dim = 3;
 	dst = scale_dimension_fdf(src, 1, 1);
 	if (dst.arr == NULL)
-		return (init_table_fdf(0, 0, false));
+		return (create_fdf_table(0, 0, false));
 	i = 0;
 	while (i < src->col * src->row)
 	{

@@ -32,7 +32,7 @@ static void	draw_kusama_fdf_unit(t_2d_hook *hook,
 void	draw_kusama_fdf(t_2d_hook *hook, bool is_draw)
 {
 	t_2d_int	ixiy;
-	t_fdf		src;
+	t_fdf_projection2d		src;
 
 	src = *hook->fdf;
 	ixiy.x = 0;

@@ -2,9 +2,9 @@
 
 int	main(void)
 {
-	t_table_fdf	table_a;
-	t_table_fdf	table_b;
-	t_table_fdf	table_c;
+	t_fdf_table	table_a;
+	t_fdf_table	table_b;
+	t_fdf_table	table_c;
 	size_t		ker_dim;
 	int			output_fd;
 	char		*input_dir = "test/paint/convolve/suisei/figlet.txt";
@@ -17,7 +17,7 @@ int	main(void)
 	write(1, ">>> ", 4);
 	ft_putnbr_fd((int)(f_sum(ker.arr, 25) * 10000), 1, "0123456789", 1);
 	write(1, "\n", 1);
-	table_a = open_table_fdf_file(input_dir, NULL,
+	table_a = open_fdf_table_file(input_dir, NULL,
 			parse_ascii_cheche01, false);
 	scale_multiplication_fdf(&table_a, 10, HEIGHT);
 	table_b = scale_dimension_fdf(&table_a, 3, 3);
@@ -32,9 +32,9 @@ int	main(void)
 	close(output_fd);
 
 	free(ker.arr);
-	destroy_table_fdf(&table_a);
-	destroy_table_fdf(&table_b);
-	destroy_table_fdf(&table_c);
+	destroy_fdf_table(&table_a);
+	destroy_fdf_table(&table_b);
+	destroy_fdf_table(&table_c);
 	return (0);
 }
 

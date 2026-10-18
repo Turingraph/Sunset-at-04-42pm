@@ -18,7 +18,7 @@
 /* ************************************************************************** */
 
 /**
- * Identifies the data component stored in a t_table_fdf array.
+ * Identifies the data component stored in a t_fdf_table array.
  *
  * - RED selects the red color component.
  *
@@ -57,7 +57,7 @@ typedef enum t_fdf_channel
  * @param b array containing the blue color component of each cell
  * @param a array containing the alpha color component of each cell
  */
-typedef struct t_table_fdf
+typedef struct t_fdf_table
 {
 	size_t			row;
 	size_t			col;
@@ -66,7 +66,7 @@ typedef struct t_table_fdf
 	unsigned char	*g;
 	unsigned char	*b;
 	unsigned char	*a;
-}	t_table_fdf;
+}	t_fdf_table;
 
 /**
  * Sometimes t_2d_float is used for describing 2D xy position.
@@ -117,13 +117,13 @@ t_matrix	outer_product_matrix(const float *vec_v,
 /* ************************************************************************** */
 
 /**
- * Adding some number, such that every number in t_table_fdf become positive.
+ * Adding some number, such that every number in t_fdf_table become positive.
  *
  * time/space: O(n) / O(1)
  * 
- * @param dst the input t_table_fdf array
+ * @param dst the input t_fdf_table array
  */
-void			scale_positive_fdf(t_table_fdf *dst);
+void			scale_positive_fdf(t_fdf_table *dst);
 
 /**
  * Making all number that in an interval between minimum target number
@@ -131,12 +131,12 @@ void			scale_positive_fdf(t_table_fdf *dst);
  *
  * time/space: O(n) / O(1)
  * 
- * @param dst the input t_table_fdf array
+ * @param dst the input t_fdf_table array
  * @param min the minimum target number
  * @param max the maximum target number
  * @param expect the expected number
  */
-void			scale_relu_fdf(t_table_fdf *dst, int min, int max, int expect);
+void			scale_relu_fdf(t_fdf_table *dst, int min, int max, int expect);
 
 /**
  * Scale an RGBA channel by duplicating its rows and columns.
@@ -152,7 +152,7 @@ void			scale_relu_fdf(t_table_fdf *dst, int min, int max, int expect);
  * @param rgba_type RGBA channel to scale
  * @return scaled channel array, or NULL on failure
  */
-unsigned char	*scale_dimension_fdf_rgba(const t_table_fdf *src,
+unsigned char	*scale_dimension_fdf_rgba(const t_fdf_table *src,
 	size_t scale_row, size_t scale_col, t_fdf_channel rgba_type);
 
 /**
@@ -165,7 +165,7 @@ unsigned char	*scale_dimension_fdf_rgba(const t_table_fdf *src,
  * @param scale_col column scaling factor
  * @return scaled height integer array, or NULL on failure
  */
-int	*scale_dimension_fdf_int(const t_table_fdf *src,
+int	*scale_dimension_fdf_int(const t_fdf_table *src,
 	size_t scale_row, size_t scale_col);
 
 /**
@@ -180,7 +180,7 @@ int	*scale_dimension_fdf_int(const t_table_fdf *src,
  * @param scale_col column scaling factor
  * @return scaled FDF table, or an empty table on failure
  */
-t_table_fdf		scale_dimension_fdf(const t_table_fdf *src,
+t_fdf_table		scale_dimension_fdf(const t_fdf_table *src,
 					size_t scale_row, size_t scale_col);
 
 /**
@@ -192,7 +192,7 @@ t_table_fdf		scale_dimension_fdf(const t_table_fdf *src,
  * @param scale multiplication factor
  * @param channel channel to modify
  */
-void			scale_multiplication_fdf(t_table_fdf *dst,
+void			scale_multiplication_fdf(t_fdf_table *dst,
 					float scale, t_fdf_channel channel);
 
 /**
@@ -204,7 +204,7 @@ void			scale_multiplication_fdf(t_table_fdf *dst,
  * @param input value to add
  * @param channel channel to modify
  */
-void			scale_addition_fdf(t_table_fdf *dst,
+void			scale_addition_fdf(t_fdf_table *dst,
 					int input, t_fdf_channel channel);
 
 /**
@@ -217,8 +217,8 @@ void			scale_addition_fdf(t_table_fdf *dst,
  * @param src source FDF table
  * @param channel channel to add
  */
-void			table_fdf_addition(t_table_fdf *dst,
-					const t_table_fdf *src, t_fdf_channel channel);
+void			fdf_table_addition(t_fdf_table *dst,
+					const t_fdf_table *src, t_fdf_channel channel);
 
 /**
  * Multiply the selected channel of dst by src element by element.
@@ -230,8 +230,8 @@ void			table_fdf_addition(t_table_fdf *dst,
  * @param src source FDF table
  * @param channel channel to multiply
  */
-void			table_fdf_hadamard(t_table_fdf *dst,
-					const t_table_fdf *src, t_fdf_channel channel);
+void			fdf_table_hadamard(t_fdf_table *dst,
+					const t_fdf_table *src, t_fdf_channel channel);
 
 /**
  * Copy the channel from source FDF table to the dst FDF table.
@@ -243,8 +243,8 @@ void			table_fdf_hadamard(t_table_fdf *dst,
  * @param src source FDF table
  * @param channel channel to copy
  */
-void			copy_table_fdf_channel(t_table_fdf *dst,
-					const t_table_fdf *src, t_fdf_channel channel);
+void			copy_fdf_table_channel(t_fdf_table *dst,
+					const t_fdf_table *src, t_fdf_channel channel);
 
 
 /* ************************************************************************** */
@@ -272,7 +272,7 @@ void			copy_table_fdf_channel(t_table_fdf *dst,
  * @see 3B1B convolution video https://youtu.be/KuXjwB4LzSA?si=9DNIvf9SS2SX4jET
  * for more details
  */
-t_table_fdf	convolve_fdf(const t_table_fdf *src, float *kernel,
+t_fdf_table	convolve_fdf(const t_fdf_table *src, float *kernel,
 				size_t dim);
 
 /**
@@ -410,8 +410,8 @@ typedef struct t_gradient
  * @param is_filtered_cell optional callback used to select which cells
  * are modified. If NULL, every cell is modified.
  */
-void		set_cells_color(t_table_fdf *dst, int color, t_fdf_channel channel,
-				bool (*is_filtered_cell)(const t_table_fdf *dst, size_t index));
+void		set_cells_color(t_fdf_table *dst, int color, t_fdf_channel channel,
+				bool (*is_filtered_cell)(const t_fdf_table *dst, size_t index));
 
 /**
  * Apply a color gradient to cells within an input range.
@@ -422,7 +422,7 @@ void		set_cells_color(t_table_fdf *dst, int color, t_fdf_channel channel,
  * @param gradient_input gradient definition
  * @param is_overwrite replace existing colors instead of blending
  */
-void		color_cells_gradient(t_table_fdf *dst,
+void		color_cells_gradient(t_fdf_table *dst,
 				t_gradient gradient_input, bool is_overwrite);
 
 /**
@@ -437,7 +437,7 @@ void		color_cells_gradient(t_table_fdf *dst,
  * @param channel FDF channel to paint
  * @param cell_metric optional function to calculate the value of each cell
  */
-void	paint_space(t_table_fdf *dst, t_fdf_channel channel,
-	int (*cell_metric)(const t_table_fdf *dst, size_t index));
+void	paint_space(t_fdf_table *dst, t_fdf_channel channel,
+	int (*cell_metric)(const t_fdf_table *dst, size_t index));
 
 #endif

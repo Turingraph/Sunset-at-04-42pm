@@ -39,7 +39,7 @@ static int	gradient_smooth(t_fdf_channel rgba_type,
 
 // time : O(1)
 // space: O(1)
-static int	get_gradient_input(const t_table_fdf *src,
+static int	get_gradient_input(const t_fdf_table *src,
 	t_gradient_channel mode, size_t index)
 {
 	if (src == NULL)
@@ -82,13 +82,13 @@ static int	update_cell_color(int alpha, bool is_overwrite,
 
 // time : O(1)
 // space: O(1)
-static void	color_cells_gradient_unit(t_table_fdf *dst,
+static void	color_cells_gradient_unit(t_fdf_table *dst,
 	t_gradient gradient_input, bool is_overwrite, size_t i)
 {
 	int				threshold;
 	unsigned char	alpha;
 
-	threshold = get_gradient_input((const t_table_fdf *)dst,
+	threshold = get_gradient_input((const t_fdf_table *)dst,
 			gradient_input.cell_channel, i);
 	alpha = 0;
 	if (dst->a != NULL && is_overwrite == false)
@@ -122,7 +122,7 @@ static void	color_cells_gradient_unit(t_table_fdf *dst,
  * @param gradient_input gradient definition
  * @param is_overwrite replace existing colors instead of blending
  */
-void	color_cells_gradient(t_table_fdf *dst,
+void	color_cells_gradient(t_fdf_table *dst,
 	t_gradient gradient_input, bool is_overwrite)
 {
 	size_t	i;

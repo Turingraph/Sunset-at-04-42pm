@@ -16,7 +16,7 @@
  * @return true if the cell is a positive value located on the table
  * boundary or adjacent to an empty cell, false otherwise.
  */
-bool	is_boundary_fdf(const t_table_fdf *dst, size_t index, int threshold)
+bool	is_boundary_fdf(const t_fdf_table *dst, size_t index, int threshold)
 {
 	if (dst == NULL || dst->arr == NULL
 		|| check_multiplication_overflow(dst->col, dst->row) == false
@@ -61,7 +61,7 @@ bool	is_boundary_fdf(const t_table_fdf *dst, size_t index, int threshold)
  * @return The number of valid neighboring cells whose values exceed the
  * threshold, ranging from 0 to 8. Returns 0 if the FDF table is invalid.
  */
-int	count_neighbor_fdf(const t_table_fdf *dst, size_t index, int threshold)
+int	count_neighbor_fdf(const t_fdf_table *dst, size_t index, int threshold)
 {
 	int	y;
 

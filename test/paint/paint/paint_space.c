@@ -1,8 +1,8 @@
 #include"paint.h"
 
 static void	write_with_paint_space(float scale, const char *file_name,
-	t_table_fdf *table,
-	int (*cell_metric)(const t_table_fdf *dst, size_t index))
+	t_fdf_table *table,
+	int (*cell_metric)(const t_fdf_table *dst, size_t index))
 {
 	int	output;
 
@@ -24,9 +24,9 @@ static void	write_with_paint_space(float scale, const char *file_name,
 
 int	main(void)
 {
-	t_table_fdf		table;
+	t_fdf_table		table;
 
-	table = init_table_fdf(101, 101, false);
+	table = create_fdf_table(101, 101, false);
 	if (table.arr == NULL)
 		return (0);
 	write_with_paint_space(0, "addsub.txt", &table, cell_metric_addsub);
@@ -54,7 +54,7 @@ int	main(void)
 	write_with_paint_space(0, "addsub_3d.txt", &table, cell_metric_addsub_3d);
 	write_with_paint_space(0, "x_plus_y_square.txt", &table, cell_metric_x_plus_y_square);
 	write_with_paint_space(0, "min_xyz.txt", &table, cell_metric_min_xyz);
-	destroy_table_fdf(&table);
+	destroy_fdf_table(&table);
 	return (0);
 }
 

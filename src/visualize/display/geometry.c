@@ -71,7 +71,7 @@ bool	is_circle_in_screen(t_2d_camera camera,
  * @param next selects the current point or the next point on an axis
  * @return transformed coordinate of the selected FDF point
  */
-float	get_fdf_point(t_fdf *fdf, t_2d_int ixiy, size_t dim, char next)
+float	get_fdf_point(t_fdf_projection2d *fdf, t_2d_int ixiy, size_t dim, char next)
 {
 	if (is_fdf_valid(fdf) == false)
 		return (0.0);

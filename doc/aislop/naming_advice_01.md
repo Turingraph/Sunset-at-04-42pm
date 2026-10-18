@@ -22,20 +22,20 @@ That matters because I wouldn't design your naming conventions around a conventi
 The main README provides a useful cross-section of the API:
 
 ```
-table = init_table_fdf(100, 100, true);
+table = create_fdf_table(100, 100, true);
 setcells_pythagorus_length(&table);
 set_cells_color(&table_base, 30, HEIGHT, is_oddlength_cube);
-table_fdf_hadamard(&table, &table_base, HEIGHT);
+fdf_table_hadamard(&table, &table_base, HEIGHT);
 scale_relu_fdf(&table, 201, 2000, 0);
 
 color_cells_gradient(&table, init_deep_sea(), true);
 scale_multiplication_fdf(&table, 1.0 / 120.0, HEIGHT);
 
-output = init_fdf(&table, projection_isometric, 0.6);
+output = create_fdf_projection2d(&table, projection_isometric, 0.6);
 view_fdf(&output, style);
 
-destroy_table_fdf(&table);
-destroy_fdf(&output);
+destroy_fdf_table(&table);
+destroy_fdf_projection2d(&output);
 ```
 
 Source: [Sunset-at-04-42pm README](<https://github.com/Turingraph/Sunset-at-04-42pm>). 【turn1view0】
@@ -51,7 +51,7 @@ Consider these names:
 - `color_cells_gradient`
 - `scale_relu_fdf`
 - `scale_multiplication_fdf`
-- `table_fdf_hadamard`
+- `fdf_table_hadamard`
 
 Some use `set`, some use `color`, and others use `scale` or a mathematical term. Their word order also varies.
 
@@ -74,7 +74,7 @@ All three are plausible. A well-designed API should make the intended pattern ob
 Consider:
 
 ```
-table_fdf_hadamard(...)
+fdf_table_hadamard(...)
 scale_relu_fdf(...)
 scale_multiplication_fdf(...)
 ```
@@ -83,7 +83,7 @@ The Hadamard product is a mathematical operation. ReLU is a nonlinear activation
 
 These operations may all be meaningful for your data structure, but they don't necessarily belong to the same semantic category.
 
-For example, `scale_multiplication_fdf()` sounds like multiplication is a particular kind of scaling, while `table_fdf_hadamard()` puts the data structure before the mathematical operation.
+For example, `scale_multiplication_fdf()` sounds like multiplication is a particular kind of scaling, while `fdf_table_hadamard()` puts the data structure before the mathematical operation.
 
 I'd choose a consistent naming strategy based on what each operation actually does.
 
@@ -92,11 +92,11 @@ I'd choose a consistent naming strategy based on what each operation actually do
 Your examples use names such as:
 
 ```
-init_table_fdf(...)
-init_fdf(...)
+create_fdf_table(...)
+create_fdf_projection2d(...)
 view_fdf(...)
-destroy_table_fdf(...)
-destroy_fdf(...)
+destroy_fdf_table(...)
+destroy_fdf_projection2d(...)
 ```
 
 These are recognizable, but they raise a design question: what exactly distinguishes _initializing_ an object from _creating_ one, and what distinguishes _viewing_ an object from _rendering_ it?
@@ -131,7 +131,7 @@ I'd use the following rules as a starting point.
 | Local variables | `snake_case` | `surface_width` |
 | Boolean predicates | `is_`, `has_`, or `can_` | `surface_is_empty()` |
 
-For a library that already uses `t_table_fdf`, `t_fdf`, and related names, I wouldn't immediately discard the existing type convention. Changing every type name just to satisfy a stylistic preference would create unnecessary churn.
+For a library that already uses `t_fdf_table`, `t_fdf`, and related names, I wouldn't immediately discard the existing type convention. Changing every type name just to satisfy a stylistic preference would create unnecessary churn.
 
 Instead, I'd establish a consistent public naming scheme for new APIs and gradually migrate the old ones.
 
@@ -182,7 +182,7 @@ Pick one vocabulary and one grammatical pattern.
 Suppose you have:
 
 ```
-table_fdf_hadamard(...)
+fdf_table_hadamard(...)
 scale_multiplication_fdf(...)
 ```
 
@@ -355,10 +355,10 @@ It contains operations such as:
 
 ```
 paint_space(&table, HEIGHT, cell_metric_max_xy);
-table_fdf_hadamard(&table, &table_base, HEIGHT);
+fdf_table_hadamard(&table, &table_base, HEIGHT);
 color_cells_gradient(&table, init_floor(), true);
 scale_multiplication_fdf(&table, 1.0 / 120.0, HEIGHT);
-output = init_fdf(&table, NULL, 0.6);
+output = create_fdf_projection2d(&table, NULL, 0.6);
 view_fdf(&output, style, background_color);
 ```
 
@@ -537,13 +537,13 @@ This is one of the most consequential choices for a C API because it affects res
 Your examples currently follow a pattern similar to:
 
 ```
-t_table_fdf table;
+t_fdf_table table;
 
-table = init_table_fdf(100, 100, true);
+table = create_fdf_table(100, 100, true);
 
 /* Use table. */
 
-destroy_table_fdf(&table);
+destroy_fdf_table(&table);
 ```
 
 And:
@@ -551,11 +551,11 @@ And:
 ```
 t_fdf output;
 
-output = init_fdf(&table, projection_isometric, 0.6);
+output = create_fdf_projection2d(&table, projection_isometric, 0.6);
 
 /* Use output. */
 
-destroy_fdf(&output);
+destroy_fdf_projection2d(&output);
 ```
 
 These functions return objects by value, and the corresponding cleanup functions release their resources.
@@ -687,7 +687,7 @@ Let's put these ideas together.
 Your existing code in the non-Euclidean example contains this sequence:
 
 ```
-table_base = init_table_fdf(300, 300, false);
+table_base = create_fdf_table(300, 300, false);
 
 set_cells_color(
     &table_base,
@@ -696,7 +696,7 @@ set_cells_color(
     is_andmod_x3
 );
 
-table = init_table_fdf(300, 300, true);
+table = create_fdf_table(300, 300, true);
 
 paint_space(
     &table,
@@ -704,7 +704,7 @@ paint_space(
     cell_metric_max_xy
 );
 
-table_fdf_hadamard(
+fdf_table_hadamard(
     &table,
     &table_base,
     HEIGHT
@@ -722,7 +722,7 @@ scale_multiplication_fdf(
     HEIGHT
 );
 
-output = init_fdf(
+output = create_fdf_projection2d(
     &table,
     NULL,
     0.6
@@ -793,7 +793,7 @@ This is a **proposed naming sketch, not drop-in replacement code**. Some functio
 
 In particular, I would verify what `paint_space()` does before replacing it with `surface_map_channel()`. The example assumes that its behavior is equivalent to assigning values to a channel, which may not be true.
 
-Similarly, I would retain `t_table_fdf` instead of introducing `t_surface` if the latter would misrepresent the data structure. The point is the naming pattern, not the specific type name.
+Similarly, I would retain `t_fdf_table` instead of introducing `t_surface` if the latter would misrepresent the data structure. The point is the naming pattern, not the specific type name.
 
 Notice the structural improvements:
 
@@ -823,7 +823,7 @@ Candidates for investigation include:
 | Existing name | What I'd investigate |
 | --- | --- |
 | `view_fdf()` | Does it render, display, or both? |
-| `init_fdf()` | Does it construct a new object or initialize existing storage? |
+| `create_fdf_projection2d()` | Does it construct a new object or initialize existing storage? |
 | `scale_multiplication_fdf()` | Is it scaling values, multiplying a channel, or performing another operation? |
 | `scale_dimension_fdf()` | Does it resize the grid or transform geometric dimensions? |
 | `paint_space()` | Does it populate a numerical field, generate geometry, or do something else? |
@@ -864,14 +864,14 @@ surface_destroy(...)
 
 These names should have clearly documented responsibilities.
 
-Avoid retaining both `destroy_table_fdf()` and `destroy_fdf()` solely because they were implemented at different times. If they release different kinds of objects, their distinct type names should make that difference clear.
+Avoid retaining both `destroy_fdf_table()` and `destroy_fdf_projection2d()` solely because they were implemented at different times. If they release different kinds of objects, their distinct type names should make that difference clear.
 
 ### Priority 4: Improve type and enum naming
 
 Your existing identifiers include:
 
 ```
-t_table_fdf
+t_fdf_table
 t_fdf
 t_fdf_render
 D7_HEIGHT
@@ -948,8 +948,8 @@ For example:
 
 | Current name | Proposed name | Rationale | Status |
 | --- | --- | --- | --- |
-| `init_table_fdf` | `surface_create` | Align construction terminology | Proposed |
-| `destroy_table_fdf` | `surface_destroy` | Align lifecycle terminology | Proposed |
+| `create_fdf_table` | `surface_create` | Align construction terminology | Proposed |
+| `destroy_fdf_table` | `surface_destroy` | Align lifecycle terminology | Proposed |
 | `scale_dimension_fdf` | `surface_resize` | Clarify dimensional changes | Needs verification |
 | `scale_multiplication_fdf` | `surface_scale` | Simplify numerical operation | Needs verification |
 | `view_fdf` | `fdf_render` | Clarify rendering responsibility | Needs verification |
@@ -962,7 +962,7 @@ If other programs already depend on the library, you could temporarily preserve 
 
 ```
 /* Legacy API. */
-t_table_fdf init_table_fdf(size_t width, size_t height, bool flag)
+t_fdf_table create_fdf_table(size_t width, size_t height, bool flag)
 {
     return surface_create(width, height, flag);
 }
@@ -999,7 +999,7 @@ If those questions have clear answers, your API is much less likely to become ar
 
 ## My overall verdict
 
-I wouldn't say that your API needs a completely new naming style. Much of it is already understandable, and names such as `projection_isometric`, `projection_cabinet`, and `table_fdf_hadamard` communicate recognizable concepts.
+I wouldn't say that your API needs a completely new naming style. Much of it is already understandable, and names such as `projection_isometric`, `projection_cabinet`, and `fdf_table_hadamard` communicate recognizable concepts.
 
 The underlying issue is that **the API doesn't yet appear to have a sufficiently explicit vocabulary for expressing its different kinds of operations**.
 

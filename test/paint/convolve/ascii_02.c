@@ -2,9 +2,9 @@
 
 int	main(void)
 {
-	t_table_fdf	table_a;
-	t_table_fdf	table_b;
-	t_table_fdf	table_c;
+	t_fdf_table	table_a;
+	t_fdf_table	table_b;
+	t_fdf_table	table_c;
 	size_t		half_dim;
 	int			output;
 	char		*dst_dir = "test/paint/convolve/input_ascii_02/";
@@ -38,14 +38,14 @@ int	main(void)
 	while (i < length)
 	{
 		output = open_dir_file(arr[i], dst_dir, E_WRITE);
-		table_a = open_table_fdf_file(arr[i], src_dir,
+		table_a = open_fdf_table_file(arr[i], src_dir,
 				parse_ascii_cheche01, false);
 		table_b = scale_dimension_fdf(&table_a, 5, 5);
 		table_c = convolve_fdf(&table_b, NULL, half_dim);
 		write_table_ascii_cheche01(output, &table_c, HEIGHT);
-		destroy_table_fdf(&table_a);
-		destroy_table_fdf(&table_b);
-		destroy_table_fdf(&table_c);
+		destroy_fdf_table(&table_a);
+		destroy_fdf_table(&table_b);
+		destroy_fdf_table(&table_c);
 		i += 1;
 	}
 	return (0);

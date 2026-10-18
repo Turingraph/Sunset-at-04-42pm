@@ -60,7 +60,7 @@ t_gradient	init_feeling_blue(void)
 	return (dst);
 }
 
-bool	is_3d_pythagoras(const t_table_fdf *dst, size_t index)
+bool	is_3d_pythagoras(const t_fdf_table *dst, size_t index)
 {
 	if (cell_metric_pythagoras_3d(dst, index) % 2 == 1)
 		return (true);
@@ -69,14 +69,14 @@ bool	is_3d_pythagoras(const t_table_fdf *dst, size_t index)
 
 int	main(void)
 {
-	t_table_fdf		table;
-	t_table_fdf		table2;
-	t_fdf			output;
+	t_fdf_table		table;
+	t_fdf_table		table2;
+	t_fdf_projection2d			output;
 	t_fdf_render	style;
 	size_t			i;
 
-	table = init_table_fdf(161, 161, true);
-	table2 = init_table_fdf(161, 161, true);
+	table = create_fdf_table(161, 161, true);
+	table2 = create_fdf_table(161, 161, true);
 	paint_space(&table, HEIGHT, cell_metric_amgm_inequality);
 	paint_space(&table2, HEIGHT, cell_metric_pythagoras);
 	set_cells_color(&table, 0, HEIGHT, is_3d_pythagoras);
@@ -93,11 +93,11 @@ int	main(void)
 	color_cells_gradient(&table, init_popart(), true);
 	color_cells_gradient(&table, init_feeling_blue(), true);
 	color_cells_gradient(&table, init_deep_wood(), true);
-	output = init_fdf(&table, projection_cabinet, 0.6);
+	output = create_fdf_projection2d(&table, projection_cabinet, 0.6);
 	view_fdf(&output, style, int32_from_rgba(0, 0, 0, 255));
-	destroy_table_fdf(&table2);
-	destroy_table_fdf(&table);
-	destroy_fdf(&output);
+	destroy_fdf_table(&table2);
+	destroy_fdf_table(&table);
+	destroy_fdf_projection2d(&output);
 	return (0);
 }
 

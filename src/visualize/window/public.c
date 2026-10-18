@@ -73,7 +73,7 @@ void	view_fdf_handle_02(mlx_t *mlx, mlx_image_t *img)
  * @param fdf_render style used to render the FDF object.
  * @param background_color the background color of the window scene.
  */
-void	view_fdf(t_fdf *fdf, t_fdf_render fdf_render,
+void	view_fdf(t_fdf_projection2d *fdf, t_fdf_render fdf_render,
 	int32_t background_color)
 {
 	mlx_t			*mlx;

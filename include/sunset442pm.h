@@ -25,7 +25,7 @@
 /* ************************************************************************** */
 
 /**
- * Identifies the data component stored in a t_table_fdf array.
+ * Identifies the data component stored in a t_fdf_table array.
  *
  * - RED selects the red color component.
  *
@@ -64,7 +64,7 @@ typedef enum t_fdf_channel
  * @param b array containing the blue color component of each cell
  * @param a array containing the alpha color component of each cell
  */
-typedef struct t_table_fdf
+typedef struct t_fdf_table
 {
 	size_t			row;
 	size_t			col;
@@ -73,7 +73,7 @@ typedef struct t_table_fdf
 	unsigned char	*g;
 	unsigned char	*b;
 	unsigned char	*a;
-}	t_table_fdf;
+}	t_fdf_table;
 
 /**
  * Sometimes t_2d_float is used for describing 2D xy position.
@@ -110,7 +110,7 @@ typedef struct t_2d_float
  * @param zoom coordinate scaling factor
  * @return complex coordinate of the selected cell.
  */
-t_2d_float	get_table_fdf_coordinate(const t_table_fdf *dst, size_t index, float zoom);
+t_2d_float	get_fdf_table_coordinate(const t_fdf_table *dst, size_t index, float zoom);
 
 /**
  * Check whether the product of 2 size_t type number cause integeroverflow,
@@ -393,7 +393,7 @@ typedef enum t_load_warning
  * rgb_warn stores the parsing status of the color values.
  * 
  * If int_warn and/or rgb_warn are NOT_DECIMAL and/or NOT_HEX, then 
- * load_all_fdf_lines stops and open_table_fdf_file return empty output.
+ * load_all_fdf_lines stops and open_fdf_table_file return empty output.
  *
  * status: internal data shape_2d
  *
@@ -479,7 +479,7 @@ size_t	ft_putnbr_fd(int n, int fd, const char *base, size_t digits);
 
 /**
  * Parse an ASCII-art line using the Cheche01 character ramp.
- * This function is intended to be used with `open_table_fdf_file`
+ * This function is intended to be used with `open_fdf_table_file`
  *
  * time/space: O(n) / O(n)
  * 
@@ -493,7 +493,7 @@ t_load_fdf	parse_ascii_cheche01(char *line);
 
 /**
  * Parse an ASCII-art line using the standard character ramp.
- * This function is intended to be used with `open_table_fdf_file`
+ * This function is intended to be used with `open_fdf_table_file`
  *
  * time/space: O(n) / O(n)
  * 
@@ -507,7 +507,7 @@ t_load_fdf	parse_ascii_standard(char *line);
 
 /**
  * Parse an ASCII-art line using the Chungaloider brightness ramp.
- * This function is intended to be used with `open_table_fdf_file`
+ * This function is intended to be used with `open_fdf_table_file`
  *
  * time/space: O(n) / O(n)
  *
@@ -524,7 +524,7 @@ t_load_fdf	parse_ascii_chungaloider(char *line);
 
 /**
  * Parse an FDF line as colorful data.
- * This function is intended to be used with `open_table_fdf_file`
+ * This function is intended to be used with `open_fdf_table_file`
  *
  * time/space: O(n) / O(n)
  *
@@ -539,7 +539,7 @@ t_load_fdf	parse_decimal_rgba(char *line);
 
 /**
  * Parse an FDF line as black and white data.
- * This function is intended to be used with `open_table_fdf_file`
+ * This function is intended to be used with `open_fdf_table_file`
  *
  * time/space: O(n) / O(n)
  *
@@ -557,16 +557,16 @@ t_load_fdf	parse_decimal_bw(char *line);
 /* ************************************************************************** */
 
 /**
- * Free and reset the t_table_fdf array
+ * Free and reset the t_fdf_table array
  *
  * time/space: O(1) / O(1)
  * 
- * @param src the target t_table_fdf array
+ * @param src the target t_fdf_table array
  */
-void			destroy_table_fdf(t_table_fdf *src);
+void			destroy_fdf_table(t_fdf_table *src);
 
 /**
- * Define t_table_fdf as array with only 0.
+ * Define t_fdf_table as array with only 0.
  *
  * time/space: O(n) / O(n)
  * 
@@ -575,33 +575,33 @@ void			destroy_table_fdf(t_table_fdf *src);
  * @param is_rgba if true, allocate storage for the RGBA channels;
  * if false, only the height channel is allocated.
  * 
- * @return array with only 0 as t_table_fdf with specified rows and columns.
+ * @return array with only 0 as t_fdf_table with specified rows and columns.
  */
-t_table_fdf		init_table_fdf(size_t row, size_t col, bool is_rgba);
+t_fdf_table		create_fdf_table(size_t row, size_t col, bool is_rgba);
 
 /**
  * Get either the minimum or maximum number from src.
  *
  * time/space: O(n) / O(1)
  * 
- * @param src the input t_table_fdf array
+ * @param src the input t_fdf_table array
  * @param is_max if is_max == true, then return maximum number, 
  * else return minimum number.
  * @param channels RGBA channel to inspect
  * 
  * @return minimum or maximum integer based on the input.
  */
-int				get_minmax_from_table_fdf(const t_table_fdf *src,
+int				get_minmax_from_fdf_table(const t_fdf_table *src,
 					bool is_max, t_fdf_channel channel);
 
 /**
- * Adding some number, such that every number in t_table_fdf become positive.
+ * Adding some number, such that every number in t_fdf_table become positive.
  *
  * time/space: O(n) / O(1)
  * 
- * @param dst the input t_table_fdf array
+ * @param dst the input t_fdf_table array
  */
-void			scale_positive_fdf(t_table_fdf *dst);
+void			scale_positive_fdf(t_fdf_table *dst);
 
 /**
  * Making all number that in an interval between minimum target number
@@ -609,15 +609,15 @@ void			scale_positive_fdf(t_table_fdf *dst);
  *
  * time/space: O(n) / O(1)
  * 
- * @param dst the input t_table_fdf array
+ * @param dst the input t_fdf_table array
  * @param min the minimum target number
  * @param max the maximum target number
  * @param expect the expected number
  */
-void			scale_relu_fdf(t_table_fdf *dst, int min, int max, int expect);
+void			scale_relu_fdf(t_fdf_table *dst, int min, int max, int expect);
 
 /**
- * Load target file as t_table_fdf 5 rgba and height integer array data.
+ * Load target file as t_fdf_table 5 rgba and height integer array data.
  *
  * time/space: O(n) / O(n)
  * 
@@ -630,7 +630,7 @@ void			scale_relu_fdf(t_table_fdf *dst, int min, int max, int expect);
  * @return return the array that contains rgba and height of the height map.
  * @see src/input/load/parse.c
  */
-t_table_fdf		open_table_fdf_file(const char *file_name, const char *dir,
+t_fdf_table		open_fdf_table_file(const char *file_name, const char *dir,
 					t_load_fdf (*one_line)(char *line), bool is_rgba);
 
 /**
@@ -647,7 +647,7 @@ t_table_fdf		open_table_fdf_file(const char *file_name, const char *dir,
  * @param rgba_type RGBA channel to scale
  * @return scaled channel array, or NULL on failure
  */
-unsigned char	*scale_dimension_fdf_rgba(const t_table_fdf *src,
+unsigned char	*scale_dimension_fdf_rgba(const t_fdf_table *src,
 	size_t scale_row, size_t scale_col, t_fdf_channel rgba_type);
 
 /**
@@ -660,7 +660,7 @@ unsigned char	*scale_dimension_fdf_rgba(const t_table_fdf *src,
  * @param scale_col column scaling factor
  * @return scaled height integer array, or NULL on failure
  */
-int	*scale_dimension_fdf_int(const t_table_fdf *src,
+int	*scale_dimension_fdf_int(const t_fdf_table *src,
 	size_t scale_row, size_t scale_col);
 
 /**
@@ -675,7 +675,7 @@ int	*scale_dimension_fdf_int(const t_table_fdf *src,
  * @param scale_col column scaling factor
  * @return scaled FDF table, or an empty table on failure
  */
-t_table_fdf		scale_dimension_fdf(const t_table_fdf *src,
+t_fdf_table		scale_dimension_fdf(const t_fdf_table *src,
 					size_t scale_row, size_t scale_col);
 
 /**
@@ -687,7 +687,7 @@ t_table_fdf		scale_dimension_fdf(const t_table_fdf *src,
  * @param scale multiplication factor
  * @param channel channel to modify
  */
-void			scale_multiplication_fdf(t_table_fdf *dst,
+void			scale_multiplication_fdf(t_fdf_table *dst,
 					float scale, t_fdf_channel channel);
 
 /**
@@ -699,7 +699,7 @@ void			scale_multiplication_fdf(t_table_fdf *dst,
  * @param input value to add
  * @param channel channel to modify
  */
-void			scale_addition_fdf(t_table_fdf *dst,
+void			scale_addition_fdf(t_fdf_table *dst,
 					int input, t_fdf_channel channel);
 
 /**
@@ -712,8 +712,8 @@ void			scale_addition_fdf(t_table_fdf *dst,
  * @param src source FDF table
  * @param channel channel to add
  */
-void			table_fdf_addition(t_table_fdf *dst,
-					const t_table_fdf *src, t_fdf_channel channel);
+void			fdf_table_addition(t_fdf_table *dst,
+					const t_fdf_table *src, t_fdf_channel channel);
 
 /**
  * Multiply the selected channel of dst by src element by element.
@@ -725,8 +725,8 @@ void			table_fdf_addition(t_table_fdf *dst,
  * @param src source FDF table
  * @param channel channel to multiply
  */
-void			table_fdf_hadamard(t_table_fdf *dst,
-					const t_table_fdf *src, t_fdf_channel channel);
+void			fdf_table_hadamard(t_fdf_table *dst,
+					const t_fdf_table *src, t_fdf_channel channel);
 
 /**
  * Copy the channel from source FDF table to the dst FDF table.
@@ -738,8 +738,8 @@ void			table_fdf_hadamard(t_table_fdf *dst,
  * @param src source FDF table
  * @param channel channel to copy
  */
-void			copy_table_fdf_channel(t_table_fdf *dst,
-					const t_table_fdf *src, t_fdf_channel channel);
+void			copy_fdf_table_channel(t_fdf_table *dst,
+					const t_fdf_table *src, t_fdf_channel channel);
 
 /**
  * Write an FDF channel using the Cheche01 ASCII ramp.
@@ -751,7 +751,7 @@ void			copy_table_fdf_channel(t_table_fdf *dst,
  * @param channel channel to convert
  */
 void			write_table_ascii_cheche01(int fd,
-					const t_table_fdf *src, t_fdf_channel channel);
+					const t_fdf_table *src, t_fdf_channel channel);
 
 /**
  * Write an FDF channel using the standard ASCII ramp.
@@ -763,7 +763,7 @@ void			write_table_ascii_cheche01(int fd,
  * @param channel channel to convert
  */
 void			write_table_ascii_standard(int fd,
-					const t_table_fdf *src, t_fdf_channel channel);
+					const t_fdf_table *src, t_fdf_channel channel);
 
 /**
  * Write an FDF channel using the Chungaloider ASCII ramp.
@@ -775,7 +775,7 @@ void			write_table_ascii_standard(int fd,
  * @param channel channel to convert
  */
 void			write_table_ascii_chungaloider(int fd,
-					const t_table_fdf *src, t_fdf_channel channel);
+					const t_fdf_table *src, t_fdf_channel channel);
 
 /**
  * Write an FDF table to a file descriptor.
@@ -787,8 +787,8 @@ void			write_table_ascii_chungaloider(int fd,
  * @param digits number of digits for height values
  * @param mode output format
  */
-void			write_table_fdf(int fd,
-					const t_table_fdf *src, size_t digits, t_write_style mode);
+void			write_fdf_table(int fd,
+					const t_fdf_table *src, size_t digits, t_write_style mode);
 
 /* ************************************************************************** */
 /* *** src/paint/convolve/ *** */
@@ -815,7 +815,7 @@ void			write_table_fdf(int fd,
  * @see 3B1B convolution video https://youtu.be/KuXjwB4LzSA?si=9DNIvf9SS2SX4jET
  * for more details
  */
-t_table_fdf	convolve_fdf(const t_table_fdf *src, float *kernel,
+t_fdf_table	convolve_fdf(const t_fdf_table *src, float *kernel,
 				size_t dim);
 
 /**
@@ -931,7 +931,7 @@ size_t		binary_search_count(size_t min_input, size_t max_input);
  * @return true if the binary-search iteration count is odd,
  * false otherwise.
  */
-bool		is_binary_search_length_odd(const t_table_fdf *dst, size_t index);
+bool		is_binary_search_length_odd(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether the number of iterations of a binary-search procedure
@@ -952,7 +952,7 @@ bool		is_binary_search_length_odd(const t_table_fdf *dst, size_t index);
  * @return true if the binary-search iteration count is odd,
  * false otherwise.
  */
-bool		is_binary_search_product_odd(const t_table_fdf *dst, size_t index);
+bool		is_binary_search_product_odd(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether the number of iterations of a binary-search procedure
@@ -967,7 +967,7 @@ bool		is_binary_search_product_odd(const t_table_fdf *dst, size_t index);
  * @return true if the scaled maximum Collatz point is odd,
  * false otherwise.
  */
-bool		is_binary_search_andmod(const t_table_fdf *dst, size_t index);
+bool		is_binary_search_andmod(const t_fdf_table *dst, size_t index);
 
 /**
  * Find the maximum value reached by the Collatz sequence of an input.
@@ -991,7 +991,7 @@ size_t		collatz_max_point(size_t x);
  * @return true if the scaled maximum Collatz point is odd,
  * false otherwise.
  */
-bool		is_collatz_odd_length(const t_table_fdf *dst, size_t index);
+bool		is_collatz_odd_length(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether the maximum point of the Collatz sequence generated
@@ -1006,7 +1006,7 @@ bool		is_collatz_odd_length(const t_table_fdf *dst, size_t index);
  * @return true if the scaled maximum Collatz point is odd,
  * false otherwise.
  */
-bool		is_collatz_odd_product(const t_table_fdf *dst, size_t index);
+bool		is_collatz_odd_product(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether the maximum point of the Collatz sequence generated
@@ -1021,7 +1021,7 @@ bool		is_collatz_odd_product(const t_table_fdf *dst, size_t index);
  * @return true if the scaled maximum Collatz point is odd,
  * false otherwise.
  */
-bool		is_collatz_odd_andmod(const t_table_fdf *dst, size_t index);
+bool		is_collatz_odd_andmod(const t_fdf_table *dst, size_t index);
 
 /**
  * Compute z' = complex_func(the complex coordinate of the cell).
@@ -1040,7 +1040,7 @@ bool		is_collatz_odd_andmod(const t_table_fdf *dst, size_t index);
  * @return true if the rounded calculated value is odd,
  * false otherwise.
  */
-bool		is_re2_diff_im2_odd_func(const t_table_fdf *dst, size_t index,
+bool		is_re2_diff_im2_odd_func(const t_fdf_table *dst, size_t index,
 				t_2d_float (*complex_func)(t_2d_float a), float zoom);
 
 /**
@@ -1055,7 +1055,7 @@ bool		is_re2_diff_im2_odd_func(const t_table_fdf *dst, size_t index,
  * @return true if the rounded calculated value is odd,
  * false otherwise.
  */
-bool		is_re2_diff_im2_odd(const t_table_fdf *dst, size_t index);
+bool		is_re2_diff_im2_odd(const t_fdf_table *dst, size_t index);
 
 /**
  * Compute z' = complex_func(the complex coordinate of the cell).
@@ -1074,7 +1074,7 @@ bool		is_re2_diff_im2_odd(const t_table_fdf *dst, size_t index);
  * @return true if the rounded coordinate magnitude is odd,
  * false otherwise.
  */
-bool		is_oddlength_func(const t_table_fdf *dst, size_t index,
+bool		is_oddlength_func(const t_fdf_table *dst, size_t index,
 				t_2d_float (*complex_func)(t_2d_float a), float zoom);
 
 /**
@@ -1091,7 +1091,7 @@ bool		is_oddlength_func(const t_table_fdf *dst, size_t index,
  * @return true if the rounded coordinate magnitude is odd,
  * false otherwise.
  */
-bool		is_oddlength(const t_table_fdf *dst, size_t index);
+bool		is_oddlength(const t_fdf_table *dst, size_t index);
 
 /**
  * Compute z' = complex_func(the complex coordinate of the cell).
@@ -1109,7 +1109,7 @@ bool		is_oddlength(const t_table_fdf *dst, size_t index);
  *
  * @return true if z.x is even and z.y is even, false otherwise.
  */
-bool		is_andmod_func(const t_table_fdf *dst, size_t index,
+bool		is_andmod_func(const t_fdf_table *dst, size_t index,
 				t_2d_float (*complex_func)(t_2d_float a), float zoom);
 
 /**
@@ -1123,7 +1123,7 @@ bool		is_andmod_func(const t_table_fdf *dst, size_t index,
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool		is_oddlength_x2(const t_table_fdf *dst, size_t index);
+bool		is_oddlength_x2(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether constant times magnitude of the cube of a cell's
@@ -1136,7 +1136,7 @@ bool		is_oddlength_x2(const t_table_fdf *dst, size_t index);
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool		is_oddlength_x3(const t_table_fdf *dst, size_t index);
+bool		is_oddlength_x3(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether constant times magnitude of the 4-th power of a cell's
@@ -1149,7 +1149,7 @@ bool		is_oddlength_x3(const t_table_fdf *dst, size_t index);
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool		is_oddlength_x4(const t_table_fdf *dst, size_t index);
+bool		is_oddlength_x4(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether constant times magnitude of the 5-th power of a cell's
@@ -1162,7 +1162,7 @@ bool		is_oddlength_x4(const t_table_fdf *dst, size_t index);
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool		is_oddlength_x5(const t_table_fdf *dst, size_t index);
+bool		is_oddlength_x5(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether constant times magnitude of the 6-th power of a cell's
@@ -1175,7 +1175,7 @@ bool		is_oddlength_x5(const t_table_fdf *dst, size_t index);
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool		is_oddlength_x6(const t_table_fdf *dst, size_t index);
+bool		is_oddlength_x6(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether the ax^2 and ay^2 of the cell is an odd value.
@@ -1187,7 +1187,7 @@ bool		is_oddlength_x6(const t_table_fdf *dst, size_t index);
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool		is_andmod_x2(const t_table_fdf *dst, size_t index);
+bool		is_andmod_x2(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether the ax^3 and ay^3 of the cell is an odd value.
@@ -1199,7 +1199,7 @@ bool		is_andmod_x2(const t_table_fdf *dst, size_t index);
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool		is_andmod_x3(const t_table_fdf *dst, size_t index);
+bool		is_andmod_x3(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether the ax^4 and ay^4 of the cell is an odd value.
@@ -1211,7 +1211,7 @@ bool		is_andmod_x3(const t_table_fdf *dst, size_t index);
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool		is_andmod_x4(const t_table_fdf *dst, size_t index);
+bool		is_andmod_x4(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether the ax^5 and ay^5 of the cell is an odd value.
@@ -1223,7 +1223,7 @@ bool		is_andmod_x4(const t_table_fdf *dst, size_t index);
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool		is_andmod_x5(const t_table_fdf *dst, size_t index);
+bool		is_andmod_x5(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether the ax^6 and ay^6 of the cell is an odd value.
@@ -1235,7 +1235,7 @@ bool		is_andmod_x5(const t_table_fdf *dst, size_t index);
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool		is_andmod_x6(const t_table_fdf *dst, size_t index);
+bool		is_andmod_x6(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether constant times magnitude of the square of a cell's
@@ -1248,7 +1248,7 @@ bool		is_andmod_x6(const t_table_fdf *dst, size_t index);
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool		is_oddlength_x2shadow(const t_table_fdf *dst, size_t index);
+bool		is_oddlength_x2shadow(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether constant times magnitude of the cube of a cell's
@@ -1261,7 +1261,7 @@ bool		is_oddlength_x2shadow(const t_table_fdf *dst, size_t index);
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool		is_oddlength_x3shadow(const t_table_fdf *dst, size_t index);
+bool		is_oddlength_x3shadow(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether the ax^2 and ay^2 of the cell is an odd value.
@@ -1273,7 +1273,7 @@ bool		is_oddlength_x3shadow(const t_table_fdf *dst, size_t index);
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool	is_andmod_x2shadow(const t_table_fdf *dst, size_t index);
+bool	is_andmod_x2shadow(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether the ax^3 and ay^3 of the cell is an odd value.
@@ -1285,7 +1285,7 @@ bool	is_andmod_x2shadow(const t_table_fdf *dst, size_t index);
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool	is_andmod_x3shadow(const t_table_fdf *dst, size_t index);
+bool	is_andmod_x3shadow(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether the magnitude of the sin of a cell's
@@ -1298,7 +1298,7 @@ bool	is_andmod_x3shadow(const t_table_fdf *dst, size_t index);
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool		is_oddlength_sin(const t_table_fdf *dst, size_t index);
+bool		is_oddlength_sin(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether the magnitude of the cos of a cell's
@@ -1311,7 +1311,7 @@ bool		is_oddlength_sin(const t_table_fdf *dst, size_t index);
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool		is_oddlength_cos(const t_table_fdf *dst, size_t index);
+bool		is_oddlength_cos(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether the magnitude of the sin of a cell's
@@ -1324,7 +1324,7 @@ bool		is_oddlength_cos(const t_table_fdf *dst, size_t index);
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool		is_andmod_sin(const t_table_fdf *dst, size_t index);
+bool		is_andmod_sin(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether the magnitude of the cos of a cell's
@@ -1337,7 +1337,7 @@ bool		is_andmod_sin(const t_table_fdf *dst, size_t index);
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool		is_andmod_cos(const t_table_fdf *dst, size_t index);
+bool		is_andmod_cos(const t_fdf_table *dst, size_t index);
 
 /* ************************************************************************** */
 /* *** src/paint/paint/ *** */
@@ -1397,7 +1397,7 @@ typedef struct t_gradient
  * @return true if the cell is a positive value located on the table
  * boundary or adjacent to an empty cell, false otherwise.
  */
-bool	is_boundary_fdf(const t_table_fdf *dst, size_t index, int threshold);
+bool	is_boundary_fdf(const t_fdf_table *dst, size_t index, int threshold);
 
 /**
  * Counts the neighboring cells whose values exceed a given threshold.
@@ -1417,7 +1417,7 @@ bool	is_boundary_fdf(const t_table_fdf *dst, size_t index, int threshold);
  * @return The number of valid neighboring cells whose values exceed the
  * threshold, ranging from 0 to 8. Returns 0 if the FDF table is invalid.
  */
-int	count_neighbor_fdf(const t_table_fdf *dst, size_t index, int threshold);
+int	count_neighbor_fdf(const t_fdf_table *dst, size_t index, int threshold);
 
 /**
  * Check whether a cell is considered empty
@@ -1431,7 +1431,7 @@ int	count_neighbor_fdf(const t_table_fdf *dst, size_t index, int threshold);
  * @return true if the cell contains a value less than or equal to 0,
  * false otherwise.
  */
-bool		is_space_fdf(const t_table_fdf *dst, size_t index);
+bool		is_space_fdf(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether a cell belongs to the chess pattern.
@@ -1444,7 +1444,7 @@ bool		is_space_fdf(const t_table_fdf *dst, size_t index);
  * @return true if the cell position belongs to the chess pattern,
  * false otherwise.
  */
-bool		is_chess_fdf(const t_table_fdf *dst, size_t index);
+bool		is_chess_fdf(const t_fdf_table *dst, size_t index);
 
 /**
  * Apply a color or height value to the selected channel of every cell.
@@ -1458,8 +1458,8 @@ bool		is_chess_fdf(const t_table_fdf *dst, size_t index);
  * @param is_filtered_cell optional callback used to select which cells
  * are modified. If NULL, every cell is modified.
  */
-void		set_cells_color(t_table_fdf *dst, int color, t_fdf_channel channel,
-				bool (*is_filtered_cell)(const t_table_fdf *dst, size_t index));
+void		set_cells_color(t_fdf_table *dst, int color, t_fdf_channel channel,
+				bool (*is_filtered_cell)(const t_fdf_table *dst, size_t index));
 
 /**
  * Apply a color gradient to cells within an input range.
@@ -1470,7 +1470,7 @@ void		set_cells_color(t_table_fdf *dst, int color, t_fdf_channel channel,
  * @param gradient_input gradient definition
  * @param is_overwrite replace existing colors instead of blending
  */
-void		color_cells_gradient(t_table_fdf *dst,
+void		color_cells_gradient(t_fdf_table *dst,
 				t_gradient gradient_input, bool is_overwrite);
 
 /**
@@ -1485,8 +1485,8 @@ void		color_cells_gradient(t_table_fdf *dst,
  * @param channel FDF channel to paint
  * @param cell_metric optional function to calculate the value of each cell
  */
-void	paint_space(t_table_fdf *dst, t_fdf_channel channel,
-	int (*cell_metric)(const t_table_fdf *dst, size_t index));
+void	paint_space(t_fdf_table *dst, t_fdf_channel channel,
+	int (*cell_metric)(const t_fdf_table *dst, size_t index));
 
 /**
  * Calculate the difference between the sum of the absolute
@@ -1498,7 +1498,7 @@ void	paint_space(t_table_fdf *dst, t_fdf_channel channel,
  * @param index index of the cell
  * @return |re| + |im| + |zd3| - |re + im + zd3|
  */
-int	cell_metric_triangle_inequality_3d(const t_table_fdf *dst, size_t index);
+int	cell_metric_triangle_inequality_3d(const t_fdf_table *dst, size_t index);
 
 /**
 * Calculate the Euclidean distance of a cell from the origin
@@ -1510,7 +1510,7 @@ int	cell_metric_triangle_inequality_3d(const t_table_fdf *dst, size_t index);
 * @param index index of the cell
 * @return Euclidean distance from the origin
 */
-int	cell_metric_pythagoras_3d(const t_table_fdf *dst, size_t index);
+int	cell_metric_pythagoras_3d(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the maximum absolute component of a cell coordinate
@@ -1522,7 +1522,7 @@ int	cell_metric_pythagoras_3d(const t_table_fdf *dst, size_t index);
  * @param index index of the cell
  * @return maximum of |re|, |im|, and zd3
  */
-int	cell_metric_max_xyz(const t_table_fdf *dst, size_t index);
+int	cell_metric_max_xyz(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the square root of the absolute product of the
@@ -1534,7 +1534,7 @@ int	cell_metric_max_xyz(const t_table_fdf *dst, size_t index);
  * @param index index of the cell
  * @return sqrt(|re * im|)
  */
-int	cell_metric_root_xyz(const t_table_fdf *dst, size_t index);
+int	cell_metric_root_xyz(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the absolute value of the sum of x, y, and z.
@@ -1545,7 +1545,7 @@ int	cell_metric_root_xyz(const t_table_fdf *dst, size_t index);
  * @param index index of the cell
  * @return |x + y + z|
  */
-int	cell_metric_addsub_3d(const t_table_fdf *dst, size_t index);
+int	cell_metric_addsub_3d(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the difference between the sum of the absolute
@@ -1557,7 +1557,7 @@ int	cell_metric_addsub_3d(const t_table_fdf *dst, size_t index);
  * @param index index of the cell
  * @return |re| + |im| - |re + im|
  */
-int	cell_metric_triangle_inequality(const t_table_fdf *dst, size_t index);
+int	cell_metric_triangle_inequality(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the different between (x + y) / 2 - (xy)^(1/2)
@@ -1568,7 +1568,7 @@ int	cell_metric_triangle_inequality(const t_table_fdf *dst, size_t index);
  * @param index index of the cell
  * @return (x + y) / 2 - (xy)^(1/2)
  */
-int	cell_metric_amgm_inequality(const t_table_fdf *dst, size_t index);
+int	cell_metric_amgm_inequality(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the (x + y + z) / 3 - (xyz)^(1/3)
@@ -1579,7 +1579,7 @@ int	cell_metric_amgm_inequality(const t_table_fdf *dst, size_t index);
  * @param index index of the cell
  * @return (x + y + z) / 3 - (xyz)^(1/3)
  */
-int	cell_metric_amgm_inequality_3d(const t_table_fdf *dst, size_t index);
+int	cell_metric_amgm_inequality_3d(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the (re + im)^2
@@ -1590,7 +1590,7 @@ int	cell_metric_amgm_inequality_3d(const t_table_fdf *dst, size_t index);
  * @param index index of the cell
  * @return (re + im)^2
  */
-int	cell_metric_x_plus_y_square(const t_table_fdf *dst, size_t index);
+int	cell_metric_x_plus_y_square(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the x^2 + y^2 + z^2 - (x + y + z)^2
@@ -1601,7 +1601,7 @@ int	cell_metric_x_plus_y_square(const t_table_fdf *dst, size_t index);
  * @param index index of the cell
  * @return x^2 + y^2 + z^2 - (x + y + z)^2
  */
-int	cell_metric_cauchy_schwarz_inequality_3d(const t_table_fdf *dst, size_t index);
+int	cell_metric_cauchy_schwarz_inequality_3d(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the minimum absolute component of a cell coordinate.
@@ -1612,7 +1612,7 @@ int	cell_metric_cauchy_schwarz_inequality_3d(const t_table_fdf *dst, size_t inde
  * @param index index of the cell
  * @return minimum of |re| and |im|
  */
-int	cell_metric_min_xy(const t_table_fdf *dst, size_t index);
+int	cell_metric_min_xy(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the minimum absolute component of a cell coordinate
@@ -1624,7 +1624,7 @@ int	cell_metric_min_xy(const t_table_fdf *dst, size_t index);
  * @param index index of the cell
  * @return minimum of |re|, |im|, and zd3
  */
-int	cell_metric_min_xyz(const t_table_fdf *dst, size_t index);
+int	cell_metric_min_xyz(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the minimum cosine value of the real and imaginary
@@ -1636,7 +1636,7 @@ int	cell_metric_min_xyz(const t_table_fdf *dst, size_t index);
  * @param index index of the cell
  * @return min(row, col) * min(cos(re / a), cos(im / a))
  */
-int	cell_metric_mincos(const t_table_fdf *dst, size_t index);
+int	cell_metric_mincos(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the minimum component of the complex cosine of a
@@ -1650,7 +1650,7 @@ int	cell_metric_mincos(const t_table_fdf *dst, size_t index);
  * 
  * @return min(cos(z).x, cos(z).y)
  */
-int	cell_metric_minecos(const t_table_fdf *dst, size_t index);
+int	cell_metric_minecos(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the minimum component of the complex exponential
@@ -1662,7 +1662,7 @@ int	cell_metric_minecos(const t_table_fdf *dst, size_t index);
  * @param index index of the cell
  * @return min(re(exp(z)), im(exp(z)))
  */
-int	cell_metric_minexp(const t_table_fdf *dst, size_t index);
+int	cell_metric_minexp(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the maximum sine value of the real and imaginary
@@ -1674,7 +1674,7 @@ int	cell_metric_minexp(const t_table_fdf *dst, size_t index);
  * @param index index of the cell
  * @return min(row, col) * max(sin(re / a), sin(im / a))
  */
-int	cell_metric_maxsin(const t_table_fdf *dst, size_t index);
+int	cell_metric_maxsin(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the maximum component of the complex sine of a
@@ -1688,7 +1688,7 @@ int	cell_metric_maxsin(const t_table_fdf *dst, size_t index);
  * 
  * @return max(sin(z).x, sin(z).y)
  */
-int	cell_metric_maxesin(const t_table_fdf *dst, size_t index);
+int	cell_metric_maxesin(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the maximum cosine value of the real and imaginary
@@ -1700,7 +1700,7 @@ int	cell_metric_maxesin(const t_table_fdf *dst, size_t index);
  * @param index index of the cell
  * @return min(row, col) * max(cos(re / a), cos(im / a))
  */
-int	cell_metric_maxcos(const t_table_fdf *dst, size_t index);
+int	cell_metric_maxcos(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the maximum component of the complex cosine of a
@@ -1714,7 +1714,7 @@ int	cell_metric_maxcos(const t_table_fdf *dst, size_t index);
  * 
  * @return max(cos(z).x, cos(z).y)
  */
-int	cell_metric_maxecos(const t_table_fdf *dst, size_t index);
+int	cell_metric_maxecos(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the maximum component of the complex exponential
@@ -1726,7 +1726,7 @@ int	cell_metric_maxecos(const t_table_fdf *dst, size_t index);
  * @param index index of the cell
  * @return max(re(exp(z)), im(exp(z)))
  */
-int	cell_metric_maxexp(const t_table_fdf *dst, size_t index);
+int	cell_metric_maxexp(const t_fdf_table *dst, size_t index);
 
 /**
 * Calculate the Euclidean distance of a cell from the origin
@@ -1738,7 +1738,7 @@ int	cell_metric_maxexp(const t_table_fdf *dst, size_t index);
 * @param index index of the cell
 * @return Euclidean distance from the origin
 */
-int	cell_metric_pythagoras(const t_table_fdf *dst, size_t index);
+int	cell_metric_pythagoras(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the maximum absolute component of a cell coordinate.
@@ -1749,7 +1749,7 @@ int	cell_metric_pythagoras(const t_table_fdf *dst, size_t index);
  * @param index index of the cell
  * @return maximum of |re| and |im|
  */
-int	cell_metric_max_xy(const t_table_fdf *dst, size_t index);
+int	cell_metric_max_xy(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the absolute value of the sum of the real and
@@ -1761,7 +1761,7 @@ int	cell_metric_max_xy(const t_table_fdf *dst, size_t index);
  * @param index index of the cell
  * @return |re + im|
  */
-int	cell_metric_addsub(const t_table_fdf *dst, size_t index);
+int	cell_metric_addsub(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the square root of the absolute product of the
@@ -1773,7 +1773,7 @@ int	cell_metric_addsub(const t_table_fdf *dst, size_t index);
  * @param index index of the cell
  * @return sqrt(|re * im|)
  */
-int	cell_metric_root_xy(const t_table_fdf *dst, size_t index);
+int	cell_metric_root_xy(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the a^3 + b^3 - c^3 where a,b,c are integer and c is the
@@ -1785,7 +1785,7 @@ int	cell_metric_root_xy(const t_table_fdf *dst, size_t index);
  * @param index index of the cell
  * @return a^3 + b^3 - floor((a^3 + b^3)^(1/3))
  */
-int	cell_metric_fermat_theorem(const t_table_fdf *dst, size_t index);
+int	cell_metric_fermat_theorem(const t_fdf_table *dst, size_t index);
 
 /* ************************************************************************** */
 /* *** src/visualize/raster/ *** */
@@ -1853,7 +1853,7 @@ int32_t	int32_from_rgba(unsigned char r,
 
 /**
  * FDF object containing the 2D projected representation data of the 
- * t_table_fdf data.
+ * t_fdf_table data.
  * 
  * @param r the red channel of each FdF cell.
  * @param g the green channel of each FdF cell.
@@ -1866,7 +1866,7 @@ int32_t	int32_from_rgba(unsigned char r,
  * @param width current width of the transformed FDF object, for scaling the Fdf object
  * with the suitable scaling factor relative to the window height and width.
  */
-typedef struct s_fdf
+typedef struct t_fdf_projection
 {
 	unsigned char	*r;
 	unsigned char	*g;
@@ -1877,17 +1877,17 @@ typedef struct s_fdf
 	float			*x;
 	float			*y;
 	float			width;
-}	t_fdf;
+}	t_fdf_projection2d;
 
 /**
  * Release all resources owned by an FDF object.
  *
  * This function frees the source fdf data.
  *
- * view_fdf() does not call destroy_fdf(). The caller therefore remains
- * responsible for releasing an FDF object created by init_fdf().
+ * view_fdf() does not call destroy_fdf_projection2d(). The caller therefore remains
+ * responsible for releasing an FDF object created by create_fdf_projection2d().
  *
- * Calling destroy_fdf() with NULL is safe.
+ * Calling destroy_fdf_projection2d() with NULL is safe.
  * 
  * The return data is NULL fdf data.
  *
@@ -1895,19 +1895,19 @@ typedef struct s_fdf
  *
  * @param src FDF object to release
  */
-t_fdf	destroy_fdf(t_fdf *src);
+t_fdf_projection2d	destroy_fdf_projection2d(t_fdf_projection2d *src);
 
 /**
- * Initialize a FDF object from a t_table_fdf table.
+ * Initialize a FDF object from a t_fdf_table table.
  *
- * The returned FDF object owns the 2D position arrays of each cells of t_table_fdf,
+ * The returned FDF object owns the 2D position arrays of each cells of t_fdf_table,
  * based on the 2D projection of the table (determined by 2D projection
  * argument e.g. projection_isometric, projection_military etc.
  * ). If the projection is NULL,
- * then this function return the simple orthogonal projection of t_table_fdf.
+ * then this function return the simple orthogonal projection of t_fdf_table.
  *
- * This function use the color of t_table_fdf table,
- * instead of deep copy and/or shallow copy the color of t_table_fdf table, for
+ * This function use the color of t_fdf_table table,
+ * instead of deep copy and/or shallow copy the color of t_fdf_table table, for
  * preventing double free issues and preventing using too many malloc than needed.
  *
  * The future version of this program will support 3D related features e.g.
@@ -1917,12 +1917,12 @@ t_fdf	destroy_fdf(t_fdf *src);
  *
  * @param src source table containing the FDF data
  * @param projection the functional pointer for define the projection of
- * t_table_fdf as t_fdf.
+ * t_fdf_table as t_fdf_projection2d.
  * @param scale for scaling Fdf object.
- * @return initialized t_fdf object.
+ * @return initialized t_fdf_projection2d object.
  * @see src/visualize/fdf/projection.c
  */
-t_fdf	init_fdf(t_table_fdf *src,
+t_fdf_projection2d	create_fdf_projection2d(t_fdf_table *src,
 	t_2d_float (*projection)(float x, float y, float z), float scale);
 
 /**
@@ -2077,7 +2077,7 @@ typedef struct s_render_style
  * @param fdf_render style used to render the FDF object.
  * @param background_color the background color of the window scene.
  */
-void	view_fdf(t_fdf *fdf, t_fdf_render fdf_render,
+void	view_fdf(t_fdf_projection2d *fdf, t_fdf_render fdf_render,
 			int32_t background_color);
 
 /* ************************************************************************** */

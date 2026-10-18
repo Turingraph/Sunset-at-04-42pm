@@ -18,7 +18,7 @@
 
 /**
  * FDF object containing the 2D projected representation data of the 
- * t_table_fdf data.
+ * t_fdf_table data.
  * 
  * @param r the red channel of each FdF cell.
  * @param g the green channel of each FdF cell.
@@ -31,7 +31,7 @@
  * @param width current width of the transformed FDF object, for scaling the Fdf object
  * with the suitable scaling factor relative to the window height and width.
  */
-typedef struct s_fdf
+typedef struct t_fdf_projection
 {
 	unsigned char	*r;
 	unsigned char	*g;
@@ -42,14 +42,14 @@ typedef struct s_fdf
 	float			*x;
 	float			*y;
 	float			width;
-}	t_fdf;
+}	t_fdf_projection2d;
 
 // init.c
 
-t_fdf		init_fdf(t_table_fdf *src,
+t_fdf_projection2d		create_fdf_projection2d(t_fdf_table *src,
 				t_2d_float (*projection)(float x, float y, float z),
 				float scale);
-t_fdf		destroy_fdf(t_fdf *src);
+t_fdf_projection2d		destroy_fdf_projection2d(t_fdf_projection2d *src);
 
 // projection.c
 
@@ -61,8 +61,8 @@ t_2d_float	projection_wave(float x, float y, float z);
 
 // utils.c
 
-int32_t		get_fdf_rgba_int32(const t_fdf *src, size_t index);
-bool		is_fdf_valid(const t_fdf *src);
+int32_t		get_fdf_rgba_int32(const t_fdf_projection2d *src, size_t index);
+bool		is_fdf_valid(const t_fdf_projection2d *src);
 void	vector_scale(float *update_v, float s, size_t dim);
 
 #endif

@@ -43,7 +43,7 @@ static void	draw_picassox_fdf_unit(t_2d_hook *hook,
 static void	draw_picassox_fdf(t_2d_hook *hook, bool is_draw)
 {
 	t_2d_int	ixiy;
-	t_fdf		src;
+	t_fdf_projection2d		src;
 
 	src = *hook->fdf;
 	ixiy.x = 0;
@@ -64,7 +64,7 @@ static void	draw_picassox_fdf(t_2d_hook *hook, bool is_draw)
 static void	draw_picassoy_fdf(t_2d_hook *hook, bool is_draw)
 {
 	t_2d_int	ixiy;
-	t_fdf		src;
+	t_fdf_projection2d		src;
 
 	src = *hook->fdf;
 	ixiy.x = 0;

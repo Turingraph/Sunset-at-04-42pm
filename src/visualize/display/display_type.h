@@ -61,7 +61,7 @@ typedef struct s_2d_hook
 	mlx_image_t		*img;
 	t_2d_camera		*camera;
 	t_fdf_render	artstyle;
-	t_fdf			*fdf;
+	t_fdf_projection2d			*fdf;
 	int32_t			background_color;
 }	t_2d_hook;
 

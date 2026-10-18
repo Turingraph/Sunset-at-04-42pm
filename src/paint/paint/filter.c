@@ -14,7 +14,7 @@
  * @return true if the cell contains a value less than or equal to 0,
  * false otherwise.
  */
-bool	is_space_fdf(const t_table_fdf *dst, size_t index)
+bool	is_space_fdf(const t_fdf_table *dst, size_t index)
 {
 	if (dst == NULL || dst->arr == NULL
 		|| check_multiplication_overflow(dst->col, dst->row) == false || index >= dst->col * dst->row)
@@ -37,7 +37,7 @@ bool	is_space_fdf(const t_table_fdf *dst, size_t index)
  * @return true if the cell position belongs to the chess pattern,
  * false otherwise.
  */
-bool	is_chess_fdf(const t_table_fdf *dst, size_t index)
+bool	is_chess_fdf(const t_fdf_table *dst, size_t index)
 {
 	if (dst == NULL || dst->arr == NULL
 		|| check_multiplication_overflow(dst->col, dst->row) == false)
@@ -49,7 +49,7 @@ bool	is_chess_fdf(const t_table_fdf *dst, size_t index)
 
 // time : O(1)
 // space: O(1)
-static void	set_cells_color_unit(t_table_fdf *dst, int color,
+static void	set_cells_color_unit(t_fdf_table *dst, int color,
 	t_fdf_channel channel, size_t i)
 {
 	unsigned char	cccc;
@@ -81,8 +81,8 @@ static void	set_cells_color_unit(t_table_fdf *dst, int color,
  * @param is_filtered_cell optional callback used to select which cells
  * are modified. If NULL, every cell is modified.
  */
-void	set_cells_color(t_table_fdf *dst, int color,
-	t_fdf_channel channel, bool (*is_filtered_cell)(const t_table_fdf *dst, size_t index))
+void	set_cells_color(t_fdf_table *dst, int color,
+	t_fdf_channel channel, bool (*is_filtered_cell)(const t_fdf_table *dst, size_t index))
 {
 	size_t	i;
 
@@ -92,7 +92,7 @@ void	set_cells_color(t_table_fdf *dst, int color,
 	while (dst != NULL && i < dst->row * dst->col)
 	{
 		if (is_filtered_cell == NULL
-			|| is_filtered_cell((const t_table_fdf *)dst, i) == true)
+			|| is_filtered_cell((const t_fdf_table *)dst, i) == true)
 			set_cells_color_unit(dst, color, channel, i);
 		i += 1;
 	}

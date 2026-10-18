@@ -27,7 +27,7 @@
  * @param index element index whose RGBA channels are combined
  * @return packed 32-bit RGBA color, or 0 if src is NULL or index is invalid
  */
-int32_t	get_fdf_rgba_int32(const t_fdf *src, size_t index)
+int32_t	get_fdf_rgba_int32(const t_fdf_projection2d *src, size_t index)
 {
 	int32_t	r;
 	int32_t	g;
@@ -55,7 +55,7 @@ int32_t	get_fdf_rgba_int32(const t_fdf *src, size_t index)
 
 // time : O(1)
 // space: O(1)
-bool	is_fdf_valid(const t_fdf *src)
+bool	is_fdf_valid(const t_fdf_projection2d *src)
 {
 	if (src == NULL)
 		return (false);

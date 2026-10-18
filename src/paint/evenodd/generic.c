@@ -19,7 +19,7 @@
  * @return true if the rounded calculated value is odd,
  * false otherwise.
  */
-bool	is_re2_diff_im2_odd_func(const t_table_fdf *dst, size_t index,
+bool	is_re2_diff_im2_odd_func(const t_fdf_table *dst, size_t index,
 	t_2d_float (*complex_func)(t_2d_float a), float zoom)
 {
 	t_2d_float	y;
@@ -29,7 +29,7 @@ bool	is_re2_diff_im2_odd_func(const t_table_fdf *dst, size_t index,
 		|| check_multiplication_overflow(dst->col, dst->row) == false
 		|| index >= dst->col * dst->row)
 		return (false);
-	y = get_table_fdf_coordinate(dst, index, zoom);
+	y = get_fdf_table_coordinate(dst, index, zoom);
 	if (complex_func != NULL)
 		y = complex_func(y);
 	product = (int)f_round(y.x * y.x - y.y * y.y);
@@ -52,7 +52,7 @@ bool	is_re2_diff_im2_odd_func(const t_table_fdf *dst, size_t index,
  * @return true if the rounded calculated value is odd,
  * false otherwise.
  */
-bool	is_re2_diff_im2_odd(const t_table_fdf *dst, size_t index)
+bool	is_re2_diff_im2_odd(const t_fdf_table *dst, size_t index)
 {
 	return (is_re2_diff_im2_odd_func(dst, index, NULL, 0.5));
 }
@@ -76,7 +76,7 @@ bool	is_re2_diff_im2_odd(const t_table_fdf *dst, size_t index)
  * @return true if the rounded coordinate magnitude is odd,
  * false otherwise.
  */
-bool	is_oddlength_func(const t_table_fdf *dst, size_t index,
+bool	is_oddlength_func(const t_fdf_table *dst, size_t index,
 	t_2d_float (*complex_func)(t_2d_float a), float zoom)
 {
 	t_2d_float	y;
@@ -85,7 +85,7 @@ bool	is_oddlength_func(const t_table_fdf *dst, size_t index,
 		|| check_multiplication_overflow(dst->col, dst->row) == false
 		|| index >= dst->col * dst->row)
 		return (false);
-	y = get_table_fdf_coordinate(dst, index, zoom);
+	y = get_fdf_table_coordinate(dst, index, zoom);
 	if (complex_func != NULL)
 		y = complex_func(y);
 	if ((int)f_round(complex_magnitude(y, 0)) % 2 == 1)
@@ -109,7 +109,7 @@ bool	is_oddlength_func(const t_table_fdf *dst, size_t index,
  * @return true if the rounded coordinate magnitude is odd,
  * false otherwise.
  */
-bool	is_oddlength(const t_table_fdf *dst, size_t index)
+bool	is_oddlength(const t_fdf_table *dst, size_t index)
 {
 	return (is_oddlength_func(dst, index, NULL, 1));
 }
@@ -132,7 +132,7 @@ bool	is_oddlength(const t_table_fdf *dst, size_t index)
  *
  * @return true if z.x is even and z.y is even, false otherwise.
  */
-bool	is_andmod_func(const t_table_fdf *dst, size_t index,
+bool	is_andmod_func(const t_fdf_table *dst, size_t index,
 	t_2d_float (*complex_func)(t_2d_float a), float zoom)
 {
 	t_2d_float	y;
@@ -141,7 +141,7 @@ bool	is_andmod_func(const t_table_fdf *dst, size_t index,
 		|| check_multiplication_overflow(dst->col, dst->row) == false
 		|| index >= dst->col * dst->row)
 		return (false);
-	y = get_table_fdf_coordinate(dst, index, zoom);
+	y = get_fdf_table_coordinate(dst, index, zoom);
 	if (complex_func != NULL)
 		y = complex_func(y);
 	if (y.x < 0)

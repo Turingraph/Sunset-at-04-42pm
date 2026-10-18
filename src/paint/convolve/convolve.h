@@ -25,7 +25,7 @@ typedef struct t_matrix
 
 // convolve_height.c
 
-t_table_fdf	convolve_fdf(const t_table_fdf *src, float *kernel,
+t_fdf_table	convolve_fdf(const t_fdf_table *src, float *kernel,
 				size_t dim);
 
 // kernel.c

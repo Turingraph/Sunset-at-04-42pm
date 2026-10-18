@@ -18,7 +18,7 @@
 /* ************************************************************************** */
 
 /**
- * Identifies the data component stored in a t_table_fdf array.
+ * Identifies the data component stored in a t_fdf_table array.
  *
  * - RED selects the red color component.
  *
@@ -57,7 +57,7 @@ typedef enum t_fdf_channel
  * @param b array containing the blue color component of each cell
  * @param a array containing the alpha color component of each cell
  */
-typedef struct t_table_fdf
+typedef struct t_fdf_table
 {
 	size_t			row;
 	size_t			col;
@@ -66,7 +66,7 @@ typedef struct t_table_fdf
 	unsigned char	*g;
 	unsigned char	*b;
 	unsigned char	*a;
-}	t_table_fdf;
+}	t_fdf_table;
 
 /**
  * Sometimes t_2d_float is used for describing 2D xy position.
@@ -200,7 +200,7 @@ typedef enum t_load_warning
  * rgb_warn stores the parsing status of the color values.
  * 
  * If int_warn and/or rgb_warn are NOT_DECIMAL and/or NOT_HEX, then 
- * load_all_fdf_lines stops and open_table_fdf_file return empty output.
+ * load_all_fdf_lines stops and open_fdf_table_file return empty output.
  *
  * status: internal data shape_2d
  *
@@ -286,7 +286,7 @@ size_t	ft_putnbr_fd(int n, int fd, const char *base, size_t digits);
 
 /**
  * Parse an ASCII-art line using the Cheche01 character ramp.
- * This function is intended to be used with `open_table_fdf_file`
+ * This function is intended to be used with `open_fdf_table_file`
  *
  * time/space: O(n) / O(n)
  * 
@@ -300,7 +300,7 @@ t_load_fdf	parse_ascii_cheche01(char *line);
 
 /**
  * Parse an ASCII-art line using the standard character ramp.
- * This function is intended to be used with `open_table_fdf_file`
+ * This function is intended to be used with `open_fdf_table_file`
  *
  * time/space: O(n) / O(n)
  * 
@@ -314,7 +314,7 @@ t_load_fdf	parse_ascii_standard(char *line);
 
 /**
  * Parse an ASCII-art line using the Chungaloider brightness ramp.
- * This function is intended to be used with `open_table_fdf_file`
+ * This function is intended to be used with `open_fdf_table_file`
  *
  * time/space: O(n) / O(n)
  *
@@ -331,7 +331,7 @@ t_load_fdf	parse_ascii_chungaloider(char *line);
 
 /**
  * Parse an FDF line as colorful data.
- * This function is intended to be used with `open_table_fdf_file`
+ * This function is intended to be used with `open_fdf_table_file`
  *
  * time/space: O(n) / O(n)
  *
@@ -346,7 +346,7 @@ t_load_fdf	parse_decimal_rgba(char *line);
 
 /**
  * Parse an FDF line as black and white data.
- * This function is intended to be used with `open_table_fdf_file`
+ * This function is intended to be used with `open_fdf_table_file`
  *
  * time/space: O(n) / O(n)
  *
@@ -364,17 +364,17 @@ t_load_fdf	parse_decimal_bw(char *line);
 /* ************************************************************************** */
 
 /**
- * Free and reset the t_table_fdf array
+ * Free and reset the t_fdf_table array
  *
  * time/space: O(1) / O(1)
  * 
- * @param src the target t_table_fdf array
+ * @param src the target t_fdf_table array
  */
-void			destroy_table_fdf(t_table_fdf *src);
-// void			destroy_table_fdf(t_table_fdf *src);
+void			destroy_fdf_table(t_fdf_table *src);
+// void			destroy_fdf_table(t_fdf_table *src);
 
 /**
- * Define t_table_fdf as array with only 0.
+ * Define t_fdf_table as array with only 0.
  *
  * time/space: O(n) / O(n)
  * 
@@ -383,14 +383,14 @@ void			destroy_table_fdf(t_table_fdf *src);
  * @param is_rgba if true, allocate storage for the RGBA channels;
  * if false, only the height channel is allocated.
  * 
- * @return array with only 0 as t_table_fdf with specified rows and columns.
+ * @return array with only 0 as t_fdf_table with specified rows and columns.
  */
-t_table_fdf		init_table_fdf(size_t row, size_t col, bool is_rgba);
-// t_table_fdf		create_table_fdf(size_t row, size_t col, bool is_rgba);
+t_fdf_table		create_fdf_table(size_t row, size_t col, bool is_rgba);
+// t_fdf_table		create_fdf_table(size_t row, size_t col, bool is_rgba);
 
 
 /**
- * Load target file as t_table_fdf 5 rgba and height integer array data.
+ * Load target file as t_fdf_table 5 rgba and height integer array data.
  *
  * time/space: O(n) / O(n)
  * 
@@ -403,7 +403,7 @@ t_table_fdf		init_table_fdf(size_t row, size_t col, bool is_rgba);
  * @return return the array that contains rgba and height of the height map.
  * @see src/input/load/parse.c
  */
-t_table_fdf		open_table_fdf_file(const char *file_name, const char *dir,
+t_fdf_table		open_fdf_table_file(const char *file_name, const char *dir,
 					t_load_fdf (*one_line)(char *line), bool is_rgba);
 
 
@@ -417,7 +417,7 @@ t_table_fdf		open_table_fdf_file(const char *file_name, const char *dir,
  * @param channel channel to convert
  */
 void			write_table_ascii_cheche01(int fd,
-					const t_table_fdf *src, t_fdf_channel channel);
+					const t_fdf_table *src, t_fdf_channel channel);
 
 /**
  * Write an FDF channel using the standard ASCII ramp.
@@ -429,7 +429,7 @@ void			write_table_ascii_cheche01(int fd,
  * @param channel channel to convert
  */
 void			write_table_ascii_standard(int fd,
-					const t_table_fdf *src, t_fdf_channel channel);
+					const t_fdf_table *src, t_fdf_channel channel);
 
 /**
  * Write an FDF channel using the Chungaloider ASCII ramp.
@@ -441,7 +441,7 @@ void			write_table_ascii_standard(int fd,
  * @param channel channel to convert
  */
 void			write_table_ascii_chungaloider(int fd,
-					const t_table_fdf *src, t_fdf_channel channel);
+					const t_fdf_table *src, t_fdf_channel channel);
 
 /**
  * Write an FDF table to a file descriptor.
@@ -453,7 +453,7 @@ void			write_table_ascii_chungaloider(int fd,
  * @param digits number of digits for height values
  * @param mode output format
  */
-void			write_table_fdf(int fd,
-					const t_table_fdf *src, size_t digits, t_write_style mode);
+void			write_fdf_table(int fd,
+					const t_fdf_table *src, size_t digits, t_write_style mode);
 
 #endif

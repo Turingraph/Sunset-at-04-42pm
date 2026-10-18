@@ -18,7 +18,7 @@
 # include <stdint.h>
 
 /**
- * Identifies the data component stored in a t_table_fdf array.
+ * Identifies the data component stored in a t_fdf_table array.
  *
  * - RED selects the red color component.
  *
@@ -59,7 +59,7 @@ typedef enum t_fdf_channel
  * @param b array containing the blue color component of each cell
  * @param a array containing the alpha color component of each cell
  */
-typedef struct t_table_fdf
+typedef struct t_fdf_table
 {
 	size_t			row;
 	size_t			col;
@@ -68,7 +68,7 @@ typedef struct t_table_fdf
 	unsigned char	*g;
 	unsigned char	*b;
 	unsigned char	*a;
-}	t_table_fdf;
+}	t_fdf_table;
 
 typedef struct t_2d_float
 {

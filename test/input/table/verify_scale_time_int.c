@@ -3,7 +3,7 @@
 /*
 // time : O(n)
 // space: O(1)
-e_bool	assert_table_with_intarr(const t_intarr_tester *src, const t_table_fdf *dst)
+e_bool	assert_table_with_intarr(const t_intarr_tester *src, const t_fdf_table *dst)
 {
 	size_t	i;
 	size_t	j;
@@ -21,7 +21,7 @@ int	main(void)
 	size_t			k;
 	size_t			score;
 	size_t			max_score = 10;
-	t_table_fdf     table;
+	t_fdf_table     table;
 	t_intarr_tester	arr[] = {
 		{
 			(const t_intarr[]){
@@ -253,9 +253,9 @@ int	main(void)
 		while (k < 2)
 		{
 			if (k == 0)
-				table = open_table_fdf_file(arr[i].file_name, src_dir, parse_decimal_bw, false);
+				table = open_fdf_table_file(arr[i].file_name, src_dir, parse_decimal_bw, false);
 			else
-				table = open_table_fdf_file(arr[i].file_name, src_dir, parse_decimal_rgba, true);
+				table = open_fdf_table_file(arr[i].file_name, src_dir, parse_decimal_rgba, true);
 			scale_multiplication_fdf(&table, scale_arr[i], HEIGHT);
 			if (table.row * table.col == arr[i].length && table.arr != NULL
 				&& assert_intarr(table.arr, arr[i].arr[0].arr, arr[i].length) == true)
@@ -268,7 +268,7 @@ int	main(void)
 				ft_putnbr_fd(k, 1, "012346789", 1);
 				write(1, "\n", 1);
 			}
-            destroy_table_fdf(&table);
+            destroy_fdf_table(&table);
 			k += 1;
 		}
 		i += 1;

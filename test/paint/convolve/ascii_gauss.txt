@@ -2,8 +2,8 @@
 
 int	main(void)
 {
-	t_table_fdf	table_a;
-	t_table_fdf	table_b;
+	t_fdf_table	table_a;
+	t_fdf_table	table_b;
 	t_matrix	kernel_2;
 	t_matrix	kernel;
 	size_t		half_dim;
@@ -43,17 +43,17 @@ int	main(void)
 	while (i < length)
 	{
 		output = open_dir_file(arr[i], dst, APPEND);
-		table_a = open_table_fdf_file(arr[i], src,
+		table_a = open_fdf_table_file(arr[i], src,
 				parse_ascii_chungaloider, false);
-		table_b = scale_dimension_fdf((const t_table_fdf *)&table_a, 3, 3);
-		destroy_table_fdf(&table_a);
+		table_b = scale_dimension_fdf((const t_fdf_table *)&table_a, 3, 3);
+		destroy_fdf_table(&table_a);
 		if (i % 2 == 0)
 			table_a = convolve_hight(&table_b, kernel);
 		else
 			table_a = convolve_hight(&table_b, kernel_2);
 		write_table_ascii_cheche01(output, &table_a, HEIGHT);
-		destroy_table_fdf(&table_a);
-		destroy_table_fdf(&table_b);
+		destroy_fdf_table(&table_a);
+		destroy_fdf_table(&table_b);
 		i += 1;
 	}
 	free_matrix(&kernel);
