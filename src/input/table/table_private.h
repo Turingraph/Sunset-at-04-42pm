@@ -25,7 +25,7 @@ t_fdf_table		load_fdf_table(const t_load_fdf_arr *src, bool is_rgba);
 
 // positive.c
 
-int				get_minmax_from_fdf_table(const t_fdf_table *dst,
+int				minmax_from_fdf_table(const t_fdf_table *dst,
 					bool is_max, t_fdf_channel channel);
 void			scale_positive_fdf(t_fdf_table *dst);
 void			scale_relu_fdf(t_fdf_table *dst, int min, int max, int expect);

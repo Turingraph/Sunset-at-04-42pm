@@ -591,7 +591,7 @@ t_fdf_table		create_fdf_table(size_t row, size_t col, bool is_rgba);
  * 
  * @return minimum or maximum integer based on the input.
  */
-int				get_minmax_from_fdf_table(const t_fdf_table *src,
+int				minmax_from_fdf_table(const t_fdf_table *src,
 					bool is_max, t_fdf_channel channel);
 
 /**
@@ -1844,7 +1844,7 @@ typedef enum t_2d_shape
  * @see https://github.com/codam-coding-college/MLX42/blob/master/docs/Colors.md
  * to understand how to use color with MLX42 graphic library.
  */
-int32_t	int32_from_rgba(unsigned char r,
+int32_t	rgba32_from_char(unsigned char r,
 	unsigned char g, unsigned char b, unsigned char a);
 
 /* ************************************************************************** */

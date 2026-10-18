@@ -10,37 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
-
-// time : O(n)
-// space: O(1)
-void	create_fdf_position(const t_fdf_table *src, float *arr_x,
-	float *arr_y, t_2d_float (*projection)(float x, float y, float z))
-{
-	size_t		i;
-	t_2d_float	dst;
-
-	if (src == NULL || arr_x == NULL || arr_y == NULL
-		|| check_multiplication_overflow(src->col, src->row) == false)
-		return ;
-	i = 0;
-	while (i < src->row * src->col)
-	{
-		dst.x = (float)(i % src->col) - (float)(src->col / 2);
-		dst.y = (float)(i / src->col) - (float)(src->row / 2);
-		if (src->arr == NULL && projection != NULL)
-			dst = projection(dst.x, dst.y, 0.0);
-		else if (projection != NULL)
-			dst = projection(dst.x, dst.y, src->arr[i]);
-		arr_x[i] = dst.x;
-		arr_y[i] = dst.y;
-		i += 1;
-	}
-}
+#include "projection2d.h"
 
 // time : O(1)
 // space: O(1)
-t_fdf_projection2d	init_null_fdf(void)
+static t_fdf_projection2d	fdf_projection2d_null(void)
 {
 	t_fdf_projection2d	dst;
 
@@ -77,7 +51,7 @@ t_fdf_projection2d	init_null_fdf(void)
 t_fdf_projection2d	destroy_fdf_projection2d(t_fdf_projection2d *src)
 {
 	if (src == NULL)
-		return (init_null_fdf());
+		return (fdf_projection2d_null());
 	free(src->r);
 	free(src->g);
 	free(src->b);
@@ -98,13 +72,13 @@ t_fdf_projection2d	destroy_fdf_projection2d(t_fdf_projection2d *src)
 
 // time : O(n)
 // space: O(n)
-t_fdf_projection2d	init_placeholder_fdf(t_fdf_table *src)
+static t_fdf_projection2d	fdf_projection2d_malloc(t_fdf_table *src)
 {
 	t_fdf_projection2d	dst;
 
 	if (src == NULL
 		|| check_multiplication_overflow(src->col, src->row) == false)
-		return (init_null_fdf());
+		return (fdf_projection2d_null());
 	dst.r = src->r;
 	dst.g = src->g;
 	dst.b = src->b;
@@ -122,6 +96,32 @@ t_fdf_projection2d	init_placeholder_fdf(t_fdf_table *src)
 	if (dst.x == NULL || dst.y == NULL)
 		return (destroy_fdf_projection2d(&dst));
 	return (dst);
+}
+
+// time : O(n)
+// space: O(1)
+static void	fdf_projection2d_update(const t_fdf_table *src, float *arr_x,
+	float *arr_y, t_2d_float (*projection)(float x, float y, float z))
+{
+	size_t		i;
+	t_2d_float	dst;
+
+	if (src == NULL || arr_x == NULL || arr_y == NULL
+		|| check_multiplication_overflow(src->col, src->row) == false)
+		return ;
+	i = 0;
+	while (i < src->row * src->col)
+	{
+		dst.x = (float)(i % src->col) - (float)(src->col / 2);
+		dst.y = (float)(i / src->col) - (float)(src->row / 2);
+		if (src->arr == NULL && projection != NULL)
+			dst = projection(dst.x, dst.y, 0.0);
+		else if (projection != NULL)
+			dst = projection(dst.x, dst.y, src->arr[i]);
+		arr_x[i] = dst.x;
+		arr_y[i] = dst.y;
+		i += 1;
+	}
 }
 
 /**
@@ -159,16 +159,16 @@ t_fdf_projection2d	create_fdf_projection2d(t_fdf_table *src,
 	float	min_x;
 
 	if (src == NULL || check_multiplication_overflow(src->col, src->row) == false)
-		return (init_null_fdf());
-	dst = init_placeholder_fdf(src);
+		return (fdf_projection2d_null());
+	dst = fdf_projection2d_malloc(src);
 	if (dst.col == 0 || dst.row == 0)
 		return (dst);
-	create_fdf_position(src, dst.x, dst.y, projection);
+	fdf_projection2d_update(src, dst.x, dst.y, projection);
 	vector_scale(dst.x, scale, src->col * src->row);
 	vector_scale(dst.y, scale, src->col * src->row);
-	min_x = (float)get_minmax_from_fdf_table(
+	min_x = (float)minmax_from_fdf_table(
 			(const t_fdf_table *)src, false, HEIGHT);
-	max_x = (float)get_minmax_from_fdf_table(
+	max_x = (float)minmax_from_fdf_table(
 			(const t_fdf_table *)src, true, HEIGHT);
 	dst.width = f_max(max_x - min_x, (float)f_max_int(src->row, src->col));
 	dst.row = src->row;

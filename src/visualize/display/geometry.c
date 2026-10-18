@@ -73,7 +73,7 @@ bool	is_circle_in_screen(t_2d_camera camera,
  */
 float	get_fdf_point(t_fdf_projection2d *fdf, t_2d_int ixiy, size_t dim, char next)
 {
-	if (is_fdf_valid(fdf) == false)
+	if (is_fdf_projection2d_valid(fdf) == false)
 		return (0.0);
 	if (next == 1 || next == 3)
 		ixiy.x += 1;

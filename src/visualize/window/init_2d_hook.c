@@ -116,7 +116,7 @@ void	scale_fdf_as_window_object(t_fdf_projection2d *src, size_t fixed_window_siz
 	size_t		length;
 	float		scale;
 
-	if (is_fdf_valid(src) == false || fixed_window_size == 0)
+	if (is_fdf_projection2d_valid(src) == false || fixed_window_size == 0)
 		return ;
 	length = src->col * src->row;
 	scale = fixed_window_size / src->width;

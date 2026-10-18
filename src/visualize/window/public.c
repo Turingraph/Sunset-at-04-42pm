@@ -80,7 +80,7 @@ void	view_fdf(t_fdf_projection2d *fdf, t_fdf_render fdf_render,
 	t_2d_hook		hook;
 	t_2d_camera		camera;
 
-	if (is_fdf_valid(fdf) == false)
+	if (is_fdf_projection2d_valid(fdf) == false)
 		return ;
 	mlx = mlx_init(SUNSET_WINDOW_WIDTH,
 		SUNSET_WINDOW_HEIGHT, "Sunset at 4:42 pm", true);

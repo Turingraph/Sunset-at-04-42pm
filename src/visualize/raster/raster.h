@@ -22,10 +22,10 @@ void		raster_circle(mlx_image_t *dst,
 
 // color.c
 
-int32_t		int32_from_rgba(unsigned char r,
+int32_t		rgba32_from_char(unsigned char r,
 				unsigned char g, unsigned char b, unsigned char a);
 void		raster_color_background(mlx_image_t *dst, int32_t color);
-int32_t		int32_from_rgbafdf(const t_fdf_table *src, size_t index);
+int32_t		rgba32_from_table(const t_fdf_table *src, size_t index);
 
 // line_generic.c
 

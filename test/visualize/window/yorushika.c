@@ -81,7 +81,7 @@ int	main(int len, char **str)
 	scale_multiplication_fdf(&table, 1.0 / 20.0, HEIGHT);
 	color_cells_gradient(&table, init_white_noise(), true);
 	output = create_fdf_projection2d(&table, projection_military, 1.0);
-	view_fdf(&output, style, int32_from_rgba(34, 79, 112, 255));
+	view_fdf(&output, style, rgba32_from_char(34, 79, 112, 255));
 	destroy_fdf_table(&table);
 	destroy_fdf_projection2d(&output);
 	return (0);

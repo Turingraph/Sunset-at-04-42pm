@@ -13,7 +13,7 @@
 #ifndef DISPLAY_TYPE_H
 # define DISPLAY_TYPE_H
 
-# include "../fdf/fdf.h"
+# include "../projection2d/projection2d.h"
 
 /**
  * 2D camera describing the visible portion of a rendered object.

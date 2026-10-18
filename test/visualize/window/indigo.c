@@ -40,7 +40,7 @@ int	main(int len, char **str)
 	color_cells_gradient(&table, init_deep_wood(), true);
 	scale_multiplication_fdf(&table, 1.0, HEIGHT);
 	output = create_fdf_projection2d(&table, NULL, 1.0);
-	view_fdf(&output, style, int32_from_rgba(255, 255, 255, 255));
+	view_fdf(&output, style, rgba32_from_char(255, 255, 255, 255));
 	destroy_fdf_table(&table);
 	destroy_fdf_projection2d(&output);
 	return (0);

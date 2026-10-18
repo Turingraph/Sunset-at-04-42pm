@@ -113,7 +113,7 @@ int	main(void)
 		}
 	};
 
-	view_motif(&islamic_art, int32_from_rgba(253, 240, 213, 255), 3);
+	view_motif(&islamic_art, rgba32_from_char(253, 240, 213, 255), 3);
 	return (0);
 }
 

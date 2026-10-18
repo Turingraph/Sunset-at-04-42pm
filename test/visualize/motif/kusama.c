@@ -6,7 +6,7 @@ int	main(void)
 		{.x = 0.5, .y = 0.5},
 	};
 	t_ink32			ink = {
-		.color = int32_from_rgba(0, 0, 0, 255),
+		.color = rgba32_from_char(0, 0, 0, 255),
 		.thickness = 20};
 	t_2d_polygon	circle_arr = {.arr = arr, .is_loop = false, .length = 1};
 	t_motif_arr	islamic_art = {
@@ -19,7 +19,7 @@ int	main(void)
 			}
 		}
 	};
-	view_motif(&islamic_art, int32_from_rgba(253, 240, 213, 255), 3);
+	view_motif(&islamic_art, rgba32_from_char(253, 240, 213, 255), 3);
 	return (0);
 }
 
