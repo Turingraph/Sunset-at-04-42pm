@@ -43,7 +43,7 @@ bool	is_islamic_art_valid(const t_islamic_art *src)
  * @param boundary target rectangular boundary
  * @return converted integer coordinate relative to the boundary origin
  */
-t_2d_int	normal_complex_to_2d_int(t_2d_float src, t_line boundary)
+static t_2d_int	float2d_to_int2d(t_2d_float src, t_line boundary)
 {
 	t_2d_float	normal;
 	t_2d_int	dst;
@@ -77,7 +77,7 @@ t_line	init_float_line(t_2d_float point_1, t_2d_float point_2,
 {
 	t_line	dst;
 
-	dst.p1 = normal_complex_to_2d_int(point_1, boundary);
-	dst.p2 = normal_complex_to_2d_int(point_2, boundary);
+	dst.p1 = float2d_to_int2d(point_1, boundary);
+	dst.p2 = float2d_to_int2d(point_2, boundary);
 	return (dst);
 }

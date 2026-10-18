@@ -73,45 +73,26 @@ typedef struct s_islamic_art
 	t_tile_format	tiles;
 }	t_islamic_art;
 
-// draw.c
-
-void			draw_motif_mlx(mlx_image_t *img, t_islamic_art *src);
-
-// init.c
-
-bool			is_islamic_art_valid(const t_islamic_art *src);
-t_line			init_float_line(t_2d_float point_1, t_2d_float point_2,
-					t_line boundary);
-
 // motif.c
 
-void			draw_circle_unittile(mlx_image_t *dst,
-					const t_2d_polygon *polygon, t_ink32 ink, t_line boundary);
-void			draw_polygon_unittile(mlx_image_t *dst,
-					const t_2d_polygon *polygon, t_ink32 ink, t_line boundary);
-void			draw_rectangle_unittile(mlx_image_t *dst,
-					const t_2d_polygon *polygon, int32_t ink, t_line boundary);
+void			raster_motif(mlx_image_t *img, t_islamic_art *src);
 
 // public.c
 
 void			view_motif(t_motif_arr *src,
 					int32_t background_color, size_t resolution);
 
-// tile_format.c
+// tile.c
 
 t_tile_format	init_tile_format(size_t width,
 					size_t height, size_t resolution);
 t_2d_int		get_ith_tile_screen(t_tile_format tiles,
 					int ix, int iy);
 
-// tile.c
+// utils.c
 
-size_t			init_tile_size(size_t side_length, size_t resolution);
-size_t			init_alltiles_count(size_t side_length,
-					size_t resolution, size_t fixed_length);
-size_t			init_alltiles_size(size_t side_length,
-					size_t resolution, size_t fixed_length);
-int				init_alltiles_offset(size_t side_length,
-					size_t resolution, size_t fixed_length);
+bool			is_islamic_art_valid(const t_islamic_art *src);
+t_line			init_float_line(t_2d_float point_1, t_2d_float point_2,
+					t_line boundary);
 
 #endif

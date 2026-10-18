@@ -28,7 +28,7 @@
  * @param ink drawing style containing the circle color and radius
  * @param boundary drawing boundary used to position and clip the circles
  */
-void	draw_circle_unittile(mlx_image_t *dst,
+static void	raster_motif_circle(mlx_image_t *dst,
 	const t_2d_polygon *polygon, t_ink32 ink, t_line boundary)
 {
 	size_t		i;
@@ -62,7 +62,7 @@ void	draw_circle_unittile(mlx_image_t *dst,
  * @param ink drawing style containing the line color and thickness
  * @param boundary drawing boundary used to position and clip the polygon
  */
-void	draw_polygon_unittile(mlx_image_t *dst, const t_2d_polygon *polygon,
+static void	raster_motif_line(mlx_image_t *dst, const t_2d_polygon *polygon,
 	t_ink32 ink, t_line boundary)
 {
 	size_t	i;
@@ -99,7 +99,7 @@ void	draw_polygon_unittile(mlx_image_t *dst, const t_2d_polygon *polygon,
  * @param ink 32-bit RGBA color used to draw the edges
  * @param boundary drawing boundary used to position and clip the edges
  */
-void	draw_rectangle_unittile(mlx_image_t *dst,
+static void	raster_motif_rectangle(mlx_image_t *dst,
 	const t_2d_polygon *polygon, int32_t ink, t_line boundary)
 {
 	size_t	i;
@@ -119,5 +119,82 @@ void	draw_rectangle_unittile(mlx_image_t *dst,
 	{
 		line = init_float_line(polygon->arr[i], polygon->arr[0], boundary);
 		raster_rectangle(dst, line, boundary, ink);
+	}
+}
+
+/**
+ * Draw one motif instance inside a single tile.
+ *
+ * Each polygon in the motif is rendered.
+ * The coordinates of the polygon are interpreted relative to the tile boundary.
+ *
+ * time/space: O(n) / O(1)
+ *
+ * status: internal helper
+ *
+ * @param img MLX image receiving the rendered motif
+ * @param src Islamic-art motif configuration containing motif data
+ * @param tile screen-space boundary of the tile to render into
+ */
+static void	raster_motif_unit(mlx_image_t *img,
+	t_islamic_art *src, t_line tile)
+{
+	size_t	i;
+	t_motif	*arr;
+
+	arr = src->motif->arr;
+	i = 0;
+	while (i < src->motif->length)
+	{
+		if (arr[i].shape_2d == E_LINE)
+			raster_motif_line(img, &(arr[i].polygon), arr[i].ink, tile);
+		else if (arr[i].shape_2d == E_CIRCLE)
+			raster_motif_circle(img, &(arr[i].polygon), arr[i].ink, tile);
+		else if (arr[i].shape_2d == E_RECTANGLE)
+			raster_motif_rectangle(img, &(arr[i].polygon),
+				arr[i].ink.color, tile);
+		i += 1;
+	}
+}
+
+/**
+ * Draw the configured motif across the complete tile grid.
+ *
+ * The motif is rendered once for every tile in the grid. The complete tile
+ * range is constructed from src->tiles.tile_counts and passed to the
+ * internal tile-loop helper.
+ *
+ * This function provides the current non-interactive motif rendering API.
+ * Camera control, panning, and unified FDF/motif interaction are intentionally
+ * outside its scope and may be introduced by a future rendering layer.
+ *
+ * time/space: O(n) / O(1)
+ *
+ * status: internal helper
+ *
+ * @param img MLX image receiving the rendered motif
+ * @param src motif configuration containing the motif, tile format, and
+ *            background configuration
+ */
+void	raster_motif(mlx_image_t *img, t_islamic_art *src)
+{
+	t_line		tile;
+	int			ix;
+	int			iy;
+
+	if (is_islamic_art_valid(src) == false)
+		return ;
+	iy = 0;
+	while (iy < src->tiles.tile_counts.y)
+	{
+		ix = 0;
+		while (ix < src->tiles.tile_counts.x)
+		{
+			tile.p1 = get_ith_tile_screen(src->tiles, ix, iy);
+			tile.p2 = get_ith_tile_screen(src->tiles, ix + 1, iy + 1);
+			raster_motif_unit(img, src, tile);
+			ix += 1;
+		}
+		iy += 1;
 	}
 }

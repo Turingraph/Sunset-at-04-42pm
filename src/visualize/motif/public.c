@@ -13,7 +13,7 @@
 #include "motif_private.h"
 
 // This function is only used for view_fdf.
-bool	view_motif_handle_00(mlx_t *mlx, mlx_image_t *img)
+static bool	view_motif_handle_00(mlx_t *mlx, mlx_image_t *img)
 {
 	if (img == NULL)
 	{
@@ -25,7 +25,7 @@ bool	view_motif_handle_00(mlx_t *mlx, mlx_image_t *img)
 }
 
 // This function is only used for view_fdf.
-int32_t	view_motif_handle_01(mlx_t *mlx, mlx_image_t *img)
+static int32_t	view_motif_handle_01(mlx_t *mlx, mlx_image_t *img)
 {
 	return (mlx_image_to_window(mlx, img,
 			(mlx->width - img->width) / 2,
@@ -33,7 +33,7 @@ int32_t	view_motif_handle_01(mlx_t *mlx, mlx_image_t *img)
 }
 
 // This function is only used for view_fdf.
-void	view_motif_handle_02(mlx_t *mlx, mlx_image_t *img)
+static void	view_motif_handle_02(mlx_t *mlx, mlx_image_t *img)
 {
 	mlx_loop(mlx);
 	mlx_delete_image(mlx, img);
@@ -77,7 +77,7 @@ void	view_motif(t_motif_arr *src,
 	drawing_context.motif = src;
 	drawing_context.tiles = init_tile_format(SUNSET_WINDOW_WIDTH, SUNSET_WINDOW_HEIGHT,
 			resolution);
-	draw_motif_mlx(img, &drawing_context);
+	raster_motif(img, &drawing_context);
 	if (-1 == view_motif_handle_01(mlx, img))
 	{
 		mlx_terminate(mlx);
