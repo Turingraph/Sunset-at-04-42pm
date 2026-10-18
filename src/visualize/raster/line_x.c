@@ -42,16 +42,16 @@ static void	raster_circle_half_l(mlx_image_t *dst,
 	ix = 0;
 	while (dst != NULL && ix <= -1 * iy)
 	{
-		line = define_circle_line(point, ix, iy, 0);
+		line = init_circle_line(point, ix, iy, 0);
 		line.p2.x = point.x;
 		raster_line_horizontal(dst, line, ink.color, boundary);
-		line = define_circle_line(point, ix, iy, 1);
+		line = init_circle_line(point, ix, iy, 1);
 		line.p2.x = point.x;
 		raster_line_horizontal(dst, line, ink.color, boundary);
-		line = define_circle_line(point, ix, iy, 2);
+		line = init_circle_line(point, ix, iy, 2);
 		line.p2.x = point.x;
 		raster_line_horizontal(dst, line, ink.color, boundary);
-		line = define_circle_line(point, ix, iy, 3);
+		line = init_circle_line(point, ix, iy, 3);
 		line.p2.x = point.x;
 		raster_line_horizontal(dst, line, ink.color, boundary);
 		if (pivot > 0)
@@ -92,16 +92,16 @@ static void	raster_circle_half_r(mlx_image_t *dst,
 	ix = 0;
 	while (dst != NULL && ix <= -1 * iy)
 	{
-		line = define_circle_line(point, ix, iy, 0);
+		line = init_circle_line(point, ix, iy, 0);
 		line.p1.x = point.x;
 		raster_line_horizontal(dst, line, ink.color, boundary);
-		line = define_circle_line(point, ix, iy, 1);
+		line = init_circle_line(point, ix, iy, 1);
 		line.p1.x = point.x;
 		raster_line_horizontal(dst, line, ink.color, boundary);
-		line = define_circle_line(point, ix, iy, 2);
+		line = init_circle_line(point, ix, iy, 2);
 		line.p1.x = point.x;
 		raster_line_horizontal(dst, line, ink.color, boundary);
-		line = define_circle_line(point, ix, iy, 3);
+		line = init_circle_line(point, ix, iy, 3);
 		line.p1.x = point.x;
 		raster_line_horizontal(dst, line, ink.color, boundary);
 		if (pivot > 0)

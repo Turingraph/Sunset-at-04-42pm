@@ -17,7 +17,7 @@
 
 // circle.c
 
-t_line		define_circle_line(t_2d_int point, int ix,
+t_line		init_circle_line(t_2d_int point, int ix,
 				int iy, char mode);
 void		raster_line_horizontal(mlx_image_t *dst, t_line line,
 				int32_t color, t_line boundary);
