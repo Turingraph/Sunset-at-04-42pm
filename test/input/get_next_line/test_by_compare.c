@@ -255,7 +255,7 @@ int	main(void)
 		fd = open_dir_file(arr[i].file_name, src_dir, E_READ);
 		if (arr[i].read_entire_file == true)
 		{
-			if (assert_file_with_strarr(fd, (const char **)(arr[i].arr), 0) == true)
+			if (assert_file_strarr(fd, (const char **)(arr[i].arr), 0) == true)
 				score += 1;
 			else
 			{
@@ -266,7 +266,7 @@ int	main(void)
 		}
 		if (arr[i].read_entire_file == false)
 		{
-			if (assert_file_with_strarr(fd, (const char **)(arr[i].arr), arr[i].total_lines) == true)
+			if (assert_file_strarr(fd, (const char **)(arr[i].arr), arr[i].total_lines) == true)
 				score += 1;
 			else
 			{
@@ -277,7 +277,7 @@ int	main(void)
 		}
 		i += 1;
 	}
-	write_total_score(score, max_score);
+	write_score(score, max_score);
 	return (0);
 }
 

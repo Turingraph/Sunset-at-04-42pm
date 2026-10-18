@@ -62,7 +62,7 @@ int	main(void)
 	scale_addition_fdf(&table, -1, HEIGHT);
 	scale_relu_fdf(&table, -1, 0, 0);
 	if (table.col * table.row == length_a
-		&& compare_intarr(table.arr, correct_a, length_a) == 0)
+		&& assert_intarr(table.arr, correct_a, length_a) == true)
 		y += 1;
 	else
 		write(1, "a false\n", 8);
@@ -76,7 +76,7 @@ int	main(void)
 	scale_addition_fdf(&table, -1, HEIGHT);
 	scale_relu_fdf(&table, -1, 0, 0);
 	if (table.col * table.row == length_b
-		&& compare_intarr(table.arr, correct_b, length_b) == 0)
+		&& assert_intarr(table.arr, correct_b, length_b) == true)
 		y += 1;
 	else
 		write(1, "b false\n", 8);
@@ -89,13 +89,13 @@ int	main(void)
 	scale_addition_fdf(&table, -1, HEIGHT);
 	scale_relu_fdf(&table, -1, 0, 0);
 	if (table.col * table.row == length_c
-		&& compare_intarr(table.arr, correct_c, length_c) == 0)
+		&& assert_intarr(table.arr, correct_c, length_c) == true)
 		y += 1;
 	else
 		write(1, "c false\n", 8);
 	free_table_fdf(&table);
 
-	write_total_score(y, max_score);
+	write_score(y, max_score);
 	return (0);
 }
 

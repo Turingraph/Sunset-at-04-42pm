@@ -2,15 +2,15 @@
 
 // time : O(n)
 // space: O(1)
-int	compare_string(const char *str_1,
+bool	assert_str(const char *str_1,
 	const char *str_2, size_t n, bool ignore_space)
 {
 	size_t	i;
 
 	if (str_1 == NULL && str_2 == NULL)
-		return (0);
+		return (true);
 	if ((str_1 == NULL && str_2 != NULL) || (str_1 != NULL && str_2 == NULL))
-		return (-1);
+		return (false);
 	while (f_isspace(*str_1, " \n\t\r\f\v") == 1
 		&& *str_1 != '\0' && ignore_space == true)
 		str_1 += 1;
@@ -30,7 +30,9 @@ int	compare_string(const char *str_1,
 			&& *str_2 != '\0' && ignore_space == true)
 			str_2 += 1;
 	}
-	return (*str_1 - *str_2);
+	if (*str_1 - *str_2 != 0)
+		return (false);
+	return (true);
 }
 
 // time : O(n)
@@ -62,8 +64,8 @@ bool	assert_strarr(const char **strarr_1,
 	i = 0;
 	while (i < length && strarr_1[i] != NULL && strarr_2[i] != NULL)
 	{
-		if (compare_string(strarr_1[i], strarr_2[i],
-				f_strlen(strarr_1[i]), ignore_space) != 0)
+		if (assert_str(strarr_1[i], strarr_2[i],
+				f_strlen(strarr_1[i]), ignore_space) == false)
 			return (false);
 		i += 1;
 	}
@@ -94,7 +96,7 @@ size_t	write_strarr(const char **strarr, size_t length, int fd)
 
 // time : O(n)
 // space: O(n)
-char	**load_file_as_strarr(int fd, size_t total_lines)
+char	**file_to_strarr(int fd, size_t total_lines)
 {
 	char	**dst;
 	size_t	i;

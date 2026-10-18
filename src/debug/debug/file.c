@@ -2,7 +2,7 @@
 
 // time : O(n)
 // space: O(n)
-size_t	total_lines_of_file(int fd)
+size_t	length_of_file(int fd)
 {
 	size_t	total_lines;
 	char	*line;
@@ -23,7 +23,7 @@ size_t	total_lines_of_file(int fd)
 
 // time : O(n)
 // space: O(n)
-bool	assert_files(const char *file_name_1, const char *file_name_2,
+bool	assert_file(const char *file_name_1, const char *file_name_2,
 	const char *dir_name_1, const char *dir_name_2)
 {
 	int		fd;
@@ -33,14 +33,14 @@ bool	assert_files(const char *file_name_1, const char *file_name_2,
 	bool	result;
 
 	fd = open_dir_file(file_name_1, dir_name_1, E_READ);
-	length = total_lines_of_file(fd);
+	length = length_of_file(fd);
 	fd = open_dir_file(file_name_2, dir_name_2, E_READ);
-	if (length != total_lines_of_file(fd))
+	if (length != length_of_file(fd))
 		return (false);
 	fd = open_dir_file(file_name_1, dir_name_1, E_READ);
-	strarr_1 = load_file_as_strarr(fd, length);
+	strarr_1 = file_to_strarr(fd, length);
 	fd = open_dir_file(file_name_2, dir_name_2, E_READ);
-	strarr_2 = load_file_as_strarr(fd, length);
+	strarr_2 = file_to_strarr(fd, length);
 	result = assert_strarr((const char **)strarr_1, (const char **)strarr_2, length, true);
 	free_2d_arr((void **)strarr_1, length);
 	free_2d_arr((void **)strarr_2, length);
@@ -49,7 +49,7 @@ bool	assert_files(const char *file_name_1, const char *file_name_2,
 
 // time : O(n)
 // space: O(n)
-bool	is_file_empty(int fd)
+static bool	is_file_empty(int fd)
 {
 	char	*actual_y;
 
@@ -65,11 +65,11 @@ bool	is_file_empty(int fd)
 
 // time : O(n)
 // space: O(n)
-char	*assert_gnl_and_line(char *actual_line,
+static char	*assert_gnl_and_line(char *actual_line,
 	const char *expected_line, int fd)
 {
-	if (compare_string(actual_line,
-			expected_line, f_strlen(expected_line), false) != 0
+	if (assert_str(actual_line,
+			expected_line, f_strlen(expected_line), false) == false
 		|| f_strlen(actual_line) != f_strlen(expected_line))
 	{
 		free(actual_line);
@@ -83,7 +83,7 @@ char	*assert_gnl_and_line(char *actual_line,
 // total_lines = 0 means to verify all lines.
 // time : O(n)
 // space: O(n)
-bool	assert_file_with_strarr(int fd, const char **strarr, size_t total_lines)
+bool	assert_file_strarr(int fd, const char **strarr, size_t total_lines)
 {
 	char	*line;
 	char	*next_line;

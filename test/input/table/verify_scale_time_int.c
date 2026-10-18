@@ -258,7 +258,7 @@ int	main(void)
 				table = open_table_fdf_file(arr[i].file_name, src_dir, parse_decimal_rgba, true);
 			scale_multiplication_fdf(&table, scale_arr[i], HEIGHT);
 			if (table.row * table.col == arr[i].length && table.arr != NULL
-				&& compare_intarr(table.arr, arr[i].arr[0].arr, arr[i].length) == 0)
+				&& assert_intarr(table.arr, arr[i].arr[0].arr, arr[i].length) == true)
 					score += 1;
 			else
 			{
@@ -273,7 +273,7 @@ int	main(void)
 		}
 		i += 1;
 	}
-	write_total_score(score, 2 * max_score);
+	write_score(score, 2 * max_score);
 	return (0);
 }
 

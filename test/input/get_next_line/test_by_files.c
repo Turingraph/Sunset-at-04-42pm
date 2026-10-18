@@ -37,14 +37,14 @@ int	main(void)
 			src_dir, E_READ);
 		if (fd > -1)
 		{
-			total_lines = total_lines_of_file(fd);
+			total_lines = length_of_file(fd);
 			fd = open_dir_file(arr[i], src_dir, E_READ);
-			load = load_file_as_strarr(fd, total_lines);
+			load = file_to_strarr(fd, total_lines);
 			fd = open_dir_file(arr[i], dst_dir, E_WRITE);
 			if (fd > -1)
 			{
 				write_strarr((const char **)load, length_of_strarr((const char **)load), fd);
-				if (assert_files(arr[i], arr[i], src_dir, dst_dir) == true)
+				if (assert_file(arr[i], arr[i], src_dir, dst_dir) == true)
 					score += 1;
 				else
 				{
@@ -60,7 +60,7 @@ int	main(void)
 		}
 		i += 1;
 	}
-	write_total_score(score, max_score);
+	write_score(score, max_score);
 	return (0);
 }
 

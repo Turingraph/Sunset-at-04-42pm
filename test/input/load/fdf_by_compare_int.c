@@ -231,7 +231,7 @@ int	main(void)
 				{
 					if (arr[i].arr[j].length != fdf_file.arr[j].length)
 						is_correct = false;
-					else if (compare_intarr(arr[i].arr[j].arr, fdf_file.arr[j].arr, fdf_file.arr[j].length) != 0)
+					else if (assert_intarr(arr[i].arr[j].arr, fdf_file.arr[j].arr, fdf_file.arr[j].length) == false)
 						is_correct = false;
 					j += 1;
 				}
@@ -249,7 +249,7 @@ int	main(void)
 		}
 		i += 1;
 	}
-	write_total_score(score, 2 * max_score);
+	write_score(score, 2 * max_score);
 	return (0);
 }
 

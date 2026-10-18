@@ -81,7 +81,7 @@ int	main(void)
 	// 	i += 1;
 	// }
 	// write_total_score(score, max_score);
-	write_total_score(10, 102);
+	write_score(10, 102);
 	return (0);
 }
 

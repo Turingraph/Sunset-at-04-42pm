@@ -58,7 +58,7 @@ int	main(void)
 	table = open_table_fdf_file(file_a, input_dir, parse_decimal_bw, false);
 	set_cells_color(&table, 99, HEIGHT, boundary_test);
 	if (table.col * table.row == length_a
-		&& compare_intarr(table.arr, correct_a, length_a) == 0)
+		&& assert_intarr(table.arr, correct_a, length_a) == true)
 		y += 1;
 	free_table_fdf(&table);
 
@@ -66,7 +66,7 @@ int	main(void)
 	table = open_table_fdf_file(file_b, input_dir, parse_decimal_bw, false);
 	set_cells_color(&table, 99, HEIGHT, boundary_test);
 	if (table.col * table.row == length_b
-		&& compare_intarr(table.arr, correct_b, length_b) == 0)
+		&& assert_intarr(table.arr, correct_b, length_b) == true)
 		y += 1;
 	free_table_fdf(&table);
 
@@ -74,11 +74,11 @@ int	main(void)
 	table = open_table_fdf_file(file_c, input_dir, parse_decimal_bw, false);
 	set_cells_color(&table, 99, HEIGHT, boundary_test);
 	if (table.col * table.row == length_c
-		&& compare_intarr(table.arr, correct_c, length_c) == 0)
+		&& assert_intarr(table.arr, correct_c, length_c) == true)
 		y += 1;
 	free_table_fdf(&table);
 
-	write_total_score(y, max_score);
+	write_score(y, max_score);
 	return (0);
 }
 

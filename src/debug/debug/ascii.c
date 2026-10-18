@@ -2,7 +2,7 @@
 
 // time : O(n)
 // space: O(1)
-int		compare_string_ascii(const char *str_1, const char *str_2, size_t n)
+static int		compare_string_ascii(const char *str_1, const char *str_2, size_t n)
 {
 	size_t	i;
 
@@ -27,7 +27,7 @@ int		compare_string_ascii(const char *str_1, const char *str_2, size_t n)
 
 // time : O(n)
 // space: O(1)
-bool	assert_strarr_ascii(const char **strarr_1,
+static bool	assert_strarr_ascii(const char **strarr_1,
 	const char **strarr_2, size_t length)
 {
 	size_t	i;
@@ -53,7 +53,7 @@ bool	assert_strarr_ascii(const char **strarr_1,
 
 // time : O(n)
 // space: O(n)
-bool	assert_files_ascii(const char *file_name_1, const char *file_name_2,
+bool	assert_file_ascii(const char *file_name_1, const char *file_name_2,
 	const char *dir_name_1, const char *dir_name_2)
 {
 	int		fd;
@@ -63,14 +63,14 @@ bool	assert_files_ascii(const char *file_name_1, const char *file_name_2,
 	bool	result;
 
 	fd = open_dir_file(file_name_1, dir_name_1, E_READ);
-	length = total_lines_of_file(fd);
+	length = length_of_file(fd);
 	fd = open_dir_file(file_name_2, dir_name_2, E_READ);	
-	if (length != total_lines_of_file(fd))
+	if (length != length_of_file(fd))
 		return (false);
 	fd = open_dir_file(file_name_1, dir_name_1, E_READ);
-	strarr_1 = load_file_as_strarr(fd, length);
+	strarr_1 = file_to_strarr(fd, length);
 	fd = open_dir_file(file_name_2, dir_name_2, E_READ);
-	strarr_2 = load_file_as_strarr(fd, length);
+	strarr_2 = file_to_strarr(fd, length);
 	result = assert_strarr_ascii((const char **)strarr_1, (const char **)strarr_2, length);
 	free_2d_arr((void **)strarr_1, length);
 	free_2d_arr((void **)strarr_2, length);

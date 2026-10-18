@@ -59,7 +59,7 @@ bool	math_tester(size_t max_score, const double **arr,
 		i += 1;
 	}
 	write(1, "\n", 1);
-	write_total_score(score, max_score);
+	write_score(score, max_score);
 	if (score == max_score)
 		return (true);
 	return (false);

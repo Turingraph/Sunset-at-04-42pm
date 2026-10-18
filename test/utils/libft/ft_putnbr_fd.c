@@ -35,7 +35,7 @@ int	main(void)
 		write(1, "\n", 1);
 		i += 1;
 	}
-	write_total_score(score, max_score);
+	write_score(score, max_score);
 	return (0);
 }
 

@@ -37,7 +37,7 @@ int	main(void)
 		if (fdf_dst > -1)
 		{
 			write_table_fdf(fdf_dst, &table, 1, HEIGHT_ONLY);
-			if (assert_files(arr[i], arr[i], src_dir, dst_dir) == true)
+			if (assert_file(arr[i], arr[i], src_dir, dst_dir) == true)
 				score += 1;
 			else
 			{
@@ -47,11 +47,11 @@ int	main(void)
 			}
 		}
 		else
-			warning_file_not_exists(arr[i]);
+			write_file_not_exists(arr[i]);
 		free_table_fdf(&table);
 		i += 1;
 	}
-	write_total_score(score, max_score);
+	write_score(score, max_score);
 	return (0);
 }
 

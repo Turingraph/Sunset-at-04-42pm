@@ -51,7 +51,7 @@ int	main(void)
 			write_table_fdf(fdf_dst, &table, 1, HEIGHT_ONLY);
 		}
 		else
-			warning_file_not_exists(arr[i]);
+			write_file_not_exists(arr[i]);
 		free_table_fdf(&table);
 		i += 1;
 	}

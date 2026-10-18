@@ -358,8 +358,7 @@ int	main(void)
 			
 			table_large = scale_dimension_fdf(&table, arr[i].scale_row, arr[i].scale_col);
 			if (table_large.row * table_large.col == arr[i].scale_row * arr[i].scale_col * arr[i].row * arr[i].col
-				&& compare_intarr(table_large.arr, arr[i].arr, table_large.row * table_large.col) == 0
-				)
+				&& assert_intarr(table_large.arr, arr[i].arr, table_large.row * table_large.col) == true)
 					score += 1;
 			else
 			{
@@ -375,7 +374,7 @@ int	main(void)
 		}
 		i += 1;
 	}
-	write_total_score(score, 2 * max_score);
+	write_score(score, 2 * max_score);
 	return (0);
 }
 

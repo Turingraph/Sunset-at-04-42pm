@@ -78,7 +78,7 @@ int	main(void)
 			write_table_ascii_cheche01(fdf_dst, &table, HEIGHT);
 		}
 		else
-			warning_file_not_exists(arr[i]);
+			write_file_not_exists(arr[i]);
 		free_table_fdf(&table);
 		i += 1;
 	}

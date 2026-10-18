@@ -59,7 +59,7 @@ int	main(void)
 		if (clone_examples > -1)
 		{
 			write_table_ascii_cheche01(clone_examples, &table, HEIGHT);
-			if (assert_files_ascii(arr[i], arr[i], src_dir, dst_dir) == true)
+			if (assert_file_ascii(arr[i], arr[i], src_dir, dst_dir) == true)
 				score += 1;
 			else
 			{
@@ -69,11 +69,11 @@ int	main(void)
 			}
 		}
 		else
-			warning_file_not_exists(arr[i]);
+			write_file_not_exists(arr[i]);
 		free_table_fdf(&table);
 		i += 1;
 	}
-	write_total_score(score, max_score);
+	write_score(score, max_score);
 	return (0);
 }
 

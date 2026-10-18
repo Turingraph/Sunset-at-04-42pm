@@ -40,7 +40,7 @@ int	main(void)
 		free_table_fdf(&table);
 		i += 1;
 	}
-	write_total_score(score, max_score);
+	write_score(score, max_score);
 	return (0);
 }
 

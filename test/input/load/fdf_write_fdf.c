@@ -38,7 +38,7 @@ int	main(void)
 		if (clone_examples > -1)
 		{
 			inspect_decimal(clone_examples, &fdf_file, 1, HEIGHT_ONLY);
-			if (assert_files(arr[i], arr[i], src_dir, dst_dir) == true)
+			if (assert_file(arr[i], arr[i], src_dir, dst_dir) == true)
 				score += 1;
 			else
 			{
@@ -56,7 +56,7 @@ int	main(void)
 		free_load_fdf_arr(&fdf_file);
 		i += 1;
 	}
-	write_total_score(score, max_score);
+	write_score(score, max_score);
 	return (0);
 }
 
