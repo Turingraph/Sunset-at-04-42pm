@@ -14,7 +14,7 @@
 
 // time : O(1)
 // space: O(1)
-t_line	init_draw_line_y(t_2d_camera camera, t_fdf_projection2d *fdf, t_2d_int ixiy)
+t_line	init_draw_line_y(t_2d_camera camera, t_fdf_proj2d *fdf, t_2d_int ixiy)
 {
 	t_line		line;
 
@@ -29,7 +29,7 @@ t_line	init_draw_line_y(t_2d_camera camera, t_fdf_projection2d *fdf, t_2d_int ix
 
 // time : O(1)
 // space: O(1)
-t_line	init_draw_line_x(t_2d_camera camera, t_fdf_projection2d *fdf, t_2d_int ixiy)
+t_line	init_draw_line_x(t_2d_camera camera, t_fdf_proj2d *fdf, t_2d_int ixiy)
 {
 	t_line		line;
 

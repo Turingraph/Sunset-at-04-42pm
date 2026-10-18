@@ -129,9 +129,9 @@ Your examples use:
 
 ```
 create_fdf_table(...)
-create_fdf_projection2d(...)
+create_fdf_proj2d(...)
 destroy_fdf_table(...)
-destroy_fdf_projection2d(...)
+destroy_fdf_proj2d(...)
 ```
 
 These names are perfectly understandable in isolation. Many C developers use `init`, `free`, and similar verbs regularly.
@@ -142,7 +142,7 @@ Consider:
 
 ```
 t_fdf_table table = create_fdf_table(300, 300, false);
-t_fdf output = create_fdf_projection2d(&table, projection_isometric, 0.6);
+t_fdf output = create_fdf_proj2d(&table, projection_isometric, 0.6);
 ```
 
 A developer might wonder:

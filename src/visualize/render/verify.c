@@ -22,7 +22,7 @@ bool	is_2dhook_valid(const t_2d_hook *src)
 		|| src->mlx == NULL
 		|| check_multiplication_overflow_uint32_t(src->mlx->width, src->mlx->height) == false
 		|| check_multiplication_overflow_uint32_t(src->img->width, src->img->height) == false
-		|| is_fdf_projection2d_valid(src->fdf) == false)
+		|| is_fdf_proj2d_valid(src->fdf) == false)
 		return (false);
 	return (true);
 }

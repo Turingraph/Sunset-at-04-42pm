@@ -36,7 +36,7 @@ static t_line	draw_toby_fox_fdf_unit(t_2d_hook *hook, t_2d_int ixiy)
 void	draw_toby_fox_fdf(t_2d_hook *hook, bool is_draw)
 {
 	t_2d_int	ixiy;
-	t_fdf_projection2d		src;
+	t_fdf_proj2d		src;
 	t_raster_style		raster_style;
 	t_line		line;
 

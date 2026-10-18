@@ -23,7 +23,7 @@ t_gradient	init_deep_wood()
 int	main(int len, char **str)
 {
 	t_fdf_table		table;
-	t_fdf_projection2d			output;
+	t_fdf_proj2d			output;
 	t_fdf_render	style;
 
 	if (len < 2)
@@ -39,10 +39,10 @@ int	main(int len, char **str)
 	scale_relu_fdf(&table, 0, 30, 0);
 	color_cells_gradient(&table, init_deep_wood(), true);
 	scale_multiplication_fdf(&table, 1.0, HEIGHT);
-	output = create_fdf_projection2d(&table, NULL, 1.0);
+	output = create_fdf_proj2d(&table, NULL, 1.0);
 	view_fdf(&output, style, rgba32_from_char(255, 255, 255, 255));
 	destroy_fdf_table(&table);
-	destroy_fdf_projection2d(&output);
+	destroy_fdf_proj2d(&output);
 	return (0);
 }
 

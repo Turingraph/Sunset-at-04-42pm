@@ -58,10 +58,10 @@ int	main(int len, char **str)
 	style.line_thickness = 1;
 	style.artists = E_RECTANGLE;
 	color_cells_gradient(&table, init_gradient(), true);
-	output = create_fdf_projection2d(&table, NULL, 1.0);
+	output = create_fdf_proj2d(&table, NULL, 1.0);
 	view_fdf(&output, style);
 	destroy_fdf_table(&table);
-	destroy_fdf_projection2d(&output);
+	destroy_fdf_proj2d(&output);
 	return (0);
 }
 

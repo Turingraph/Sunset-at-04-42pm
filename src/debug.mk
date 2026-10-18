@@ -14,7 +14,7 @@ BUFFER_SIZE = 42
 
 # *** library ***
 LIBRARY = $(patsubst %, lib/%.a, libft taylor get_next_line linalg load table \
-	convolve paint debug raster motif projection2d render window evenodd)
+	convolve paint debug raster motif proj2d render window evenodd)
 
 # *** atom src ***
 SRC_libft = $(wildcard utils/libft/*.c)
@@ -33,7 +33,7 @@ SRC_evenodd = $(wildcard paint/evenodd/*.c)
 
 SRC_raster = $(wildcard visualize/raster/*.c)
 SRC_motif = $(wildcard visualize/motif/*.c)
-SRC_projection2d = $(wildcard visualize/projection2d/*.c)
+SRC_proj2d = $(wildcard visualize/proj2d/*.c)
 SRC_render = $(wildcard visualize/render/*.c)
 SRC_window = $(wildcard visualize/window/*.c)
 
@@ -55,8 +55,8 @@ OBJ_evenodd = $(patsubst %.c, obj/%.o, $(SRC_evenodd)) $(OBJ_taylor)
 
 OBJ_raster = $(patsubst %.c, obj/%.o, $(SRC_raster)) $(OBJ_taylor) $(OBJ_table)
 OBJ_motif = $(patsubst %.c, obj/%.o, $(SRC_motif)) $(OBJ_raster)
-OBJ_projection2d = $(patsubst %.c, obj/%.o, $(SRC_projection2d)) $(OBJ_raster)
-OBJ_render = $(patsubst %.c, obj/%.o, $(SRC_render)) $(OBJ_projection2d)
+OBJ_proj2d = $(patsubst %.c, obj/%.o, $(SRC_proj2d)) $(OBJ_raster)
+OBJ_render = $(patsubst %.c, obj/%.o, $(SRC_render)) $(OBJ_proj2d)
 OBJ_window = $(patsubst %.c, obj/%.o, $(SRC_window)) $(OBJ_render)
 
 # https://stackoverflow.com/questions/59465799/avoid-gnu-make-automatic-file-deletion

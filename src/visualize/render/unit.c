@@ -17,13 +17,13 @@
 t_raster_style	hook_to_raster(t_2d_hook *hook, bool is_draw, t_2d_int ixiy)
 {
 	t_raster_style		raster_style;
-	t_fdf_projection2d		*fdf;
+	t_fdf_proj2d		*fdf;
 
 	fdf = hook->fdf;
 	raster_style.thickness = hook->artstyle.thickness;
 	raster_style.color = hook->background_color;
 	if (is_draw == true)
-		raster_style.color = rgba32_from_projection2d((const t_fdf_projection2d *)fdf,
+		raster_style.color = rgba32_from_proj2d((const t_fdf_proj2d *)fdf,
 				ixiy.y * fdf->col + ixiy.x);
 	else
 		raster_style.color = hook->background_color;

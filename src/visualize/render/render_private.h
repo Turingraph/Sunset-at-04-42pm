@@ -17,8 +17,8 @@
 
 // init_line.c
 
-t_line		init_draw_line_y(t_2d_camera camera, t_fdf_projection2d *fdf, t_2d_int ixiy);
-t_line		init_draw_line_x(t_2d_camera camera, t_fdf_projection2d *fdf, t_2d_int ixiy);
+t_line		init_draw_line_y(t_2d_camera camera, t_fdf_proj2d *fdf, t_2d_int ixiy);
+t_line		init_draw_line_x(t_2d_camera camera, t_fdf_proj2d *fdf, t_2d_int ixiy);
 
 // draw_*.c
 
@@ -32,7 +32,7 @@ bool		is_line_in_screen(t_2d_camera camera,
 				t_line src);
 bool		is_circle_in_screen(t_2d_camera camera,
 				t_2d_int src, int radius);
-float		get_fdf_point(t_fdf_projection2d *fdf, t_2d_int ixiy, size_t dim, char next);
+float		get_fdf_point(t_fdf_proj2d *fdf, t_2d_int ixiy, size_t dim, char next);
 t_2d_int	world_3d_to_screen_2d(t_2d_camera camera, float x, float y);
 
 // public.c

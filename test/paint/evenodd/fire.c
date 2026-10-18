@@ -71,7 +71,7 @@ int	main(void)
 {
 	t_fdf_table		table;
 	t_fdf_table		table2;
-	t_fdf_projection2d			output;
+	t_fdf_proj2d			output;
 	t_fdf_render	style;
 	size_t			i;
 
@@ -93,11 +93,11 @@ int	main(void)
 	color_cells_gradient(&table, init_popart(), true);
 	color_cells_gradient(&table, init_feeling_blue(), true);
 	color_cells_gradient(&table, init_deep_wood(), true);
-	output = create_fdf_projection2d(&table, projection_cabinet, 0.6);
+	output = create_fdf_proj2d(&table, projection_cabinet, 0.6);
 	view_fdf(&output, style, rgba32_from_char(0, 0, 0, 255));
 	destroy_fdf_table(&table2);
 	destroy_fdf_table(&table);
-	destroy_fdf_projection2d(&output);
+	destroy_fdf_proj2d(&output);
 	return (0);
 }
 

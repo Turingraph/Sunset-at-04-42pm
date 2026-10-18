@@ -10,13 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "projection2d.h"
+#include "proj2d.h"
 
 // time : O(1)
 // space: O(1)
-static t_fdf_projection2d	fdf_projection2d_null(void)
+static t_fdf_proj2d	fdf_proj2d_null(void)
 {
-	t_fdf_projection2d	dst;
+	t_fdf_proj2d	dst;
 
 	dst.r = NULL;
 	dst.g = NULL;
@@ -35,10 +35,10 @@ static t_fdf_projection2d	fdf_projection2d_null(void)
  *
  * This function frees the source fdf data.
  *
- * view_fdf() does not call destroy_fdf_projection2d(). The caller therefore remains
- * responsible for releasing an FDF object created by create_fdf_projection2d().
+ * view_fdf() does not call destroy_fdf_proj2d(). The caller therefore remains
+ * responsible for releasing an FDF object created by create_fdf_proj2d().
  *
- * Calling destroy_fdf_projection2d() with NULL is safe.
+ * Calling destroy_fdf_proj2d() with NULL is safe.
  * 
  * The return data is NULL fdf data.
  *
@@ -48,10 +48,10 @@ static t_fdf_projection2d	fdf_projection2d_null(void)
  *
  * @param src FDF object to release
  */
-t_fdf_projection2d	destroy_fdf_projection2d(t_fdf_projection2d *src)
+t_fdf_proj2d	destroy_fdf_proj2d(t_fdf_proj2d *src)
 {
 	if (src == NULL)
-		return (fdf_projection2d_null());
+		return (fdf_proj2d_null());
 	free(src->r);
 	free(src->g);
 	free(src->b);
@@ -72,13 +72,13 @@ t_fdf_projection2d	destroy_fdf_projection2d(t_fdf_projection2d *src)
 
 // time : O(n)
 // space: O(n)
-static t_fdf_projection2d	fdf_projection2d_malloc(t_fdf_table *src)
+static t_fdf_proj2d	fdf_proj2d_malloc(t_fdf_table *src)
 {
-	t_fdf_projection2d	dst;
+	t_fdf_proj2d	dst;
 
 	if (src == NULL
 		|| check_multiplication_overflow(src->col, src->row) == false)
-		return (fdf_projection2d_null());
+		return (fdf_proj2d_null());
 	dst.r = src->r;
 	dst.g = src->g;
 	dst.b = src->b;
@@ -94,13 +94,13 @@ static t_fdf_projection2d	fdf_projection2d_malloc(t_fdf_table *src)
 	dst.y = malloc_talk(src->row * src->col * sizeof(float),
 			"visualize/fdf/public.c/create_fdf/\n");
 	if (dst.x == NULL || dst.y == NULL)
-		return (destroy_fdf_projection2d(&dst));
+		return (destroy_fdf_proj2d(&dst));
 	return (dst);
 }
 
 // time : O(n)
 // space: O(1)
-static void	fdf_projection2d_update(const t_fdf_table *src, float *arr_x,
+static void	fdf_proj2d_update(const t_fdf_table *src, float *arr_x,
 	float *arr_y, t_2d_float (*projection)(float x, float y, float z))
 {
 	size_t		i;
@@ -151,19 +151,19 @@ static void	fdf_projection2d_update(const t_fdf_table *src, float *arr_x,
  * @return initialized t_fdf object.
  * @see src/visualize/fdf/projection.c
  */
-t_fdf_projection2d	create_fdf_projection2d(t_fdf_table *src,
+t_fdf_proj2d	create_fdf_proj2d(t_fdf_table *src,
 	t_2d_float (*projection)(float x, float y, float z), float scale)
 {
-	t_fdf_projection2d	dst;
+	t_fdf_proj2d	dst;
 	float	max_x;
 	float	min_x;
 
 	if (src == NULL || check_multiplication_overflow(src->col, src->row) == false)
-		return (fdf_projection2d_null());
-	dst = fdf_projection2d_malloc(src);
+		return (fdf_proj2d_null());
+	dst = fdf_proj2d_malloc(src);
 	if (dst.col == 0 || dst.row == 0)
 		return (dst);
-	fdf_projection2d_update(src, dst.x, dst.y, projection);
+	fdf_proj2d_update(src, dst.x, dst.y, projection);
 	vector_scale(dst.x, scale, src->col * src->row);
 	vector_scale(dst.y, scale, src->col * src->row);
 	min_x = (float)minmax_from_fdf_table(

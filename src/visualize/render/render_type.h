@@ -13,7 +13,7 @@
 #ifndef DISPLAY_TYPE_H
 # define DISPLAY_TYPE_H
 
-# include "../projection2d/projection2d.h"
+# include "../proj2d/proj2d.h"
 
 /**
  * 2D camera describing the visible portion of a rendered object.
@@ -61,7 +61,7 @@ typedef struct s_2d_hook
 	mlx_image_t		*img;
 	t_2d_camera		*camera;
 	t_fdf_render	artstyle;
-	t_fdf_projection2d			*fdf;
+	t_fdf_proj2d			*fdf;
 	int32_t			background_color;
 }	t_2d_hook;
 

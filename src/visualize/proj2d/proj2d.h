@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PROJECTION2D_H
-# define PROJECTION2D_H
+#ifndef PROJ2D_H
+# define PROJ2D_H
 
 # include "../raster/raster.h"
 # include "../../input/table/table.h"
@@ -31,7 +31,7 @@
  * @param width current width of the transformed FDF object, for scaling the Fdf object
  * with the suitable scaling factor relative to the window height and width.
  */
-typedef struct t_fdf_projection2d
+typedef struct t_fdf_proj2d
 {
 	unsigned char	*r;
 	unsigned char	*g;
@@ -42,14 +42,14 @@ typedef struct t_fdf_projection2d
 	float			*x;
 	float			*y;
 	float			width;
-}	t_fdf_projection2d;
+}	t_fdf_proj2d;
 
 // create.c
 
-t_fdf_projection2d		create_fdf_projection2d(t_fdf_table *src,
+t_fdf_proj2d		create_fdf_proj2d(t_fdf_table *src,
 				t_2d_float (*projection)(float x, float y, float z),
 				float scale);
-t_fdf_projection2d		destroy_fdf_projection2d(t_fdf_projection2d *src);
+t_fdf_proj2d		destroy_fdf_proj2d(t_fdf_proj2d *src);
 
 // projection.c
 
@@ -61,8 +61,8 @@ t_2d_float	projection_wave(float x, float y, float z);
 
 // utils.c
 
-int32_t		rgba32_from_projection2d(const t_fdf_projection2d *src, size_t index);
-bool		is_fdf_projection2d_valid(const t_fdf_projection2d *src);
+int32_t		rgba32_from_proj2d(const t_fdf_proj2d *src, size_t index);
+bool		is_fdf_proj2d_valid(const t_fdf_proj2d *src);
 void		vector_scale(float *update_v, float s, size_t dim);
 
 #endif

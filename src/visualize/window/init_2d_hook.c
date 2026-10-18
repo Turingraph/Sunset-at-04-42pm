@@ -85,7 +85,7 @@ mlx_image_t	*init_mlx_image(mlx_t *mlx)
  * @param background_color the background color of the window scene.
  * @return initialized 2D FDF rendering context
  */
-t_2d_hook	init_2d_hook(mlx_t *mlx, t_fdf_projection2d *fdf, t_fdf_render artstyle, int32_t background_color)
+t_2d_hook	init_2d_hook(mlx_t *mlx, t_fdf_proj2d *fdf, t_fdf_render artstyle, int32_t background_color)
 {
 	t_2d_hook	dst;
 
@@ -111,12 +111,12 @@ t_2d_hook	init_2d_hook(mlx_t *mlx, t_fdf_projection2d *fdf, t_fdf_render artstyl
  * @param src FDF object to transform
  * @param fixed_window_size target size used for initial scaling
  */
-void	scale_fdf_as_window_object(t_fdf_projection2d *src, size_t fixed_window_size)
+void	scale_fdf_as_window_object(t_fdf_proj2d *src, size_t fixed_window_size)
 {
 	size_t		length;
 	float		scale;
 
-	if (is_fdf_projection2d_valid(src) == false || fixed_window_size == 0)
+	if (is_fdf_proj2d_valid(src) == false || fixed_window_size == 0)
 		return ;
 	length = src->col * src->row;
 	scale = fixed_window_size / src->width;

@@ -31,11 +31,11 @@ scale_relu_fdf(&table, 201, 2000, 0);
 color_cells_gradient(&table, init_deep_sea(), true);
 scale_multiplication_fdf(&table, 1.0 / 120.0, HEIGHT);
 
-output = create_fdf_projection2d(&table, projection_isometric, 0.6);
+output = create_fdf_proj2d(&table, projection_isometric, 0.6);
 view_fdf(&output, style);
 
 destroy_fdf_table(&table);
-destroy_fdf_projection2d(&output);
+destroy_fdf_proj2d(&output);
 ```
 
 Source: [Sunset-at-04-42pm README](<https://github.com/Turingraph/Sunset-at-04-42pm>). 【turn1view0】
@@ -93,10 +93,10 @@ Your examples use names such as:
 
 ```
 create_fdf_table(...)
-create_fdf_projection2d(...)
+create_fdf_proj2d(...)
 view_fdf(...)
 destroy_fdf_table(...)
-destroy_fdf_projection2d(...)
+destroy_fdf_proj2d(...)
 ```
 
 These are recognizable, but they raise a design question: what exactly distinguishes _initializing_ an object from _creating_ one, and what distinguishes _viewing_ an object from _rendering_ it?
@@ -358,7 +358,7 @@ paint_space(&table, HEIGHT, cell_metric_max_xy);
 fdf_table_hadamard(&table, &table_base, HEIGHT);
 color_cells_gradient(&table, init_floor(), true);
 scale_multiplication_fdf(&table, 1.0 / 120.0, HEIGHT);
-output = create_fdf_projection2d(&table, NULL, 0.6);
+output = create_fdf_proj2d(&table, NULL, 0.6);
 view_fdf(&output, style, background_color);
 ```
 
@@ -551,11 +551,11 @@ And:
 ```
 t_fdf output;
 
-output = create_fdf_projection2d(&table, projection_isometric, 0.6);
+output = create_fdf_proj2d(&table, projection_isometric, 0.6);
 
 /* Use output. */
 
-destroy_fdf_projection2d(&output);
+destroy_fdf_proj2d(&output);
 ```
 
 These functions return objects by value, and the corresponding cleanup functions release their resources.
@@ -722,7 +722,7 @@ scale_multiplication_fdf(
     HEIGHT
 );
 
-output = create_fdf_projection2d(
+output = create_fdf_proj2d(
     &table,
     NULL,
     0.6
@@ -823,7 +823,7 @@ Candidates for investigation include:
 | Existing name | What I'd investigate |
 | --- | --- |
 | `view_fdf()` | Does it render, display, or both? |
-| `create_fdf_projection2d()` | Does it construct a new object or initialize existing storage? |
+| `create_fdf_proj2d()` | Does it construct a new object or initialize existing storage? |
 | `scale_multiplication_fdf()` | Is it scaling values, multiplying a channel, or performing another operation? |
 | `scale_dimension_fdf()` | Does it resize the grid or transform geometric dimensions? |
 | `paint_space()` | Does it populate a numerical field, generate geometry, or do something else? |
@@ -864,7 +864,7 @@ surface_destroy(...)
 
 These names should have clearly documented responsibilities.
 
-Avoid retaining both `destroy_fdf_table()` and `destroy_fdf_projection2d()` solely because they were implemented at different times. If they release different kinds of objects, their distinct type names should make that difference clear.
+Avoid retaining both `destroy_fdf_table()` and `destroy_fdf_proj2d()` solely because they were implemented at different times. If they release different kinds of objects, their distinct type names should make that difference clear.
 
 ### Priority 4: Improve type and enum naming
 

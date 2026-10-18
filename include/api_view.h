@@ -104,17 +104,17 @@ typedef struct t_fdf_projection
 	float			*x;
 	float			*y;
 	float			width;
-}	t_fdf_projection2d;
+}	t_fdf_proj2d;
 
 /**
  * Release all resources owned by an FDF object.
  *
  * This function frees the source fdf data.
  *
- * view_fdf() does not call destroy_fdf_projection2d(). The caller therefore remains
- * responsible for releasing an FDF object created by create_fdf_projection2d().
+ * view_fdf() does not call destroy_fdf_proj2d(). The caller therefore remains
+ * responsible for releasing an FDF object created by create_fdf_proj2d().
  *
- * Calling destroy_fdf_projection2d() with NULL is safe.
+ * Calling destroy_fdf_proj2d() with NULL is safe.
  * 
  * The return data is NULL fdf data.
  *
@@ -122,7 +122,7 @@ typedef struct t_fdf_projection
  *
  * @param src FDF object to release
  */
-t_fdf_projection2d	destroy_fdf_projection2d(t_fdf_projection2d *src);
+t_fdf_proj2d	destroy_fdf_proj2d(t_fdf_proj2d *src);
 
 /**
  * Initialize a FDF object from a t_fdf_table table.
@@ -144,12 +144,12 @@ t_fdf_projection2d	destroy_fdf_projection2d(t_fdf_projection2d *src);
  *
  * @param src source table containing the FDF data
  * @param projection the functional pointer for define the projection of
- * t_fdf_table as t_fdf_projection2d.
+ * t_fdf_table as t_fdf_proj2d.
  * @param scale for scaling Fdf object.
- * @return initialized t_fdf_projection2d object.
+ * @return initialized t_fdf_proj2d object.
  * @see src/visualize/fdf/projection.c
  */
-t_fdf_projection2d	create_fdf_projection2d(t_fdf_table *src,
+t_fdf_proj2d	create_fdf_proj2d(t_fdf_table *src,
 	t_2d_float (*projection)(float x, float y, float z), float scale);
 
 /**
@@ -304,7 +304,7 @@ typedef struct s_render_style
  * @param fdf_render style used to render the FDF object.
  * @param background_color the background color of the window scene.
  */
-void	view_fdf(t_fdf_projection2d *fdf, t_fdf_render fdf_render,
+void	view_fdf(t_fdf_proj2d *fdf, t_fdf_render fdf_render,
 			int32_t background_color);
 
 /* ************************************************************************** */

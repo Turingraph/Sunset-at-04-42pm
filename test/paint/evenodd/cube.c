@@ -44,7 +44,7 @@ int	main(void)
 {
 	t_fdf_table		table_base;
 	t_fdf_table		table;
-	t_fdf_projection2d			output;
+	t_fdf_proj2d			output;
 	t_fdf_render	style;
 
 	table = create_fdf_table(300, 300, true);
@@ -57,11 +57,11 @@ int	main(void)
 	color_cells_gradient(&table, init_deep_wood(), true);
 	color_cells_gradient(&table, init_white_noise(), true);
 	scale_multiplication_fdf(&table, 1.0 / 120.0, HEIGHT);
-	output = create_fdf_projection2d(&table, NULL, 0.6);
+	output = create_fdf_proj2d(&table, NULL, 0.6);
 	view_fdf(&output, style, rgba32_from_char(0, 0, 0, 255));
 	destroy_fdf_table(&table);
 	destroy_fdf_table(&table_base);
-	destroy_fdf_projection2d(&output);
+	destroy_fdf_proj2d(&output);
 	return (0);
 }
 

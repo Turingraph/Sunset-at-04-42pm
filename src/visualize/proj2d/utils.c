@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "projection2d.h"
+#include "proj2d.h"
 
 /**
  * Combine the RGBA channels of a table element into a 32-bit color.
@@ -27,7 +27,7 @@
  * @param index element index whose RGBA channels are combined
  * @return packed 32-bit RGBA color, or 0 if src is NULL or index is invalid
  */
-int32_t	rgba32_from_projection2d(const t_fdf_projection2d *src, size_t index)
+int32_t	rgba32_from_proj2d(const t_fdf_proj2d *src, size_t index)
 {
 	int32_t	r;
 	int32_t	g;
@@ -55,7 +55,7 @@ int32_t	rgba32_from_projection2d(const t_fdf_projection2d *src, size_t index)
 
 // time : O(1)
 // space: O(1)
-bool	is_fdf_projection2d_valid(const t_fdf_projection2d *src)
+bool	is_fdf_proj2d_valid(const t_fdf_proj2d *src)
 {
 	if (src == NULL)
 		return (false);
