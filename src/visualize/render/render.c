@@ -32,7 +32,7 @@ t_raster_style	hook_to_raster(t_2d_hook *hook, bool is_draw, t_2d_int ixiy)
 
 // time : O(1)
 // space: O(1)
-void	draw_circle_fdf(t_2d_int point,
+void	render_circle(t_2d_int point,
 	t_raster_style raster_style, t_2d_camera camera, mlx_image_t *dst)
 {
 	t_line	boundary;
@@ -47,7 +47,7 @@ void	draw_circle_fdf(t_2d_int point,
 
 // time : O(1)
 // space: O(1)
-void	draw_rectangle_fdf(t_line line, int32_t raster_style,
+void	render_rectangle(t_line line, int32_t raster_style,
 	t_2d_camera camera, mlx_image_t *dst)
 {
 	t_line	boundary;
@@ -62,7 +62,7 @@ void	draw_rectangle_fdf(t_line line, int32_t raster_style,
 
 // time : O(1)
 // space: O(1)
-void	draw_line_fdf(t_line line, t_raster_style raster_style,
+void	render_line(t_line line, t_raster_style raster_style,
 	t_2d_camera camera, mlx_image_t *dst)
 {
 	t_line	boundary;
@@ -74,7 +74,7 @@ void	draw_line_fdf(t_line line, t_raster_style raster_style,
 		raster_line(dst, line, boundary, raster_style);
 	else
 	{
-		draw_circle_fdf(line.p1, raster_style, camera, dst);
-		draw_circle_fdf(line.p2, raster_style, camera, dst);
+		render_circle(line.p1, raster_style, camera, dst);
+		render_circle(line.p2, raster_style, camera, dst);
 	}
 }

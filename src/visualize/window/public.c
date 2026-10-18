@@ -91,7 +91,7 @@ void	view_fdf(t_fdf_proj2d *fdf, t_fdf_render fdf_render,
 	hook.camera = &camera;
 	scale_fdf_as_window_object(fdf, f_max(SUNSET_WINDOW_WIDTH, SUNSET_WINDOW_HEIGHT));
 	raster_color_background(hook.img, background_color);
-	draw_fdf_mlx(&hook, true);
+	render_fdf(&hook, true);
 	if (-1 == view_fdf_handle_01(mlx, hook.img))
 	{
 		mlx_terminate(mlx);

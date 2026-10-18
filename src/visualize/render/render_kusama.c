@@ -14,22 +14,22 @@
 
 // time : O(1)
 // space: O(1)
-static void	draw_kusama_fdf_unit(t_2d_hook *hook,
+static void	render_kusama_unit(t_2d_hook *hook,
 	bool is_draw, t_2d_int ixiy)
 {
 	t_2d_int	position;
 	t_raster_style		raster_style;
 
 	raster_style = hook_to_raster(hook, is_draw, ixiy);
-	position = world_3d_to_screen_2d(*hook->camera,
+	position = world_to_screen2d(*hook->camera,
 			get_fdf_point(hook->fdf, ixiy, 1, 0),
 			get_fdf_point(hook->fdf, ixiy, 2, 0));
-	draw_circle_fdf(position, raster_style, *hook->camera, hook->img);
+	render_circle(position, raster_style, *hook->camera, hook->img);
 }
 
 // time : O(n)
 // space: O(1)
-void	draw_kusama_fdf(t_2d_hook *hook, bool is_draw)
+void	render_kusama(t_2d_hook *hook, bool is_draw)
 {
 	t_2d_int	ixiy;
 	t_fdf_proj2d		src;
@@ -41,7 +41,7 @@ void	draw_kusama_fdf(t_2d_hook *hook, bool is_draw)
 		ixiy.y = 0;
 		while (ixiy.y < (int)src.row)
 		{
-			draw_kusama_fdf_unit(hook, is_draw, ixiy);
+			render_kusama_unit(hook, is_draw, ixiy);
 			ixiy.y += 1;
 		}
 		ixiy.x += 1;

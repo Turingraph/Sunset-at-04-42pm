@@ -14,7 +14,7 @@
 
 // time : O(1)
 // space: O(1)
-static t_line	draw_toby_fox_fdf_unit(t_2d_hook *hook, t_2d_int ixiy)
+static t_line	render_tobyfox_unit(t_2d_hook *hook, t_2d_int ixiy)
 {
 	t_line	rec;
 	int		l;
@@ -22,10 +22,10 @@ static t_line	draw_toby_fox_fdf_unit(t_2d_hook *hook, t_2d_int ixiy)
 
 	l = 0;
 	r = 3;
-	rec.p1 = world_3d_to_screen_2d(*hook->camera,
+	rec.p1 = world_to_screen2d(*hook->camera,
 			get_fdf_point(hook->fdf, ixiy, 1, l),
 			get_fdf_point(hook->fdf, ixiy, 2, l));
-	rec.p2 = world_3d_to_screen_2d(*hook->camera,
+	rec.p2 = world_to_screen2d(*hook->camera,
 			get_fdf_point(hook->fdf, ixiy, 1, r),
 			get_fdf_point(hook->fdf, ixiy, 2, r));
 	return (rec);
@@ -33,7 +33,7 @@ static t_line	draw_toby_fox_fdf_unit(t_2d_hook *hook, t_2d_int ixiy)
 
 // time : O(n)
 // space: O(1)
-void	draw_toby_fox_fdf(t_2d_hook *hook, bool is_draw)
+void	render_tobyfox(t_2d_hook *hook, bool is_draw)
 {
 	t_2d_int	ixiy;
 	t_fdf_proj2d		src;
@@ -48,8 +48,8 @@ void	draw_toby_fox_fdf(t_2d_hook *hook, bool is_draw)
 		while (ixiy.y < (int)src.row - 1)
 		{
 			raster_style = hook_to_raster(hook, is_draw, ixiy);
-			line = draw_toby_fox_fdf_unit(hook, ixiy);
-			draw_rectangle_fdf(line, raster_style.color, *hook->camera, hook->img);
+			line = render_tobyfox_unit(hook, ixiy);
+			render_rectangle(line, raster_style.color, *hook->camera, hook->img);
 			ixiy.y += 1;
 		}
 		ixiy.x += 1;

@@ -86,7 +86,7 @@ float	get_fdf_point(t_fdf_proj2d *fdf, t_2d_int ixiy, size_t dim, char next)
 
 // time : O(1)
 // space: O(1)
-t_2d_int	world_3d_to_screen_2d(t_2d_camera camera,
+t_2d_int	world_to_screen2d(t_2d_camera camera,
 	float x, float y)
 {
 	t_2d_int	dst;
@@ -94,4 +94,19 @@ t_2d_int	world_3d_to_screen_2d(t_2d_camera camera,
 	dst.x = x + (camera.offset.x + camera.window_size.x) / 2;
 	dst.y = y + (camera.offset.y + camera.window_size.y) / 2;
 	return (dst);
+}
+
+// time : O(1)
+// space: O(1)
+bool	is_2dhook_valid(const t_2d_hook *src)
+{
+	if (src == NULL
+		|| src->camera == NULL
+		|| src->img == NULL
+		|| src->mlx == NULL
+		|| check_multiplication_overflow_uint32_t(src->mlx->width, src->mlx->height) == false
+		|| check_multiplication_overflow_uint32_t(src->img->width, src->img->height) == false
+		|| is_fdf_proj2d_valid(src->fdf) == false)
+		return (false);
+	return (true);
 }
