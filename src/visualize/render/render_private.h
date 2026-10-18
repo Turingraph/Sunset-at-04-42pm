@@ -13,7 +13,7 @@
 #ifndef DISPLAY_PRIVATE_H
 # define DISPLAY_PRIVATE_H
 
-# include "display_type.h"
+# include "render_type.h"
 
 // init_line.c
 

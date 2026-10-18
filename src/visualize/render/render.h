@@ -13,7 +13,7 @@
 #ifndef DISPLAY_H
 # define DISPLAY_H
 
-# include "display_type.h"
+# include "render_type.h"
 
 // public.c
 

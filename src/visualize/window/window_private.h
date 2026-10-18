@@ -13,7 +13,7 @@
 #ifndef WINDOW_PRIVATE_H
 # define WINDOW_PRIVATE_H
 
-# include "../display/display.h"
+# include "../render/render.h"
 
 # ifndef ZOOM_LEVEL
 #  define ZOOM_LEVEL 1.1

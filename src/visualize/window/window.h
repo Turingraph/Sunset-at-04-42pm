@@ -13,7 +13,7 @@
 #ifndef WINDOW_H
 # define WINDOW_H
 
-# include "../display/display.h"
+# include "../render/render.h"
 
 // public.c
 

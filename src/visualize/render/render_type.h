@@ -65,4 +65,16 @@ typedef struct s_2d_hook
 	int32_t			background_color;
 }	t_2d_hook;
 
+/*
+Rendering is a broad term that generally means transforming computer-readable
+information, for example objects in a 3d scene, to one or more images.
+
+Rasterization is a more specific term that typically means the process of
+transforming a vector (curve based) image to a rasterized (pixel based) image.
+
+Reference
+*	https://stackoverflow.com/questions/15796436/
+	what-s-the-difference-between-rasterization-and-rendering
+*/
+
 #endif

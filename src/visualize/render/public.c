@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "display_private.h"
+#include "render_private.h"
 
 /**
  * Draw or erase an FDF object on an MLX image.

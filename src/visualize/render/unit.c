@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "display_private.h"
+#include "render_private.h"
 
 // time : O(1)
 // space: O(1)

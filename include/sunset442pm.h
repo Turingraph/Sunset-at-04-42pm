@@ -2030,7 +2030,7 @@ t_2d_float	projection_orthogonal(float x, float y, float z);
 t_2d_float	projection_wave(float x, float y, float z);
 
 /* ************************************************************************** */
-/* *** src/visualize/display/ *** */
+/* *** src/visualize/render/ *** */
 /* ************************************************************************** */
 
 /*
