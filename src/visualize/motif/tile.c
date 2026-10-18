@@ -60,7 +60,7 @@ static size_t	init_tile_size(size_t side_length, size_t resolution)
  * @return number of complete tiles that fit along the supplied side
  *
  */
-static size_t	init_alltiles_count(size_t side_length,
+static size_t	init_multitiles_count(size_t side_length,
 	size_t resolution, size_t fixed_length)
 {
 	if (init_tile_size(fixed_length, resolution) == 0)
@@ -77,9 +77,9 @@ static size_t	init_alltiles_count(size_t side_length,
  *
  * Examples
  * - f(1080, 5, 1080) = init_tile_size(1080, 5) *
- * init_alltiles_count(1080, 5, 1080) = 1056
+ * init_multitiles_count(1080, 5, 1080) = 1056
  * - f(1920, 5, 1080) = init_tile_size(1080, 5) *
- * init_alltiles_count(1920, 5, 1080) = 58 * 33 = 1914
+ * init_multitiles_count(1920, 5, 1080) = 58 * 33 = 1914
  * 
  * status: internal helper
  *
@@ -92,12 +92,12 @@ static size_t	init_alltiles_count(size_t side_length,
  * used to determine tile size
  * @return total side length occupied by complete tiles
  */
-static size_t	init_alltiles_size(size_t side_length,
+static size_t	init_multitiles_size(size_t side_length,
 	size_t resolution, size_t fixed_length)
 {
 	size_t	output;
 
-	output = init_alltiles_count(side_length,
+	output = init_multitiles_count(side_length,
 			resolution, fixed_length);
 	return (output * init_tile_size(fixed_length, resolution));
 }
@@ -122,12 +122,12 @@ static size_t	init_alltiles_size(size_t side_length,
  * @param fixed_length reference side length used to determine tile size
  * @return number of pixels to offset the tiled region from the edge
  */
-static int	init_alltiles_offset(size_t side_length,
+static int	init_offset_tile_1d(size_t side_length,
 	size_t resolution, size_t fixed_length)
 {
 	int	output;
 
-	output = init_alltiles_size(side_length, resolution, fixed_length);
+	output = init_multitiles_size(side_length, resolution, fixed_length);
 	return ((side_length - output) / 2);
 }
 
@@ -158,9 +158,9 @@ static t_2d_int	init_offset_tile(size_t window_width, size_t window_height,
 {
 	t_2d_int	output;
 
-	output.x = (float)init_alltiles_offset(window_width, resolution,
+	output.x = (float)init_offset_tile_1d(window_width, resolution,
 			fixed_length);
-	output.y = (float)init_alltiles_offset(window_height, resolution,
+	output.y = (float)init_offset_tile_1d(window_height, resolution,
 			fixed_length);
 	return (output);
 }
@@ -192,9 +192,9 @@ t_tile_format	init_tile_format(size_t window_width,
 	dst.offset = init_offset_tile(window_width, window_height,
 			resolution, fixed_side);
 	dst.tile_size = (float)init_tile_size(fixed_side, resolution);
-	dst.tile_counts.x = init_alltiles_count(window_width,
+	dst.tile_counts.x = init_multitiles_count(window_width,
 			resolution, fixed_side);
-	dst.tile_counts.y = init_alltiles_count(window_height,
+	dst.tile_counts.y = init_multitiles_count(window_height,
 			resolution, fixed_side);
 	dst.window_size.x = window_width;
 	dst.window_size.y = window_height;
@@ -218,7 +218,7 @@ t_tile_format	init_tile_format(size_t window_width,
  *
  * @return screen-space coordinates of the tile origin
  */
-t_2d_int	get_ith_tile_screen(t_tile_format tiles,
+t_2d_int	init_tile_ith(t_tile_format tiles,
 	int ix, int iy)
 {
 	t_2d_int	output;

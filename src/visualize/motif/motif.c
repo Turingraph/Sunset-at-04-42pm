@@ -38,7 +38,7 @@ static void	raster_motif_circle(mlx_image_t *dst,
 	i = 0;
 	while (dst != NULL && polygon != NULL && i < polygon->length)
 	{
-		line = init_float_line(polygon->arr[i], polygon->arr[i], boundary);
+		line = define_motif_line(polygon->arr[i], polygon->arr[i], boundary);
 		point.x = line.p1.x;
 		point.y = line.p1.y;
 		raster_circle(dst, point, ink, boundary);
@@ -71,14 +71,14 @@ static void	raster_motif_line(mlx_image_t *dst, const t_2d_polygon *polygon,
 	i = 0;
 	while (dst != NULL && polygon != NULL && i < polygon->length - 1)
 	{
-		line = init_float_line(polygon->arr[i], polygon->arr[i + 1], boundary);
+		line = define_motif_line(polygon->arr[i], polygon->arr[i + 1], boundary);
 		raster_line(dst, line, boundary, ink);
 		i += 1;
 	}
 	if (dst != NULL && polygon != NULL
 		&& i == polygon->length - 1 && polygon->is_loop == true)
 	{
-		line = init_float_line(polygon->arr[i], polygon->arr[0], boundary);
+		line = define_motif_line(polygon->arr[i], polygon->arr[0], boundary);
 		raster_line(dst, line, boundary, ink);
 	}
 }
@@ -109,7 +109,7 @@ static void	raster_motif_rectangle(mlx_image_t *dst,
 	while (dst != NULL && polygon != NULL
 		&& polygon->length > 0 && i < polygon->length - 1)
 	{
-		line = init_float_line(polygon->arr[i], polygon->arr[i + 1], boundary);
+		line = define_motif_line(polygon->arr[i], polygon->arr[i + 1], boundary);
 		raster_rectangle(dst, line, boundary, ink);
 		i += 1;
 	}
@@ -117,7 +117,7 @@ static void	raster_motif_rectangle(mlx_image_t *dst,
 		&& polygon->length > 0 && i == polygon->length - 1
 		&& polygon->is_loop == true)
 	{
-		line = init_float_line(polygon->arr[i], polygon->arr[0], boundary);
+		line = define_motif_line(polygon->arr[i], polygon->arr[0], boundary);
 		raster_rectangle(dst, line, boundary, ink);
 	}
 }
@@ -190,8 +190,8 @@ void	raster_motif(mlx_image_t *img, t_islamic_art *src)
 		ix = 0;
 		while (ix < src->tiles.tile_counts.x)
 		{
-			tile.p1 = get_ith_tile_screen(src->tiles, ix, iy);
-			tile.p2 = get_ith_tile_screen(src->tiles, ix + 1, iy + 1);
+			tile.p1 = init_tile_ith(src->tiles, ix, iy);
+			tile.p2 = init_tile_ith(src->tiles, ix + 1, iy + 1);
 			raster_motif_unit(img, src, tile);
 			ix += 1;
 		}

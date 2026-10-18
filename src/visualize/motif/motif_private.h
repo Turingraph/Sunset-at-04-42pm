@@ -86,13 +86,13 @@ void			view_motif(t_motif_arr *src,
 
 t_tile_format	init_tile_format(size_t width,
 					size_t height, size_t resolution);
-t_2d_int		get_ith_tile_screen(t_tile_format tiles,
+t_2d_int		init_tile_ith(t_tile_format tiles,
 					int ix, int iy);
 
 // utils.c
 
 bool			is_islamic_art_valid(const t_islamic_art *src);
-t_line			init_float_line(t_2d_float point_1, t_2d_float point_2,
+t_line			define_motif_line(t_2d_float point_1, t_2d_float point_2,
 					t_line boundary);
 
 #endif
