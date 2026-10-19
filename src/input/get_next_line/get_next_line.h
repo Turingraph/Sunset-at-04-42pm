@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:36:58 by phsottat          #+#    #+#             */
-/*   Updated: 2026/10/19 14:41:38 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/19 14:50:57 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ size_t			index_a_in_str(const char *src, char a, bool is_after);
 
 // get_next_line.c
 
-void			fetch_text(int fd, t_dynamic_str *dst, size_t buffer_length);
+void			fetch_dynamic_str(int fd, t_dynamic_str *dst, size_t buffer_length);
 char			*get_next_line(int fd, bool is_continue);
 
 // load.c
