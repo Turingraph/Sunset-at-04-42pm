@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:01:09 by phsottat          #+#    #+#             */
-/*   Updated: 2026/10/19 14:41:25 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/19 14:53:29 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // time : O(n)
 // space: O(1)
-size_t	count_decimal_digits(const char *line, size_t max, bool *is_int)
+static size_t	count_decimal_digits(const char *line, size_t max, bool *is_int)
 {
 	size_t	j;
 
@@ -32,7 +32,7 @@ size_t	count_decimal_digits(const char *line, size_t max, bool *is_int)
 
 // time : O(1)
 // space: O(1)
-bool	is_valid_fdf_color(const char *line)
+static bool	is_valid_fdf_color(const char *line)
 {
 	size_t	i;
 
@@ -55,7 +55,7 @@ bool	is_valid_fdf_color(const char *line)
 
 // time : O(n)
 // space: O(1)
-size_t	count_fdf_columns(const char *line, bool *is_valid_fdf)
+static size_t	count_fdf_columns(const char *line, bool *is_valid_fdf)
 {
 	size_t	y;
 
@@ -86,7 +86,7 @@ size_t	count_fdf_columns(const char *line, bool *is_valid_fdf)
 
 // time : O(n)
 // space: O(n)
-void	parse_decimal_loop(t_fdf_load *dst, size_t length,
+static void	parse_decimal_loop(t_fdf_load *dst, size_t length,
 	bool *is_int, char *line)
 {
 	size_t	i;

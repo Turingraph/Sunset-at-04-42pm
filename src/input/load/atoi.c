@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:15:00 by phsottat          #+#    #+#             */
-/*   Updated: 2026/08/31 12:13:46 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/19 14:53:14 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // time : O(n)
 // space: O(1)
-size_t	f_atoonei(char c, const char *base, bool *is_int)
+static size_t	f_atoonei(char c, const char *base, bool *is_int)
 {
 	size_t	i;
 	char	big_c;
@@ -42,7 +42,7 @@ size_t	f_atoonei(char c, const char *base, bool *is_int)
 
 // time : O(1)
 // space: O(1)
-long int	f_atolongi(const char *src,
+static long int	f_atolongi(const char *src,
 	bool *is_int, const char *base, size_t digits)
 {
 	long int	y;
@@ -112,7 +112,7 @@ int	f_atoi(const char *src, bool *is_int, const char *base, size_t digits)
 
 // time : O(1)
 // space: O(1)
-size_t	display_int(int fd, long x, const char *base, bool is_write)
+static size_t	display_int(int fd, long x, const char *base, bool is_write)
 {
 	size_t	i;
 	long	d;

@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:00:57 by phsottat          #+#    #+#             */
-/*   Updated: 2026/10/19 14:41:25 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/19 14:52:56 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void	ft_put_ascii_fd(int fd, int cell, const char *dict, bool is_left)
 
 // time : O(n)
 // space: O(n)
-int	*line_to_ascii_arr(const char *line,
+static int	*line_to_ascii_arr(const char *line,
 	const char *dict, int *dst, size_t length)
 {
 	size_t	i;

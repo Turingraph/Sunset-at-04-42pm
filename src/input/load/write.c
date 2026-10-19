@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:15:10 by phsottat          #+#    #+#             */
-/*   Updated: 2026/10/19 14:41:25 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/19 14:56:22 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // time : O(n)
 // space: O(n)
-static void	inspect_fdf_unit(int fd, const t_fdf_load *src,
+static void	inspect_decimal_unit(int fd, const t_fdf_load *src,
 		size_t digits, t_write_style mode)
 {
 	size_t	i;
@@ -51,7 +51,8 @@ void	inspect_decimal(int fd,
 	i = 0;
 	while (src != NULL && i < src->length && src->arr != NULL)
 	{
-		inspect_fdf_unit(fd, (const t_fdf_load *)&(src->arr[i]), digits, mode);
+		inspect_decimal_unit(fd, (const t_fdf_load *)&(src->arr[i]),
+			digits, mode);
 		i += 1;
 	}
 }
@@ -79,7 +80,7 @@ void	warning_load_fdf(const t_fdf_load *src, size_t i)
 
 // time : O(1)
 // space: O(1)
-bool	is_load_fdf_valid(t_fdf_load *src)
+static bool	is_load_fdf_valid(t_fdf_load *src)
 {
 	if (src == NULL || src->arr == NULL
 		|| src->int_warn == NOT_DECIMAL

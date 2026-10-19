@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:00:47 by phsottat          #+#    #+#             */
-/*   Updated: 2026/10/19 14:41:25 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/19 14:52:45 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // time : O(1)
 // space: O(1)
-t_fdf_load	copy_load_fdf(t_fdf_load src)
+static t_fdf_load	copy_load_fdf(t_fdf_load src)
 {
 	t_fdf_load	dst;
 
@@ -31,7 +31,7 @@ t_fdf_load	copy_load_fdf(t_fdf_load src)
 
 // time : O(n)
 // space: O(n)
-t_fdf_load_arr	copy_load_fdf_arr(const t_fdf_load_arr *src, size_t length)
+static t_fdf_load_arr	copy_load_fdf_arr(const t_fdf_load_arr *src, size_t length)
 {
 	t_fdf_load_arr	dst;
 	size_t			i;
@@ -51,7 +51,7 @@ t_fdf_load_arr	copy_load_fdf_arr(const t_fdf_load_arr *src, size_t length)
 
 // time : O(1)
 // space: O(1)
-t_fdf_load_arr	load_fdf_arr_push(t_fdf_load_arr *src, t_fdf_load *item)
+static t_fdf_load_arr	load_fdf_arr_push(t_fdf_load_arr *src, t_fdf_load *item)
 {
 	t_fdf_load_arr	dst;
 

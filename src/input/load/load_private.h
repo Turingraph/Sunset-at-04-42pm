@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 13:59:39 by phsottat          #+#    #+#             */
-/*   Updated: 2026/10/19 14:41:25 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/19 14:55:34 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,6 @@ void			inspect_ascii_chungaloider(int fd,
 
 void			inspect_decimal(int fd, const t_fdf_load_arr *src,
 					size_t digits, t_write_style write_style);
-void			inspect_ascii(int fd, const t_fdf_load_arr *src,
-					const char *dict);
 void			warning_load_fdf(const t_fdf_load *src, size_t i);
 bool			is_load_fdf_arr_valid(t_fdf_load_arr *src, int i);
 

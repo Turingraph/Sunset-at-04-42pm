@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:15:06 by phsottat          #+#    #+#             */
-/*   Updated: 2026/10/19 14:41:25 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/19 14:55:13 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	inspect_ascii_unit(int fd, const t_fdf_load *src, const char *dict)
 
 // time : O(n)
 // space: O(n)
-void	inspect_ascii(int fd, const t_fdf_load_arr *src,
+static void	inspect_ascii(int fd, const t_fdf_load_arr *src,
 			const char *dict)
 {
 	size_t	i;
