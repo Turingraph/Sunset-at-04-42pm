@@ -14,7 +14,7 @@
  *
  * @return pointer to the copied string, or NULL on failure
  */
-char	*clone_string(size_t length, const char *src)
+char	*clone_str(size_t length, const char *src)
 {
 	size_t	i;
 	char	*dst;
@@ -51,7 +51,7 @@ char	*clone_string(size_t length, const char *src)
  *
  * @return initialized dynamic string structure
  */
-t_dynamic_str	init_dynamic_str(size_t length)
+t_dynamic_str	create_dynamic_str(size_t length)
 {
 	t_dynamic_str	dst;
 
@@ -60,7 +60,7 @@ t_dynamic_str	init_dynamic_str(size_t length)
 	dst.str = NULL;
 	if (length == 0)
 		return (dst);
-	dst.str = clone_string(sizeof(char) * length, NULL);
+	dst.str = clone_str(sizeof(char) * length, NULL);
 	return (dst);
 }
 
@@ -89,7 +89,7 @@ bool	push_dynamic_str(t_dynamic_str *dst, char src)
 		dst->length += 1;
 		return (true);
 	}
-	dst2 = clone_string(sizeof(char) * 2 * dst->length, dst->str);
+	dst2 = clone_str(sizeof(char) * 2 * dst->length, dst->str);
 	if (dst2 == NULL)
 		return (false);
 	free(dst->str);

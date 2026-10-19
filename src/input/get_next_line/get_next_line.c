@@ -54,7 +54,7 @@ void	fetch_text(int fd, t_dynamic_str *dst, size_t buffer_length)
 	continue_line = true;
 	while (continue_line == true && dst != NULL && dst->str != NULL)
 	{
-		buff = clone_string(sizeof(char) * buffer_length, NULL);
+		buff = clone_str(sizeof(char) * buffer_length, NULL);
 		if (buff == NULL)
 			continue_line = false;
 		else
@@ -89,7 +89,7 @@ char	*get_next_line(int fd, bool is_continue)
 	t_dynamic_str	dyn_str;
 	size_t			length;
 
-	dyn_str = init_dynamic_str(1);
+	dyn_str = create_dynamic_str(1);
 	if (dyn_str.str == NULL)
 		return (NULL);
 	concat_dynamic_str(&dyn_str, prev_str);
@@ -98,9 +98,9 @@ char	*get_next_line(int fd, bool is_continue)
 	free(prev_str);
 	prev_str = NULL;
 	length = index_a_in_str(dyn_str.str, '\n', true);
-	dst = clone_string(length, dyn_str.str);
+	dst = clone_str(length, dyn_str.str);
 	if (is_continue == true)
-		prev_str = clone_string(dyn_str.length - length, dyn_str.str + length);
+		prev_str = clone_str(dyn_str.length - length, dyn_str.str + length);
 	free(dyn_str.str);
 	return (dst);
 }

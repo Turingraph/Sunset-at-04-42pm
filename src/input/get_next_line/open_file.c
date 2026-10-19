@@ -27,7 +27,7 @@ int	open_dir_file(const char *file_name, const char *dir, t_file_mode file_mode)
 		return (open(file_name, file_mode));
 	if (dir != NULL && file_name == NULL)
 		return (open(dir, file_mode));
-	file = init_dynamic_str(
+	file = create_dynamic_str(
 			index_a_in_str(file_name, '\0', true) + index_a_in_str(dir, '\0', true));
 	concat_dynamic_str(&file, dir);
 	concat_dynamic_str(&file, file_name);
@@ -55,14 +55,14 @@ char	*concat_string(const char *str_1, const char *str_2)
 	t_dynamic_str	dyn_str;
 	char			*dst;
 
-	dyn_str = init_dynamic_str(1);
+	dyn_str = create_dynamic_str(1);
 	if (dyn_str.str == NULL)
 		return (NULL);
 	concat_dynamic_str(&dyn_str, str_1);
 	concat_dynamic_str(&dyn_str, str_2);
 	if (dyn_str.str == NULL)
 		return (NULL);
-	dst = clone_string(dyn_str.length, dyn_str.str);
+	dst = clone_str(dyn_str.length, dyn_str.str);
 	free(dyn_str.str);
 	return (dst);
 }
