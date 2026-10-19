@@ -32,7 +32,6 @@ Type of data
 2.	str (char *)
 3.	strarr (char **)
 4.	intarr (int *)
-
 */
 
 // ascii.c

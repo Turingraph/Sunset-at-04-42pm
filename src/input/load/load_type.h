@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 13:58:04 by phsottat          #+#    #+#             */
-/*   Updated: 2026/10/19 14:41:25 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/19 15:00:26 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,3 +115,10 @@ typedef struct t_fdf_load_arr
 }	t_fdf_load_arr;
 
 #endif
+
+/*
+Name meaning
+1.	inspect = write the data inside t_fdf_load
+2.	save
+3.	.
+*/

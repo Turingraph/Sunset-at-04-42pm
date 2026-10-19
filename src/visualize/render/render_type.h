@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/04 18:45:56 by phsottat          #+#    #+#             */
-/*   Updated: 2026/10/19 11:42:00 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/19 18:58:08 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,17 @@ typedef struct s_2d_camera
 	float		zoom;
 }	t_2d_camera;
 
-/*
- * This struct control the drawing style of the Fdf.
+/**
+ * Describes the rendering properties of a 2D motif or FDF drawing.
+ * 
+ * color stores the 32-bit drawing color. shape_2d determines how the associated
+ * geometry or FDF data is rendered. thickness controls the size of the
+ * rendered primitive where applicable.
+ * 
+ * status: public api
+ * 
+ * @param shape_2d the given shape including E_CIRCLE, E_LINE, and E_RECTANGLE.
+ * @param thickness size parameter used by the selected rendering shape_2d
  */
 typedef struct t_render_style
 {

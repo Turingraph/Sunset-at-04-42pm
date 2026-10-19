@@ -33,6 +33,8 @@ typedef struct s_line
  * geometry or FDF data is rendered. thickness controls the size of the
  * rendered primitive where applicable.
  * 
+ * status: internal helper
+ * 
  * @param color 32-bit drawing color
  * @param thickness size parameter used by the selected rendering shape_2d
  */

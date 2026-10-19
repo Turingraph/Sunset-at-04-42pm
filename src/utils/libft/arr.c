@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:27:08 by phsottat          #+#    #+#             */
-/*   Updated: 2026/08/29 14:45:39 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/19 16:12:47 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	*malloc_talk(size_t elem_size, const char *comment)
 			write(1, "Malloc Fail: ", 14);
 			write(1, comment, sf_strlen(comment));
 		}
+		return (NULL);
 	}
 	d = (unsigned char *)dst;
 	i = 0;
