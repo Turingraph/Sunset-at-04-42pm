@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/16 15:08:27 by phsottat          #+#    #+#             */
-/*   Updated: 2026/10/16 15:20:43 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/19 14:41:25 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ char			*get_next_line(int fd, bool is_continue);
  *
  * @return file descriptor on success, or -1 on failure
  */
-int				open_dir_file(const char *file_name,
+int				load_file_debug(const char *file_name,
 					const char *dir, t_file_mode file_mode);
 
 /* ************************************************************************** */
@@ -213,7 +213,7 @@ typedef enum t_load_warning
  * @param int_warn parsing status of the height values
  * @param rgb_warn parsing status of the color values
  */
-typedef struct t_load_fdf
+typedef struct t_fdf_load
 {
 	int				*arr;
 	unsigned char	*r;
@@ -223,13 +223,13 @@ typedef struct t_load_fdf
 	size_t			length;
 	t_load_warning	int_warn;
 	t_load_warning	rgb_warn;
-}	t_load_fdf;
+}	t_fdf_load;
 
 /**
  * Dynamic array containing temporary FDF data produced while loading
  * an FDF file.
  *
- * arr points to the allocated t_load_fdf elements. length specifies
+ * arr points to the allocated t_fdf_load elements. length specifies
  * the number of elements currently stored, while capacity specifies
  * the total number of elements that can be stored before reallocation
  * is required.
@@ -239,16 +239,16 @@ typedef struct t_load_fdf
  * status: internal data shape_2d
  *
  * @param arr dynamic array of loaded FDF data
- * @param length number of t_load_fdf elements currently stored
- * @param capacity number of t_load_fdf elements that can currently
+ * @param length number of t_fdf_load elements currently stored
+ * @param capacity number of t_fdf_load elements that can currently
  * be stored in the allocated array
  */
-typedef struct t_load_fdf_arr
+typedef struct t_fdf_load_arr
 {
-	t_load_fdf	*arr;
+	t_fdf_load	*arr;
 	size_t		length;
 	size_t		capacity;
-}	t_load_fdf_arr;
+}	t_fdf_load_arr;
 
 /**
  * Convert a string representing an integer in a given base.
@@ -292,11 +292,11 @@ size_t	ft_putnbr_fd(int n, int fd, const char *base, size_t digits);
  * 
  * @param line input line
  * 
- * @return loaded data input array as t_load_fdf
+ * @return loaded data input array as t_fdf_load
  * 
  * @see see: src/input/table/public.c
  */
-t_load_fdf	parse_ascii_cheche01(char *line);
+t_fdf_load	parse_ascii_cheche01(char *line);
 
 /**
  * Parse an ASCII-art line using the standard character ramp.
@@ -306,11 +306,11 @@ t_load_fdf	parse_ascii_cheche01(char *line);
  * 
  * @param line input line
  * 
- * @return loaded data input array as t_load_fdf
+ * @return loaded data input array as t_fdf_load
  * 
  * @see see: src/input/table/public.c
  */
-t_load_fdf	parse_ascii_standard(char *line);
+t_fdf_load	parse_ascii_standard(char *line);
 
 /**
  * Parse an ASCII-art line using the Chungaloider brightness ramp.
@@ -320,14 +320,14 @@ t_load_fdf	parse_ascii_standard(char *line);
  *
  * @param line input line
  * 
- * @return loaded data input array as t_load_fdf
+ * @return loaded data input array as t_fdf_load
  * 
  * @see see: src/input/table/public.c
  * 
  * @see see: https://stackoverflow.com/questions/30097953/
  *      ascii-art-sorting-an-array-of-ascii-characters-by-brightness-levels-c-c
  */
-t_load_fdf	parse_ascii_chungaloider(char *line);
+t_fdf_load	parse_ascii_chungaloider(char *line);
 
 /**
  * Parse an FDF line as colorful data.
@@ -337,12 +337,12 @@ t_load_fdf	parse_ascii_chungaloider(char *line);
  *
  * @param line input line
  * 
- * @return loaded data input array as t_load_fdf
+ * @return loaded data input array as t_fdf_load
  * 
  * @see see: src/input/table/public.c
  * 
  */
-t_load_fdf	parse_decimal_rgba(char *line);
+t_fdf_load	parse_decimal_rgba(char *line);
 
 /**
  * Parse an FDF line as black and white data.
@@ -352,12 +352,12 @@ t_load_fdf	parse_decimal_rgba(char *line);
  *
  * @param line input line
  * 
- * @return loaded data input array as t_load_fdf
+ * @return loaded data input array as t_fdf_load
  * 
  * @see see: src/input/table/public.c
  * 
  */
-t_load_fdf	parse_decimal_bw(char *line);
+t_fdf_load	parse_decimal_bw(char *line);
 
 /* ************************************************************************** */
 /* *** src/input/table/ *** */
@@ -404,7 +404,7 @@ t_fdf_table		create_fdf_table(size_t row, size_t col, bool is_rgba);
  * @see src/input/load/parse.c
  */
 t_fdf_table		open_fdf_table_file(const char *file_name, const char *dir,
-					t_load_fdf (*one_line)(char *line), bool is_rgba);
+					t_fdf_load (*one_line)(char *line), bool is_rgba);
 
 
 /**

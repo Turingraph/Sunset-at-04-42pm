@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 13:58:04 by phsottat          #+#    #+#             */
-/*   Updated: 2026/08/31 16:03:53 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/19 14:41:25 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ typedef enum t_load_warning
  * @param int_warn parsing status of the height values
  * @param rgb_warn parsing status of the color values
  */
-typedef struct t_load_fdf
+typedef struct t_fdf_load
 {
 	int				*arr;
 	unsigned char	*r;
@@ -87,13 +87,13 @@ typedef struct t_load_fdf
 	size_t			length;
 	t_load_warning	int_warn;
 	t_load_warning	rgb_warn;
-}	t_load_fdf;
+}	t_fdf_load;
 
 /**
  * Dynamic array containing temporary FDF data produced while loading
  * an FDF file.
  *
- * arr points to the allocated t_load_fdf elements. length specifies
+ * arr points to the allocated t_fdf_load elements. length specifies
  * the number of elements currently stored, while capacity specifies
  * the total number of elements that can be stored before reallocation
  * is required.
@@ -103,15 +103,15 @@ typedef struct t_load_fdf
  * status: internal data shape_2d
  *
  * @param arr dynamic array of loaded FDF data
- * @param length number of t_load_fdf elements currently stored
- * @param capacity number of t_load_fdf elements that can currently
+ * @param length number of t_fdf_load elements currently stored
+ * @param capacity number of t_fdf_load elements that can currently
  * be stored in the allocated array
  */
-typedef struct t_load_fdf_arr
+typedef struct t_fdf_load_arr
 {
-	t_load_fdf	*arr;
+	t_fdf_load	*arr;
 	size_t		length;
 	size_t		capacity;
-}	t_load_fdf_arr;
+}	t_fdf_load_arr;
 
 #endif

@@ -62,14 +62,14 @@ bool	assert_file_ascii(const char *file_name_1, const char *file_name_2,
 	char	**strarr_2;
 	bool	result;
 
-	fd = open_dir_file(file_name_1, dir_name_1, E_READ);
+	fd = load_file_debug(file_name_1, dir_name_1, E_READ);
 	length = length_of_file(fd);
-	fd = open_dir_file(file_name_2, dir_name_2, E_READ);	
+	fd = load_file_debug(file_name_2, dir_name_2, E_READ);	
 	if (length != length_of_file(fd))
 		return (false);
-	fd = open_dir_file(file_name_1, dir_name_1, E_READ);
+	fd = load_file_debug(file_name_1, dir_name_1, E_READ);
 	strarr_1 = file_to_strarr(fd, length);
-	fd = open_dir_file(file_name_2, dir_name_2, E_READ);
+	fd = load_file_debug(file_name_2, dir_name_2, E_READ);
 	strarr_2 = file_to_strarr(fd, length);
 	result = assert_strarr_ascii((const char **)strarr_1, (const char **)strarr_2, length);
 	destroy_2d_arr((void **)strarr_1, length);

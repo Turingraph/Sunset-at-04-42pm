@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:36:58 by phsottat          #+#    #+#             */
-/*   Updated: 2026/10/19 11:54:01 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/19 14:41:38 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,12 @@ typedef enum t_file_mode
 	E_WRITE = O_WRONLY,
 }	t_file_mode;
 
+/*
+load = char *str => int fd
+parse = parse function for t_fdf_load module
+fetch = int fd => the given data structure
+*/
+
 // dynamic_str.c
 
 char			*clone_str(size_t length, const char *src);
@@ -49,9 +55,11 @@ size_t			index_a_in_str(const char *src, char a, bool is_after);
 void			fetch_text(int fd, t_dynamic_str *dst, size_t buffer_length);
 char			*get_next_line(int fd, bool is_continue);
 
-// open_dir_file.c
+// load.c
 
-int				open_dir_file(const char *file_name,
+int				load_file_debug(const char *file_name,
 					const char *dir, t_file_mode file_mode);
+int				load_file(const char *file_name, t_file_mode file_mode);
+char			*concat_str(const char *str_1, const char *str_2);
 
 #endif

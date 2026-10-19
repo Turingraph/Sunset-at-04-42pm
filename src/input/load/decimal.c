@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.c                                              :+:      :+:    :+:   */
+/*   decimal.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:01:09 by phsottat          #+#    #+#             */
-/*   Updated: 2026/09/08 16:17:45 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/19 14:41:25 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ size_t	count_fdf_columns(const char *line, bool *is_valid_fdf)
 
 // time : O(n)
 // space: O(n)
-void	parse_decimal_loop(t_load_fdf *dst, size_t length,
+void	parse_decimal_loop(t_fdf_load *dst, size_t length,
 	bool *is_int, char *line)
 {
 	size_t	i;
@@ -112,9 +112,9 @@ void	parse_decimal_loop(t_load_fdf *dst, size_t length,
 
 // time : O(n)
 // space: O(n)
-t_load_fdf	parse_decimal(char *line, bool is_rgba)
+t_fdf_load	parse_decimal(char *line, bool is_rgba)
 {
-	t_load_fdf	dst;
+	t_fdf_load	dst;
 	size_t		length;
 	bool		is_int;
 	bool		is_valid_fdf;
@@ -125,8 +125,8 @@ t_load_fdf	parse_decimal(char *line, bool is_rgba)
 		|| (f_strlen((const char *)line) == 1
 			&& f_isspace(*line, "0123456789") == 0)
 		|| is_valid_fdf == false)
-		return (init_load_fdf(0, false));
-	dst = init_load_fdf(length, is_rgba);
+		return (init_fdf_load(0, false));
+	dst = init_fdf_load(length, is_rgba);
 	if (dst.arr == NULL)
 		return (dst);
 	is_int = true;

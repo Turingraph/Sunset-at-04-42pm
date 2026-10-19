@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:07:35 by phsottat          #+#    #+#             */
-/*   Updated: 2026/08/29 14:07:38 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/19 14:41:25 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@
  *
  * @param line input line
  * 
- * @return loaded data input array as t_load_fdf
+ * @return loaded data input array as t_fdf_load
  * 
  * @see see: src/input/table/public.c
  */
-t_load_fdf	parse_ascii_cheche01(char *line)
+t_fdf_load	parse_ascii_cheche01(char *line)
 {
 	return (parse_ascii(line,
 			" `'.,:_-;~!^\"\\|)rvcilj+xnzt>=]*?}17JTC23"
@@ -43,11 +43,11 @@ t_load_fdf	parse_ascii_cheche01(char *line)
  *
  * @param line input line
  * 
- * @return loaded data input array as t_load_fdf
+ * @return loaded data input array as t_fdf_load
  * 
  * @see see: src/input/table/public.c
  */
-t_load_fdf	parse_ascii_standard(char *line)
+t_fdf_load	parse_ascii_standard(char *line)
 {
 	return (parse_ascii(line,
 			" .'`^\",:;Il!i>~+_-?]}1)|\\tjrxnvcz=7T23y"
@@ -64,14 +64,14 @@ t_load_fdf	parse_ascii_standard(char *line)
  * 
  * @param line input line
  * 
- * @return loaded data input array as t_load_fdf
+ * @return loaded data input array as t_fdf_load
  * 
  * @see see: src/input/table/public.c
  * 
  * @see see: https://stackoverflow.com/questions/30097953/
  *      ascii-art-sorting-an-array-of-ascii-characters-by-brightness-levels-c-c
  */
-t_load_fdf	parse_ascii_chungaloider(char *line)
+t_fdf_load	parse_ascii_chungaloider(char *line)
 {
 	return (parse_ascii(line,
 			" `.-~'\":_,^=;>+!rc*\\z?TvJ7)|FiC}I31tlneoZ5Yxjy]"
@@ -88,12 +88,12 @@ t_load_fdf	parse_ascii_chungaloider(char *line)
  * 
  * @param line input line
  * 
- * @return loaded data input array as t_load_fdf
+ * @return loaded data input array as t_fdf_load
  * 
  * @see see: src/input/table/public.c
  * 
  */
-t_load_fdf	parse_decimal_rgba(char *line)
+t_fdf_load	parse_decimal_rgba(char *line)
 {
 	return (parse_decimal(line, true));
 }
@@ -108,12 +108,12 @@ t_load_fdf	parse_decimal_rgba(char *line)
  * 
  * @param line input line
  * 
- * @return loaded data input array as t_load_fdf
+ * @return loaded data input array as t_fdf_load
  * 
  * @see see: src/input/table/public.c
  * 
  */
-t_load_fdf	parse_decimal_bw(char *line)
+t_fdf_load	parse_decimal_bw(char *line)
 {
 	return (parse_decimal(line, false));
 }

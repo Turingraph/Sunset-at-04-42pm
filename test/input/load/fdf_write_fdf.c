@@ -6,7 +6,7 @@ int	main(void)
 	size_t			i;
 	size_t			score;
 	size_t			max_score = 16;
-	t_load_fdf_arr	fdf_file;
+	t_fdf_load_arr	fdf_file;
 	char			*arr[] = {
 		"100-6.fdf",
 		"10-70.fdf",
@@ -34,7 +34,7 @@ int	main(void)
 	while (i < max_score)
 	{
 		fdf_file = open_fdf_file(arr[i], src_dir, parse_decimal_bw);
-		clone_examples = open_dir_file(arr[i], dst_dir, E_WRITE);
+		clone_examples = load_file_debug(arr[i], dst_dir, E_WRITE);
 		if (clone_examples > -1)
 		{
 			inspect_decimal(clone_examples, &fdf_file, 1, HEIGHT_ONLY);

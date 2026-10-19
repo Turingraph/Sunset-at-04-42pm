@@ -42,7 +42,7 @@ int	main(void)
 	i = 0;
 	while (i < length)
 	{
-		output = open_dir_file(arr[i], dst, APPEND);
+		output = load_file_debug(arr[i], dst, APPEND);
 		table_a = open_fdf_table_file(arr[i], src,
 				parse_ascii_chungaloider, false);
 		table_b = scale_dimension_fdf((const t_fdf_table *)&table_a, 3, 3);

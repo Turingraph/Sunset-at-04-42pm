@@ -8,7 +8,7 @@ int	main(void)
 	bool			is_correct;
 	size_t			score;
 	size_t			max_score = 10;
-	t_load_fdf_arr	fdf_file;
+	t_fdf_load_arr	fdf_file;
 	t_intarr_tester	arr[] = {
 		{
 			(const t_intarr[]){

@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:15:10 by phsottat          #+#    #+#             */
-/*   Updated: 2026/08/31 12:35:10 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/19 14:41:25 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // time : O(n)
 // space: O(n)
-static void	inspect_fdf_unit(int fd, const t_load_fdf *src,
+static void	inspect_fdf_unit(int fd, const t_fdf_load *src,
 		size_t digits, t_write_style mode)
 {
 	size_t	i;
@@ -44,21 +44,21 @@ static void	inspect_fdf_unit(int fd, const t_load_fdf *src,
 // time : O(n)
 // space: O(n)
 void	inspect_decimal(int fd,
-		const t_load_fdf_arr *src, size_t digits, t_write_style mode)
+		const t_fdf_load_arr *src, size_t digits, t_write_style mode)
 {
 	size_t	i;
 
 	i = 0;
 	while (src != NULL && i < src->length && src->arr != NULL)
 	{
-		inspect_fdf_unit(fd, (const t_load_fdf *)&(src->arr[i]), digits, mode);
+		inspect_fdf_unit(fd, (const t_fdf_load *)&(src->arr[i]), digits, mode);
 		i += 1;
 	}
 }
 
 // time : O(1)
 // space: O(1)
-void	warning_load_fdf(const t_load_fdf *src, size_t i)
+void	warning_load_fdf(const t_fdf_load *src, size_t i)
 {
 	if (src->int_warn != CORRECT || src->rgb_warn != CORRECT)
 	{
@@ -79,7 +79,7 @@ void	warning_load_fdf(const t_load_fdf *src, size_t i)
 
 // time : O(1)
 // space: O(1)
-bool	is_load_fdf_valid(t_load_fdf *src)
+bool	is_load_fdf_valid(t_fdf_load *src)
 {
 	if (src == NULL || src->arr == NULL
 		|| src->int_warn == NOT_DECIMAL
@@ -92,7 +92,7 @@ bool	is_load_fdf_valid(t_load_fdf *src)
 
 // time : O(1)
 // space: O(1)
-bool	is_load_fdf_arr_valid(t_load_fdf_arr *src, int i)
+bool	is_load_fdf_arr_valid(t_fdf_load_arr *src, int i)
 {
 	if (src == NULL || src->arr == NULL || i < 0
 		|| i > (int)src->length || i > (int)src->capacity

@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:00:47 by phsottat          #+#    #+#             */
-/*   Updated: 2026/09/03 16:55:43 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/19 14:41:25 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 // time : O(1)
 // space: O(1)
-t_load_fdf	copy_load_fdf(t_load_fdf src)
+t_fdf_load	copy_load_fdf(t_fdf_load src)
 {
-	t_load_fdf	dst;
+	t_fdf_load	dst;
 
 	dst.length = src.length;
 	dst.arr = src.arr;
@@ -31,14 +31,14 @@ t_load_fdf	copy_load_fdf(t_load_fdf src)
 
 // time : O(n)
 // space: O(n)
-t_load_fdf_arr	copy_load_fdf_arr(const t_load_fdf_arr *src, size_t length)
+t_fdf_load_arr	copy_load_fdf_arr(const t_fdf_load_arr *src, size_t length)
 {
-	t_load_fdf_arr	dst;
+	t_fdf_load_arr	dst;
 	size_t			i;
 
 	if (src == NULL || length == 0 || src->arr == NULL || src->length == 0)
-		return (init_load_fdf_arr(0));
-	dst = init_load_fdf_arr(length);
+		return (init_fdf_load_arr(0));
+	dst = init_fdf_load_arr(length);
 	i = 0;
 	while (dst.arr != NULL && i < src->length && i < dst.capacity)
 	{
@@ -51,15 +51,15 @@ t_load_fdf_arr	copy_load_fdf_arr(const t_load_fdf_arr *src, size_t length)
 
 // time : O(1)
 // space: O(1)
-t_load_fdf_arr	load_fdf_arr_push(t_load_fdf_arr *src, t_load_fdf *item)
+t_fdf_load_arr	load_fdf_arr_push(t_fdf_load_arr *src, t_fdf_load *item)
 {
-	t_load_fdf_arr	dst;
+	t_fdf_load_arr	dst;
 
 	if (src == NULL || src->arr == NULL || item == NULL)
 	{
 		destroy_load_fdf(item);
 		destroy_load_fdf_arr(src);
-		return (init_load_fdf_arr(0));
+		return (init_fdf_load_arr(0));
 	}
 	if (src->length < src->capacity)
 	{
@@ -67,7 +67,7 @@ t_load_fdf_arr	load_fdf_arr_push(t_load_fdf_arr *src, t_load_fdf *item)
 		src->length += 1;
 		return (*src);
 	}
-	dst = copy_load_fdf_arr((const t_load_fdf_arr *)src, src->length * 2);
+	dst = copy_load_fdf_arr((const t_fdf_load_arr *)src, src->length * 2);
 	if (dst.arr != NULL)
 	{
 		free(src->arr);
@@ -80,17 +80,17 @@ t_load_fdf_arr	load_fdf_arr_push(t_load_fdf_arr *src, t_load_fdf *item)
 
 // time : O(n)
 // space: O(n)
-t_load_fdf_arr	load_all_fdf_lines(int fd,
-	t_load_fdf (*parse_line)(char *line))
+t_fdf_load_arr	load_all_fdf_lines(int fd,
+	t_fdf_load (*parse_line)(char *line))
 {
-	t_load_fdf_arr	dst;
-	t_load_fdf		item;
+	t_fdf_load_arr	dst;
+	t_fdf_load		item;
 	char			*line;
 	bool			is_valid;
 
 	if (parse_line == NULL || fd < 0)
-		return (init_load_fdf_arr(0));
-	dst = init_load_fdf_arr(1);
+		return (init_fdf_load_arr(0));
+	dst = init_fdf_load_arr(1);
 	if (dst.arr == NULL)
 		return (dst);
 	is_valid = true;
@@ -116,7 +116,7 @@ t_load_fdf_arr	load_all_fdf_lines(int fd,
 // 	warning_load_fdf(&dst.arr[dst.length - 1], dst.length - 1);
 
 /**
- * Load an FDF file and parse its lines into a t_load_fdf_arr.
+ * Load an FDF file and parse its lines into a t_fdf_load_arr.
  *
  * time/space: O(n) / O(n)
  * 
@@ -126,17 +126,17 @@ t_load_fdf_arr	load_all_fdf_lines(int fd,
  * @param dir directory containing the input file
  * @param parse_line function used to parse each input line
  * 
- * @return loaded data input array as t_load_fdf_arr
+ * @return loaded data input array as t_fdf_load_arr
  * 
  * @see see: src/input/load/parse.c
  */
-t_load_fdf_arr	open_fdf_file(const char *file_name, const char *dir,
-		t_load_fdf (*parse_line)(char *line))
+t_fdf_load_arr	open_fdf_file(const char *file_name, const char *dir,
+		t_fdf_load (*parse_line)(char *line))
 {
 	int		dst;
 
 	if (dir == NULL || *dir == '\0')
 		return (load_all_fdf_lines(open(file_name, O_RDONLY), parse_line));
-	dst = open_dir_file(file_name, dir, E_READ);
+	dst = load_file_debug(file_name, dir, E_READ);
 	return (load_all_fdf_lines(dst, parse_line));
 }

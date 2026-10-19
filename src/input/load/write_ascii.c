@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:15:06 by phsottat          #+#    #+#             */
-/*   Updated: 2026/08/29 14:26:31 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/19 14:41:25 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // time : O(n)
 // space: O(n)
-static void	inspect_ascii_unit(int fd, const t_load_fdf *src, const char *dict)
+static void	inspect_ascii_unit(int fd, const t_fdf_load *src, const char *dict)
 {
 	size_t	i;
 
@@ -32,7 +32,7 @@ static void	inspect_ascii_unit(int fd, const t_load_fdf *src, const char *dict)
 
 // time : O(n)
 // space: O(n)
-void	inspect_ascii(int fd, const t_load_fdf_arr *src,
+void	inspect_ascii(int fd, const t_fdf_load_arr *src,
 			const char *dict)
 {
 	size_t	i;
@@ -40,14 +40,14 @@ void	inspect_ascii(int fd, const t_load_fdf_arr *src,
 	i = 0;
 	while (src != NULL && i < src->length && src->arr != NULL)
 	{
-		inspect_ascii_unit(fd, (const t_load_fdf *)&(src->arr[i]), dict);
+		inspect_ascii_unit(fd, (const t_fdf_load *)&(src->arr[i]), dict);
 		i += 1;
 	}
 }
 
 // time : O(n)
 // space: O(n)
-void	inspect_ascii_cheche01(int fd, const t_load_fdf_arr *src)
+void	inspect_ascii_cheche01(int fd, const t_fdf_load_arr *src)
 {
 	inspect_ascii(fd, src,
 		" `'.,:_-;~!^\"\\|)rvcilj+xnzt>=]*?}17JTC23"
@@ -56,7 +56,7 @@ void	inspect_ascii_cheche01(int fd, const t_load_fdf_arr *src)
 
 // time : O(n)
 // space: O(n)
-void	inspect_ascii_standard(int fd, const t_load_fdf_arr *src)
+void	inspect_ascii_standard(int fd, const t_fdf_load_arr *src)
 {
 	inspect_ascii(fd, src,
 		" .'`^\",:;Il!i>~+_-?]}1)|\\tjrxnvcz=7T23y"
@@ -65,7 +65,7 @@ void	inspect_ascii_standard(int fd, const t_load_fdf_arr *src)
 
 // time : O(n)
 // space: O(n)
-void	inspect_ascii_chungaloider(int fd, const t_load_fdf_arr *src)
+void	inspect_ascii_chungaloider(int fd, const t_fdf_load_arr *src)
 {
 	inspect_ascii(fd, src,
 		" `.-~'\":_,^=;>+!rc*\\z?TvJ7)|FiC}I31tlneoZ5Yxjy]"

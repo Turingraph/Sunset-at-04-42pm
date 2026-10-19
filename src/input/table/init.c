@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:44:49 by phsottat          #+#    #+#             */
-/*   Updated: 2026/08/31 12:31:19 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/19 14:41:25 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ t_fdf_table	create_fdf_table(size_t row, size_t col, bool is_rgba)
 
 // time : O(n)
 // space: O(1)
-size_t	load_fdf_col(const t_load_fdf_arr *src)
+size_t	load_fdf_col(const t_fdf_load_arr *src)
 {
 	size_t	i;
 	size_t	col;
@@ -103,7 +103,7 @@ size_t	load_fdf_col(const t_load_fdf_arr *src)
 
 // time : O(1)
 // space: O(1)
-void	load_rgba_for_fdf_table(const t_load_fdf *src,
+void	load_rgba_for_fdf_table(const t_fdf_load *src,
 	t_fdf_table *dst, size_t row, size_t col)
 {
 	if (src != NULL && dst != NULL
@@ -124,7 +124,7 @@ void	load_rgba_for_fdf_table(const t_load_fdf *src,
 
 // time : O(n)
 // space: O(n)
-t_fdf_table	load_fdf_table(const t_load_fdf_arr *src, bool is_rgba)
+t_fdf_table	load_fdf_table(const t_fdf_load_arr *src, bool is_rgba)
 {
 	t_fdf_table	dst;
 	size_t		i;

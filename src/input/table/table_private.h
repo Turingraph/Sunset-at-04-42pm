@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:54:30 by phsottat          #+#    #+#             */
-/*   Updated: 2026/09/11 14:35:29 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/19 14:41:25 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 void			destroy_fdf_table(t_fdf_table *src);
 t_fdf_table		create_fdf_table(size_t row, size_t col, bool is_rgba);
-t_fdf_table		load_fdf_table(const t_load_fdf_arr *src, bool is_rgba);
+t_fdf_table		load_fdf_table(const t_fdf_load_arr *src, bool is_rgba);
 
 // positive.c
 
@@ -33,7 +33,7 @@ void			scale_relu_fdf(t_fdf_table *dst, int min, int max, int expect);
 // public.c
 
 t_fdf_table		open_fdf_table_file(const char *file_name, const char *dir,
-					t_load_fdf (*one_line)(char *line), bool is_rgba);
+					t_fdf_load (*one_line)(char *line), bool is_rgba);
 
 // scale_dimension.c
 

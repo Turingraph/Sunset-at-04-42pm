@@ -41,7 +41,7 @@ int	main(void)
 	{
 		table = open_fdf_table_file(arr[i], src_dir, parse_decimal_bw, false);
 		scale_positive_fdf(&table);
-		fdf_dst = open_dir_file(arr[i], dst_dir, E_WRITE);
+		fdf_dst = load_file_debug(arr[i], dst_dir, E_WRITE);
 		if(fdf_dst > -1)
 		{
 			write(1, "\n*** ", 5);

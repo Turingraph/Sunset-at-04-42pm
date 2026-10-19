@@ -6,7 +6,7 @@ static void	write_with_paint_space(float scale, const char *file_name,
 {
 	int	output;
 
-	output = open_dir_file(file_name,
+	output = load_file_debug(file_name,
 		"test/paint/paint/input_paint_space/", E_WRITE);
 	if (output <= -1 || file_name == NULL)
 	{

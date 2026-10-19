@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:07:25 by phsottat          #+#    #+#             */
-/*   Updated: 2026/08/30 18:53:59 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/19 14:41:25 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // time : O(1)
 // space: O(1)
-void	*destroy_load_fdf(t_load_fdf *src)
+void	*destroy_load_fdf(t_fdf_load *src)
 {
 	if (src == NULL)
 		return (NULL);
@@ -38,12 +38,12 @@ void	*destroy_load_fdf(t_load_fdf *src)
 
 // time : O(n)
 // space: O(n)
-t_load_fdf	init_load_fdf(size_t line_len, bool is_rgb)
+t_fdf_load	init_fdf_load(size_t line_len, bool is_rgb)
 {
-	t_load_fdf	dst;
+	t_fdf_load	dst;
 
 	dst.arr = (int *)malloc_talk(sizeof(int) * line_len,
-			"input/load/init.c/int_load_fdf\n");
+			"input/load/init.c/int_fdf_load\n");
 	dst.r = NULL;
 	dst.g = NULL;
 	dst.b = NULL;
@@ -51,13 +51,13 @@ t_load_fdf	init_load_fdf(size_t line_len, bool is_rgb)
 	if (is_rgb == true)
 	{
 		dst.r = malloc_talk(sizeof(unsigned char) * line_len,
-				"input/load/init.c/int_load_fdf\n");
+				"input/load/init.c/int_fdf_load\n");
 		dst.g = malloc_talk(sizeof(unsigned char) * line_len,
-				"input/load/init.c/int_load_fdf\n");
+				"input/load/init.c/int_fdf_load\n");
 		dst.b = malloc_talk(sizeof(unsigned char) * line_len,
-				"input/load/init.c/int_load_fdf\n");
+				"input/load/init.c/int_fdf_load\n");
 		dst.a = malloc_talk(sizeof(unsigned char) * line_len,
-				"input/load/init.c/int_load_fdf\n");
+				"input/load/init.c/int_fdf_load\n");
 	}
 	dst.int_warn = CORRECT;
 	if (line_len == 0)
@@ -75,9 +75,9 @@ t_load_fdf	init_load_fdf(size_t line_len, bool is_rgb)
  * 
  * status: internal helper
  *
- * @param src the target array with t_load_fdf_arr shape_2d.
+ * @param src the target array with t_fdf_load_arr shape_2d.
  */
-void	destroy_load_fdf_arr(t_load_fdf_arr *src)
+void	destroy_load_fdf_arr(t_fdf_load_arr *src)
 {
 	size_t	i;
 
@@ -106,20 +106,20 @@ void	destroy_load_fdf_arr(t_load_fdf_arr *src)
  * 
  * status: internal helper
  *
- * @param length the number of all row of that t_load_fdf_arr can contains.
- *  If t_load_fdf_arr do not have enough memory for load Fdf input file,
+ * @param length the number of all row of that t_fdf_load_arr can contains.
+ *  If t_fdf_load_arr do not have enough memory for load Fdf input file,
  *  the program will double its size as a dynamic array.
  * 
- * @return empty input array as t_load_fdf_arr
+ * @return empty input array as t_fdf_load_arr
  * 
  */
-t_load_fdf_arr	init_load_fdf_arr(size_t length)
+t_fdf_load_arr	init_fdf_load_arr(size_t length)
 {
-	t_load_fdf_arr	dst;
+	t_fdf_load_arr	dst;
 
 	dst.capacity = length;
 	dst.length = 0;
-	dst.arr = malloc_talk(sizeof(t_load_fdf) * length,
-			"load/init.c/init_load_fdf_arr\n");
+	dst.arr = malloc_talk(sizeof(t_fdf_load) * length,
+			"load/init.c/init_fdf_load_arr\n");
 	return (dst);
 }

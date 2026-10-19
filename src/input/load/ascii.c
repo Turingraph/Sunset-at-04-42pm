@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:00:57 by phsottat          #+#    #+#             */
-/*   Updated: 2026/08/29 14:01:03 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/19 14:41:25 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,11 +114,11 @@ int	*line_to_ascii_arr(const char *line,
 
 // time : O(n)
 // space: O(n)
-t_load_fdf	parse_ascii(char *line, const char *dict)
+t_fdf_load	parse_ascii(char *line, const char *dict)
 {
-	t_load_fdf	dst;
+	t_fdf_load	dst;
 
-	dst = init_load_fdf(index_a_in_str((const char *)line, '\n', false), false);
+	dst = init_fdf_load(index_a_in_str((const char *)line, '\n', false), false);
 	if (dst.int_warn == EMPTY)
 	{
 		destroy_load_fdf(&dst);
@@ -129,7 +129,7 @@ t_load_fdf	parse_ascii(char *line, const char *dict)
 		dst.arr = malloc_talk(sizeof(int) * 1, "parse_ascii\n");
 		dst.length = 1;
 		if (dst.arr == NULL)
-			return (init_load_fdf(0, false));
+			return (init_fdf_load(0, false));
 		dst.arr[0] = 0;
 		dst.int_warn = CORRECT;
 		dst.rgb_warn = CORRECT;

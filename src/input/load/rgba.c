@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:07:44 by phsottat          #+#    #+#             */
-/*   Updated: 2026/09/03 19:23:33 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/19 14:41:25 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ size_t	count_hex_digits(char *line, size_t max)
 // time : O(1)
 // space: O(1)
 void	update_rgba_long(char *line,
-	t_load_fdf *dst, size_t index, size_t length)
+	t_fdf_load *dst, size_t index, size_t length)
 {
 	bool	is_rgba;
 
@@ -68,7 +68,7 @@ void	update_rgba_long(char *line,
 
 // time : O(1)
 // space: O(1)
-void	update_rgba(char *line, t_load_fdf *dst, size_t index)
+void	update_rgba(char *line, t_fdf_load *dst, size_t index)
 {
 	size_t	length;
 	bool	is_rgba;
