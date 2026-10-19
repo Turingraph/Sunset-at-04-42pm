@@ -873,7 +873,7 @@ Your existing identifiers include:
 ```
 t_fdf_table
 t_fdf
-t_fdf_render
+t_render_style
 D7_HEIGHT
 E_LINE
 E_RECTANGLE

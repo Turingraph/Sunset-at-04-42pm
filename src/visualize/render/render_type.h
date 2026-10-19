@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display_type.h                                     :+:      :+:    :+:   */
+/*   render_type.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/04 18:45:56 by phsottat          #+#    #+#             */
-/*   Updated: 2026/09/09 13:40:23 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/19 11:42:00 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,11 @@ typedef struct s_2d_camera
 /*
  * This struct control the drawing style of the Fdf.
  */
-typedef struct s_render_style
+typedef struct t_render_style
 {
 	size_t		thickness;
 	t_2d_shape	shape_2d;
-}	t_fdf_render;
+}	t_render_style;
 
 /**
  * Runtime state required by the 2D MLX viewer.
@@ -52,7 +52,7 @@ typedef struct s_render_style
  * @param mlx MLX window context
  * @param img image used as the rendering target
  * @param camera camera used to transform the displayed object
- * @param artstyle describes how the FDF object is rasterized
+ * @param render_style describes how the FDF object is rasterized
  * @param fdf FDF object to display
  */
 typedef struct s_2d_hook
@@ -60,8 +60,8 @@ typedef struct s_2d_hook
 	mlx_t			*mlx;
 	mlx_image_t		*img;
 	t_2d_camera		*camera;
-	t_fdf_render	artstyle;
-	t_fdf_proj2d			*fdf;
+	t_render_style	render_style;
+	t_fdf_proj2d	*fdf;
 	int32_t			background_color;
 }	t_2d_hook;
 

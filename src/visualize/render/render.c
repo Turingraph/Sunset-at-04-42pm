@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   unit.c                                             :+:      :+:    :+:   */
+/*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/06 17:01:01 by phsottat          #+#    #+#             */
-/*   Updated: 2026/09/08 13:53:54 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/19 11:42:01 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_raster_style	hook_to_raster(t_2d_hook *hook, bool is_draw, t_2d_int ixiy)
 	t_fdf_proj2d		*fdf;
 
 	fdf = hook->fdf;
-	raster_style.thickness = hook->artstyle.thickness;
+	raster_style.thickness = hook->render_style.thickness;
 	raster_style.color = hook->background_color;
 	if (is_draw == true)
 		raster_style.color = rgba32_from_proj2d((const t_fdf_proj2d *)fdf,

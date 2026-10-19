@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 17:03:34 by phsottat          #+#    #+#             */
-/*   Updated: 2026/09/09 13:52:33 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/19 11:40:04 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static void	view_fdf_handle_02(mlx_t *mlx, mlx_image_t *img)
  * @param fdf_render style used to render the FDF object.
  * @param background_color the background color of the window scene.
  */
-void	view_fdf(t_fdf_proj2d *fdf, t_fdf_render fdf_render,
+void	view_fdf(t_fdf_proj2d *fdf, t_render_style fdf_render,
 	int32_t background_color)
 {
 	mlx_t			*mlx;
@@ -83,13 +83,14 @@ void	view_fdf(t_fdf_proj2d *fdf, t_fdf_render fdf_render,
 	if (is_fdf_proj2d_valid(fdf) == false)
 		return ;
 	mlx = mlx_init(SUNSET_WINDOW_WIDTH,
-		SUNSET_WINDOW_HEIGHT, "Sunset at 4:42 pm", true);
+			SUNSET_WINDOW_HEIGHT, "Sunset at 4:42 pm", true);
 	hook = init_2d_hook(mlx, fdf, fdf_render, background_color);
 	if (view_fdf_handle_00(mlx, hook.img) == false)
 		return ;
 	camera = init_2d_camera(SUNSET_WINDOW_WIDTH, SUNSET_WINDOW_HEIGHT);
 	hook.camera = &camera;
-	scale_fdf_as_window_object(fdf, f_max(SUNSET_WINDOW_WIDTH, SUNSET_WINDOW_HEIGHT));
+	scale_fdf_as_window_object(fdf, f_max(SUNSET_WINDOW_WIDTH,
+			SUNSET_WINDOW_HEIGHT));
 	raster_color_background(hook.img, background_color);
 	render_fdf(&hook, true);
 	if (-1 == view_fdf_handle_01(mlx, hook.img))

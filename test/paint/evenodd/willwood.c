@@ -65,7 +65,7 @@ int	main(void)
 	t_fdf_table		table_base;
 	t_fdf_table		table;
 	t_fdf_proj2d			output;
-	t_fdf_render	style;
+	t_render_style	style;
 	t_gradient		wood;
 	size_t			i;
 

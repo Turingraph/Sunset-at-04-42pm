@@ -63,8 +63,8 @@ t_gradient	init_ztmy_studyme()
 int	main(int len, char **str)
 {
 	t_fdf_table		table;
-	t_fdf_proj2d			output;
-	t_fdf_render	style;
+	t_fdf_proj2d	output;
+	t_render_style	style;
 
 	if (len < 2)
 		return (0);

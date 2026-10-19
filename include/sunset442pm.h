@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 14:31:33 by phsottat          #+#    #+#             */
-/*   Updated: 2026/09/14 12:14:09 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/19 11:38:57 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -2040,7 +2040,7 @@ typedef struct s_render_style
 {
 	size_t		thickness;
 	t_2d_shape	shape_2d;
-}	t_fdf_render;
+}	t_render_style;
 
 /* ************************************************************************** */
 /* *** src/visualize/window/ *** */
@@ -2077,7 +2077,7 @@ typedef struct s_render_style
  * @param fdf_render style used to render the FDF object.
  * @param background_color the background color of the window scene.
  */
-void	view_fdf(t_fdf_proj2d *fdf, t_fdf_render fdf_render,
+void	view_fdf(t_fdf_proj2d *fdf, t_render_style fdf_render,
 			int32_t background_color);
 
 /* ************************************************************************** */

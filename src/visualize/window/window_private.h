@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 16:43:32 by phsottat          #+#    #+#             */
-/*   Updated: 2026/09/08 17:31:00 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/19 11:42:01 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ void		hook_controller(mlx_key_data_t keydata, void *param);
 // init_2d_hook.c
 
 t_2d_camera	init_2d_camera(size_t window_width, size_t window_height);
-t_2d_hook	init_2d_hook(mlx_t *mlx, t_fdf_proj2d *fdf, t_fdf_render artstyle, int32_t background_color);
+t_2d_hook	init_2d_hook(mlx_t *mlx, t_fdf_proj2d *fdf, t_render_style render_style, int32_t background_color);
 void		scale_fdf_as_window_object(t_fdf_proj2d *src,
 				size_t fixed_window_size);
 
 // public.c
 
-void		view_fdf(t_fdf_proj2d *fdf, t_fdf_render artstyle, int32_t background_color);
+void		view_fdf(t_fdf_proj2d *fdf, t_render_style render_style, int32_t background_color);
 
 // verify.c
 

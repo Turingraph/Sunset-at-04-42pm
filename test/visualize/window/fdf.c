@@ -40,7 +40,7 @@ int	main(int len, char **str)
 {
 	t_fdf_table		table;
 	t_fdf_proj2d			output;
-	t_fdf_render	style;
+	t_render_style	style;
 
 	if (len < 2 || is_fdf_name(str[1]) == false)
 		return (0);

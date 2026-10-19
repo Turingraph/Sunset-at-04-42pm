@@ -44,7 +44,7 @@ int	main(void)
 {
 	t_fdf_table		table;
 	t_fdf_proj2d			output;
-	t_fdf_render	style;
+	t_render_style	style;
 	t_fdf_table		table_base;
 
 	table_base = create_fdf_table(300, 300, false);

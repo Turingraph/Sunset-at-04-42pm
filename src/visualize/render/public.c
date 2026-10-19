@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/06 11:36:00 by phsottat          #+#    #+#             */
-/*   Updated: 2026/09/08 16:23:34 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/19 11:42:00 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ void	render_fdf(t_2d_hook *hook, bool is_draw)
 {
 	if (is_2dhook_valid(hook) == false)
 		return ;
-	if (hook->artstyle.shape_2d == E_LINE)
+	if (hook->render_style.shape_2d == E_LINE)
 		render_picasso(hook, is_draw);
-	if (hook->artstyle.shape_2d == E_CIRCLE)
+	if (hook->render_style.shape_2d == E_CIRCLE)
 		render_kusama(hook, is_draw);
-	if (hook->artstyle.shape_2d == E_RECTANGLE)
+	if (hook->render_style.shape_2d == E_RECTANGLE)
 		render_tobyfox(hook, is_draw);
 }

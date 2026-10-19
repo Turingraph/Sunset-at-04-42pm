@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 17:02:58 by phsottat          #+#    #+#             */
-/*   Updated: 2026/09/09 13:49:46 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/19 11:42:01 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,18 +81,18 @@ static mlx_image_t	*create_mlx_image(mlx_t *mlx)
  *
  * @param mlx MLX window context used by the view
  * @param fdf FDF object to display
- * @param artstyle style used to render the FDF object
+ * @param render_style style used to render the FDF object
  * @param background_color the background color of the window scene.
  * @return initialized 2D FDF rendering context
  */
-t_2d_hook	init_2d_hook(mlx_t *mlx, t_fdf_proj2d *fdf, t_fdf_render artstyle, int32_t background_color)
+t_2d_hook	init_2d_hook(mlx_t *mlx, t_fdf_proj2d *fdf, t_render_style render_style, int32_t background_color)
 {
 	t_2d_hook	dst;
 
 	dst.mlx = mlx;
 	dst.camera = NULL;
 	dst.fdf = fdf;
-	dst.artstyle = artstyle;
+	dst.render_style = render_style;
 	dst.img = create_mlx_image(mlx);
 	dst.background_color = background_color;
 	return (dst);

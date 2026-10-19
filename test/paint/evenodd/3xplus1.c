@@ -24,8 +24,8 @@ int	main(void)
 {
 	t_fdf_table		table_base;
 	t_fdf_table		table;
-	t_fdf_proj2d			output;
-	t_fdf_render	style;
+	t_fdf_proj2d	output;
+	t_render_style	style;
 
 	table = create_fdf_table(100, 100, true);
 	table_base = create_fdf_table(100, 100, false);
