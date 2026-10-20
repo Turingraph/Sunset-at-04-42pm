@@ -72,7 +72,7 @@ float	*gaussian_kernel(size_t half_dim, float std_1, float std_2)
 		half_dim = 1;
 	vec_v = gaussian_kernel1d(half_dim, std_1);
 	vec_u = gaussian_kernel1d(half_dim, std_2);
-	dst = outer_product_matrix(vec_v, vec_u, 2 * half_dim + 1);
+	dst = outer_product(vec_v, vec_u, 2 * half_dim + 1);
 	free(vec_v);
 	free(vec_u);
 	return (dst.arr);
@@ -156,7 +156,7 @@ therefore b = (-2am) / n, a = (-bn) / (2m)
  * @see Image convolution tutorial https://www.youtube.com/live/8rrHTtUzyZA?si=UZVlq0cpb2X95MZN
  * for more details.
  */
-float	define_outer_num(float inner_dim, float outer_dim, float input, float kernel_sum)
+float	init_outer_num(float inner_dim, float outer_dim, float input, float kernel_sum)
 {
 	if (outer_dim == 0)
 		return (0.0);
@@ -200,10 +200,10 @@ float	*edge_kernel(size_t inner_dim, size_t outer_dim, float input, float kernel
 	}
 	if (mul_overflow_size_t(outer_dim, outer_dim) == false)
 		return (NULL);
-	outer_num = define_outer_num((float)inner_dim, (float)outer_dim, input, kernel_sum);
+	outer_num = init_outer_num((float)inner_dim, (float)outer_dim, input, kernel_sum);
 	vec_v = edge_kernel1d(inner_dim, outer_dim, input, outer_num);
 	vec_u = edge_kernel1d(inner_dim, outer_dim, input, outer_num);
-	dst = outer_product_matrix(vec_v, vec_u, outer_dim);
+	dst = outer_product(vec_v, vec_u, outer_dim);
 	free(vec_v);
 	free(vec_u);
 	return (dst.arr);

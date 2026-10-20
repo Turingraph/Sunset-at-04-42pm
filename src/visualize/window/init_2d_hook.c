@@ -120,6 +120,6 @@ void	normalize_fdf_proj2d(t_fdf_proj2d *src, size_t fixed_window_size)
 		return ;
 	length = src->col * src->row;
 	scale = fixed_window_size / src->width;
-	vector_scale(src->x, scale, length);
-	vector_scale(src->y, scale, length);
+	scale_vector(src->x, scale, length);
+	scale_vector(src->y, scale, length);
 }

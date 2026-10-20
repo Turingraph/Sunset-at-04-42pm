@@ -164,11 +164,11 @@ t_fdf_proj2d	create_fdf_proj2d(t_fdf_table *src,
 	if (dst.col == 0 || dst.row == 0)
 		return (dst);
 	fdf_proj2d_update(src, dst.x, dst.y, proj2d);
-	vector_scale(dst.x, scale, src->col * src->row);
-	vector_scale(dst.y, scale, src->col * src->row);
-	min_x = (float)minmax_from_fdf_table(
+	scale_vector(dst.x, scale, src->col * src->row);
+	scale_vector(dst.y, scale, src->col * src->row);
+	min_x = (float)fdf_table_minmax(
 			(const t_fdf_table *)src, false, HEIGHT);
-	max_x = (float)minmax_from_fdf_table(
+	max_x = (float)fdf_table_minmax(
 			(const t_fdf_table *)src, true, HEIGHT);
 	dst.width = f_max(max_x - min_x, (float)f_max_int(src->row, src->col));
 	dst.row = src->row;

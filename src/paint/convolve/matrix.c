@@ -58,7 +58,7 @@ t_matrix	init_matrix(size_t row, size_t col, float scale)
  * 
  * status: public api
  */
-t_matrix	outer_product_matrix(const float *vec_v,
+t_matrix	outer_product(const float *vec_v,
 	const float *vec_u, size_t dim)
 {
 	t_matrix	dst;

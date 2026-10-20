@@ -46,7 +46,7 @@ size_t	index_a_in_str(const char *src, char a, bool is_after)
  * @param dst dynamic string to append the text to
  * @param buffer_length number of characters to read at a time
  */
-void	fetch_dynamic_str(int fd, t_dynamic_str *dst, size_t buffer_length)
+void	fetch_str_dynamic(int fd, t_str_dynamic *dst, size_t buffer_length)
 {
 	char	*buff;
 	bool	continue_line;
@@ -60,7 +60,7 @@ void	fetch_dynamic_str(int fd, t_dynamic_str *dst, size_t buffer_length)
 		else
 		{
 			read(fd, buff, buffer_length);
-			concat_dynamic_str(dst, buff);
+			concat_str_dynamic(dst, buff);
 			if (index_a_in_str(buff, '\0', true) < buffer_length)
 				continue_line = false;
 		}
@@ -86,15 +86,15 @@ char	*get_next_line(int fd, bool is_continue)
 {
 	char			*dst;
 	static char		*prev_str = NULL;
-	t_dynamic_str	dyn_str;
+	t_str_dynamic	dyn_str;
 	size_t			length;
 
-	dyn_str = create_dynamic_str(1);
+	dyn_str = create_str_dynamic(1);
 	if (dyn_str.str == NULL)
 		return (NULL);
-	concat_dynamic_str(&dyn_str, prev_str);
+	concat_str_dynamic(&dyn_str, prev_str);
 	if (prev_str == NULL)
-		fetch_dynamic_str(fd, &dyn_str, BUFFER_SIZE);
+		fetch_str_dynamic(fd, &dyn_str, BUFFER_SIZE);
 	free(prev_str);
 	prev_str = NULL;
 	length = index_a_in_str(dyn_str.str, '\n', true);

@@ -297,7 +297,7 @@ typedef struct t_matrix
  * 
  * time/space: O(n^2) / O(n^2)
  */
-t_matrix	outer_product_matrix(const float *vec_v,
+t_matrix	outer_product(const float *vec_v,
 	const float *vec_u, size_t dim);
 
 /* ************************************************************************** */
@@ -591,7 +591,7 @@ t_fdf_table		create_fdf_table(size_t row, size_t col, bool is_rgba);
  * 
  * @return minimum or maximum integer based on the input.
  */
-int				minmax_from_fdf_table(const t_fdf_table *src,
+int				fdf_table_minmax(const t_fdf_table *src,
 					bool is_max, t_fdf_channel channel);
 
 /**
@@ -877,7 +877,7 @@ float	*edge_kernel1d(size_t inner_dim, size_t outer_dim,
  * @see Image convolution tutorial https://www.youtube.com/live/8rrHTtUzyZA?si=UZVlq0cpb2X95MZN
  * for more details.
  */
-float	define_outer_num(float inner_dim, float outer_dim, float input, float kernel_sum);
+float	init_outer_num(float inner_dim, float outer_dim, float input, float kernel_sum);
 
 /**
  * Create a square edge-detection/sharp convolution kernel.

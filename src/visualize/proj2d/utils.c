@@ -69,7 +69,7 @@ bool	isvalid_fdf_proj2d(const t_fdf_proj2d *src)
 
 // time : O(n)
 // space: O(1)
-void	vector_scale(float *update_v, float s, size_t dim)
+void	scale_vector(float *update_v, float s, size_t dim)
 {
 	size_t	i;
 

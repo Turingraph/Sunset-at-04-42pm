@@ -63,6 +63,6 @@ t_float2d	proj2d_wave(float x, float y, float z);
 
 int32_t		rgba32_from_proj2d(const t_fdf_proj2d *src, size_t index);
 bool		isvalid_fdf_proj2d(const t_fdf_proj2d *src);
-void		vector_scale(float *update_v, float s, size_t dim);
+void		scale_vector(float *update_v, float s, size_t dim);
 
 #endif

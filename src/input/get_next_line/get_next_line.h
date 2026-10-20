@@ -23,12 +23,12 @@
 #  define BUFFER_SIZE 42
 # endif
 
-typedef struct t_dynamic_str
+typedef struct t_str_dynamic
 {
 	size_t	length;
 	size_t	capacity;
 	char	*str;
-}	t_dynamic_str;
+}	t_str_dynamic;
 
 typedef enum t_file_mode
 {
@@ -42,17 +42,17 @@ parse = parse function for t_fdf_load module
 fetch = int fd => the given data structure
 */
 
-// dynamic_str.c
+// str_dynamic.c
 
 char			*clone_str(size_t length, const char *src);
-t_dynamic_str	create_dynamic_str(size_t length);
-bool			push_dynamic_str(t_dynamic_str *dst, char src);
-void			concat_dynamic_str(t_dynamic_str *dst, const char *src);
+t_str_dynamic	create_str_dynamic(size_t length);
+bool			push_str_dynamic(t_str_dynamic *dst, char src);
+void			concat_str_dynamic(t_str_dynamic *dst, const char *src);
 size_t			index_a_in_str(const char *src, char a, bool is_after);
 
 // get_next_line.c
 
-void			fetch_dynamic_str(int fd, t_dynamic_str *dst, size_t buffer_length);
+void			fetch_str_dynamic(int fd, t_str_dynamic *dst, size_t buffer_length);
 char			*get_next_line(int fd, bool is_continue);
 
 // load.c

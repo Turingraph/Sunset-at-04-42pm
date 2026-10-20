@@ -26,7 +26,7 @@
  * 
  * @return minimum or maximum integer based on the input.
  */
-int	minmax_from_fdf_table(const t_fdf_table *src,
+int	fdf_table_minmax(const t_fdf_table *src,
 	bool is_max, t_fdf_channel channel)
 {
 	int		sign;
@@ -71,7 +71,7 @@ void	scale_positive_fdf(t_fdf_table *dst)
 {
 	int	y;
 
-	y = minmax_from_fdf_table((const t_fdf_table *)dst, false, HEIGHT);
+	y = fdf_table_minmax((const t_fdf_table *)dst, false, HEIGHT);
 	if (y < 0 && y > -2147483648)
 		y *= -1;
 	else if (y == -2147483648)

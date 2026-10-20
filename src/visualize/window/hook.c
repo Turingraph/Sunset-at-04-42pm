@@ -48,8 +48,8 @@ static void	hook_zoom(mlx_key_data_t keydata,
 	if (keydata.key == MLX_KEY_0)
 		scale = 1.0 / scale;
 	hook->camera->zoom *= scale;
-	vector_scale(hook->fdf->x, scale, len);
-	vector_scale(hook->fdf->y, scale, len);
+	scale_vector(hook->fdf->x, scale, len);
+	scale_vector(hook->fdf->y, scale, len);
 }
 
 // time : O(n)
@@ -66,8 +66,8 @@ static void	hook_reset(mlx_key_data_t keydata,
 	len *= hook->fdf->row;
 	hook->camera->offset.x = 0.0;
 	hook->camera->offset.y = 0.0;
-	vector_scale(hook->fdf->x, 1.0 / hook->camera->zoom, len);
-	vector_scale(hook->fdf->y, 1.0 / hook->camera->zoom, len);
+	scale_vector(hook->fdf->x, 1.0 / hook->camera->zoom, len);
+	scale_vector(hook->fdf->y, 1.0 / hook->camera->zoom, len);
 	hook->camera->zoom = 1.0;
 }
 

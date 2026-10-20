@@ -51,9 +51,9 @@ char	*clone_str(size_t length, const char *src)
  *
  * @return initialized dynamic string structure
  */
-t_dynamic_str	create_dynamic_str(size_t length)
+t_str_dynamic	create_str_dynamic(size_t length)
 {
-	t_dynamic_str	dst;
+	t_str_dynamic	dst;
 
 	dst.capacity = length;
 	dst.length = 0;
@@ -77,7 +77,7 @@ t_dynamic_str	create_dynamic_str(size_t length)
  *
  * @return true if the character was added, otherwise false
  */
-bool	push_dynamic_str(t_dynamic_str *dst, char src)
+bool	push_str_dynamic(t_str_dynamic *dst, char src)
 {
 	char	*dst2;
 
@@ -95,7 +95,7 @@ bool	push_dynamic_str(t_dynamic_str *dst, char src)
 	free(dst->str);
 	dst->str = dst2;
 	dst->capacity *= 2;
-	return (push_dynamic_str(dst, src));
+	return (push_str_dynamic(dst, src));
 }
 
 /**
@@ -109,7 +109,7 @@ bool	push_dynamic_str(t_dynamic_str *dst, char src)
  * @param dst dynamic string to modify
  * @param src string to append
  */
-void	concat_dynamic_str(t_dynamic_str *dst, const char *src)
+void	concat_str_dynamic(t_str_dynamic *dst, const char *src)
 {
 	size_t	i;
 	bool	is_continue;
@@ -120,7 +120,7 @@ void	concat_dynamic_str(t_dynamic_str *dst, const char *src)
 	i = 0;
 	while (src[i] != '\0' && is_continue == true)
 	{
-		is_continue = push_dynamic_str(dst, src[i]);
+		is_continue = push_str_dynamic(dst, src[i]);
 		i += 1;
 	}
 }

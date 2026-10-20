@@ -18,7 +18,7 @@
  */
 int	load_file_debug(const char *file_name, const char *dir, t_file_mode file_mode)
 {
-	t_dynamic_str	file;
+	t_str_dynamic	file;
 	int				dst;
 
 	if (dir == NULL && file_name == NULL)
@@ -27,10 +27,10 @@ int	load_file_debug(const char *file_name, const char *dir, t_file_mode file_mod
 		return (open(file_name, file_mode));
 	if (dir != NULL && file_name == NULL)
 		return (open(dir, file_mode));
-	file = create_dynamic_str(
+	file = create_str_dynamic(
 			index_a_in_str(file_name, '\0', true) + index_a_in_str(dir, '\0', true));
-	concat_dynamic_str(&file, dir);
-	concat_dynamic_str(&file, file_name);
+	concat_str_dynamic(&file, dir);
+	concat_str_dynamic(&file, file_name);
 	if (file.str == NULL)
 		return (-1);
 	dst = open(file.str, file_mode);
@@ -74,14 +74,14 @@ int	load_file(const char *file_name, t_file_mode file_mode)
  */
 char	*concat_str(const char *str_1, const char *str_2)
 {
-	t_dynamic_str	dyn_str;
+	t_str_dynamic	dyn_str;
 	char			*dst;
 
-	dyn_str = create_dynamic_str(1);
+	dyn_str = create_str_dynamic(1);
 	if (dyn_str.str == NULL)
 		return (NULL);
-	concat_dynamic_str(&dyn_str, str_1);
-	concat_dynamic_str(&dyn_str, str_2);
+	concat_str_dynamic(&dyn_str, str_1);
+	concat_str_dynamic(&dyn_str, str_2);
 	if (dyn_str.str == NULL)
 		return (NULL);
 	dst = clone_str(dyn_str.length, dyn_str.str);
