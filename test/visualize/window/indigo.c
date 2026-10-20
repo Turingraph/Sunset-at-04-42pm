@@ -35,7 +35,7 @@ int	main(int len, char **str)
 		return (0);
 	}
 	style.thickness = 1;
-	style.shape_2d = E_RECTANGLE;
+	style.shape2d = E_RECTANGLE;
 	scale_relu_fdf(&table, 0, 30, 0);
 	color_cells_gradient(&table, init_deep_wood(), true);
 	scale_multiplication_fdf(&table, 1.0, HEIGHT);

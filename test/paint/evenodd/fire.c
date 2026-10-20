@@ -89,7 +89,7 @@ int	main(void)
 		i += 1;
 	}
 	style.thickness = 2;
-	style.shape_2d = E_CIRCLE;
+	style.shape2d = E_CIRCLE;
 	color_cells_gradient(&table, init_popart(), true);
 	color_cells_gradient(&table, init_feeling_blue(), true);
 	color_cells_gradient(&table, init_deep_wood(), true);

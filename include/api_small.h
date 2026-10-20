@@ -691,7 +691,7 @@ void	paint_space(t_fdf_table *dst, t_fdf_channel channel,
  * 
  * @param dst source FDF table
  * @param index index of the cell
- * @return |re| + |im| + |zd3| - |re + im + zd3|
+ * @return |re| + |im| + |z| - |re + im + z|
  */
 int	cell_metric_triangle_inequality_3d(const t_fdf_table *dst, size_t index);
 
@@ -715,7 +715,7 @@ int	cell_metric_pythagoras_3d(const t_fdf_table *dst, size_t index);
  * 
  * @param dst source FDF table
  * @param index index of the cell
- * @return maximum of |re|, |im|, and zd3
+ * @return maximum of |re|, |im|, and z
  */
 int	cell_metric_max_xyz(const t_fdf_table *dst, size_t index);
 
@@ -817,7 +817,7 @@ int	cell_metric_min_xy(const t_fdf_table *dst, size_t index);
  * 
  * @param dst source FDF table
  * @param index index of the cell
- * @return minimum of |re|, |im|, and zd3
+ * @return minimum of |re|, |im|, and z
  */
 int	cell_metric_min_xyz(const t_fdf_table *dst, size_t index);
 

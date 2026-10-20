@@ -173,7 +173,7 @@ int	main(int len, char **str)
 		return (0);
 	}
 	style.thickness = 1;
-	style.shape_2d = E_LINE;
+	style.shape2d = E_LINE;
 	color_cells_gradient(&table, init_gradient(), true);
 	output = create_fdf_proj2d(&table, proj2d_isometric, 0.5);
 	view_fdf(&output, style, rgba_to_int32(255, 255, 255, 255));
@@ -281,7 +281,7 @@ int	main(int len, char **str)
 		return (0);
 	}
 	style.thickness = 3;
-	style.shape_2d = E_LINE;
+	style.shape2d = E_LINE;
 	color_cells_gradient(&table, init_ztmy_studyme(), true);
 	color_cells_gradient(&table, init_ztmy_timeleft(), true);
 	scale_multiplication_fdf(&table, 1.0 / 3.0, HEIGHT);

@@ -66,7 +66,7 @@ void	view_motif(t_motif_arr *src,
 {
 	mlx_t			*mlx;
 	mlx_image_t		*img;
-	t_islamic_art	drawing_context;
+	t_motif_art	drawing_context;
 
 	mlx = mlx_init(SUNSET_WINDOW_WIDTH,
 		SUNSET_WINDOW_HEIGHT, "Sunset at 4:42pm", true);

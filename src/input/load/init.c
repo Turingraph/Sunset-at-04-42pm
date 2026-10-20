@@ -75,7 +75,7 @@ t_fdf_load	create_fdf_load(size_t line_len, bool is_rgb)
  * 
  * status: internal helper
  *
- * @param src the target array with t_fdf_load_arr shape_2d.
+ * @param src the target array with t_fdf_load_arr shape2d.
  */
 void	destroy_fdf_load_arr(t_fdf_load_arr *src)
 {

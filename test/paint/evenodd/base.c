@@ -29,7 +29,7 @@ int	main(void)
 	table_base = create_fdf_table(161, 161, true);
 	set_cells_color(&table_base, 10, HEIGHT, is_andmod_sin);
 	style.thickness = 2;
-	style.shape_2d = E_RECTANGLE;
+	style.shape2d = E_RECTANGLE;
 	color_cells_gradient(&table_base, init_deep_wood(), true);
 	output = create_fdf_proj2d(&table_base, NULL, 0.6);
 	view_fdf(&output, style, rgba32_from_char(0, 0, 0, 255));

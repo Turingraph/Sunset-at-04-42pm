@@ -33,7 +33,7 @@ int	main(void)
 	set_cells_color(&table_base, 1, HEIGHT, is_binary_search_andmod);
 	fdf_table_hadamard(&table, &table_base, HEIGHT);
 	style.thickness = 2;
-	style.shape_2d = E_RECTANGLE;
+	style.shape2d = E_RECTANGLE;
 	color_cells_gradient(&table, init_deep_wood(), true);
 	output = create_fdf_proj2d(&table, NULL, 0.6);
 	view_fdf(&output, style, rgba32_from_char(0, 0, 0, 255));

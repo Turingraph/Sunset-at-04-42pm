@@ -75,7 +75,7 @@ int	main(int len, char **str)
 		return (0);
 	}
 	style.thickness = 3;
-	style.shape_2d = E_RECTANGLE;
+	style.shape2d = E_RECTANGLE;
 	color_cells_gradient(&table, init_ztmy_studyme(), true);
 	color_cells_gradient(&table, init_ztmy_timeleft(), true);
 	scale_multiplication_fdf(&table, 1.0 / 3.0, HEIGHT);

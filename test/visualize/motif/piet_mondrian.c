@@ -47,50 +47,50 @@ int	main(void)
 	t_style_raster			style_raster_blue = {
 		.color = rgba32_from_char(0, 100, 255, 255),
 		.thickness = 20};
-	t_2d_polygon	polygon_00 = {.arr = square_00, .is_loop = false, .length = 2};
-	t_2d_polygon	polygon_01 = {.arr = square_01, .is_loop = false, .length = 2};
-	t_2d_polygon	polygon_02 = {.arr = square_02, .is_loop = false, .length = 2};
-	t_2d_polygon	polygon_03 = {.arr = square_03, .is_loop = false, .length = 2};
-	t_2d_polygon	polygon_04 = {.arr = square_04, .is_loop = false, .length = 2};
-	t_2d_polygon	polygon_05 = {.arr = square_05, .is_loop = false, .length = 2};
-	t_2d_polygon	polygon_06 = {.arr = square_06, .is_loop = false, .length = 2};
+	t_polygon2d	polygon_00 = {.arr = square_00, .is_loop = false, .length = 2};
+	t_polygon2d	polygon_01 = {.arr = square_01, .is_loop = false, .length = 2};
+	t_polygon2d	polygon_02 = {.arr = square_02, .is_loop = false, .length = 2};
+	t_polygon2d	polygon_03 = {.arr = square_03, .is_loop = false, .length = 2};
+	t_polygon2d	polygon_04 = {.arr = square_04, .is_loop = false, .length = 2};
+	t_polygon2d	polygon_05 = {.arr = square_05, .is_loop = false, .length = 2};
+	t_polygon2d	polygon_06 = {.arr = square_06, .is_loop = false, .length = 2};
 	t_motif_arr	piet_mondrian = {
 		.length = 7,
 		.arr = (t_motif []){
 			{
 				.polygon = polygon_00,
 				.style_raster = style_raster_white,
-				.shape_2d = E_RECTANGLE
+				.shape2d = E_RECTANGLE
 			},
 			{
 				.polygon = polygon_01,
 				.style_raster = style_raster_coco,
-				.shape_2d = E_RECTANGLE
+				.shape2d = E_RECTANGLE
 			},
 			{
 				.polygon = polygon_02,
 				.style_raster = style_raster_blue,
-				.shape_2d = E_RECTANGLE
+				.shape2d = E_RECTANGLE
 			},
 			{
 				.polygon = polygon_03,
 				.style_raster = style_raster_red,
-				.shape_2d = E_RECTANGLE
+				.shape2d = E_RECTANGLE
 			},
 			{
 				.polygon = polygon_04,
 				.style_raster = style_raster_white,
-				.shape_2d = E_RECTANGLE
+				.shape2d = E_RECTANGLE
 			},
 			{
 				.polygon = polygon_05,
 				.style_raster = style_raster_white,
-				.shape_2d = E_RECTANGLE
+				.shape2d = E_RECTANGLE
 			},
 			{
 				.polygon = polygon_06,
 				.style_raster = style_raster_coco,
-				.shape_2d = E_RECTANGLE
+				.shape2d = E_RECTANGLE
 			},
 		}
 	};

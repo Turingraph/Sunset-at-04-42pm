@@ -395,7 +395,7 @@ typedef enum t_load_warning
  * If int_warn and/or rgb_warn are NOT_DECIMAL and/or NOT_HEX, then 
  * fetch_fdf_load_arr stops and load_fdf_table_file return empty output.
  *
- * status: internal data shape_2d
+ * status: internal data shape2d
  *
  * @param arr array containing the parsed height values
  * @param r array containing the red color components
@@ -429,7 +429,7 @@ typedef struct t_fdf_load
  *
  * time/space: O(1) / O(1) for the structure itself.
  * 
- * status: internal data shape_2d
+ * status: internal data shape2d
  *
  * @param arr dynamic array of loaded FDF data
  * @param length number of t_fdf_load elements currently stored
@@ -1496,7 +1496,7 @@ void	paint_space(t_fdf_table *dst, t_fdf_channel channel,
  * 
  * @param dst source FDF table
  * @param index index of the cell
- * @return |re| + |im| + |zd3| - |re + im + zd3|
+ * @return |re| + |im| + |z| - |re + im + z|
  */
 int	cell_metric_triangle_inequality_3d(const t_fdf_table *dst, size_t index);
 
@@ -1520,7 +1520,7 @@ int	cell_metric_pythagoras_3d(const t_fdf_table *dst, size_t index);
  * 
  * @param dst source FDF table
  * @param index index of the cell
- * @return maximum of |re|, |im|, and zd3
+ * @return maximum of |re|, |im|, and z
  */
 int	cell_metric_max_xyz(const t_fdf_table *dst, size_t index);
 
@@ -1622,7 +1622,7 @@ int	cell_metric_min_xy(const t_fdf_table *dst, size_t index);
  * 
  * @param dst source FDF table
  * @param index index of the cell
- * @return minimum of |re|, |im|, and zd3
+ * @return minimum of |re|, |im|, and z
  */
 int	cell_metric_min_xyz(const t_fdf_table *dst, size_t index);
 
@@ -1794,14 +1794,14 @@ int	cell_metric_fermat_theorem(const t_fdf_table *dst, size_t index);
 /**
  * Describes the rendering properties of a 2D motif or FDF drawing.
  * 
- * color stores the 32-bit drawing color. shape_2d determines how the associated
+ * color stores the 32-bit drawing color. shape2d determines how the associated
  * geometry or FDF data is rendered. thickness controls the size of the
  * rendered primitive where applicable.
  * 
  * @param color 32-bit drawing color
- * @param thickness size parameter used by the selected rendering shape_2d
+ * @param thickness size parameter used by the selected rendering shape2d
  */
-typedef struct s_ink32
+typedef struct t_ink32
 {
 	int32_t		color;
 	size_t		thickness;
@@ -2036,10 +2036,10 @@ t_float2d	proj2d_wave(float x, float y, float z);
 /*
  * This struct control the drawing style of the Fdf.
  */
-typedef struct s_style_render
+typedef struct t_style_render
 {
 	size_t		thickness;
-	t_shape2d	shape_2d;
+	t_shape2d	shape2d;
 }	t_style_render;
 
 /* ************************************************************************** */
@@ -2095,12 +2095,12 @@ void	view_fdf(t_fdf_proj2d *fdf, t_style_render fdf_render,
  * @param length number of vertices
  * @param is_loop connect the final vertex back to the first vertex
  */
-typedef struct s_2d_polygon
+typedef struct t_polygon2d
 {
 	t_float2d	*arr;
 	size_t		length;
 	bool		is_loop;
-}	t_2d_polygon;
+}	t_polygon2d;
 
 /**
  * Reusable 2D drawing motif composed of geometry and drawing properties.
@@ -2109,11 +2109,11 @@ typedef struct s_2d_polygon
  * should be rendered. A motif can therefore be reused with different
  * positions, transformations, or drawing operations.
  */
-typedef struct s_motif
+typedef struct t_motif
 {
-	t_2d_polygon	polygon;
+	t_polygon2d	polygon;
 	t_style_raster			ink;
-	t_shape2d		shape_2d;
+	t_shape2d		shape2d;
 }	t_motif;
 
 /**
@@ -2124,7 +2124,7 @@ typedef struct s_motif
  * line-based artwork such as Islamic patterns, Piet Mondrian-style
  * compositions, Kusama-inspired patterns, and other procedural drawings.
  */
-typedef struct s_motif_arr
+typedef struct t_motif_arr
 {
 	t_motif	*arr;
 	size_t	length;

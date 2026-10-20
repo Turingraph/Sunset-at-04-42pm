@@ -52,7 +52,7 @@ int	main(int len, char **str)
 		return (0);
 	}
 	style.thickness = 1;
-	style.shape_2d = E_LINE;
+	style.shape2d = E_LINE;
 	color_cells_gradient(&table, init_gradient(), true);
 	output = create_fdf_proj2d(&table, proj2d_isometric, 0.5);
 	view_fdf(&output, style, rgba32_from_char(255, 255, 255, 255));

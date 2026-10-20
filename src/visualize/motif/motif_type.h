@@ -27,12 +27,12 @@
  * @param length number of vertices
  * @param is_loop connect the final vertex back to the first vertex
  */
-typedef struct s_2d_polygon
+typedef struct t_polygon2d
 {
 	t_float2d	*arr;
 	size_t		length;
 	bool		is_loop;
-}	t_2d_polygon;
+}	t_polygon2d;
 
 /**
  * Reusable 2D drawing motif composed of geometry and drawing properties.
@@ -41,11 +41,11 @@ typedef struct s_2d_polygon
  * should be rendered. A motif can therefore be reused with different
  * positions, transformations, or drawing operations.
  */
-typedef struct s_motif
+typedef struct t_motif
 {
-	t_2d_polygon	polygon;
+	t_polygon2d		polygon;
 	t_style_raster	style_raster;
-	t_shape2d		shape_2d;
+	t_shape2d		shape2d;
 }	t_motif;
 
 /**
@@ -56,7 +56,7 @@ typedef struct s_motif
  * line-based artwork such as Islamic patterns, Piet Mondrian-style
  * compositions, Kusama-inspired patterns, and other procedural drawings.
  */
-typedef struct s_motif_arr
+typedef struct t_motif_arr
 {
 	t_motif	*arr;
 	size_t	length;

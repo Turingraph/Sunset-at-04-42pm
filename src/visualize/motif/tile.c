@@ -182,10 +182,10 @@ static t_int2d	init_offset_tile(size_t window_width, size_t window_height,
  *
  * @return initialized tile-grid format
  */
-t_tile_format	init_tile_format(size_t window_width,
+t_tile	init_tile_format(size_t window_width,
 	size_t window_height, size_t resolution)
 {
-	t_tile_format	dst;
+	t_tile	dst;
 	size_t			fixed_side;
 
 	fixed_side = (size_t)f_min((float)window_width, (float)window_height);
@@ -218,7 +218,7 @@ t_tile_format	init_tile_format(size_t window_width,
  *
  * @return screen-space coordinates of the tile origin
  */
-t_int2d	init_tile_ith(t_tile_format tiles,
+t_int2d	init_tile_ith(t_tile tiles,
 	int ix, int iy)
 {
 	t_int2d	output;

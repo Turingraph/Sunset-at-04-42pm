@@ -21,7 +21,7 @@ User work flow
 	*	Paint
 3.	Safe/View Result
 	*	Write
-	*	View (background, line thickness, and shape_2d)
+	*	View (background, line thickness, and shape2d)
 4.	Free
 
 To Do List

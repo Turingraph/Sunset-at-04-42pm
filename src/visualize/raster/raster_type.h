@@ -9,7 +9,7 @@
  * a pair of integer (x, y) for representing a 2D point, 2D coordinate,
  * and/or the size of row and column of t_fdf_table.
  */
-typedef struct s_2d_int
+typedef struct t_int2d
 {
 	int	x;
 	int	y;
@@ -20,7 +20,7 @@ typedef struct s_2d_int
  *
  * p1 and p2 represent the two endpoints of the 2D line segment.
  */
-typedef struct s_line
+typedef struct t_line
 {
 	t_int2d	p1;
 	t_int2d	p2;
@@ -29,14 +29,14 @@ typedef struct s_line
 /**
  * Describes the rendering properties of a 2D motif or FDF drawing.
  * 
- * color stores the 32-bit drawing color. shape_2d determines how the associated
+ * color stores the 32-bit drawing color. shape2d determines how the associated
  * geometry or FDF data is rendered. thickness controls the size of the
  * rendered primitive where applicable.
  * 
  * status: internal helper
  * 
  * @param color 32-bit drawing color
- * @param thickness size parameter used by the selected rendering shape_2d
+ * @param thickness size parameter used by the selected rendering shape2d
  */
 typedef struct t_style_raster
 {

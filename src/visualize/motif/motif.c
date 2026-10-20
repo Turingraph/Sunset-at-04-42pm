@@ -29,7 +29,7 @@
  * @param boundary drawing boundary used to position and clip the circles
  */
 static void	raster_motif_circle(mlx_image_t *dst,
-	const t_2d_polygon *polygon, t_style_raster style_raster, t_line boundary)
+	const t_polygon2d *polygon, t_style_raster style_raster, t_line boundary)
 {
 	size_t		i;
 	t_line		line;
@@ -62,7 +62,7 @@ static void	raster_motif_circle(mlx_image_t *dst,
  * @param style_raster drawing style containing the line color and thickness
  * @param boundary drawing boundary used to position and clip the polygon
  */
-static void	raster_motif_line(mlx_image_t *dst, const t_2d_polygon *polygon,
+static void	raster_motif_line(mlx_image_t *dst, const t_polygon2d *polygon,
 	t_style_raster style_raster, t_line boundary)
 {
 	size_t	i;
@@ -100,7 +100,7 @@ static void	raster_motif_line(mlx_image_t *dst, const t_2d_polygon *polygon,
  * @param boundary drawing boundary used to position and clip the edges
  */
 static void	raster_motif_rectangle(mlx_image_t *dst,
-	const t_2d_polygon *polygon, int32_t style_raster, t_line boundary)
+	const t_polygon2d *polygon, int32_t style_raster, t_line boundary)
 {
 	size_t	i;
 	t_line	line;
@@ -137,7 +137,7 @@ static void	raster_motif_rectangle(mlx_image_t *dst,
  * @param tile screen-space boundary of the tile to render into
  */
 static void	raster_motif_unit(mlx_image_t *img,
-	t_islamic_art *src, t_line tile)
+	t_motif_art *src, t_line tile)
 {
 	size_t	i;
 	t_motif	*arr;
@@ -146,11 +146,11 @@ static void	raster_motif_unit(mlx_image_t *img,
 	i = 0;
 	while (i < src->motif->length)
 	{
-		if (arr[i].shape_2d == E_LINE)
+		if (arr[i].shape2d == E_LINE)
 			raster_motif_line(img, &(arr[i].polygon), arr[i].style_raster, tile);
-		else if (arr[i].shape_2d == E_CIRCLE)
+		else if (arr[i].shape2d == E_CIRCLE)
 			raster_motif_circle(img, &(arr[i].polygon), arr[i].style_raster, tile);
-		else if (arr[i].shape_2d == E_RECTANGLE)
+		else if (arr[i].shape2d == E_RECTANGLE)
 			raster_motif_rectangle(img, &(arr[i].polygon),
 				arr[i].style_raster.color, tile);
 		i += 1;
@@ -176,13 +176,13 @@ static void	raster_motif_unit(mlx_image_t *img,
  * @param src motif configuration containing the motif, tile format, and
  *            background configuration
  */
-void	raster_motif(mlx_image_t *img, t_islamic_art *src)
+void	raster_motif(mlx_image_t *img, t_motif_art *src)
 {
 	t_line		tile;
 	int			ix;
 	int			iy;
 
-	if (isvalid_islamic_art(src) == false)
+	if (isvalid_motif_art(src) == false)
 		return ;
 	iy = 0;
 	while (iy < src->tiles.tile_counts.y)

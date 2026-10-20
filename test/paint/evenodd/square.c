@@ -53,7 +53,7 @@ int	main(void)
 	paint_space(&table, HEIGHT, cell_metric_max_xy);
 	fdf_table_hadamard(&table, &table_base, HEIGHT);
 	style.thickness = 2;
-	style.shape_2d = E_RECTANGLE;
+	style.shape2d = E_RECTANGLE;
 	color_cells_gradient(&table, init_deep_wood(), true);
 	color_cells_gradient(&table, init_white_noise(), true);
 	scale_multiplication_fdf(&table, 1.0 / 120.0, HEIGHT);

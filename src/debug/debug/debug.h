@@ -62,6 +62,6 @@ char	**file_to_strarr(int fd, size_t total_lines);
 void	write_score(size_t score, size_t max_score);
 bool	assert_intarr(const int *str_1, const int *str_2, size_t n);
 void	write_file_not_exists(const char *src);
-void	destroy_2d_arr(void **arr, size_t len);
+void	destroy_arr2d(void **arr, size_t len);
 
 #endif

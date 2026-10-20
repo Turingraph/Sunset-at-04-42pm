@@ -35,7 +35,7 @@ int	main(void)
 	set_cells_color(&table, 255, ALPHA, NULL);
 	color_cells_gradient(&table, init_white_noise(), false);
 	style.thickness = 2;
-	style.shape_2d = E_RECTANGLE;
+	style.shape2d = E_RECTANGLE;
 	scale_multiplication_fdf(&table, 1.0 / 120.0, HEIGHT);
 	output = create_fdf_proj2d(&table, NULL, 0.6);
 	view_fdf(&output, style, rgba32_from_char(0, 0, 0, 255));

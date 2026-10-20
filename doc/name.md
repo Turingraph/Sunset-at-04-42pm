@@ -62,7 +62,7 @@ general rule
 *	(render/) render_motif use render_motif_line use render_line use raster_line
 *	(render/) render_motif use render_motif_circle use render_circle use raster_circle
 *	(render/) render_motif use render_motif_rectangle use render_rectangle use raster_rectangle
-*	(render/) t_style_render = config for render (thickness and shape_2d, public api)
+*	(render/) t_style_render = config for render (thickness and shape2d, public api)
 *	(raster/) t_style_raster = config for raster (thickness and int32_t color, internal helper)
 3.	*2d = the 2D data, including x and y axis e.g. t_int2d, t_float2d, t_camera2d, t_hook2d, and t_shape2d etc.
 4.	rgba32_from_* = convert the given arguments as int32_t that represents the rgba color.

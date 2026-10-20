@@ -43,10 +43,10 @@ int	main(void)
 	t_style_raster			style_raster2 = {
 		.color = (63 << 24 | 29 << 16 | 56 << 8 | 255),
 		.thickness = 20};
-	t_2d_polygon	polygon_00 = {.arr = shape_00, .is_loop = false, .length = 5};
-	t_2d_polygon	polygon_01 = {.arr = shape_01, .is_loop = false, .length = 5};
-	t_2d_polygon	polygon_02 = {.arr = shape_02, .is_loop = false, .length = 5};
-	t_2d_polygon	polygon_03 = {.arr = shape_03, .is_loop = false, .length = 5};
+	t_polygon2d	polygon_00 = {.arr = shape_00, .is_loop = false, .length = 5};
+	t_polygon2d	polygon_01 = {.arr = shape_01, .is_loop = false, .length = 5};
+	t_polygon2d	polygon_02 = {.arr = shape_02, .is_loop = false, .length = 5};
+	t_polygon2d	polygon_03 = {.arr = shape_03, .is_loop = false, .length = 5};
 	t_float2d		thickline_00[] = {
 		{.x = u_2, .y = 0},
 		{.x = 2 * u_0, .y = 1}
@@ -63,52 +63,52 @@ int	main(void)
 		{.x = 2 * u_0, .y = 0},
 		{.x = 1 - u_2, .y = 1}
 	};
-	t_2d_polygon	thickline_arr_00 = {.arr = thickline_00, .is_loop = false, .length = 2};
-	t_2d_polygon	thickline_arr_01 = {.arr = thickline_01, .is_loop = false, .length = 2};
-	t_2d_polygon	thickline_arr_02 = {.arr = thickline_02, .is_loop = false, .length = 2};
-	t_2d_polygon	thickline_arr_03 = {.arr = thickline_03, .is_loop = false, .length = 2};
+	t_polygon2d	thickline_arr_00 = {.arr = thickline_00, .is_loop = false, .length = 2};
+	t_polygon2d	thickline_arr_01 = {.arr = thickline_01, .is_loop = false, .length = 2};
+	t_polygon2d	thickline_arr_02 = {.arr = thickline_02, .is_loop = false, .length = 2};
+	t_polygon2d	thickline_arr_03 = {.arr = thickline_03, .is_loop = false, .length = 2};
 	t_motif_arr	islamic_art = {
 		.length = 8,
 		.arr = (t_motif []){
 			{
 				.polygon = thickline_arr_00,
 				.style_raster = style_raster,
-				.shape_2d = E_LINE,
+				.shape2d = E_LINE,
 			},
 			{
 				.polygon = thickline_arr_01,
 				.style_raster = style_raster,
-				.shape_2d = E_LINE,
+				.shape2d = E_LINE,
 			},
 			{
 				.polygon = thickline_arr_02,
 				.style_raster = style_raster,
-				.shape_2d = E_LINE,
+				.shape2d = E_LINE,
 			},
 			{
 				.polygon = thickline_arr_03,
 				.style_raster = style_raster,
-				.shape_2d = E_LINE,
+				.shape2d = E_LINE,
 			},
 			{
 				.polygon = polygon_00,
 				.style_raster = style_raster2,
-				.shape_2d = E_LINE,
+				.shape2d = E_LINE,
 			},
 			{
 				.polygon = polygon_01,
 				.style_raster = style_raster2,
-				.shape_2d = E_LINE,
+				.shape2d = E_LINE,
 			},
 			{
 				.polygon = polygon_02,
 				.style_raster = style_raster2,
-				.shape_2d = E_LINE,
+				.shape2d = E_LINE,
 			},
 			{
 				.polygon = polygon_03,
 				.style_raster = style_raster2,
-				.shape_2d = E_LINE,
+				.shape2d = E_LINE,
 			},
 		}
 	};

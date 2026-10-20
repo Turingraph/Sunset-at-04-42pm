@@ -31,22 +31,22 @@ int	cell_metric_min_xy(const t_fdf_table *dst, size_t index)
  * 
  * @param dst source FDF table
  * @param index index of the cell
- * @return minimum of |re|, |im|, and zd3
+ * @return minimum of |re|, |im|, and z
  */
 int	cell_metric_min_xyz(const t_fdf_table *dst, size_t index)
 {
 	t_float2d	y;
-	int			min_2d;
-	int			zd3;
+	int			min2d;
+	int			z;
 
 	if (dst == NULL || mul_overflow_size_t(dst->col, dst->row) == false || index >= dst->col * dst->row)
 		return (false);
-	zd3 = 0;
+	z = 0;
 	if (dst->arr != NULL)
-		zd3 = dst->arr[index];
+		z = dst->arr[index];
 	y = init_table_coordinate(dst, index, 1.0);
-	min_2d = (int)(f_min(f_abs(y.x), f_abs(y.y)));
-	return (f_min_int(min_2d, zd3));
+	min2d = (int)(f_min(f_abs(y.x), f_abs(y.y)));
+	return (f_min_int(min2d, z));
 }
 
 /**

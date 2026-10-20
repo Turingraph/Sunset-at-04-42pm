@@ -27,7 +27,7 @@
  * the origin. This makes it possible to position a repeated motif
  * pattern without changing the motif itself.
  *
- * This shape_2d belongs to the motif renderer and is independent of FDF
+ * This shape2d belongs to the motif renderer and is independent of FDF
  * data. It can therefore be used to build repeated geometric patterns
  * such as lines, circles, rectangles, Islamic geometric art, or other
  * tile-based drawings.
@@ -38,13 +38,13 @@
  * @param tile_counts number of tiles along the X and Y axes
  * @param offset normalized coordinates describing the tile-grid offset
  */
-typedef struct s_tile_format
+typedef struct t_tile
 {
-	float		tile_size;
+	float	tile_size;
 	t_int2d	tile_counts;
 	t_int2d	offset;
 	t_int2d	window_size;
-}	t_tile_format;
+}	t_tile;
 
 /**
 * Describes a tiled motif composition and its background.
@@ -58,7 +58,7 @@ typedef struct s_tile_format
 * across the drawing area. The background color is used to fill the
 * area behind the rendered motif.
 *
-* This shape_2d belongs to the motif renderer and does not depend on FDF
+* This shape2d belongs to the motif renderer and does not depend on FDF
 * data.
 *
 * status: internal helper
@@ -67,15 +67,15 @@ typedef struct s_tile_format
 * @param tiles tiling configuration for repeating the motif
 * @param background_color color rendered behind the motif
 */
-typedef struct s_islamic_art
+typedef struct t_motif_art
 {
-	t_motif_arr		*motif;
-	t_tile_format	tiles;
-}	t_islamic_art;
+	t_motif_arr	*motif;
+	t_tile		tiles;
+}	t_motif_art;
 
 // motif.c
 
-void			raster_motif(mlx_image_t *img, t_islamic_art *src);
+void			raster_motif(mlx_image_t *img, t_motif_art *src);
 
 // public.c
 
@@ -84,14 +84,14 @@ void			view_motif(t_motif_arr *src,
 
 // tile.c
 
-t_tile_format	init_tile_format(size_t width,
+t_tile	init_tile_format(size_t width,
 					size_t height, size_t resolution);
-t_int2d		init_tile_ith(t_tile_format tiles,
+t_int2d		init_tile_ith(t_tile tiles,
 					int ix, int iy);
 
 // utils.c
 
-bool			isvalid_islamic_art(const t_islamic_art *src);
+bool			isvalid_motif_art(const t_motif_art *src);
 t_line			init_motif_line(t_float2d point_1, t_float2d point_2,
 					t_line boundary);
 

@@ -78,7 +78,7 @@ int	main(void)
 	fdf_table_hadamard(&table, &table_base, HEIGHT);
 	color_cells_gradient(&table, init_all(), true);
 	style.thickness = 3;
-	style.shape_2d = E_CIRCLE;
+	style.shape2d = E_CIRCLE;
 	i = 0;
 	while (i < 24)
 	{

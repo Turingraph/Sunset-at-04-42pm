@@ -14,7 +14,7 @@
 
 // time : O(1)
 // space: O(1)
-bool	isvalid_islamic_art(const t_islamic_art *src)
+bool	isvalid_motif_art(const t_motif_art *src)
 {
 	if (src == NULL || src->motif == NULL
 		|| src->motif->arr == NULL || src->motif->length == 0

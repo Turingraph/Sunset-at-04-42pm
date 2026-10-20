@@ -884,7 +884,7 @@ I'd make a deliberate decision about the type-prefix convention and enum convent
 For example, if you retain the `t_` convention:
 
 ```
-typedef struct s_surface
+typedef struct t_surface
 {
     /* ... */
 } t_surface;

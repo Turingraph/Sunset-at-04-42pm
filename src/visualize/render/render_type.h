@@ -25,7 +25,7 @@
  * @param window_size size of the visible 2D rendering area
  * @param zoom scale applied by the camera
  */
-typedef struct s_camera2d
+typedef struct t_camera2d
 {
 	t_int2d	offset;
 	t_int2d	window_size;
@@ -35,19 +35,19 @@ typedef struct s_camera2d
 /**
  * Describes the rendering properties of a 2D motif or FDF drawing.
  * 
- * color stores the 32-bit drawing color. shape_2d determines how the associated
+ * color stores the 32-bit drawing color. shape2d determines how the associated
  * geometry or FDF data is rendered. thickness controls the size of the
  * rendered primitive where applicable.
  * 
  * status: public api
  * 
- * @param shape_2d the given shape including E_CIRCLE, E_LINE, and E_RECTANGLE.
- * @param thickness size parameter used by the selected rendering shape_2d
+ * @param shape2d the given shape including E_CIRCLE, E_LINE, and E_RECTANGLE.
+ * @param thickness size parameter used by the selected rendering shape2d
  */
 typedef struct t_style_render
 {
 	size_t		thickness;
-	t_shape2d	shape_2d;
+	t_shape2d	shape2d;
 }	t_style_render;
 
 /**
@@ -64,7 +64,7 @@ typedef struct t_style_render
  * @param style_render describes how the FDF object is rasterized
  * @param fdf FDF object to display
  */
-typedef struct s_hook2d
+typedef struct t_hook2d
 {
 	mlx_t			*mlx;
 	mlx_image_t		*img;

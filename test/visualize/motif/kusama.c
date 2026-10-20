@@ -8,14 +8,14 @@ int	main(void)
 	t_style_raster			style_raster = {
 		.color = rgba32_from_char(0, 0, 0, 255),
 		.thickness = 20};
-	t_2d_polygon	circle_arr = {.arr = arr, .is_loop = false, .length = 1};
+	t_polygon2d	circle_arr = {.arr = arr, .is_loop = false, .length = 1};
 	t_motif_arr	islamic_art = {
 		.length = 1,
 		.arr = (t_motif []){
 			{
 				.polygon = circle_arr,
 				.style_raster = style_raster,
-				.shape_2d = E_CIRCLE
+				.shape2d = E_CIRCLE
 			}
 		}
 	};
