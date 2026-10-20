@@ -28,14 +28,13 @@ general rule
 *	verb_noun_adjective = doing the noun that have adjactive properties.
 *	nouna_nounb = initialize the noun b of the noun a e.g. length_str, etc.
 *	nounb_from_nouna = nouna_nounb (but the nounb is more common than nouna), e.g. rgba32_from_char, rgbarr_from_table etc. This make it easier for user/dev to define the color.
+*	t_*_mode = the mode of something.
 
 # name (input/*)
 
 ## write function name
 
-1.	write_* = to display the value of something using write function (from unistd.h)
-2.	inspect_* = write_* but only for t_fdf_load
-3.	save_* = write_* but only for t_fdf_table
+*	write_* = to display the value of something using write function (from unistd.h)
 
 ## read function name
 
@@ -82,6 +81,8 @@ general rule
 1.	open_* (a.k.a. load_*)
 2.	2d_*
 3.	define_* (a.k.a. init_*)
+4.	inspect_*
+5.	save_*
 
 # To Do List
 
