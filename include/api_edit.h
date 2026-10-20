@@ -285,7 +285,7 @@ t_fdf_table	convolve_fdf(const t_fdf_table *src, float *kernel,
  * @return allocated 1D kernel with 2 * half_dim + 1 items,
  * or NULL if allocation fails
  */
-float	*gaussian_kernel_1d(size_t half_dim, float std);
+float	*gaussian_kernel1d(size_t half_dim, float std);
 
 /**
  * Create a 2D Blur Gaussian kernel from two 1D Gaussian kernels.
@@ -318,7 +318,7 @@ float	*gaussian_kernel(size_t half_dim, float std_1, float std_2);
  * @param outer_num value utilized by the outer region.
  * @return allocated 1D kernel, or NULL if allocation fails
  */
-float	*edge_kernel_1d(size_t inner_dim, size_t outer_dim,
+float	*edge_kernel1d(size_t inner_dim, size_t outer_dim,
 	float inner_num, float outer_num);
 
 /**

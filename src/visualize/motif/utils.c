@@ -18,8 +18,8 @@ bool	isvalid_motif_art(const t_motif_art *src)
 {
 	if (src == NULL || src->motif == NULL
 		|| src->motif->arr == NULL || src->motif->length == 0
-		|| src->tiles.tile_counts.x * src->tiles.tile_counts.y == 0
-		|| src->tiles.tile_size == 0)
+		|| src->tiles.tiles_counts.x * src->tiles.tiles_counts.y == 0
+		|| src->tiles.tiles_size == 0)
 		return (false);
 	return (true);
 }

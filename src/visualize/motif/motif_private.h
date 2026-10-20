@@ -34,17 +34,17 @@
  *
  * status: internal helper
  *
- * @param tile_size size of each tile in the drawing area
- * @param tile_counts number of tiles along the X and Y axes
+ * @param tiles_size size of each tile in the drawing area
+ * @param tiles_counts number of tiles along the X and Y axes
  * @param offset normalized coordinates describing the tile-grid offset
  */
-typedef struct t_tile
+typedef struct t_tiles
 {
-	float	tile_size;
-	t_int2d	tile_counts;
+	float	tiles_size;
+	t_int2d	tiles_counts;
 	t_int2d	offset;
 	t_int2d	window_size;
-}	t_tile;
+}	t_tiles;
 
 /**
 * Describes a tiled motif composition and its background.
@@ -70,7 +70,7 @@ typedef struct t_tile
 typedef struct t_motif_art
 {
 	t_motif_arr	*motif;
-	t_tile		tiles;
+	t_tiles		tiles;
 }	t_motif_art;
 
 // motif.c
@@ -84,9 +84,9 @@ void			view_motif(t_motif_arr *src,
 
 // tile.c
 
-t_tile	init_tile_format(size_t width,
+t_tiles	init_tiles(size_t width,
 					size_t height, size_t resolution);
-t_int2d		init_tile_ith(t_tile tiles,
+t_int2d		init_tile_ith(t_tiles tiles,
 					int ix, int iy);
 
 // utils.c

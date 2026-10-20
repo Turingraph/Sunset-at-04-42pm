@@ -15,7 +15,7 @@
  * @return allocated 1D kernel with 2 * half_dim + 1 items,
  * or NULL if allocation fails
  */
-float	*gaussian_kernel_1d(size_t half_dim, float std)
+float	*gaussian_kernel1d(size_t half_dim, float std)
 {
 	size_t	i;
 	float	*kernel;
@@ -24,7 +24,7 @@ float	*gaussian_kernel_1d(size_t half_dim, float std)
 	if (mul_overflow_size_t(2, half_dim) == false)
 		return (NULL);
 	kernel = malloc_talk(sizeof(float) * (2 * half_dim + 1),
-			"gaussian_kernel_1d\n");
+			"gaussian_kernel1d\n");
 	if (kernel == NULL)
 		return (NULL);
 	i = 0;
@@ -70,8 +70,8 @@ float	*gaussian_kernel(size_t half_dim, float std_1, float std_2)
 
 	if (half_dim < 1)
 		half_dim = 1;
-	vec_v = gaussian_kernel_1d(half_dim, std_1);
-	vec_u = gaussian_kernel_1d(half_dim, std_2);
+	vec_v = gaussian_kernel1d(half_dim, std_1);
+	vec_u = gaussian_kernel1d(half_dim, std_2);
 	dst = outer_product_matrix(vec_v, vec_u, 2 * half_dim + 1);
 	free(vec_v);
 	free(vec_u);
@@ -94,7 +94,7 @@ float	*gaussian_kernel(size_t half_dim, float std_1, float std_2)
  * @param outer_num value utilized by the outer region.
  * @return allocated 1D kernel, or NULL if allocation fails
  */
-float	*edge_kernel_1d(size_t inner_dim, size_t outer_dim,
+float	*edge_kernel1d(size_t inner_dim, size_t outer_dim,
 	float inner_num, float outer_num)
 {
 	size_t	i;
@@ -102,7 +102,7 @@ float	*edge_kernel_1d(size_t inner_dim, size_t outer_dim,
 
 	if (mul_overflow_size_t(outer_dim / 2, outer_dim / 2) == false)
 		return (NULL);
-	kernel = malloc_talk(sizeof(float) * outer_dim, "edge_kernel_1d\n");
+	kernel = malloc_talk(sizeof(float) * outer_dim, "edge_kernel1d\n");
 	if (kernel == NULL)
 		return (NULL);
 	i = 0;
@@ -201,8 +201,8 @@ float	*edge_kernel(size_t inner_dim, size_t outer_dim, float input, float kernel
 	if (mul_overflow_size_t(outer_dim, outer_dim) == false)
 		return (NULL);
 	outer_num = define_outer_num((float)inner_dim, (float)outer_dim, input, kernel_sum);
-	vec_v = edge_kernel_1d(inner_dim, outer_dim, input, outer_num);
-	vec_u = edge_kernel_1d(inner_dim, outer_dim, input, outer_num);
+	vec_v = edge_kernel1d(inner_dim, outer_dim, input, outer_num);
+	vec_u = edge_kernel1d(inner_dim, outer_dim, input, outer_num);
 	dst = outer_product_matrix(vec_v, vec_u, outer_dim);
 	free(vec_v);
 	free(vec_u);

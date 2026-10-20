@@ -185,10 +185,10 @@ void	raster_motif(mlx_image_t *img, t_motif_art *src)
 	if (isvalid_motif_art(src) == false)
 		return ;
 	iy = 0;
-	while (iy < src->tiles.tile_counts.y)
+	while (iy < src->tiles.tiles_counts.y)
 	{
 		ix = 0;
-		while (ix < src->tiles.tile_counts.x)
+		while (ix < src->tiles.tiles_counts.x)
 		{
 			tile.p1 = init_tile_ith(src->tiles, ix, iy);
 			tile.p2 = init_tile_ith(src->tiles, ix + 1, iy + 1);

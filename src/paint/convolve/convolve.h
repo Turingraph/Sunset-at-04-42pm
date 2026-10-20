@@ -30,11 +30,11 @@ t_fdf_table	convolve_fdf(const t_fdf_table *src, float *kernel,
 
 // kernel.c
 
-float		*edge_kernel_1d(size_t inner_dim, size_t outer_dim,
+float		*edge_kernel1d(size_t inner_dim, size_t outer_dim,
 				float inner_num, float outer_num);
 float		define_outer_num(float inner_dim, float outer_dim, float input, float kernel_sum);
 float		*edge_kernel(size_t inner_dim, size_t outer_dim, float input, float kernel_sum);
-float		*gaussian_kernel_1d(size_t half_dim, float std);
+float		*gaussian_kernel1d(size_t half_dim, float std);
 float		*gaussian_kernel(size_t half_dim, float std_1, float std_2);
 
 // matrix.c

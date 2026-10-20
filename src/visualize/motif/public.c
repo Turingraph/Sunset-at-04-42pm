@@ -75,7 +75,7 @@ void	view_motif(t_motif_arr *src,
 		return ;
 	raster_color_background(img, background_color);
 	drawing_context.motif = src;
-	drawing_context.tiles = init_tile_format(SUNSET_WINDOW_WIDTH, SUNSET_WINDOW_HEIGHT,
+	drawing_context.tiles = init_tiles(SUNSET_WINDOW_WIDTH, SUNSET_WINDOW_HEIGHT,
 			resolution);
 	raster_motif(img, &drawing_context);
 	if (-1 == view_motif_handle_01(mlx, img))
