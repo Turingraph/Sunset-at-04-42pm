@@ -200,7 +200,7 @@ Alternatively, if your library exposes several data types with overlapping opera
 ```
 surface_scale(...)
 matrix_scale(...)
-vector_scale(...)
+scale_vector(...)
 ```
 
 Here, the prefix provides meaningful information by distinguishing the subject.

@@ -6,6 +6,8 @@
 2.	f_* = the basic utility math function e.g. f_normal, f_sin, etc.
 3.	is_* = check something, return true or false.
 4.	complex_* = complex value analytic function e.g. complex_sin, complex_exp etc.
+5.	is_*\_in_* = check if one data contains another data
+6.	static ... *\_handle_+[0-9]+ = a part of larger function.
 
 ## struct names
 
@@ -23,7 +25,9 @@
 9.	normalize_* = to scale the struct for some particular purpose e.g. normalize_fdf_proj2d(t_fdf_proj2d *src, size_t fixed_window_size);
 
 general rule
-*	verb_noun_adjective
+*	verb_noun_adjective = doing the noun that have adjactive properties.
+*	nouna_nounb = initialize the noun b of the noun a e.g. length_str, etc.
+*	nounb_from_nouna = nouna_nounb (but the nounb is more common than nouna), e.g. rgba32_from_char, rgbarr_from_table etc. This make it easier for user/dev to define the color.
 
 # name (input/*)
 
@@ -72,3 +76,16 @@ general rule
 # name (paint/)
 
 ...
+
+# forbidden naming style
+
+1.	open_* (a.k.a. load_*)
+2.	2d_*
+3.	define_* (a.k.a. init_*)
+
+# To Do List
+
+1.	Separate input/load/ as input/decimal/ and input/ascii/
+2.	doing input/table
+3.	doing paint/
+4.	naming Enum.

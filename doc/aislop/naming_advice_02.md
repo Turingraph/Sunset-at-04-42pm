@@ -79,7 +79,7 @@ In graphics and mathematics, _scale_ has an established meaning: applying a fact
 For example:
 
 ```
-vector_scale(...)
+scale_vector(...)
 matrix_scale(...)
 transform_scale(...)
 ```
