@@ -22,23 +22,23 @@
  * 
  * If the color channel is less than 0, then the color isn't render.
  */
-typedef struct t_rgba
+typedef struct t_input_rgba
 {
 	int	r;
 	int	g;
 	int	b;
 	int	a;
-}	t_rgba;
+}	t_input_rgba;
 
 typedef enum t_gradient_channel
 {
-	D7_RED,
-	D7_GREEN,
-	D7_BLUE,
-	D7_ALPHA,
-	D7_ROW,
-	D7_COL,
-	D7_HEIGHT
+	GRADIENT_RED,
+	GRADIENT_GREEN,
+	GRADIENT_BLUE,
+	GRADIENT_ALPHA,
+	GRADIENT_ROW,
+	GRADIENT_COL,
+	GRADIENT_HEIGHT
 }	t_gradient_channel;
 
 /**
@@ -50,8 +50,8 @@ typedef enum t_gradient_channel
  */
 typedef struct t_gradient
 {
-	t_rgba				rgba_start;
-	t_rgba				rgba_end;
+	t_input_rgba		rgba_start;
+	t_input_rgba		rgba_end;
 	t_gradient_channel	cell_channel;
 	int					input_start;
 	int					input_end;
@@ -118,6 +118,6 @@ int		cell_metric_fermat_theorem(const t_fdf_table *dst, size_t index);
 
 void	paint_space(t_fdf_table *dst, t_fdf_channel channel,
 			int (*cell_metric)(const t_fdf_table *dst, size_t index));
-int		get_rgba_input(t_fdf_channel rgba_type, t_rgba src);
+int		get_input_rgba(t_fdf_channel rgba_type, t_input_rgba src);
 
 #endif

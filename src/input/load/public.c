@@ -133,6 +133,6 @@ t_fdf_load_arr	load_fdf_load_arr(const char *file_name, const char *dir,
 
 	if (dir == NULL || *dir == '\0')
 		return (fetch_fdf_load_arr(open(file_name, O_RDONLY), parse_line));
-	dst = load_file_debug(file_name, dir, E_READ);
+	dst = load_file_debug(file_name, dir, FILE_READ);
 	return (fetch_fdf_load_arr(dst, parse_line));
 }

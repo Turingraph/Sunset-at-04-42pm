@@ -55,15 +55,15 @@ static void	set_cells_color_unit(t_fdf_table *dst, int color,
 	unsigned char	cccc;
 
 	cccc = f_interval_int(color, 0, 255);
-	if (dst->arr != NULL && channel == HEIGHT)
+	if (dst->arr != NULL && channel == FDF_HEIGHT)
 		dst->arr[i] = color;
-	if (dst->r != NULL && channel == RED)
+	if (dst->r != NULL && channel == FDF_RED)
 		dst->r[i] = cccc;
-	if (dst->g != NULL && channel == GREEN)
+	if (dst->g != NULL && channel == FDF_GREEN)
 		dst->g[i] = cccc;
-	if (dst->b != NULL && channel == BLUE)
+	if (dst->b != NULL && channel == FDF_BLUE)
 		dst->b[i] = cccc;
-	if (dst->a != NULL && channel == ALPHA)
+	if (dst->a != NULL && channel == FDF_ALPHA)
 		dst->a[i] = cccc;
 }
 

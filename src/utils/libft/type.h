@@ -20,23 +20,23 @@
 /**
  * Identifies the data component stored in a t_fdf_table array.
  *
- * - RED selects the red color component.
+ * - FDF_RED selects the red color component.
  *
- * - GREEN selects the green color component.
+ * - FDF_GREEN selects the green color component.
  *
- * - BLUE selects the blue color component.
+ * - FDF_BLUE selects the blue color component.
  *
- * - ALPHA selects the alpha color component.
+ * - FDF_ALPHA selects the alpha color component.
  *
- * - HEIGHT selects the height (arr, Z) component.
+ * - FDF_HEIGHT selects the height (arr, Z) component.
  */
 typedef enum t_fdf_channel
 {
-	RED,
-	GREEN,
-	BLUE,
-	ALPHA,
-	HEIGHT
+	FDF_RED,
+	FDF_GREEN,
+	FDF_BLUE,
+	FDF_ALPHA,
+	FDF_HEIGHT
 }	t_fdf_channel;
 
 /**

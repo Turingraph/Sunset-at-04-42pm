@@ -119,7 +119,7 @@ t_fdf_load	parse_ascii(char *line, const char *dict)
 	t_fdf_load	dst;
 
 	dst = create_fdf_load(index_a_in_str((const char *)line, '\n', false), false);
-	if (dst.int_warn == EMPTY)
+	if (dst.int_warn == ERROR_EMPTY)
 	{
 		destroy_fdf_load(&dst);
 		dst.a = NULL;
@@ -131,8 +131,8 @@ t_fdf_load	parse_ascii(char *line, const char *dict)
 		if (dst.arr == NULL)
 			return (create_fdf_load(0, false));
 		dst.arr[0] = 0;
-		dst.int_warn = CORRECT;
-		dst.rgb_warn = CORRECT;
+		dst.int_warn = ERROR_CORRECT;
+		dst.rgb_warn = ERROR_CORRECT;
 		return (dst);
 	}
 	line_to_ascii_arr((const char *)line, dict, dst.arr, dst.length);

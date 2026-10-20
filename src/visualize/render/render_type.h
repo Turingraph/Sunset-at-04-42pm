@@ -41,7 +41,7 @@ typedef struct t_camera2d
  * 
  * status: public api
  * 
- * @param shape2d the given shape including E_CIRCLE, E_LINE, and E_RECTANGLE.
+ * @param shape2d the given shape including SHAPE2D_CIRCLE, SHAPE2D_LINE, and SHAPE2D_RECTANGLE.
  * @param thickness size parameter used by the selected rendering shape2d
  */
 typedef struct t_style_render

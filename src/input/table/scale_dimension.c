@@ -103,7 +103,7 @@ unsigned char	*scale_dimension_fdf_rgba(const t_fdf_table *src,
 }
 
 /**
- * Scale an HEIGHT channel by duplicating its rows and columns.
+ * Scale an FDF_HEIGHT channel by duplicating its rows and columns.
  *
  * time/space: O(n^2) / O(n^2)
  *
@@ -171,9 +171,9 @@ t_fdf_table	scale_dimension_fdf(const t_fdf_table *src,
 	dst.arr = scale_dimension_fdf_int(src, scale_row, scale_col);
 	if (dst.arr == NULL)
 		return (create_fdf_table(0, 0, false));
-	dst.r = scale_dimension_fdf_rgba(src, scale_row, scale_col, RED);
-	dst.g = scale_dimension_fdf_rgba(src, scale_row, scale_col, GREEN);
-	dst.b = scale_dimension_fdf_rgba(src, scale_row, scale_col, BLUE);
-	dst.a = scale_dimension_fdf_rgba(src, scale_row, scale_col, ALPHA);
+	dst.r = scale_dimension_fdf_rgba(src, scale_row, scale_col, FDF_RED);
+	dst.g = scale_dimension_fdf_rgba(src, scale_row, scale_col, FDF_GREEN);
+	dst.b = scale_dimension_fdf_rgba(src, scale_row, scale_col, FDF_BLUE);
+	dst.a = scale_dimension_fdf_rgba(src, scale_row, scale_col, FDF_ALPHA);
 	return (dst);
 }

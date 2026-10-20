@@ -68,14 +68,14 @@ int	main(void)
 	{
 		table = load_fdf_table_file(arr[i], src_dir, parse_decimal_bw, false);
 		scale_positive_fdf(&table);
-		fdf_dst = load_file_debug(arrdst[i], dst_dir, E_WRITE);
+		fdf_dst = load_file_debug(arrdst[i], dst_dir, FILE_WRITE);
 		if(fdf_dst > -1)
 		{
 			write(1, "\n*** ", 5);
 			write(1, arr[i], str_length(arr[i]));
 			write(1, " ***\n", 5);
-			write_fdf_table(1, &table, 3, HEIGHT_ONLY);
-			write_table_ascii_cheche01(fdf_dst, &table, HEIGHT);
+			write_fdf_table(1, &table, 3, WRITE_DECIMAL_HEIGHT);
+			write_table_ascii_cheche01(fdf_dst, &table, FDF_HEIGHT);
 		}
 		else
 			write_file_not_exists(arr[i]);

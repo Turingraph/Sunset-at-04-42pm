@@ -98,7 +98,7 @@ static int	convolve_unit(const t_fdf_table *src, size_t index,
 }
 
 /**
- * Apply a convolution kernel to HEIGHT channels.
+ * Apply a convolution kernel to FDF_HEIGHT channels.
  * 
  * The kernel must be a square matrix with odd dimensions (e.g. 3x3, 5x5).
  * For each pixel, the kernel is centered on that pixel. Samples outside

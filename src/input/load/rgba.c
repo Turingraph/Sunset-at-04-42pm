@@ -90,5 +90,5 @@ void	update_rgba(char *line, t_fdf_load *dst, size_t index)
 	if (length >= 5 && dst != NULL)
 		update_rgba_long(line, dst, index, length);
 	if (dst != NULL && is_rgba == false)
-		dst->rgb_warn = NOT_HEX;
+		dst->rgb_warn = ERROR_NOT_HEX;
 }

@@ -20,23 +20,23 @@
 /**
  * Identifies the data component stored in a t_fdf_table array.
  *
- * - RED selects the red color component.
+ * - FDF_RED selects the red color component.
  *
- * - GREEN selects the green color component.
+ * - FDF_GREEN selects the green color component.
  *
- * - BLUE selects the blue color component.
+ * - FDF_BLUE selects the blue color component.
  *
- * - ALPHA selects the alpha color component.
+ * - FDF_ALPHA selects the alpha color component.
  *
- * - HEIGHT selects the height (arr, Z) component.
+ * - FDF_HEIGHT selects the height (arr, Z) component.
  */
 typedef enum t_fdf_channel
 {
-	RED,
-	GREEN,
-	BLUE,
-	ALPHA,
-	HEIGHT
+	FDF_RED,
+	FDF_GREEN,
+	FDF_BLUE,
+	FDF_ALPHA,
+	FDF_HEIGHT
 }	t_fdf_channel;
 
 /**
@@ -100,8 +100,8 @@ typedef struct t_float2d
 
 typedef enum t_file_mode
 {
-	E_READ = O_RDONLY,
-	E_WRITE = O_WRONLY,
+	FILE_READ = O_RDONLY,
+	FILE_WRITE = O_WRONLY,
 }	t_file_mode;
 
 /**
@@ -142,51 +142,51 @@ int				load_file_debug(const char *file_name,
  * Defines the writing mode used when serializing FDF data as fdf file as text
  * file with decimal numbers.
  *
- * - HEIGHT_ONLY writes only the height value of each FDF cell.
+ * - WRITE_DECIMAL_HEIGHT writes only the height value of each FDF cell.
  *
- * - HEIGHT_RGBA writes the height value together with a full RGBA color.
+ * - WRITE_HEX_RGBA writes the height value together with a full RGBA color.
  *
- * - HEIGHT_RGB writes the height value together with an RGB color,
+ * - WRITE_HEX_RGB writes the height value together with an RGB color,
  * without an explicit alpha component.
  */
-// typedef enum t_write_style
+// typedef enum t_fdf_write_mode
 // {
-// 	HEIGHT_ONLY,
-// 	HEIGHT_RGBA,
-// 	HEIGHT_RGB
-// }	t_write_style;
-typedef enum t_write_style
+// 	WRITE_DECIMAL_HEIGHT,
+// 	WRITE_HEX_RGBA,
+// 	WRITE_HEX_RGB
+// }	t_fdf_write_mode;
+typedef enum t_fdf_write_mode
 {
-	SAVE_DEBUG_HEIGHT_ONLY,
-	SAVE_DEBUG_HEIGHT_RGBA,
-	SAVE_DEBUG_HEIGHT_RGB
-}	t_write_style;
+	WRITE_DECIMAL_HEIGHT,
+	WRITE_HEX_RGBA,
+	WRITE_HEX_RGB
+}	t_fdf_write_mode;
 
 /**
  * Describes the parsing status of a loaded FDF value.
  *
- * - CORRECT indicates that the corresponding value was parsed successfully.
+ * - ERROR_CORRECT indicates that the corresponding value was parsed successfully.
  *
- * - NOT_DECIMAL indicates that the height value is not a valid decimal integer.
+ * - ERROR_NOT_DECIMAL indicates that the height value is not a valid decimal integer.
  *
- * - NOT_HEX indicates that the color value is not a valid hexadecimal value.
+ * - ERROR_NOT_HEX indicates that the color value is not a valid hexadecimal value.
  *
- * - EMPTY indicates that the corresponding input value is empty.
+ * - ERROR_EMPTY indicates that the corresponding input value is empty.
  */
-// typedef enum t_load_warning
+// typedef enum t_error
 // {
-// 	CORRECT,
-// 	NOT_DECIMAL,
-// 	NOT_HEX,
-// 	EMPTY
-// }	t_load_warning;
-typedef enum t_load_warning
+// 	ERROR_CORRECT,
+// 	ERROR_NOT_DECIMAL,
+// 	ERROR_NOT_HEX,
+// 	ERROR_EMPTY
+// }	t_error;
+typedef enum t_error
 {
 	WARNING_CORRECT,
 	WARNING_NOT_DECIMAL,
 	WARNING_NOT_HEX,
 	WARNING_EMPTY
-}	t_load_warning;
+}	t_error;
 
 /**
  * Temporary FDF data produced while parsing one input line.
@@ -199,7 +199,7 @@ typedef enum t_load_warning
  *
  * rgb_warn stores the parsing status of the color values.
  * 
- * If int_warn and/or rgb_warn are NOT_DECIMAL and/or NOT_HEX, then 
+ * If int_warn and/or rgb_warn are ERROR_NOT_DECIMAL and/or ERROR_NOT_HEX, then 
  * fetch_fdf_load_arr stops and load_fdf_table_file return empty output.
  *
  * status: internal data shape2d
@@ -221,8 +221,8 @@ typedef struct t_fdf_load
 	unsigned char	*b;
 	unsigned char	*a;
 	size_t			length;
-	t_load_warning	int_warn;
-	t_load_warning	rgb_warn;
+	t_error	int_warn;
+	t_error	rgb_warn;
 }	t_fdf_load;
 
 /**
@@ -454,6 +454,6 @@ void			write_table_ascii_chungaloider(int fd,
  * @param mode output format
  */
 void			write_fdf_table(int fd,
-					const t_fdf_table *src, size_t digits, t_write_style mode);
+					const t_fdf_table *src, size_t digits, t_fdf_write_mode mode);
 
 #endif

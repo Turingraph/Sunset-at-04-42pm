@@ -6,7 +6,7 @@ t_gradient	init_gradient()
 {
 	t_gradient	dst;
 
-	dst.cell_channel = D7_HEIGHT;
+	dst.cell_channel = GRADIENT_HEIGHT;
 	dst.input_start = 0;
 	dst.input_end = 20;
 	dst.rgba_start.r = 50;
@@ -26,7 +26,7 @@ t_gradient	init_gradient_2()
 {
 	t_gradient	dst;
 
-	dst.cell_channel = D7_HEIGHT;
+	dst.cell_channel = GRADIENT_HEIGHT;
 	dst.input_start = 21;
 	dst.input_end = 79;
 	dst.rgba_start.r = 0;
@@ -74,13 +74,13 @@ int	main(void)
 	i = 0;
 	while (i < length)
 	{
-		output = load_file_debug(arr[i], dst, E_WRITE);
+		output = load_file_debug(arr[i], dst, FILE_WRITE);
 		table_a = load_fdf_table_file(arr[i], src,
 				parse_ascii_chungaloider, true);
         color_cells_gradient(&table_a, init_gradient(), true);
         color_cells_gradient(&table_a, init_gradient_2(), true);
-		scale_multiplication_fdf(&table_a, 1.0 / 3.0, RED);
-		write_table_ascii_standard(output, &table_a, RED);
+		scale_multiplication_fdf(&table_a, 1.0 / 3.0, FDF_RED);
+		write_table_ascii_standard(output, &table_a, FDF_RED);
 		destroy_fdf_table(&table_a);
 		i += 1;
 	}

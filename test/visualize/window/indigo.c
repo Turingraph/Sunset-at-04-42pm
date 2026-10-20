@@ -6,7 +6,7 @@ t_gradient	init_deep_wood()
 {
 	t_gradient	dst;
 
-	dst.cell_channel = D7_HEIGHT;
+	dst.cell_channel = GRADIENT_HEIGHT;
 	dst.input_start = 0;
 	dst.input_end = 100;
 	dst.rgba_start.r = 70;
@@ -35,10 +35,10 @@ int	main(int len, char **str)
 		return (0);
 	}
 	style.thickness = 1;
-	style.shape2d = E_RECTANGLE;
+	style.shape2d = SHAPE2D_RECTANGLE;
 	scale_relu_fdf(&table, 0, 30, 0);
 	color_cells_gradient(&table, init_deep_wood(), true);
-	scale_multiplication_fdf(&table, 1.0, HEIGHT);
+	scale_multiplication_fdf(&table, 1.0, FDF_HEIGHT);
 	output = create_fdf_proj2d(&table, NULL, 1.0);
 	view_fdf(&output, style, rgba32_from_char(255, 255, 255, 255));
 	destroy_fdf_table(&table);

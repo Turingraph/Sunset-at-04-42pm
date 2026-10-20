@@ -86,13 +86,13 @@ unsigned char	*rgbarr_from_table(const t_fdf_table *src,
 {
 	if (src == NULL)
 		return (NULL);
-	if (src->r != NULL && rgba_type == RED)
+	if (src->r != NULL && rgba_type == FDF_RED)
 		return (src->r);
-	if (src->g != NULL && rgba_type == GREEN)
+	if (src->g != NULL && rgba_type == FDF_GREEN)
 		return (src->g);
-	if (src->b != NULL && rgba_type == BLUE)
+	if (src->b != NULL && rgba_type == FDF_BLUE)
 		return (src->b);
-	if (src->a != NULL && rgba_type == ALPHA)
+	if (src->a != NULL && rgba_type == FDF_ALPHA)
 		return (src->a);
 	return (NULL);
 }

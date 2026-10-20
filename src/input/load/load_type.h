@@ -19,38 +19,43 @@
  * Defines the writing mode used when serializing FDF data as fdf file as text
  * file with decimal numbers.
  *
- * - HEIGHT_ONLY writes only the height value of each FDF cell.
+ * - WRITE_DECIMAL_HEIGHT writes only the height value of each FDF cell.
  *
- * - HEIGHT_RGBA writes the height value together with a full RGBA color.
+ * - WRITE_HEX_RGBA writes the height value together with a full RGBA color.
  *
- * - HEIGHT_RGB writes the height value together with an RGB color,
+ * - WRITE_HEX_RGB writes the height value together with an RGB color,
  * without an explicit alpha component.
  */
-typedef enum t_write_style
+typedef enum t_fdf_write_mode
 {
-	HEIGHT_ONLY,
-	HEIGHT_RGBA,
-	HEIGHT_RGB
-}	t_write_style;
+	WRITE_DECIMAL_HEIGHT,
+	WRITE_HEX_RGBA,
+	WRITE_HEX_RGB,
+	// WRITE_ASCII_A,
+	// WRITE_ASCII_B,
+	// WRITE_ASCII_C,
+	// WRITE_PNG,
+	// WRITE_JPG
+}	t_fdf_write_mode;
 
 /**
  * Describes the parsing status of a loaded FDF value.
  *
- * - CORRECT indicates that the corresponding value was parsed successfully.
+ * - ERROR_CORRECT indicates that the corresponding value was parsed successfully.
  *
- * - NOT_DECIMAL indicates that the height value is not a valid decimal integer.
+ * - ERROR_NOT_DECIMAL indicates that the height value is not a valid decimal integer.
  *
- * - NOT_HEX indicates that the color value is not a valid hexadecimal value.
+ * - ERROR_NOT_HEX indicates that the color value is not a valid hexadecimal value.
  *
- * - EMPTY indicates that the corresponding input value is empty.
+ * - ERROR_EMPTY indicates that the corresponding input value is empty.
  */
-typedef enum t_load_warning
+typedef enum t_error
 {
-	CORRECT,
-	NOT_DECIMAL,
-	NOT_HEX,
-	EMPTY
-}	t_load_warning;
+	ERROR_CORRECT,
+	ERROR_NOT_DECIMAL,
+	ERROR_NOT_HEX,
+	ERROR_EMPTY
+}	t_error;
 
 /**
  * Temporary FDF data produced while parsing one input line.
@@ -63,7 +68,7 @@ typedef enum t_load_warning
  *
  * rgb_warn stores the parsing status of the color values.
  * 
- * If int_warn and/or rgb_warn are NOT_DECIMAL and/or NOT_HEX, then 
+ * If int_warn and/or rgb_warn are ERROR_NOT_DECIMAL and/or ERROR_NOT_HEX, then 
  * fetch_fdf_load_arr stops and load_fdf_table_file return empty output.
  *
  * status: internal data shape2d
@@ -85,8 +90,8 @@ typedef struct t_fdf_load
 	unsigned char	*b;
 	unsigned char	*a;
 	size_t			length;
-	t_load_warning	int_warn;
-	t_load_warning	rgb_warn;
+	t_error	int_warn;
+	t_error	rgb_warn;
 }	t_fdf_load;
 
 /**

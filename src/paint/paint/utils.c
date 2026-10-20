@@ -2,15 +2,15 @@
 
 // time : O(1)
 // space: O(1)
-int	get_rgba_input(t_fdf_channel rgba_type, t_rgba src)
+int	get_input_rgba(t_fdf_channel rgba_type, t_input_rgba src)
 {
-	if (rgba_type == RED)
+	if (rgba_type == FDF_RED)
 		return (src.r);
-	if (rgba_type == GREEN)
+	if (rgba_type == FDF_GREEN)
 		return (src.g);
-	if (rgba_type == BLUE)
+	if (rgba_type == FDF_BLUE)
 		return (src.b);
-	if (rgba_type == ALPHA)
+	if (rgba_type == FDF_ALPHA)
 		return (src.a);
 	return (0);
 }
@@ -49,7 +49,7 @@ void	paint_space(t_fdf_table *dst, t_fdf_channel channel,
 		y = (int)f_round(f_root_find(y, 2));
 		if (cell_metric != NULL)
 			y = cell_metric(dst, i);
-		if (channel == HEIGHT)
+		if (channel == FDF_HEIGHT)
 			dst->arr[i] = y;
 		else if (rgba != NULL)
 			rgba[i] = (unsigned char)f_interval_int(y, 0, 255);

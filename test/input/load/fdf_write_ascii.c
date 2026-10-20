@@ -53,10 +53,10 @@ int	main(void)
 	while (i < max_score)
 	{
 		fdf_file = load_fdf_load_arr(arr[i], src_dir, parse_ascii_cheche01);
-		clone_examples = load_file_debug(arr[i], dst_dir, E_WRITE);
+		clone_examples = load_file_debug(arr[i], dst_dir, FILE_WRITE);
 		if (clone_examples > -1)
 		{
-			inspect_ascii_cheche01(clone_examples, &fdf_file);
+			write_load_cheche01(clone_examples, &fdf_file);
 			if (assert_file_ascii(arr[i], arr[i], src_dir, dst_dir) == true)
 				score += 1;
 			else

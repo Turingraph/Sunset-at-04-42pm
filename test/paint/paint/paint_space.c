@@ -7,7 +7,7 @@ static void	write_with_paint_space(float scale, const char *file_name,
 	int	output;
 
 	output = load_file_debug(file_name,
-		"test/paint/paint/input_paint_space/", E_WRITE);
+		"test/paint/paint/input_paint_space/", FILE_WRITE);
 	if (output <= -1 || file_name == NULL)
 	{
 		if (file_name != NULL)
@@ -16,9 +16,9 @@ static void	write_with_paint_space(float scale, const char *file_name,
 		return ;
 	}
 	if (scale > 0)
-		scale_multiplication_fdf(table, scale, HEIGHT);
-	paint_space(table, HEIGHT, cell_metric);
-	write_table_ascii_standard(output, table, HEIGHT);
+		scale_multiplication_fdf(table, scale, FDF_HEIGHT);
+	paint_space(table, FDF_HEIGHT, cell_metric);
+	write_table_ascii_standard(output, table, FDF_HEIGHT);
 	close(output);
 }
 

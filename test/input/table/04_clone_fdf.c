@@ -33,10 +33,10 @@ int	main(void)
 	while (i < max_score)
 	{
 		table = load_fdf_table_file(arr[i], src_dir, parse_decimal_bw, false);
-		fdf_dst = load_file_debug(arr[i], dst_dir, E_WRITE);
+		fdf_dst = load_file_debug(arr[i], dst_dir, FILE_WRITE);
 		if (fdf_dst > -1)
 		{
-			write_fdf_table(fdf_dst, &table, 1, HEIGHT_ONLY);
+			write_fdf_table(fdf_dst, &table, 1, WRITE_DECIMAL_HEIGHT);
 			if (assert_file(arr[i], arr[i], src_dir, dst_dir) == true)
 				score += 1;
 			else

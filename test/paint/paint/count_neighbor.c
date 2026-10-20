@@ -57,23 +57,23 @@ int	main(void)
 
 	// a
 	table = load_fdf_table_file(file_a, input_dir, parse_decimal_bw, false);
-	paint_space(&table, HEIGHT, conway_test);
-	paint_space(&table, HEIGHT, cell_metric_positive);
-	scale_addition_fdf(&table, -1, HEIGHT);
+	paint_space(&table, FDF_HEIGHT, conway_test);
+	paint_space(&table, FDF_HEIGHT, cell_metric_positive);
+	scale_addition_fdf(&table, -1, FDF_HEIGHT);
 	scale_relu_fdf(&table, -1, 0, 0);
 	if (table.col * table.row == length_a
 		&& assert_intarr(table.arr, correct_a, length_a) == true)
 		y += 1;
 	else
 		write(1, "a false\n", 8);
-	// write_fdf_table(1, &table, 1, HEIGHT_ONLY);
+	// write_fdf_table(1, &table, 1, WRITE_DECIMAL_HEIGHT);
 	destroy_fdf_table(&table);
 
 	// b
 	table = load_fdf_table_file(file_b, input_dir, parse_decimal_bw, false);
-	paint_space(&table, HEIGHT, conway_test);
-	paint_space(&table, HEIGHT, cell_metric_positive);
-	scale_addition_fdf(&table, -1, HEIGHT);
+	paint_space(&table, FDF_HEIGHT, conway_test);
+	paint_space(&table, FDF_HEIGHT, cell_metric_positive);
+	scale_addition_fdf(&table, -1, FDF_HEIGHT);
 	scale_relu_fdf(&table, -1, 0, 0);
 	if (table.col * table.row == length_b
 		&& assert_intarr(table.arr, correct_b, length_b) == true)
@@ -84,9 +84,9 @@ int	main(void)
 
 	// c
 	table = load_fdf_table_file(file_c, input_dir, parse_decimal_bw, false);
-	paint_space(&table, HEIGHT, conway_test);
-	paint_space(&table, HEIGHT, cell_metric_positive);
-	scale_addition_fdf(&table, -1, HEIGHT);
+	paint_space(&table, FDF_HEIGHT, conway_test);
+	paint_space(&table, FDF_HEIGHT, cell_metric_positive);
+	scale_addition_fdf(&table, -1, FDF_HEIGHT);
 	scale_relu_fdf(&table, -1, 0, 0);
 	if (table.col * table.row == length_c
 		&& assert_intarr(table.arr, correct_c, length_c) == true)

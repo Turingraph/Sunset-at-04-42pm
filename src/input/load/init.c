@@ -59,10 +59,10 @@ t_fdf_load	create_fdf_load(size_t line_len, bool is_rgb)
 		dst.a = malloc_talk(sizeof(unsigned char) * line_len,
 				"input/load/init.c/int_fdf_load\n");
 	}
-	dst.int_warn = CORRECT;
+	dst.int_warn = ERROR_CORRECT;
 	if (line_len == 0)
-		dst.int_warn = EMPTY;
-	dst.rgb_warn = CORRECT;
+		dst.int_warn = ERROR_EMPTY;
+	dst.rgb_warn = ERROR_CORRECT;
 	dst.length = line_len;
 	return (dst);
 }

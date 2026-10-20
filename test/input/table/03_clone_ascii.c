@@ -55,10 +55,10 @@ int	main(void)
 	while (i < max_score)
 	{
 		table = load_fdf_table_file(arr[i], src_dir, parse_ascii_cheche01, is_rgb);
-		clone_examples = load_file_debug(arr[i], dst_dir, E_WRITE);
+		clone_examples = load_file_debug(arr[i], dst_dir, FILE_WRITE);
 		if (clone_examples > -1)
 		{
-			write_table_ascii_cheche01(clone_examples, &table, HEIGHT);
+			write_table_ascii_cheche01(clone_examples, &table, FDF_HEIGHT);
 			if (assert_file_ascii(arr[i], arr[i], src_dir, dst_dir) == true)
 				score += 1;
 			else

@@ -6,7 +6,7 @@ t_gradient	init_all()
 {
 	t_gradient	dst;
 
-	dst.cell_channel = D7_HEIGHT;
+	dst.cell_channel = GRADIENT_HEIGHT;
 	dst.input_start = 0;
 	dst.input_end = 500;
 	dst.rgba_start.r = 251;
@@ -26,7 +26,7 @@ t_gradient	init_deep_wood()
 {
 	t_gradient	dst;
 
-	dst.cell_channel = D7_HEIGHT;
+	dst.cell_channel = GRADIENT_HEIGHT;
 	dst.input_start = 0;
 	dst.input_end = 5;
 	dst.rgba_start.r = 126;
@@ -46,7 +46,7 @@ t_gradient	init_white_noise()
 {
 	t_gradient	dst;
 
-	dst.cell_channel = D7_HEIGHT;
+	dst.cell_channel = GRADIENT_HEIGHT;
 	dst.input_start = 0;
 	dst.input_end = 0;
 	dst.rgba_start.r = 30;
@@ -72,13 +72,13 @@ int	main(void)
 	wood = init_deep_wood();
 	table = create_fdf_table(30, 30, true);
 	table_base = create_fdf_table(30, 30, false);
-	paint_space(&table, HEIGHT, cell_metric_amgm_inequality);
-	paint_space(&table, HEIGHT, cell_metric_pythagoras_3d);
-	set_cells_color(&table_base, 1, HEIGHT, is_oddlength_x2shadow);
-	fdf_table_hadamard(&table, &table_base, HEIGHT);
+	paint_space(&table, FDF_HEIGHT, cell_metric_amgm_inequality);
+	paint_space(&table, FDF_HEIGHT, cell_metric_pythagoras_3d);
+	set_cells_color(&table_base, 1, FDF_HEIGHT, is_oddlength_x2shadow);
+	fdf_table_hadamard(&table, &table_base, FDF_HEIGHT);
 	color_cells_gradient(&table, init_all(), true);
 	style.thickness = 3;
-	style.shape2d = E_CIRCLE;
+	style.shape2d = SHAPE2D_CIRCLE;
 	i = 0;
 	while (i < 24)
 	{
@@ -88,7 +88,7 @@ int	main(void)
 		i += 1;
 	}
 	color_cells_gradient(&table, init_white_noise(), true);
-	scale_multiplication_fdf(&table, 1.0 / 30.0, HEIGHT);
+	scale_multiplication_fdf(&table, 1.0 / 30.0, FDF_HEIGHT);
 	output = create_fdf_proj2d(&table, proj2d_cabinet, 1.3);
 	view_fdf(&output, style, rgba32_from_char(0, 0, 0, 255));
 	destroy_fdf_table(&table);

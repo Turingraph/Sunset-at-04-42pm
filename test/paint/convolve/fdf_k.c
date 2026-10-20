@@ -41,11 +41,11 @@ int	main(void)
 	i = 0;
 	while (i < length)
 	{
-		output = load_file_debug(arr[i], dst_dir, E_WRITE);
+		output = load_file_debug(arr[i], dst_dir, FILE_WRITE);
 		table_a = load_fdf_table_file(arr[i], src_dir,
 				parse_decimal_bw, false);
 		table_b = convolve_fdf(&table_a, NULL, half_dim);
-		write_fdf_table(output, &table_b, 1, HEIGHT_ONLY);
+		write_fdf_table(output, &table_b, 1, WRITE_DECIMAL_HEIGHT);
 		destroy_fdf_table(&table_a);
 		destroy_fdf_table(&table_b);
 		i += 1;

@@ -6,7 +6,7 @@ t_gradient	init_white_noise()
 {
 	t_gradient	dst;
 
-	dst.cell_channel = D7_HEIGHT;
+	dst.cell_channel = GRADIENT_HEIGHT;
 	dst.input_start = 0;
 	dst.input_end = 0;
 	dst.rgba_start.r = 0;
@@ -26,7 +26,7 @@ t_gradient	init_deep_wood()
 {
 	t_gradient	dst;
 
-	dst.cell_channel = D7_HEIGHT;
+	dst.cell_channel = GRADIENT_HEIGHT;
 	dst.input_start = 0;
 	dst.input_end = 250;
 	dst.rgba_start.r = 70;
@@ -48,15 +48,15 @@ int	main(void)
 	t_fdf_table		table_base;
 
 	table_base = create_fdf_table(300, 300, false);
-	set_cells_color(&table_base, 3, HEIGHT, is_andmod_x3);
+	set_cells_color(&table_base, 3, FDF_HEIGHT, is_andmod_x3);
 	table = create_fdf_table(300, 300, true);
-	paint_space(&table, HEIGHT, cell_metric_max_xy);
-	fdf_table_hadamard(&table, &table_base, HEIGHT);
+	paint_space(&table, FDF_HEIGHT, cell_metric_max_xy);
+	fdf_table_hadamard(&table, &table_base, FDF_HEIGHT);
 	style.thickness = 2;
-	style.shape2d = E_RECTANGLE;
+	style.shape2d = SHAPE2D_RECTANGLE;
 	color_cells_gradient(&table, init_deep_wood(), true);
 	color_cells_gradient(&table, init_white_noise(), true);
-	scale_multiplication_fdf(&table, 1.0 / 120.0, HEIGHT);
+	scale_multiplication_fdf(&table, 1.0 / 120.0, FDF_HEIGHT);
 	output = create_fdf_proj2d(&table, NULL, 0.6);
 	view_fdf(&output, style, rgba32_from_char(0, 0, 0, 255));
 	destroy_fdf_table(&table);

@@ -19,16 +19,16 @@ int	main(void)
 	write(1, "\n", 1);
 	table_a = load_fdf_table_file(input_dir, NULL,
 			parse_ascii_cheche01, false);
-	scale_multiplication_fdf(&table_a, 10, HEIGHT);
+	scale_multiplication_fdf(&table_a, 10, FDF_HEIGHT);
 	table_b = scale_dimension_fdf(&table_a, 3, 3);
 
-	output_fd = load_file_debug(output_dir_1, NULL, E_WRITE);
-	write_table_ascii_cheche01(output_fd, &table_b, HEIGHT);
+	output_fd = load_file_debug(output_dir_1, NULL, FILE_WRITE);
+	write_table_ascii_cheche01(output_fd, &table_b, FDF_HEIGHT);
 	close(output_fd);
 
 	table_c = convolve_fdf(&table_b, ker.arr, ker_dim);
-	output_fd = load_file_debug(output_dir_2, NULL, E_WRITE);
-	write_table_ascii_cheche01(output_fd, &table_c, HEIGHT);
+	output_fd = load_file_debug(output_dir_2, NULL, FILE_WRITE);
+	write_table_ascii_cheche01(output_fd, &table_c, FDF_HEIGHT);
 	close(output_fd);
 
 	free(ker.arr);

@@ -27,23 +27,23 @@
 /**
  * Identifies the data component stored in a t_fdf_table array.
  *
- * - RED selects the red color component.
+ * - FDF_RED selects the red color component.
  *
- * - GREEN selects the green color component.
+ * - FDF_GREEN selects the green color component.
  *
- * - BLUE selects the blue color component.
+ * - FDF_BLUE selects the blue color component.
  *
- * - ALPHA selects the alpha color component.
+ * - FDF_ALPHA selects the alpha color component.
  *
- * - HEIGHT selects the height (arr, Z) component.
+ * - FDF_HEIGHT selects the height (arr, Z) component.
  */
 typedef enum t_fdf_channel
 {
-	RED,
-	GREEN,
-	BLUE,
-	ALPHA,
-	HEIGHT
+	FDF_RED,
+	FDF_GREEN,
+	FDF_BLUE,
+	FDF_ALPHA,
+	FDF_HEIGHT
 }	t_fdf_channel;
 
 /**
@@ -306,8 +306,8 @@ t_matrix	outer_product(const float *vec_v,
 
 typedef enum t_file_mode
 {
-	E_READ = O_RDONLY,
-	E_WRITE = O_WRONLY,
+	FILE_READ = O_RDONLY,
+	FILE_WRITE = O_WRONLY,
 }	t_file_mode;
 
 /**
@@ -348,38 +348,38 @@ int				load_file_debug(const char *file_name,
  * Defines the writing mode used when serializing FDF data as fdf file as text
  * file with decimal numbers.
  *
- * - HEIGHT_ONLY writes only the height value of each FDF cell.
+ * - WRITE_DECIMAL_HEIGHT writes only the height value of each FDF cell.
  *
- * - HEIGHT_RGBA writes the height value together with a full RGBA color.
+ * - WRITE_HEX_RGBA writes the height value together with a full RGBA color.
  *
- * - HEIGHT_RGB writes the height value together with an RGB color,
+ * - WRITE_HEX_RGB writes the height value together with an RGB color,
  * without an explicit alpha component.
  */
-typedef enum t_write_style
+typedef enum t_fdf_write_mode
 {
-	HEIGHT_ONLY,
-	HEIGHT_RGBA,
-	HEIGHT_RGB
-}	t_write_style;
+	WRITE_DECIMAL_HEIGHT,
+	WRITE_HEX_RGBA,
+	WRITE_HEX_RGB
+}	t_fdf_write_mode;
 
 /**
  * Describes the parsing status of a loaded FDF value.
  *
- * - CORRECT indicates that the corresponding value was parsed successfully.
+ * - ERROR_CORRECT indicates that the corresponding value was parsed successfully.
  *
- * - NOT_DECIMAL indicates that the height value is not a valid decimal integer.
+ * - ERROR_NOT_DECIMAL indicates that the height value is not a valid decimal integer.
  *
- * - NOT_HEX indicates that the color value is not a valid hexadecimal value.
+ * - ERROR_NOT_HEX indicates that the color value is not a valid hexadecimal value.
  *
- * - EMPTY indicates that the corresponding input value is empty.
+ * - ERROR_EMPTY indicates that the corresponding input value is empty.
  */
-typedef enum t_load_warning
+typedef enum t_error
 {
-	CORRECT,
-	NOT_DECIMAL,
-	NOT_HEX,
-	EMPTY
-}	t_load_warning;
+	ERROR_CORRECT,
+	ERROR_NOT_DECIMAL,
+	ERROR_NOT_HEX,
+	ERROR_EMPTY
+}	t_error;
 
 /**
  * Temporary FDF data produced while parsing one input line.
@@ -392,7 +392,7 @@ typedef enum t_load_warning
  *
  * rgb_warn stores the parsing status of the color values.
  * 
- * If int_warn and/or rgb_warn are NOT_DECIMAL and/or NOT_HEX, then 
+ * If int_warn and/or rgb_warn are ERROR_NOT_DECIMAL and/or ERROR_NOT_HEX, then 
  * fetch_fdf_load_arr stops and load_fdf_table_file return empty output.
  *
  * status: internal data shape2d
@@ -414,8 +414,8 @@ typedef struct t_fdf_load
 	unsigned char	*b;
 	unsigned char	*a;
 	size_t			length;
-	t_load_warning	int_warn;
-	t_load_warning	rgb_warn;
+	t_error	int_warn;
+	t_error	rgb_warn;
 }	t_fdf_load;
 
 /**
@@ -651,7 +651,7 @@ unsigned char	*scale_dimension_fdf_rgba(const t_fdf_table *src,
 	size_t scale_row, size_t scale_col, t_fdf_channel rgba_type);
 
 /**
- * Scale an HEIGHT channel by duplicating its rows and columns.
+ * Scale an FDF_HEIGHT channel by duplicating its rows and columns.
  *
  * time/space: O(n^2) / O(n^2)
  *
@@ -788,14 +788,14 @@ void			write_table_ascii_chungaloider(int fd,
  * @param mode output format
  */
 void			write_fdf_table(int fd,
-					const t_fdf_table *src, size_t digits, t_write_style mode);
+					const t_fdf_table *src, size_t digits, t_fdf_write_mode mode);
 
 /* ************************************************************************** */
 /* *** src/paint/convolve/ *** */
 /* ************************************************************************** */
 
 /**
- * Apply a convolution kernel to HEIGHT channels.
+ * Apply a convolution kernel to FDF_HEIGHT channels.
  * 
  * The kernel must be a square matrix with odd dimensions (e.g. 3x3, 5x5).
  * For each pixel, the kernel is centered on that pixel. Samples outside
@@ -1348,23 +1348,23 @@ bool		is_andmod_cos(const t_fdf_table *dst, size_t index);
  * 
  * If the color channel is less than 0, then the color isn't render.
  */
-typedef struct t_rgba
+typedef struct t_input_rgba
 {
 	int	r;
 	int	g;
 	int	b;
 	int	a;
-}	t_rgba;
+}	t_input_rgba;
 
 typedef enum t_gradient_channel
 {
-	D7_RED,
-	D7_GREEN,
-	D7_BLUE,
-	D7_ALPHA,
-	D7_ROW,
-	D7_COL,
-	D7_HEIGHT
+	GRADIENT_RED,
+	GRADIENT_GREEN,
+	GRADIENT_BLUE,
+	GRADIENT_ALPHA,
+	GRADIENT_ROW,
+	GRADIENT_COL,
+	GRADIENT_HEIGHT
 }	t_gradient_channel;
 
 /**
@@ -1376,8 +1376,8 @@ typedef enum t_gradient_channel
  */
 typedef struct t_gradient
 {
-	t_rgba				rgba_start;
-	t_rgba				rgba_end;
+	t_input_rgba				rgba_start;
+	t_input_rgba				rgba_end;
 	t_gradient_channel	cell_channel;
 	int					input_start;
 	int					input_end;
@@ -1815,17 +1815,17 @@ typedef struct t_ink32
  * 
  * ENUM TYPE
  * 
- * - E_RECTANGLE draws rectangular geometry.
+ * - SHAPE2D_RECTANGLE draws rectangular geometry.
  * 
- * - E_CIRCLE draws circular geometry.
+ * - SHAPE2D_CIRCLE draws circular geometry.
  * 
- * - E_LINE draws polygon edges as lines.
+ * - SHAPE2D_LINE draws polygon edges as lines.
  */
 typedef enum t_shape2d
 {
-	E_RECTANGLE,
-	E_CIRCLE,
-	E_LINE,
+	SHAPE2D_RECTANGLE,
+	SHAPE2D_CIRCLE,
+	SHAPE2D_LINE,
 }	t_shape2d;
 
 /**

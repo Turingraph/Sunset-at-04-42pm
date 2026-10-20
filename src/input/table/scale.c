@@ -33,20 +33,20 @@ void	scale_multiplication_fdf(t_fdf_table *dst, float scale,
 	i = 0;
 	while (i < dst->col * dst->row)
 	{
-		if (dst->arr != NULL && channel == HEIGHT)
+		if (dst->arr != NULL && channel == FDF_HEIGHT)
 			dst->arr[i] = (int)f_interval_int(
 					f_round(dst->arr[i] * scale),
 					-2147483648.0, 2147483647.0);
-		if (dst->r != NULL && channel == RED)
+		if (dst->r != NULL && channel == FDF_RED)
 			dst->r[i] = (unsigned char)f_interval_int(
 					dst->r[i] * scale, 0, 255);
-		if (dst->g != NULL && channel == GREEN)
+		if (dst->g != NULL && channel == FDF_GREEN)
 			dst->g[i] = (unsigned char)f_interval_int(
 					dst->g[i] * scale, 0, 255);
-		if (dst->b != NULL && channel == BLUE)
+		if (dst->b != NULL && channel == FDF_BLUE)
 			dst->b[i] = (unsigned char)f_interval_int(
 					dst->b[i] * scale, 0, 255);
-		if (dst->a != NULL && channel == ALPHA)
+		if (dst->a != NULL && channel == FDF_ALPHA)
 			dst->a[i] = (unsigned char)f_interval_int(
 					dst->a[i] * scale, 0, 255);
 		i += 1;
@@ -73,19 +73,19 @@ void	scale_addition_fdf(t_fdf_table *dst, int input, t_fdf_channel channel)
 	i = 0;
 	while (i < dst->col * dst->row)
 	{
-		if (dst->arr != NULL && channel == HEIGHT)
+		if (dst->arr != NULL && channel == FDF_HEIGHT)
 			dst->arr[i] = (int)f_interval(
 					f_round(dst->arr[i] + input), -2147483648.0, 2147483647.0);
-		if (dst->r != NULL && channel == RED)
+		if (dst->r != NULL && channel == FDF_RED)
 			dst->r[i] = (unsigned char)f_interval(
 					(int)dst->r[i] + input, 0, 255);
-		if (dst->g != NULL && channel == GREEN)
+		if (dst->g != NULL && channel == FDF_GREEN)
 			dst->g[i] = (unsigned char)f_interval(
 					(int)dst->g[i] + input, 0, 255);
-		if (dst->b != NULL && channel == BLUE)
+		if (dst->b != NULL && channel == FDF_BLUE)
 			dst->b[i] = (unsigned char)f_interval(
 					(int)dst->b[i] + input, 0, 255);
-		if (dst->a != NULL && channel == ALPHA)
+		if (dst->a != NULL && channel == FDF_ALPHA)
 			dst->a[i] = (unsigned char)f_interval(
 					(int)dst->a[i] + input, 0, 255);
 		i += 1;
@@ -117,20 +117,20 @@ void	fdf_table_addition(t_fdf_table *dst,
 	i = 0;
 	while (i < dst->col * dst->row)
 	{
-		if (src->arr != NULL && dst->arr != NULL && channel == HEIGHT)
+		if (src->arr != NULL && dst->arr != NULL && channel == FDF_HEIGHT)
 			dst->arr[i] = (int)f_interval(
 					f_round(dst->arr[i] + src->arr[i]),
 					-2147483648.0, 2147483647.0);
-		if (src->r != NULL && dst->r != NULL && channel == RED)
+		if (src->r != NULL && dst->r != NULL && channel == FDF_RED)
 			dst->r[i] = (unsigned char)f_interval(
 					dst->r[i] + src->r[i], 0, 255);
-		if (src->g != NULL && dst->g != NULL && channel == GREEN)
+		if (src->g != NULL && dst->g != NULL && channel == FDF_GREEN)
 			dst->g[i] = (unsigned char)f_interval(
 					dst->g[i] + src->g[i], 0, 255);
-		if (src->b != NULL && dst->b != NULL && channel == BLUE)
+		if (src->b != NULL && dst->b != NULL && channel == FDF_BLUE)
 			dst->b[i] = (unsigned char)f_interval(
 					dst->b[i] + src->b[i], 0, 255);
-		if (src->a != NULL && dst->a != NULL && channel == ALPHA)
+		if (src->a != NULL && dst->a != NULL && channel == FDF_ALPHA)
 			dst->a[i] = (unsigned char)f_interval(
 					dst->a[i] + src->a[i], 0, 255);
 		i += 1;
@@ -162,20 +162,20 @@ void	fdf_table_hadamard(t_fdf_table *dst,
 	i = 0;
 	while (i < dst->col * dst->row)
 	{
-		if (src->arr != NULL && dst->arr != NULL && channel == HEIGHT)
+		if (src->arr != NULL && dst->arr != NULL && channel == FDF_HEIGHT)
 			dst->arr[i] = (int)f_interval(
 					f_round(dst->arr[i] * src->arr[i]),
 					-2147483648.0, 2147483647.0);
-		if (src->r != NULL && dst->r != NULL && channel == RED)
+		if (src->r != NULL && dst->r != NULL && channel == FDF_RED)
 			dst->r[i] = (unsigned char)f_interval(
 					dst->r[i] * src->r[i], 0, 255);
-		if (src->g != NULL && dst->g != NULL && channel == GREEN)
+		if (src->g != NULL && dst->g != NULL && channel == FDF_GREEN)
 			dst->g[i] = (unsigned char)f_interval(
 					dst->g[i] * src->g[i], 0, 255);
-		if (src->b != NULL && dst->b != NULL && channel == BLUE)
+		if (src->b != NULL && dst->b != NULL && channel == FDF_BLUE)
 			dst->b[i] = (unsigned char)f_interval(
 					dst->b[i] * src->b[i], 0, 255);
-		if (src->a != NULL && dst->a != NULL && channel == ALPHA)
+		if (src->a != NULL && dst->a != NULL && channel == FDF_ALPHA)
 			dst->a[i] = (unsigned char)f_interval(
 					dst->a[i] * src->a[i], 0, 255);
 		i += 1;

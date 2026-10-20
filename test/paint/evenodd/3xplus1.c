@@ -6,7 +6,7 @@ t_gradient	init_deep_wood()
 {
 	t_gradient	dst;
 
-	dst.cell_channel = D7_HEIGHT;
+	dst.cell_channel = GRADIENT_HEIGHT;
 	dst.input_start = 0;
 	dst.input_end = 10;
 	dst.rgba_start.r = 70;
@@ -29,11 +29,11 @@ int	main(void)
 
 	table = create_fdf_table(100, 100, true);
 	table_base = create_fdf_table(100, 100, false);
-	paint_space(&table, HEIGHT, cell_metric_pythagoras);
-	set_cells_color(&table_base, 1, HEIGHT, is_binary_search_andmod);
-	fdf_table_hadamard(&table, &table_base, HEIGHT);
+	paint_space(&table, FDF_HEIGHT, cell_metric_pythagoras);
+	set_cells_color(&table_base, 1, FDF_HEIGHT, is_binary_search_andmod);
+	fdf_table_hadamard(&table, &table_base, FDF_HEIGHT);
 	style.thickness = 2;
-	style.shape2d = E_RECTANGLE;
+	style.shape2d = SHAPE2D_RECTANGLE;
 	color_cells_gradient(&table, init_deep_wood(), true);
 	output = create_fdf_proj2d(&table, NULL, 0.6);
 	view_fdf(&output, style, rgba32_from_char(0, 0, 0, 255));

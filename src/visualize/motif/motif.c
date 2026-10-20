@@ -146,11 +146,11 @@ static void	raster_motif_unit(mlx_image_t *img,
 	i = 0;
 	while (i < src->motif->length)
 	{
-		if (arr[i].shape2d == E_LINE)
+		if (arr[i].shape2d == SHAPE2D_LINE)
 			raster_motif_line(img, &(arr[i].polygon), arr[i].style_raster, tile);
-		else if (arr[i].shape2d == E_CIRCLE)
+		else if (arr[i].shape2d == SHAPE2D_CIRCLE)
 			raster_motif_circle(img, &(arr[i].polygon), arr[i].style_raster, tile);
-		else if (arr[i].shape2d == E_RECTANGLE)
+		else if (arr[i].shape2d == SHAPE2D_RECTANGLE)
 			raster_motif_rectangle(img, &(arr[i].polygon),
 				arr[i].style_raster.color, tile);
 		i += 1;

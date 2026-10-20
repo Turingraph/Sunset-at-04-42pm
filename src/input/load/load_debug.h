@@ -50,16 +50,16 @@ size_t			str_length(const char *str);
 
 // write_ascii.c
 
-void			inspect_ascii_cheche01(int fd,
+void			write_load_cheche01(int fd,
 					const t_fdf_load_arr *src);
-void			inspect_ascii_standard(int fd,
+void			write_load_standard(int fd,
 					const t_fdf_load_arr *src);
-void			inspect_ascii_chungaloider(int fd,
+void			write_load_chungaloider(int fd,
 					const t_fdf_load_arr *src);
 
 // write.c
 
-void			inspect_decimal(int fd, const t_fdf_load_arr *src,
-					size_t digits, t_write_style write_style);
+void			write_load_decimal(int fd, const t_fdf_load_arr *src,
+					size_t digits, t_fdf_write_mode write_style);
 
 #endif

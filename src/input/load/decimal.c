@@ -132,6 +132,6 @@ t_fdf_load	parse_decimal(char *line, bool is_rgba)
 	is_int = true;
 	parse_decimal_loop(&dst, length, &is_int, line);
 	if (is_int == false)
-		dst.int_warn = NOT_DECIMAL;
+		dst.int_warn = ERROR_NOT_DECIMAL;
 	return (dst);
 }

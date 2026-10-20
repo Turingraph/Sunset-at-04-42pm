@@ -39,7 +39,7 @@ t_gradient	init_deep_sea()
 {
 	t_gradient	dst;
 
-	dst.cell_channel = D7_HEIGHT;
+	dst.cell_channel = GRADIENT_HEIGHT;
 	dst.input_start = 0;
 	dst.input_end = 200;
 	dst.rgba_start.r = 70;
@@ -127,7 +127,7 @@ t_gradient	init_gradient()
 {
 	t_gradient	dst;
 
-	dst.cell_channel = D7_HEIGHT;
+	dst.cell_channel = GRADIENT_HEIGHT;
 	dst.input_start = 0;
 	dst.input_end = 200;
 	dst.rgba_start.r = 70;
@@ -212,7 +212,7 @@ t_gradient	init_white_noise()
 {
 	t_gradient	dst;
 
-	dst.cell_channel = D7_HEIGHT;
+	dst.cell_channel = GRADIENT_HEIGHT;
 	dst.input_start = 0;
 	dst.input_end = 0;
 	dst.rgba_start.r = 0;
@@ -232,7 +232,7 @@ t_gradient	init_ztmy_timeleft()
 {
 	t_gradient	dst;
 
-	dst.cell_channel = D7_RED;
+	dst.cell_channel = GRADIENT_RED;
 	dst.input_start = 66 * 3 / 2;
 	dst.input_end = 86 * 3 / 2;
 	dst.rgba_start.r = 72;
@@ -252,7 +252,7 @@ t_gradient	init_ztmy_studyme()
 {
 	t_gradient	dst;
 
-	dst.cell_channel = D7_HEIGHT;
+	dst.cell_channel = GRADIENT_HEIGHT;
 	dst.input_start = 0;
 	dst.input_end = 20;
 	dst.rgba_start.r = 66;

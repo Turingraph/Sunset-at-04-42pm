@@ -15,7 +15,7 @@ int	main(void)
 			{
 				.polygon = circle_arr,
 				.style_raster = style_raster,
-				.shape2d = E_CIRCLE
+				.shape2d = SHAPE2D_CIRCLE
 			}
 		}
 	};

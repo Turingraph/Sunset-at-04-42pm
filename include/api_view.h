@@ -42,17 +42,17 @@ typedef struct t_ink32
  * 
  * ENUM TYPE
  * 
- * - E_RECTANGLE draws rectangular geometry.
+ * - SHAPE2D_RECTANGLE draws rectangular geometry.
  * 
- * - E_CIRCLE draws circular geometry.
+ * - SHAPE2D_CIRCLE draws circular geometry.
  * 
- * - E_LINE draws polygon edges as lines.
+ * - SHAPE2D_LINE draws polygon edges as lines.
  */
 typedef enum t_shape2d
 {
-	E_RECTANGLE,
-	E_CIRCLE,
-	E_LINE,
+	SHAPE2D_RECTANGLE,
+	SHAPE2D_CIRCLE,
+	SHAPE2D_LINE,
 }	t_shape2d;
 
 /**

@@ -6,7 +6,7 @@ t_gradient	init_white_noise()
 {
 	t_gradient	dst;
 
-	dst.cell_channel = D7_HEIGHT;
+	dst.cell_channel = GRADIENT_HEIGHT;
 	dst.input_start = 0;
 	dst.input_end = 0;
 	dst.rgba_start.r = 0;
@@ -26,7 +26,7 @@ t_gradient	init_ztmy_timeleft()
 {
 	t_gradient	dst;
 
-	dst.cell_channel = D7_RED;
+	dst.cell_channel = GRADIENT_RED;
 	dst.input_start = 66 * 3 / 2;
 	dst.input_end = 86 * 3 / 2;
 	dst.rgba_start.r = 72;
@@ -46,7 +46,7 @@ t_gradient	init_ztmy_studyme()
 {
 	t_gradient	dst;
 
-	dst.cell_channel = D7_HEIGHT;
+	dst.cell_channel = GRADIENT_HEIGHT;
 	dst.input_start = 0;
 	dst.input_end = 20;
 	dst.rgba_start.r = 66;
@@ -75,10 +75,10 @@ int	main(int len, char **str)
 		return (0);
 	}
 	style.thickness = 3;
-	style.shape2d = E_RECTANGLE;
+	style.shape2d = SHAPE2D_RECTANGLE;
 	color_cells_gradient(&table, init_ztmy_studyme(), true);
 	color_cells_gradient(&table, init_ztmy_timeleft(), true);
-	scale_multiplication_fdf(&table, 1.0 / 3.0, HEIGHT);
+	scale_multiplication_fdf(&table, 1.0 / 3.0, FDF_HEIGHT);
 	color_cells_gradient(&table, init_white_noise(), true);
 	output = create_fdf_proj2d(&table, NULL, 1.0);
 	view_fdf(&output, style, rgba32_from_char(0, 0, 0, 255));

@@ -47,7 +47,7 @@ void	write_rgba_fdf(int fd, const t_fdf_table *src, size_t index)
  * @param mode output format
  */
 void	write_fdf_table(int fd, const t_fdf_table *src,
-	size_t digits, t_write_style mode)
+	size_t digits, t_fdf_write_mode mode)
 {
 	size_t	i;
 	size_t	j;
@@ -61,12 +61,12 @@ void	write_fdf_table(int fd, const t_fdf_table *src,
 		while (j < src->col)
 		{
 			write_int(src->arr[src->col * i + j], fd, "0123456789", digits);
-			if (mode == HEIGHT_RGB || mode == HEIGHT_RGBA)
+			if (mode == WRITE_HEX_RGB || mode == WRITE_HEX_RGBA)
 				write_rgba_fdf(fd, src, src->col * i + j);
-			if (src->a != NULL && mode == HEIGHT_RGBA)
+			if (src->a != NULL && mode == WRITE_HEX_RGBA)
 				write_int((int)src->a[src->col * i + j],
 					fd, "0123456789abcdef", 2);
-			else if (src->a == NULL && mode == HEIGHT_RGBA)
+			else if (src->a == NULL && mode == WRITE_HEX_RGBA)
 				write(fd, "00", 2);
 			write(fd, "\t", 1);
 			j += 1;
@@ -108,10 +108,10 @@ void	write_table_ascii(int fd, const t_fdf_table *src,
 			if (j >= src->col / 2)
 				left_char = false;
 			arr = rgbarr_from_table(src, channel);
-			if (src->arr != NULL && channel == HEIGHT)
+			if (src->arr != NULL && channel == FDF_HEIGHT)
 				write_ascii(fd,
 					(int)src->arr[i * src->col + j], dict, left_char);
-			else if (arr != NULL && channel != HEIGHT)
+			else if (arr != NULL && channel != FDF_HEIGHT)
 				write_rgba_ascii(arr[i * src->col + j], dict, fd, left_char);
 			j += 1;
 		}

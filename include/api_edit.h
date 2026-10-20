@@ -20,23 +20,23 @@
 /**
  * Identifies the data component stored in a t_fdf_table array.
  *
- * - RED selects the red color component.
+ * - FDF_RED selects the red color component.
  *
- * - GREEN selects the green color component.
+ * - FDF_GREEN selects the green color component.
  *
- * - BLUE selects the blue color component.
+ * - FDF_BLUE selects the blue color component.
  *
- * - ALPHA selects the alpha color component.
+ * - FDF_ALPHA selects the alpha color component.
  *
- * - HEIGHT selects the height (arr, Z) component.
+ * - FDF_HEIGHT selects the height (arr, Z) component.
  */
 typedef enum t_fdf_channel
 {
-	RED,
-	GREEN,
-	BLUE,
-	ALPHA,
-	HEIGHT
+	FDF_RED,
+	FDF_GREEN,
+	FDF_BLUE,
+	FDF_ALPHA,
+	FDF_HEIGHT
 }	t_fdf_channel;
 
 /**
@@ -156,7 +156,7 @@ unsigned char	*scale_dimension_fdf_rgba(const t_fdf_table *src,
 	size_t scale_row, size_t scale_col, t_fdf_channel rgba_type);
 
 /**
- * Scale an HEIGHT channel by duplicating its rows and columns.
+ * Scale an FDF_HEIGHT channel by duplicating its rows and columns.
  *
  * time/space: O(n^2) / O(n^2)
  *
@@ -252,7 +252,7 @@ void			copy_fdf_table_channel(t_fdf_table *dst,
 /* ************************************************************************** */
 
 /**
- * Apply a convolution kernel to HEIGHT channels.
+ * Apply a convolution kernel to FDF_HEIGHT channels.
  * 
  * The kernel must be a square matrix with odd dimensions (e.g. 3x3, 5x5).
  * For each pixel, the kernel is centered on that pixel. Samples outside
@@ -363,23 +363,23 @@ float	*edge_kernel(size_t inner_dim, size_t outer_dim, float input, float kernel
  * 
  * If the color channel is less than 0, then the color isn't render.
  */
-typedef struct t_rgba
+typedef struct t_input_rgba
 {
 	int	r;
 	int	g;
 	int	b;
 	int	a;
-}	t_rgba;
+}	t_input_rgba;
 
 typedef enum t_gradient_channel
 {
-	D7_RED,
-	D7_GREEN,
-	D7_BLUE,
-	D7_ALPHA,
-	D7_ROW,
-	D7_COL,
-	D7_HEIGHT
+	GRADIENT_RED,
+	GRADIENT_GREEN,
+	GRADIENT_BLUE,
+	GRADIENT_ALPHA,
+	GRADIENT_ROW,
+	GRADIENT_COL,
+	GRADIENT_HEIGHT
 }	t_gradient_channel;
 
 /**
@@ -391,8 +391,8 @@ typedef enum t_gradient_channel
  */
 typedef struct t_gradient
 {
-	t_rgba				rgba_start;
-	t_rgba				rgba_end;
+	t_input_rgba				rgba_start;
+	t_input_rgba				rgba_end;
 	t_gradient_channel	cell_channel;
 	int					input_start;
 	int					input_end;

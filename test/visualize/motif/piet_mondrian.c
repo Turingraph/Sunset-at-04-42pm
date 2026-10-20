@@ -60,37 +60,37 @@ int	main(void)
 			{
 				.polygon = polygon_00,
 				.style_raster = style_raster_white,
-				.shape2d = E_RECTANGLE
+				.shape2d = SHAPE2D_RECTANGLE
 			},
 			{
 				.polygon = polygon_01,
 				.style_raster = style_raster_coco,
-				.shape2d = E_RECTANGLE
+				.shape2d = SHAPE2D_RECTANGLE
 			},
 			{
 				.polygon = polygon_02,
 				.style_raster = style_raster_blue,
-				.shape2d = E_RECTANGLE
+				.shape2d = SHAPE2D_RECTANGLE
 			},
 			{
 				.polygon = polygon_03,
 				.style_raster = style_raster_red,
-				.shape2d = E_RECTANGLE
+				.shape2d = SHAPE2D_RECTANGLE
 			},
 			{
 				.polygon = polygon_04,
 				.style_raster = style_raster_white,
-				.shape2d = E_RECTANGLE
+				.shape2d = SHAPE2D_RECTANGLE
 			},
 			{
 				.polygon = polygon_05,
 				.style_raster = style_raster_white,
-				.shape2d = E_RECTANGLE
+				.shape2d = SHAPE2D_RECTANGLE
 			},
 			{
 				.polygon = polygon_06,
 				.style_raster = style_raster_coco,
-				.shape2d = E_RECTANGLE
+				.shape2d = SHAPE2D_RECTANGLE
 			},
 		}
 	};

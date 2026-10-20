@@ -56,7 +56,7 @@ int	main(void)
 
 	// a
 	table = load_fdf_table_file(file_a, input_dir, parse_decimal_bw, false);
-	set_cells_color(&table, 99, HEIGHT, boundary_test);
+	set_cells_color(&table, 99, FDF_HEIGHT, boundary_test);
 	if (table.col * table.row == length_a
 		&& assert_intarr(table.arr, correct_a, length_a) == true)
 		y += 1;
@@ -64,7 +64,7 @@ int	main(void)
 
 	// b
 	table = load_fdf_table_file(file_b, input_dir, parse_decimal_bw, false);
-	set_cells_color(&table, 99, HEIGHT, boundary_test);
+	set_cells_color(&table, 99, FDF_HEIGHT, boundary_test);
 	if (table.col * table.row == length_b
 		&& assert_intarr(table.arr, correct_b, length_b) == true)
 		y += 1;
@@ -72,7 +72,7 @@ int	main(void)
 
 	// c
 	table = load_fdf_table_file(file_c, input_dir, parse_decimal_bw, false);
-	set_cells_color(&table, 99, HEIGHT, boundary_test);
+	set_cells_color(&table, 99, FDF_HEIGHT, boundary_test);
 	if (table.col * table.row == length_c
 		&& assert_intarr(table.arr, correct_c, length_c) == true)
 		y += 1;

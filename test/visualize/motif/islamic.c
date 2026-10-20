@@ -73,42 +73,42 @@ int	main(void)
 			{
 				.polygon = thickline_arr_00,
 				.style_raster = style_raster,
-				.shape2d = E_LINE,
+				.shape2d = SHAPE2D_LINE,
 			},
 			{
 				.polygon = thickline_arr_01,
 				.style_raster = style_raster,
-				.shape2d = E_LINE,
+				.shape2d = SHAPE2D_LINE,
 			},
 			{
 				.polygon = thickline_arr_02,
 				.style_raster = style_raster,
-				.shape2d = E_LINE,
+				.shape2d = SHAPE2D_LINE,
 			},
 			{
 				.polygon = thickline_arr_03,
 				.style_raster = style_raster,
-				.shape2d = E_LINE,
+				.shape2d = SHAPE2D_LINE,
 			},
 			{
 				.polygon = polygon_00,
 				.style_raster = style_raster2,
-				.shape2d = E_LINE,
+				.shape2d = SHAPE2D_LINE,
 			},
 			{
 				.polygon = polygon_01,
 				.style_raster = style_raster2,
-				.shape2d = E_LINE,
+				.shape2d = SHAPE2D_LINE,
 			},
 			{
 				.polygon = polygon_02,
 				.style_raster = style_raster2,
-				.shape2d = E_LINE,
+				.shape2d = SHAPE2D_LINE,
 			},
 			{
 				.polygon = polygon_03,
 				.style_raster = style_raster2,
-				.shape2d = E_LINE,
+				.shape2d = SHAPE2D_LINE,
 			},
 		}
 	};

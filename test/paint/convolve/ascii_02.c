@@ -37,12 +37,12 @@ int	main(void)
 	i = 0;
 	while (i < length)
 	{
-		output = load_file_debug(arr[i], dst_dir, E_WRITE);
+		output = load_file_debug(arr[i], dst_dir, FILE_WRITE);
 		table_a = load_fdf_table_file(arr[i], src_dir,
 				parse_ascii_cheche01, false);
 		table_b = scale_dimension_fdf(&table_a, 5, 5);
 		table_c = convolve_fdf(&table_b, NULL, half_dim);
-		write_table_ascii_cheche01(output, &table_c, HEIGHT);
+		write_table_ascii_cheche01(output, &table_c, FDF_HEIGHT);
 		destroy_fdf_table(&table_a);
 		destroy_fdf_table(&table_b);
 		destroy_fdf_table(&table_c);

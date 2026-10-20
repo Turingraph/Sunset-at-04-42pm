@@ -36,10 +36,10 @@ void	render_fdf(t_hook2d *hook, bool is_draw)
 {
 	if (isvalid_hook2d(hook) == false)
 		return ;
-	if (hook->style_render.shape2d == E_LINE)
+	if (hook->style_render.shape2d == SHAPE2D_LINE)
 		render_picasso(hook, is_draw);
-	if (hook->style_render.shape2d == E_CIRCLE)
+	if (hook->style_render.shape2d == SHAPE2D_CIRCLE)
 		render_kusama(hook, is_draw);
-	if (hook->style_render.shape2d == E_RECTANGLE)
+	if (hook->style_render.shape2d == SHAPE2D_RECTANGLE)
 		render_tobyfox(hook, is_draw);
 }

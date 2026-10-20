@@ -14,7 +14,7 @@
 
 // time : O(n)
 // space: O(n)
-static void	inspect_ascii_unit(int fd, const t_fdf_load *src, const char *dict)
+static void	write_load_unit(int fd, const t_fdf_load *src, const char *dict)
 {
 	size_t	i;
 
@@ -32,7 +32,7 @@ static void	inspect_ascii_unit(int fd, const t_fdf_load *src, const char *dict)
 
 // time : O(n)
 // space: O(n)
-static void	inspect_ascii(int fd, const t_fdf_load_arr *src,
+static void	write_load(int fd, const t_fdf_load_arr *src,
 			const char *dict)
 {
 	size_t	i;
@@ -40,34 +40,34 @@ static void	inspect_ascii(int fd, const t_fdf_load_arr *src,
 	i = 0;
 	while (src != NULL && i < src->length && src->arr != NULL)
 	{
-		inspect_ascii_unit(fd, (const t_fdf_load *)&(src->arr[i]), dict);
+		write_load_unit(fd, (const t_fdf_load *)&(src->arr[i]), dict);
 		i += 1;
 	}
 }
 
 // time : O(n)
 // space: O(n)
-void	inspect_ascii_cheche01(int fd, const t_fdf_load_arr *src)
+void	write_load_cheche01(int fd, const t_fdf_load_arr *src)
 {
-	inspect_ascii(fd, src,
+	write_load(fd, src,
 		" `'.,:_-;~!^\"\\|)rvcilj+xnzt>=]*?}17JTC23"
 		"%Yoyhk4$5IF&XVUGZEwemqdgPKO980DQRHNB#WM@");
 }
 
 // time : O(n)
 // space: O(n)
-void	inspect_ascii_standard(int fd, const t_fdf_load_arr *src)
+void	write_load_standard(int fd, const t_fdf_load_arr *src)
 {
-	inspect_ascii(fd, src,
+	write_load(fd, src,
 		" .'`^\",:;Il!i>~+_-?]}1)|\\tjrxnvcz=7T23y"
 		"45FXYUJCQ0OZmwqdkhoVGEegP*#MW&8%K9DRHNB@$");
 }
 
 // time : O(n)
 // space: O(n)
-void	inspect_ascii_chungaloider(int fd, const t_fdf_load_arr *src)
+void	write_load_chungaloider(int fd, const t_fdf_load_arr *src)
 {
-	inspect_ascii(fd, src,
+	write_load(fd, src,
 		" `.-~'\":_,^=;>+!rc*\\z?TvJ7)|FiC}I31tlneoZ5Yxjy]"
 		"2EwqkPh9d4VOGUKXHm8RD#$Bg0MNWQ%&@");
 }

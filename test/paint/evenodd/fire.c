@@ -6,7 +6,7 @@ t_gradient	init_deep_wood()
 {
 	t_gradient	dst;
 
-	dst.cell_channel = D7_HEIGHT;
+	dst.cell_channel = GRADIENT_HEIGHT;
 	dst.input_start = -5;
 	dst.input_end = 0;
 	dst.rgba_start.r = 70;
@@ -26,7 +26,7 @@ t_gradient	init_popart(void)
 {
 	t_gradient	dst;
 
-	dst.cell_channel = D7_HEIGHT;
+	dst.cell_channel = GRADIENT_HEIGHT;
 	dst.input_start = 15;
 	dst.input_end = 30;
 	dst.rgba_start.r = 34;
@@ -46,7 +46,7 @@ t_gradient	init_feeling_blue(void)
 {
 	t_gradient	dst;
 
-	dst.cell_channel = D7_HEIGHT;
+	dst.cell_channel = GRADIENT_HEIGHT;
 	dst.input_start = 1;
 	dst.input_end = 10;
 	dst.rgba_start.r = 255;
@@ -77,9 +77,9 @@ int	main(void)
 
 	table = create_fdf_table(161, 161, true);
 	table2 = create_fdf_table(161, 161, true);
-	paint_space(&table, HEIGHT, cell_metric_amgm_inequality);
-	paint_space(&table2, HEIGHT, cell_metric_pythagoras);
-	set_cells_color(&table, 0, HEIGHT, is_3d_pythagoras);
+	paint_space(&table, FDF_HEIGHT, cell_metric_amgm_inequality);
+	paint_space(&table2, FDF_HEIGHT, cell_metric_pythagoras);
+	set_cells_color(&table, 0, FDF_HEIGHT, is_3d_pythagoras);
 	scale_relu_fdf(&table, -10000, 0, 0);
 	i = 0;
 	while (i < table.row * table.col)
@@ -89,7 +89,7 @@ int	main(void)
 		i += 1;
 	}
 	style.thickness = 2;
-	style.shape2d = E_CIRCLE;
+	style.shape2d = SHAPE2D_CIRCLE;
 	color_cells_gradient(&table, init_popart(), true);
 	color_cells_gradient(&table, init_feeling_blue(), true);
 	color_cells_gradient(&table, init_deep_wood(), true);

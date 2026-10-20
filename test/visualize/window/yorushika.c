@@ -6,7 +6,7 @@ t_gradient	init_white_noise(void)
 {
 	t_gradient	dst;
 
-	dst.cell_channel = D7_HEIGHT;
+	dst.cell_channel = GRADIENT_HEIGHT;
 	dst.input_start = 0;
 	dst.input_end = 0;
 	dst.rgba_start.r = 34;
@@ -26,7 +26,7 @@ t_gradient	init_feeling_blue(void)
 {
 	t_gradient	dst;
 
-	dst.cell_channel = D7_HEIGHT;
+	dst.cell_channel = GRADIENT_HEIGHT;
 	dst.input_start = 1;
 	dst.input_end = 100;
 	dst.rgba_start.r = 255;
@@ -46,7 +46,7 @@ t_gradient	init_popart(void)
 {
 	t_gradient	dst;
 
-	dst.cell_channel = D7_GREEN;
+	dst.cell_channel = GRADIENT_GREEN;
 	dst.input_start = 90;
 	dst.input_end = 120;
 	dst.rgba_start.r = 34;
@@ -75,10 +75,10 @@ int	main(int len, char **str)
 		return (0);
 	}
 	style.thickness = 2;
-	style.shape2d = E_CIRCLE;
+	style.shape2d = SHAPE2D_CIRCLE;
 	color_cells_gradient(&table, init_feeling_blue(), true);
 	color_cells_gradient(&table, init_popart(), true);
-	scale_multiplication_fdf(&table, 1.0 / 20.0, HEIGHT);
+	scale_multiplication_fdf(&table, 1.0 / 20.0, FDF_HEIGHT);
 	color_cells_gradient(&table, init_white_noise(), true);
 	output = create_fdf_proj2d(&table, proj2d_military, 1.0);
 	view_fdf(&output, style, rgba32_from_char(34, 79, 112, 255));

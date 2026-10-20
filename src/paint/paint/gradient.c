@@ -24,9 +24,9 @@ static int	gradient_smooth(t_fdf_channel rgba_type,
 	float	y2;
 
 	if (gradient_input.input_start == gradient_input.input_end)
-		return (get_rgba_input(rgba_type, gradient_input.rgba_start));
-	y1 = (float)(get_rgba_input(rgba_type, gradient_input.rgba_start));
-	y2 = (float)(get_rgba_input(rgba_type, gradient_input.rgba_end));
+		return (get_input_rgba(rgba_type, gradient_input.rgba_start));
+	y1 = (float)(get_input_rgba(rgba_type, gradient_input.rgba_start));
+	y2 = (float)(get_input_rgba(rgba_type, gradient_input.rgba_end));
 	dx = (float)(gradient_input.input_end - gradient_input.input_start);
 	if (dx == 0)
 		dx = 1;
@@ -46,19 +46,19 @@ static int	get_gradient_input(const t_fdf_table *src,
 		return (-255);
 	if (index >= src->row * src->col)
 		return (-255);
-	if (mode == D7_RED && src->r != NULL)
+	if (mode == GRADIENT_RED && src->r != NULL)
 		return ((int)src->r[index]);
-	if (mode == D7_GREEN && src->g != NULL)
+	if (mode == GRADIENT_GREEN && src->g != NULL)
 		return ((int)src->g[index]);
-	if (mode == D7_BLUE && src->b != NULL)
+	if (mode == GRADIENT_BLUE && src->b != NULL)
 		return ((int)src->b[index]);
-	if (mode == D7_ALPHA && src->a != NULL)
+	if (mode == GRADIENT_ALPHA && src->a != NULL)
 		return ((int)src->a[index]);
-	if (mode == D7_ROW)
+	if (mode == GRADIENT_ROW)
 		return ((int)(index / src->col));
-	if (mode == D7_COL)
+	if (mode == GRADIENT_COL)
 		return ((int)(index % src->col));
-	if (mode == D7_HEIGHT && src->arr != NULL)
+	if (mode == GRADIENT_HEIGHT && src->arr != NULL)
 		return ((int)src->arr[index]);
 	return (-255);
 }
@@ -97,17 +97,17 @@ static void	color_cells_gradient_unit(t_fdf_table *dst,
 		&& threshold <= gradient_input.input_end)
 	{
 		if (is_overwrite == true && dst->a != NULL
-			&& gradient_smooth(ALPHA, gradient_input, threshold) >= 0)
-			dst->a[i] = gradient_smooth(ALPHA, gradient_input, threshold);
-		if (dst->r != NULL && gradient_smooth(RED, gradient_input, threshold) >= 0)
+			&& gradient_smooth(FDF_ALPHA, gradient_input, threshold) >= 0)
+			dst->a[i] = gradient_smooth(FDF_ALPHA, gradient_input, threshold);
+		if (dst->r != NULL && gradient_smooth(FDF_RED, gradient_input, threshold) >= 0)
 			dst->r[i] = update_cell_color(alpha, is_overwrite, dst->r[i],
-					gradient_smooth(RED, gradient_input, threshold));
-		if (dst->g != NULL && gradient_smooth(GREEN, gradient_input, threshold) >= 0)
+					gradient_smooth(FDF_RED, gradient_input, threshold));
+		if (dst->g != NULL && gradient_smooth(FDF_GREEN, gradient_input, threshold) >= 0)
 			dst->g[i] = update_cell_color(alpha, is_overwrite, dst->g[i],
-					gradient_smooth(GREEN, gradient_input, threshold));
-		if (dst->b != NULL && gradient_smooth(BLUE, gradient_input, threshold) >= 0)
+					gradient_smooth(FDF_GREEN, gradient_input, threshold));
+		if (dst->b != NULL && gradient_smooth(FDF_BLUE, gradient_input, threshold) >= 0)
 			dst->b[i] = update_cell_color(alpha, is_overwrite, dst->b[i],
-					gradient_smooth(BLUE, gradient_input, threshold));
+					gradient_smooth(FDF_BLUE, gradient_input, threshold));
 	}
 }
 

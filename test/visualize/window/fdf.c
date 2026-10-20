@@ -6,7 +6,7 @@ t_gradient	init_gradient()
 {
 	t_gradient	dst;
 
-	dst.cell_channel = D7_HEIGHT;
+	dst.cell_channel = GRADIENT_HEIGHT;
 	dst.input_start = 0;
 	dst.input_end = 200;
 	dst.rgba_start.r = 70;
@@ -52,7 +52,7 @@ int	main(int len, char **str)
 		return (0);
 	}
 	style.thickness = 1;
-	style.shape2d = E_LINE;
+	style.shape2d = SHAPE2D_LINE;
 	color_cells_gradient(&table, init_gradient(), true);
 	output = create_fdf_proj2d(&table, proj2d_isometric, 0.5);
 	view_fdf(&output, style, rgba32_from_char(255, 255, 255, 255));

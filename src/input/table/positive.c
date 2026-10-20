@@ -42,16 +42,16 @@ int	fdf_table_minmax(const t_fdf_table *src,
 	i = 0;
 	while (src != NULL && i < src->col * src->row)
 	{
-		if (channel == HEIGHT && src->arr != NULL
+		if (channel == FDF_HEIGHT && src->arr != NULL
 			&& sign * y < sign * src->arr[i])
 			y = src->arr[i];
-		if (channel == ALPHA && src->a != NULL && sign * y < sign * src->a[i])
+		if (channel == FDF_ALPHA && src->a != NULL && sign * y < sign * src->a[i])
 			y = src->a[i];
-		if (channel == RED && src->r != NULL && sign * y < sign * src->r[i])
+		if (channel == FDF_RED && src->r != NULL && sign * y < sign * src->r[i])
 			y = src->r[i];
-		if (channel == GREEN && src->g != NULL && sign * y < sign * src->g[i])
+		if (channel == FDF_GREEN && src->g != NULL && sign * y < sign * src->g[i])
 			y = src->g[i];
-		if (channel == BLUE && src->b != NULL && sign * y < sign * src->b[i])
+		if (channel == FDF_BLUE && src->b != NULL && sign * y < sign * src->b[i])
 			y = src->b[i];
 		i += 1;
 	}
@@ -71,12 +71,12 @@ void	scale_positive_fdf(t_fdf_table *dst)
 {
 	int	y;
 
-	y = fdf_table_minmax((const t_fdf_table *)dst, false, HEIGHT);
+	y = fdf_table_minmax((const t_fdf_table *)dst, false, FDF_HEIGHT);
 	if (y < 0 && y > -2147483648)
 		y *= -1;
 	else if (y == -2147483648)
 		y = 0;
-	scale_addition_fdf(dst, y, HEIGHT);
+	scale_addition_fdf(dst, y, FDF_HEIGHT);
 }
 
 /**
