@@ -57,7 +57,7 @@ void			write_load_standard(int fd,
 void			write_load_chungaloider(int fd,
 					const t_fdf_load_arr *src);
 
-// write.c
+// write_decimal.c
 
 void			write_load_decimal(int fd, const t_fdf_load_arr *src,
 					size_t digits, t_fdf_write_mode write_style);

@@ -67,6 +67,11 @@ void			update_rgba(char *line, t_fdf_load *dst, size_t index);
 char			is_a_in_str(char s, const char *space);
 size_t			str_length(const char *str);
 
+// utils.c
+
+void			warning_fdf_load(const t_fdf_load *src, size_t i);
+bool			isvalid_fdf_load_arr(t_fdf_load_arr *src, int i);
+
 // write_ascii.c
 
 void			write_load_cheche01(int fd,
@@ -76,11 +81,9 @@ void			write_load_standard(int fd,
 void			write_load_chungaloider(int fd,
 					const t_fdf_load_arr *src);
 
-// write.c
+// write_decimal.c
 
 void			write_load_decimal(int fd, const t_fdf_load_arr *src,
 					size_t digits, t_fdf_write_mode write_style);
-void			warning_fdf_load(const t_fdf_load *src, size_t i);
-bool			isvalid_fdf_load_arr(t_fdf_load_arr *src, int i);
 
 #endif

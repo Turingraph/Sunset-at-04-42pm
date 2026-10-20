@@ -55,7 +55,7 @@ t_fdf_load		parse_decimal_bw(char *line);
 char			is_a_in_str(char s, const char *space);
 size_t			str_length(const char *str);
 
-// write.c
+// utils.c
 
 bool			isvalid_fdf_load_arr(t_fdf_load_arr *src, int i);
 

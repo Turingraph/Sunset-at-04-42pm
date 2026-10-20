@@ -89,4 +89,3 @@ general rule
 1.	Separate input/load/ as input/decimal/ and input/ascii/
 2.	doing input/table
 3.	doing paint/
-4.	naming Enum.
