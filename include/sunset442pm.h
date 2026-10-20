@@ -110,7 +110,7 @@ typedef struct t_2d_float
  * @param zoom coordinate scaling factor
  * @return complex coordinate of the selected cell.
  */
-t_2d_float	get_fdf_table_coordinate(const t_fdf_table *dst, size_t index, float zoom);
+t_2d_float	init_table_coordinate(const t_fdf_table *dst, size_t index, float zoom);
 
 /**
  * Check whether the product of 2 size_t type number cause integeroverflow,
@@ -123,7 +123,7 @@ t_2d_float	get_fdf_table_coordinate(const t_fdf_table *dst, size_t index, float 
  * @return true if the product are valid, greater than 0, and the index is within
  *         bounds; false otherwise.
  */
-bool	check_multiplication_overflow(size_t col, size_t row);
+bool	mul_overflow_size_t(size_t col, size_t row);
 
 /**
  * Check whether the product of 2 uint32_t type number cause integeroverflow,
@@ -136,7 +136,7 @@ bool	check_multiplication_overflow(size_t col, size_t row);
  * @return true if the product are valid, greater than 0, and the index is within
  *         bounds; false otherwise.
  */
-bool	check_multiplication_overflow_uint32_t(uint32_t col, uint32_t row);
+bool	mul_overflow_uint32_t(uint32_t col, uint32_t row);
 
 /* ************************************************************************** */
 /* src/utils/taylor/ */
@@ -1902,7 +1902,7 @@ t_fdf_proj2d	destroy_fdf_proj2d(t_fdf_proj2d *src);
  *
  * The returned FDF object owns the 2D position arrays of each cells of t_fdf_table,
  * based on the 2D projection of the table (determined by 2D projection
- * argument e.g. projection_isometric, projection_military etc.
+ * argument e.g. proj2d_isometric, proj2d_military etc.
  * ). If the projection is NULL,
  * then this function return the simple orthogonal projection of t_fdf_table.
  *
@@ -1916,14 +1916,14 @@ t_fdf_proj2d	destroy_fdf_proj2d(t_fdf_proj2d *src);
  * time/space: O(n) / O(n)
  *
  * @param src source table containing the FDF data
- * @param projection the functional pointer for define the projection of
+ * @param proj2d the functional pointer for define the projection of
  * t_fdf_table as t_fdf_proj2d.
  * @param scale for scaling Fdf object.
  * @return initialized t_fdf_proj2d object.
  * @see src/visualize/fdf/projection.c
  */
 t_fdf_proj2d	create_fdf_proj2d(t_fdf_table *src,
-	t_2d_float (*projection)(float x, float y, float z), float scale);
+	t_2d_float (*proj2d)(float x, float y, float z), float scale);
 
 /**
  * Apply an isometric projection to a 3D point.
@@ -1944,7 +1944,7 @@ t_fdf_proj2d	create_fdf_proj2d(t_fdf_table *src,
  * @param z z-coordinate of the 3D point
  * @return 2D complex point containing the projected coordinates
  */
-t_2d_float	projection_isometric(float x, float y, float z);
+t_2d_float	proj2d_isometric(float x, float y, float z);
 
 /**
  * Apply a military projection to a 3D point.
@@ -1965,7 +1965,7 @@ t_2d_float	projection_isometric(float x, float y, float z);
  * @param z z-coordinate of the 3D point
  * @return 2D complex point containing the projected coordinates
  */
-t_2d_float	projection_military(float x, float y, float z);
+t_2d_float	proj2d_military(float x, float y, float z);
 
 /**
  * Apply a cabinet projection to a 3D point.
@@ -1986,7 +1986,7 @@ t_2d_float	projection_military(float x, float y, float z);
  * @param z z-coordinate of the 3D point
  * @return 2D complex point containing the projected coordinates
  */
-t_2d_float	projection_cabinet(float x, float y, float z);
+t_2d_float	proj2d_cabinet(float x, float y, float z);
 
 /**
  * Apply an orthogonal projection to a 3D point.
@@ -2006,7 +2006,7 @@ t_2d_float	projection_cabinet(float x, float y, float z);
  * @param z z-coordinate of the 3D point
  * @return 2D complex point containing the projected coordinates
  */
-t_2d_float	projection_orthogonal(float x, float y, float z);
+t_2d_float	proj2d_orthogonal(float x, float y, float z);
 
 /**
  * Apply a wave projection to a 3D point.
@@ -2027,7 +2027,7 @@ t_2d_float	projection_orthogonal(float x, float y, float z);
  * @param z z-coordinate of the 3D point
  * @return 2D complex point containing the projected coordinates
  */
-t_2d_float	projection_wave(float x, float y, float z);
+t_2d_float	proj2d_wave(float x, float y, float z);
 
 /* ************************************************************************** */
 /* *** src/visualize/render/ *** */

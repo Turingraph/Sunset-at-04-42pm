@@ -111,7 +111,7 @@ t_2d_hook	init_2d_hook(mlx_t *mlx, t_fdf_proj2d *fdf, t_render_style render_styl
  * @param src FDF object to transform
  * @param fixed_window_size target size used for initial scaling
  */
-void	scale_fdf_as_window_object(t_fdf_proj2d *src, size_t fixed_window_size)
+void	normalize_fdf_proj2d(t_fdf_proj2d *src, size_t fixed_window_size)
 {
 	size_t		length;
 	float		scale;

@@ -77,7 +77,7 @@ static t_fdf_proj2d	fdf_proj2d_malloc(t_fdf_table *src)
 	t_fdf_proj2d	dst;
 
 	if (src == NULL
-		|| check_multiplication_overflow(src->col, src->row) == false)
+		|| mul_overflow_size_t(src->col, src->row) == false)
 		return (fdf_proj2d_null());
 	dst.r = src->r;
 	dst.g = src->g;
@@ -101,23 +101,23 @@ static t_fdf_proj2d	fdf_proj2d_malloc(t_fdf_table *src)
 // time : O(n)
 // space: O(1)
 static void	fdf_proj2d_update(const t_fdf_table *src, float *arr_x,
-	float *arr_y, t_2d_float (*projection)(float x, float y, float z))
+	float *arr_y, t_2d_float (*proj2d)(float x, float y, float z))
 {
 	size_t		i;
 	t_2d_float	dst;
 
 	if (src == NULL || arr_x == NULL || arr_y == NULL
-		|| check_multiplication_overflow(src->col, src->row) == false)
+		|| mul_overflow_size_t(src->col, src->row) == false)
 		return ;
 	i = 0;
 	while (i < src->row * src->col)
 	{
 		dst.x = (float)(i % src->col) - (float)(src->col / 2);
 		dst.y = (float)(i / src->col) - (float)(src->row / 2);
-		if (src->arr == NULL && projection != NULL)
-			dst = projection(dst.x, dst.y, 0.0);
-		else if (projection != NULL)
-			dst = projection(dst.x, dst.y, src->arr[i]);
+		if (src->arr == NULL && proj2d != NULL)
+			dst = proj2d(dst.x, dst.y, 0.0);
+		else if (proj2d != NULL)
+			dst = proj2d(dst.x, dst.y, src->arr[i]);
 		arr_x[i] = dst.x;
 		arr_y[i] = dst.y;
 		i += 1;
@@ -129,7 +129,7 @@ static void	fdf_proj2d_update(const t_fdf_table *src, float *arr_x,
  *
  * The returned FDF object owns the 2D position arrays of each cells of t_fdf_table,
  * based on the 2D projection of the table (determined by 2D projection
- * argument e.g. projection_isometric, projection_military etc.
+ * argument e.g. proj2d_isometric, proj2d_military etc.
  * ). If the projection is NULL,
  * then this function return the simple orthogonal projection of t_fdf_table.
  *
@@ -145,25 +145,25 @@ static void	fdf_proj2d_update(const t_fdf_table *src, float *arr_x,
  * status: public api
  *
  * @param src source table containing the FDF data
- * @param projection the functional pointer for define the projection of
+ * @param proj2d the functional pointer for define the projection of
  * t_fdf_table as t_fdf.
  * @param scale for scaling Fdf object.
  * @return initialized t_fdf object.
  * @see src/visualize/fdf/projection.c
  */
 t_fdf_proj2d	create_fdf_proj2d(t_fdf_table *src,
-	t_2d_float (*projection)(float x, float y, float z), float scale)
+	t_2d_float (*proj2d)(float x, float y, float z), float scale)
 {
 	t_fdf_proj2d	dst;
 	float	max_x;
 	float	min_x;
 
-	if (src == NULL || check_multiplication_overflow(src->col, src->row) == false)
+	if (src == NULL || mul_overflow_size_t(src->col, src->row) == false)
 		return (fdf_proj2d_null());
 	dst = fdf_proj2d_malloc(src);
 	if (dst.col == 0 || dst.row == 0)
 		return (dst);
-	fdf_proj2d_update(src, dst.x, dst.y, projection);
+	fdf_proj2d_update(src, dst.x, dst.y, proj2d);
 	vector_scale(dst.x, scale, src->col * src->row);
 	vector_scale(dst.y, scale, src->col * src->row);
 	min_x = (float)minmax_from_fdf_table(

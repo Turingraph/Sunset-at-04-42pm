@@ -28,7 +28,7 @@ void	scale_multiplication_fdf(t_fdf_table *dst, float scale,
 {
 	size_t	i;
 
-	if (dst == NULL || check_multiplication_overflow(dst->col, dst->row) == false)
+	if (dst == NULL || mul_overflow_size_t(dst->col, dst->row) == false)
 		return ;
 	i = 0;
 	while (i < dst->col * dst->row)
@@ -68,7 +68,7 @@ void	scale_addition_fdf(t_fdf_table *dst, int input, t_fdf_channel channel)
 {
 	size_t	i;
 
-	if (dst == NULL || check_multiplication_overflow(dst->col, dst->row) == false)
+	if (dst == NULL || mul_overflow_size_t(dst->col, dst->row) == false)
 		return ;
 	i = 0;
 	while (i < dst->col * dst->row)
@@ -110,8 +110,8 @@ void	fdf_table_addition(t_fdf_table *dst,
 	size_t	i;
 
 	if (src == NULL || dst == NULL
-		|| check_multiplication_overflow(dst->col, dst->row) == false
-		|| check_multiplication_overflow(src->col, src->row) == false
+		|| mul_overflow_size_t(dst->col, dst->row) == false
+		|| mul_overflow_size_t(src->col, src->row) == false
 		|| dst->row * dst->col != src->row * src->col)
 		return ;
 	i = 0;
@@ -155,8 +155,8 @@ void	fdf_table_hadamard(t_fdf_table *dst,
 	size_t	i;
 
 	if (src == NULL || dst == NULL
-		|| check_multiplication_overflow(dst->col, dst->row) == false
-		|| check_multiplication_overflow(src->col, src->row) == false
+		|| mul_overflow_size_t(dst->col, dst->row) == false
+		|| mul_overflow_size_t(src->col, src->row) == false
 		|| dst->row * dst->col != src->row * src->col)
 		return ;
 	i = 0;

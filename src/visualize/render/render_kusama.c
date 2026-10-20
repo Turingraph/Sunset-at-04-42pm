@@ -22,8 +22,8 @@ static void	render_kusama_unit(t_2d_hook *hook,
 
 	raster_style = hook_to_raster(hook, is_draw, ixiy);
 	position = world_to_screen2d(*hook->camera,
-			get_fdf_point(hook->fdf, ixiy, 1, 0),
-			get_fdf_point(hook->fdf, ixiy, 2, 0));
+			init_fdf_point1d(hook->fdf, ixiy, 1, 0),
+			init_fdf_point1d(hook->fdf, ixiy, 2, 0));
 	render_circle(position, raster_style, *hook->camera, hook->img);
 }
 

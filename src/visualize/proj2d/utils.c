@@ -35,7 +35,7 @@ int32_t	rgba32_from_proj2d(const t_fdf_proj2d *src, size_t index)
 	int32_t	a;
 
 	if (src == NULL
-		|| check_multiplication_overflow(src->col, src->row) == false
+		|| mul_overflow_size_t(src->col, src->row) == false
 		|| index >= src->row * src->col)
 		return (0);
 	r = 0;
@@ -60,7 +60,7 @@ bool	is_fdf_proj2d_valid(const t_fdf_proj2d *src)
 	if (src == NULL)
 		return (false);
 	if (src->width == 0
-		|| check_multiplication_overflow(src->col, src->row) == false
+		|| mul_overflow_size_t(src->col, src->row) == false
 		|| src->x == NULL
 		|| src->y == NULL)
 		return (false);

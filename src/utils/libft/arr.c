@@ -81,7 +81,7 @@ void	*malloc_talk(size_t elem_size, const char *comment)
  *
  * @return pointer to the requested channel array, or NULL if unavailable
  */
-unsigned char	*get_rgba_of_fdf_table(const t_fdf_table *src,
+unsigned char	*rgbarr_from_table(const t_fdf_table *src,
 	t_fdf_channel rgba_type)
 {
 	if (src == NULL)
@@ -109,7 +109,7 @@ unsigned char	*get_rgba_of_fdf_table(const t_fdf_table *src,
  * @param zoom coordinate scaling factor
  * @return complex coordinate of the selected cell.
  */
-t_2d_float	get_fdf_table_coordinate(const t_fdf_table *dst, size_t index, float zoom)
+t_2d_float	init_table_coordinate(const t_fdf_table *dst, size_t index, float zoom)
 {
 	t_2d_float	y;
 
@@ -150,7 +150,7 @@ Reference
  * @return true if the product are valid, greater than 0, and the index is within
  *         bounds; false otherwise.
  */
-bool	check_multiplication_overflow(size_t col, size_t row)
+bool	mul_overflow_size_t(size_t col, size_t row)
 {
 	if (col == 0 || row == 0 || col > SIZE_MAX / row
 		|| row > SIZE_MAX / col)
@@ -171,7 +171,7 @@ bool	check_multiplication_overflow(size_t col, size_t row)
  * @return true if the product are valid, greater than 0, and the index is within
  *         bounds; false otherwise.
  */
-bool	check_multiplication_overflow_uint32_t(uint32_t col, uint32_t row)
+bool	mul_overflow_uint32_t(uint32_t col, uint32_t row)
 {
 	if (col == 0 || row == 0 || col > UINT32_MAX / row
 		|| row > UINT32_MAX / col)

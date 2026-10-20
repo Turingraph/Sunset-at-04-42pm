@@ -55,7 +55,7 @@ static void	raster_liney(mlx_image_t *dst,
 void	raster_line(mlx_image_t *dst,
 	t_line line, t_line boundary, t_raster_style raster_style)
 {
-	if (dst == NULL || check_multiplication_overflow_uint32_t(dst->width, dst->height) == false)
+	if (dst == NULL || mul_overflow_uint32_t(dst->width, dst->height) == false)
 		return ;
 	if (f_abs_int(line.p2.x - line.p1.x) > f_abs_int(line.p2.y - line.p1.y))
 		raster_linex(dst, line, boundary, raster_style);

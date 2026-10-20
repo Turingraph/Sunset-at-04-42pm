@@ -89,7 +89,7 @@ void	view_fdf(t_fdf_proj2d *fdf, t_render_style fdf_render,
 		return ;
 	camera = init_2d_camera(SUNSET_WINDOW_WIDTH, SUNSET_WINDOW_HEIGHT);
 	hook.camera = &camera;
-	scale_fdf_as_window_object(fdf, f_max(SUNSET_WINDOW_WIDTH,
+	normalize_fdf_proj2d(fdf, f_max(SUNSET_WINDOW_WIDTH,
 			SUNSET_WINDOW_HEIGHT));
 	raster_color_background(hook.img, background_color);
 	render_fdf(&hook, true);

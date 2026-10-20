@@ -55,7 +55,7 @@ void	raster_color_background(mlx_image_t *dst, int32_t color)
 	int32_t	j;
 
 	if (dst == NULL
-		|| check_multiplication_overflow_uint32_t(dst->width, dst->height) == false)
+		|| mul_overflow_uint32_t(dst->width, dst->height) == false)
 		return ;
 	i = 0;
 	while (i < (int32_t)dst->height)
@@ -92,7 +92,7 @@ int32_t	rgba32_from_table(const t_fdf_table *src, size_t index)
 	int32_t	b;
 	int32_t	a;
 
-	if (src == NULL || check_multiplication_overflow(src->col, src->row) == false
+	if (src == NULL || mul_overflow_size_t(src->col, src->row) == false
 		|| index >= src->row * src->col)
 		return (0);
 	r = 0;

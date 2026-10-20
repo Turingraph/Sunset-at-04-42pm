@@ -78,11 +78,11 @@ unsigned char	*scale_dimension_fdf_rgba(const t_fdf_table *src,
 	unsigned char	*dst;
 	unsigned char	*arr;
 
-	arr = get_rgba_of_fdf_table(src, rgba_type);
+	arr = rgbarr_from_table(src, rgba_type);
 	if (arr == NULL || src == NULL || src->arr == NULL
-		|| check_multiplication_overflow(scale_col, scale_row) == false
-		|| check_multiplication_overflow(src->row, src->col) == false
-		|| check_multiplication_overflow(scale_row * scale_col, src->row * src->col) == false)
+		|| mul_overflow_size_t(scale_col, scale_row) == false
+		|| mul_overflow_size_t(src->row, src->col) == false
+		|| mul_overflow_size_t(scale_row * scale_col, src->row * src->col) == false)
 		return (NULL);
 	dst = malloc(sizeof(unsigned char) * src->row * src->col * scale_row * scale_col);
 	if (dst == NULL)
@@ -122,9 +122,9 @@ int	*scale_dimension_fdf_int(const t_fdf_table *src,
 	int			*dst;
 
 	if (src == NULL || src->arr == NULL
-		|| check_multiplication_overflow(scale_col, scale_row) == false
-		|| check_multiplication_overflow(src->row, src->col) == false
-		|| check_multiplication_overflow(scale_row * scale_col, src->row * src->col) == false)
+		|| mul_overflow_size_t(scale_col, scale_row) == false
+		|| mul_overflow_size_t(src->row, src->col) == false
+		|| mul_overflow_size_t(scale_row * scale_col, src->row * src->col) == false)
 		return (NULL);
 	dst = malloc(sizeof(int) * src->row * src->col * scale_row * scale_col);
 	if (dst == NULL)
@@ -162,9 +162,9 @@ t_fdf_table	scale_dimension_fdf(const t_fdf_table *src,
 	t_fdf_table	dst;
 
 	if (src == NULL || src->arr == NULL
-		|| check_multiplication_overflow(scale_col, scale_row) == false
-		|| check_multiplication_overflow(src->row, src->col) == false
-		|| check_multiplication_overflow(scale_row * scale_col, src->row * src->col) == false)
+		|| mul_overflow_size_t(scale_col, scale_row) == false
+		|| mul_overflow_size_t(src->row, src->col) == false
+		|| mul_overflow_size_t(scale_row * scale_col, src->row * src->col) == false)
 		return (create_fdf_table(0, 0, false));
 	dst.col = scale_col * src->col;
 	dst.row = scale_row * src->row;

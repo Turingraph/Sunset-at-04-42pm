@@ -38,13 +38,13 @@ void	paint_space(t_fdf_table *dst, t_fdf_channel channel,
 	unsigned char	*rgba;
 
 	if (dst == NULL || dst->arr == NULL
-		|| check_multiplication_overflow(dst->col, dst->row) == false)
+		|| mul_overflow_size_t(dst->col, dst->row) == false)
 		return ;
-	rgba = get_rgba_of_fdf_table(dst, channel);
+	rgba = rgbarr_from_table(dst, channel);
 	i = 0;
 	while (i < dst->row * dst->col)
 	{
-		z = get_fdf_table_coordinate(dst, i, 1);
+		z = init_table_coordinate(dst, i, 1);
 		y = (int)(f_abs(z.x) + f_abs(z.y));
 		y = (int)f_round(f_root_finding(y, 2));
 		if (cell_metric != NULL)

@@ -92,7 +92,7 @@ t_2d_int		init_tile_ith(t_tile_format tiles,
 // utils.c
 
 bool			is_islamic_art_valid(const t_islamic_art *src);
-t_line			define_motif_line(t_2d_float point_1, t_2d_float point_2,
+t_line			init_motif_line(t_2d_float point_1, t_2d_float point_2,
 					t_line boundary);
 
 #endif

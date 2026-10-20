@@ -71,7 +71,7 @@ int	main(void)
 	style.artists = E_EULER;
 	color_cells_gradient(&table, init_deep_sea(), true);
 	scale_multiplication_fdf(&table, 1.0 / 120.0, HEIGHT);
-	output = create_fdf_proj2d(&table, projection_isometric, 0.6);
+	output = create_fdf_proj2d(&table, proj2d_isometric, 0.6);
 	view_fdf(&output, style);
 	destroy_fdf_table(&table);
 	destroy_fdf_table(&table_base);
@@ -175,7 +175,7 @@ int	main(int len, char **str)
 	style.thickness = 1;
 	style.shape_2d = E_LINE;
 	color_cells_gradient(&table, init_gradient(), true);
-	output = create_fdf_proj2d(&table, projection_isometric, 0.5);
+	output = create_fdf_proj2d(&table, proj2d_isometric, 0.5);
 	view_fdf(&output, style, rgba_to_int32(255, 255, 255, 255));
 	destroy_fdf_table(&table);
 	destroy_fdf_proj2d(&output);
@@ -286,7 +286,7 @@ int	main(int len, char **str)
 	color_cells_gradient(&table, init_ztmy_timeleft(), true);
 	scale_multiplication_fdf(&table, 1.0 / 3.0, HEIGHT);
 	color_cells_gradient(&table, init_white_noise(), true);
-	output = create_fdf_proj2d(&table, projection_isometric, 1.0);
+	output = create_fdf_proj2d(&table, proj2d_isometric, 1.0);
 	view_fdf(&output, style, rgba_to_int32(0, 0, 0, 255));
 	destroy_fdf_table(&table);
 	destroy_fdf_proj2d(&output);

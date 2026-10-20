@@ -38,7 +38,7 @@ static void	raster_motif_circle(mlx_image_t *dst,
 	i = 0;
 	while (dst != NULL && polygon != NULL && i < polygon->length)
 	{
-		line = define_motif_line(polygon->arr[i], polygon->arr[i], boundary);
+		line = init_motif_line(polygon->arr[i], polygon->arr[i], boundary);
 		point.x = line.p1.x;
 		point.y = line.p1.y;
 		raster_circle(dst, point, raster_style, boundary);
@@ -71,14 +71,14 @@ static void	raster_motif_line(mlx_image_t *dst, const t_2d_polygon *polygon,
 	i = 0;
 	while (dst != NULL && polygon != NULL && i < polygon->length - 1)
 	{
-		line = define_motif_line(polygon->arr[i], polygon->arr[i + 1], boundary);
+		line = init_motif_line(polygon->arr[i], polygon->arr[i + 1], boundary);
 		raster_line(dst, line, boundary, raster_style);
 		i += 1;
 	}
 	if (dst != NULL && polygon != NULL
 		&& i == polygon->length - 1 && polygon->is_loop == true)
 	{
-		line = define_motif_line(polygon->arr[i], polygon->arr[0], boundary);
+		line = init_motif_line(polygon->arr[i], polygon->arr[0], boundary);
 		raster_line(dst, line, boundary, raster_style);
 	}
 }
@@ -109,7 +109,7 @@ static void	raster_motif_rectangle(mlx_image_t *dst,
 	while (dst != NULL && polygon != NULL
 		&& polygon->length > 0 && i < polygon->length - 1)
 	{
-		line = define_motif_line(polygon->arr[i], polygon->arr[i + 1], boundary);
+		line = init_motif_line(polygon->arr[i], polygon->arr[i + 1], boundary);
 		raster_rectangle(dst, line, boundary, raster_style);
 		i += 1;
 	}
@@ -117,7 +117,7 @@ static void	raster_motif_rectangle(mlx_image_t *dst,
 		&& polygon->length > 0 && i == polygon->length - 1
 		&& polygon->is_loop == true)
 	{
-		line = define_motif_line(polygon->arr[i], polygon->arr[0], boundary);
+		line = init_motif_line(polygon->arr[i], polygon->arr[0], boundary);
 		raster_rectangle(dst, line, boundary, raster_style);
 	}
 }

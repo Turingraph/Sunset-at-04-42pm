@@ -19,7 +19,7 @@
 bool	is_boundary_fdf(const t_fdf_table *dst, size_t index, int threshold)
 {
 	if (dst == NULL || dst->arr == NULL
-		|| check_multiplication_overflow(dst->col, dst->row) == false
+		|| mul_overflow_size_t(dst->col, dst->row) == false
 		|| index >= dst->col * dst->row)
 		return (false);
 	if (dst->arr[index] > threshold
@@ -67,7 +67,7 @@ int	count_neighbor_fdf(const t_fdf_table *dst, size_t index, int threshold)
 
 	y = 0;
 	if (dst == NULL || dst->arr == NULL
-		|| check_multiplication_overflow(dst->col, dst->row) == false
+		|| mul_overflow_size_t(dst->col, dst->row) == false
 		|| index >= dst->col * dst->row)
 		return (y);
 	if (index % dst->col < dst->col - 1 && dst->arr[index + 1] > threshold)

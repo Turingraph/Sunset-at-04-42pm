@@ -21,7 +21,7 @@ float	*gaussian_kernel_1d(size_t half_dim, float std)
 	float	*kernel;
 	float	sum;
 
-	if (check_multiplication_overflow(2, half_dim) == false)
+	if (mul_overflow_size_t(2, half_dim) == false)
 		return (NULL);
 	kernel = malloc_talk(sizeof(float) * (2 * half_dim + 1),
 			"gaussian_kernel_1d\n");
@@ -100,7 +100,7 @@ float	*edge_kernel_1d(size_t inner_dim, size_t outer_dim,
 	size_t	i;
 	float	*kernel;
 
-	if (check_multiplication_overflow(outer_dim / 2, outer_dim / 2) == false)
+	if (mul_overflow_size_t(outer_dim / 2, outer_dim / 2) == false)
 		return (NULL);
 	kernel = malloc_talk(sizeof(float) * outer_dim, "edge_kernel_1d\n");
 	if (kernel == NULL)
@@ -198,7 +198,7 @@ float	*edge_kernel(size_t inner_dim, size_t outer_dim, float input, float kernel
 		inner_dim = outer_dim;
 		outer_dim = swap_dim;
 	}
-	if (check_multiplication_overflow(outer_dim, outer_dim) == false)
+	if (mul_overflow_size_t(outer_dim, outer_dim) == false)
 		return (NULL);
 	outer_num = define_outer_num((float)inner_dim, (float)outer_dim, input, kernel_sum);
 	vec_v = edge_kernel_1d(inner_dim, outer_dim, input, outer_num);

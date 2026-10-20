@@ -72,7 +72,7 @@ static t_2d_int	float2d_to_int2d(t_2d_float src, t_line boundary)
  * @param boundary target rectangular boundary
  * @return integer line mapped to the boundary
  */
-t_line	define_motif_line(t_2d_float point_1, t_2d_float point_2,
+t_line	init_motif_line(t_2d_float point_1, t_2d_float point_2,
 	t_line boundary)
 {
 	t_line	dst;

@@ -58,7 +58,7 @@ t_fdf_table	create_fdf_table(size_t row, size_t col, bool is_rgba)
 	t_fdf_table	dst;
 
 	dst.arr = NULL;
-	if (check_multiplication_overflow(col, row) == true)
+	if (mul_overflow_size_t(col, row) == true)
 		dst.arr = malloc_talk(sizeof(int) * row * col,
 				"input/table/init.c/create_fdf_table\n");
 	dst.row = row;
@@ -67,7 +67,7 @@ t_fdf_table	create_fdf_table(size_t row, size_t col, bool is_rgba)
 	dst.g = NULL;
 	dst.b = NULL;
 	dst.a = NULL;
-	if (is_rgba == true && check_multiplication_overflow(col, row) == true)
+	if (is_rgba == true && mul_overflow_size_t(col, row) == true)
 	{
 		dst.r = malloc_talk(sizeof(unsigned char) * row * col,
 				"input/table/init.c/create_fdf_table\n");
@@ -107,7 +107,7 @@ void	load_rgba_for_fdf_table(const t_fdf_load *src,
 	t_fdf_table *dst, size_t row, size_t col)
 {
 	if (src != NULL && dst != NULL
-		&& check_multiplication_overflow(dst->col, dst->row) == true
+		&& mul_overflow_size_t(dst->col, dst->row) == true
 		&& col < dst->col * dst->row
 		&& row < dst->row && col < dst->col && col < src->length)
 	{

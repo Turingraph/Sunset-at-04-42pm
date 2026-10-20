@@ -89,7 +89,7 @@ int	main(void)
 	}
 	color_cells_gradient(&table, init_white_noise(), true);
 	scale_multiplication_fdf(&table, 1.0 / 30.0, HEIGHT);
-	output = create_fdf_proj2d(&table, projection_cabinet, 1.3);
+	output = create_fdf_proj2d(&table, proj2d_cabinet, 1.3);
 	view_fdf(&output, style, rgba32_from_char(0, 0, 0, 255));
 	destroy_fdf_table(&table);
 	destroy_fdf_table(&table_base);

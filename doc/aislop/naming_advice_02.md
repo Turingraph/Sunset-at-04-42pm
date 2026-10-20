@@ -142,7 +142,7 @@ Consider:
 
 ```
 t_fdf_table table = create_fdf_table(300, 300, false);
-t_fdf output = create_fdf_proj2d(&table, projection_isometric, 0.6);
+t_fdf output = create_fdf_proj2d(&table, proj2d_isometric, 0.6);
 ```
 
 A developer might wonder:
@@ -368,8 +368,8 @@ That breadth is interesting, but it creates a design question: which concepts be
 For example:
 
 ```
-projection_isometric(...)
-projection_cabinet(...)
+proj2d_isometric(...)
+proj2d_cabinet(...)
 ```
 
 These names suggest a clear projection abstraction.
@@ -474,16 +474,16 @@ But the current name isn't intrinsically bad.
 
 If your users are familiar with Hadamard products, the mathematical term is informative. I wouldn't replace it with a generic name such as `combine_tables()` merely to achieve superficial consistency.
 
-### Projection names such as `projection_isometric`
+### Projection names such as `proj2d_isometric`
 
 These names communicate recognizable concepts.
 
 You might eventually adopt a more uniform API such as:
 
 ```
-projection_isometric(...)
-projection_cabinet(...)
-projection_orthographic(...)
+proj2d_isometric(...)
+proj2d_cabinet(...)
+proj2d_orthographic(...)
 ```
 
 But if the existing names already follow that pattern, there's little reason to change them.

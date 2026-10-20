@@ -155,7 +155,7 @@ void	raster_circle(mlx_image_t *dst,
 	int		pivot;
 	t_line	line;
 
-	if (dst == NULL || check_multiplication_overflow_uint32_t(dst->width, dst->height) == false)
+	if (dst == NULL || mul_overflow_uint32_t(dst->width, dst->height) == false)
 		return ;
 	pivot = raster_style.thickness * -1;
 	iy = -1 * raster_style.thickness;

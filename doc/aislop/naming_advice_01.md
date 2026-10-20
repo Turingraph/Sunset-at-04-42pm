@@ -31,7 +31,7 @@ scale_relu_fdf(&table, 201, 2000, 0);
 color_cells_gradient(&table, init_deep_sea(), true);
 scale_multiplication_fdf(&table, 1.0 / 120.0, HEIGHT);
 
-output = create_fdf_proj2d(&table, projection_isometric, 0.6);
+output = create_fdf_proj2d(&table, proj2d_isometric, 0.6);
 view_fdf(&output, style);
 
 destroy_fdf_table(&table);
@@ -125,7 +125,7 @@ I'd use the following rules as a starting point.
 | --- | --- | --- |
 | Public functions | `snake_case` | `surface_create()` |
 | Public types | `PascalCase` or your existing `t_` convention | `Surface` or `t_surface` |
-| Enumerators | `SCREAMING_SNAKE_CASE` | `PROJECTION_ISOMETRIC` |
+| Enumerators | `SCREAMING_SNAKE_CASE` | `proj2d_isOMETRIC` |
 | Macros | `SCREAMING_SNAKE_CASE` | `SURFACE_MAX_DIMENSION` |
 | Private functions | `static` plus `snake_case` | `static map_height_to_color()` |
 | Local variables | `snake_case` | `surface_width` |
@@ -428,13 +428,13 @@ That distinction gives you a natural vocabulary for gradients, channel-based col
 Responsible for converting mathematical coordinates into projected coordinates.
 
 ```
-projection_isometric(...)
-projection_cabinet(...)
-projection_orthographic(...)
+proj2d_isometric(...)
+proj2d_cabinet(...)
+proj2d_orthographic(...)
 surface_project(...)
 ```
 
-Your current names, such as `projection_isometric` and `projection_cabinet`, are already fairly descriptive.
+Your current names, such as `proj2d_isometric` and `proj2d_cabinet`, are already fairly descriptive.
 
 I'd preserve established mathematical terminology wherever possible instead of renaming things just for the sake of uniformity.
 
@@ -551,7 +551,7 @@ And:
 ```
 t_fdf output;
 
-output = create_fdf_proj2d(&table, projection_isometric, 0.6);
+output = create_fdf_proj2d(&table, proj2d_isometric, 0.6);
 
 /* Use output. */
 
@@ -777,7 +777,7 @@ surface_scale(
 /* Project and render. */
 t_fdf output = fdf_create(
     &surface,
-    projection_cabinet,
+    proj2d_cabinet,
     0.6
 );
 
@@ -999,7 +999,7 @@ If those questions have clear answers, your API is much less likely to become ar
 
 ## My overall verdict
 
-I wouldn't say that your API needs a completely new naming style. Much of it is already understandable, and names such as `projection_isometric`, `projection_cabinet`, and `fdf_table_hadamard` communicate recognizable concepts.
+I wouldn't say that your API needs a completely new naming style. Much of it is already understandable, and names such as `proj2d_isometric`, `proj2d_cabinet`, and `fdf_table_hadamard` communicate recognizable concepts.
 
 The underlying issue is that **the API doesn't yet appear to have a sufficiently explicit vocabulary for expressing its different kinds of operations**.
 

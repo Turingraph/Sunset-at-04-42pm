@@ -55,7 +55,7 @@ void	write_fdf_table(int fd, const t_fdf_table *src,
 	i = 0;
 	while (src != NULL && src->arr != NULL
 		&& i < src->row
-		&& check_multiplication_overflow(src->col, src->row) == true && i < src->col * src->row && fd > -1)
+		&& mul_overflow_size_t(src->col, src->row) == true && i < src->col * src->row && fd > -1)
 	{
 		j = 0;
 		while (j < src->col)
@@ -99,7 +99,7 @@ void	write_table_ascii(int fd, const t_fdf_table *src,
 
 	i = 0;
 	while (src != NULL && i < src->row
-		&& check_multiplication_overflow(src->col, src->row) && fd > -1)
+		&& mul_overflow_size_t(src->col, src->row) && fd > -1)
 	{
 		j = 0;
 		while (j < src->col)
@@ -107,7 +107,7 @@ void	write_table_ascii(int fd, const t_fdf_table *src,
 			left_char = true;
 			if (j >= src->col / 2)
 				left_char = false;
-			arr = get_rgba_of_fdf_table(src, channel);
+			arr = rgbarr_from_table(src, channel);
 			if (src->arr != NULL && channel == HEIGHT)
 				ft_put_ascii_fd(fd,
 					(int)src->arr[i * src->col + j], dict, left_char);

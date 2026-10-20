@@ -80,7 +80,7 @@ int	main(int len, char **str)
 	color_cells_gradient(&table, init_popart(), true);
 	scale_multiplication_fdf(&table, 1.0 / 20.0, HEIGHT);
 	color_cells_gradient(&table, init_white_noise(), true);
-	output = create_fdf_proj2d(&table, projection_military, 1.0);
+	output = create_fdf_proj2d(&table, proj2d_military, 1.0);
 	view_fdf(&output, style, rgba32_from_char(34, 79, 112, 255));
 	destroy_fdf_table(&table);
 	destroy_fdf_proj2d(&output);

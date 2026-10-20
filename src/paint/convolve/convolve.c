@@ -128,8 +128,8 @@ t_fdf_table	convolve_fdf(const t_fdf_table *src, float *kernel,
 
 	if (src == NULL || src->arr == NULL
 		|| 2147483647 <= dim
-		|| check_multiplication_overflow(src->col, src->row) == false
-		|| check_multiplication_overflow(dim, dim) == false)
+		|| mul_overflow_size_t(src->col, src->row) == false
+		|| mul_overflow_size_t(dim, dim) == false)
 		return (create_fdf_table(0, 0, false));
 	if (dim % 2 == 0)
 		dim += 1;

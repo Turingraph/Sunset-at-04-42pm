@@ -80,14 +80,14 @@ bool	is_binary_search_length_odd(const t_fdf_table *dst, size_t index)
 	size_t		max;
 	t_2d_float	y;
 
-	if (dst == NULL || check_multiplication_overflow(dst->col, dst->row) == false || index >= dst->col * dst->row)
+	if (dst == NULL || mul_overflow_size_t(dst->col, dst->row) == false || index >= dst->col * dst->row)
 		return (false);
-	y = get_fdf_table_coordinate(dst, index, 1.0);
+	y = init_table_coordinate(dst, index, 1.0);
 	input = f_round(complex_magnitude(y, 0));
 	if (input < 0)
 		input *= -1;
-	if (check_multiplication_overflow(dst->row, dst->row) == false
-		|| check_multiplication_overflow(dst->col, dst->col) == false)
+	if (mul_overflow_size_t(dst->row, dst->row) == false
+		|| mul_overflow_size_t(dst->col, dst->col) == false)
 		max = binary_search_count((size_t)input, dst->row + dst->col);
 	else
 		max = binary_search_count((size_t)input,
@@ -125,9 +125,9 @@ bool	is_binary_search_product_odd(const t_fdf_table *dst, size_t index)
 	int			input;
 	size_t		max;
 
-	if (dst == NULL || check_multiplication_overflow(dst->col, dst->row) == false || index >= dst->col * dst->row)
+	if (dst == NULL || mul_overflow_size_t(dst->col, dst->row) == false || index >= dst->col * dst->row)
 		return (false);
-	y = get_fdf_table_coordinate(dst, index, 1.0);
+	y = init_table_coordinate(dst, index, 1.0);
 	input = (int)f_round(y.x) * (int)f_round(y.y);
 	if (input < 0)
 		input *= -1;
@@ -158,9 +158,9 @@ bool	is_binary_search_andmod(const t_fdf_table *dst, size_t index)
 	size_t		max_x;
 	size_t		max_y;
 
-	if (dst == NULL || check_multiplication_overflow(dst->col, dst->row) == false || index >= dst->col * dst->row)
+	if (dst == NULL || mul_overflow_size_t(dst->col, dst->row) == false || index >= dst->col * dst->row)
 		return (false);
-	y = get_fdf_table_coordinate(dst, index, 1.0);
+	y = init_table_coordinate(dst, index, 1.0);
 	if (y.x < 0)
 		y.x *= -1;
 	if (y.y < 0)

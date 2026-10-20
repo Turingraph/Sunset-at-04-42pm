@@ -23,11 +23,11 @@ static t_line	render_tobyfox_unit(t_2d_hook *hook, t_2d_int ixiy)
 	l = 0;
 	r = 3;
 	rec.p1 = world_to_screen2d(*hook->camera,
-			get_fdf_point(hook->fdf, ixiy, 1, l),
-			get_fdf_point(hook->fdf, ixiy, 2, l));
+			init_fdf_point1d(hook->fdf, ixiy, 1, l),
+			init_fdf_point1d(hook->fdf, ixiy, 2, l));
 	rec.p2 = world_to_screen2d(*hook->camera,
-			get_fdf_point(hook->fdf, ixiy, 1, r),
-			get_fdf_point(hook->fdf, ixiy, 2, r));
+			init_fdf_point1d(hook->fdf, ixiy, 1, r),
+			init_fdf_point1d(hook->fdf, ixiy, 2, r));
 	return (rec);
 }
 

@@ -41,7 +41,7 @@ Reference
  * @param z z-coordinate of the 3D point
  * @return 2D complex point containing the projected coordinates
  */
-t_2d_float	projection_isometric(float x, float y, float z)
+t_2d_float	proj2d_isometric(float x, float y, float z)
 {
 	t_2d_float	dst;
 
@@ -71,7 +71,7 @@ t_2d_float	projection_isometric(float x, float y, float z)
  * @param z z-coordinate of the 3D point
  * @return 2D complex point containing the projected coordinates
  */
-t_2d_float	projection_military(float x, float y, float z)
+t_2d_float	proj2d_military(float x, float y, float z)
 {
 	t_2d_float	dst;
 
@@ -101,7 +101,7 @@ t_2d_float	projection_military(float x, float y, float z)
  * @param z z-coordinate of the 3D point
  * @return 2D complex point containing the projected coordinates
  */
-t_2d_float	projection_cabinet(float x, float y, float z)
+t_2d_float	proj2d_cabinet(float x, float y, float z)
 {
 	t_2d_float	dst;
 
@@ -130,7 +130,7 @@ t_2d_float	projection_cabinet(float x, float y, float z)
  * @param z z-coordinate of the 3D point
  * @return 2D complex point containing the projected coordinates
  */
-t_2d_float	projection_orthogonal(float x, float y, float z)
+t_2d_float	proj2d_orthogonal(float x, float y, float z)
 {
 	t_2d_float	dst;
 
@@ -160,7 +160,7 @@ t_2d_float	projection_orthogonal(float x, float y, float z)
  * @param z z-coordinate of the 3D point
  * @return 2D complex point containing the projected coordinates
  */
-t_2d_float	projection_wave(float x, float y, float z)
+t_2d_float	proj2d_wave(float x, float y, float z)
 {
 	t_2d_float	dst;
 

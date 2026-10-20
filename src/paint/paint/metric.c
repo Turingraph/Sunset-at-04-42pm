@@ -16,9 +16,9 @@ int	cell_metric_pythagoras(const t_fdf_table *dst, size_t index)
 {
 	t_2d_float	y;
 
-	if (dst == NULL || check_multiplication_overflow(dst->col, dst->row) == false || index >= dst->col * dst->row)
+	if (dst == NULL || mul_overflow_size_t(dst->col, dst->row) == false || index >= dst->col * dst->row)
 		return (false);
-	y = get_fdf_table_coordinate(dst, index, 1.0);
+	y = init_table_coordinate(dst, index, 1.0);
 	return ((int)complex_magnitude(y, 0));
 }
 
@@ -37,9 +37,9 @@ int	cell_metric_max_xy(const t_fdf_table *dst, size_t index)
 {
 	t_2d_float	y;
 
-	if (dst == NULL || check_multiplication_overflow(dst->col, dst->row) == false || index >= dst->col * dst->row)
+	if (dst == NULL || mul_overflow_size_t(dst->col, dst->row) == false || index >= dst->col * dst->row)
 		return (false);
-	y = get_fdf_table_coordinate(dst, index, 1.0);
+	y = init_table_coordinate(dst, index, 1.0);
 	return ((int)(f_max(f_abs(y.x), f_abs(y.y))));
 }
 
@@ -59,9 +59,9 @@ int	cell_metric_addsub(const t_fdf_table *dst, size_t index)
 {
 	t_2d_float	y;
 
-	if (dst == NULL || check_multiplication_overflow(dst->col, dst->row) == false || index >= dst->col * dst->row)
+	if (dst == NULL || mul_overflow_size_t(dst->col, dst->row) == false || index >= dst->col * dst->row)
 		return (false);
-	y = get_fdf_table_coordinate(dst, index, 1.0);
+	y = init_table_coordinate(dst, index, 1.0);
 	return ((int)f_abs(y.x + y.y));
 }
 
@@ -81,9 +81,9 @@ int	cell_metric_root_xy(const t_fdf_table *dst, size_t index)
 {
 	t_2d_float	y;
 
-	if (dst == NULL || check_multiplication_overflow(dst->col, dst->row) == false || index >= dst->col * dst->row)
+	if (dst == NULL || mul_overflow_size_t(dst->col, dst->row) == false || index >= dst->col * dst->row)
 		return (false);
-	y = get_fdf_table_coordinate(dst, index, 1.0);
+	y = init_table_coordinate(dst, index, 1.0);
 	return ((int)f_round(f_root_finding(f_abs(y.x * y.y), 2)));
 }
 
@@ -106,9 +106,9 @@ int	cell_metric_fermat_theorem(const t_fdf_table *dst, size_t index)
 	int			b;
 	int			c;
 
-	if (dst == NULL || check_multiplication_overflow(dst->col, dst->row) == false || index >= dst->col * dst->row)
+	if (dst == NULL || mul_overflow_size_t(dst->col, dst->row) == false || index >= dst->col * dst->row)
 		return (false);
-	y = get_fdf_table_coordinate(dst, index, 1.0);
+	y = init_table_coordinate(dst, index, 1.0);
 	a = (int)f_pow(f_abs(y.x), 3);
 	b = (int)f_pow(f_abs(y.y), 3);
 	c = a + b;

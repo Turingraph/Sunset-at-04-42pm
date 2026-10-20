@@ -26,10 +26,10 @@ bool	is_re2_diff_im2_odd_func(const t_fdf_table *dst, size_t index,
 	int			product;
 
 	if (dst == NULL
-		|| check_multiplication_overflow(dst->col, dst->row) == false
+		|| mul_overflow_size_t(dst->col, dst->row) == false
 		|| index >= dst->col * dst->row)
 		return (false);
-	y = get_fdf_table_coordinate(dst, index, zoom);
+	y = init_table_coordinate(dst, index, zoom);
 	if (complex_func != NULL)
 		y = complex_func(y);
 	product = (int)f_round(y.x * y.x - y.y * y.y);
@@ -82,10 +82,10 @@ bool	is_oddlength_func(const t_fdf_table *dst, size_t index,
 	t_2d_float	y;
 
 	if (dst == NULL
-		|| check_multiplication_overflow(dst->col, dst->row) == false
+		|| mul_overflow_size_t(dst->col, dst->row) == false
 		|| index >= dst->col * dst->row)
 		return (false);
-	y = get_fdf_table_coordinate(dst, index, zoom);
+	y = init_table_coordinate(dst, index, zoom);
 	if (complex_func != NULL)
 		y = complex_func(y);
 	if ((int)f_round(complex_magnitude(y, 0)) % 2 == 1)
@@ -138,10 +138,10 @@ bool	is_andmod_func(const t_fdf_table *dst, size_t index,
 	t_2d_float	y;
 
 	if (dst == NULL
-		|| check_multiplication_overflow(dst->col, dst->row) == false
+		|| mul_overflow_size_t(dst->col, dst->row) == false
 		|| index >= dst->col * dst->row)
 		return (false);
-	y = get_fdf_table_coordinate(dst, index, zoom);
+	y = init_table_coordinate(dst, index, zoom);
 	if (complex_func != NULL)
 		y = complex_func(y);
 	if (y.x < 0)

@@ -33,7 +33,7 @@ int	minmax_from_fdf_table(const t_fdf_table *src,
 	size_t	i;
 	int		y;
 
-	if (check_multiplication_overflow(src->col, src->row) == false)
+	if (mul_overflow_size_t(src->col, src->row) == false)
 		return (0);
 	y = 0;
 	sign = 1;
@@ -98,7 +98,7 @@ void	scale_relu_fdf(t_fdf_table *dst, int min, int max, int expect)
 	int		temp;
 
 	if (dst != NULL && dst->arr != NULL
-		&& check_multiplication_overflow(dst->col, dst->row) == false)
+		&& mul_overflow_size_t(dst->col, dst->row) == false)
 		return ;
 	if (min > max)
 	{

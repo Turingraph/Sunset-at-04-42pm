@@ -19,11 +19,11 @@ static t_line	init_liney(t_2d_camera camera, t_fdf_proj2d *fdf, t_2d_int ixiy)
 	t_line		line;
 
 	line.p1 = world_to_screen2d(camera,
-			get_fdf_point(fdf, ixiy, 1, 0),
-			get_fdf_point(fdf, ixiy, 2, 0));
+			init_fdf_point1d(fdf, ixiy, 1, 0),
+			init_fdf_point1d(fdf, ixiy, 2, 0));
 	line.p2 = world_to_screen2d(camera,
-			get_fdf_point(fdf, ixiy, 1, 2),
-			get_fdf_point(fdf, ixiy, 2, 2));
+			init_fdf_point1d(fdf, ixiy, 1, 2),
+			init_fdf_point1d(fdf, ixiy, 2, 2));
 	return (line);
 }
 
@@ -34,11 +34,11 @@ static t_line	init_linex(t_2d_camera camera, t_fdf_proj2d *fdf, t_2d_int ixiy)
 	t_line		line;
 
 	line.p1 = world_to_screen2d(camera,
-			get_fdf_point(fdf, ixiy, 1, 0),
-			get_fdf_point(fdf, ixiy, 2, 0));
+			init_fdf_point1d(fdf, ixiy, 1, 0),
+			init_fdf_point1d(fdf, ixiy, 2, 0));
 	line.p2 = world_to_screen2d(camera,
-			get_fdf_point(fdf, ixiy, 1, 1),
-			get_fdf_point(fdf, ixiy, 2, 1));
+			init_fdf_point1d(fdf, ixiy, 1, 1),
+			init_fdf_point1d(fdf, ixiy, 2, 1));
 	return (line);
 }
 
