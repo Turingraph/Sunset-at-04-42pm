@@ -85,7 +85,7 @@ t_fdf_table	create_fdf_table(size_t row, size_t col, bool is_rgba)
 
 // time : O(n)
 // space: O(1)
-size_t	load_fdf_col(const t_fdf_load_arr *src)
+size_t	fdf_load_col(const t_fdf_load_arr *src)
 {
 	size_t	i;
 	size_t	col;
@@ -124,7 +124,7 @@ void	load_rgba_for_fdf_table(const t_fdf_load *src,
 
 // time : O(n)
 // space: O(n)
-t_fdf_table	load_fdf_table(const t_fdf_load_arr *src, bool is_rgba)
+t_fdf_table	fdf_load_table(const t_fdf_load_arr *src, bool is_rgba)
 {
 	t_fdf_table	dst;
 	size_t		i;
@@ -133,7 +133,7 @@ t_fdf_table	load_fdf_table(const t_fdf_load_arr *src, bool is_rgba)
 	if (src == NULL || src->arr == NULL
 		|| src->length == 0 || src->capacity == 0)
 		return (create_fdf_table(0, 0, false));
-	dst = create_fdf_table(src->length, load_fdf_col(src), is_rgba);
+	dst = create_fdf_table(src->length, fdf_load_col(src), is_rgba);
 	if (dst.arr == NULL)
 		return (dst);
 	i = 0;

@@ -32,14 +32,14 @@
  * @param hook FDF view context containing the image, camera, and FDF object
  * @param is_draw true to draw the FDF, false to erase it
  */
-void	render_fdf(t_2d_hook *hook, bool is_draw)
+void	render_fdf(t_hook2d *hook, bool is_draw)
 {
-	if (is_2dhook_valid(hook) == false)
+	if (isvalid_hook2d(hook) == false)
 		return ;
-	if (hook->render_style.shape_2d == E_LINE)
+	if (hook->style_render.shape_2d == E_LINE)
 		render_picasso(hook, is_draw);
-	if (hook->render_style.shape_2d == E_CIRCLE)
+	if (hook->style_render.shape_2d == E_CIRCLE)
 		render_kusama(hook, is_draw);
-	if (hook->render_style.shape_2d == E_RECTANGLE)
+	if (hook->style_render.shape_2d == E_RECTANGLE)
 		render_tobyfox(hook, is_draw);
 }

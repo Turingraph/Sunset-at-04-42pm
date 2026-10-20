@@ -43,7 +43,7 @@ int	main(void)
 	while (i < length)
 	{
 		output = load_file_debug(arr[i], dst, APPEND);
-		table_a = open_fdf_table_file(arr[i], src,
+		table_a = load_fdf_table_file(arr[i], src,
 				parse_ascii_chungaloider, false);
 		table_b = scale_dimension_fdf((const t_fdf_table *)&table_a, 3, 3);
 		destroy_fdf_table(&table_a);

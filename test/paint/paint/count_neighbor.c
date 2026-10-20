@@ -56,7 +56,7 @@ int	main(void)
 	t_fdf_table	table;
 
 	// a
-	table = open_fdf_table_file(file_a, input_dir, parse_decimal_bw, false);
+	table = load_fdf_table_file(file_a, input_dir, parse_decimal_bw, false);
 	paint_space(&table, HEIGHT, conway_test);
 	paint_space(&table, HEIGHT, cell_metric_positive);
 	scale_addition_fdf(&table, -1, HEIGHT);
@@ -70,7 +70,7 @@ int	main(void)
 	destroy_fdf_table(&table);
 
 	// b
-	table = open_fdf_table_file(file_b, input_dir, parse_decimal_bw, false);
+	table = load_fdf_table_file(file_b, input_dir, parse_decimal_bw, false);
 	paint_space(&table, HEIGHT, conway_test);
 	paint_space(&table, HEIGHT, cell_metric_positive);
 	scale_addition_fdf(&table, -1, HEIGHT);
@@ -83,7 +83,7 @@ int	main(void)
 	destroy_fdf_table(&table);
 
 	// c
-	table = open_fdf_table_file(file_c, input_dir, parse_decimal_bw, false);
+	table = load_fdf_table_file(file_c, input_dir, parse_decimal_bw, false);
 	paint_space(&table, HEIGHT, conway_test);
 	paint_space(&table, HEIGHT, cell_metric_positive);
 	scale_addition_fdf(&table, -1, HEIGHT);

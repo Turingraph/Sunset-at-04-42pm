@@ -11,7 +11,7 @@ static void	write_with_paint_space(float scale, const char *file_name,
 	if (output <= -1 || file_name == NULL)
 	{
 		if (file_name != NULL)
-			write(1, file_name, f_strlen(file_name));
+			write(1, file_name, str_length(file_name));
 		write(1, " isn't exists\n", 14);
 		return ;
 	}

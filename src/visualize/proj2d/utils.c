@@ -55,7 +55,7 @@ int32_t	rgba32_from_proj2d(const t_fdf_proj2d *src, size_t index)
 
 // time : O(1)
 // space: O(1)
-bool	is_fdf_proj2d_valid(const t_fdf_proj2d *src)
+bool	isvalid_fdf_proj2d(const t_fdf_proj2d *src)
 {
 	if (src == NULL)
 		return (false);

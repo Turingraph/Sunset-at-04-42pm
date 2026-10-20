@@ -14,41 +14,41 @@
 
 // time : O(1)
 // space: O(1)
-t_raster_style	hook_to_raster(t_2d_hook *hook, bool is_draw, t_2d_int ixiy)
+t_style_raster	hook_to_raster(t_hook2d *hook, bool is_draw, t_int2d ixiy)
 {
-	t_raster_style		raster_style;
+	t_style_raster		style_raster;
 	t_fdf_proj2d		*fdf;
 
 	fdf = hook->fdf;
-	raster_style.thickness = hook->render_style.thickness;
-	raster_style.color = hook->background_color;
+	style_raster.thickness = hook->style_render.thickness;
+	style_raster.color = hook->background_color;
 	if (is_draw == true)
-		raster_style.color = rgba32_from_proj2d((const t_fdf_proj2d *)fdf,
+		style_raster.color = rgba32_from_proj2d((const t_fdf_proj2d *)fdf,
 				ixiy.y * fdf->col + ixiy.x);
 	else
-		raster_style.color = hook->background_color;
-	return (raster_style);
+		style_raster.color = hook->background_color;
+	return (style_raster);
 }
 
 // time : O(1)
 // space: O(1)
-void	render_circle(t_2d_int point,
-	t_raster_style raster_style, t_2d_camera camera, mlx_image_t *dst)
+void	render_circle(t_int2d point,
+	t_style_raster style_raster, t_camera2d camera, mlx_image_t *dst)
 {
 	t_line	boundary;
 
-	if (is_circle_in_screen(camera, point, raster_style.thickness) == false)
+	if (is_circle_in_screen(camera, point, style_raster.thickness) == false)
 		return ;
 	boundary.p1.x = 0;
 	boundary.p1.y = 0;
 	boundary.p2 = camera.window_size;
-	raster_circle(dst, point, raster_style, boundary);
+	raster_circle(dst, point, style_raster, boundary);
 }
 
 // time : O(1)
 // space: O(1)
-void	render_rectangle(t_line line, int32_t raster_style,
-	t_2d_camera camera, mlx_image_t *dst)
+void	render_rectangle(t_line line, int32_t style_raster,
+	t_camera2d camera, mlx_image_t *dst)
 {
 	t_line	boundary;
 
@@ -57,13 +57,13 @@ void	render_rectangle(t_line line, int32_t raster_style,
 	boundary.p1.x = 0;
 	boundary.p1.y = 0;
 	boundary.p2 = camera.window_size;
-	raster_rectangle(dst, line, boundary, raster_style);
+	raster_rectangle(dst, line, boundary, style_raster);
 }
 
 // time : O(1)
 // space: O(1)
-void	render_line(t_line line, t_raster_style raster_style,
-	t_2d_camera camera, mlx_image_t *dst)
+void	render_line(t_line line, t_style_raster style_raster,
+	t_camera2d camera, mlx_image_t *dst)
 {
 	t_line	boundary;
 
@@ -71,10 +71,10 @@ void	render_line(t_line line, t_raster_style raster_style,
 	boundary.p1.y = 0;
 	boundary.p2 = camera.window_size;
 	if (is_line_in_screen(camera, line) == true)
-		raster_line(dst, line, boundary, raster_style);
+		raster_line(dst, line, boundary, style_raster);
 	else
 	{
-		render_circle(line.p1, raster_style, camera, dst);
-		render_circle(line.p2, raster_style, camera, dst);
+		render_circle(line.p1, style_raster, camera, dst);
+		render_circle(line.p2, style_raster, camera, dst);
 	}
 }

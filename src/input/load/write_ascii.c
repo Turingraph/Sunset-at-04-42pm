@@ -22,9 +22,9 @@ static void	inspect_ascii_unit(int fd, const t_fdf_load *src, const char *dict)
 	while (src != NULL && src->arr != NULL && i < src->length)
 	{
 		if (i < src->length / 2)
-			ft_put_ascii_fd(fd, src->arr[i], dict, true);
+			write_ascii(fd, src->arr[i], dict, true);
 		else
-			ft_put_ascii_fd(fd, src->arr[i], dict, false);
+			write_ascii(fd, src->arr[i], dict, false);
 		i += 1;
 	}
 	write(fd, "\n", 1);

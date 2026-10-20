@@ -14,7 +14,7 @@
 
 // time : O(1)
 // space: O(1)
-void	*destroy_load_fdf(t_fdf_load *src)
+void	*destroy_fdf_load(t_fdf_load *src)
 {
 	if (src == NULL)
 		return (NULL);
@@ -38,7 +38,7 @@ void	*destroy_load_fdf(t_fdf_load *src)
 
 // time : O(n)
 // space: O(n)
-t_fdf_load	init_fdf_load(size_t line_len, bool is_rgb)
+t_fdf_load	create_fdf_load(size_t line_len, bool is_rgb)
 {
 	t_fdf_load	dst;
 
@@ -69,7 +69,7 @@ t_fdf_load	init_fdf_load(size_t line_len, bool is_rgb)
 
 /**
  * Free the array after it load an FDF file.
- * Intended for internal use by open_fdf_table_file().
+ * Intended for internal use by load_fdf_table_file().
  *
  * time/space: O(n) / O(1)
  * 
@@ -77,7 +77,7 @@ t_fdf_load	init_fdf_load(size_t line_len, bool is_rgb)
  *
  * @param src the target array with t_fdf_load_arr shape_2d.
  */
-void	destroy_load_fdf_arr(t_fdf_load_arr *src)
+void	destroy_fdf_load_arr(t_fdf_load_arr *src)
 {
 	size_t	i;
 
@@ -88,7 +88,7 @@ void	destroy_load_fdf_arr(t_fdf_load_arr *src)
 		i = 0;
 		while (i < src->capacity)
 		{
-			destroy_load_fdf(&(src->arr[i]));
+			destroy_fdf_load(&(src->arr[i]));
 			i += 1;
 		}
 		free(src->arr);
@@ -100,7 +100,7 @@ void	destroy_load_fdf_arr(t_fdf_load_arr *src)
 
 /**
  * Initializing array for loading an FDF file.
- * Intended for internal use by open_fdf_table_file().
+ * Intended for internal use by load_fdf_table_file().
  *
  * time/space: O(1) / O(n)
  * 
@@ -113,13 +113,13 @@ void	destroy_load_fdf_arr(t_fdf_load_arr *src)
  * @return empty input array as t_fdf_load_arr
  * 
  */
-t_fdf_load_arr	init_fdf_load_arr(size_t length)
+t_fdf_load_arr	create_fdf_load_arr(size_t length)
 {
 	t_fdf_load_arr	dst;
 
 	dst.capacity = length;
 	dst.length = 0;
 	dst.arr = malloc_talk(sizeof(t_fdf_load) * length,
-			"load/init.c/init_fdf_load_arr\n");
+			"load/init.c/create_fdf_load_arr\n");
 	return (dst);
 }

@@ -73,21 +73,21 @@ static void	view_fdf_handle_02(mlx_t *mlx, mlx_image_t *img)
  * @param fdf_render style used to render the FDF object.
  * @param background_color the background color of the window scene.
  */
-void	view_fdf(t_fdf_proj2d *fdf, t_render_style fdf_render,
+void	view_fdf(t_fdf_proj2d *fdf, t_style_render fdf_render,
 	int32_t background_color)
 {
 	mlx_t			*mlx;
-	t_2d_hook		hook;
-	t_2d_camera		camera;
+	t_hook2d		hook;
+	t_camera2d		camera;
 
-	if (is_fdf_proj2d_valid(fdf) == false)
+	if (isvalid_fdf_proj2d(fdf) == false)
 		return ;
 	mlx = mlx_init(SUNSET_WINDOW_WIDTH,
 			SUNSET_WINDOW_HEIGHT, "Sunset at 4:42 pm", true);
-	hook = init_2d_hook(mlx, fdf, fdf_render, background_color);
+	hook = init_hook2d(mlx, fdf, fdf_render, background_color);
 	if (view_fdf_handle_00(mlx, hook.img) == false)
 		return ;
-	camera = init_2d_camera(SUNSET_WINDOW_WIDTH, SUNSET_WINDOW_HEIGHT);
+	camera = init_camera2d(SUNSET_WINDOW_WIDTH, SUNSET_WINDOW_HEIGHT);
 	hook.camera = &camera;
 	normalize_fdf_proj2d(fdf, f_max(SUNSET_WINDOW_WIDTH,
 			SUNSET_WINDOW_HEIGHT));

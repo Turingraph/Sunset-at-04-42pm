@@ -24,7 +24,7 @@ int	main(void)
 {
 	t_fdf_table		table_base;
 	t_fdf_proj2d			output;
-	t_render_style	style;
+	t_style_render	style;
 
 	table_base = create_fdf_table(161, 161, true);
 	set_cells_color(&table_base, 10, HEIGHT, is_andmod_sin);

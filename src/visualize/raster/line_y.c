@@ -23,28 +23,28 @@
  * 
  * @param dst destination MLX image
  * @param point the point of circle
- * @param raster_style contains both color and the size of the circle.
+ * @param style_raster contains both color and the size of the circle.
  * @param boundary drawable area used to clip the circle
  * @see https://www.youtube.com/watch?v=hpiILbMkF9w
  * for learning how Midpoint circle works.
 */
 static void	raster_circle_half_u(mlx_image_t *dst,
-	t_2d_int point, t_raster_style raster_style, t_line boundary)
+	t_int2d point, t_style_raster style_raster, t_line boundary)
 {
 	int		ix;
 	int		iy;
 	int		pivot;
 	t_line	line;
 
-	pivot = raster_style.thickness * -1;
-	iy = -1 * raster_style.thickness;
+	pivot = style_raster.thickness * -1;
+	iy = -1 * style_raster.thickness;
 	ix = 0;
 	while (dst != NULL && ix <= -1 * iy)
 	{
 		line = init_circle_line(point, ix, iy, 0);
-		raster_line_horizontal(dst, line, raster_style.color, boundary);
+		raster_line_horizontal(dst, line, style_raster.color, boundary);
 		line = init_circle_line(point, ix, iy, 3);
-		raster_line_horizontal(dst, line, raster_style.color, boundary);
+		raster_line_horizontal(dst, line, style_raster.color, boundary);
 		if (pivot > 0)
 			iy += 1;
 		if (pivot > 0)
@@ -65,28 +65,28 @@ static void	raster_circle_half_u(mlx_image_t *dst,
  * 
  * @param dst destination MLX image
  * @param point the point of circle
- * @param raster_style contains both color and the size of the circle.
+ * @param style_raster contains both color and the size of the circle.
  * @param boundary drawable area used to clip the circle
  * @see https://www.youtube.com/watch?v=hpiILbMkF9w
  * for learning how Midpoint circle works.
 */
 static void	raster_circle_half_d(mlx_image_t *dst,
-	t_2d_int point, t_raster_style raster_style, t_line boundary)
+	t_int2d point, t_style_raster style_raster, t_line boundary)
 {
 	int		ix;
 	int		iy;
 	int		pivot;
 	t_line	line;
 
-	pivot = raster_style.thickness * -1;
-	iy = -1 * raster_style.thickness;
+	pivot = style_raster.thickness * -1;
+	iy = -1 * style_raster.thickness;
 	ix = 0;
 	while (dst != NULL && ix <= -1 * iy)
 	{
 		line = init_circle_line(point, ix, iy, 1);
-		raster_line_horizontal(dst, line, raster_style.color, boundary);
+		raster_line_horizontal(dst, line, style_raster.color, boundary);
 		line = init_circle_line(point, ix, iy, 2);
-		raster_line_horizontal(dst, line, raster_style.color, boundary);
+		raster_line_horizontal(dst, line, style_raster.color, boundary);
 		if (pivot > 0)
 			iy += 1;
 		if (pivot > 0)
@@ -99,12 +99,12 @@ static void	raster_circle_half_d(mlx_image_t *dst,
 // time : O(n)
 // space: O(1)
 static void	raster_endpoint_y(mlx_image_t *dst,
-	t_line line, t_line boundary, t_raster_style raster_style)
+	t_line line, t_line boundary, t_style_raster style_raster)
 {
-	raster_style.thickness /= 2;
-	raster_style.thickness -= 1;
-	raster_circle_half_u(dst, line.p1, raster_style, boundary);
-	raster_circle_half_d(dst, line.p2, raster_style, boundary);
+	style_raster.thickness /= 2;
+	style_raster.thickness -= 1;
+	raster_circle_half_u(dst, line.p1, style_raster, boundary);
+	raster_circle_half_d(dst, line.p2, style_raster, boundary);
 }
 
 // time : O(n)
@@ -138,25 +138,25 @@ static void	raster_liney_plus_unit(mlx_image_t *dst,
 // time : O(n)
 // space: O(1)
 void	raster_liney_plus(mlx_image_t *dst,
-	t_line line, t_line boundary, t_raster_style raster_style)
+	t_line line, t_line boundary, t_style_raster style_raster)
 {
 	t_line	parallel;
 	size_t	i;
 
-	raster_liney_plus_unit(dst, line, boundary, raster_style.color);
-	if (raster_style.thickness < 2)
+	raster_liney_plus_unit(dst, line, boundary, style_raster.color);
+	if (style_raster.thickness < 2)
 		return ;
-	raster_endpoint_y(dst, line, boundary, raster_style);
+	raster_endpoint_y(dst, line, boundary, style_raster);
 	parallel = line;
 	i = 1;
-	while (i < raster_style.thickness / 2)
+	while (i < style_raster.thickness / 2)
 	{
 		parallel.p1.x -= 1;
 		parallel.p2.x -= 1;
-		raster_liney_plus_unit(dst, parallel, boundary, raster_style.color);
+		raster_liney_plus_unit(dst, parallel, boundary, style_raster.color);
 		line.p1.x += 1;
 		line.p2.x += 1;
-		raster_liney_plus_unit(dst, line, boundary, raster_style.color);
+		raster_liney_plus_unit(dst, line, boundary, style_raster.color);
 		i += 1;
 	}
 }
@@ -192,25 +192,25 @@ static void	raster_liney_minus_unit(mlx_image_t *dst,
 // time : O(n)
 // space: O(1)
 void	raster_liney_minus(mlx_image_t *dst,
-	t_line line, t_line boundary, t_raster_style raster_style)
+	t_line line, t_line boundary, t_style_raster style_raster)
 {
 	t_line	parallel;
 	size_t	i;
 
-	raster_liney_minus_unit(dst, line, boundary, raster_style.color);
-	if (raster_style.thickness < 2)
+	raster_liney_minus_unit(dst, line, boundary, style_raster.color);
+	if (style_raster.thickness < 2)
 		return ;
-	raster_endpoint_y(dst, line, boundary, raster_style);
+	raster_endpoint_y(dst, line, boundary, style_raster);
 	parallel = line;
 	i = 1;
-	while (i < raster_style.thickness / 2)
+	while (i < style_raster.thickness / 2)
 	{
 		parallel.p1.x -= 1;
 		parallel.p2.x -= 1;
-		raster_liney_minus_unit(dst, parallel, boundary, raster_style.color);
+		raster_liney_minus_unit(dst, parallel, boundary, style_raster.color);
 		line.p1.x += 1;
 		line.p2.x += 1;
-		raster_liney_minus_unit(dst, line, boundary, raster_style.color);
+		raster_liney_minus_unit(dst, line, boundary, style_raster.color);
 		i += 1;
 	}
 }

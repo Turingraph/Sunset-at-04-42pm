@@ -15,9 +15,9 @@ int	main(void)
 	ker_dim = 5;
 	ker.arr = gaussian_kernel(ker_dim / 2, 1, 1);
 	write(1, ">>> ", 4);
-	ft_putnbr_fd((int)(f_sum(ker.arr, 25) * 10000), 1, "0123456789", 1);
+	write_int((int)(f_sum(ker.arr, 25) * 10000), 1, "0123456789", 1);
 	write(1, "\n", 1);
-	table_a = open_fdf_table_file(input_dir, NULL,
+	table_a = load_fdf_table_file(input_dir, NULL,
 			parse_ascii_cheche01, false);
 	scale_multiplication_fdf(&table_a, 10, HEIGHT);
 	table_b = scale_dimension_fdf(&table_a, 3, 3);

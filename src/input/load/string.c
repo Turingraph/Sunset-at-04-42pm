@@ -14,7 +14,7 @@
 
 // time : O(n)
 // space: O(1)
-char	f_isspace(char s, const char *space)
+char	is_a_in_str(char s, const char *space)
 {
 	while (space != NULL && *space != '\0')
 	{
@@ -27,7 +27,7 @@ char	f_isspace(char s, const char *space)
 
 // time : O(n)
 // space: O(1)
-size_t	f_strlen(const char *str)
+size_t	str_length(const char *str)
 {
 	size_t	i;
 

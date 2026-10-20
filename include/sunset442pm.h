@@ -76,15 +76,15 @@ typedef struct t_fdf_table
 }	t_fdf_table;
 
 /**
- * Sometimes t_2d_float is used for describing 2D xy position.
+ * Sometimes t_float2d is used for describing 2D xy position.
  * @param re correspond to x axis position.
  * @param im correspond to y axis position.
  */
-typedef struct t_2d_float
+typedef struct t_float2d
 {
 	float	re;
 	float	im;
-}	t_2d_float;
+}	t_float2d;
 
 /**
  * The SUNSET_WINDOW_WIDTH and SUNSET_WINDOW_HEIGHT is used for
@@ -110,7 +110,7 @@ typedef struct t_2d_float
  * @param zoom coordinate scaling factor
  * @return complex coordinate of the selected cell.
  */
-t_2d_float	init_table_coordinate(const t_fdf_table *dst, size_t index, float zoom);
+t_float2d	init_table_coordinate(const t_fdf_table *dst, size_t index, float zoom);
 
 /**
  * Check whether the product of 2 size_t type number cause integeroverflow,
@@ -150,58 +150,58 @@ float	f_abs(float x);
 /**
  * compute e^(a.x + a.y)
  */
-t_2d_float	complex_exp(t_2d_float a);
+t_float2d	complex_exp(t_float2d a);
 
 /**
  * compute cos(a.x + a.y)
  */
-t_2d_float	complex_cos(t_2d_float a);
+t_float2d	complex_cos(t_float2d a);
 
 /**
  * compute sin(a.x + a.y)
  */
-t_2d_float	complex_sin(t_2d_float a);
+t_float2d	complex_sin(t_float2d a);
 
 /**
  * compute (a.x + a.y) * (b.x + b.y)
  */
-t_2d_float	complex_multiplication(t_2d_float a, t_2d_float b);
+t_float2d	complex_multiplication(t_float2d a, t_float2d b);
 
 /**
  * compute (a.x + a.y)^2
  */
-t_2d_float	complex_square(t_2d_float a);
+t_float2d	complex_square(t_float2d a);
 
 /**
  * compute (a.x + a.y)^4
  */
-t_2d_float	complex_x4(t_2d_float a);
+t_float2d	complex_x4(t_float2d a);
 
 /**
  * compute (a.x + a.y)^5
  */
-t_2d_float	complex_x5(t_2d_float a);
+t_float2d	complex_x5(t_float2d a);
 
 /**
  * compute (a.x + a.y)^6
  */
-t_2d_float	complex_x6(t_2d_float a);
+t_float2d	complex_x6(t_float2d a);
 
 /**
  * compute (a.x + a.y)^3
  */
-t_2d_float	complex_cube(t_2d_float a);
+t_float2d	complex_cube(t_float2d a);
 
 /**
  * if a.x + a.y equal to 0, return 0
  * compute 1 / (a.x + a.y)
  */
-t_2d_float	complex_reciprocal(t_2d_float a);
+t_float2d	complex_reciprocal(t_float2d a);
 
 /**
  * compute |a.x + a.im|
  */
-float	complex_magnitude(t_2d_float a, char is_square);
+float	complex_magnitude(t_float2d a, char is_square);
 
 /** 
  * convert any float number to integer by floor function.
@@ -237,7 +237,7 @@ float	f_min(float a, float b);
  * @param means average score
  * @param x x value
  */
-float	normal_distribution(float std, float means, float x);
+float	f_normal(float std, float means, float x);
 
 /**
  * compute the standard deviation of the given dataset from the input array.
@@ -263,7 +263,7 @@ float		f_pow(float x, size_t a);
 /**
  * if a == 0, then y = 0, else y = x^(1 / a) using 8 iterations newton method.
  */
-float		f_root_finding(float x, size_t a);
+float		f_root_find(float x, size_t a);
 
 /**
  * if -1.0 < x < 1.0, then return x
@@ -393,7 +393,7 @@ typedef enum t_load_warning
  * rgb_warn stores the parsing status of the color values.
  * 
  * If int_warn and/or rgb_warn are NOT_DECIMAL and/or NOT_HEX, then 
- * load_all_fdf_lines stops and open_fdf_table_file return empty output.
+ * fetch_fdf_load_arr stops and load_fdf_table_file return empty output.
  *
  * status: internal data shape_2d
  *
@@ -458,7 +458,7 @@ typedef struct t_fdf_load_arr
  *
  * @return converted integer, or -1 if conversion fails or overflows
  */
-int	f_atoi(const char *src, bool *is_int, const char *base, size_t digits);
+int	str_to_int(const char *src, bool *is_int, const char *base, size_t digits);
 
 /**
  * Write an integer to a file descriptor using the specified base.
@@ -475,11 +475,11 @@ int	f_atoi(const char *src, bool *is_int, const char *base, size_t digits);
  *
  * @return number of characters written
  */
-size_t	ft_putnbr_fd(int n, int fd, const char *base, size_t digits);
+size_t	write_int(int n, int fd, const char *base, size_t digits);
 
 /**
  * Parse an ASCII-art line using the Cheche01 character ramp.
- * This function is intended to be used with `open_fdf_table_file`
+ * This function is intended to be used with `load_fdf_table_file`
  *
  * time/space: O(n) / O(n)
  * 
@@ -493,7 +493,7 @@ t_fdf_load	parse_ascii_cheche01(char *line);
 
 /**
  * Parse an ASCII-art line using the standard character ramp.
- * This function is intended to be used with `open_fdf_table_file`
+ * This function is intended to be used with `load_fdf_table_file`
  *
  * time/space: O(n) / O(n)
  * 
@@ -507,7 +507,7 @@ t_fdf_load	parse_ascii_standard(char *line);
 
 /**
  * Parse an ASCII-art line using the Chungaloider brightness ramp.
- * This function is intended to be used with `open_fdf_table_file`
+ * This function is intended to be used with `load_fdf_table_file`
  *
  * time/space: O(n) / O(n)
  *
@@ -524,7 +524,7 @@ t_fdf_load	parse_ascii_chungaloider(char *line);
 
 /**
  * Parse an FDF line as colorful data.
- * This function is intended to be used with `open_fdf_table_file`
+ * This function is intended to be used with `load_fdf_table_file`
  *
  * time/space: O(n) / O(n)
  *
@@ -539,7 +539,7 @@ t_fdf_load	parse_decimal_rgba(char *line);
 
 /**
  * Parse an FDF line as black and white data.
- * This function is intended to be used with `open_fdf_table_file`
+ * This function is intended to be used with `load_fdf_table_file`
  *
  * time/space: O(n) / O(n)
  *
@@ -630,7 +630,7 @@ void			scale_relu_fdf(t_fdf_table *dst, int min, int max, int expect);
  * @return return the array that contains rgba and height of the height map.
  * @see src/input/load/parse.c
  */
-t_fdf_table		open_fdf_table_file(const char *file_name, const char *dir,
+t_fdf_table		load_fdf_table_file(const char *file_name, const char *dir,
 					t_fdf_load (*one_line)(char *line), bool is_rgba);
 
 /**
@@ -1041,7 +1041,7 @@ bool		is_collatz_odd_andmod(const t_fdf_table *dst, size_t index);
  * false otherwise.
  */
 bool		is_re2_diff_im2_odd_func(const t_fdf_table *dst, size_t index,
-				t_2d_float (*complex_func)(t_2d_float a), float zoom);
+				t_float2d (*complex_func)(t_float2d a), float zoom);
 
 /**
  * Compute z' = the complex coordinate of the cell.
@@ -1075,7 +1075,7 @@ bool		is_re2_diff_im2_odd(const t_fdf_table *dst, size_t index);
  * false otherwise.
  */
 bool		is_oddlength_func(const t_fdf_table *dst, size_t index,
-				t_2d_float (*complex_func)(t_2d_float a), float zoom);
+				t_float2d (*complex_func)(t_float2d a), float zoom);
 
 /**
  * Compute z' = complex_func(the complex coordinate of the cell).
@@ -1110,7 +1110,7 @@ bool		is_oddlength(const t_fdf_table *dst, size_t index);
  * @return true if z.x is even and z.y is even, false otherwise.
  */
 bool		is_andmod_func(const t_fdf_table *dst, size_t index,
-				t_2d_float (*complex_func)(t_2d_float a), float zoom);
+				t_float2d (*complex_func)(t_float2d a), float zoom);
 
 /**
  * Check whether constant times magnitude of the square of a cell's
@@ -1805,7 +1805,7 @@ typedef struct s_ink32
 {
 	int32_t		color;
 	size_t		thickness;
-}	t_raster_style;
+}	t_style_raster;
 
 /**
  * Supported 2D motif and rendering types.
@@ -1821,12 +1821,12 @@ typedef struct s_ink32
  * 
  * - E_LINE draws polygon edges as lines.
  */
-typedef enum t_2d_shape
+typedef enum t_shape2d
 {
 	E_RECTANGLE,
 	E_CIRCLE,
 	E_LINE,
-}	t_2d_shape;
+}	t_shape2d;
 
 /**
  * Pack individual RGBA channels into a 32-bit color value.
@@ -1923,7 +1923,7 @@ t_fdf_proj2d	destroy_fdf_proj2d(t_fdf_proj2d *src);
  * @see src/visualize/fdf/projection.c
  */
 t_fdf_proj2d	create_fdf_proj2d(t_fdf_table *src,
-	t_2d_float (*proj2d)(float x, float y, float z), float scale);
+	t_float2d (*proj2d)(float x, float y, float z), float scale);
 
 /**
  * Apply an isometric projection to a 3D point.
@@ -1944,7 +1944,7 @@ t_fdf_proj2d	create_fdf_proj2d(t_fdf_table *src,
  * @param z z-coordinate of the 3D point
  * @return 2D complex point containing the projected coordinates
  */
-t_2d_float	proj2d_isometric(float x, float y, float z);
+t_float2d	proj2d_isometric(float x, float y, float z);
 
 /**
  * Apply a military projection to a 3D point.
@@ -1965,7 +1965,7 @@ t_2d_float	proj2d_isometric(float x, float y, float z);
  * @param z z-coordinate of the 3D point
  * @return 2D complex point containing the projected coordinates
  */
-t_2d_float	proj2d_military(float x, float y, float z);
+t_float2d	proj2d_military(float x, float y, float z);
 
 /**
  * Apply a cabinet projection to a 3D point.
@@ -1986,7 +1986,7 @@ t_2d_float	proj2d_military(float x, float y, float z);
  * @param z z-coordinate of the 3D point
  * @return 2D complex point containing the projected coordinates
  */
-t_2d_float	proj2d_cabinet(float x, float y, float z);
+t_float2d	proj2d_cabinet(float x, float y, float z);
 
 /**
  * Apply an orthogonal projection to a 3D point.
@@ -2006,7 +2006,7 @@ t_2d_float	proj2d_cabinet(float x, float y, float z);
  * @param z z-coordinate of the 3D point
  * @return 2D complex point containing the projected coordinates
  */
-t_2d_float	proj2d_orthogonal(float x, float y, float z);
+t_float2d	proj2d_orthogonal(float x, float y, float z);
 
 /**
  * Apply a wave projection to a 3D point.
@@ -2027,7 +2027,7 @@ t_2d_float	proj2d_orthogonal(float x, float y, float z);
  * @param z z-coordinate of the 3D point
  * @return 2D complex point containing the projected coordinates
  */
-t_2d_float	proj2d_wave(float x, float y, float z);
+t_float2d	proj2d_wave(float x, float y, float z);
 
 /* ************************************************************************** */
 /* *** src/visualize/render/ *** */
@@ -2036,11 +2036,11 @@ t_2d_float	proj2d_wave(float x, float y, float z);
 /*
  * This struct control the drawing style of the Fdf.
  */
-typedef struct s_render_style
+typedef struct s_style_render
 {
 	size_t		thickness;
-	t_2d_shape	shape_2d;
-}	t_render_style;
+	t_shape2d	shape_2d;
+}	t_style_render;
 
 /* ************************************************************************** */
 /* *** src/visualize/window/ *** */
@@ -2077,7 +2077,7 @@ typedef struct s_render_style
  * @param fdf_render style used to render the FDF object.
  * @param background_color the background color of the window scene.
  */
-void	view_fdf(t_fdf_proj2d *fdf, t_render_style fdf_render,
+void	view_fdf(t_fdf_proj2d *fdf, t_style_render fdf_render,
 			int32_t background_color);
 
 /* ************************************************************************** */
@@ -2097,7 +2097,7 @@ void	view_fdf(t_fdf_proj2d *fdf, t_render_style fdf_render,
  */
 typedef struct s_2d_polygon
 {
-	t_2d_float	*arr;
+	t_float2d	*arr;
 	size_t		length;
 	bool		is_loop;
 }	t_2d_polygon;
@@ -2112,8 +2112,8 @@ typedef struct s_2d_polygon
 typedef struct s_motif
 {
 	t_2d_polygon	polygon;
-	t_raster_style			ink;
-	t_2d_shape		shape_2d;
+	t_style_raster			ink;
+	t_shape2d		shape_2d;
 }	t_motif;
 
 /**

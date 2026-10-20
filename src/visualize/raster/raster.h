@@ -18,7 +18,7 @@
 // circle.c
 
 void		raster_circle(mlx_image_t *dst,
-				t_2d_int point, t_raster_style raster_style, t_line boundary);
+				t_int2d point, t_style_raster style_raster, t_line boundary);
 
 // color.c
 
@@ -30,7 +30,7 @@ int32_t		rgba32_from_table(const t_fdf_table *src, size_t index);
 // line_generic.c
 
 void		raster_line(mlx_image_t *dst,
-				t_line line, t_line boundary, t_raster_style raster_style);
+				t_line line, t_line boundary, t_style_raster style_raster);
 
 // utils.c
 

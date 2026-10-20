@@ -49,7 +49,7 @@ static long int	f_atolongi(const char *src,
 	size_t		i;
 
 	if (digits == 0)
-		digits = f_strlen(src);
+		digits = str_length(src);
 	i = 0;
 	y = 0;
 	while ((is_int == NULL || *is_int != false) && *src != '\0' && i < digits)
@@ -57,11 +57,11 @@ static long int	f_atolongi(const char *src,
 		y += (long int)f_atoonei(*src, base, is_int);
 		if (is_int != NULL && *is_int == false)
 			return (-1);
-		y *= f_strlen(base);
+		y *= str_length(base);
 		src += 1;
 		i += 1;
 	}
-	y /= f_strlen(base);
+	y /= str_length(base);
 	return (y);
 }
 
@@ -82,7 +82,7 @@ static long int	f_atolongi(const char *src,
  *
  * @return converted integer, or -1 if conversion fails or overflows
  */
-int	f_atoi(const char *src, bool *is_int, const char *base, size_t digits)
+int	str_to_int(const char *src, bool *is_int, const char *base, size_t digits)
 {
 	long int	y;
 	size_t		sign;
@@ -122,7 +122,7 @@ static size_t	display_int(int fd, long x, const char *base, bool is_write)
 	if (base == NULL)
 		return (0);
 	i = 0;
-	len = f_strlen(base);
+	len = str_length(base);
 	d = 1;
 	while (d < x)
 		d *= len;
@@ -157,7 +157,7 @@ static size_t	display_int(int fd, long x, const char *base, bool is_write)
  *
  * @return number of characters written
  */
-size_t	ft_putnbr_fd(int n, int fd, const char *base, size_t digits)
+size_t	write_int(int n, int fd, const char *base, size_t digits)
 {
 	size_t	i;
 	size_t	j;

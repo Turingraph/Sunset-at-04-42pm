@@ -32,7 +32,7 @@ int	main(void)
 	i = 0;
 	while (i < max_score)
 	{
-		table = open_fdf_table_file(arr[i], src_dir, parse_decimal_bw, false);
+		table = load_fdf_table_file(arr[i], src_dir, parse_decimal_bw, false);
 		fdf_dst = load_file_debug(arr[i], dst_dir, E_WRITE);
 		if (fdf_dst > -1)
 		{
@@ -42,7 +42,7 @@ int	main(void)
 			else
 			{
 				write(1, "Incorrect: ", 12);
-				write(1, arr[i], f_strlen(arr[i]));
+				write(1, arr[i], str_length(arr[i]));
 				write(1, "\n", 1);
 			}
 		}

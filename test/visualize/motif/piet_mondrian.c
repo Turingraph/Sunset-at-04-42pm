@@ -7,44 +7,44 @@ Reference
 
 int	main(void)
 {
-	t_2d_float	square_00[] = {
+	t_float2d	square_00[] = {
 		{.x = 1.0 / 24.0, .y = 1.0 / 24.0},
 		{.x = 5.0 / 24.0, .y = 8.0 / 24.0},
 	};
-	t_2d_float	square_01[] = {
+	t_float2d	square_01[] = {
 		{.x = 1.0 / 24.0, .y = 11.0 / 24.0},
 		{.x = 5.0 / 24.0, .y = 17.0 / 24.0},
 	};
-	t_2d_float	square_02[] = {
+	t_float2d	square_02[] = {
 		{.x = 1.0 / 24.0, .y = 19.0 / 24.0},
 		{.x = 5.0 / 24.0, .y = 23.0 / 24.0},
 	};
-	t_2d_float	square_03[] = {
+	t_float2d	square_03[] = {
 		{.x = 7.0 / 24.0, .y = 1.0 / 24.0},
 		{.x = 23.0 / 24.0, .y = 17.0 / 24.0},
 	};
-	t_2d_float	square_04[] = {
+	t_float2d	square_04[] = {
 		{.x = 7.0 / 24.0, .y = 19.0 / 24.0},
 		{.x = 19.0 / 24.0, .y = 23.0 / 24.0},
 	};
-	t_2d_float	square_05[] = {
+	t_float2d	square_05[] = {
 		{.x = 21.0 / 24.0, .y = 19.0 / 24.0},
 		{.x = 23.0 / 24.0, .y = 20.0 / 24.0},
 	};
-	t_2d_float	square_06[] = {
+	t_float2d	square_06[] = {
 		{.x = 21.0 / 24.0, .y = 22.0 / 24.0},
 		{.x = 23.0 / 24.0, .y = 23.0 / 24.0},
 	};
-	t_raster_style			raster_style_coco = {
+	t_style_raster			style_raster_coco = {
 		.color = rgba32_from_char(192, 192, 0, 255),
 		.thickness = 30};
-	t_raster_style			raster_style_red = {
+	t_style_raster			style_raster_red = {
 		.color = rgba32_from_char(255, 0, 0, 255),
 		.thickness = 20};
-	t_raster_style			raster_style_white = {
+	t_style_raster			style_raster_white = {
 		.color = rgba32_from_char(255, 255, 255, 255),
 		.thickness = 20};
-	t_raster_style			raster_style_blue = {
+	t_style_raster			style_raster_blue = {
 		.color = rgba32_from_char(0, 100, 255, 255),
 		.thickness = 20};
 	t_2d_polygon	polygon_00 = {.arr = square_00, .is_loop = false, .length = 2};
@@ -59,37 +59,37 @@ int	main(void)
 		.arr = (t_motif []){
 			{
 				.polygon = polygon_00,
-				.raster_style = raster_style_white,
+				.style_raster = style_raster_white,
 				.shape_2d = E_RECTANGLE
 			},
 			{
 				.polygon = polygon_01,
-				.raster_style = raster_style_coco,
+				.style_raster = style_raster_coco,
 				.shape_2d = E_RECTANGLE
 			},
 			{
 				.polygon = polygon_02,
-				.raster_style = raster_style_blue,
+				.style_raster = style_raster_blue,
 				.shape_2d = E_RECTANGLE
 			},
 			{
 				.polygon = polygon_03,
-				.raster_style = raster_style_red,
+				.style_raster = style_raster_red,
 				.shape_2d = E_RECTANGLE
 			},
 			{
 				.polygon = polygon_04,
-				.raster_style = raster_style_white,
+				.style_raster = style_raster_white,
 				.shape_2d = E_RECTANGLE
 			},
 			{
 				.polygon = polygon_05,
-				.raster_style = raster_style_white,
+				.style_raster = style_raster_white,
 				.shape_2d = E_RECTANGLE
 			},
 			{
 				.polygon = polygon_06,
-				.raster_style = raster_style_coco,
+				.style_raster = style_raster_coco,
 				.shape_2d = E_RECTANGLE
 			},
 		}

@@ -64,7 +64,7 @@ typedef enum t_load_warning
  * rgb_warn stores the parsing status of the color values.
  * 
  * If int_warn and/or rgb_warn are NOT_DECIMAL and/or NOT_HEX, then 
- * load_all_fdf_lines stops and open_fdf_table_file return empty output.
+ * fetch_fdf_load_arr stops and load_fdf_table_file return empty output.
  *
  * status: internal data shape_2d
  *

@@ -6,7 +6,7 @@
  * status: public api
  * 
  */
-t_2d_float	complex_square(t_2d_float a)
+t_float2d	complex_square(t_float2d a)
 {
 	return (complex_multiplication(a, a));
 }
@@ -17,7 +17,7 @@ t_2d_float	complex_square(t_2d_float a)
  * status: public api
  * 
  */
-t_2d_float	complex_cube(t_2d_float a)
+t_float2d	complex_cube(t_float2d a)
 {
 	return (complex_multiplication(a,
 			complex_multiplication(a, a)));
@@ -29,7 +29,7 @@ t_2d_float	complex_cube(t_2d_float a)
  * status: public api
  * 
  */
-t_2d_float	complex_x4(t_2d_float a)
+t_float2d	complex_x4(t_float2d a)
 {
 	return (complex_multiplication(a,
 			complex_multiplication(a,
@@ -42,7 +42,7 @@ t_2d_float	complex_x4(t_2d_float a)
  * status: public api
  * 
  */
-t_2d_float	complex_x5(t_2d_float a)
+t_float2d	complex_x5(t_float2d a)
 {
 	return (complex_multiplication(a,
 			complex_multiplication(a,
@@ -56,7 +56,7 @@ t_2d_float	complex_x5(t_2d_float a)
  * status: public api
  * 
  */
-t_2d_float	complex_x6(t_2d_float a)
+t_float2d	complex_x6(t_float2d a)
 {
 	return (complex_multiplication(a,
 			complex_multiplication(a,

@@ -14,24 +14,24 @@
 
 // time : O(1)
 // space: O(1)
-static void	render_kusama_unit(t_2d_hook *hook,
-	bool is_draw, t_2d_int ixiy)
+static void	render_kusama_unit(t_hook2d *hook,
+	bool is_draw, t_int2d ixiy)
 {
-	t_2d_int	position;
-	t_raster_style		raster_style;
+	t_int2d	position;
+	t_style_raster		style_raster;
 
-	raster_style = hook_to_raster(hook, is_draw, ixiy);
+	style_raster = hook_to_raster(hook, is_draw, ixiy);
 	position = world_to_screen2d(*hook->camera,
 			init_fdf_point1d(hook->fdf, ixiy, 1, 0),
 			init_fdf_point1d(hook->fdf, ixiy, 2, 0));
-	render_circle(position, raster_style, *hook->camera, hook->img);
+	render_circle(position, style_raster, *hook->camera, hook->img);
 }
 
 // time : O(n)
 // space: O(1)
-void	render_kusama(t_2d_hook *hook, bool is_draw)
+void	render_kusama(t_hook2d *hook, bool is_draw)
 {
-	t_2d_int	ixiy;
+	t_int2d	ixiy;
 	t_fdf_proj2d		src;
 
 	src = *hook->fdf;

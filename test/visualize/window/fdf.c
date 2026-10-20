@@ -26,7 +26,7 @@ bool	is_fdf_name(const char *str)
 {
 	size_t	len;
 
-	len = f_strlen(str);
+	len = str_length(str);
 	if (len < 5
 		|| str[len - 1] != 'f'
 		|| str[len - 2] != 'd'
@@ -40,11 +40,11 @@ int	main(int len, char **str)
 {
 	t_fdf_table		table;
 	t_fdf_proj2d			output;
-	t_render_style	style;
+	t_style_render	style;
 
 	if (len < 2 || is_fdf_name(str[1]) == false)
 		return (0);
-	table = open_fdf_table_file(str[1], NULL, parse_decimal_rgba, true);
+	table = load_fdf_table_file(str[1], NULL, parse_decimal_rgba, true);
 	if (table.col * table.row == 0)
 	{
 		write(1, "File might be invalid and/or Malloc returns NULL.\n", 51);

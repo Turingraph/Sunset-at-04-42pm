@@ -25,15 +25,15 @@
  *
  * @param dst destination MLX image
  * @param polygon source 2D polygon whose vertices are rendered
- * @param raster_style drawing style containing the circle color and radius
+ * @param style_raster drawing style containing the circle color and radius
  * @param boundary drawing boundary used to position and clip the circles
  */
 static void	raster_motif_circle(mlx_image_t *dst,
-	const t_2d_polygon *polygon, t_raster_style raster_style, t_line boundary)
+	const t_2d_polygon *polygon, t_style_raster style_raster, t_line boundary)
 {
 	size_t		i;
 	t_line		line;
-	t_2d_int	point;
+	t_int2d	point;
 
 	i = 0;
 	while (dst != NULL && polygon != NULL && i < polygon->length)
@@ -41,7 +41,7 @@ static void	raster_motif_circle(mlx_image_t *dst,
 		line = init_motif_line(polygon->arr[i], polygon->arr[i], boundary);
 		point.x = line.p1.x;
 		point.y = line.p1.y;
-		raster_circle(dst, point, raster_style, boundary);
+		raster_circle(dst, point, style_raster, boundary);
 		i += 1;
 	}
 }
@@ -59,11 +59,11 @@ static void	raster_motif_circle(mlx_image_t *dst,
  *
  * @param dst destination MLX image
  * @param polygon source 2D polygon whose edges are rendered
- * @param raster_style drawing style containing the line color and thickness
+ * @param style_raster drawing style containing the line color and thickness
  * @param boundary drawing boundary used to position and clip the polygon
  */
 static void	raster_motif_line(mlx_image_t *dst, const t_2d_polygon *polygon,
-	t_raster_style raster_style, t_line boundary)
+	t_style_raster style_raster, t_line boundary)
 {
 	size_t	i;
 	t_line	line;
@@ -72,14 +72,14 @@ static void	raster_motif_line(mlx_image_t *dst, const t_2d_polygon *polygon,
 	while (dst != NULL && polygon != NULL && i < polygon->length - 1)
 	{
 		line = init_motif_line(polygon->arr[i], polygon->arr[i + 1], boundary);
-		raster_line(dst, line, boundary, raster_style);
+		raster_line(dst, line, boundary, style_raster);
 		i += 1;
 	}
 	if (dst != NULL && polygon != NULL
 		&& i == polygon->length - 1 && polygon->is_loop == true)
 	{
 		line = init_motif_line(polygon->arr[i], polygon->arr[0], boundary);
-		raster_line(dst, line, boundary, raster_style);
+		raster_line(dst, line, boundary, style_raster);
 	}
 }
 
@@ -96,11 +96,11 @@ static void	raster_motif_line(mlx_image_t *dst, const t_2d_polygon *polygon,
  *
  * @param dst destination MLX image
  * @param polygon source 2D polygon whose edges are rendered
- * @param raster_style 32-bit RGBA color used to draw the edges
+ * @param style_raster 32-bit RGBA color used to draw the edges
  * @param boundary drawing boundary used to position and clip the edges
  */
 static void	raster_motif_rectangle(mlx_image_t *dst,
-	const t_2d_polygon *polygon, int32_t raster_style, t_line boundary)
+	const t_2d_polygon *polygon, int32_t style_raster, t_line boundary)
 {
 	size_t	i;
 	t_line	line;
@@ -110,7 +110,7 @@ static void	raster_motif_rectangle(mlx_image_t *dst,
 		&& polygon->length > 0 && i < polygon->length - 1)
 	{
 		line = init_motif_line(polygon->arr[i], polygon->arr[i + 1], boundary);
-		raster_rectangle(dst, line, boundary, raster_style);
+		raster_rectangle(dst, line, boundary, style_raster);
 		i += 1;
 	}
 	if (dst != NULL && polygon != NULL
@@ -118,7 +118,7 @@ static void	raster_motif_rectangle(mlx_image_t *dst,
 		&& polygon->is_loop == true)
 	{
 		line = init_motif_line(polygon->arr[i], polygon->arr[0], boundary);
-		raster_rectangle(dst, line, boundary, raster_style);
+		raster_rectangle(dst, line, boundary, style_raster);
 	}
 }
 
@@ -147,12 +147,12 @@ static void	raster_motif_unit(mlx_image_t *img,
 	while (i < src->motif->length)
 	{
 		if (arr[i].shape_2d == E_LINE)
-			raster_motif_line(img, &(arr[i].polygon), arr[i].raster_style, tile);
+			raster_motif_line(img, &(arr[i].polygon), arr[i].style_raster, tile);
 		else if (arr[i].shape_2d == E_CIRCLE)
-			raster_motif_circle(img, &(arr[i].polygon), arr[i].raster_style, tile);
+			raster_motif_circle(img, &(arr[i].polygon), arr[i].style_raster, tile);
 		else if (arr[i].shape_2d == E_RECTANGLE)
 			raster_motif_rectangle(img, &(arr[i].polygon),
-				arr[i].raster_style.color, tile);
+				arr[i].style_raster.color, tile);
 		i += 1;
 	}
 }
@@ -182,7 +182,7 @@ void	raster_motif(mlx_image_t *img, t_islamic_art *src)
 	int			ix;
 	int			iy;
 
-	if (is_islamic_art_valid(src) == false)
+	if (isvalid_islamic_art(src) == false)
 		return ;
 	iy = 0;
 	while (iy < src->tiles.tile_counts.y)

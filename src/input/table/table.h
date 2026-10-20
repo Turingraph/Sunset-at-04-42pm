@@ -30,7 +30,7 @@ void			scale_relu_fdf(t_fdf_table *dst, int min, int max, int expect);
 
 // public.c
 
-t_fdf_table		open_fdf_table_file(const char *file_name, const char *dir,
+t_fdf_table		load_fdf_table_file(const char *file_name, const char *dir,
 					t_fdf_load (*one_line)(char *line), bool is_rgba);
 
 // scale_dimension.c

@@ -52,7 +52,7 @@ int	main(void)
 	i = 0;
 	while (i < max_score)
 	{
-		fdf_file = open_fdf_file(arr[i], src_dir, parse_ascii_cheche01);
+		fdf_file = load_fdf_load_arr(arr[i], src_dir, parse_ascii_cheche01);
 		clone_examples = load_file_debug(arr[i], dst_dir, E_WRITE);
 		if (clone_examples > -1)
 		{
@@ -62,11 +62,11 @@ int	main(void)
 			else
 			{
 				write(1, "wrong: ", 8);
-				write(1, arr[i], f_strlen(arr[i]));
+				write(1, arr[i], str_length(arr[i]));
 				write(1, "\n", 1);
 			}
 		}
-		destroy_load_fdf_arr(&fdf_file);
+		destroy_fdf_load_arr(&fdf_file);
 		i += 1;
 	}
 	write_score(score, max_score);

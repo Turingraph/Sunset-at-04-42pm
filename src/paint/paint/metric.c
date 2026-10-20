@@ -14,7 +14,7 @@
 */
 int	cell_metric_pythagoras(const t_fdf_table *dst, size_t index)
 {
-	t_2d_float	y;
+	t_float2d	y;
 
 	if (dst == NULL || mul_overflow_size_t(dst->col, dst->row) == false || index >= dst->col * dst->row)
 		return (false);
@@ -35,7 +35,7 @@ int	cell_metric_pythagoras(const t_fdf_table *dst, size_t index)
  */
 int	cell_metric_max_xy(const t_fdf_table *dst, size_t index)
 {
-	t_2d_float	y;
+	t_float2d	y;
 
 	if (dst == NULL || mul_overflow_size_t(dst->col, dst->row) == false || index >= dst->col * dst->row)
 		return (false);
@@ -57,7 +57,7 @@ int	cell_metric_max_xy(const t_fdf_table *dst, size_t index)
  */
 int	cell_metric_addsub(const t_fdf_table *dst, size_t index)
 {
-	t_2d_float	y;
+	t_float2d	y;
 
 	if (dst == NULL || mul_overflow_size_t(dst->col, dst->row) == false || index >= dst->col * dst->row)
 		return (false);
@@ -79,12 +79,12 @@ int	cell_metric_addsub(const t_fdf_table *dst, size_t index)
  */
 int	cell_metric_root_xy(const t_fdf_table *dst, size_t index)
 {
-	t_2d_float	y;
+	t_float2d	y;
 
 	if (dst == NULL || mul_overflow_size_t(dst->col, dst->row) == false || index >= dst->col * dst->row)
 		return (false);
 	y = init_table_coordinate(dst, index, 1.0);
-	return ((int)f_round(f_root_finding(f_abs(y.x * y.y), 2)));
+	return ((int)f_round(f_root_find(f_abs(y.x * y.y), 2)));
 }
 
 /**
@@ -101,7 +101,7 @@ int	cell_metric_root_xy(const t_fdf_table *dst, size_t index)
  */
 int	cell_metric_fermat_theorem(const t_fdf_table *dst, size_t index)
 {
-	t_2d_float	y;
+	t_float2d	y;
 	int			a;
 	int			b;
 	int			c;
@@ -112,7 +112,7 @@ int	cell_metric_fermat_theorem(const t_fdf_table *dst, size_t index)
 	a = (int)f_pow(f_abs(y.x), 3);
 	b = (int)f_pow(f_abs(y.y), 3);
 	c = a + b;
-	c = (int)f_round(f_root_finding((float)c, 3));
+	c = (int)f_round(f_root_find((float)c, 3));
 	c = (int)f_pow((int)c, 3);
 	return (f_abs_int(a + b - c) * f_min_int(dst->col, dst->row));
 }

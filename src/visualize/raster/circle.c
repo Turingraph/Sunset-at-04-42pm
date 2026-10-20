@@ -14,7 +14,7 @@
 
 // time : O(1)
 // space: O(1)
-t_line	init_circle_line(t_2d_int point, int ix, int iy, char mode)
+t_line	init_circle_line(t_int2d point, int ix, int iy, char mode)
 {
 	t_line	dst;
 
@@ -142,13 +142,13 @@ Reference
  * 
  * @param dst destination MLX image
  * @param point the point of circle
- * @param raster_style contains both color and the size of the circle.
+ * @param style_raster contains both color and the size of the circle.
  * @param boundary drawable area used to clip the circle
  * @see https://www.youtube.com/watch?v=hpiILbMkF9w
  * for learning how Midpoint circle works.
 */
 void	raster_circle(mlx_image_t *dst,
-	t_2d_int point, t_raster_style raster_style, t_line boundary)
+	t_int2d point, t_style_raster style_raster, t_line boundary)
 {
 	int		ix;
 	int		iy;
@@ -157,19 +157,19 @@ void	raster_circle(mlx_image_t *dst,
 
 	if (dst == NULL || mul_overflow_uint32_t(dst->width, dst->height) == false)
 		return ;
-	pivot = raster_style.thickness * -1;
-	iy = -1 * raster_style.thickness;
+	pivot = style_raster.thickness * -1;
+	iy = -1 * style_raster.thickness;
 	ix = 0;
 	while (ix <= -1 * iy)
 	{
 		line = init_circle_line(point, ix, iy, 0);
-		raster_line_horizontal(dst, line, raster_style.color, boundary);
+		raster_line_horizontal(dst, line, style_raster.color, boundary);
 		line = init_circle_line(point, ix, iy, 1);
-		raster_line_horizontal(dst, line, raster_style.color, boundary);
+		raster_line_horizontal(dst, line, style_raster.color, boundary);
 		line = init_circle_line(point, ix, iy, 2);
-		raster_line_horizontal(dst, line, raster_style.color, boundary);
+		raster_line_horizontal(dst, line, style_raster.color, boundary);
 		line = init_circle_line(point, ix, iy, 3);
-		raster_line_horizontal(dst, line, raster_style.color, boundary);
+		raster_line_horizontal(dst, line, style_raster.color, boundary);
 		if (pivot > 0)
 			iy += 1;
 		if (pivot > 0)

@@ -20,15 +20,15 @@ void	write_rgba_fdf(int fd, const t_fdf_table *src, size_t index)
 	{
 		write(fd, ",0x", 3);
 		if (src->r != NULL)
-			ft_putnbr_fd((int)src->r[index], fd, "0123456789abcdef", 2);
+			write_int((int)src->r[index], fd, "0123456789abcdef", 2);
 		else
 			write(fd, "00", 2);
 		if (src->g != NULL)
-			ft_putnbr_fd((int)src->g[index], fd, "0123456789abcdef", 2);
+			write_int((int)src->g[index], fd, "0123456789abcdef", 2);
 		else
 			write(fd, "00", 2);
 		if (src->b != NULL)
-			ft_putnbr_fd((int)src->b[index], fd, "0123456789abcdef", 2);
+			write_int((int)src->b[index], fd, "0123456789abcdef", 2);
 		else
 			write(fd, "00", 2);
 	}
@@ -60,11 +60,11 @@ void	write_fdf_table(int fd, const t_fdf_table *src,
 		j = 0;
 		while (j < src->col)
 		{
-			ft_putnbr_fd(src->arr[src->col * i + j], fd, "0123456789", digits);
+			write_int(src->arr[src->col * i + j], fd, "0123456789", digits);
 			if (mode == HEIGHT_RGB || mode == HEIGHT_RGBA)
 				write_rgba_fdf(fd, src, src->col * i + j);
 			if (src->a != NULL && mode == HEIGHT_RGBA)
-				ft_putnbr_fd((int)src->a[src->col * i + j],
+				write_int((int)src->a[src->col * i + j],
 					fd, "0123456789abcdef", 2);
 			else if (src->a == NULL && mode == HEIGHT_RGBA)
 				write(fd, "00", 2);
@@ -84,7 +84,7 @@ static void	write_rgba_ascii(unsigned char input,
 	int	output;
 
 	output = f_interval_int(input, 0, 255);
-	ft_put_ascii_fd(fd, output, dict, is_left);
+	write_ascii(fd, output, dict, is_left);
 }
 
 // time : O(n)
@@ -109,7 +109,7 @@ void	write_table_ascii(int fd, const t_fdf_table *src,
 				left_char = false;
 			arr = rgbarr_from_table(src, channel);
 			if (src->arr != NULL && channel == HEIGHT)
-				ft_put_ascii_fd(fd,
+				write_ascii(fd,
 					(int)src->arr[i * src->col + j], dict, left_char);
 			else if (arr != NULL && channel != HEIGHT)
 				write_rgba_ascii(arr[i * src->col + j], dict, fd, left_char);

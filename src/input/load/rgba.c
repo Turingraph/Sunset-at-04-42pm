@@ -18,7 +18,7 @@ static unsigned char	f_rgba(const char *str, size_t len, bool *rgb_warn)
 {
 	int	dst;
 
-	dst = f_atoi(str, rgb_warn, "0123456789abcdef", len);
+	dst = str_to_int(str, rgb_warn, "0123456789abcdef", len);
 	if (len == 1)
 		dst = 16 * dst + dst;
 	if (dst < 0)
@@ -37,11 +37,11 @@ size_t	count_hex_digits(char *line, size_t max)
 	if (line == NULL)
 		return (0);
 	i = 0;
-	if (f_strlen(line) < 4 || *line != ',' || line[1] != '0' || line[2] != 'x')
+	if (str_length(line) < 4 || *line != ',' || line[1] != '0' || line[2] != 'x')
 		return (0);
-	while (f_isspace(line[i + 3], "0123456789ABCDEFabcdef") == 1 && i < max)
+	while (is_a_in_str(line[i + 3], "0123456789ABCDEFabcdef") == 1 && i < max)
 	{
-		if (f_isspace(line[i + 3], "abcdef") == 1)
+		if (is_a_in_str(line[i + 3], "abcdef") == 1)
 			line[i + 3] = line[i + 3] - 'a' + 'A';
 		i += 1;
 	}

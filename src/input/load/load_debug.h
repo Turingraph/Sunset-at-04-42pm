@@ -19,21 +19,21 @@
 
 // all_files.c
 
-t_fdf_load_arr	open_fdf_file(const char *file_name, const char *dir,
+t_fdf_load_arr	load_fdf_load_arr(const char *file_name, const char *dir,
 					t_fdf_load (*parse_line)(char *line));
 
 // ascii.c
-char			f_ctomirror(char a, bool is_left);
+char			ascii_to_mirror(char a, bool is_left);
 
 // atoi.c
 
-int				f_atoi(const char *src, bool *is_int,
+int				str_to_int(const char *src, bool *is_int,
 					const char *base, size_t digits);
-size_t			ft_putnbr_fd(int n, int fd, const char *base, size_t digits);
+size_t			write_int(int n, int fd, const char *base, size_t digits);
 
 // init.c
 
-void			destroy_load_fdf_arr(t_fdf_load_arr *src);
+void			destroy_fdf_load_arr(t_fdf_load_arr *src);
 
 // parse.c
 
@@ -45,8 +45,8 @@ t_fdf_load		parse_decimal_bw(char *line);
 
 // string.c
 
-char			f_isspace(char s, const char *space);
-size_t			f_strlen(const char *str);
+char			is_a_in_str(char s, const char *space);
+size_t			str_length(const char *str);
 
 // write_ascii.c
 

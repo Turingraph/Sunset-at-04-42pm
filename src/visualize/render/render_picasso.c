@@ -14,7 +14,7 @@
 
 // time : O(1)
 // space: O(1)
-static t_line	init_liney(t_2d_camera camera, t_fdf_proj2d *fdf, t_2d_int ixiy)
+static t_line	init_liney(t_camera2d camera, t_fdf_proj2d *fdf, t_int2d ixiy)
 {
 	t_line		line;
 
@@ -29,7 +29,7 @@ static t_line	init_liney(t_2d_camera camera, t_fdf_proj2d *fdf, t_2d_int ixiy)
 
 // time : O(1)
 // space: O(1)
-static t_line	init_linex(t_2d_camera camera, t_fdf_proj2d *fdf, t_2d_int ixiy)
+static t_line	init_linex(t_camera2d camera, t_fdf_proj2d *fdf, t_int2d ixiy)
 {
 	t_line		line;
 
@@ -44,35 +44,35 @@ static t_line	init_linex(t_2d_camera camera, t_fdf_proj2d *fdf, t_2d_int ixiy)
 
 // time : O(1)
 // space: O(1)
-static void	render_picassoy_unit(t_2d_hook *hook,
-	bool is_draw, t_2d_int ixiy)
+static void	render_picassoy_unit(t_hook2d *hook,
+	bool is_draw, t_int2d ixiy)
 {
 	t_line			line;
-	t_raster_style	raster_style;
+	t_style_raster	style_raster;
 
-	raster_style = hook_to_raster(hook, is_draw, ixiy);
+	style_raster = hook_to_raster(hook, is_draw, ixiy);
 	line = init_liney(*hook->camera, hook->fdf, ixiy);
-	render_line(line, raster_style, *(hook->camera), hook->img);
+	render_line(line, style_raster, *(hook->camera), hook->img);
 }
 
 // time : O(1)
 // space: O(1)
-static void	render_picassox_unit(t_2d_hook *hook,
-	bool is_draw, t_2d_int ixiy)
+static void	render_picassox_unit(t_hook2d *hook,
+	bool is_draw, t_int2d ixiy)
 {
 	t_line			line;
-	t_raster_style	raster_style;
+	t_style_raster	style_raster;
 
-	raster_style = hook_to_raster(hook, is_draw, ixiy);
+	style_raster = hook_to_raster(hook, is_draw, ixiy);
 	line = init_linex(*hook->camera, hook->fdf, ixiy);
-	render_line(line, raster_style, *(hook->camera), hook->img);
+	render_line(line, style_raster, *(hook->camera), hook->img);
 }
 
 // time : O(n)
 // space: O(1)
-static void	render_picassox(t_2d_hook *hook, bool is_draw)
+static void	render_picassox(t_hook2d *hook, bool is_draw)
 {
-	t_2d_int	ixiy;
+	t_int2d	ixiy;
 	t_fdf_proj2d		src;
 
 	src = *hook->fdf;
@@ -91,9 +91,9 @@ static void	render_picassox(t_2d_hook *hook, bool is_draw)
 
 // time : O(n)
 // space: O(1)
-static void	render_picassoy(t_2d_hook *hook, bool is_draw)
+static void	render_picassoy(t_hook2d *hook, bool is_draw)
 {
-	t_2d_int	ixiy;
+	t_int2d	ixiy;
 	t_fdf_proj2d		src;
 
 	src = *hook->fdf;
@@ -112,7 +112,7 @@ static void	render_picassoy(t_2d_hook *hook, bool is_draw)
 
 // time : O(n)
 // space: O(1)
-void	render_picasso(t_2d_hook *hook, bool is_draw)
+void	render_picasso(t_hook2d *hook, bool is_draw)
 {
 	render_picassox(hook, is_draw);
 	render_picassoy(hook, is_draw);

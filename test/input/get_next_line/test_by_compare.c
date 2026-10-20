@@ -260,7 +260,7 @@ int	main(void)
 			else
 			{
 				write(1, ">>> ", 4);
-				write(1, arr[i].file_name, f_strlen(arr[i].file_name));
+				write(1, arr[i].file_name, str_length(arr[i].file_name));
 				write(1, "\n", 1);
 			}
 		}
@@ -271,7 +271,7 @@ int	main(void)
 			else
 			{
 				write(1, ">>> ", 4);
-				write(1, arr[i].file_name, f_strlen(arr[i].file_name));
+				write(1, arr[i].file_name, str_length(arr[i].file_name));
 				write(1, "\n", 1);
 			}
 		}

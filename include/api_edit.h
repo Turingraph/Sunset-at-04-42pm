@@ -69,15 +69,15 @@ typedef struct t_fdf_table
 }	t_fdf_table;
 
 /**
- * Sometimes t_2d_float is used for describing 2D xy position.
+ * Sometimes t_float2d is used for describing 2D xy position.
  * @param re correspond to x axis position.
  * @param im correspond to y axis position.
  */
-typedef struct t_2d_float
+typedef struct t_float2d
 {
 	float	re;
 	float	im;
-}	t_2d_float;
+}	t_float2d;
 
 /**
  * The SUNSET_WINDOW_WIDTH and SUNSET_WINDOW_HEIGHT is used for

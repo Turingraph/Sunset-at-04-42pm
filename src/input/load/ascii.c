@@ -16,7 +16,7 @@
 
 // time : O(1)
 // space: O(1)
-char	f_ctomirror(char a, bool is_left)
+char	ascii_to_mirror(char a, bool is_left)
 {
 	size_t	i;
 	char	*left_dict;
@@ -43,14 +43,14 @@ char	f_ctomirror(char a, bool is_left)
 
 // time : O(n)
 // space: O(1)
-int	f_ctoi(char a, const char *dict)
+int	ascii_to_int(char a, const char *dict)
 {
 	size_t	i;
 
 	if (a == '\0')
 		return (0);
 	i = 0;
-	while (dict[i] != '\0' && dict[i] != a && dict[i] != f_ctomirror(a, true))
+	while (dict[i] != '\0' && dict[i] != a && dict[i] != ascii_to_mirror(a, true))
 		i += 1;
 	return ((int)i);
 }
@@ -70,7 +70,7 @@ int	f_ctoi(char a, const char *dict)
  *  for examples, b = right and d = left, etc. this features make the output
  *  of this program more compatible with Figlet output.
  */
-void	ft_put_ascii_fd(int fd, int cell, const char *dict, bool is_left)
+void	write_ascii(int fd, int cell, const char *dict, bool is_left)
 {
 	size_t	i;
 	char	right_twin;
@@ -85,8 +85,8 @@ void	ft_put_ascii_fd(int fd, int cell, const char *dict, bool is_left)
 			i += 1;
 		if (dict[i] == '\0' && i > 0)
 			i -= 1;
-		left_twin = f_ctomirror(dict[i], true);
-		right_twin = f_ctomirror(dict[i], false);
+		left_twin = ascii_to_mirror(dict[i], true);
+		right_twin = ascii_to_mirror(dict[i], false);
 		if (is_left == true)
 			write(fd, &left_twin, 1);
 		if (is_left == false)
@@ -106,7 +106,7 @@ static int	*line_to_ascii_arr(const char *line,
 	i = 0;
 	while (i < length)
 	{
-		dst[i] = f_ctoi(line[i], dict);
+		dst[i] = ascii_to_int(line[i], dict);
 		i += 1;
 	}
 	return (dst);
@@ -118,10 +118,10 @@ t_fdf_load	parse_ascii(char *line, const char *dict)
 {
 	t_fdf_load	dst;
 
-	dst = init_fdf_load(index_a_in_str((const char *)line, '\n', false), false);
+	dst = create_fdf_load(index_a_in_str((const char *)line, '\n', false), false);
 	if (dst.int_warn == EMPTY)
 	{
-		destroy_load_fdf(&dst);
+		destroy_fdf_load(&dst);
 		dst.a = NULL;
 		dst.r = NULL;
 		dst.g = NULL;
@@ -129,7 +129,7 @@ t_fdf_load	parse_ascii(char *line, const char *dict)
 		dst.arr = malloc_talk(sizeof(int) * 1, "parse_ascii\n");
 		dst.length = 1;
 		if (dst.arr == NULL)
-			return (init_fdf_load(0, false));
+			return (create_fdf_load(0, false));
 		dst.arr[0] = 0;
 		dst.int_warn = CORRECT;
 		dst.rgb_warn = CORRECT;

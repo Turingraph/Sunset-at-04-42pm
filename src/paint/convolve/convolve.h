@@ -43,7 +43,7 @@ void		*free_matrix(t_matrix *src);
 t_matrix	init_matrix(size_t row, size_t col, float scale);
 t_matrix	outer_product_matrix(const float *vec_v,
 				const float *vec_u, size_t dim);
-bool		is_matrix_valid(const t_matrix *src);
+bool		isvalid_matrix(const t_matrix *src);
 bool		is_matrix_same_dim(const t_matrix *a, const t_matrix *b);
 
 // utils.c

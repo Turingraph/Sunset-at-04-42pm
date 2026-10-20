@@ -13,7 +13,7 @@
  */
 int	cell_metric_min_xy(const t_fdf_table *dst, size_t index)
 {
-	t_2d_float	y;
+	t_float2d	y;
 
 	if (dst == NULL || mul_overflow_size_t(dst->col, dst->row) == false || index >= dst->col * dst->row)
 		return (false);
@@ -35,7 +35,7 @@ int	cell_metric_min_xy(const t_fdf_table *dst, size_t index)
  */
 int	cell_metric_min_xyz(const t_fdf_table *dst, size_t index)
 {
-	t_2d_float	y;
+	t_float2d	y;
 	int			min_2d;
 	int			zd3;
 
@@ -63,7 +63,7 @@ int	cell_metric_min_xyz(const t_fdf_table *dst, size_t index)
  */
 int	cell_metric_mincos(const t_fdf_table *dst, size_t index)
 {
-	t_2d_float	y;
+	t_float2d	y;
 	float		s;
 	float		f;
 
@@ -93,7 +93,7 @@ int	cell_metric_mincos(const t_fdf_table *dst, size_t index)
  */
 int	cell_metric_minecos(const t_fdf_table *dst, size_t index)
 {
-	t_2d_float	y;
+	t_float2d	y;
 
 	if (dst == NULL || mul_overflow_size_t(dst->col, dst->row) == false || index >= dst->col * dst->row)
 		return (0);
@@ -116,7 +116,7 @@ int	cell_metric_minecos(const t_fdf_table *dst, size_t index)
  */
 int	cell_metric_minexp(const t_fdf_table *dst, size_t index)
 {
-	t_2d_float	y;
+	t_float2d	y;
 
 	if (dst == NULL || mul_overflow_size_t(dst->col, dst->row) == false || index >= dst->col * dst->row)
 		return (0);

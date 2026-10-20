@@ -66,13 +66,13 @@ int	main(void)
 	i = 0;
 	while (i < length)
 	{
-		table = open_fdf_table_file(arr[i], src_dir, parse_decimal_bw, false);
+		table = load_fdf_table_file(arr[i], src_dir, parse_decimal_bw, false);
 		scale_positive_fdf(&table);
 		fdf_dst = load_file_debug(arrdst[i], dst_dir, E_WRITE);
 		if(fdf_dst > -1)
 		{
 			write(1, "\n*** ", 5);
-			write(1, arr[i], f_strlen(arr[i]));
+			write(1, arr[i], str_length(arr[i]));
 			write(1, " ***\n", 5);
 			write_fdf_table(1, &table, 3, HEIGHT_ONLY);
 			write_table_ascii_cheche01(fdf_dst, &table, HEIGHT);

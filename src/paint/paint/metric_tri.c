@@ -14,7 +14,7 @@
  */
 int	cell_metric_maxsin(const t_fdf_table *dst, size_t index)
 {
-	t_2d_float	y;
+	t_float2d	y;
 	float		s;
 	float		f;
 
@@ -46,7 +46,7 @@ int	cell_metric_maxsin(const t_fdf_table *dst, size_t index)
  */
 int	cell_metric_maxesin(const t_fdf_table *dst, size_t index)
 {
-	t_2d_float	y;
+	t_float2d	y;
 
 	if (dst == NULL || mul_overflow_size_t(dst->col, dst->row) == false || index >= dst->col * dst->row)
 		return (0);
@@ -71,7 +71,7 @@ int	cell_metric_maxesin(const t_fdf_table *dst, size_t index)
  */
 int	cell_metric_maxcos(const t_fdf_table *dst, size_t index)
 {
-	t_2d_float	y;
+	t_float2d	y;
 	float		s;
 	float		f;
 
@@ -103,7 +103,7 @@ int	cell_metric_maxcos(const t_fdf_table *dst, size_t index)
  */
 int	cell_metric_maxecos(const t_fdf_table *dst, size_t index)
 {
-	t_2d_float	y;
+	t_float2d	y;
 
 	if (dst == NULL || mul_overflow_size_t(dst->col, dst->row) == false || index >= dst->col * dst->row)
 		return (0);
@@ -128,7 +128,7 @@ int	cell_metric_maxecos(const t_fdf_table *dst, size_t index)
  */
 int	cell_metric_maxexp(const t_fdf_table *dst, size_t index)
 {
-	t_2d_float	y;
+	t_float2d	y;
 
 	if (dst == NULL || mul_overflow_size_t(dst->col, dst->row) == false || index >= dst->col * dst->row)
 		return (0);

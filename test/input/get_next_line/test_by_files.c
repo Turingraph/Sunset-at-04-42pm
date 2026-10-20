@@ -37,26 +37,26 @@ int	main(void)
 			src_dir, E_READ);
 		if (fd > -1)
 		{
-			total_lines = length_of_file(fd);
+			total_lines = file_length(fd);
 			fd = load_file_debug(arr[i], src_dir, E_READ);
 			load = file_to_strarr(fd, total_lines);
 			fd = load_file_debug(arr[i], dst_dir, E_WRITE);
 			if (fd > -1)
 			{
-				write_strarr((const char **)load, length_of_strarr((const char **)load), fd);
+				write_strarr((const char **)load, strarr_length((const char **)load), fd);
 				if (assert_file(arr[i], arr[i], src_dir, dst_dir) == true)
 					score += 1;
 				else
 				{
 					write(1, ">>> ", 4);
-					ft_putnbr_fd(i, 1, "0123456789", 1);
+					write_int(i, 1, "0123456789", 1);
 					write(1, "\n", 1);
 				}
 			}
 			else
 				write(1, ">>> Empty Set\n", 15);
 			if (load != NULL)
-				destroy_2d_arr((void **)load, length_of_strarr((const char **)load));
+				destroy_2d_arr((void **)load, strarr_length((const char **)load));
 		}
 		i += 1;
 	}

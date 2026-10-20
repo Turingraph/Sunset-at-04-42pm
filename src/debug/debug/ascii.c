@@ -12,7 +12,7 @@ static int		compare_string_ascii(const char *str_1, const char *str_2, size_t n)
 	if ((str_1 == NULL && str_2 != NULL) || (str_1 != NULL && str_2 == NULL))
 		return (-1);
 	while (i < n && *str_1 != '\0'
-		&& f_ctomirror(*str_1, true) == f_ctomirror(*str_2, true))
+		&& ascii_to_mirror(*str_1, true) == ascii_to_mirror(*str_2, true))
 	{
 		i += 1;
 		str_1 += 1;
@@ -22,7 +22,7 @@ static int		compare_string_ascii(const char *str_1, const char *str_2, size_t n)
 		while (*str_2 == '\n')
 			str_2 += 1;
 	}
-	return (f_ctomirror(*str_1, true) - f_ctomirror(*str_2, true));
+	return (ascii_to_mirror(*str_1, true) - ascii_to_mirror(*str_2, true));
 }
 
 // time : O(n)
@@ -40,7 +40,7 @@ static bool	assert_strarr_ascii(const char **strarr_1,
 	while (i < length && strarr_1[i] != NULL && strarr_2[i] != NULL)
 	{
 		if (compare_string_ascii(strarr_1[i], strarr_2[i],
-				f_strlen(strarr_1[i])) != 0)
+				str_length(strarr_1[i])) != 0)
 			return (false);
 		i += 1;
 	}
@@ -63,9 +63,9 @@ bool	assert_file_ascii(const char *file_name_1, const char *file_name_2,
 	bool	result;
 
 	fd = load_file_debug(file_name_1, dir_name_1, E_READ);
-	length = length_of_file(fd);
+	length = file_length(fd);
 	fd = load_file_debug(file_name_2, dir_name_2, E_READ);	
-	if (length != length_of_file(fd))
+	if (length != file_length(fd))
 		return (false);
 	fd = load_file_debug(file_name_1, dir_name_1, E_READ);
 	strarr_1 = file_to_strarr(fd, length);

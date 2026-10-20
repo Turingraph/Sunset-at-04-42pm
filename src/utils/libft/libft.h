@@ -27,7 +27,7 @@ int				f_abs_int(int x);
 void			*malloc_talk(size_t elem_size, const char *comment);
 unsigned char	*rgbarr_from_table(const t_fdf_table *src,
 					t_fdf_channel rgba_type);
-t_2d_float		init_table_coordinate(const t_fdf_table *dst, size_t index, float zoom);
+t_float2d		init_table_coordinate(const t_fdf_table *dst, size_t index, float zoom);
 bool			mul_overflow_size_t(size_t col, size_t row);
 bool			mul_overflow_uint32_t(uint32_t col, uint32_t row);
 

@@ -81,7 +81,7 @@ t_matrix	outer_product_matrix(const float *vec_v,
 
 // time : O(1)
 // space: O(1)
-bool	is_matrix_valid(const t_matrix *src)
+bool	isvalid_matrix(const t_matrix *src)
 {
 	if (src == NULL || src->arr == NULL
 		|| mul_overflow_size_t(src->col, src->row) == false
@@ -94,7 +94,7 @@ bool	is_matrix_valid(const t_matrix *src)
 // space: O(1)
 bool	is_matrix_same_dim(const t_matrix *a, const t_matrix *b)
 {
-	if (is_matrix_valid(a) == false || is_matrix_valid(b) == false
+	if (isvalid_matrix(a) == false || isvalid_matrix(b) == false
 		|| a->col != b->col || a->row != b->row)
 		return (false);
 	return (true);

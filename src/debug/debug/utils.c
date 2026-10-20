@@ -5,9 +5,9 @@
 void	write_score(size_t score, size_t max_score)
 {
 	write(1, "Score: ", 8);
-	ft_putnbr_fd((int)score, 1, "0123456789", 1);
+	write_int((int)score, 1, "0123456789", 1);
 	write(1, " / ", 3);
-	ft_putnbr_fd((int)max_score, 1, "0123456789", 1);
+	write_int((int)max_score, 1, "0123456789", 1);
 	write(1, "\n", 1);
 }
 
@@ -38,7 +38,7 @@ bool	assert_intarr(const int *str_1, const int *str_2, size_t n)
 void	write_file_not_exists(const char *src)
 {
 	write(1, "Warning: ", 10);
-	write(1, src, f_strlen(src));
+	write(1, src, str_length(src));
 	write(1, " is not exists.\n", 17);
 }
 

@@ -42,7 +42,7 @@ int	main(void)
 	while (i < length)
 	{
 		output = load_file_debug(arr[i], dst_dir, E_WRITE);
-		table_a = open_fdf_table_file(arr[i], src_dir,
+		table_a = load_fdf_table_file(arr[i], src_dir,
 				parse_decimal_bw, false);
 		table_b = convolve_fdf(&table_a, NULL, half_dim);
 		write_fdf_table(output, &table_b, 1, HEIGHT_ONLY);

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_2d_hook.c                                     :+:      :+:    :+:   */
+/*   init_hook2d.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -26,9 +26,9 @@
  * @param window_height height of the camera viewport
  * @return initialized 2D camera
  */
-t_2d_camera	init_2d_camera(size_t window_width, size_t window_height)
+t_camera2d	init_camera2d(size_t window_width, size_t window_height)
 {
-	t_2d_camera	camera;
+	t_camera2d	camera;
 
 	camera.offset.x = 0;
 	camera.offset.y = 0;
@@ -81,18 +81,18 @@ static mlx_image_t	*create_mlx_image(mlx_t *mlx)
  *
  * @param mlx MLX window context used by the view
  * @param fdf FDF object to display
- * @param render_style style used to render the FDF object
+ * @param style_render style used to render the FDF object
  * @param background_color the background color of the window scene.
  * @return initialized 2D FDF rendering context
  */
-t_2d_hook	init_2d_hook(mlx_t *mlx, t_fdf_proj2d *fdf, t_render_style render_style, int32_t background_color)
+t_hook2d	init_hook2d(mlx_t *mlx, t_fdf_proj2d *fdf, t_style_render style_render, int32_t background_color)
 {
-	t_2d_hook	dst;
+	t_hook2d	dst;
 
 	dst.mlx = mlx;
 	dst.camera = NULL;
 	dst.fdf = fdf;
-	dst.render_style = render_style;
+	dst.style_render = style_render;
 	dst.img = create_mlx_image(mlx);
 	dst.background_color = background_color;
 	return (dst);
@@ -116,7 +116,7 @@ void	normalize_fdf_proj2d(t_fdf_proj2d *src, size_t fixed_window_size)
 	size_t		length;
 	float		scale;
 
-	if (is_fdf_proj2d_valid(src) == false || fixed_window_size == 0)
+	if (isvalid_fdf_proj2d(src) == false || fixed_window_size == 0)
 		return ;
 	length = src->col * src->row;
 	scale = fixed_window_size / src->width;

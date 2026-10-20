@@ -129,7 +129,7 @@ double	f_pow(double x, size_t a)
  * status: public api
  * 
  */
-double	f_root_finding(double x, size_t a)
+double	f_root_find(double x, size_t a)
 {
 	double	y;
 	double	err;

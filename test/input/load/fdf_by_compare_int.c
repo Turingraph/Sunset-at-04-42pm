@@ -220,9 +220,9 @@ int	main(void)
 		while (k < 2)
 		{
 			if (k == 0)
-				fdf_file = open_fdf_file(arr[i].file_name, src_dir, parse_decimal_bw);
+				fdf_file = load_fdf_load_arr(arr[i].file_name, src_dir, parse_decimal_bw);
 			else
-				fdf_file = open_fdf_file(arr[i].file_name, src_dir, parse_decimal_rgba);
+				fdf_file = load_fdf_load_arr(arr[i].file_name, src_dir, parse_decimal_rgba);
 			if (fdf_file.length == arr[i].length)
 			{
 				is_correct = true;
@@ -240,11 +240,11 @@ int	main(void)
 				else
 				{
 					write(1, "Incorrect: ", 12);
-					write(1, arr[i].file_name, f_strlen(arr[i].file_name));
+					write(1, arr[i].file_name, str_length(arr[i].file_name));
 					write(1, "\n", 1);
 				}
 			}
-			destroy_load_fdf_arr(&fdf_file);
+			destroy_fdf_load_arr(&fdf_file);
 			k += 1;
 		}
 		i += 1;

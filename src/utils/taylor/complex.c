@@ -18,9 +18,9 @@
  * status: public api
  * 
  */
-t_2d_float	complex_multiplication(t_2d_float a, t_2d_float b)
+t_float2d	complex_multiplication(t_float2d a, t_float2d b)
 {
-	t_2d_float	dst;
+	t_float2d	dst;
 
 	dst.x = a.x * b.x - a.y * b.y;
 	dst.y = a.x * b.y + a.y * b.x;
@@ -37,9 +37,9 @@ t_2d_float	complex_multiplication(t_2d_float a, t_2d_float b)
  * status: public api
  * 
  */
-t_2d_float	complex_reciprocal(t_2d_float a)
+t_float2d	complex_reciprocal(t_float2d a)
 {
-	t_2d_float	dst;
+	t_float2d	dst;
 
 	dst.x = 0;
 	dst.y = 0;
@@ -56,12 +56,12 @@ t_2d_float	complex_reciprocal(t_2d_float a)
  * status: public api
  * 
  */
-float	complex_magnitude(t_2d_float a, char is_square)
+float	complex_magnitude(t_float2d a, char is_square)
 {
 	float	y;
 
 	y = a.x * a.x + a.y * a.y;
 	if (is_square > 0)
 		return (y);
-	return (f_root_finding(y, 2));
+	return (f_root_find(y, 2));
 }

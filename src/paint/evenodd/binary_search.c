@@ -78,7 +78,7 @@ bool	is_binary_search_length_odd(const t_fdf_table *dst, size_t index)
 {
 	int			input;
 	size_t		max;
-	t_2d_float	y;
+	t_float2d	y;
 
 	if (dst == NULL || mul_overflow_size_t(dst->col, dst->row) == false || index >= dst->col * dst->row)
 		return (false);
@@ -92,7 +92,7 @@ bool	is_binary_search_length_odd(const t_fdf_table *dst, size_t index)
 	else
 		max = binary_search_count((size_t)input,
 		(size_t)f_round(
-				f_root_finding(dst->row * dst->row + dst->col * dst->col, 2)));
+				f_root_find(dst->row * dst->row + dst->col * dst->col, 2)));
 	if (max % 2 == 0)
 		return (false);
 	return (true);
@@ -121,7 +121,7 @@ bool	is_binary_search_length_odd(const t_fdf_table *dst, size_t index)
  */
 bool	is_binary_search_product_odd(const t_fdf_table *dst, size_t index)
 {
-	t_2d_float	y;
+	t_float2d	y;
 	int			input;
 	size_t		max;
 
@@ -154,7 +154,7 @@ bool	is_binary_search_product_odd(const t_fdf_table *dst, size_t index)
  */
 bool	is_binary_search_andmod(const t_fdf_table *dst, size_t index)
 {
-	t_2d_float	y;
+	t_float2d	y;
 	size_t		max_x;
 	size_t		max_y;
 

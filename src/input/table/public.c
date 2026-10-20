@@ -28,19 +28,19 @@
  * @return return the array that contains rgba and height of the height map.
  * @see src/input/load/parse.c
  */
-t_fdf_table	open_fdf_table_file(const char *file_name, const char *dir,
+t_fdf_table	load_fdf_table_file(const char *file_name, const char *dir,
 	t_fdf_load (*one_line)(char *line), bool is_rgba)
 {
 	t_fdf_table		dst;
 	t_fdf_load_arr	src;
 
-	src = open_fdf_file(file_name, dir, one_line);
-	if (is_load_fdf_arr_valid(&src, (int)src.length - 1) == false)
+	src = load_fdf_load_arr(file_name, dir, one_line);
+	if (isvalid_fdf_load_arr(&src, (int)src.length - 1) == false)
 	{
-		destroy_load_fdf_arr(&src);
+		destroy_fdf_load_arr(&src);
 		return (create_fdf_table(0, 0, false));
 	}
-	dst = load_fdf_table(&src, is_rgba);
-	destroy_load_fdf_arr(&src);
+	dst = fdf_load_table(&src, is_rgba);
+	destroy_fdf_load_arr(&src);
 	return (dst);
 }

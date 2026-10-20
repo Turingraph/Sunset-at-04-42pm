@@ -4,21 +4,21 @@
 // space: O(1)
 double	test_identity(double x)
 {
-	return (f_root_finding(x, 1));
+	return (f_root_find(x, 1));
 }
 
 // time : O(n)
 // space: O(1)
 double	test_sqrt(double x)
 {
-	return (f_root_finding(x, 2));
+	return (f_root_find(x, 2));
 }
 
 // time : O(n)
 // space: O(1)
 double	test_cubrt(double x)
 {
-	return (f_root_finding(x, 3));
+	return (f_root_find(x, 3));
 }
 
 // time : O(n)
@@ -32,7 +32,7 @@ double	test_cube(double x)
 // space: O(1)
 double	test_normal(double x)
 {
-	return (normal_distribution(1, 2, x));
+	return (f_normal(1, 2, x));
 }
 
 // time : O(n)
@@ -53,7 +53,7 @@ bool	math_tester(size_t max_score, const double **arr,
 			score += 1;
 		else
 		{
-			ft_putnbr_fd(i, 1, "0123456789", 1);
+			write_int(i, 1, "0123456789", 1);
 			write(1, ", ", 2);
 		}
 		i += 1;

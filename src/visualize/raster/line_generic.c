@@ -15,9 +15,9 @@
 // time : O(n)
 // space: O(1)
 static void	raster_linex(mlx_image_t *dst,
-	t_line line, t_line boundary, t_raster_style raster_style)
+	t_line line, t_line boundary, t_style_raster style_raster)
 {
-	t_2d_int	temp;
+	t_int2d	temp;
 
 	if (line.p2.x < line.p1.x)
 	{
@@ -26,17 +26,17 @@ static void	raster_linex(mlx_image_t *dst,
 		line.p1 = temp;
 	}
 	if (line.p2.y - line.p1.y < 0)
-		raster_linex_minus(dst, line, boundary, raster_style);
+		raster_linex_minus(dst, line, boundary, style_raster);
 	else
-		raster_linex_plus(dst, line, boundary, raster_style);
+		raster_linex_plus(dst, line, boundary, style_raster);
 }
 
 // time : O(n)
 // space: O(1)
 static void	raster_liney(mlx_image_t *dst,
-	t_line line, t_line boundary, t_raster_style raster_style)
+	t_line line, t_line boundary, t_style_raster style_raster)
 {
-	t_2d_int	temp;
+	t_int2d	temp;
 
 	if (line.p2.y < line.p1.y)
 	{
@@ -45,20 +45,20 @@ static void	raster_liney(mlx_image_t *dst,
 		line.p1 = temp;
 	}
 	if (line.p2.x - line.p1.x < 0)
-		raster_liney_minus(dst, line, boundary, raster_style);
+		raster_liney_minus(dst, line, boundary, style_raster);
 	else
-		raster_liney_plus(dst, line, boundary, raster_style);
+		raster_liney_plus(dst, line, boundary, style_raster);
 }
 
 // time : O(n)
 // space: O(1)
 void	raster_line(mlx_image_t *dst,
-	t_line line, t_line boundary, t_raster_style raster_style)
+	t_line line, t_line boundary, t_style_raster style_raster)
 {
 	if (dst == NULL || mul_overflow_uint32_t(dst->width, dst->height) == false)
 		return ;
 	if (f_abs_int(line.p2.x - line.p1.x) > f_abs_int(line.p2.y - line.p1.y))
-		raster_linex(dst, line, boundary, raster_style);
+		raster_linex(dst, line, boundary, style_raster);
 	else
-		raster_liney(dst, line, boundary, raster_style);
+		raster_liney(dst, line, boundary, style_raster);
 }

@@ -72,7 +72,7 @@ int	main(void)
 	t_fdf_table		table;
 	t_fdf_table		table2;
 	t_fdf_proj2d			output;
-	t_render_style	style;
+	t_style_render	style;
 	size_t			i;
 
 	table = create_fdf_table(161, 161, true);

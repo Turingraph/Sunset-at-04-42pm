@@ -34,7 +34,7 @@ void	paint_space(t_fdf_table *dst, t_fdf_channel channel,
 {
 	size_t			i;
 	int				y;
-	t_2d_float		z;
+	t_float2d		z;
 	unsigned char	*rgba;
 
 	if (dst == NULL || dst->arr == NULL
@@ -46,7 +46,7 @@ void	paint_space(t_fdf_table *dst, t_fdf_channel channel,
 	{
 		z = init_table_coordinate(dst, i, 1);
 		y = (int)(f_abs(z.x) + f_abs(z.y));
-		y = (int)f_round(f_root_finding(y, 2));
+		y = (int)f_round(f_root_find(y, 2));
 		if (cell_metric != NULL)
 			y = cell_metric(dst, i);
 		if (channel == HEIGHT)

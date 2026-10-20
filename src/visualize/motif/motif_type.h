@@ -29,7 +29,7 @@
  */
 typedef struct s_2d_polygon
 {
-	t_2d_float	*arr;
+	t_float2d	*arr;
 	size_t		length;
 	bool		is_loop;
 }	t_2d_polygon;
@@ -37,15 +37,15 @@ typedef struct s_2d_polygon
 /**
  * Reusable 2D drawing motif composed of geometry and drawing properties.
  *
- * polygon provides the geometric data while raster_style describes how that geometry
+ * polygon provides the geometric data while style_raster describes how that geometry
  * should be rendered. A motif can therefore be reused with different
  * positions, transformations, or drawing operations.
  */
 typedef struct s_motif
 {
 	t_2d_polygon	polygon;
-	t_raster_style	raster_style;
-	t_2d_shape		shape_2d;
+	t_style_raster	style_raster;
+	t_shape2d		shape_2d;
 }	t_motif;
 
 /**

@@ -25,58 +25,58 @@ float	f_abs(float x);
 /**
  * compute e^(a.x + a.y)
  */
-t_2d_float	complex_exp(t_2d_float a);
+t_float2d	complex_exp(t_float2d a);
 
 /**
  * compute cos(a.x + a.y)
  */
-t_2d_float	complex_cos(t_2d_float a);
+t_float2d	complex_cos(t_float2d a);
 
 /**
  * compute sin(a.x + a.y)
  */
-t_2d_float	complex_sin(t_2d_float a);
+t_float2d	complex_sin(t_float2d a);
 
 /**
  * compute (a.x + a.y) * (b.x + b.y)
  */
-t_2d_float	complex_multiplication(t_2d_float a, t_2d_float b);
+t_float2d	complex_multiplication(t_float2d a, t_float2d b);
 
 /**
  * compute (a.x + a.y)^2
  */
-t_2d_float	complex_square(t_2d_float a);
+t_float2d	complex_square(t_float2d a);
 
 /**
  * compute (a.x + a.y)^4
  */
-t_2d_float	complex_x4(t_2d_float a);
+t_float2d	complex_x4(t_float2d a);
 
 /**
  * compute (a.x + a.y)^5
  */
-t_2d_float	complex_x5(t_2d_float a);
+t_float2d	complex_x5(t_float2d a);
 
 /**
  * compute (a.x + a.y)^6
  */
-t_2d_float	complex_x6(t_2d_float a);
+t_float2d	complex_x6(t_float2d a);
 
 /**
  * compute (a.x + a.y)^3
  */
-t_2d_float	complex_cube(t_2d_float a);
+t_float2d	complex_cube(t_float2d a);
 
 /**
  * if a.x + a.y equal to 0, return 0
  * compute 1 / (a.x + a.y)
  */
-t_2d_float	complex_reciprocal(t_2d_float a);
+t_float2d	complex_reciprocal(t_float2d a);
 
 /**
  * compute |a.x + a.im|
  */
-float	complex_magnitude(t_2d_float a, char is_square);
+float	complex_magnitude(t_float2d a, char is_square);
 
 /** 
  * convert any float number to integer by floor function.
@@ -112,7 +112,7 @@ float	f_min(float a, float b);
  * @param means average score
  * @param x x value
  */
-float	normal_distribution(float std, float means, float x);
+float	f_normal(float std, float means, float x);
 
 /**
  * compute the standard deviation of the given dataset from the input array.
@@ -138,7 +138,7 @@ float		f_pow(float x, size_t a);
 /**
  * if a == 0, then y = 0, else y = x^(1 / a) using 8 iterations newton method.
  */
-float		f_root_finding(float x, size_t a);
+float		f_root_find(float x, size_t a);
 
 /**
  * if -1.0 < x < 1.0, then return x
@@ -365,7 +365,7 @@ bool		is_collatz_odd_andmod(const t_fdf_table *dst, size_t index);
  * false otherwise.
  */
 bool		is_re2_diff_im2_odd_func(const t_fdf_table *dst, size_t index,
-				t_2d_float (*complex_func)(t_2d_float a), float zoom);
+				t_float2d (*complex_func)(t_float2d a), float zoom);
 
 /**
  * Compute z' = the complex coordinate of the cell.
@@ -399,7 +399,7 @@ bool		is_re2_diff_im2_odd(const t_fdf_table *dst, size_t index);
  * false otherwise.
  */
 bool		is_oddlength_func(const t_fdf_table *dst, size_t index,
-				t_2d_float (*complex_func)(t_2d_float a), float zoom);
+				t_float2d (*complex_func)(t_float2d a), float zoom);
 
 /**
  * Compute z' = complex_func(the complex coordinate of the cell).
@@ -434,7 +434,7 @@ bool		is_oddlength(const t_fdf_table *dst, size_t index);
  * @return true if z.x is even and z.y is even, false otherwise.
  */
 bool		is_andmod_func(const t_fdf_table *dst, size_t index,
-				t_2d_float (*complex_func)(t_2d_float a), float zoom);
+				t_float2d (*complex_func)(t_float2d a), float zoom);
 
 /**
  * Check whether constant times magnitude of the square of a cell's

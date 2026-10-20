@@ -5,7 +5,7 @@ int	main(void)
 	float		u_0 = 0.25;
 	float		u_1 = 0.396447;
 	float		u_2 = 0.08579;
-	t_2d_float	shape_00[] = {
+	t_float2d	shape_00[] = {
 		{.x = 0, .y = 2 * u_0},
 		{.x = u_0, .y = u_1},
 		{.x = u_0, .y = u_0},
@@ -13,7 +13,7 @@ int	main(void)
 		{.x = 2 * u_0, .y = 0},
 		{.x = 0, .y = 0}
 	};
-	t_2d_float	shape_01[] = {
+	t_float2d	shape_01[] = {
 		{.x = 1 - 0, .y = 2 * u_0},
 		{.x = 1 - u_0, .y = u_1},
 		{.x = 1 - u_0, .y = u_0},
@@ -21,7 +21,7 @@ int	main(void)
 		{.x = 1 - 2 * u_0, .y = 0},
 		{.x = 1 - 0, .y = 0}
 	};
-	t_2d_float	shape_02[] = {
+	t_float2d	shape_02[] = {
 		{.x = 0, .y = 1 - 2 * u_0},
 		{.x = u_0, .y = 1 - u_1},
 		{.x = u_0, .y = 1 - u_0},
@@ -29,7 +29,7 @@ int	main(void)
 		{.x = 2 * u_0, .y = 1 - 0},
 		{.x = 0, .y = 1 - 0}
 	};
-	t_2d_float	shape_03[] = {
+	t_float2d	shape_03[] = {
 		{.x = 1 - 0, .y = 1 - 2 * u_0},
 		{.x = 1 - u_0, .y = 1 - u_1},
 		{.x = 1 - u_0, .y = 1 - u_0},
@@ -37,29 +37,29 @@ int	main(void)
 		{.x = 1 - 2 * u_0, .y = 1 - 0},
 		{.x = 1 - 0, .y = 1 - 0}
 	};
-	t_raster_style			raster_style = {
+	t_style_raster			style_raster = {
 		.color = (170 << 24 | 28 << 16 | 65 << 8 | 255),
 		.thickness = 30};
-	t_raster_style			raster_style2 = {
+	t_style_raster			style_raster2 = {
 		.color = (63 << 24 | 29 << 16 | 56 << 8 | 255),
 		.thickness = 20};
 	t_2d_polygon	polygon_00 = {.arr = shape_00, .is_loop = false, .length = 5};
 	t_2d_polygon	polygon_01 = {.arr = shape_01, .is_loop = false, .length = 5};
 	t_2d_polygon	polygon_02 = {.arr = shape_02, .is_loop = false, .length = 5};
 	t_2d_polygon	polygon_03 = {.arr = shape_03, .is_loop = false, .length = 5};
-	t_2d_float		thickline_00[] = {
+	t_float2d		thickline_00[] = {
 		{.x = u_2, .y = 0},
 		{.x = 2 * u_0, .y = 1}
 	};
-	t_2d_float		thickline_01[] = {
+	t_float2d		thickline_01[] = {
 		{.x = 2 * u_0, .y = 1},
 		{.x = 1 - u_2, .y = 0}
 	};
-	t_2d_float		thickline_02[] = {
+	t_float2d		thickline_02[] = {
 		{.x = u_2, .y = 1},
 		{.x = 2 * u_0, .y = 0}
 	};
-	t_2d_float		thickline_03[] = {
+	t_float2d		thickline_03[] = {
 		{.x = 2 * u_0, .y = 0},
 		{.x = 1 - u_2, .y = 1}
 	};
@@ -72,42 +72,42 @@ int	main(void)
 		.arr = (t_motif []){
 			{
 				.polygon = thickline_arr_00,
-				.raster_style = raster_style,
+				.style_raster = style_raster,
 				.shape_2d = E_LINE,
 			},
 			{
 				.polygon = thickline_arr_01,
-				.raster_style = raster_style,
+				.style_raster = style_raster,
 				.shape_2d = E_LINE,
 			},
 			{
 				.polygon = thickline_arr_02,
-				.raster_style = raster_style,
+				.style_raster = style_raster,
 				.shape_2d = E_LINE,
 			},
 			{
 				.polygon = thickline_arr_03,
-				.raster_style = raster_style,
+				.style_raster = style_raster,
 				.shape_2d = E_LINE,
 			},
 			{
 				.polygon = polygon_00,
-				.raster_style = raster_style2,
+				.style_raster = style_raster2,
 				.shape_2d = E_LINE,
 			},
 			{
 				.polygon = polygon_01,
-				.raster_style = raster_style2,
+				.style_raster = style_raster2,
 				.shape_2d = E_LINE,
 			},
 			{
 				.polygon = polygon_02,
-				.raster_style = raster_style2,
+				.style_raster = style_raster2,
 				.shape_2d = E_LINE,
 			},
 			{
 				.polygon = polygon_03,
-				.raster_style = raster_style2,
+				.style_raster = style_raster2,
 				.shape_2d = E_LINE,
 			},
 		}

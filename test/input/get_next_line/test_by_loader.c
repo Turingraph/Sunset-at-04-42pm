@@ -34,7 +34,7 @@ int	main(void)
 	{
 		fd = load_file_debug(arr[i].file_name, src_dir, E_READ);
 		fd_length = load_file_debug(arr[i].file_name, src_dir, E_READ);
-		total_lines = length_of_file(fd_length);
+		total_lines = file_length(fd_length);
 		load = file_to_strarr(fd, total_lines);
 		fd = load_file_debug(arr[i].file_name, src_dir, E_READ);
 		if (assert_file_strarr(fd, (const char **)load, total_lines) == true)
@@ -42,10 +42,10 @@ int	main(void)
 		else
 		{
 			write(1, ">>> ", 4);
-			write(1, arr[i].file_name, f_strlen(arr[i].file_name));
+			write(1, arr[i].file_name, str_length(arr[i].file_name));
 			write(1, "\tall\n", 6);
 		}
-		destroy_2d_arr((void **)load, length_of_strarr((const char **)load));
+		destroy_2d_arr((void **)load, strarr_length((const char **)load));
 
 		fd = load_file_debug(arr[i].file_name, src_dir, E_READ);
 		load = file_to_strarr(fd, 1);
@@ -55,10 +55,10 @@ int	main(void)
 		else
 		{
 			write(1, ">>> ", 4);
-			write(1, arr[i].file_name, f_strlen(arr[i].file_name));
+			write(1, arr[i].file_name, str_length(arr[i].file_name));
 			write(1, "\t1\n", 3);
 		}
-		destroy_2d_arr((void **)load, length_of_strarr((const char **)load));
+		destroy_2d_arr((void **)load, strarr_length((const char **)load));
 
 		fd = load_file_debug(arr[i].file_name, src_dir, E_READ);
 		load = file_to_strarr(fd, 3);
@@ -68,10 +68,10 @@ int	main(void)
 		else
 		{
 			write(1, ">>> ", 4);
-			write(1, arr[i].file_name, f_strlen(arr[i].file_name));
+			write(1, arr[i].file_name, str_length(arr[i].file_name));
 			write(1, "\t3\n", 3);
 		}
-		destroy_2d_arr((void **)load, length_of_strarr((const char **)load));
+		destroy_2d_arr((void **)load, strarr_length((const char **)load));
 		i += 1;
 	}
 	write_score(score, max_score * 3);

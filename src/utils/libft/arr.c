@@ -14,7 +14,7 @@
 
 // time : O(n)
 // space: O(1)
-static size_t	sf_strlen(const char *str)
+static size_t	sstr_length(const char *str)
 {
 	size_t	i;
 
@@ -54,7 +54,7 @@ void	*malloc_talk(size_t elem_size, const char *comment)
 		if (comment != NULL && *comment != '\0')
 		{
 			write(1, "Malloc Fail: ", 14);
-			write(1, comment, sf_strlen(comment));
+			write(1, comment, sstr_length(comment));
 		}
 		return (NULL);
 	}
@@ -109,9 +109,9 @@ unsigned char	*rgbarr_from_table(const t_fdf_table *src,
  * @param zoom coordinate scaling factor
  * @return complex coordinate of the selected cell.
  */
-t_2d_float	init_table_coordinate(const t_fdf_table *dst, size_t index, float zoom)
+t_float2d	init_table_coordinate(const t_fdf_table *dst, size_t index, float zoom)
 {
-	t_2d_float	y;
+	t_float2d	y;
 
 	y.x = 0;
 	y.y = 0;

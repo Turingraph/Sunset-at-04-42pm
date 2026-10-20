@@ -47,22 +47,22 @@ typedef struct t_fdf_proj2d
 // create.c
 
 t_fdf_proj2d		create_fdf_proj2d(t_fdf_table *src,
-				t_2d_float (*proj2d)(float x, float y, float z),
+				t_float2d (*proj2d)(float x, float y, float z),
 				float scale);
 t_fdf_proj2d		destroy_fdf_proj2d(t_fdf_proj2d *src);
 
 // proj2d.c
 
-t_2d_float	proj2d_isometric(float x, float y, float z);
-t_2d_float	proj2d_military(float x, float y, float z);
-t_2d_float	proj2d_cabinet(float x, float y, float z);
-t_2d_float	proj2d_orthogonal(float x, float y, float z);
-t_2d_float	proj2d_wave(float x, float y, float z);
+t_float2d	proj2d_isometric(float x, float y, float z);
+t_float2d	proj2d_military(float x, float y, float z);
+t_float2d	proj2d_cabinet(float x, float y, float z);
+t_float2d	proj2d_orthogonal(float x, float y, float z);
+t_float2d	proj2d_wave(float x, float y, float z);
 
 // utils.c
 
 int32_t		rgba32_from_proj2d(const t_fdf_proj2d *src, size_t index);
-bool		is_fdf_proj2d_valid(const t_fdf_proj2d *src);
+bool		isvalid_fdf_proj2d(const t_fdf_proj2d *src);
 void		vector_scale(float *update_v, float s, size_t dim);
 
 #endif

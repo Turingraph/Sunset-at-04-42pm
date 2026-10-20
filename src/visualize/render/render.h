@@ -17,10 +17,10 @@
 
 // public.c
 
-void		render_fdf(t_2d_hook *hook, bool is_draw);
+void		render_fdf(t_hook2d *hook, bool is_draw);
 
 // utils.c
 
-bool		is_2dhook_valid(const t_2d_hook *src);
+bool		isvalid_hook2d(const t_hook2d *src);
 
 #endif

@@ -14,7 +14,7 @@
 
 // time : O(1)
 // space: O(1)
-static t_fdf_load	copy_load_fdf(t_fdf_load src)
+static t_fdf_load	copy_fdf_load(t_fdf_load src)
 {
 	t_fdf_load	dst;
 
@@ -31,18 +31,18 @@ static t_fdf_load	copy_load_fdf(t_fdf_load src)
 
 // time : O(n)
 // space: O(n)
-static t_fdf_load_arr	copy_load_fdf_arr(const t_fdf_load_arr *src, size_t length)
+static t_fdf_load_arr	copy_fdf_load_arr(const t_fdf_load_arr *src, size_t length)
 {
 	t_fdf_load_arr	dst;
 	size_t			i;
 
 	if (src == NULL || length == 0 || src->arr == NULL || src->length == 0)
-		return (init_fdf_load_arr(0));
-	dst = init_fdf_load_arr(length);
+		return (create_fdf_load_arr(0));
+	dst = create_fdf_load_arr(length);
 	i = 0;
 	while (dst.arr != NULL && i < src->length && i < dst.capacity)
 	{
-		dst.arr[i] = copy_load_fdf(src->arr[i]);
+		dst.arr[i] = copy_fdf_load(src->arr[i]);
 		i += 1;
 	}
 	dst.length = i;
@@ -51,15 +51,15 @@ static t_fdf_load_arr	copy_load_fdf_arr(const t_fdf_load_arr *src, size_t length
 
 // time : O(1)
 // space: O(1)
-static t_fdf_load_arr	load_fdf_arr_push(t_fdf_load_arr *src, t_fdf_load *item)
+static t_fdf_load_arr	push_fdf_load_arr(t_fdf_load_arr *src, t_fdf_load *item)
 {
 	t_fdf_load_arr	dst;
 
 	if (src == NULL || src->arr == NULL || item == NULL)
 	{
-		destroy_load_fdf(item);
-		destroy_load_fdf_arr(src);
-		return (init_fdf_load_arr(0));
+		destroy_fdf_load(item);
+		destroy_fdf_load_arr(src);
+		return (create_fdf_load_arr(0));
 	}
 	if (src->length < src->capacity)
 	{
@@ -67,41 +67,41 @@ static t_fdf_load_arr	load_fdf_arr_push(t_fdf_load_arr *src, t_fdf_load *item)
 		src->length += 1;
 		return (*src);
 	}
-	dst = copy_load_fdf_arr((const t_fdf_load_arr *)src, src->length * 2);
+	dst = copy_fdf_load_arr((const t_fdf_load_arr *)src, src->length * 2);
 	if (dst.arr != NULL)
 	{
 		free(src->arr);
 		*src = dst;
-		return (load_fdf_arr_push(src, item));
+		return (push_fdf_load_arr(src, item));
 	}
-	destroy_load_fdf(item);
+	destroy_fdf_load(item);
 	return (*src);
 }
 
 // time : O(n)
 // space: O(n)
-t_fdf_load_arr	load_all_fdf_lines(int fd,
+t_fdf_load_arr	fetch_fdf_load_arr(int fd,
 	t_fdf_load (*parse_line)(char *line))
 {
 	t_fdf_load_arr	dst;
 	t_fdf_load		item;
 	char			*line;
-	bool			is_valid;
+	bool			isvalid;
 
 	if (parse_line == NULL || fd < 0)
-		return (init_fdf_load_arr(0));
-	dst = init_fdf_load_arr(1);
+		return (create_fdf_load_arr(0));
+	dst = create_fdf_load_arr(1);
 	if (dst.arr == NULL)
 		return (dst);
-	is_valid = true;
+	isvalid = true;
 	line = get_next_line(fd, true);
-	while (line != NULL && is_valid == true)
+	while (line != NULL && isvalid == true)
 	{
 		item = parse_line(line);
-		load_fdf_arr_push(&dst, &item);
+		push_fdf_load_arr(&dst, &item);
 		if (line[0] != '\n'
-			&& is_load_fdf_arr_valid(&dst, (int)dst.length - 1) == false)
-			is_valid = false;
+			&& isvalid_fdf_load_arr(&dst, (int)dst.length - 1) == false)
+			isvalid = false;
 		free(line);
 		line = get_next_line(fd, true);
 	}
@@ -110,10 +110,6 @@ t_fdf_load_arr	load_all_fdf_lines(int fd,
 	close(fd);
 	return (dst);
 }
-
-// this 2 lines are used for debugging.
-// if (dst.length > 0 && dst.arr != NULL)
-// 	warning_load_fdf(&dst.arr[dst.length - 1], dst.length - 1);
 
 /**
  * Load an FDF file and parse its lines into a t_fdf_load_arr.
@@ -130,13 +126,13 @@ t_fdf_load_arr	load_all_fdf_lines(int fd,
  * 
  * @see see: src/input/load/parse.c
  */
-t_fdf_load_arr	open_fdf_file(const char *file_name, const char *dir,
+t_fdf_load_arr	load_fdf_load_arr(const char *file_name, const char *dir,
 		t_fdf_load (*parse_line)(char *line))
 {
 	int		dst;
 
 	if (dir == NULL || *dir == '\0')
-		return (load_all_fdf_lines(open(file_name, O_RDONLY), parse_line));
+		return (fetch_fdf_load_arr(open(file_name, O_RDONLY), parse_line));
 	dst = load_file_debug(file_name, dir, E_READ);
-	return (load_all_fdf_lines(dst, parse_line));
+	return (fetch_fdf_load_arr(dst, parse_line));
 }

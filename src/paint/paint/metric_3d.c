@@ -14,7 +14,7 @@
  */
 int	cell_metric_triangle_inequality_3d(const t_fdf_table *dst, size_t index)
 {
-	t_2d_float	y;
+	t_float2d	y;
 	int			y_max;
 	int			y_min;
 	int			zd3;
@@ -44,7 +44,7 @@ int	cell_metric_triangle_inequality_3d(const t_fdf_table *dst, size_t index)
 */
 int	cell_metric_pythagoras_3d(const t_fdf_table *dst, size_t index)
 {
-	t_2d_float	y;
+	t_float2d	y;
 	int			zd3;
 	int			distance;
 
@@ -55,7 +55,7 @@ int	cell_metric_pythagoras_3d(const t_fdf_table *dst, size_t index)
 		zd3 = dst->arr[index];
 	y = init_table_coordinate(dst, index, 1.0);
 	distance = (int)(y.x * y.x + y.y * y.y) + zd3 * zd3;
-	return ((int)(f_root_finding(distance, 2)));
+	return ((int)(f_root_find(distance, 2)));
 }
 
 /**
@@ -72,7 +72,7 @@ int	cell_metric_pythagoras_3d(const t_fdf_table *dst, size_t index)
  */
 int	cell_metric_max_xyz(const t_fdf_table *dst, size_t index)
 {
-	t_2d_float	y;
+	t_float2d	y;
 	int			max_2d;
 	int			zd3;
 
@@ -100,7 +100,7 @@ int	cell_metric_max_xyz(const t_fdf_table *dst, size_t index)
  */
 int	cell_metric_root_xyz(const t_fdf_table *dst, size_t index)
 {
-	t_2d_float	y;
+	t_float2d	y;
 	int			zd3;
 
 	if (dst == NULL || mul_overflow_size_t(dst->col, dst->row) == false || index >= dst->col * dst->row)
@@ -112,7 +112,7 @@ int	cell_metric_root_xyz(const t_fdf_table *dst, size_t index)
 	y.x = f_abs(y.x);
 	y.y = f_abs(y.y);
 	zd3 *= (int)f_abs(y.x * y.y);
-	return ((int)f_round(f_root_finding(zd3, 3)));
+	return ((int)f_round(f_root_find(zd3, 3)));
 }
 
 /**
@@ -128,7 +128,7 @@ int	cell_metric_root_xyz(const t_fdf_table *dst, size_t index)
  */
 int	cell_metric_addsub_3d(const t_fdf_table *dst, size_t index)
 {
-	t_2d_float	y;
+	t_float2d	y;
 	int			zd3;
 
 	if (dst == NULL || mul_overflow_size_t(dst->col, dst->row) == false || index >= dst->col * dst->row)

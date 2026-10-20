@@ -25,12 +25,12 @@
  * @param window_size size of the visible 2D rendering area
  * @param zoom scale applied by the camera
  */
-typedef struct s_2d_camera
+typedef struct s_camera2d
 {
-	t_2d_int	offset;
-	t_2d_int	window_size;
+	t_int2d	offset;
+	t_int2d	window_size;
 	float		zoom;
-}	t_2d_camera;
+}	t_camera2d;
 
 /**
  * Describes the rendering properties of a 2D motif or FDF drawing.
@@ -44,11 +44,11 @@ typedef struct s_2d_camera
  * @param shape_2d the given shape including E_CIRCLE, E_LINE, and E_RECTANGLE.
  * @param thickness size parameter used by the selected rendering shape_2d
  */
-typedef struct t_render_style
+typedef struct t_style_render
 {
 	size_t		thickness;
-	t_2d_shape	shape_2d;
-}	t_render_style;
+	t_shape2d	shape_2d;
+}	t_style_render;
 
 /**
  * Runtime state required by the 2D MLX viewer.
@@ -61,18 +61,18 @@ typedef struct t_render_style
  * @param mlx MLX window context
  * @param img image used as the rendering target
  * @param camera camera used to transform the displayed object
- * @param render_style describes how the FDF object is rasterized
+ * @param style_render describes how the FDF object is rasterized
  * @param fdf FDF object to display
  */
-typedef struct s_2d_hook
+typedef struct s_hook2d
 {
 	mlx_t			*mlx;
 	mlx_image_t		*img;
-	t_2d_camera		*camera;
-	t_render_style	render_style;
+	t_camera2d		*camera;
+	t_style_render	style_render;
 	t_fdf_proj2d	*fdf;
 	int32_t			background_color;
-}	t_2d_hook;
+}	t_hook2d;
 
 /*
 Rendering is a broad term that generally means transforming computer-readable

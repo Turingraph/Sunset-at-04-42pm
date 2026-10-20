@@ -14,11 +14,11 @@
 
 // time : O(1)
 // space: O(1)
-static void	hook_pan(mlx_key_data_t keydata, t_2d_camera *camera)
+static void	hook_pan(mlx_key_data_t keydata, t_camera2d *camera)
 {
 	int	delta;
 
-	if (camera == NULL || is_valid_pan_key(keydata) == false)
+	if (camera == NULL || isvalid_pan_key(keydata) == false)
 		return ;
 	delta = 100 * camera->zoom;
 	if (keydata.key == MLX_KEY_UP)
@@ -34,13 +34,13 @@ static void	hook_pan(mlx_key_data_t keydata, t_2d_camera *camera)
 // time : O(n)
 // space: O(1)
 static void	hook_zoom(mlx_key_data_t keydata,
-	t_2d_hook *hook)
+	t_hook2d *hook)
 {
 	float		scale;
 	size_t		len;
 
-	if (is_2dhook_valid(hook) == false
-		|| is_valid_zoom_key(keydata, hook->camera->zoom) == false)
+	if (isvalid_hook2d(hook) == false
+		|| isvalid_zoom_key(keydata, hook->camera->zoom) == false)
 		return ;
 	len = hook->fdf->col;
 	len *= hook->fdf->row;
@@ -55,11 +55,11 @@ static void	hook_zoom(mlx_key_data_t keydata,
 // time : O(n)
 // space: O(1)
 static void	hook_reset(mlx_key_data_t keydata,
-	t_2d_hook *hook)
+	t_hook2d *hook)
 {
 	size_t		len;
 
-	if (is_2dhook_valid(hook) == false || hook->camera->zoom < 0.2
+	if (isvalid_hook2d(hook) == false || hook->camera->zoom < 0.2
 		|| keydata.key != MLX_KEY_Q)
 		return ;
 	len = hook->fdf->col;
@@ -97,7 +97,7 @@ static void	hook_reset(mlx_key_data_t keydata,
  * 
  * - "0" = Zoom out
  *
- * The callback parameter must point to a valid t_2d_hook containing
+ * The callback parameter must point to a valid t_hook2d containing
  * the MLX window, camera, and FDF object being displayed.
  *
  * time/space: O(n) / O(1)
@@ -113,13 +113,13 @@ static void	hook_reset(mlx_key_data_t keydata,
  */
 void	hook_controller(mlx_key_data_t keydata, void *param)
 {
-	t_2d_hook		*hook;
+	t_hook2d		*hook;
 	static double	before = 0;
 	double			after;
 
-	hook = (t_2d_hook *)param;
-	if (is_2dhook_valid((const t_2d_hook *)hook) == false
-		|| is_valid_key(keydata) == false)
+	hook = (t_hook2d *)param;
+	if (isvalid_hook2d((const t_hook2d *)hook) == false
+		|| isvalid_key(keydata) == false)
 		return ;
 	if (keydata.key == MLX_KEY_ESCAPE)
 		mlx_close_window(hook->mlx);

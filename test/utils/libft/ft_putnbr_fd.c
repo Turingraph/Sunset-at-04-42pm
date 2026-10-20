@@ -24,7 +24,7 @@ int	main(void)
 	while (i < max_score)
 	{
 		write(1, ">>> ", 4);
-		if (arr[i].expected_length == ft_putnbr_fd(
+		if (arr[i].expected_length == write_int(
 				arr[i].input_n, 1, arr[i].input_base, arr[i].input_digits))
 		{
 			write(1, "\tOK", 3);
@@ -40,5 +40,5 @@ int	main(void)
 }
 
 /*
-valgrind --leak-check=full --show-leak-kinds=all ./test/out/utils/libft/ft_putnbr_fd.out
+valgrind --leak-check=full --show-leak-kinds=all ./test/out/utils/libft/write_int.out
 */

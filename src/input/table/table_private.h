@@ -21,7 +21,7 @@
 
 void			destroy_fdf_table(t_fdf_table *src);
 t_fdf_table		create_fdf_table(size_t row, size_t col, bool is_rgba);
-t_fdf_table		load_fdf_table(const t_fdf_load_arr *src, bool is_rgba);
+t_fdf_table		fdf_load_table(const t_fdf_load_arr *src, bool is_rgba);
 
 // positive.c
 
@@ -32,7 +32,7 @@ void			scale_relu_fdf(t_fdf_table *dst, int min, int max, int expect);
 
 // public.c
 
-t_fdf_table		open_fdf_table_file(const char *file_name, const char *dir,
+t_fdf_table		load_fdf_table_file(const char *file_name, const char *dir,
 					t_fdf_load (*one_line)(char *line), bool is_rgba);
 
 // scale_dimension.c

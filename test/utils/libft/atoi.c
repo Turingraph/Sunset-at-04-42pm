@@ -7,8 +7,8 @@ bool	assert_atoi(const char *strmin, const char *strmax, bool *err)
 	int		min;
 	int		max;
 
-	min = f_atoi(strmin, err, "0123456789", f_strlen(strmin));
-	max = f_atoi(strmax, err, "0123456789", f_strlen(strmax));
+	min = str_to_int(strmin, err, "0123456789", str_length(strmin));
+	max = str_to_int(strmax, err, "0123456789", str_length(strmax));
 	if (err != NULL && *err == false)
 		return (false);
 	if (min <= max)

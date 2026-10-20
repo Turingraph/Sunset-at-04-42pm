@@ -41,7 +41,7 @@ bool	assert_file_ascii(const char *file_name_1, const char *file_name_2,
 
 // file.c
 
-size_t	length_of_file(int fd);
+size_t	file_length(int fd);
 bool	assert_file(const char *file_name_1, const char *file_name_2,
 			const char *dir_name_1, const char *dir_name_2);
 bool	assert_file_strarr(int fd, const char **strarr,
@@ -51,7 +51,7 @@ bool	assert_file_strarr(int fd, const char **strarr,
 
 bool	assert_str(const char *str_1, const char *str_2,
 			size_t n, bool ignore_space);
-size_t	length_of_strarr(const char **src);
+size_t	strarr_length(const char **src);
 bool	assert_strarr(const char **strarr_1, const char **strarr_2,
 			size_t length, bool ignore_space);
 size_t	write_strarr(const char **strarr, size_t length, int fd);

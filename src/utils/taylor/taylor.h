@@ -30,34 +30,34 @@
 
 // complex_polynomial.c
 
-t_2d_float	complex_square(t_2d_float a);
-t_2d_float	complex_cube(t_2d_float a);
-t_2d_float	complex_x4(t_2d_float a);
-t_2d_float	complex_x5(t_2d_float a);
-t_2d_float	complex_x6(t_2d_float a);
+t_float2d	complex_square(t_float2d a);
+t_float2d	complex_cube(t_float2d a);
+t_float2d	complex_x4(t_float2d a);
+t_float2d	complex_x5(t_float2d a);
+t_float2d	complex_x6(t_float2d a);
 
 // complex_trig.c
 
-t_2d_float	complex_exp(t_2d_float a);
-t_2d_float	complex_sin(t_2d_float a);
-t_2d_float	complex_cos(t_2d_float a);
+t_float2d	complex_exp(t_float2d a);
+t_float2d	complex_sin(t_float2d a);
+t_float2d	complex_cos(t_float2d a);
 
 // complex.c
 
-t_2d_float	complex_multiplication(t_2d_float a, t_2d_float b);
-t_2d_float	complex_reciprocal(t_2d_float a);
-float		complex_magnitude(t_2d_float a, char is_square);
+t_float2d	complex_multiplication(t_float2d a, t_float2d b);
+t_float2d	complex_reciprocal(t_float2d a);
+float		complex_magnitude(t_float2d a, char is_square);
 
 // stats.c
 
-double		normal_distribution(double std, double means, double x);
+double		f_normal(double std, double means, double x);
 float		f_std(const float *vec_v, size_t dim);
 float		f_sum(const float *vec_v, size_t dim);
 
 // taylor.c
 
 double		f_pow(double x, size_t a);
-double		f_root_finding(double x, size_t a);
+double		f_root_find(double x, size_t a);
 double		f_sin(double x);
 double		f_cos(double x);
 double		f_exp(double x);

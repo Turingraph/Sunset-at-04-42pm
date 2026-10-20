@@ -11,10 +11,10 @@ bool	assert_str(const char *str_1,
 		return (true);
 	if ((str_1 == NULL && str_2 != NULL) || (str_1 != NULL && str_2 == NULL))
 		return (false);
-	while (f_isspace(*str_1, " \n\t\r\f\v") == 1
+	while (is_a_in_str(*str_1, " \n\t\r\f\v") == 1
 		&& *str_1 != '\0' && ignore_space == true)
 		str_1 += 1;
-	while (f_isspace(*str_2, " \n\t\r\f\v") == 1
+	while (is_a_in_str(*str_2, " \n\t\r\f\v") == 1
 		&& *str_2 != '\0' && ignore_space == true)
 		str_2 += 1;
 	i = 0;
@@ -23,10 +23,10 @@ bool	assert_str(const char *str_1,
 		i += 1;
 		str_1 += 1;
 		str_2 += 1;
-		while (f_isspace(*str_1, " \n\t\r\f\v") == 1
+		while (is_a_in_str(*str_1, " \n\t\r\f\v") == 1
 			&& *str_1 != '\0' && ignore_space == true)
 			str_1 += 1;
-		while (f_isspace(*str_2, " \n\t\r\f\v") == 1
+		while (is_a_in_str(*str_2, " \n\t\r\f\v") == 1
 			&& *str_2 != '\0' && ignore_space == true)
 			str_2 += 1;
 	}
@@ -37,7 +37,7 @@ bool	assert_str(const char *str_1,
 
 // time : O(n)
 // space: O(1)
-size_t	length_of_strarr(const char **src)
+size_t	strarr_length(const char **src)
 {
 	size_t	i;
 
@@ -65,7 +65,7 @@ bool	assert_strarr(const char **strarr_1,
 	while (i < length && strarr_1[i] != NULL && strarr_2[i] != NULL)
 	{
 		if (assert_str(strarr_1[i], strarr_2[i],
-				f_strlen(strarr_1[i]), ignore_space) == false)
+				str_length(strarr_1[i]), ignore_space) == false)
 			return (false);
 		i += 1;
 	}
@@ -88,7 +88,7 @@ size_t	write_strarr(const char **strarr, size_t length, int fd)
 	while (i < length && strarr != NULL)
 	{
 		if (strarr[i] != NULL)
-			y += write(fd, strarr[i], f_strlen(strarr[i]));
+			y += write(fd, strarr[i], str_length(strarr[i]));
 		i += 1;
 	}
 	return (y);

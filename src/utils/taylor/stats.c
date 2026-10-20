@@ -21,7 +21,7 @@
  * @param means average score
  * @param x x value
  */
-double	normal_distribution(double std, double means, double x)
+double	f_normal(double std, double means, double x)
 {
 	double	up;
 	double	down;
@@ -30,7 +30,7 @@ double	normal_distribution(double std, double means, double x)
 	pi = PI;
 	if (std == 0)
 		return (0);
-	down = std * f_root_finding(2 * pi, 2);
+	down = std * f_root_find(2 * pi, 2);
 	up = f_exp(-1 * f_pow(x - means, 2) / (2 * std * std));
 	return (up / down);
 }

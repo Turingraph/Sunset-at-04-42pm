@@ -14,7 +14,7 @@
 
 // time : O(1)
 // space: O(1)
-bool	is_valid_key(mlx_key_data_t keydata)
+bool	isvalid_key(mlx_key_data_t keydata)
 {
 	if ((keydata.action == MLX_PRESS
 			|| keydata.action == MLX_REPEAT)
@@ -35,7 +35,7 @@ bool	is_valid_key(mlx_key_data_t keydata)
 
 // time : O(1)
 // space: O(1)
-bool	is_valid_pan_key(mlx_key_data_t keydata)
+bool	isvalid_pan_key(mlx_key_data_t keydata)
 {
 	if ((keydata.action == MLX_PRESS
 			|| keydata.action == MLX_REPEAT)
@@ -49,7 +49,7 @@ bool	is_valid_pan_key(mlx_key_data_t keydata)
 
 // time : O(1)
 // space: O(1)
-bool	is_valid_zoom_key(mlx_key_data_t keydata, float zoom)
+bool	isvalid_zoom_key(mlx_key_data_t keydata, float zoom)
 {
 	if ((keydata.action == MLX_PRESS
 			|| keydata.action == MLX_REPEAT)

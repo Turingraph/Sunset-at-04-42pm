@@ -20,9 +20,9 @@
  * false otherwise.
  */
 bool	is_re2_diff_im2_odd_func(const t_fdf_table *dst, size_t index,
-	t_2d_float (*complex_func)(t_2d_float a), float zoom)
+	t_float2d (*complex_func)(t_float2d a), float zoom)
 {
-	t_2d_float	y;
+	t_float2d	y;
 	int			product;
 
 	if (dst == NULL
@@ -77,9 +77,9 @@ bool	is_re2_diff_im2_odd(const t_fdf_table *dst, size_t index)
  * false otherwise.
  */
 bool	is_oddlength_func(const t_fdf_table *dst, size_t index,
-	t_2d_float (*complex_func)(t_2d_float a), float zoom)
+	t_float2d (*complex_func)(t_float2d a), float zoom)
 {
-	t_2d_float	y;
+	t_float2d	y;
 
 	if (dst == NULL
 		|| mul_overflow_size_t(dst->col, dst->row) == false
@@ -133,9 +133,9 @@ bool	is_oddlength(const t_fdf_table *dst, size_t index)
  * @return true if z.x is even and z.y is even, false otherwise.
  */
 bool	is_andmod_func(const t_fdf_table *dst, size_t index,
-	t_2d_float (*complex_func)(t_2d_float a), float zoom)
+	t_float2d (*complex_func)(t_float2d a), float zoom)
 {
-	t_2d_float	y;
+	t_float2d	y;
 
 	if (dst == NULL
 		|| mul_overflow_size_t(dst->col, dst->row) == false

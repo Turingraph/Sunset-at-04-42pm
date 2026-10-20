@@ -13,7 +13,7 @@ typedef struct s_2d_int
 {
 	int	x;
 	int	y;
-}	t_2d_int;
+}	t_int2d;
 
 /**
  * Line segment between two 2D integer coordinates.
@@ -22,8 +22,8 @@ typedef struct s_2d_int
  */
 typedef struct s_line
 {
-	t_2d_int	p1;
-	t_2d_int	p2;
+	t_int2d	p1;
+	t_int2d	p2;
 }	t_line;
 
 /**
@@ -38,11 +38,11 @@ typedef struct s_line
  * @param color 32-bit drawing color
  * @param thickness size parameter used by the selected rendering shape_2d
  */
-typedef struct t_raster_style
+typedef struct t_style_raster
 {
 	int32_t		color;
 	size_t		thickness;
-}	t_raster_style;
+}	t_style_raster;
 
 /**
  * Supported 2D motif and rendering types.
@@ -58,11 +58,11 @@ typedef struct t_raster_style
  * 
  * - E_LINE draws polygon edges as lines.
  */
-typedef enum t_2d_shape
+typedef enum t_shape2d
 {
 	E_RECTANGLE,
 	E_CIRCLE,
 	E_LINE,
-}	t_2d_shape;
+}	t_shape2d;
 
 #endif

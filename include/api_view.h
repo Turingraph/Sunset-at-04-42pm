@@ -32,7 +32,7 @@ typedef struct s_ink32
 {
 	int32_t		color;
 	size_t		thickness;
-}	t_raster_style;
+}	t_style_raster;
 
 /**
  * Supported 2D motif and rendering types.
@@ -48,12 +48,12 @@ typedef struct s_ink32
  * 
  * - E_LINE draws polygon edges as lines.
  */
-typedef enum t_2d_shape
+typedef enum t_shape2d
 {
 	E_RECTANGLE,
 	E_CIRCLE,
 	E_LINE,
-}	t_2d_shape;
+}	t_shape2d;
 
 /**
  * Pack individual RGBA channels into a 32-bit color value.
@@ -150,7 +150,7 @@ t_fdf_proj2d	destroy_fdf_proj2d(t_fdf_proj2d *src);
  * @see src/visualize/fdf/projection.c
  */
 t_fdf_proj2d	create_fdf_proj2d(t_fdf_table *src,
-	t_2d_float (*proj2d)(float x, float y, float z), float scale);
+	t_float2d (*proj2d)(float x, float y, float z), float scale);
 
 /**
  * Apply an isometric projection to a 3D point.
@@ -171,7 +171,7 @@ t_fdf_proj2d	create_fdf_proj2d(t_fdf_table *src,
  * @param z z-coordinate of the 3D point
  * @return 2D complex point containing the projected coordinates
  */
-t_2d_float	proj2d_isometric(float x, float y, float z);
+t_float2d	proj2d_isometric(float x, float y, float z);
 
 /**
  * Apply a military projection to a 3D point.
@@ -192,7 +192,7 @@ t_2d_float	proj2d_isometric(float x, float y, float z);
  * @param z z-coordinate of the 3D point
  * @return 2D complex point containing the projected coordinates
  */
-t_2d_float	proj2d_military(float x, float y, float z);
+t_float2d	proj2d_military(float x, float y, float z);
 
 /**
  * Apply a cabinet projection to a 3D point.
@@ -213,7 +213,7 @@ t_2d_float	proj2d_military(float x, float y, float z);
  * @param z z-coordinate of the 3D point
  * @return 2D complex point containing the projected coordinates
  */
-t_2d_float	proj2d_cabinet(float x, float y, float z);
+t_float2d	proj2d_cabinet(float x, float y, float z);
 
 /**
  * Apply an orthogonal projection to a 3D point.
@@ -233,7 +233,7 @@ t_2d_float	proj2d_cabinet(float x, float y, float z);
  * @param z z-coordinate of the 3D point
  * @return 2D complex point containing the projected coordinates
  */
-t_2d_float	proj2d_orthogonal(float x, float y, float z);
+t_float2d	proj2d_orthogonal(float x, float y, float z);
 
 /**
  * Apply a wave projection to a 3D point.
@@ -254,7 +254,7 @@ t_2d_float	proj2d_orthogonal(float x, float y, float z);
  * @param z z-coordinate of the 3D point
  * @return 2D complex point containing the projected coordinates
  */
-t_2d_float	proj2d_wave(float x, float y, float z);
+t_float2d	proj2d_wave(float x, float y, float z);
 
 /* ************************************************************************** */
 /* *** src/visualize/render/ *** */
@@ -263,11 +263,11 @@ t_2d_float	proj2d_wave(float x, float y, float z);
 /*
  * This struct control the drawing style of the Fdf.
  */
-typedef struct s_render_style
+typedef struct s_style_render
 {
 	size_t		thickness;
-	t_2d_shape	shape_2d;
-}	t_render_style;
+	t_shape2d	shape_2d;
+}	t_style_render;
 
 /* ************************************************************************** */
 /* *** src/visualize/window/ *** */
@@ -304,7 +304,7 @@ typedef struct s_render_style
  * @param fdf_render style used to render the FDF object.
  * @param background_color the background color of the window scene.
  */
-void	view_fdf(t_fdf_proj2d *fdf, t_render_style fdf_render,
+void	view_fdf(t_fdf_proj2d *fdf, t_style_render fdf_render,
 			int32_t background_color);
 
 /* ************************************************************************** */
@@ -324,7 +324,7 @@ void	view_fdf(t_fdf_proj2d *fdf, t_render_style fdf_render,
  */
 typedef struct s_2d_polygon
 {
-	t_2d_float	*arr;
+	t_float2d	*arr;
 	size_t		length;
 	bool		is_loop;
 }	t_2d_polygon;
@@ -339,8 +339,8 @@ typedef struct s_2d_polygon
 typedef struct s_motif
 {
 	t_2d_polygon	polygon;
-	t_raster_style			ink;
-	t_2d_shape		shape_2d;
+	t_style_raster			ink;
+	t_shape2d		shape_2d;
 }	t_motif;
 
 /**

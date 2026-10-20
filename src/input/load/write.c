@@ -22,19 +22,19 @@ static void	inspect_decimal_unit(int fd, const t_fdf_load *src,
 	i = 0;
 	while (src != NULL && src->arr != NULL && i < src->length)
 	{
-		ft_putnbr_fd(src->arr[i], fd, "0123456789", digits);
+		write_int(src->arr[i], fd, "0123456789", digits);
 		if (mode == HEIGHT_RGB || mode == HEIGHT_RGBA)
 		{
 			write(fd, ",0x", 3);
 			if (src->r != NULL)
-				ft_putnbr_fd((int)src->r[i], fd, "0123456789abcdef", 2);
+				write_int((int)src->r[i], fd, "0123456789abcdef", 2);
 			if (src->g != NULL)
-				ft_putnbr_fd((int)src->g[i], fd, "0123456789abcdef", 2);
+				write_int((int)src->g[i], fd, "0123456789abcdef", 2);
 			if (src->b != NULL)
-				ft_putnbr_fd((int)src->b[i], fd, "0123456789abcdef", 2);
+				write_int((int)src->b[i], fd, "0123456789abcdef", 2);
 		}
 		if (mode == HEIGHT_RGBA && src->a != NULL)
-			ft_putnbr_fd((int)src->a[i], fd, "0123456789abcdef", 2);
+			write_int((int)src->a[i], fd, "0123456789abcdef", 2);
 		write(fd, "\t", 1);
 		i += 1;
 	}
@@ -59,12 +59,12 @@ void	inspect_decimal(int fd,
 
 // time : O(1)
 // space: O(1)
-void	warning_load_fdf(const t_fdf_load *src, size_t i)
+void	warning_fdf_load(const t_fdf_load *src, size_t i)
 {
 	if (src->int_warn != CORRECT || src->rgb_warn != CORRECT)
 	{
 		write(1, "Warning: Line no. ", 19);
-		ft_putnbr_fd(i, 1, "0123456789", 1);
+		write_int(i, 1, "0123456789", 1);
 		write(1, " of input Fdf file is ", 23);
 		if (src->int_warn == EMPTY)
 			write(1, "empty", 6);
@@ -80,7 +80,7 @@ void	warning_load_fdf(const t_fdf_load *src, size_t i)
 
 // time : O(1)
 // space: O(1)
-static bool	is_load_fdf_valid(t_fdf_load *src)
+static bool	isvalid_fdf_load(t_fdf_load *src)
 {
 	if (src == NULL || src->arr == NULL
 		|| src->int_warn == NOT_DECIMAL
@@ -93,11 +93,11 @@ static bool	is_load_fdf_valid(t_fdf_load *src)
 
 // time : O(1)
 // space: O(1)
-bool	is_load_fdf_arr_valid(t_fdf_load_arr *src, int i)
+bool	isvalid_fdf_load_arr(t_fdf_load_arr *src, int i)
 {
 	if (src == NULL || src->arr == NULL || i < 0
 		|| i > (int)src->length || i > (int)src->capacity
-		|| is_load_fdf_valid(&(src->arr[i])) == false)
+		|| isvalid_fdf_load(&(src->arr[i])) == false)
 		return (false);
 	return (true);
 }

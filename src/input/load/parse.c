@@ -14,7 +14,7 @@
 
 /**
  * Parse an ASCII-art line using the Cheche01 character ramp.
- * This function is intended to be used with `open_fdf_table_file`
+ * This function is intended to be used with `load_fdf_table_file`
  *
  * time/space: O(n) / O(n)
  * 
@@ -35,7 +35,7 @@ t_fdf_load	parse_ascii_cheche01(char *line)
 
 /**
  * Parse an ASCII-art line using the standard character ramp.
- * This function is intended to be used with `open_fdf_table_file`
+ * This function is intended to be used with `load_fdf_table_file`
  *
  * time/space: O(n) / O(n)
  * 
@@ -56,7 +56,7 @@ t_fdf_load	parse_ascii_standard(char *line)
 
 /**
  * Parse an ASCII-art line using the Chungaloider brightness ramp.
- * This function is intended to be used with `open_fdf_table_file`
+ * This function is intended to be used with `load_fdf_table_file`
  *
  * time/space: O(n) / O(n)
  *
@@ -80,7 +80,7 @@ t_fdf_load	parse_ascii_chungaloider(char *line)
 
 /**
  * Parse an FDF line as colorful data.
- * This function is intended to be used with `open_fdf_table_file`
+ * This function is intended to be used with `load_fdf_table_file`
  *
  * time/space: O(n) / O(n)
  *
@@ -100,7 +100,7 @@ t_fdf_load	parse_decimal_rgba(char *line)
 
 /**
  * Parse an FDF line as black and white data.
- * This function is intended to be used with `open_fdf_table_file`
+ * This function is intended to be used with `load_fdf_table_file`
  *
  * time/space: O(n) / O(n)
  *

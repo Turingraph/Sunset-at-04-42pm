@@ -21,9 +21,9 @@
  * status: public api
  * 
  */
-t_2d_float	complex_exp(t_2d_float a)
+t_float2d	complex_exp(t_float2d a)
 {
-	t_2d_float	dst;
+	t_float2d	dst;
 
 	dst.x = f_cos(a.y) * f_exp(a.x);
 	dst.y = f_sin(a.y) * f_exp(a.x);
@@ -59,13 +59,13 @@ Reference
  * status: public api
  * 
  */
-t_2d_float	complex_cos(t_2d_float a)
+t_float2d	complex_cos(t_float2d a)
 {
-	t_2d_float	y;
-	t_2d_float	x1;
-	t_2d_float	x2;
-	t_2d_float	e1;
-	t_2d_float	e2;
+	t_float2d	y;
+	t_float2d	x1;
+	t_float2d	x2;
+	t_float2d	e1;
+	t_float2d	e2;
 
 	x1.x = -1 * a.x;
 	x1.y = a.y;
@@ -84,13 +84,13 @@ t_2d_float	complex_cos(t_2d_float a)
  * status: public api
  * 
  */
-t_2d_float	complex_sin(t_2d_float a)
+t_float2d	complex_sin(t_float2d a)
 {
-	t_2d_float	y;
-	t_2d_float	x1;
-	t_2d_float	x2;
-	t_2d_float	e1;
-	t_2d_float	e2;
+	t_float2d	y;
+	t_float2d	x1;
+	t_float2d	x2;
+	t_float2d	e1;
+	t_float2d	e2;
 
 	x1.x = a.x;
 	x1.y = -1 * a.y;

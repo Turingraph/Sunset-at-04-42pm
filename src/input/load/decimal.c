@@ -23,62 +23,62 @@ static size_t	count_decimal_digits(const char *line, size_t max, bool *is_int)
 	j = 0;
 	if (line[j] == '-')
 		j += 1;
-	while (j < max && f_isspace(line[j], "0123456789") == 1)
+	while (j < max && is_a_in_str(line[j], "0123456789") == 1)
 		j += 1;
-	if (j == 1 && f_isspace(line[0], "0123456789") == 0 && is_int != NULL)
+	if (j == 1 && is_a_in_str(line[0], "0123456789") == 0 && is_int != NULL)
 		*is_int = false;
 	return (j);
 }
 
 // time : O(1)
 // space: O(1)
-static bool	is_valid_fdf_color(const char *line)
+static bool	isvalid_fdf_color(const char *line)
 {
 	size_t	i;
 
-	if (line == NULL || f_strlen(line) < 4
+	if (line == NULL || str_length(line) < 4
 		|| line[1] != '0'
 		|| line[2] != 'x')
 		return (false);
 	line += 3;
 	i = 0;
-	while (f_isspace(*line, "0123456789ABCDEFabcdef") == 1)
+	while (is_a_in_str(*line, "0123456789ABCDEFabcdef") == 1)
 	{
 		line += 1;
 		i += 1;
 	}
 	if (i == 0 || i > 8
-		|| (*line != '\0' && f_isspace(*line, " \n\t\r\f\v") == 0))
+		|| (*line != '\0' && is_a_in_str(*line, " \n\t\r\f\v") == 0))
 		return (false);
 	return (true);
 }
 
 // time : O(n)
 // space: O(1)
-static size_t	count_fdf_columns(const char *line, bool *is_valid_fdf)
+static size_t	count_fdf_columns(const char *line, bool *isvalid_fdf)
 {
 	size_t	y;
 
 	y = 0;
 	while (line != NULL && *line != '\0'
-		&& is_valid_fdf != NULL && *is_valid_fdf == true)
+		&& isvalid_fdf != NULL && *isvalid_fdf == true)
 	{
-		while (f_isspace(*line, " \n\t\r\f\v") == 1)
+		while (is_a_in_str(*line, " \n\t\r\f\v") == 1)
 			line += 1;
-		if (f_isspace(*line, "0123456789") == 1 || *line == '-')
+		if (is_a_in_str(*line, "0123456789") == 1 || *line == '-')
 		{
 			line += 1;
 			y += 1;
 		}
-		while (f_isspace(*line, "0123456789") == 1)
+		while (is_a_in_str(*line, "0123456789") == 1)
 			line += 1;
 		if (*line == ',')
-			*is_valid_fdf = is_valid_fdf_color(line);
-		else if (f_isspace(*line, "0123456789") == 0
-			&& f_isspace(*line, " \n\t\r\f\v") == 0 && *line != '\0')
-			*is_valid_fdf = false;
-		while (f_isspace(*line, "0123456789,xABCDEFabcdef") == 1
-			&& *is_valid_fdf == true)
+			*isvalid_fdf = isvalid_fdf_color(line);
+		else if (is_a_in_str(*line, "0123456789") == 0
+			&& is_a_in_str(*line, " \n\t\r\f\v") == 0 && *line != '\0')
+			*isvalid_fdf = false;
+		while (is_a_in_str(*line, "0123456789,xABCDEFabcdef") == 1
+			&& *isvalid_fdf == true)
 			line += 1;
 	}
 	return (y);
@@ -95,10 +95,10 @@ static void	parse_decimal_loop(t_fdf_load *dst, size_t length,
 	i = 0;
 	while (i < length && *line != '\0')
 	{
-		while (f_isspace(*line, " \n\t\r\f\v") == 1)
+		while (is_a_in_str(*line, " \n\t\r\f\v") == 1)
 			line += 1;
 		j = count_decimal_digits(line, 12, is_int);
-		dst->arr[i] = f_atoi(line, is_int, "0123456789", j);
+		dst->arr[i] = str_to_int(line, is_int, "0123456789", j);
 		line += j;
 		if (dst->a != NULL || dst->g != NULL
 			|| dst->r != NULL || dst->b != NULL)
@@ -117,16 +117,16 @@ t_fdf_load	parse_decimal(char *line, bool is_rgba)
 	t_fdf_load	dst;
 	size_t		length;
 	bool		is_int;
-	bool		is_valid_fdf;
+	bool		isvalid_fdf;
 
-	is_valid_fdf = true;
-	length = count_fdf_columns(line, &is_valid_fdf);
+	isvalid_fdf = true;
+	length = count_fdf_columns(line, &isvalid_fdf);
 	if (line == NULL || length == 0
-		|| (f_strlen((const char *)line) == 1
-			&& f_isspace(*line, "0123456789") == 0)
-		|| is_valid_fdf == false)
-		return (init_fdf_load(0, false));
-	dst = init_fdf_load(length, is_rgba);
+		|| (str_length((const char *)line) == 1
+			&& is_a_in_str(*line, "0123456789") == 0)
+		|| isvalid_fdf == false)
+		return (create_fdf_load(0, false));
+	dst = create_fdf_load(length, is_rgba);
 	if (dst.arr == NULL)
 		return (dst);
 	is_int = true;

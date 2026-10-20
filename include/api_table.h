@@ -69,15 +69,15 @@ typedef struct t_fdf_table
 }	t_fdf_table;
 
 /**
- * Sometimes t_2d_float is used for describing 2D xy position.
+ * Sometimes t_float2d is used for describing 2D xy position.
  * @param re correspond to x axis position.
  * @param im correspond to y axis position.
  */
-typedef struct t_2d_float
+typedef struct t_float2d
 {
 	float	re;
 	float	im;
-}	t_2d_float;
+}	t_float2d;
 
 /**
  * The SUNSET_WINDOW_WIDTH and SUNSET_WINDOW_HEIGHT is used for
@@ -200,7 +200,7 @@ typedef enum t_load_warning
  * rgb_warn stores the parsing status of the color values.
  * 
  * If int_warn and/or rgb_warn are NOT_DECIMAL and/or NOT_HEX, then 
- * load_all_fdf_lines stops and open_fdf_table_file return empty output.
+ * fetch_fdf_load_arr stops and load_fdf_table_file return empty output.
  *
  * status: internal data shape_2d
  *
@@ -265,7 +265,7 @@ typedef struct t_fdf_load_arr
  *
  * @return converted integer, or -1 if conversion fails or overflows
  */
-int	f_atoi(const char *src, bool *is_int, const char *base, size_t digits);
+int	str_to_int(const char *src, bool *is_int, const char *base, size_t digits);
 
 /**
  * Write an integer to a file descriptor using the specified base.
@@ -282,11 +282,11 @@ int	f_atoi(const char *src, bool *is_int, const char *base, size_t digits);
  *
  * @return number of characters written
  */
-size_t	ft_putnbr_fd(int n, int fd, const char *base, size_t digits);
+size_t	write_int(int n, int fd, const char *base, size_t digits);
 
 /**
  * Parse an ASCII-art line using the Cheche01 character ramp.
- * This function is intended to be used with `open_fdf_table_file`
+ * This function is intended to be used with `load_fdf_table_file`
  *
  * time/space: O(n) / O(n)
  * 
@@ -300,7 +300,7 @@ t_fdf_load	parse_ascii_cheche01(char *line);
 
 /**
  * Parse an ASCII-art line using the standard character ramp.
- * This function is intended to be used with `open_fdf_table_file`
+ * This function is intended to be used with `load_fdf_table_file`
  *
  * time/space: O(n) / O(n)
  * 
@@ -314,7 +314,7 @@ t_fdf_load	parse_ascii_standard(char *line);
 
 /**
  * Parse an ASCII-art line using the Chungaloider brightness ramp.
- * This function is intended to be used with `open_fdf_table_file`
+ * This function is intended to be used with `load_fdf_table_file`
  *
  * time/space: O(n) / O(n)
  *
@@ -331,7 +331,7 @@ t_fdf_load	parse_ascii_chungaloider(char *line);
 
 /**
  * Parse an FDF line as colorful data.
- * This function is intended to be used with `open_fdf_table_file`
+ * This function is intended to be used with `load_fdf_table_file`
  *
  * time/space: O(n) / O(n)
  *
@@ -346,7 +346,7 @@ t_fdf_load	parse_decimal_rgba(char *line);
 
 /**
  * Parse an FDF line as black and white data.
- * This function is intended to be used with `open_fdf_table_file`
+ * This function is intended to be used with `load_fdf_table_file`
  *
  * time/space: O(n) / O(n)
  *
@@ -403,7 +403,7 @@ t_fdf_table		create_fdf_table(size_t row, size_t col, bool is_rgba);
  * @return return the array that contains rgba and height of the height map.
  * @see src/input/load/parse.c
  */
-t_fdf_table		open_fdf_table_file(const char *file_name, const char *dir,
+t_fdf_table		load_fdf_table_file(const char *file_name, const char *dir,
 					t_fdf_load (*one_line)(char *line), bool is_rgba);
 
 

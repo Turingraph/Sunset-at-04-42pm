@@ -17,32 +17,32 @@
 
 // geometry.c
 
-bool		is_line_in_screen(t_2d_camera camera,
+bool		is_line_in_screen(t_camera2d camera,
 				t_line src);
-bool		is_circle_in_screen(t_2d_camera camera,
-				t_2d_int src, int radius);
-float		init_fdf_point1d(t_fdf_proj2d *fdf, t_2d_int ixiy, size_t dim, char next);
-t_2d_int	world_to_screen2d(t_2d_camera camera, float x, float y);
-bool		is_2dhook_valid(const t_2d_hook *src);
+bool		is_circle_in_screen(t_camera2d camera,
+				t_int2d src, int radius);
+float		init_fdf_point1d(t_fdf_proj2d *fdf, t_int2d ixiy, size_t dim, char next);
+t_int2d	world_to_screen2d(t_camera2d camera, float x, float y);
+bool		isvalid_hook2d(const t_hook2d *src);
 
 // render_*.c
 
-void		render_kusama(t_2d_hook *hook, bool is_draw);
-void		render_picasso(t_2d_hook *hook, bool is_draw);
-void		render_tobyfox(t_2d_hook *hook, bool is_draw);
+void		render_kusama(t_hook2d *hook, bool is_draw);
+void		render_picasso(t_hook2d *hook, bool is_draw);
+void		render_tobyfox(t_hook2d *hook, bool is_draw);
 
 // render.c
 
-t_raster_style		hook_to_raster(t_2d_hook *hook, bool is_draw, t_2d_int ixiy);
-void		render_circle(t_2d_int point,
-				t_raster_style ink, t_2d_camera camera, mlx_image_t *img);
+t_style_raster		hook_to_raster(t_hook2d *hook, bool is_draw, t_int2d ixiy);
+void		render_circle(t_int2d point,
+				t_style_raster ink, t_camera2d camera, mlx_image_t *img);
 void		render_rectangle(t_line line, int32_t ink,
-				t_2d_camera camera, mlx_image_t *img);
-void		render_line(t_line line, t_raster_style ink,
-				t_2d_camera camera, mlx_image_t *img);
+				t_camera2d camera, mlx_image_t *img);
+void		render_line(t_line line, t_style_raster ink,
+				t_camera2d camera, mlx_image_t *img);
 
 // public.c
 
-void		render_fdf(t_2d_hook *hook, bool is_draw);
+void		render_fdf(t_hook2d *hook, bool is_draw);
 
 #endif

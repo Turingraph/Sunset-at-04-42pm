@@ -14,7 +14,7 @@
 
 // time : O(1)
 // space: O(1)
-bool	is_islamic_art_valid(const t_islamic_art *src)
+bool	isvalid_islamic_art(const t_islamic_art *src)
 {
 	if (src == NULL || src->motif == NULL
 		|| src->motif->arr == NULL || src->motif->length == 0
@@ -43,10 +43,10 @@ bool	is_islamic_art_valid(const t_islamic_art *src)
  * @param boundary target rectangular boundary
  * @return converted integer coordinate relative to the boundary origin
  */
-static t_2d_int	float2d_to_int2d(t_2d_float src, t_line boundary)
+static t_int2d	float2d_to_int2d(t_float2d src, t_line boundary)
 {
-	t_2d_float	normal;
-	t_2d_int	dst;
+	t_float2d	normal;
+	t_int2d	dst;
 
 	normal.x = f_interval(src.x, 0, 1);
 	normal.y = f_interval(src.y, 0, 1);
@@ -72,7 +72,7 @@ static t_2d_int	float2d_to_int2d(t_2d_float src, t_line boundary)
  * @param boundary target rectangular boundary
  * @return integer line mapped to the boundary
  */
-t_line	init_motif_line(t_2d_float point_1, t_2d_float point_2,
+t_line	init_motif_line(t_float2d point_1, t_float2d point_2,
 	t_line boundary)
 {
 	t_line	dst;

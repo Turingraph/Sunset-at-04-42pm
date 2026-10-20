@@ -101,10 +101,10 @@ static t_fdf_proj2d	fdf_proj2d_malloc(t_fdf_table *src)
 // time : O(n)
 // space: O(1)
 static void	fdf_proj2d_update(const t_fdf_table *src, float *arr_x,
-	float *arr_y, t_2d_float (*proj2d)(float x, float y, float z))
+	float *arr_y, t_float2d (*proj2d)(float x, float y, float z))
 {
 	size_t		i;
-	t_2d_float	dst;
+	t_float2d	dst;
 
 	if (src == NULL || arr_x == NULL || arr_y == NULL
 		|| mul_overflow_size_t(src->col, src->row) == false)
@@ -152,7 +152,7 @@ static void	fdf_proj2d_update(const t_fdf_table *src, float *arr_x,
  * @see src/visualize/fdf/projection.c
  */
 t_fdf_proj2d	create_fdf_proj2d(t_fdf_table *src,
-	t_2d_float (*proj2d)(float x, float y, float z), float scale)
+	t_float2d (*proj2d)(float x, float y, float z), float scale)
 {
 	t_fdf_proj2d	dst;
 	float	max_x;

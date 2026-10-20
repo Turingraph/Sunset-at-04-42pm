@@ -14,7 +14,7 @@
 
 // time : O(1)
 // space: O(1)
-bool	is_line_in_screen(t_2d_camera camera,
+bool	is_line_in_screen(t_camera2d camera,
 	t_line src)
 {
 	if ((0 > src.p1.x && 0 > src.p2.x)
@@ -27,8 +27,8 @@ bool	is_line_in_screen(t_2d_camera camera,
 
 // time : O(1)
 // space: O(1)
-bool	is_circle_in_screen(t_2d_camera camera,
-	t_2d_int src, int radius)
+bool	is_circle_in_screen(t_camera2d camera,
+	t_int2d src, int radius)
 {
 	if (-1 * radius <= src.x
 		&& src.x <= camera.window_size.x + 0 + radius
@@ -71,9 +71,9 @@ bool	is_circle_in_screen(t_2d_camera camera,
  * @param next selects the current point or the next point on an axis
  * @return transformed coordinate of the selected FDF point
  */
-float	init_fdf_point1d(t_fdf_proj2d *fdf, t_2d_int ixiy, size_t dim, char next)
+float	init_fdf_point1d(t_fdf_proj2d *fdf, t_int2d ixiy, size_t dim, char next)
 {
-	if (is_fdf_proj2d_valid(fdf) == false)
+	if (isvalid_fdf_proj2d(fdf) == false)
 		return (0.0);
 	if (next == 1 || next == 3)
 		ixiy.x += 1;
@@ -86,10 +86,10 @@ float	init_fdf_point1d(t_fdf_proj2d *fdf, t_2d_int ixiy, size_t dim, char next)
 
 // time : O(1)
 // space: O(1)
-t_2d_int	world_to_screen2d(t_2d_camera camera,
+t_int2d	world_to_screen2d(t_camera2d camera,
 	float x, float y)
 {
-	t_2d_int	dst;
+	t_int2d	dst;
 
 	dst.x = x + (camera.offset.x + camera.window_size.x) / 2;
 	dst.y = y + (camera.offset.y + camera.window_size.y) / 2;
@@ -98,7 +98,7 @@ t_2d_int	world_to_screen2d(t_2d_camera camera,
 
 // time : O(1)
 // space: O(1)
-bool	is_2dhook_valid(const t_2d_hook *src)
+bool	isvalid_hook2d(const t_hook2d *src)
 {
 	if (src == NULL
 		|| src->camera == NULL
@@ -106,7 +106,7 @@ bool	is_2dhook_valid(const t_2d_hook *src)
 		|| src->mlx == NULL
 		|| mul_overflow_uint32_t(src->mlx->width, src->mlx->height) == false
 		|| mul_overflow_uint32_t(src->img->width, src->img->height) == false
-		|| is_fdf_proj2d_valid(src->fdf) == false)
+		|| isvalid_fdf_proj2d(src->fdf) == false)
 		return (false);
 	return (true);
 }

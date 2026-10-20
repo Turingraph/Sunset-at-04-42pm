@@ -64,11 +64,11 @@ int	main(int len, char **str)
 {
 	t_fdf_table		table;
 	t_fdf_proj2d			output;
-	t_render_style	style;
+	t_style_render	style;
 
 	if (len < 2)
 		return (0);
-	table = open_fdf_table_file(str[1], NULL, parse_ascii_cheche01, true);
+	table = load_fdf_table_file(str[1], NULL, parse_ascii_cheche01, true);
 	if (table.col * table.row == 0)
 	{
 		destroy_fdf_table(&table);

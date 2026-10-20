@@ -352,9 +352,9 @@ int	main(void)
 		while (k < 2)
 		{
 			if (k == 0)
-				table = open_fdf_table_file(arr[i].file_name, src_dir, parse_decimal_bw, false);
+				table = load_fdf_table_file(arr[i].file_name, src_dir, parse_decimal_bw, false);
 			else
-				table = open_fdf_table_file(arr[i].file_name, src_dir, parse_decimal_rgba, true);
+				table = load_fdf_table_file(arr[i].file_name, src_dir, parse_decimal_rgba, true);
 			
 			table_large = scale_dimension_fdf(&table, arr[i].scale_row, arr[i].scale_col);
 			if (table_large.row * table_large.col == arr[i].scale_row * arr[i].scale_col * arr[i].row * arr[i].col
@@ -363,9 +363,9 @@ int	main(void)
 			else
 			{
 				write(1, "Incorrect: ", 12);
-				write(1, arr[i].file_name, f_strlen(arr[i].file_name));
+				write(1, arr[i].file_name, str_length(arr[i].file_name));
 				write(1, "\t", 1);
-				ft_putnbr_fd(k, 1, "012346789", 1);
+				write_int(k, 1, "012346789", 1);
 				write(1, "\n", 1);
 			}
             destroy_fdf_table(&table);
