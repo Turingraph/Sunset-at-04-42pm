@@ -1,4 +1,4 @@
-#include"load.h"
+#include"decimal.h"
 
 int	main(void)
 {
@@ -46,7 +46,7 @@ int	main(void)
 		"z.txt"
 	};
 	char	*src_dir = "corpus/figlet_rozzo/";
-	char	*dst_dir = "test/input/load/clone_input_ascii/";
+	char	*dst_dir = "test/input/decimal/clone_input_ascii/";
 
 	score = 0;
 	i = 0;
@@ -74,5 +74,5 @@ int	main(void)
 }
 
 /*
-valgrind --leak-check=full --show-leak-kinds=all ./test/out/input/load/fdf_write_ascii.out
+valgrind --leak-check=full --show-leak-kinds=all ./test/out/input/decimal/fdf_write_ascii.out
 */

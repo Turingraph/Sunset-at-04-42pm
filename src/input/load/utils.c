@@ -2,7 +2,7 @@
 
 // time : O(1)
 // space: O(1)
-void	warning_fdf_load(const t_fdf_load *src, size_t i)
+void	warn_fdf_load(const t_fdf_load *src, size_t i)
 {
 	if (src->int_warn != ERROR_CORRECT || src->rgb_warn != ERROR_CORRECT)
 	{

@@ -69,7 +69,7 @@ size_t			str_length(const char *str);
 
 // utils.c
 
-void			warning_fdf_load(const t_fdf_load *src, size_t i);
+void			warn_fdf_load(const t_fdf_load *src, size_t i);
 bool			isvalid_fdf_load_arr(t_fdf_load_arr *src, int i);
 
 // write_ascii.c

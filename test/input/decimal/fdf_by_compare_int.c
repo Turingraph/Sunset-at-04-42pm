@@ -1,4 +1,4 @@
-#include"load.h"
+#include"decimal.h"
 
 int	main(void)
 {
@@ -254,5 +254,5 @@ int	main(void)
 }
 
 /*
-valgrind --leak-check=full --show-leak-kinds=all ./test/out/input/load/fdf_by_compare_int.out
+valgrind --leak-check=full --show-leak-kinds=all ./test/out/input/decimal/fdf_by_compare_int.out
 */
