@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   create.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:44:49 by phsottat          #+#    #+#             */
-/*   Updated: 2026/10/19 14:41:25 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/21 13:22:05 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,7 @@ t_fdf_table	create_fdf_table(size_t row, size_t col, bool is_rgba)
 
 	dst.arr = NULL;
 	if (mul_overflow_size_t(col, row) == true)
-		dst.arr = malloc_talk(sizeof(int) * row * col,
-				"input/table/init.c/create_fdf_table\n");
+		dst.arr = malloc_talk(sizeof(int) * row * col, "create_fdf_table\n");
 	dst.row = row;
 	dst.col = col;
 	dst.r = NULL;
@@ -70,13 +69,13 @@ t_fdf_table	create_fdf_table(size_t row, size_t col, bool is_rgba)
 	if (is_rgba == true && mul_overflow_size_t(col, row) == true)
 	{
 		dst.r = malloc_talk(sizeof(unsigned char) * row * col,
-				"input/table/init.c/create_fdf_table\n");
+				"create_fdf_table\n");
 		dst.g = malloc_talk(sizeof(unsigned char) * row * col,
-				"input/table/init.c/create_fdf_table\n");
+				"create_fdf_table\n");
 		dst.b = malloc_talk(sizeof(unsigned char) * row * col,
-				"input/table/init.c/create_fdf_table\n");
+				"create_fdf_table\n");
 		dst.a = malloc_talk(sizeof(unsigned char) * row * col,
-				"input/table/init.c/create_fdf_table\n");
+				"create_fdf_table\n");
 	}
 	if (dst.arr == NULL)
 		destroy_fdf_table(&dst);
@@ -85,7 +84,7 @@ t_fdf_table	create_fdf_table(size_t row, size_t col, bool is_rgba)
 
 // time : O(n)
 // space: O(1)
-size_t	fdf_load_col(const t_fdf_load_arr *src)
+static size_t	fdf_load_col(const t_fdf_load_arr *src)
 {
 	size_t	i;
 	size_t	col;
@@ -103,7 +102,7 @@ size_t	fdf_load_col(const t_fdf_load_arr *src)
 
 // time : O(1)
 // space: O(1)
-void	load_rgba_for_fdf_table(const t_fdf_load *src,
+static void	load_rgba_for_fdf_table(const t_fdf_load *src,
 	t_fdf_table *dst, size_t row, size_t col)
 {
 	if (src != NULL && dst != NULL

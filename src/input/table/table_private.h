@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:54:30 by phsottat          #+#    #+#             */
-/*   Updated: 2026/10/21 12:53:33 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/21 13:20:54 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "../../input/decimal/decimal.h"
 # include "../../utils/taylor/taylor.h"
 
-// init.c
+// create.c
 
 void			destroy_fdf_table(t_fdf_table *src);
 t_fdf_table		create_fdf_table(size_t row, size_t col, bool is_rgba);

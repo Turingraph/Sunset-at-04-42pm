@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   create.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 17:03:06 by phsottat          #+#    #+#             */
-/*   Updated: 2026/09/11 14:10:19 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/21 13:14:47 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,9 +90,9 @@ static t_fdf_proj2d	fdf_proj2d_malloc(t_fdf_table *src)
 	dst.row = src->row;
 	dst.col = src->col;
 	dst.x = malloc_talk(src->row * src->col * sizeof(float),
-			"visualize/fdf/public.c/create_fdf/\n");
+			"create_fdf_proj2d\n");
 	dst.y = malloc_talk(src->row * src->col * sizeof(float),
-			"visualize/fdf/public.c/create_fdf/\n");
+			"create_fdf_proj2d\n");
 	if (dst.x == NULL || dst.y == NULL)
 		return (destroy_fdf_proj2d(&dst));
 	return (dst);

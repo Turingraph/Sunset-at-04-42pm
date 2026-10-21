@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:07:25 by phsottat          #+#    #+#             */
-/*   Updated: 2026/10/21 11:57:23 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/21 13:12:47 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ t_fdf_load	create_fdf_load(size_t line_len, bool is_rgb)
 	t_fdf_load	dst;
 
 	dst.arr = (int *)malloc_talk(sizeof(int) * line_len,
-			"input/load/init.c/int_fdf_load\n");
+			"create_fdf_load\n");
 	dst.r = NULL;
 	dst.g = NULL;
 	dst.b = NULL;
@@ -50,13 +50,13 @@ t_fdf_load	create_fdf_load(size_t line_len, bool is_rgb)
 	if (is_rgb == true)
 	{
 		dst.r = malloc_talk(sizeof(unsigned char) * line_len,
-				"input/load/init.c/int_fdf_load\n");
+				"create_fdf_load\n");
 		dst.g = malloc_talk(sizeof(unsigned char) * line_len,
-				"input/load/init.c/int_fdf_load\n");
+				"create_fdf_load\n");
 		dst.b = malloc_talk(sizeof(unsigned char) * line_len,
-				"input/load/init.c/int_fdf_load\n");
+				"create_fdf_load\n");
 		dst.a = malloc_talk(sizeof(unsigned char) * line_len,
-				"input/load/init.c/int_fdf_load\n");
+				"create_fdf_load\n");
 	}
 	dst.int_warn = ERROR_CORRECT;
 	if (line_len == 0)
@@ -119,6 +119,6 @@ t_fdf_load_arr	create_fdf_load_arr(size_t length)
 	dst.capacity = length;
 	dst.length = 0;
 	dst.arr = malloc_talk(sizeof(t_fdf_load) * length,
-			"load/init.c/create_fdf_load_arr\n");
+			"create_fdf_load_arr\n");
 	return (dst);
 }

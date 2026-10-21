@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 16:15:53 by phsottat          #+#    #+#             */
-/*   Updated: 2026/08/30 14:27:47 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/21 13:14:08 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static t_matrix	init_src_kernel_int(const t_fdf_table *src,
 	dst.col = dim;
 	dst.row = dim;
 	dst.arr = malloc_talk(sizeof(float) * dim * dim,
-			"paint/convolve/convolve_height.c/init_src_kernel_int\n");
+			"convolve_fdf\n");
 	if (dst.arr == NULL)
 		return (dst);
 	i = 0;
