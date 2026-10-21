@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:36:58 by phsottat          #+#    #+#             */
-/*   Updated: 2026/10/19 14:50:57 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/21 16:50:52 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ char			*get_next_line(int fd, bool is_continue);
 
 // load.c
 
-int				load_file_debug(const char *file_name,
+int				debug_load_file(const char *file_name,
 					const char *dir, t_file_mode file_mode);
 int				load_file(const char *file_name, t_file_mode file_mode);
 char			*concat_str(const char *str_1, const char *str_2);

@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/16 15:08:27 by phsottat          #+#    #+#             */
-/*   Updated: 2026/10/21 14:12:14 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/21 16:50:52 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ char			*get_next_line(int fd, bool is_continue);
  *
  * @return file descriptor on success, or -1 on failure
  */
-int				load_file_debug(const char *file_name,
+int				debug_load_file(const char *file_name,
 					const char *dir, t_file_mode file_mode);
 
 /* ************************************************************************** */

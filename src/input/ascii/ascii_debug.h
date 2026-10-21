@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   load_debug.h                                       :+:      :+:    :+:   */
+/*   ascii_debug.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 13:58:24 by phsottat          #+#    #+#             */
-/*   Updated: 2026/10/19 14:41:25 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/21 16:31:55 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 // all_files.c
 
-t_fdf_load_arr	load_fdf_load_arr(const char *file_name, const char *dir,
+t_fdf_load_arr	debug_fdf_load_arr(const char *file_name, const char *dir,
 					t_fdf_load (*parse_line)(char *line));
 
 // ascii.c

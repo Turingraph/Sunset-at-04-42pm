@@ -88,9 +88,11 @@ int	main(void)
 	i = 0;
 	while (i < length)
 	{
-		table = load_fdf_table(arr[i], src_dir, parse_ascii_standard, false);
+		char *file_name = concat_str(arr[i], src_dir);
+		table = load_fdf_table(file_name, parse_ascii_standard, false);
+		free(file_name);
 		positive_fdf_table(&table);
-		fdf_dst = load_file_debug(arrdst[i], dst_dir, FILE_WRITE);
+		fdf_dst = debug_load_file(arrdst[i], dst_dir, FILE_WRITE);
 		if(fdf_dst > -1)
 		{
 			write(1, "\n*** ", 5);

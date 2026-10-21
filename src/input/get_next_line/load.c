@@ -16,7 +16,8 @@
  *
  * @return file descriptor on success, or -1 on failure
  */
-int	load_file_debug(const char *file_name, const char *dir, t_file_mode file_mode)
+int	debug_load_file(const char *file_name,
+	const char *dir, t_file_mode file_mode)
 {
 	t_str_dynamic	file;
 	int				dst;
@@ -28,7 +29,8 @@ int	load_file_debug(const char *file_name, const char *dir, t_file_mode file_mod
 	if (dir != NULL && file_name == NULL)
 		return (open(dir, file_mode));
 	file = create_str_dynamic(
-			index_a_in_str(file_name, '\0', true) + index_a_in_str(dir, '\0', true));
+			index_a_in_str(file_name,
+				'\0', true) + index_a_in_str(dir, '\0', true));
 	concat_str_dynamic(&file, dir);
 	concat_str_dynamic(&file, file_name);
 	if (file.str == NULL)

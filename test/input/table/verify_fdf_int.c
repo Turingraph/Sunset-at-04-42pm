@@ -3,7 +3,7 @@
 /*
 // time : O(n)
 // space: O(1)
-e_bool	assert_table_with_intarr(const t_intarr_tester *src, const t_fdf_table *dst)
+e_bool	assert_table_with_intarr(const struct t_intarr_tester *src, const t_fdf_table *dst)
 {
 	size_t	i;
 	size_t	j;
@@ -24,8 +24,8 @@ int	main(void)
 	t_fdf_table     table;
 	t_intarr_tester	arr[] = {
 		{
-			(const t_intarr[]){
-				(const t_intarr){100, (const int[]){
+			(const struct t_intarr[]){
+				(const struct t_intarr){100, (const int[]){
 				-6,-67,-61,-38,9,-16,-16,32,56,16,
 				27,-63,23,-56,63,10,33,-9,-55,69,
 				-44,-23,-58,12,-55,0,21,-25,27,48,
@@ -40,8 +40,8 @@ int	main(void)
 			"10-70.fdf", 100
 		},
 		{
-			(const t_intarr[]){
-				(const t_intarr){99, (const int[]){
+			(const struct t_intarr[]){
+				(const struct t_intarr){99, (const int[]){
 				0,0,1,2,3,4,5,6,7,8,9,
 				0,0,0,1,2,3,4,5,6,7,8,
 				0,0,0,0,1,2,3,4,5,6,7,
@@ -55,8 +55,8 @@ int	main(void)
 			"basictest.fdf", 99
 		},
 		{
-			(const t_intarr[]){
-				(const t_intarr){25, (const int[]){0,0,0,0,0,
+			(const struct t_intarr[]){
+				(const struct t_intarr){25, (const int[]){0,0,0,0,0,
 				0,9,0,0,0,
 				0,0,9,0,0,
 				0,0,0,0,0,
@@ -65,8 +65,8 @@ int	main(void)
 			"convolution_9.fdf", 25
 		},
 		{
-			(const t_intarr[]){
-				(const t_intarr){209, (const int[]){0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+			(const struct t_intarr[]){
+				(const struct t_intarr){209, (const int[]){0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 				0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 				0,0,10,10,0,0,10,10,0,0,0,10,10,10,10,10,0,0,0,
 				0,0,10,10,0,0,10,10,0,0,0,0,0,0,0,10,10,0,0,
@@ -81,8 +81,8 @@ int	main(void)
 			"42.fdf", 209
 		},
 		{
-			(const t_intarr[]){
-				(const t_intarr){400, (const int[]){
+			(const struct t_intarr[]){
+				(const struct t_intarr){400, (const int[]){
 				36,-40,-59,37,-47,-29,-4,12,49,45,37,49,-31,16,20,19,-26,-30,-21,18,
 				43,16,43,-3,37,-5,-11,-46,4,38,27,-38,35,30,37,59,-29,26,-55,52,
 				-25,-48,30,33,-42,-55,54,26,54,-23,47,13,28,31,-53,54,-10,-50,-24,12,
@@ -107,8 +107,8 @@ int	main(void)
 			"20-60.fdf", 400
 		},
 		{
-			(const t_intarr[]){
-				(const t_intarr){100, (const int[]){
+			(const struct t_intarr[]){
+				(const struct t_intarr){100, (const int[]){
 				0,0,0,0,0,0,0,0,0,0,
 				0,10,10,10,10,10,10,10,10,0,
 				0,10,20,15,12,15,17,20,10,0,
@@ -123,8 +123,8 @@ int	main(void)
 			"elem.fdf", 100
 		},
 		{
-			(const t_intarr[]){
-				(const t_intarr){400, (const int[]){
+			(const struct t_intarr[]){
+				(const struct t_intarr){400, (const int[]){
 				0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 				0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 				0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -149,8 +149,8 @@ int	main(void)
 			"elem2.fdf", 400
 		},
 		{
-			(const t_intarr[]){
-				(const t_intarr){840, (const int[]){
+			(const struct t_intarr[]){
+				(const struct t_intarr){840, (const int[]){
 				0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 				0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 				0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -183,8 +183,8 @@ int	main(void)
 			"large_plat.fdf", 840
 		},
 		{
-			(const t_intarr[]){
-				(const t_intarr){189, (const int[]){
+			(const struct t_intarr[]){
+				(const struct t_intarr){189, (const int[]){
 				-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9,10,
 				-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9,10,
 				-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9,10,
@@ -198,8 +198,8 @@ int	main(void)
 			"pentenegpos.fdf", 189
 		},
 		{
-			(const t_intarr[]){
-				(const t_intarr){729, (const int[]){
+			(const struct t_intarr[]){
+				(const struct t_intarr){729, (const int[]){
 				0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 				-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,
 				-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-1,0,1,2,2,2,2,2,2,2,2,2,2,2,2,
@@ -240,10 +240,12 @@ int	main(void)
 		k = 0;
 		while (k < 2)
 		{
-			if (k == 0)
-				table = load_fdf_table(arr[i].file_name, src_dir, parse_decimal_bw, false);
+			char *file_name = concat_str(src_dir, arr[i].file_name);
+			if (k % 2 == 0)
+				table = load_fdf_table(file_name, parse_decimal_bw, false);
 			else
-				table = load_fdf_table(arr[i].file_name, src_dir, parse_decimal_rgba, true);
+				table = load_fdf_table(file_name, parse_decimal_rgba, true);
+			free(file_name);
 			if (table.row * table.col == arr[i].length && table.arr != NULL
 				&& assert_intarr(table.arr, arr[i].arr[0].arr, arr[i].length) == true)
 					score += 1;

@@ -17,17 +17,17 @@ int	main(void)
 	write(1, ">>> ", 4);
 	write_int((int)(f_sum(ker.arr, 25) * 10000), 1, "0123456789", 1);
 	write(1, "\n", 1);
-	table_a = load_fdf_table(input_dir, NULL,
+	table_a = load_fdf_table(input_dir,
 			parse_ascii_cheche01, false);
 	scale_fdf_table(&table_a, 10, FDF_HEIGHT);
 	table_b = scale_dimension_fdf(&table_a, 3, 3);
 
-	output_fd = load_file_debug(output_dir_1, NULL, FILE_WRITE);
+	output_fd = debug_load_file(output_dir_1, NULL, FILE_WRITE);
 	write_table_ascii_cheche01(output_fd, &table_b, FDF_HEIGHT);
 	close(output_fd);
 
 	table_c = convolve_fdf(&table_b, ker.arr, ker_dim);
-	output_fd = load_file_debug(output_dir_2, NULL, FILE_WRITE);
+	output_fd = debug_load_file(output_dir_2, NULL, FILE_WRITE);
 	write_table_ascii_cheche01(output_fd, &table_c, FDF_HEIGHT);
 	close(output_fd);
 

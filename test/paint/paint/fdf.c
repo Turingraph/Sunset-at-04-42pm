@@ -74,9 +74,11 @@ int	main(void)
 	i = 0;
 	while (i < length)
 	{
-		output = load_file_debug(arr_dst[i], dst, FILE_WRITE);
-		table_a = load_fdf_table(arr_src[i], src,
+		output = debug_load_file(arr_dst[i], dst, FILE_WRITE);
+		char	*file_name = concat_str(src, arr_src[i]);
+		table_a = load_fdf_table(file_name,
 				parse_ascii_chungaloider, true);
+		free(file_name);
         color_cells_gradient(&table_a, init_gradient(), true);
 		write_fdf_table(output, &table_a, 1, WRITE_HEX_RGBA);
 		destroy_fdf_table(&table_a);

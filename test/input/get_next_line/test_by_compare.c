@@ -252,7 +252,7 @@ int	main(void)
 	i = 0;
 	while (i < max_score)
 	{
-		fd = load_file_debug(arr[i].file_name, src_dir, FILE_READ);
+		fd = debug_load_file(arr[i].file_name, src_dir, FILE_READ);
 		if (arr[i].read_entire_file == true)
 		{
 			if (assert_file_strarr(fd, (const char **)(arr[i].arr), 0) == true)

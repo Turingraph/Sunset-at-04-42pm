@@ -36,9 +36,11 @@ int	main(void)
 	i = 0;
 	while (i < length)
 	{
-		output = load_file_debug(arr[i], dst_dir, FILE_WRITE);
-		table_a = load_fdf_table(arr[i], src_dir,
+		output = debug_load_file(arr[i], dst_dir, FILE_WRITE);
+		char *file_name = concat_str(src_dir, arr[i]);
+		table_a = load_fdf_table(file_name,
 				parse_ascii_cheche01, false);
+		free(file_name);
 		scale_fdf_table(&table_a, 3.0, FDF_HEIGHT);
 		table_c = convolve_fdf(&table_a, edge, 5);
 		// positive_fdf_table(&table_c);

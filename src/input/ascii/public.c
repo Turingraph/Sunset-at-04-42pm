@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   all_files.c                                        :+:      :+:    :+:   */
+/*   public.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:00:47 by phsottat          #+#    #+#             */
-/*   Updated: 2026/10/19 14:52:45 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/21 16:59:37 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,8 +102,19 @@ bool	isvalid_fdf_load_arr(t_fdf_load_arr *src, int i)
 	return (true);
 }
 
-// time : O(n)
-// space: O(n)
+/**
+ * Load an FDF file based on the file descriptor
+ * and parse its lines into a t_fdf_load_arr.
+ * This function is used with load_fdf_table from src/input/table/public.c
+ * 
+ * time/space: O(n) / O(n)
+ * 
+ * status: internal helper
+ * 
+ * @param fd integer file descriptor
+ * @param parse_line function used to parse each input line
+ * @return loaded data input array as t_fdf_load_arr
+ */
 t_fdf_load_arr	fetch_fdf_load_arr(int fd,
 	t_fdf_load (*parse_line)(char *line))
 {
@@ -131,12 +142,13 @@ t_fdf_load_arr	fetch_fdf_load_arr(int fd,
 	}
 	free(line);
 	free(get_next_line(fd, false));
-	close(fd);
 	return (dst);
 }
 
 /**
  * Load an FDF file and parse its lines into a t_fdf_load_arr.
+ * This function is only used for debugging src/input/ascii/ and
+ * src/input/decimal/ related coding file.
  *
  * time/space: O(n) / O(n)
  * 
@@ -150,13 +162,13 @@ t_fdf_load_arr	fetch_fdf_load_arr(int fd,
  * 
  * @see see: src/input/load/parse.c
  */
-t_fdf_load_arr	load_fdf_load_arr(const char *file_name, const char *dir,
+t_fdf_load_arr	debug_fdf_load_arr(const char *file_name, const char *dir,
 		t_fdf_load (*parse_line)(char *line))
 {
 	int		dst;
 
 	if (dir == NULL || *dir == '\0')
 		return (fetch_fdf_load_arr(open(file_name, O_RDONLY), parse_line));
-	dst = load_file_debug(file_name, dir, FILE_READ);
+	dst = debug_load_file(file_name, dir, FILE_READ);
 	return (fetch_fdf_load_arr(dst, parse_line));
 }

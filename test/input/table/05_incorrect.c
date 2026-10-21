@@ -27,7 +27,10 @@ int	main(void)
 	i = 0;
 	while (i < max_score)
 	{
-		table = load_fdf_table(arr[i], src_dir, parse_decimal_bw, false);
+		char *file_name = concat_str(src_dir, arr[i]);
+		table = load_fdf_table(file_name,
+				parse_decimal_bw, false);
+		free(file_name);
 		write_fdf_table(1, &table, 1, WRITE_DECIMAL_HEIGHT);
 		if (table.col * table.row == 0)
 			score += 1;

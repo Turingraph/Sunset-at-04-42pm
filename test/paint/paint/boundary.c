@@ -53,9 +53,12 @@ int	main(void)
 	size_t	max_score = 3;
 	char	*input_dir = "test/input/table/01_ascii_to_fdf/";
 	t_fdf_table	table;
+	char	*file_name;
 
 	// a
-	table = load_fdf_table(file_a, input_dir, parse_decimal_bw, false);
+	file_name = concat_str(input_dir, file_a);
+	table = load_fdf_table(file_name, parse_decimal_bw, false);
+	free(file_name);
 	set_cells_color(&table, 99, FDF_HEIGHT, boundary_test);
 	if (table.col * table.row == length_a
 		&& assert_intarr(table.arr, correct_a, length_a) == true)
@@ -63,7 +66,9 @@ int	main(void)
 	destroy_fdf_table(&table);
 
 	// b
-	table = load_fdf_table(file_b, input_dir, parse_decimal_bw, false);
+	file_name = concat_str(input_dir, file_b);
+	table = load_fdf_table(file_name, parse_decimal_bw, false);
+	free(file_name);
 	set_cells_color(&table, 99, FDF_HEIGHT, boundary_test);
 	if (table.col * table.row == length_b
 		&& assert_intarr(table.arr, correct_b, length_b) == true)
@@ -71,7 +76,9 @@ int	main(void)
 	destroy_fdf_table(&table);
 
 	// c
-	table = load_fdf_table(file_c, input_dir, parse_decimal_bw, false);
+	file_name = concat_str(input_dir, file_c);
+	table = load_fdf_table(file_name, parse_decimal_bw, false);
+	free(file_name);
 	set_cells_color(&table, 99, FDF_HEIGHT, boundary_test);
 	if (table.col * table.row == length_c
 		&& assert_intarr(table.arr, correct_c, length_c) == true)

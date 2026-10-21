@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 13:59:39 by phsottat          #+#    #+#             */
-/*   Updated: 2026/10/21 11:58:05 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/21 16:42:20 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ t_fdf_load		parse_ascii_chungaloider(char *line);
 
 // public.c
 
-bool	isvalid_fdf_load_arr(t_fdf_load_arr *src, int i);
+bool			isvalid_fdf_load_arr(t_fdf_load_arr *src, int i);
 t_fdf_load_arr	fetch_fdf_load_arr(int fd,
 					t_fdf_load (*parse_line)(char *line));
-t_fdf_load_arr	load_fdf_load_arr(const char *file_name, const char *dir,
+t_fdf_load_arr	debug_fdf_load_arr(const char *file_name, const char *dir,
 					t_fdf_load (*parse_line)(char *line));
 
 // write_ascii.c

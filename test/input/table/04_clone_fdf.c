@@ -32,8 +32,10 @@ int	main(void)
 	i = 0;
 	while (i < max_score)
 	{
-		table = load_fdf_table(arr[i], src_dir, parse_decimal_bw, false);
-		fdf_dst = load_file_debug(arr[i], dst_dir, FILE_WRITE);
+		char *file_name = concat_str(src_dir, arr[i]);
+		table = load_fdf_table(file_name, parse_decimal_bw, false);
+		free(file_name);
+		fdf_dst = debug_load_file(arr[i], dst_dir, FILE_WRITE);
 		if (fdf_dst > -1)
 		{
 			write_fdf_table(fdf_dst, &table, 1, WRITE_DECIMAL_HEIGHT);

@@ -39,9 +39,11 @@ int	main(void)
 	i = 0;
 	while (i < length)
 	{
-		table = load_fdf_table(arr[i], src_dir, parse_decimal_bw, false);
+		char *file_name = concat_str(src_dir, arr[i]);
+		table = load_fdf_table(file_name, parse_decimal_bw, false);
+		free(file_name);
 		positive_fdf_table(&table);
-		fdf_dst = load_file_debug(arr[i], dst_dir, FILE_WRITE);
+		fdf_dst = debug_load_file(arr[i], dst_dir, FILE_WRITE);
 		if(fdf_dst > -1)
 		{
 			write(1, "\n*** ", 5);

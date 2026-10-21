@@ -54,9 +54,12 @@ int	main(void)
 	size_t	max_score = 3;
 	char	*input_dir = "test/input/table/01_ascii_to_fdf/";
 	t_fdf_table	table;
-
+	char	*file_name;
+	
 	// a
-	table = load_fdf_table(file_a, input_dir, parse_decimal_bw, false);
+	file_name = concat_str(input_dir, file_a);
+	table = load_fdf_table(file_name, parse_decimal_bw, false);
+	free(file_name);
 	paint_space(&table, FDF_HEIGHT, conway_test);
 	paint_space(&table, FDF_HEIGHT, cell_metric_positive);
 	shift_fdf_table(&table, -1, FDF_HEIGHT);
@@ -70,7 +73,9 @@ int	main(void)
 	destroy_fdf_table(&table);
 
 	// b
-	table = load_fdf_table(file_b, input_dir, parse_decimal_bw, false);
+	file_name = concat_str(input_dir, file_b);
+	table = load_fdf_table(file_name, parse_decimal_bw, false);
+	free(file_name);
 	paint_space(&table, FDF_HEIGHT, conway_test);
 	paint_space(&table, FDF_HEIGHT, cell_metric_positive);
 	shift_fdf_table(&table, -1, FDF_HEIGHT);
@@ -83,7 +88,9 @@ int	main(void)
 	destroy_fdf_table(&table);
 
 	// c
-	table = load_fdf_table(file_c, input_dir, parse_decimal_bw, false);
+	file_name = concat_str(input_dir, file_c);
+	table = load_fdf_table(file_name, parse_decimal_bw, false);
+	free(file_name);
 	paint_space(&table, FDF_HEIGHT, conway_test);
 	paint_space(&table, FDF_HEIGHT, cell_metric_positive);
 	shift_fdf_table(&table, -1, FDF_HEIGHT);

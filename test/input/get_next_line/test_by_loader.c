@@ -32,11 +32,11 @@ int	main(void)
 	i = 0;
 	while (i < max_score)
 	{
-		fd = load_file_debug(arr[i].file_name, src_dir, FILE_READ);
-		fd_length = load_file_debug(arr[i].file_name, src_dir, FILE_READ);
+		fd = debug_load_file(arr[i].file_name, src_dir, FILE_READ);
+		fd_length = debug_load_file(arr[i].file_name, src_dir, FILE_READ);
 		total_lines = file_length(fd_length);
 		load = file_to_strarr(fd, total_lines);
-		fd = load_file_debug(arr[i].file_name, src_dir, FILE_READ);
+		fd = debug_load_file(arr[i].file_name, src_dir, FILE_READ);
 		if (assert_file_strarr(fd, (const char **)load, total_lines) == true)
 			score += 1;
 		else
@@ -47,9 +47,9 @@ int	main(void)
 		}
 		destroy_arr2d((void **)load, strarr_length((const char **)load));
 
-		fd = load_file_debug(arr[i].file_name, src_dir, FILE_READ);
+		fd = debug_load_file(arr[i].file_name, src_dir, FILE_READ);
 		load = file_to_strarr(fd, 1);
-		fd = load_file_debug(arr[i].file_name, src_dir, FILE_READ);
+		fd = debug_load_file(arr[i].file_name, src_dir, FILE_READ);
 		if (assert_file_strarr(fd, (const char **)load, 1) == true)
 			score += 1;
 		else
@@ -60,9 +60,9 @@ int	main(void)
 		}
 		destroy_arr2d((void **)load, strarr_length((const char **)load));
 
-		fd = load_file_debug(arr[i].file_name, src_dir, FILE_READ);
+		fd = debug_load_file(arr[i].file_name, src_dir, FILE_READ);
 		load = file_to_strarr(fd, 3);
-		fd = load_file_debug(arr[i].file_name, src_dir, FILE_READ);
+		fd = debug_load_file(arr[i].file_name, src_dir, FILE_READ);
 		if (assert_file_strarr(fd, (const char **)load, 3) == true)
 			score += 1;
 		else

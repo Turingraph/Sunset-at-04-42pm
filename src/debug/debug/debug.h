@@ -1,25 +1,33 @@
-#ifndef TEST_HELPERS_H
-# define TEST_HELPERS_H
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   debug.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/21 18:34:24 by phsottat          #+#    #+#             */
+/*   Updated: 2026/10/21 19:13:48 by phsottat         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef DEBUG_H
+# define DEBUG_H
 
 # include "stdlib.h"
 # include "../../input/decimal/decimal_debug.h"
 
-typedef struct t_intarr t_intarr;
-
-struct t_intarr
+typedef struct t_intarr
 {
 	size_t		length;
 	const int	*arr;
-};
+}	t_int_arr;
 
-typedef struct t_intarr_tester t_intarr_tester;
-
-struct t_intarr_tester
+typedef struct t_intarr_tester
 {
-	const t_intarr	*arr;
+	const struct t_intarr	*arr;
 	const char		*file_name;
 	size_t			length;
-};
+}	t_intarr_tester;
 
 /*
 Note

@@ -40,10 +40,11 @@ general rule
 
 1.	parse_* = parsing function for loading t_fdf_load. (internal helper)
 2.	load_*(char *file_name, e_file_mode file_mode) = Convert file name to the given output type. (public api)
-3.	load_*_debug(char *file_name, char *dir, e_file_mode file_mode) = Convert file name to the given struct for debugging. (internal helper)
-4.	fetch_*(int fd) = converting the file descriptor integer as the given struct. (internal helper)
-5.	ascii = related to ASCII art text.
-6.	decimal = related to string decimal representation of number.
+3.	debug_load_*(char *file_name, char *dir, e_file_mode file_mode) = Convert file name to the given struct for debugging. (internal helper)
+4.  int load_file(char *file_name,...) = to load the user's file as integer file descriptor.
+5.	fetch_*(int fd) = converting the file descriptor integer as the given struct. (internal helper)
+6.	ascii = related to ASCII art text.
+7.	decimal = related to string decimal representation of number.
 
 # name (debug/*)
 

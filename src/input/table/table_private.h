@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:54:30 by phsottat          #+#    #+#             */
-/*   Updated: 2026/10/21 14:26:33 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/21 17:01:21 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void			relu_fdf_table(t_fdf_table *dst, int min, int max, int expect);
 
 // public.c
 
-t_fdf_table		load_fdf_table(const char *file_name, const char *dir,
+t_fdf_table		load_fdf_table(const char *file_name,
 					t_fdf_load (*one_line)(char *line), bool is_rgba);
 
 // scale_dimension.c

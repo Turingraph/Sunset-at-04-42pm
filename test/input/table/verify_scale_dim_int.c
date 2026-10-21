@@ -351,11 +351,12 @@ int	main(void)
 		k = 0;
 		while (k < 2)
 		{
-			if (k == 0)
-				table = load_fdf_table(arr[i].file_name, src_dir, parse_decimal_bw, false);
+			char *file_name = concat_str(src_dir, arr[i].file_name);
+			if (k % 2 == 0)
+				table = load_fdf_table(file_name, parse_decimal_bw, false);
 			else
-				table = load_fdf_table(arr[i].file_name, src_dir, parse_decimal_rgba, true);
-			
+				table = load_fdf_table(file_name, parse_decimal_rgba, true);
+			free(file_name);
 			table_large = scale_dimension_fdf(&table, arr[i].scale_row, arr[i].scale_col);
 			if (table_large.row * table_large.col == arr[i].scale_row * arr[i].scale_col * arr[i].row * arr[i].col
 				&& assert_intarr(table_large.arr, arr[i].arr, table_large.row * table_large.col) == true)

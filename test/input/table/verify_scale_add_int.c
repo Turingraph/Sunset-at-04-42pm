@@ -3,7 +3,7 @@
 /*
 // time : O(n)
 // space: O(1)
-e_bool	assert_table_with_intarr(const t_intarr_tester *src, const t_fdf_table *dst)
+e_bool	assert_table_with_intarr(const struct t_intarr_tester *src, const t_fdf_table *dst)
 {
 	size_t	i;
 	size_t	j;
@@ -24,8 +24,8 @@ int	main(void)
 	t_fdf_table     table;
 	t_intarr_tester	arr[] = {
 		{
-			(const t_intarr[]){
-				(const t_intarr){100, (const int[]){
+			(const struct t_intarr[]){
+				(const struct t_intarr){100, (const int[]){
 				-6 + 44, -67 + 44, -61 + 44, -38 + 44, 9 + 44, -16 + 44, -16 + 44, 32 + 44, 56 + 44, 16 + 44, 
 				27 + 44, -63 + 44, 23 + 44, -56 + 44, 63 + 44, 10 + 44, 33 + 44, -9 + 44, -55 + 44, 69 + 44, 
 				-44 + 44, -23 + 44, -58 + 44, 12 + 44, -55 + 44, 0 + 44, 21 + 44, -25 + 44, 27 + 44, 48 + 44, 
@@ -40,8 +40,8 @@ int	main(void)
 			"10-70.fdf", 100
 		},
 		{
-			(const t_intarr[]){
-				(const t_intarr){99, (const int[]){
+			(const struct t_intarr[]){
+				(const struct t_intarr){99, (const int[]){
 				0 + 13, 0 + 13, 1 + 13, 2 + 13, 3 + 13, 4 + 13, 5 + 13, 6 + 13, 7 + 13, 8 + 13, 9 + 13, 
 				0 + 13, 0 + 13, 0 + 13, 1 + 13, 2 + 13, 3 + 13, 4 + 13, 5 + 13, 6 + 13, 7 + 13, 8 + 13, 
 				0 + 13, 0 + 13, 0 + 13, 0 + 13, 1 + 13, 2 + 13, 3 + 13, 4 + 13, 5 + 13, 6 + 13, 7 + 13, 
@@ -55,8 +55,8 @@ int	main(void)
 			"basictest.fdf", 99
 		},
 		{
-			(const t_intarr[]){
-				(const t_intarr){25, (const int[]){0 + 5, 0 + 5, 0 + 5, 0 + 5, 0 + 5, 
+			(const struct t_intarr[]){
+				(const struct t_intarr){25, (const int[]){0 + 5, 0 + 5, 0 + 5, 0 + 5, 0 + 5, 
 				0 + 5, 9 + 5, 0 + 5, 0 + 5, 0 + 5, 
 				0 + 5, 0 + 5, 9 + 5, 0 + 5, 0 + 5, 
 				0 + 5, 0 + 5, 0 + 5, 0 + 5, 0 + 5, 
@@ -65,8 +65,8 @@ int	main(void)
 			"convolution_9.fdf", 25
 		},
 		{
-			(const t_intarr[]){
-				(const t_intarr){209, (const int[]){0 + 1, 0 + 1, 0 + 1, 0 + 1, 0 + 1, 0 + 1, 0 + 1, 0 + 1, 0 + 1, 0 + 1, 0 + 1, 0 + 1, 0 + 1, 0 + 1, 0 + 1, 0 + 1, 0 + 1, 0 + 1, 0 + 1, 
+			(const struct t_intarr[]){
+				(const struct t_intarr){209, (const int[]){0 + 1, 0 + 1, 0 + 1, 0 + 1, 0 + 1, 0 + 1, 0 + 1, 0 + 1, 0 + 1, 0 + 1, 0 + 1, 0 + 1, 0 + 1, 0 + 1, 0 + 1, 0 + 1, 0 + 1, 0 + 1, 0 + 1, 
 				0 + 1, 0 + 1, 0 + 1, 0 + 1, 0 + 1, 0 + 1, 0 + 1, 0 + 1, 0 + 1, 0 + 1, 0 + 1, 0 + 1, 0 + 1, 0 + 1, 0 + 1, 0 + 1, 0 + 1, 0 + 1, 0 + 1, 
 				0 + 1, 0 + 1, 10 + 1, 10 + 1, 0 + 1, 0 + 1, 10 + 1, 10 + 1, 0 + 1, 0 + 1, 0 + 1, 10 + 1, 10 + 1, 10 + 1, 10 + 1, 10 + 1, 0 + 1, 0 + 1, 0 + 1, 
 				0 + 1, 0 + 1, 10 + 1, 10 + 1, 0 + 1, 0 + 1, 10 + 1, 10 + 1, 0 + 1, 0 + 1, 0 + 1, 0 + 1, 0 + 1, 0 + 1, 0 + 1, 10 + 1, 10 + 1, 0 + 1, 0 + 1, 
@@ -81,8 +81,8 @@ int	main(void)
 			"42.fdf", 209
 		},
 		{
-			(const t_intarr[]){
-				(const t_intarr){400, (const int[]){
+			(const struct t_intarr[]){
+				(const struct t_intarr){400, (const int[]){
 				36 + 2, -40 + 2, -59 + 2, 37 + 2, -47 + 2, -29 + 2, -4 + 2, 12 + 2, 49 + 2, 45 + 2, 37 + 2, 49 + 2, -31 + 2, 16 + 2, 20 + 2, 19 + 2, -26 + 2, -30 + 2, -21 + 2, 18 + 2, 
 				43 + 2, 16 + 2, 43 + 2, -3 + 2, 37 + 2, -5 + 2, -11 + 2, -46 + 2, 4 + 2, 38 + 2, 27 + 2, -38 + 2, 35 + 2, 30 + 2, 37 + 2, 59 + 2, -29 + 2, 26 + 2, -55 + 2, 52 + 2, 
 				-25 + 2, -48 + 2, 30 + 2, 33 + 2, -42 + 2, -55 + 2, 54 + 2, 26 + 2, 54 + 2, -23 + 2, 47 + 2, 13 + 2, 28 + 2, 31 + 2, -53 + 2, 54 + 2, -10 + 2, -50 + 2, -24 + 2, 12 + 2, 
@@ -107,8 +107,8 @@ int	main(void)
 			"20-60.fdf", 400
 		},
 		{
-			(const t_intarr[]){
-				(const t_intarr){100, (const int[]){
+			(const struct t_intarr[]){
+				(const struct t_intarr){100, (const int[]){
 				0,0,0,0,0,0,0,0,0,0,
 				0,10,10,10,10,10,10,10,10,0,
 				0,10,20,15,12,15,17,20,10,0,
@@ -123,8 +123,8 @@ int	main(void)
 			"elem.fdf", 100
 		},
 		{
-			(const t_intarr[]){
-				(const t_intarr){400, (const int[]){
+			(const struct t_intarr[]){
+				(const struct t_intarr){400, (const int[]){
 				0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 				0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 				0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -149,8 +149,8 @@ int	main(void)
 			"elem2.fdf", 400
 		},
 		{
-			(const t_intarr[]){
-				(const t_intarr){840, (const int[]){
+			(const struct t_intarr[]){
+				(const struct t_intarr){840, (const int[]){
 				0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 				0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 				0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -183,8 +183,8 @@ int	main(void)
 			"large_plat.fdf", 840
 		},
 		{
-			(const t_intarr[]){
-				(const t_intarr){189, (const int[]){
+			(const struct t_intarr[]){
+				(const struct t_intarr){189, (const int[]){
 				-10 + -3, -9 + -3, -8 + -3, -7 + -3, -6 + -3, -5 + -3, -4 + -3, -3 + -3, -2 + -3, -1 + -3, 0 + -3, 1 + -3, 2 + -3, 3 + -3, 4 + -3, 5 + -3, 6 + -3, 7 + -3, 8 + -3, 9 + -3, 10 + -3, 
 				-10 + -3, -9 + -3, -8 + -3, -7 + -3, -6 + -3, -5 + -3, -4 + -3, -3 + -3, -2 + -3, -1 + -3, 0 + -3, 1 + -3, 2 + -3, 3 + -3, 4 + -3, 5 + -3, 6 + -3, 7 + -3, 8 + -3, 9 + -3, 10 + -3, 
 				-10 + -3, -9 + -3, -8 + -3, -7 + -3, -6 + -3, -5 + -3, -4 + -3, -3 + -3, -2 + -3, -1 + -3, 0 + -3, 1 + -3, 2 + -3, 3 + -3, 4 + -3, 5 + -3, 6 + -3, 7 + -3, 8 + -3, 9 + -3, 10 + -3, 
@@ -198,8 +198,8 @@ int	main(void)
 			"pentenegpos.fdf", 189
 		},
 		{
-			(const t_intarr[]){
-				(const t_intarr){729, (const int[]){
+			(const struct t_intarr[]){
+				(const struct t_intarr){729, (const int[]){
 				0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 				-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,
 				-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-1,0,1,2,2,2,2,2,2,2,2,2,2,2,2,
@@ -252,10 +252,12 @@ int	main(void)
 		k = 0;
 		while (k < 2)
 		{
-			if (k == 0)
-				table = load_fdf_table(arr[i].file_name, src_dir, parse_decimal_bw, false);
+			char *file_name = concat_str(src_dir, arr[i].file_name);
+			if (k % 2 == 0)
+				table = load_fdf_table(file_name, parse_decimal_bw, false);
 			else
-				table = load_fdf_table(arr[i].file_name, src_dir, parse_decimal_rgba, true);
+				table = load_fdf_table(file_name, parse_decimal_rgba, true);
+			free(file_name);
 			shift_fdf_table(&table, scale_arr[i], FDF_HEIGHT);
 			if (table.row * table.col == arr[i].length && table.arr != NULL
 				&& assert_intarr(table.arr, arr[i].arr[0].arr, arr[i].length) == true)

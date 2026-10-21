@@ -33,14 +33,14 @@ int	main(void)
 	i = 0;
 	while (i < max_score)
 	{
-		fd = load_file_debug(arr[i],
+		fd = debug_load_file(arr[i],
 			src_dir, FILE_READ);
 		if (fd > -1)
 		{
 			total_lines = file_length(fd);
-			fd = load_file_debug(arr[i], src_dir, FILE_READ);
+			fd = debug_load_file(arr[i], src_dir, FILE_READ);
 			load = file_to_strarr(fd, total_lines);
-			fd = load_file_debug(arr[i], dst_dir, FILE_WRITE);
+			fd = debug_load_file(arr[i], dst_dir, FILE_WRITE);
 			if (fd > -1)
 			{
 				write_strarr((const char **)load, strarr_length((const char **)load), fd);

@@ -4,7 +4,7 @@ int	main(void)
 {
 	int				clone_examples;
 	size_t			i;
-    size_t          is_rgb;
+    bool 	         is_rgb;
 	size_t			score;
 	size_t			max_score = 36;
 	t_fdf_table     table;
@@ -54,8 +54,11 @@ int	main(void)
 	i = 0;
 	while (i < max_score)
 	{
-		table = load_fdf_table(arr[i], src_dir, parse_ascii_cheche01, is_rgb);
-		clone_examples = load_file_debug(arr[i], dst_dir, FILE_WRITE);
+		char *file_name = concat_str(src_dir, arr[i]);
+		table = load_fdf_table(file_name,
+				parse_ascii_cheche01, is_rgb);
+		free(file_name);
+		clone_examples = debug_load_file(arr[i], dst_dir, FILE_WRITE);
 		if (clone_examples > -1)
 		{
 			write_table_ascii_cheche01(clone_examples, &table, FDF_HEIGHT);

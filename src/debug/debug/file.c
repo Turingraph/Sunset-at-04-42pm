@@ -32,14 +32,14 @@ bool	assert_file(const char *file_name_1, const char *file_name_2,
 	char	**strarr_2;
 	bool	result;
 
-	fd = load_file_debug(file_name_1, dir_name_1, FILE_READ);
+	fd = debug_load_file(file_name_1, dir_name_1, FILE_READ);
 	length = file_length(fd);
-	fd = load_file_debug(file_name_2, dir_name_2, FILE_READ);
+	fd = debug_load_file(file_name_2, dir_name_2, FILE_READ);
 	if (length != file_length(fd))
 		return (false);
-	fd = load_file_debug(file_name_1, dir_name_1, FILE_READ);
+	fd = debug_load_file(file_name_1, dir_name_1, FILE_READ);
 	strarr_1 = file_to_strarr(fd, length);
-	fd = load_file_debug(file_name_2, dir_name_2, FILE_READ);
+	fd = debug_load_file(file_name_2, dir_name_2, FILE_READ);
 	strarr_2 = file_to_strarr(fd, length);
 	result = assert_strarr((const char **)strarr_1, (const char **)strarr_2, length, true);
 	destroy_arr2d((void **)strarr_1, length);

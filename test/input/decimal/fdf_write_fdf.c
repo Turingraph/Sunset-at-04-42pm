@@ -33,8 +33,8 @@ int	main(void)
 	i = 0;
 	while (i < max_score)
 	{
-		fdf_file = load_fdf_load_arr(arr[i], src_dir, parse_decimal_bw);
-		clone_examples = load_file_debug(arr[i], dst_dir, FILE_WRITE);
+		fdf_file = debug_fdf_load_arr(arr[i], src_dir, parse_decimal_bw);
+		clone_examples = debug_load_file(arr[i], dst_dir, FILE_WRITE);
 		if (clone_examples > -1)
 		{
 			write_load_decimal(clone_examples, &fdf_file, 1, WRITE_DECIMAL_HEIGHT);

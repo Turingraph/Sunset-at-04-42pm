@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   load.h                                             :+:      :+:    :+:   */
+/*   ascii.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:00:26 by phsottat          #+#    #+#             */
-/*   Updated: 2026/10/19 14:41:25 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/21 16:57:25 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,6 @@
 Note that
 *	load_debug.h is for checking if src/input/load/ works as expected.
 */
-
-// all_files.c
-
-t_fdf_load_arr	load_fdf_load_arr(const char *file_name, const char *dir,
-					t_fdf_load (*parse_line)(char *line));
 
 // ascii.c
 
@@ -44,8 +39,8 @@ t_fdf_load		parse_ascii_chungaloider(char *line);
 
 // public.c
 
-bool	isvalid_fdf_load_arr(t_fdf_load_arr *src, int i);
-t_fdf_load_arr	load_fdf_load_arr(const char *file_name, const char *dir,
+bool			isvalid_fdf_load_arr(t_fdf_load_arr *src, int i);
+t_fdf_load_arr	fetch_fdf_load_arr(int fd,
 					t_fdf_load (*parse_line)(char *line));
 
 #endif

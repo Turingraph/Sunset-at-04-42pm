@@ -70,13 +70,16 @@ int	main(void)
 		"zutomayo_isometric2.txt"};
 	size_t	  i;
 	size_t	  length = 20;
+	char	*file_name;
 
 	i = 0;
 	while (i < length)
 	{
-		output = load_file_debug(arr[i], dst, FILE_WRITE);
-		table_a = load_fdf_table(arr[i], src,
+		output = debug_load_file(arr[i], dst, FILE_WRITE);
+		file_name = concat_str(src, arr[i]);
+		table_a = load_fdf_table(file_name,
 				parse_ascii_chungaloider, true);
+		free(file_name);
         color_cells_gradient(&table_a, init_gradient(), true);
         color_cells_gradient(&table_a, init_gradient_2(), true);
 		scale_fdf_table(&table_a, 1.0 / 3.0, FDF_RED);
