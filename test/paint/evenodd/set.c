@@ -31,7 +31,7 @@ int	main(void)
 	style.thickness = 2;
 	style.shape2d = SHAPE2D_RECTANGLE;
 	color_cells_gradient(&table, init_deep_wood(), true);
-	scale_multiplication_fdf(&table, 1.0 / 120.0, FDF_HEIGHT);
+	scale_fdf_table(&table, 1.0 / 120.0, FDF_HEIGHT);
 	output = create_fdf_proj2d(&table, NULL, 0.6);
 	view_fdf(&output, style, rgba32_from_char(0, 0, 0, 255));
 	destroy_fdf_table(&table);

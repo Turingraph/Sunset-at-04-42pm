@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/16 14:50:48 by phsottat          #+#    #+#             */
-/*   Updated: 2026/10/16 18:53:26 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/21 14:26:33 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ t_matrix	outer_product(const float *vec_v,
  * 
  * @param dst the input t_fdf_table array
  */
-void			scale_positive_fdf(t_fdf_table *dst);
+void			positive_fdf_table(t_fdf_table *dst);
 
 /**
  * Making all number that in an interval between minimum target number
@@ -136,7 +136,7 @@ void			scale_positive_fdf(t_fdf_table *dst);
  * @param max the maximum target number
  * @param expect the expected number
  */
-void			scale_relu_fdf(t_fdf_table *dst, int min, int max, int expect);
+void			relu_fdf_table(t_fdf_table *dst, int min, int max, int expect);
 
 /**
  * Scale an RGBA channel by duplicating its rows and columns.
@@ -192,7 +192,7 @@ t_fdf_table		scale_dimension_fdf(const t_fdf_table *src,
  * @param scale multiplication factor
  * @param channel channel to modify
  */
-void			scale_multiplication_fdf(t_fdf_table *dst,
+void			scale_fdf_table(t_fdf_table *dst,
 					float scale, t_fdf_channel channel);
 
 /**
@@ -204,7 +204,7 @@ void			scale_multiplication_fdf(t_fdf_table *dst,
  * @param input value to add
  * @param channel channel to modify
  */
-void			scale_addition_fdf(t_fdf_table *dst,
+void			shift_fdf_table(t_fdf_table *dst,
 					int input, t_fdf_channel channel);
 
 /**
@@ -217,7 +217,7 @@ void			scale_addition_fdf(t_fdf_table *dst,
  * @param src source FDF table
  * @param channel channel to add
  */
-void			fdf_table_addition(t_fdf_table *dst,
+void			mix_add_fdf_table(t_fdf_table *dst,
 					const t_fdf_table *src, t_fdf_channel channel);
 
 /**
@@ -230,7 +230,7 @@ void			fdf_table_addition(t_fdf_table *dst,
  * @param src source FDF table
  * @param channel channel to multiply
  */
-void			fdf_table_hadamard(t_fdf_table *dst,
+void			mix_hadamard_fdf_table(t_fdf_table *dst,
 					const t_fdf_table *src, t_fdf_channel channel);
 
 /**

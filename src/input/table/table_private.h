@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:54:30 by phsottat          #+#    #+#             */
-/*   Updated: 2026/10/21 13:20:54 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/21 14:26:33 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,18 @@
 
 void			destroy_fdf_table(t_fdf_table *src);
 t_fdf_table		create_fdf_table(size_t row, size_t col, bool is_rgba);
-t_fdf_table		fdf_load_table(const t_fdf_load_arr *src, bool is_rgba);
+t_fdf_table		fdf_load_to_fdf_table(const t_fdf_load_arr *src, bool is_rgba);
 
 // positive.c
 
 int				fdf_table_minmax(const t_fdf_table *dst,
 					bool is_max, t_fdf_channel channel);
-void			scale_positive_fdf(t_fdf_table *dst);
-void			scale_relu_fdf(t_fdf_table *dst, int min, int max, int expect);
+void			positive_fdf_table(t_fdf_table *dst);
+void			relu_fdf_table(t_fdf_table *dst, int min, int max, int expect);
 
 // public.c
 
-t_fdf_table		load_fdf_table_file(const char *file_name, const char *dir,
+t_fdf_table		load_fdf_table(const char *file_name, const char *dir,
 					t_fdf_load (*one_line)(char *line), bool is_rgba);
 
 // scale_dimension.c
@@ -46,13 +46,13 @@ t_fdf_table		scale_dimension_fdf(const t_fdf_table *src,
 
 // scale.c
 
-void			scale_multiplication_fdf(t_fdf_table *dst,
+void			scale_fdf_table(t_fdf_table *dst,
 					float scale, t_fdf_channel channel);
-void			scale_addition_fdf(t_fdf_table *dst,
+void			shift_fdf_table(t_fdf_table *dst,
 					int input, t_fdf_channel channel);
-void			fdf_table_addition(t_fdf_table *dst,
+void			mix_add_fdf_table(t_fdf_table *dst,
 					const t_fdf_table *src, t_fdf_channel channel);
-void			fdf_table_hadamard(t_fdf_table *dst,
+void			mix_hadamard_fdf_table(t_fdf_table *dst,
 					const t_fdf_table *src, t_fdf_channel channel);
 void			copy_fdf_table_channel(t_fdf_table *dst,
 					const t_fdf_table *src, t_fdf_channel channel);

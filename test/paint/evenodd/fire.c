@@ -80,7 +80,7 @@ int	main(void)
 	paint_space(&table, FDF_HEIGHT, cell_metric_amgm_inequality);
 	paint_space(&table2, FDF_HEIGHT, cell_metric_pythagoras);
 	set_cells_color(&table, 0, FDF_HEIGHT, is_3d_pythagoras);
-	scale_relu_fdf(&table, -10000, 0, 0);
+	relu_fdf_table(&table, -10000, 0, 0);
 	i = 0;
 	while (i < table.row * table.col)
 	{

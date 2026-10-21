@@ -32,7 +32,7 @@ int	main(void)
 	i = 0;
 	while (i < max_score)
 	{
-		table = load_fdf_table_file(arr[i], src_dir, parse_decimal_bw, false);
+		table = load_fdf_table(arr[i], src_dir, parse_decimal_bw, false);
 		fdf_dst = load_file_debug(arr[i], dst_dir, FILE_WRITE);
 		if (fdf_dst > -1)
 		{

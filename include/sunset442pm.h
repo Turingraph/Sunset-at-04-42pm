@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 14:31:33 by phsottat          #+#    #+#             */
-/*   Updated: 2026/10/19 14:41:25 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/21 14:26:33 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -393,7 +393,7 @@ typedef enum t_error
  * rgb_warn stores the parsing status of the color values.
  * 
  * If int_warn and/or rgb_warn are ERROR_NOT_DECIMAL and/or ERROR_NOT_HEX, then 
- * fetch_fdf_load_arr stops and load_fdf_table_file return empty output.
+ * fetch_fdf_load_arr stops and load_fdf_table return empty output.
  *
  * status: internal data shape2d
  *
@@ -479,7 +479,7 @@ size_t	write_int(int n, int fd, const char *base, size_t digits);
 
 /**
  * Parse an ASCII-art line using the Cheche01 character ramp.
- * This function is intended to be used with `load_fdf_table_file`
+ * This function is intended to be used with `load_fdf_table`
  *
  * time/space: O(n) / O(n)
  * 
@@ -493,7 +493,7 @@ t_fdf_load	parse_ascii_cheche01(char *line);
 
 /**
  * Parse an ASCII-art line using the standard character ramp.
- * This function is intended to be used with `load_fdf_table_file`
+ * This function is intended to be used with `load_fdf_table`
  *
  * time/space: O(n) / O(n)
  * 
@@ -507,7 +507,7 @@ t_fdf_load	parse_ascii_standard(char *line);
 
 /**
  * Parse an ASCII-art line using the Chungaloider brightness ramp.
- * This function is intended to be used with `load_fdf_table_file`
+ * This function is intended to be used with `load_fdf_table`
  *
  * time/space: O(n) / O(n)
  *
@@ -524,7 +524,7 @@ t_fdf_load	parse_ascii_chungaloider(char *line);
 
 /**
  * Parse an FDF line as colorful data.
- * This function is intended to be used with `load_fdf_table_file`
+ * This function is intended to be used with `load_fdf_table`
  *
  * time/space: O(n) / O(n)
  *
@@ -539,7 +539,7 @@ t_fdf_load	parse_decimal_rgba(char *line);
 
 /**
  * Parse an FDF line as black and white data.
- * This function is intended to be used with `load_fdf_table_file`
+ * This function is intended to be used with `load_fdf_table`
  *
  * time/space: O(n) / O(n)
  *
@@ -601,7 +601,7 @@ int				fdf_table_minmax(const t_fdf_table *src,
  * 
  * @param dst the input t_fdf_table array
  */
-void			scale_positive_fdf(t_fdf_table *dst);
+void			positive_fdf_table(t_fdf_table *dst);
 
 /**
  * Making all number that in an interval between minimum target number
@@ -614,7 +614,7 @@ void			scale_positive_fdf(t_fdf_table *dst);
  * @param max the maximum target number
  * @param expect the expected number
  */
-void			scale_relu_fdf(t_fdf_table *dst, int min, int max, int expect);
+void			relu_fdf_table(t_fdf_table *dst, int min, int max, int expect);
 
 /**
  * Load target file as t_fdf_table 5 rgba and height integer array data.
@@ -630,7 +630,7 @@ void			scale_relu_fdf(t_fdf_table *dst, int min, int max, int expect);
  * @return return the array that contains rgba and height of the height map.
  * @see src/input/load/parse.c
  */
-t_fdf_table		load_fdf_table_file(const char *file_name, const char *dir,
+t_fdf_table		load_fdf_table(const char *file_name, const char *dir,
 					t_fdf_load (*one_line)(char *line), bool is_rgba);
 
 /**
@@ -687,7 +687,7 @@ t_fdf_table		scale_dimension_fdf(const t_fdf_table *src,
  * @param scale multiplication factor
  * @param channel channel to modify
  */
-void			scale_multiplication_fdf(t_fdf_table *dst,
+void			scale_fdf_table(t_fdf_table *dst,
 					float scale, t_fdf_channel channel);
 
 /**
@@ -699,7 +699,7 @@ void			scale_multiplication_fdf(t_fdf_table *dst,
  * @param input value to add
  * @param channel channel to modify
  */
-void			scale_addition_fdf(t_fdf_table *dst,
+void			shift_fdf_table(t_fdf_table *dst,
 					int input, t_fdf_channel channel);
 
 /**
@@ -712,7 +712,7 @@ void			scale_addition_fdf(t_fdf_table *dst,
  * @param src source FDF table
  * @param channel channel to add
  */
-void			fdf_table_addition(t_fdf_table *dst,
+void			mix_add_fdf_table(t_fdf_table *dst,
 					const t_fdf_table *src, t_fdf_channel channel);
 
 /**
@@ -725,7 +725,7 @@ void			fdf_table_addition(t_fdf_table *dst,
  * @param src source FDF table
  * @param channel channel to multiply
  */
-void			fdf_table_hadamard(t_fdf_table *dst,
+void			mix_hadamard_fdf_table(t_fdf_table *dst,
 					const t_fdf_table *src, t_fdf_channel channel);
 
 /**

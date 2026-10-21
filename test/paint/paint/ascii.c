@@ -75,11 +75,11 @@ int	main(void)
 	while (i < length)
 	{
 		output = load_file_debug(arr[i], dst, FILE_WRITE);
-		table_a = load_fdf_table_file(arr[i], src,
+		table_a = load_fdf_table(arr[i], src,
 				parse_ascii_chungaloider, true);
         color_cells_gradient(&table_a, init_gradient(), true);
         color_cells_gradient(&table_a, init_gradient_2(), true);
-		scale_multiplication_fdf(&table_a, 1.0 / 3.0, FDF_RED);
+		scale_fdf_table(&table_a, 1.0 / 3.0, FDF_RED);
 		write_table_ascii_standard(output, &table_a, FDF_RED);
 		destroy_fdf_table(&table_a);
 		i += 1;

@@ -25,11 +25,11 @@ The main README provides a useful cross-section of the API:
 table = create_fdf_table(100, 100, true);
 setcells_pythagorus_length(&table);
 set_cells_color(&table_base, 30, HEIGHT, is_oddlength_cube);
-fdf_table_hadamard(&table, &table_base, HEIGHT);
-scale_relu_fdf(&table, 201, 2000, 0);
+mix_hadamard_fdf_table(&table, &table_base, HEIGHT);
+relu_fdf_table(&table, 201, 2000, 0);
 
 color_cells_gradient(&table, init_deep_sea(), true);
-scale_multiplication_fdf(&table, 1.0 / 120.0, HEIGHT);
+scale_fdf_table(&table, 1.0 / 120.0, HEIGHT);
 
 output = create_fdf_proj2d(&table, proj2d_isometric, 0.6);
 view_fdf(&output, style);
@@ -49,9 +49,9 @@ Consider these names:
 - `setcells_pythagorus_length`
 - `set_cells_color`
 - `color_cells_gradient`
-- `scale_relu_fdf`
-- `scale_multiplication_fdf`
-- `fdf_table_hadamard`
+- `relu_fdf_table`
+- `scale_fdf_table`
+- `mix_hadamard_fdf_table`
 
 Some use `set`, some use `color`, and others use `scale` or a mathematical term. Their word order also varies.
 
@@ -74,16 +74,16 @@ All three are plausible. A well-designed API should make the intended pattern ob
 Consider:
 
 ```
-fdf_table_hadamard(...)
-scale_relu_fdf(...)
-scale_multiplication_fdf(...)
+mix_hadamard_fdf_table(...)
+relu_fdf_table(...)
+scale_fdf_table(...)
 ```
 
 The Hadamard product is a mathematical operation. ReLU is a nonlinear activation function. Multiplication is an arithmetic operation.
 
 These operations may all be meaningful for your data structure, but they don't necessarily belong to the same semantic category.
 
-For example, `scale_multiplication_fdf()` sounds like multiplication is a particular kind of scaling, while `fdf_table_hadamard()` puts the data structure before the mathematical operation.
+For example, `scale_fdf_table()` sounds like multiplication is a particular kind of scaling, while `mix_hadamard_fdf_table()` puts the data structure before the mathematical operation.
 
 I'd choose a consistent naming strategy based on what each operation actually does.
 
@@ -182,8 +182,8 @@ Pick one vocabulary and one grammatical pattern.
 Suppose you have:
 
 ```
-fdf_table_hadamard(...)
-scale_multiplication_fdf(...)
+mix_hadamard_fdf_table(...)
+scale_fdf_table(...)
 ```
 
 If the operation belongs to the surface or table module, you may not need to append `_fdf` to every function.
@@ -313,10 +313,10 @@ A clear distinction between rendering, displaying, and exporting gives you room 
 Your code already contains:
 
 ```
-scale_multiplication_fdf(...)
+scale_fdf_table(...)
 scale_dimension_fdf(...)
-scale_relu_fdf(...)
-scale_positive_fdf(...)
+relu_fdf_table(...)
+positive_fdf_table(...)
 ```
 
 These names are not all describing the same operation.
@@ -325,10 +325,10 @@ Based on the names and usage in your examples, I'd investigate them as follows:
 
 | Existing name | Possible replacement | Reason |
 | --- | --- | --- |
-| `scale_multiplication_fdf` | `surface_scale_values` or `surface_multiply_channel` | Clarify whether it scales an entire surface or multiplies a selected channel |
+| `scale_fdf_table` | `surface_scale_values` or `surface_multiply_channel` | Clarify whether it scales an entire surface or multiplies a selected channel |
 | `scale_dimension_fdf` | `surface_resize` | Appropriate if it changes the surface's dimensions |
-| `scale_relu_fdf` | `surface_apply_relu` | Makes the nonlinear operation explicit |
-| `scale_positive_fdf` | `surface_clamp_min` or `surface_make_nonnegative` | Depends on whether it clamps values or applies another transformation |
+| `relu_fdf_table` | `surface_apply_relu` | Makes the nonlinear operation explicit |
+| `positive_fdf_table` | `surface_clamp_min` or `surface_make_nonnegative` | Depends on whether it clamps values or applies another transformation |
 
 These are deliberately conditional recommendations. The exact names should follow the implementations and contracts, not merely the existing function names.
 
@@ -336,12 +336,12 @@ For example, in your Zutomayo example, you call:
 
 ```
 table_b = scale_dimension_fdf(&table_a, 3, 3);
-scale_multiplication_fdf(&table_b, 3, HEIGHT);
+scale_fdf_table(&table_b, 3, HEIGHT);
 ```
 
 The first operation appears to resize the data structure, while the second applies a numerical factor to a channel. Those are distinct concepts, and their names should communicate that distinction. (Source)
 
-I'd also consider whether the name `scale_multiplication_fdf` needs to encode both _scale_ and _multiplication_. If scaling is implemented through multiplication, that implementation detail might not belong in the public name.
+I'd also consider whether the name `scale_fdf_table` needs to encode both _scale_ and _multiplication_. If scaling is implemented through multiplication, that implementation detail might not belong in the public name.
 
 Prefer naming the mathematical effect rather than describing how you happened to implement it.
 
@@ -355,9 +355,9 @@ It contains operations such as:
 
 ```
 paint_space(&table, HEIGHT, cell_metric_max_xy);
-fdf_table_hadamard(&table, &table_base, HEIGHT);
+mix_hadamard_fdf_table(&table, &table_base, HEIGHT);
 color_cells_gradient(&table, init_floor(), true);
-scale_multiplication_fdf(&table, 1.0 / 120.0, HEIGHT);
+scale_fdf_table(&table, 1.0 / 120.0, HEIGHT);
 output = create_fdf_proj2d(&table, NULL, 0.6);
 view_fdf(&output, style, background_color);
 ```
@@ -704,7 +704,7 @@ paint_space(
     cell_metric_max_xy
 );
 
-fdf_table_hadamard(
+mix_hadamard_fdf_table(
     &table,
     &table_base,
     HEIGHT
@@ -716,7 +716,7 @@ color_cells_gradient(
     true
 );
 
-scale_multiplication_fdf(
+scale_fdf_table(
     &table,
     1.0 / 120.0,
     HEIGHT
@@ -824,7 +824,7 @@ Candidates for investigation include:
 | --- | --- |
 | `view_fdf()` | Does it render, display, or both? |
 | `create_fdf_proj2d()` | Does it construct a new object or initialize existing storage? |
-| `scale_multiplication_fdf()` | Is it scaling values, multiplying a channel, or performing another operation? |
+| `scale_fdf_table()` | Is it scaling values, multiplying a channel, or performing another operation? |
 | `scale_dimension_fdf()` | Does it resize the grid or transform geometric dimensions? |
 | `paint_space()` | Does it populate a numerical field, generate geometry, or do something else? |
 | `setcells_pythagorus_length()` | Does it assign a distance metric to cells? |
@@ -951,7 +951,7 @@ For example:
 | `create_fdf_table` | `surface_create` | Align construction terminology | Proposed |
 | `destroy_fdf_table` | `surface_destroy` | Align lifecycle terminology | Proposed |
 | `scale_dimension_fdf` | `surface_resize` | Clarify dimensional changes | Needs verification |
-| `scale_multiplication_fdf` | `surface_scale` | Simplify numerical operation | Needs verification |
+| `scale_fdf_table` | `surface_scale` | Simplify numerical operation | Needs verification |
 | `view_fdf` | `fdf_render` | Clarify rendering responsibility | Needs verification |
 
 I would also distinguish between a purely mechanical rename and a semantic redesign.
@@ -999,7 +999,7 @@ If those questions have clear answers, your API is much less likely to become ar
 
 ## My overall verdict
 
-I wouldn't say that your API needs a completely new naming style. Much of it is already understandable, and names such as `proj2d_isometric`, `proj2d_cabinet`, and `fdf_table_hadamard` communicate recognizable concepts.
+I wouldn't say that your API needs a completely new naming style. Much of it is already understandable, and names such as `proj2d_isometric`, `proj2d_cabinet`, and `mix_hadamard_fdf_table` communicate recognizable concepts.
 
 The underlying issue is that **the API doesn't yet appear to have a sufficiently explicit vocabulary for expressing its different kinds of operations**.
 

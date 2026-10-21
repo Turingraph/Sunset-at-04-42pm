@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:46:38 by phsottat          #+#    #+#             */
-/*   Updated: 2026/09/11 14:27:18 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/21 14:26:33 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
  * @param scale multiplication factor
  * @param channel channel to modify
  */
-void	scale_multiplication_fdf(t_fdf_table *dst, float scale,
+void	scale_fdf_table(t_fdf_table *dst, float scale,
 	t_fdf_channel channel)
 {
 	size_t	i;
@@ -64,7 +64,7 @@ void	scale_multiplication_fdf(t_fdf_table *dst, float scale,
  * @param input value to add
  * @param channel channel to modify
  */
-void	scale_addition_fdf(t_fdf_table *dst, int input, t_fdf_channel channel)
+void	shift_fdf_table(t_fdf_table *dst, int input, t_fdf_channel channel)
 {
 	size_t	i;
 
@@ -104,7 +104,7 @@ void	scale_addition_fdf(t_fdf_table *dst, int input, t_fdf_channel channel)
  * @param src source FDF table
  * @param channel channel to add
  */
-void	fdf_table_addition(t_fdf_table *dst,
+void	mix_add_fdf_table(t_fdf_table *dst,
 	const t_fdf_table *src, t_fdf_channel channel)
 {
 	size_t	i;
@@ -149,7 +149,7 @@ void	fdf_table_addition(t_fdf_table *dst,
  * @param src source FDF table
  * @param channel channel to multiply
  */
-void	fdf_table_hadamard(t_fdf_table *dst,
+void	mix_hadamard_fdf_table(t_fdf_table *dst,
 	const t_fdf_table *src, t_fdf_channel channel)
 {
 	size_t	i;
@@ -196,6 +196,6 @@ void	fdf_table_hadamard(t_fdf_table *dst,
  */
 void	copy_fdf_table_channel(t_fdf_table *dst, const t_fdf_table *src, t_fdf_channel channel)
 {
-	scale_multiplication_fdf(dst, 0.0, channel);
-	fdf_table_addition(dst, src, channel);
+	scale_fdf_table(dst, 0.0, channel);
+	mix_add_fdf_table(dst, src, channel);
 }

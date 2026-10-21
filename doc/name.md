@@ -25,7 +25,7 @@
 9.	normalize_* = to scale the struct for some particular purpose e.g. normalize_fdf_proj2d(t_fdf_proj2d *src, size_t fixed_window_size);
 
 general rule
-*	verb_noun_adjective = doing the noun that have adjactive properties.
+*	verb_adverb_noun_adjective = doing the noun that have adjactive properties.
 *	nouna_nounb = initialize the noun b of the noun a e.g. length_str, etc.
 *	nounb_from_nouna = nouna_nounb (but the nounb is more common than nouna), e.g. rgba32_from_char, rgbarr_from_table etc. This make it easier for user/dev to define the color.
 *	t_*_mode = the mode of something.

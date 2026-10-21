@@ -241,9 +241,9 @@ int	main(void)
 		while (k < 2)
 		{
 			if (k == 0)
-				table = load_fdf_table_file(arr[i].file_name, src_dir, parse_decimal_bw, false);
+				table = load_fdf_table(arr[i].file_name, src_dir, parse_decimal_bw, false);
 			else
-				table = load_fdf_table_file(arr[i].file_name, src_dir, parse_decimal_rgba, true);
+				table = load_fdf_table(arr[i].file_name, src_dir, parse_decimal_rgba, true);
 			if (table.row * table.col == arr[i].length && table.arr != NULL
 				&& assert_intarr(table.arr, arr[i].arr[0].arr, arr[i].length) == true)
 					score += 1;

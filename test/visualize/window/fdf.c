@@ -44,7 +44,7 @@ int	main(int len, char **str)
 
 	if (len < 2 || is_fdf_name(str[1]) == false)
 		return (0);
-	table = load_fdf_table_file(str[1], NULL, parse_decimal_rgba, true);
+	table = load_fdf_table(str[1], NULL, parse_decimal_rgba, true);
 	if (table.col * table.row == 0)
 	{
 		write(1, "File might be invalid and/or Malloc returns NULL.\n", 51);

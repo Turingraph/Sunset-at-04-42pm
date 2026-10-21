@@ -21,8 +21,8 @@ Your examples contain names such as:
 ```
 set_cells_color(...)
 color_cells_gradient(...)
-scale_multiplication_fdf(...)
-fdf_table_hadamard(...)
+scale_fdf_table(...)
+mix_hadamard_fdf_table(...)
 ```
 
 An experienced developer might wonder why these functions use different word orders and grammatical structures.
@@ -67,9 +67,9 @@ Your examples use names such as:
 
 ```
 scale_dimension_fdf(...)
-scale_multiplication_fdf(...)
-scale_relu_fdf(...)
-scale_positive_fdf(...)
+scale_fdf_table(...)
+relu_fdf_table(...)
+positive_fdf_table(...)
 ```
 
 This is potentially more confusing.
@@ -89,7 +89,7 @@ These names suggest recognizable mathematical operations.
 But consider:
 
 ```
-scale_relu_fdf(...)
+relu_fdf_table(...)
 ```
 
 ReLU is a nonlinear function:
@@ -180,10 +180,10 @@ Suppose a developer wants to apply a transformation to a surface.
 They encounter:
 
 ```
-scale_multiplication_fdf(...)
-scale_relu_fdf(...)
-scale_positive_fdf(...)
-fdf_table_hadamard(...)
+scale_fdf_table(...)
+relu_fdf_table(...)
+positive_fdf_table(...)
+mix_hadamard_fdf_table(...)
 ```
 
 They might reasonably ask:
@@ -200,9 +200,9 @@ For example, consider these two possible APIs.
 **API A:**
 
 ```
-scale_multiplication_fdf(...);
-scale_relu_fdf(...);
-fdf_table_hadamard(...);
+scale_fdf_table(...);
+relu_fdf_table(...);
+mix_hadamard_fdf_table(...);
 apply_convolution_fdf(...);
 ```
 
@@ -318,8 +318,8 @@ However, a user-friendly graphics API should make it clear which operations:
 Consider:
 
 ```
-fdf_table_hadamard(&table, &table_base, HEIGHT);
-scale_multiplication_fdf(&table, 1.0 / 120.0, HEIGHT);
+mix_hadamard_fdf_table(&table, &table_base, HEIGHT);
+scale_fdf_table(&table, 1.0 / 120.0, HEIGHT);
 color_cells_gradient(&table, gradient, true);
 ```
 
@@ -416,7 +416,7 @@ Sometimes a name includes so much implementation or domain detail that it become
 For example:
 
 ```
-scale_multiplication_fdf(...)
+scale_fdf_table(...)
 ```
 
 If this function multiplies the values of a channel by a scalar, then the word `multiplication` may be unnecessary. Multiplication is the mechanism; scaling is the operation.
@@ -460,7 +460,7 @@ I think this distinction is important because it is easy to become overly critic
 
 Some features of your naming style are reasonable and worth preserving.
 
-### Mathematical names such as `fdf_table_hadamard`
+### Mathematical names such as `mix_hadamard_fdf_table`
 
 Although its word order differs from some of your other functions, the name identifies the mathematical operation and its data domain.
 

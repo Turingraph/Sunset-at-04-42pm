@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/16 15:08:27 by phsottat          #+#    #+#             */
-/*   Updated: 2026/10/19 14:41:25 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/21 14:12:14 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,7 +200,7 @@ typedef enum t_error
  * rgb_warn stores the parsing status of the color values.
  * 
  * If int_warn and/or rgb_warn are ERROR_NOT_DECIMAL and/or ERROR_NOT_HEX, then 
- * fetch_fdf_load_arr stops and load_fdf_table_file return empty output.
+ * fetch_fdf_load_arr stops and load_fdf_table return empty output.
  *
  * status: internal data shape2d
  *
@@ -286,7 +286,7 @@ size_t	write_int(int n, int fd, const char *base, size_t digits);
 
 /**
  * Parse an ASCII-art line using the Cheche01 character ramp.
- * This function is intended to be used with `load_fdf_table_file`
+ * This function is intended to be used with `load_fdf_table`
  *
  * time/space: O(n) / O(n)
  * 
@@ -300,7 +300,7 @@ t_fdf_load	parse_ascii_cheche01(char *line);
 
 /**
  * Parse an ASCII-art line using the standard character ramp.
- * This function is intended to be used with `load_fdf_table_file`
+ * This function is intended to be used with `load_fdf_table`
  *
  * time/space: O(n) / O(n)
  * 
@@ -314,7 +314,7 @@ t_fdf_load	parse_ascii_standard(char *line);
 
 /**
  * Parse an ASCII-art line using the Chungaloider brightness ramp.
- * This function is intended to be used with `load_fdf_table_file`
+ * This function is intended to be used with `load_fdf_table`
  *
  * time/space: O(n) / O(n)
  *
@@ -331,7 +331,7 @@ t_fdf_load	parse_ascii_chungaloider(char *line);
 
 /**
  * Parse an FDF line as colorful data.
- * This function is intended to be used with `load_fdf_table_file`
+ * This function is intended to be used with `load_fdf_table`
  *
  * time/space: O(n) / O(n)
  *
@@ -346,7 +346,7 @@ t_fdf_load	parse_decimal_rgba(char *line);
 
 /**
  * Parse an FDF line as black and white data.
- * This function is intended to be used with `load_fdf_table_file`
+ * This function is intended to be used with `load_fdf_table`
  *
  * time/space: O(n) / O(n)
  *
@@ -403,7 +403,7 @@ t_fdf_table		create_fdf_table(size_t row, size_t col, bool is_rgba);
  * @return return the array that contains rgba and height of the height map.
  * @see src/input/load/parse.c
  */
-t_fdf_table		load_fdf_table_file(const char *file_name, const char *dir,
+t_fdf_table		load_fdf_table(const char *file_name, const char *dir,
 					t_fdf_load (*one_line)(char *line), bool is_rgba);
 
 

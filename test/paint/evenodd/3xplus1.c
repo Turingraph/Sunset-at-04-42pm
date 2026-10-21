@@ -31,7 +31,7 @@ int	main(void)
 	table_base = create_fdf_table(100, 100, false);
 	paint_space(&table, FDF_HEIGHT, cell_metric_pythagoras);
 	set_cells_color(&table_base, 1, FDF_HEIGHT, is_binary_search_andmod);
-	fdf_table_hadamard(&table, &table_base, FDF_HEIGHT);
+	mix_hadamard_fdf_table(&table, &table_base, FDF_HEIGHT);
 	style.thickness = 2;
 	style.shape2d = SHAPE2D_RECTANGLE;
 	color_cells_gradient(&table, init_deep_wood(), true);

@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:07:25 by phsottat          #+#    #+#             */
-/*   Updated: 2026/10/21 13:11:39 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/21 14:12:14 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ t_fdf_load	create_fdf_load(size_t line_len, bool is_rgb)
 
 /**
  * Free the array after it load an FDF file.
- * Intended for internal use by load_fdf_table_file().
+ * Intended for internal use by load_fdf_table().
  *
  * time/space: O(n) / O(1)
  * 
@@ -100,7 +100,7 @@ void	destroy_fdf_load_arr(t_fdf_load_arr *src)
 
 /**
  * Initializing array for loading an FDF file.
- * Intended for internal use by load_fdf_table_file().
+ * Intended for internal use by load_fdf_table().
  *
  * time/space: O(1) / O(n)
  * 

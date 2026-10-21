@@ -39,8 +39,8 @@ int	main(void)
 	i = 0;
 	while (i < length)
 	{
-		table = load_fdf_table_file(arr[i], src_dir, parse_decimal_bw, false);
-		scale_positive_fdf(&table);
+		table = load_fdf_table(arr[i], src_dir, parse_decimal_bw, false);
+		positive_fdf_table(&table);
 		fdf_dst = load_file_debug(arr[i], dst_dir, FILE_WRITE);
 		if(fdf_dst > -1)
 		{

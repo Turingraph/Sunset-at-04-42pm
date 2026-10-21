@@ -68,7 +68,7 @@ int	main(int len, char **str)
 
 	if (len < 2)
 		return (0);
-	table = load_fdf_table_file(str[1], NULL, parse_ascii_cheche01, true);
+	table = load_fdf_table(str[1], NULL, parse_ascii_cheche01, true);
 	if (table.col * table.row == 0)
 	{
 		destroy_fdf_table(&table);
@@ -78,7 +78,7 @@ int	main(int len, char **str)
 	style.shape2d = SHAPE2D_CIRCLE;
 	color_cells_gradient(&table, init_feeling_blue(), true);
 	color_cells_gradient(&table, init_popart(), true);
-	scale_multiplication_fdf(&table, 1.0 / 20.0, FDF_HEIGHT);
+	scale_fdf_table(&table, 1.0 / 20.0, FDF_HEIGHT);
 	color_cells_gradient(&table, init_white_noise(), true);
 	output = create_fdf_proj2d(&table, proj2d_military, 1.0);
 	view_fdf(&output, style, rgba32_from_char(34, 79, 112, 255));

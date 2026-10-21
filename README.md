@@ -64,13 +64,13 @@ int	main(void)
 	table_base = create_fdf_table(100, 100, false);
 	setcells_pythagorus_length(&table);
 	set_cells_color(&table_base, 30, HEIGHT, is_oddlength_cube);
-	fdf_table_hadamard(&table, &table_base, HEIGHT);
-	scale_relu_fdf(&table, 201, 2000, 0);
+	mix_hadamard_fdf_table(&table, &table_base, HEIGHT);
+	relu_fdf_table(&table, 201, 2000, 0);
 	style.background_color = rgba_to_int32(0, 0, 0, 255);
 	style.line_thickness = 2;
 	style.artists = E_EULER;
 	color_cells_gradient(&table, init_deep_sea(), true);
-	scale_multiplication_fdf(&table, 1.0 / 120.0, HEIGHT);
+	scale_fdf_table(&table, 1.0 / 120.0, HEIGHT);
 	output = create_fdf_proj2d(&table, proj2d_isometric, 0.6);
 	view_fdf(&output, style);
 	destroy_fdf_table(&table);
@@ -165,7 +165,7 @@ int	main(int len, char **str)
 
 	if (len < 2 || is_fdf_name(str[1]) == false)
 		return (0);
-	table = load_fdf_table_file(str[1], NULL, parse_decimal_rgba, true);
+	table = load_fdf_table(str[1], NULL, parse_decimal_rgba, true);
 	if (table.col * table.row == 0)
 	{
 		write(1, "File might be invalid and/or Malloc returns NULL.\n", 51);
@@ -274,7 +274,7 @@ int	main(int len, char **str)
 
 	if (len < 2)
 		return (0);
-	table = load_fdf_table_file(str[1], NULL, parse_ascii_cheche01, true);
+	table = load_fdf_table(str[1], NULL, parse_ascii_cheche01, true);
 	if (table.col * table.row == 0)
 	{
 		destroy_fdf_table(&table);
@@ -284,7 +284,7 @@ int	main(int len, char **str)
 	style.shape2d = E_LINE;
 	color_cells_gradient(&table, init_ztmy_studyme(), true);
 	color_cells_gradient(&table, init_ztmy_timeleft(), true);
-	scale_multiplication_fdf(&table, 1.0 / 3.0, HEIGHT);
+	scale_fdf_table(&table, 1.0 / 3.0, HEIGHT);
 	color_cells_gradient(&table, init_white_noise(), true);
 	output = create_fdf_proj2d(&table, proj2d_isometric, 1.0);
 	view_fdf(&output, style, rgba_to_int32(0, 0, 0, 255));

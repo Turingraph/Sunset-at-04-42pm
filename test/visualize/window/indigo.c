@@ -28,7 +28,7 @@ int	main(int len, char **str)
 
 	if (len < 2)
 		return (0);
-	table = load_fdf_table_file(str[1], NULL, parse_ascii_cheche01, true);
+	table = load_fdf_table(str[1], NULL, parse_ascii_cheche01, true);
 	if (table.col * table.row == 0)
 	{
 		destroy_fdf_table(&table);
@@ -36,9 +36,9 @@ int	main(int len, char **str)
 	}
 	style.thickness = 1;
 	style.shape2d = SHAPE2D_RECTANGLE;
-	scale_relu_fdf(&table, 0, 30, 0);
+	relu_fdf_table(&table, 0, 30, 0);
 	color_cells_gradient(&table, init_deep_wood(), true);
-	scale_multiplication_fdf(&table, 1.0, FDF_HEIGHT);
+	scale_fdf_table(&table, 1.0, FDF_HEIGHT);
 	output = create_fdf_proj2d(&table, NULL, 1.0);
 	view_fdf(&output, style, rgba32_from_char(255, 255, 255, 255));
 	destroy_fdf_table(&table);

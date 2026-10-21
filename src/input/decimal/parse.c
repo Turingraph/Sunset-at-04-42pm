@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:07:35 by phsottat          #+#    #+#             */
-/*   Updated: 2026/10/19 14:41:25 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/21 14:12:14 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /**
  * Parse an FDF line as colorful data.
- * This function is intended to be used with `load_fdf_table_file`
+ * This function is intended to be used with `load_fdf_table`
  *
  * time/space: O(n) / O(n)
  *
@@ -34,7 +34,7 @@ t_fdf_load	parse_decimal_rgba(char *line)
 
 /**
  * Parse an FDF line as black and white data.
- * This function is intended to be used with `load_fdf_table_file`
+ * This function is intended to be used with `load_fdf_table`
  *
  * time/space: O(n) / O(n)
  *

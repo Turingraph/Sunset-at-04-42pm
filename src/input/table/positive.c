@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:44:59 by phsottat          #+#    #+#             */
-/*   Updated: 2026/08/31 13:49:22 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/21 14:11:57 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	fdf_table_minmax(const t_fdf_table *src,
  *
  * @param dst the input t_fdf_table array
  */
-void	scale_positive_fdf(t_fdf_table *dst)
+void	positive_fdf_table(t_fdf_table *dst)
 {
 	int	y;
 
@@ -76,7 +76,7 @@ void	scale_positive_fdf(t_fdf_table *dst)
 		y *= -1;
 	else if (y == -2147483648)
 		y = 0;
-	scale_addition_fdf(dst, y, FDF_HEIGHT);
+	shift_fdf_table(dst, y, FDF_HEIGHT);
 }
 
 /**
@@ -92,7 +92,7 @@ void	scale_positive_fdf(t_fdf_table *dst)
  * @param max the maximum target number
  * @param expect the expected number
  */
-void	scale_relu_fdf(t_fdf_table *dst, int min, int max, int expect)
+void	relu_fdf_table(t_fdf_table *dst, int min, int max, int expect)
 {
 	size_t	i;
 	int		temp;

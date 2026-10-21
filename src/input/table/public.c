@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:46:26 by phsottat          #+#    #+#             */
-/*   Updated: 2026/10/19 14:41:25 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/21 14:12:14 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
  * @return return the array that contains rgba and height of the height map.
  * @see src/input/load/parse.c
  */
-t_fdf_table	load_fdf_table_file(const char *file_name, const char *dir,
+t_fdf_table	load_fdf_table(const char *file_name, const char *dir,
 	t_fdf_load (*one_line)(char *line), bool is_rgba)
 {
 	t_fdf_table		dst;
@@ -40,7 +40,7 @@ t_fdf_table	load_fdf_table_file(const char *file_name, const char *dir,
 		destroy_fdf_load_arr(&src);
 		return (create_fdf_table(0, 0, false));
 	}
-	dst = fdf_load_table(&src, is_rgba);
+	dst = fdf_load_to_fdf_table(&src, is_rgba);
 	destroy_fdf_load_arr(&src);
 	return (dst);
 }

@@ -37,11 +37,11 @@ int	main(void)
 	while (i < length)
 	{
 		output = load_file_debug(arr[i], dst_dir, FILE_WRITE);
-		table_a = load_fdf_table_file(arr[i], src_dir,
+		table_a = load_fdf_table(arr[i], src_dir,
 				parse_ascii_cheche01, false);
-		scale_multiplication_fdf(&table_a, 3.0, FDF_HEIGHT);
+		scale_fdf_table(&table_a, 3.0, FDF_HEIGHT);
 		table_c = convolve_fdf(&table_a, edge, 5);
-		// scale_positive_fdf(&table_c);
+		// positive_fdf_table(&table_c);
 		write_table_ascii_cheche01(output, &table_c, FDF_HEIGHT);
 		destroy_fdf_table(&table_a);
 		destroy_fdf_table(&table_c);

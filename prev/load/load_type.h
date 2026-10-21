@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 13:58:04 by phsottat          #+#    #+#             */
-/*   Updated: 2026/10/19 15:00:26 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/21 14:12:14 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ typedef enum t_error
  * rgb_warn stores the parsing status of the color values.
  * 
  * If int_warn and/or rgb_warn are ERROR_NOT_DECIMAL and/or ERROR_NOT_HEX, then 
- * fetch_fdf_load_arr stops and load_fdf_table_file return empty output.
+ * fetch_fdf_load_arr stops and load_fdf_table return empty output.
  *
  * status: internal data shape2d
  *

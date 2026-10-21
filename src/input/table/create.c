@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:44:49 by phsottat          #+#    #+#             */
-/*   Updated: 2026/10/21 13:22:05 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/21 14:03:40 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ static size_t	fdf_load_col(const t_fdf_load_arr *src)
 
 // time : O(1)
 // space: O(1)
-static void	load_rgba_for_fdf_table(const t_fdf_load *src,
+static void	transfer_fdf_load_rgba(const t_fdf_load *src,
 	t_fdf_table *dst, size_t row, size_t col)
 {
 	if (src != NULL && dst != NULL
@@ -123,7 +123,7 @@ static void	load_rgba_for_fdf_table(const t_fdf_load *src,
 
 // time : O(n)
 // space: O(n)
-t_fdf_table	fdf_load_table(const t_fdf_load_arr *src, bool is_rgba)
+t_fdf_table	fdf_load_to_fdf_table(const t_fdf_load_arr *src, bool is_rgba)
 {
 	t_fdf_table	dst;
 	size_t		i;
@@ -143,7 +143,7 @@ t_fdf_table	fdf_load_table(const t_fdf_load_arr *src, bool is_rgba)
 		{
 			dst.arr[dst.col * i + j] = src->arr[i].arr[j];
 			if (is_rgba == true)
-				load_rgba_for_fdf_table(&(src->arr[i]), &dst, i, j);
+				transfer_fdf_load_rgba(&(src->arr[i]), &dst, i, j);
 			j += 1;
 		}
 		i += 1;
