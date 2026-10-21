@@ -13,7 +13,7 @@ BUFFER_SIZE = 42
 .SECONDEXPANSION:
 
 # *** library ***
-LIBRARY = $(patsubst %, lib/%.a, libft taylor get_next_line linalg load table \
+LIBRARY = $(patsubst %, lib/%.a, libft taylor get_next_line linalg ascii decimal table \
 	convolve paint debug raster motif proj2d render window evenodd)
 
 # *** atom src ***
@@ -24,7 +24,8 @@ SRC_get_next_line = $(wildcard input/get_next_line/*.c)
 # *** composed src ***
 SRC_debug = $(wildcard debug/debug/*.c)
 SRC_linalg = $(wildcard utils/linalg/*.c)
-SRC_load = $(wildcard input/load/*.c)
+SRC_ascii = $(wildcard input/ascii/*.c)
+SRC_decimal = $(wildcard input/decimal/*.c)
 SRC_table = $(wildcard input/table/*.c)
 
 SRC_convolve = $(wildcard paint/convolve/*.c)
@@ -45,9 +46,10 @@ OBJ_taylor = $(patsubst %.c, obj/%.o, $(SRC_taylor)) $(OBJ_libft)
 OBJ_get_next_line = $(patsubst %.c, obj/%.o, $(SRC_get_next_line))
 
 # *** composed obj ***
-OBJ_debug = $(patsubst %.c, obj/%.o, $(SRC_debug)) $(OBJ_load)
-OBJ_load = $(patsubst %.c, obj/%.o, $(SRC_load)) $(OBJ_libft) $(OBJ_get_next_line)
-OBJ_table = $(patsubst %.c, obj/%.o, $(SRC_table)) $(OBJ_load)
+OBJ_debug = $(patsubst %.c, obj/%.o, $(SRC_debug)) $(OBJ_decimal)
+OBJ_ascii = $(patsubst %.c, obj/%.o, $(SRC_ascii)) $(OBJ_libft) $(OBJ_get_next_line)
+OBJ_decimal = $(patsubst %.c, obj/%.o, $(SRC_decimal)) $(OBJ_ascii)
+OBJ_table = $(patsubst %.c, obj/%.o, $(SRC_table)) $(OBJ_decimal)
 
 OBJ_convolve = $(patsubst %.c, obj/%.o, $(SRC_convolve)) $(OBJ_table) $(OBJ_taylor)
 OBJ_paint = $(patsubst %.c, obj/%.o, $(SRC_paint)) $(OBJ_taylor)

@@ -2,7 +2,7 @@
 # define TEST_HELPERS_H
 
 # include "stdlib.h"
-# include "../../input/load/load_debug.h"
+# include "../../input/decimal/decimal_debug.h"
 
 typedef struct t_intarr t_intarr;
 

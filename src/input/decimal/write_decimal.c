@@ -1,45 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   write.c                                            :+:      :+:    :+:   */
+/*   write_decimal.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:15:10 by phsottat          #+#    #+#             */
-/*   Updated: 2026/10/19 14:56:22 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/21 13:04:45 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "decimal_private.h"
-
-
-// time : O(n)
-// space: O(1)
-char	is_a_in_str(char s, const char *space)
-{
-	while (space != NULL && *space != '\0')
-	{
-		if (*space == s)
-			return (1);
-		space += 1;
-	}
-	return (0);
-}
-
-// time : O(n)
-// space: O(1)
-size_t	str_length(const char *str)
-{
-	size_t	i;
-
-	i = 0;
-	while (str != NULL && *str != '\0')
-	{
-		i += 1;
-		str += 1;
-	}
-	return (i);
-}
 
 // time : O(n)
 // space: O(n)

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   load_private.h                                     :+:      :+:    :+:   */
+/*   ascii_private.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 13:59:39 by phsottat          #+#    #+#             */
-/*   Updated: 2026/10/19 14:55:34 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/21 11:58:05 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_fdf_load		parse_ascii(char *line, const char *dict);
 
 // init.c
 
-void			*destroy_fdf_load(t_fdf_load *src);
+void			destroy_fdf_load(t_fdf_load *src);
 t_fdf_load		create_fdf_load(size_t line_len, bool is_rgb);
 void			destroy_fdf_load_arr(t_fdf_load_arr *src);
 t_fdf_load_arr	create_fdf_load_arr(size_t length);
@@ -37,8 +37,6 @@ t_fdf_load_arr	create_fdf_load_arr(size_t length);
 t_fdf_load		parse_ascii_cheche01(char *line);
 t_fdf_load		parse_ascii_standard(char *line);
 t_fdf_load		parse_ascii_chungaloider(char *line);
-t_fdf_load		parse_decimal_rgba(char *line);
-t_fdf_load		parse_decimal_bw(char *line);
 
 // public.c
 

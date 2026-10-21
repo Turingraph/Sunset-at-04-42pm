@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:54:30 by phsottat          #+#    #+#             */
-/*   Updated: 2026/10/19 14:41:25 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/21 12:53:33 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define TABLE_PRIVATE_H
 
 # include <stdlib.h>
-# include "../../input/load/load.h"
+# include "../../input/decimal/decimal.h"
 # include "../../utils/taylor/taylor.h"
 
 // init.c

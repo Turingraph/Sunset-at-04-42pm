@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:07:25 by phsottat          #+#    #+#             */
-/*   Updated: 2026/10/19 14:41:25 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/21 11:57:23 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 // time : O(1)
 // space: O(1)
-void	*destroy_fdf_load(t_fdf_load *src)
+void	destroy_fdf_load(t_fdf_load *src)
 {
 	if (src == NULL)
-		return (NULL);
+		return ;
 	if (src->arr != NULL)
 		free(src->arr);
 	if (src->r != NULL)
@@ -33,7 +33,6 @@ void	*destroy_fdf_load(t_fdf_load *src)
 	src->g = NULL;
 	src->b = NULL;
 	src->a = NULL;
-	return (NULL);
 }
 
 // time : O(n)

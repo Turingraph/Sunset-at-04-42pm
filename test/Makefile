@@ -5,7 +5,7 @@ CC = cc -Wall -Wextra -Werror
 remove_slash = $(patsubst %/,%,$1)
 
 SRC_get_next_line = $(wildcard input/get_next_line/*.c)
-SRC_load = $(wildcard input/load/*.c)
+SRC_decimal = $(wildcard input/decimal/*.c)
 SRC_table = $(wildcard input/table/*.c)
 SRC_libft = $(wildcard utils/libft/*.c)
 SRC_taylor = $(wildcard utils/taylor/*.c)
@@ -32,7 +32,7 @@ LIB_evenodd = $(patsubst %, ../src/lib/%.a, paint table window evenodd) $(LIB_GR
 OUT_LIB = $(OUT_motif) $(OUT_window) $(OUT_evenodd)
 OUT_BASIC = $(patsubst %.c, out/%.out,	\
 	$(SRC_get_next_line) $(SRC_convolve)\
-	$(SRC_load) $(SRC_table) $(SRC_libft) $(SRC_taylor))
+	$(SRC_decimal) $(SRC_table) $(SRC_libft) $(SRC_taylor))
 
 #-----------------------------------------------------------------------------------------------
 # *** get input clone file ***
@@ -41,12 +41,12 @@ INPUT_FIGLET = $(wildcard ../corpus/figlet_rozzo/*)
 INPUT_FDF = $(wildcard ../corpus/fdf/*)
 INPUT_GNL = $(wildcard input/get_next_line/input/*)
 
-CLONE_FIGLET_LOAD = $(patsubst ../corpus/figlet_rozzo/%, input/load/clone_input_ascii/%, $(INPUT_FIGLET))
+CLONE_FIGLET_decimal = $(patsubst ../corpus/figlet_rozzo/%, input/decimal/clone_input_ascii/%, $(INPUT_FIGLET))
 CLONE_FIGLET_TABLE = $(patsubst ../corpus/figlet_rozzo/%, input/table/clone_input_ascii/%, $(INPUT_FIGLET))
-CLONE_FIGLET = $(CLONE_FIGLET_LOAD) $(CLONE_FIGLET_TABLE)
-CLONE_FDF_LOAD = $(patsubst ../corpus/fdf/%, input/load/clone_input_fdf/%, $(INPUT_FDF))
+CLONE_FIGLET = $(CLONE_FIGLET_decimal) $(CLONE_FIGLET_TABLE)
+CLONE_FDF_decimal = $(patsubst ../corpus/fdf/%, input/decimal/clone_input_fdf/%, $(INPUT_FDF))
 CLONE_FDF_TABLE = $(patsubst ../corpus/fdf/%, input/table/clone_input_fdf/%, $(INPUT_FDF))
-CLONE_FDF = $(CLONE_FDF_LOAD) $(CLONE_FDF_TABLE)
+CLONE_FDF = $(CLONE_FDF_decimal) $(CLONE_FDF_TABLE)
 CLONE_GNL = $(patsubst input/get_next_line/input/%, input/get_next_line/clone_input/%, $(INPUT_GNL))
 
 #-----------------------------------------------------------------------------------------------

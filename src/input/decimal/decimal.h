@@ -15,7 +15,7 @@ t_fdf_load	parse_decimal_bw(char *line);
 
 // utils.c
 
-char			is_a_in_str(char s, const char *space);
-size_t			str_length(const char *str);
+char	is_a_in_str(char s, const char *space);
+size_t	str_length(const char *str);
 
 #endif
