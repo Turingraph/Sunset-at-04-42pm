@@ -21,7 +21,7 @@
 
 void			destroy_fdf_table(t_fdf_table *src);
 t_fdf_table		create_fdf_table(size_t row, size_t col, bool is_rgba);
-t_fdf_table		fdf_load_to_fdf_table(const t_fdf_load_arr *src, bool is_rgba);
+t_fdf_table		fdfload_to_fdftable(const t_fdf_load_arr *src, bool is_rgba);
 
 // load.c
 

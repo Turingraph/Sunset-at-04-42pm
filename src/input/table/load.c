@@ -38,7 +38,7 @@ t_fdf_table	load_fdf_table(const char *file_name,
 		destroy_fdf_load_arr(&src);
 		return (create_fdf_table(0, 0, false));
 	}
-	dst = fdf_load_to_fdf_table(&src, is_rgba);
+	dst = fdfload_to_fdftable(&src, is_rgba);
 	destroy_fdf_load_arr(&src);
 	return (dst);
 }

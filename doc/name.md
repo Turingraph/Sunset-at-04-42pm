@@ -29,6 +29,7 @@ general rule
 *	nouna_nounb = initialize the noun b of the noun a e.g. length_str, etc.
 *	nounb_from_nouna = nouna_nounb (but the nounb is more common than nouna), e.g. rgba32_from_char, rgbarr_from_table etc. This make it easier for user/dev to define the color.
 *	t_*_mode = the mode of something.
+*	nouna_to_nounb = convert one data type to another data type. There should be no space between the "same name", for example fdfload_to_fdftable and str_to_int are correct, but fdf_load_to_fdf_table is incorrect.
 
 # name (input/*)
 
