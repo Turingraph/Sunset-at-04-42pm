@@ -20,7 +20,7 @@ int	main(void)
 	table_a = load_fdf_table(input_dir,
 			FDF_FORMAT_ASCII_A, false);
 	scale_fdf_table(&table_a, 10, FDF_HEIGHT);
-	table_b = scale_dimension_fdf(&table_a, 3, 3);
+	table_b = scale_dim_fdf_table(&table_a, 3, 3);
 
 	output_fd = debug_load_file(output_dir_1, NULL, FILE_WRITE);
 	write_fdf_table(output_fd, &table_b, FDF_HEIGHT, FDF_FORMAT_ASCII_A);

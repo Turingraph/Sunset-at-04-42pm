@@ -258,7 +258,7 @@ int	main(void)
 			else
 				table = load_fdf_table(file_name, FDF_FORMAT_DECIMAL_RGBA, true);
 			free(file_name);
-			shift_fdf_table(&table, scale_arr[i], FDF_HEIGHT);
+			add_fdf_table(&table, scale_arr[i], FDF_HEIGHT);
 			if (table.row * table.col == arr[i].length && table.arr != NULL
 				&& assert_intarr(table.arr, arr[i].arr[0].arr, arr[i].length) == true)
 					score += 1;

@@ -109,7 +109,7 @@ $ valgrind --leak-check=full --show-leak-kinds=all ./test/out/paint/convolve/fdf
 
 ```
 $ valgrind --leak-check=full --show-leak-kinds=all ./test/out/input/table/verify_scale_dim_int.out
-// This file verify that scale_dimension_fdf works correctly.
+// This file verify that scale_dim_fdf works correctly.
 ```
 
 See `doc/contribution/` for more details.

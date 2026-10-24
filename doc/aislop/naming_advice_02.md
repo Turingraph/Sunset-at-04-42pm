@@ -66,7 +66,7 @@ That's a relatively minor weakness, but it becomes more noticeable as the number
 Your examples use names such as:
 
 ```
-scale_dimension_fdf(...)
+scale_dim_fdf_table(...)
 scale_fdf_table(...)
 relu_fdf_table(...)
 positive_fdf_table(...)
@@ -100,7 +100,7 @@ $$
 
 It is not ordinarily considered a scaling operation.
 
-Likewise, `scale_dimension_fdf()` sounds as though it might scale dimensions geometrically, resize a data structure, or change the resolution of a grid.
+Likewise, `scale_dim_fdf_table()` sounds as though it might scale dimensions geometrically, resize a data structure, or change the resolution of a grid.
 
 Those are different operations.
 
@@ -266,7 +266,7 @@ This is potentially the most serious issue, although it requires examining the i
 Consider:
 
 ```
-scale_dimension_fdf(&table, 3, 3);
+scale_dim_fdf_table(&table, 3, 3);
 ```
 
 There are several plausible interpretations:

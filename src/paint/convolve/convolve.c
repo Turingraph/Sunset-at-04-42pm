@@ -135,7 +135,7 @@ t_fdf_table	convolve_fdf(const t_fdf_table *src, float *kernel,
 		dim += 1;
 	if (dim < 3)
 		dim = 3;
-	dst = scale_dimension_fdf(src, 1, 1);
+	dst = scale_dim_fdf_table(src, 1, 1);
 	if (dst.arr == NULL)
 		return (create_fdf_table(0, 0, false));
 	i = 0;

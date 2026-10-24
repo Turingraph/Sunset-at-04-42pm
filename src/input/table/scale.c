@@ -64,7 +64,7 @@ void	scale_fdf_table(t_fdf_table *dst, float scale,
  * @param input value to add
  * @param channel channel to modify
  */
-void	shift_fdf_table(t_fdf_table *dst, int input, t_fdf_channel channel)
+void	add_fdf_table(t_fdf_table *dst, int input, t_fdf_channel channel)
 {
 	size_t	i;
 

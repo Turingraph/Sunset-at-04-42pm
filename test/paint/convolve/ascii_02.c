@@ -42,7 +42,7 @@ int	main(void)
 		table_a = load_fdf_table(file_name,
 				FDF_FORMAT_ASCII_A, false);
 		free(file_name);
-		table_b = scale_dimension_fdf(&table_a, 5, 5);
+		table_b = scale_dim_fdf_table(&table_a, 5, 5);
 		table_c = convolve_fdf(&table_b, NULL, half_dim);
 		write_fdf_table(output, &table_c, FDF_HEIGHT, FDF_FORMAT_ASCII_A);
 		destroy_fdf_table(&table_a);

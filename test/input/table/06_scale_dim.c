@@ -39,7 +39,7 @@ int	main(void)
 		table_a = load_fdf_table(file_name,
 				FDF_FORMAT_ASCII_A, false);
 		free(file_name);
-		table_b = scale_dimension_fdf(&table_a, 3, 3);
+		table_b = scale_dim_fdf_table(&table_a, 3, 3);
 		write_fdf_table(output, &table_b, FDF_HEIGHT, FDF_FORMAT_ASCII_A);
 		destroy_fdf_table(&table_a);
 		destroy_fdf_table(&table_b);

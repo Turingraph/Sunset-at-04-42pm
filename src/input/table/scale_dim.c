@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   scale_dimension.c                                  :+:      :+:    :+:   */
+/*   scale_dim.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 #include "table_private.h"
+
+// nearest-neighbor scaling by pixel duplication
 
 // time : O(n^2)
 // space: O(1)
@@ -70,7 +72,7 @@ static void	copy_duplicated_row(const int *src, int *dst,
  * @param rgba_type RGBA channel to scale
  * @return scaled channel array, or NULL on failure
  */
-unsigned char	*scale_dimension_fdf_rgba(const t_fdf_table *src,
+unsigned char	*scale_dim_fdf_table_rgba(const t_fdf_table *src,
 	size_t scale_row, size_t scale_col, t_fdf_channel rgba_type)
 {
 	size_t			i;
@@ -114,7 +116,7 @@ unsigned char	*scale_dimension_fdf_rgba(const t_fdf_table *src,
  * @param scale_col column scaling factor
  * @return scaled height integer array, or NULL on failure
  */
-int	*scale_dimension_fdf_int(const t_fdf_table *src,
+int	*scale_dim_fdf_table_int(const t_fdf_table *src,
 	size_t scale_row, size_t scale_col)
 {
 	size_t		i;
@@ -156,7 +158,7 @@ int	*scale_dimension_fdf_int(const t_fdf_table *src,
  * @param scale_col column scaling factor
  * @return scaled FDF table, or an empty table on failure
  */
-t_fdf_table	scale_dimension_fdf(const t_fdf_table *src,
+t_fdf_table	scale_dim_fdf_table(const t_fdf_table *src,
 	size_t scale_row, size_t scale_col)
 {
 	t_fdf_table	dst;
@@ -168,12 +170,12 @@ t_fdf_table	scale_dimension_fdf(const t_fdf_table *src,
 		return (create_fdf_table(0, 0, false));
 	dst.col = scale_col * src->col;
 	dst.row = scale_row * src->row;
-	dst.arr = scale_dimension_fdf_int(src, scale_row, scale_col);
+	dst.arr = scale_dim_fdf_table_int(src, scale_row, scale_col);
 	if (dst.arr == NULL)
 		return (create_fdf_table(0, 0, false));
-	dst.r = scale_dimension_fdf_rgba(src, scale_row, scale_col, FDF_RED);
-	dst.g = scale_dimension_fdf_rgba(src, scale_row, scale_col, FDF_GREEN);
-	dst.b = scale_dimension_fdf_rgba(src, scale_row, scale_col, FDF_BLUE);
-	dst.a = scale_dimension_fdf_rgba(src, scale_row, scale_col, FDF_ALPHA);
+	dst.r = scale_dim_fdf_table_rgba(src, scale_row, scale_col, FDF_RED);
+	dst.g = scale_dim_fdf_table_rgba(src, scale_row, scale_col, FDF_GREEN);
+	dst.b = scale_dim_fdf_table_rgba(src, scale_row, scale_col, FDF_BLUE);
+	dst.a = scale_dim_fdf_table_rgba(src, scale_row, scale_col, FDF_ALPHA);
 	return (dst);
 }

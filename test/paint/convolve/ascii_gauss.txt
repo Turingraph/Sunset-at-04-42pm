@@ -45,7 +45,7 @@ int	main(void)
 		output = debug_load_file(arr[i], dst, APPEND);
 		table_a = load_fdf_table(arr[i], src,
 				FDF_FORMAT_ASCII_C, false);
-		table_b = scale_dimension_fdf((const t_fdf_table *)&table_a, 3, 3);
+		table_b = scale_dim_fdf_table((const t_fdf_table *)&table_a, 3, 3);
 		destroy_fdf_table(&table_a);
 		if (i % 2 == 0)
 			table_a = convolve_hight(&table_b, kernel);

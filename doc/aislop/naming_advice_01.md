@@ -314,7 +314,7 @@ Your code already contains:
 
 ```
 scale_fdf_table(...)
-scale_dimension_fdf(...)
+scale_dim_fdf_table(...)
 relu_fdf_table(...)
 positive_fdf_table(...)
 ```
@@ -326,7 +326,7 @@ Based on the names and usage in your examples, I'd investigate them as follows:
 | Existing name | Possible replacement | Reason |
 | --- | --- | --- |
 | `scale_fdf_table` | `surface_scale_values` or `surface_multiply_channel` | Clarify whether it scales an entire surface or multiplies a selected channel |
-| `scale_dimension_fdf` | `surface_resize` | Appropriate if it changes the surface's dimensions |
+| `scale_dim_fdf` | `surface_resize` | Appropriate if it changes the surface's dimensions |
 | `relu_fdf_table` | `surface_apply_relu` | Makes the nonlinear operation explicit |
 | `positive_fdf_table` | `surface_clamp_min` or `surface_make_nonnegative` | Depends on whether it clamps values or applies another transformation |
 
@@ -335,7 +335,7 @@ These are deliberately conditional recommendations. The exact names should follo
 For example, in your Zutomayo example, you call:
 
 ```
-table_b = scale_dimension_fdf(&table_a, 3, 3);
+table_b = scale_dim_fdf_table(&table_a, 3, 3);
 scale_fdf_table(&table_b, 3, HEIGHT);
 ```
 
@@ -825,7 +825,7 @@ Candidates for investigation include:
 | `view_fdf()` | Does it render, display, or both? |
 | `create_fdf_proj2d()` | Does it construct a new object or initialize existing storage? |
 | `scale_fdf_table()` | Is it scaling values, multiplying a channel, or performing another operation? |
-| `scale_dimension_fdf()` | Does it resize the grid or transform geometric dimensions? |
+| `scale_dim_fdf_table()` | Does it resize the grid or transform geometric dimensions? |
 | `paint_space()` | Does it populate a numerical field, generate geometry, or do something else? |
 | `setcells_pythagorus_length()` | Does it assign a distance metric to cells? |
 | `color_cells_gradient()` | Does it assign colors directly or map values through a gradient? |
@@ -950,7 +950,7 @@ For example:
 | --- | --- | --- | --- |
 | `create_fdf_table` | `surface_create` | Align construction terminology | Proposed |
 | `destroy_fdf_table` | `surface_destroy` | Align lifecycle terminology | Proposed |
-| `scale_dimension_fdf` | `surface_resize` | Clarify dimensional changes | Needs verification |
+| `scale_dim_fdf` | `surface_resize` | Clarify dimensional changes | Needs verification |
 | `scale_fdf_table` | `surface_scale` | Simplify numerical operation | Needs verification |
 | `view_fdf` | `fdf_render` | Clarify rendering responsibility | Needs verification |
 

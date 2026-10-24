@@ -21,6 +21,11 @@
 void			destroy_fdf_table(t_fdf_table *src);
 t_fdf_table		create_fdf_table(size_t row, size_t col, bool is_rgba);
 
+// load.c
+
+t_fdf_table		load_fdf_table(const char *file_name,
+					t_fdf_format format, bool is_rgba);
+
 // positive.c
 
 int				fdf_table_minmax(const t_fdf_table *src,
@@ -28,25 +33,20 @@ int				fdf_table_minmax(const t_fdf_table *src,
 void			positive_fdf_table(t_fdf_table *dst);
 void			relu_fdf_table(t_fdf_table *dst, int min, int max, int expect);
 
-// public.c
+// scale_dim.c
 
-t_fdf_table		load_fdf_table(const char *file_name,
-					t_fdf_format format, bool is_rgba);
-
-// scale_dimension.c
-
-unsigned char	*scale_dimension_fdf_rgba(const t_fdf_table *src,
+unsigned char	*scale_dim_fdf_table_rgba(const t_fdf_table *src,
 					size_t s_row, size_t s_col, t_fdf_channel rgba_type);
-int				*scale_dimension_fdf_int(const t_fdf_table *src,
+int				*scale_dim_fdf_table_int(const t_fdf_table *src,
 					size_t s_row, size_t s_col);
-t_fdf_table		scale_dimension_fdf(const t_fdf_table *src,
+t_fdf_table		scale_dim_fdf_table(const t_fdf_table *src,
 					size_t scale_row, size_t scale_col);
 
 // scale.c
 
 void			scale_fdf_table(t_fdf_table *dst,
 					float scale, t_fdf_channel channel);
-void			shift_fdf_table(t_fdf_table *dst,
+void			add_fdf_table(t_fdf_table *dst,
 					int input, t_fdf_channel channel);
 void			mix_add_fdf_table(t_fdf_table *dst,
 					const t_fdf_table *src, t_fdf_channel channel);
@@ -57,7 +57,7 @@ void			copy_fdf_table_channel(t_fdf_table *dst,
 
 // write.c
 
-void	write_fdf_table(int fd, const t_fdf_table *src,
-			t_fdf_channel channel, t_fdf_format format);
+void			write_fdf_table(int fd, const t_fdf_table *src,
+					t_fdf_channel channel, t_fdf_format format);
 
 #endif

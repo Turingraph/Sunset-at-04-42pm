@@ -4,9 +4,9 @@
 # include "../../../src/input/table/table.h"
 #include "../../../src/debug/debug/debug.h"
 
-typedef struct t_scale_dimension_tester t_scale_dimension_tester;
+typedef struct t_scale_dim_tester t_scale_dim_tester;
 
-struct t_scale_dimension_tester
+struct t_scale_dim_tester
 {
 	const char		*file_name;
 	const int		*arr;

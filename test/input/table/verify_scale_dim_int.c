@@ -8,7 +8,7 @@ int	main(void)
 	size_t			max_score = 8;
 	t_fdf_table     table;
 	t_fdf_table     table_large;
-	t_scale_dimension_tester	arr[] = {
+	t_scale_dim_tester	arr[] = {
 		{"10-70.fdf",
 		(const int[]){
 		-6,	-6,	-6,	-6,	-6,	-67,	-67,	-67,	-67,	-67,	-61,	-61,	-61,	-61,	-61,	-38,	-38,	-38,	-38,	-38,	9,	9,	9,	9,	9,	-16,	-16,	-16,	-16,	-16,	-16,	-16,	-16,	-16,	-16,	32,	32,	32,	32,	32,	56,	56,	56,	56,	56,	16,	16,	16,	16,	16,	
@@ -357,7 +357,7 @@ int	main(void)
 			else
 				table = load_fdf_table(file_name, FDF_FORMAT_DECIMAL_RGBA, true);
 			free(file_name);
-			table_large = scale_dimension_fdf(&table, arr[i].scale_row, arr[i].scale_col);
+			table_large = scale_dim_fdf_table(&table, arr[i].scale_row, arr[i].scale_col);
 			if (table_large.row * table_large.col == arr[i].scale_row * arr[i].scale_col * arr[i].row * arr[i].col
 				&& assert_intarr(table_large.arr, arr[i].arr, table_large.row * table_large.col) == true)
 					score += 1;

@@ -62,7 +62,7 @@ int	main(void)
 	free(file_name);
 	paint_space(&table, FDF_HEIGHT, conway_test);
 	paint_space(&table, FDF_HEIGHT, cell_metric_positive);
-	shift_fdf_table(&table, -1, FDF_HEIGHT);
+	add_fdf_table(&table, -1, FDF_HEIGHT);
 	relu_fdf_table(&table, -1, 0, 0);
 	if (table.col * table.row == length_a
 		&& assert_intarr(table.arr, correct_a, length_a) == true)
@@ -78,7 +78,7 @@ int	main(void)
 	free(file_name);
 	paint_space(&table, FDF_HEIGHT, conway_test);
 	paint_space(&table, FDF_HEIGHT, cell_metric_positive);
-	shift_fdf_table(&table, -1, FDF_HEIGHT);
+	add_fdf_table(&table, -1, FDF_HEIGHT);
 	relu_fdf_table(&table, -1, 0, 0);
 	if (table.col * table.row == length_b
 		&& assert_intarr(table.arr, correct_b, length_b) == true)
@@ -93,7 +93,7 @@ int	main(void)
 	free(file_name);
 	paint_space(&table, FDF_HEIGHT, conway_test);
 	paint_space(&table, FDF_HEIGHT, cell_metric_positive);
-	shift_fdf_table(&table, -1, FDF_HEIGHT);
+	add_fdf_table(&table, -1, FDF_HEIGHT);
 	relu_fdf_table(&table, -1, 0, 0);
 	if (table.col * table.row == length_c
 		&& assert_intarr(table.arr, correct_c, length_c) == true)

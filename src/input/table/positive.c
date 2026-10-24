@@ -76,7 +76,7 @@ void	positive_fdf_table(t_fdf_table *dst)
 		y *= -1;
 	else if (y == -2147483648)
 		y = 0;
-	shift_fdf_table(dst, y, FDF_HEIGHT);
+	add_fdf_table(dst, y, FDF_HEIGHT);
 }
 
 /**
