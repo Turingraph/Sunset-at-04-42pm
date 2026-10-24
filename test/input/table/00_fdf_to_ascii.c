@@ -66,7 +66,7 @@ int	main(void)
 	i = 0;
 	while (i < length)
 	{
-		char *file_name = concat_str(arr[i], src_dir);
+		char *file_name = concat_str(src_dir, arr[i]);
 		table = load_fdf_table(file_name, parse_decimal_bw, false);
 		free(file_name);
 		positive_fdf_table(&table);
