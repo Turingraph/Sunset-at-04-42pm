@@ -296,7 +296,7 @@ size_t	write_int(int n, int fd, const char *base, size_t digits);
  * 
  * @see see: src/input/table/public.c
  */
-t_fdf_load	parse_ascii_cheche01(char *line);
+t_fdf_load	parse_ascii_a(char *line);
 
 /**
  * Parse an ASCII-art line using the standard character ramp.
@@ -310,7 +310,7 @@ t_fdf_load	parse_ascii_cheche01(char *line);
  * 
  * @see see: src/input/table/public.c
  */
-t_fdf_load	parse_ascii_standard(char *line);
+t_fdf_load	parse_ascii_b(char *line);
 
 /**
  * Parse an ASCII-art line using the Chungaloider brightness ramp.
@@ -327,7 +327,7 @@ t_fdf_load	parse_ascii_standard(char *line);
  * @see see: https://stackoverflow.com/questions/30097953/
  *      ascii-art-sorting-an-array-of-ascii-characters-by-brightness-levels-c-c
  */
-t_fdf_load	parse_ascii_chungaloider(char *line);
+t_fdf_load	parse_ascii_c(char *line);
 
 /**
  * Parse an FDF line as colorful data.
@@ -396,7 +396,7 @@ t_fdf_table		create_fdf_table(size_t row, size_t col, bool is_rgba);
  * 
  * @param file_name the input file
  * @param dir the directory of the input file
- * @param one_line loading style, including parse_ascii_standard for
+ * @param one_line loading style, including parse_ascii_b for
  * loading file as ASCII art, parse_decimal_rgba as colorful Fdf file etc.
  * @param is_rgba if is_rgba == true, then the program using malloc 
  * for initializing rgba color.
@@ -405,43 +405,6 @@ t_fdf_table		create_fdf_table(size_t row, size_t col, bool is_rgba);
  */
 t_fdf_table		load_fdf_table(const char *file_name, const char *dir,
 					t_fdf_load (*one_line)(char *line), bool is_rgba);
-
-
-/**
- * Write an FDF channel using the Cheche01 ASCII ramp.
- *
- * time/space: O(n) / O(n)
- *
- * @param fd output file descriptor
- * @param src source FDF table
- * @param channel channel to convert
- */
-void			write_table_ascii_cheche01(int fd,
-					const t_fdf_table *src, t_fdf_channel channel);
-
-/**
- * Write an FDF channel using the standard ASCII ramp.
- *
- * time/space: O(n) / O(n)
- *
- * @param fd output file descriptor
- * @param src source FDF table
- * @param channel channel to convert
- */
-void			write_table_ascii_standard(int fd,
-					const t_fdf_table *src, t_fdf_channel channel);
-
-/**
- * Write an FDF channel using the Chungaloider ASCII ramp.
- *
- * time/space: O(n) / O(n)
- *
- * @param fd output file descriptor
- * @param src source FDF table
- * @param channel channel to convert
- */
-void			write_table_ascii_chungaloider(int fd,
-					const t_fdf_table *src, t_fdf_channel channel);
 
 /**
  * Write an FDF table to a file descriptor.

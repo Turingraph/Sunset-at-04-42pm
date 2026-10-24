@@ -220,9 +220,9 @@ int	main(void)
 		while (k < 2)
 		{
 			if (k == 0)
-				fdf_file = debug_fdf_load_arr(arr[i].file_name, src_dir, parse_decimal_bw);
+				fdf_file = debug_fdf_load(arr[i].file_name, src_dir, FDF_FORMAT_DECIMAL_BW);
 			else
-				fdf_file = debug_fdf_load_arr(arr[i].file_name, src_dir, parse_decimal_rgba);
+				fdf_file = debug_fdf_load(arr[i].file_name, src_dir, FDF_FORMAT_DECIMAL_RGBA);
 			if (fdf_file.length == arr[i].length)
 			{
 				is_correct = true;

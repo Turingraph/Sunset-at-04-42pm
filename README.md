@@ -274,7 +274,7 @@ int	main(int len, char **str)
 
 	if (len < 2)
 		return (0);
-	table = load_fdf_table(str[1], NULL, parse_ascii_cheche01, true);
+	table = load_fdf_table(str[1], NULL, parse_ascii_a, true);
 	if (table.col * table.row == 0)
 	{
 		destroy_fdf_table(&table);

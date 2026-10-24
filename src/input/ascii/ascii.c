@@ -55,6 +55,21 @@ int	ascii_to_int(char a, const char *dict)
 	return ((int)i);
 }
 
+// time : O(n)
+// space: O(1)
+size_t	str_length(const char *str)
+{
+	size_t	i;
+
+	i = 0;
+	while (str != NULL && *str != '\0')
+	{
+		i += 1;
+		str += 1;
+	}
+	return (i);
+}
+
 /**
  * Write the integer as an ASCII art character in targeted file.
  *
@@ -72,7 +87,7 @@ int	ascii_to_int(char a, const char *dict)
  */
 void	write_ascii(int fd, int cell, const char *dict, bool is_left)
 {
-	size_t	i;
+	size_t	length;
 	char	right_twin;
 	char	left_twin;
 
@@ -80,13 +95,11 @@ void	write_ascii(int fd, int cell, const char *dict, bool is_left)
 		write(fd, " ", 1);
 	else
 	{
-		i = 0;
-		while (dict[i] != '\0' && cell != (int)i)
-			i += 1;
-		if (dict[i] == '\0' && i > 0)
-			i -= 1;
-		left_twin = ascii_to_mirror(dict[i], true);
-		right_twin = ascii_to_mirror(dict[i], false);
+		length = str_length(dict);
+		if (length == 0)
+			return ;
+		left_twin = ascii_to_mirror(dict[cell % length], true);
+		right_twin = ascii_to_mirror(dict[cell % length], false);
 		if (is_left == true)
 			write(fd, &left_twin, 1);
 		if (is_left == false)

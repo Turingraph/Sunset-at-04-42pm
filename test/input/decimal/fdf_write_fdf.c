@@ -33,11 +33,11 @@ int	main(void)
 	i = 0;
 	while (i < max_score)
 	{
-		fdf_file = debug_fdf_load_arr(arr[i], src_dir, parse_decimal_bw);
+		fdf_file = debug_fdf_load(arr[i], src_dir, FDF_FORMAT_DECIMAL_BW);
 		clone_examples = debug_load_file(arr[i], dst_dir, FILE_WRITE);
 		if (clone_examples > -1)
 		{
-			write_load_decimal(clone_examples, &fdf_file, 1, FDF_FORMAT_DECIMAL_BW);
+			write_fdf_load(clone_examples, &fdf_file, FDF_FORMAT_DECIMAL_BW);
 			if (assert_file(arr[i], arr[i], src_dir, dst_dir) == true)
 				score += 1;
 			else

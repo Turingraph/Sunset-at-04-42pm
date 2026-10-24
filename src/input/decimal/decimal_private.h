@@ -12,10 +12,11 @@ size_t	write_int(int n, int fd, const char *base, size_t digits);
 
 t_fdf_load	parse_decimal(char *line, bool is_rgba);
 
-// parse.c
+// public.c
 
-t_fdf_load	parse_decimal_rgba(char *line);
-t_fdf_load	parse_decimal_bw(char *line);
+t_fdf_load_arr	fetch_fdf_load(int fd, t_fdf_format format);
+t_fdf_load_arr	debug_fdf_load(const char *file_name,
+					const char *dir, t_fdf_format format);
 
 // rgba.c
 
@@ -28,9 +29,8 @@ char	is_a_in_str(char s, const char *space);
 size_t	str_length(const char *str);
 void	warn_fdf_load(const t_fdf_load *src, size_t i);
 
-// write_decimal.c
+// write.c
 
-void	write_load_decimal(int fd,
-		const t_fdf_load_arr *src, size_t digits, t_fdf_format mode);
+void	write_fdf_load(int fd, const t_fdf_load_arr *src, t_fdf_format format);
 
 #endif

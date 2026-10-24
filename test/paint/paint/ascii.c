@@ -78,12 +78,12 @@ int	main(void)
 		output = debug_load_file(arr[i], dst, FILE_WRITE);
 		file_name = concat_str(src, arr[i]);
 		table_a = load_fdf_table(file_name,
-				parse_ascii_chungaloider, true);
+				FDF_FORMAT_ASCII_C, true);
 		free(file_name);
         color_cells_gradient(&table_a, init_gradient(), true);
         color_cells_gradient(&table_a, init_gradient_2(), true);
 		scale_fdf_table(&table_a, 1.0 / 3.0, FDF_RED);
-		write_table_ascii_standard(output, &table_a, FDF_RED);
+		write_fdf_table(output, &table_a, FDF_RED, FDF_FORMAT_ASCII_B);
 		destroy_fdf_table(&table_a);
 		i += 1;
 	}

@@ -18,7 +18,7 @@ static void	write_with_paint_space(float scale, const char *file_name,
 	if (scale > 0)
 		scale_fdf_table(table, scale, FDF_HEIGHT);
 	paint_space(table, FDF_HEIGHT, cell_metric);
-	write_table_ascii_standard(output, table, FDF_HEIGHT);
+	write_fdf_table(output, table, FDF_HEIGHT, FDF_FORMAT_ASCII_B);
 	close(output);
 }
 

@@ -19,29 +19,16 @@
 
 // all_files.c
 
-t_fdf_load_arr	debug_fdf_load_arr(const char *file_name, const char *dir,
+t_fdf_load_arr	debug_fdf_load_helper(const char *file_name, const char *dir,
 					t_fdf_load (*parse_line)(char *line));
 
 // ascii.c
+
+size_t			str_length(const char *str);
 char			ascii_to_mirror(char a, bool is_left);
 
 // init.c
 
 void			destroy_fdf_load_arr(t_fdf_load_arr *src);
-
-// parse.c
-
-t_fdf_load		parse_ascii_cheche01(char *line);
-t_fdf_load		parse_ascii_standard(char *line);
-t_fdf_load		parse_ascii_chungaloider(char *line);
-
-// write_ascii.c
-
-void			write_load_cheche01(int fd,
-					const t_fdf_load_arr *src);
-void			write_load_standard(int fd,
-					const t_fdf_load_arr *src);
-void			write_load_chungaloider(int fd,
-					const t_fdf_load_arr *src);
 
 #endif

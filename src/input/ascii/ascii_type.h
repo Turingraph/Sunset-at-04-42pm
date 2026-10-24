@@ -34,7 +34,17 @@ typedef enum t_fdf_format
 	// WRITE_JPG
 }	t_fdf_format;
 
+# ifndef DICT_ASCII_A
+#  define DICT_ASCII_A " `'.,:_-;~!^\"\\|)rvcilj+xnzt>=]*?}17JTC23%Yoyhk4$5IF&XVUGZEwemqdgPKO980DQRHNB#WM@"
+# endif
 
+# ifndef DICT_ASCII_B
+#  define DICT_ASCII_B " .'`^\",:;Il!i>~+_-?]}1)|\\tjrxnvcz=7T23y45FXYUJCQ0OZmwqdkhoVGEegP*#MW&8%K9DRHNB@$"
+# endif
+
+# ifndef DICT_ASCII_C
+#  define DICT_ASCII_C " `.-~'\":_,^=;>+!rc*\\z?TvJ7)|FiC}I31tlneoZ5Yxjy]2EwqkPh9d4VOGUKXHm8RD#$Bg0MNWQ%&@"
+# endif
 
 /**
  * Describes the parsing status of a loaded FDF value.

@@ -105,7 +105,7 @@ bool	isvalid_fdf_load_arr(t_fdf_load_arr *src, int i)
 /**
  * Load an FDF file based on the file descriptor
  * and parse its lines into a t_fdf_load_arr.
- * This function is used with load_fdf_table from src/input/table/public.c
+ * This function is used with fetch_fdf_load from src/input/table/public.c
  * 
  * time/space: O(n) / O(n)
  * 
@@ -115,7 +115,7 @@ bool	isvalid_fdf_load_arr(t_fdf_load_arr *src, int i)
  * @param parse_line function used to parse each input line
  * @return loaded data input array as t_fdf_load_arr
  */
-t_fdf_load_arr	fetch_fdf_load_arr(int fd,
+t_fdf_load_arr	fetch_fdf_load_helper(int fd,
 	t_fdf_load (*parse_line)(char *line))
 {
 	t_fdf_load_arr	dst;
@@ -162,13 +162,13 @@ t_fdf_load_arr	fetch_fdf_load_arr(int fd,
  * 
  * @see see: src/input/load/parse.c
  */
-t_fdf_load_arr	debug_fdf_load_arr(const char *file_name, const char *dir,
+t_fdf_load_arr	debug_fdf_load_helper(const char *file_name, const char *dir,
 		t_fdf_load (*parse_line)(char *line))
 {
 	int		dst;
 
 	if (dir == NULL || *dir == '\0')
-		return (fetch_fdf_load_arr(open(file_name, O_RDONLY), parse_line));
+		return (fetch_fdf_load_helper(open(file_name, O_RDONLY), parse_line));
 	dst = debug_load_file(file_name, dir, FILE_READ);
-	return (fetch_fdf_load_arr(dst, parse_line));
+	return (fetch_fdf_load_helper(dst, parse_line));
 }

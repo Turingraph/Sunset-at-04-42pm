@@ -77,7 +77,7 @@ int	main(void)
 		output = debug_load_file(arr_dst[i], dst, FILE_WRITE);
 		char	*file_name = concat_str(src, arr_src[i]);
 		table_a = load_fdf_table(file_name,
-				parse_ascii_chungaloider, true);
+				FDF_FORMAT_ASCII_C, true);
 		free(file_name);
         color_cells_gradient(&table_a, init_gradient(), true);
 		write_fdf_table(output, &table_a, 1, FDF_FORMAT_DECIMAL_RGBA);

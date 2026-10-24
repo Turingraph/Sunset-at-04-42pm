@@ -13,21 +13,6 @@ char	is_a_in_str(char s, const char *space)
 	return (0);
 }
 
-// time : O(n)
-// space: O(1)
-size_t	str_length(const char *str)
-{
-	size_t	i;
-
-	i = 0;
-	while (str != NULL && *str != '\0')
-	{
-		i += 1;
-		str += 1;
-	}
-	return (i);
-}
-
 // time : O(1)
 // space: O(1)
 void	warn_fdf_load(const t_fdf_load *src, size_t i)

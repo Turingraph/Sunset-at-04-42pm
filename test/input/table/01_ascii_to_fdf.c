@@ -89,7 +89,7 @@ int	main(void)
 	while (i < length)
 	{
 		char *file_name = concat_str(src_dir, arr[i]);
-		table = load_fdf_table(file_name, parse_ascii_standard, false);
+		table = load_fdf_table(file_name, FDF_FORMAT_ASCII_B, false);
 		free(file_name);
 		positive_fdf_table(&table);
 		fdf_dst = debug_load_file(arrdst[i], dst_dir, FILE_WRITE);

@@ -67,7 +67,7 @@ int	main(void)
 	while (i < length)
 	{
 		char *file_name = concat_str(src_dir, arr[i]);
-		table = load_fdf_table(file_name, parse_decimal_bw, false);
+		table = load_fdf_table(file_name, FDF_FORMAT_DECIMAL_BW, false);
 		free(file_name);
 		positive_fdf_table(&table);
 		fdf_dst = debug_load_file(arrdst[i], dst_dir, FILE_WRITE);
@@ -77,7 +77,7 @@ int	main(void)
 			write(1, arr[i], str_length(arr[i]));
 			write(1, " ***\n", 5);
 			write_fdf_table(1, &table, 3, FDF_FORMAT_DECIMAL_BW);
-			write_table_ascii_cheche01(fdf_dst, &table, FDF_HEIGHT);
+			write_fdf_table(fdf_dst, &table, FDF_HEIGHT, FDF_FORMAT_ASCII_A);
 		}
 		else
 			write_file_not_exists(arr[i]);

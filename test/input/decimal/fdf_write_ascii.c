@@ -52,11 +52,11 @@ int	main(void)
 	i = 0;
 	while (i < max_score)
 	{
-		fdf_file = debug_fdf_load_arr(arr[i], src_dir, parse_ascii_cheche01);
+		fdf_file = debug_fdf_load(arr[i], src_dir, FDF_FORMAT_ASCII_A);
 		clone_examples = debug_load_file(arr[i], dst_dir, FILE_WRITE);
 		if (clone_examples > -1)
 		{
-			write_load_cheche01(clone_examples, &fdf_file);
+			write_fdf_load(clone_examples, &fdf_file, FDF_FORMAT_ASCII_A);
 			if (assert_file_ascii(arr[i], arr[i], src_dir, dst_dir) == true)
 				score += 1;
 			else

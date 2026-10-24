@@ -20,20 +20,19 @@
  * status: public api
  * 
  * @param file_name the input file
- * @param one_line loading style, including parse_ascii_standard for
- * loading file as ASCII art, parse_decimal_rgba as colorful Fdf file etc.
+ * @param format the input format (with type t_fdf_format).
  * @param is_rgba if is_rgba == true, then the program using malloc 
  * for initializing rgba color.
  * @return return the array that contains rgba and height of the height map.
  * @see src/input/load/parse.c
  */
 t_fdf_table	load_fdf_table(const char *file_name,
-	t_fdf_load (*one_line)(char *line), bool is_rgba)
+	t_fdf_format format, bool is_rgba)
 {
 	t_fdf_table		dst;
 	t_fdf_load_arr	src;
 
-	src = fetch_fdf_load_arr(open(file_name, O_RDONLY), one_line);
+	src = fetch_fdf_load(open(file_name, O_RDONLY), format);
 	if (isvalid_fdf_load_arr(&src, (int)src.length - 1) == false)
 	{
 		destroy_fdf_load_arr(&src);

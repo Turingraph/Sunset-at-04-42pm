@@ -31,7 +31,7 @@ void			relu_fdf_table(t_fdf_table *dst, int min, int max, int expect);
 // public.c
 
 t_fdf_table		load_fdf_table(const char *file_name,
-					t_fdf_load (*one_line)(char *line), bool is_rgba);
+					t_fdf_format format, bool is_rgba);
 
 // scale_dimension.c
 
@@ -55,18 +55,9 @@ void			mix_hadamard_fdf_table(t_fdf_table *dst,
 void			copy_fdf_table_channel(t_fdf_table *dst,
 					const t_fdf_table *src, t_fdf_channel channel);
 
-// shade.c
-
-void			write_table_ascii_cheche01(int fd,
-					const t_fdf_table *src, t_fdf_channel channel);
-void			write_table_ascii_standard(int fd,
-					const t_fdf_table *src, t_fdf_channel channel);
-void			write_table_ascii_chungaloider(int fd,
-					const t_fdf_table *src, t_fdf_channel channel);
-
 // write.c
 
-void			write_fdf_table(int fd,
-					const t_fdf_table *src, size_t digits, t_fdf_format mode);
+void	write_fdf_table(int fd, const t_fdf_table *src,
+			t_fdf_channel channel, t_fdf_format format);
 
 #endif

@@ -8,10 +8,9 @@
 int		str_to_int(const char *src, bool *is_int, const char *base, size_t digits);
 size_t	write_int(int n, int fd, const char *base, size_t digits);
 
-// parse.c
+// public.c
 
-t_fdf_load	parse_decimal_rgba(char *line);
-t_fdf_load	parse_decimal_bw(char *line);
+t_fdf_load_arr	fetch_fdf_load(int fd, t_fdf_format format);
 
 // utils.c
 

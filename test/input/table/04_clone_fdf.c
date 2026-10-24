@@ -33,7 +33,7 @@ int	main(void)
 	while (i < max_score)
 	{
 		char *file_name = concat_str(src_dir, arr[i]);
-		table = load_fdf_table(file_name, parse_decimal_bw, false);
+		table = load_fdf_table(file_name, FDF_FORMAT_DECIMAL_BW, false);
 		free(file_name);
 		fdf_dst = debug_load_file(arr[i], dst_dir, FILE_WRITE);
 		if (fdf_dst > -1)

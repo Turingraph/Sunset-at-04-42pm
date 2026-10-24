@@ -56,12 +56,12 @@ int	main(void)
 	{
 		char *file_name = concat_str(src_dir, arr[i]);
 		table = load_fdf_table(file_name,
-				parse_ascii_cheche01, is_rgb);
+				FDF_FORMAT_ASCII_A, is_rgb);
 		free(file_name);
 		clone_examples = debug_load_file(arr[i], dst_dir, FILE_WRITE);
 		if (clone_examples > -1)
 		{
-			write_table_ascii_cheche01(clone_examples, &table, FDF_HEIGHT);
+			write_fdf_table(clone_examples, &table, FDF_HEIGHT, FDF_FORMAT_ASCII_A);
 			if (assert_file_ascii(arr[i], arr[i], src_dir, dst_dir) == true)
 				score += 1;
 			else

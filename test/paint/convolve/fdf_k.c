@@ -45,7 +45,7 @@ int	main(void)
 		output = debug_load_file(arr[i], dst_dir, FILE_WRITE);
 		file_name = concat_str(src_dir, arr[i]);
 		table_a = load_fdf_table(file_name,
-				parse_decimal_bw, false);
+				FDF_FORMAT_DECIMAL_BW, false);
 		free(file_name);
 		table_b = convolve_fdf(&table_a, NULL, half_dim);
 		write_fdf_table(output, &table_b, 1, FDF_FORMAT_DECIMAL_BW);

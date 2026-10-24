@@ -37,10 +37,10 @@ int	main(void)
 		output = debug_load_file(arr[i], dst_dir, FILE_WRITE);
 		char *file_name = concat_str(src_dir, arr[i]);
 		table_a = load_fdf_table(file_name,
-				parse_ascii_cheche01, false);
+				FDF_FORMAT_ASCII_A, false);
 		free(file_name);
 		table_b = scale_dimension_fdf(&table_a, 3, 3);
-		write_table_ascii_cheche01(output, &table_b, FDF_HEIGHT);
+		write_fdf_table(output, &table_b, FDF_HEIGHT, FDF_FORMAT_ASCII_A);
 		destroy_fdf_table(&table_a);
 		destroy_fdf_table(&table_b);
 		i += 1;

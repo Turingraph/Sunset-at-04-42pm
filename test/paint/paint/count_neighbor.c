@@ -58,7 +58,7 @@ int	main(void)
 	
 	// a
 	file_name = concat_str(input_dir, file_a);
-	table = load_fdf_table(file_name, parse_decimal_bw, false);
+	table = load_fdf_table(file_name, FDF_FORMAT_DECIMAL_BW, false);
 	free(file_name);
 	paint_space(&table, FDF_HEIGHT, conway_test);
 	paint_space(&table, FDF_HEIGHT, cell_metric_positive);
@@ -74,7 +74,7 @@ int	main(void)
 
 	// b
 	file_name = concat_str(input_dir, file_b);
-	table = load_fdf_table(file_name, parse_decimal_bw, false);
+	table = load_fdf_table(file_name, FDF_FORMAT_DECIMAL_BW, false);
 	free(file_name);
 	paint_space(&table, FDF_HEIGHT, conway_test);
 	paint_space(&table, FDF_HEIGHT, cell_metric_positive);
@@ -89,7 +89,7 @@ int	main(void)
 
 	// c
 	file_name = concat_str(input_dir, file_c);
-	table = load_fdf_table(file_name, parse_decimal_bw, false);
+	table = load_fdf_table(file_name, FDF_FORMAT_DECIMAL_BW, false);
 	free(file_name);
 	paint_space(&table, FDF_HEIGHT, conway_test);
 	paint_space(&table, FDF_HEIGHT, cell_metric_positive);

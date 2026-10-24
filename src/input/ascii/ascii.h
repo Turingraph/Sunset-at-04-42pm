@@ -24,6 +24,7 @@ Note that
 
 // ascii.c
 
+size_t			str_length(const char *str);
 void			write_ascii(int fd, int cell, const char *dict,
 					bool is_left);
 
@@ -31,16 +32,11 @@ void			write_ascii(int fd, int cell, const char *dict,
 
 void			destroy_fdf_load_arr(t_fdf_load_arr *src);
 
-// parse.c
-
-t_fdf_load		parse_ascii_cheche01(char *line);
-t_fdf_load		parse_ascii_standard(char *line);
-t_fdf_load		parse_ascii_chungaloider(char *line);
-
 // public.c
 
 bool			isvalid_fdf_load_arr(t_fdf_load_arr *src, int i);
-t_fdf_load_arr	fetch_fdf_load_arr(int fd,
+t_fdf_load_arr	fetch_fdf_load_helper(int fd,
 					t_fdf_load (*parse_line)(char *line));
-
+t_fdf_load_arr	debug_fdf_load_helper(const char *file_name, const char *dir,
+					t_fdf_load (*parse_line)(char *line));
 #endif

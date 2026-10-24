@@ -57,7 +57,7 @@ int	main(void)
 
 	// a
 	file_name = concat_str(input_dir, file_a);
-	table = load_fdf_table(file_name, parse_decimal_bw, false);
+	table = load_fdf_table(file_name, FDF_FORMAT_DECIMAL_BW, false);
 	free(file_name);
 	set_cells_color(&table, 99, FDF_HEIGHT, boundary_test);
 	if (table.col * table.row == length_a
@@ -67,7 +67,7 @@ int	main(void)
 
 	// b
 	file_name = concat_str(input_dir, file_b);
-	table = load_fdf_table(file_name, parse_decimal_bw, false);
+	table = load_fdf_table(file_name, FDF_FORMAT_DECIMAL_BW, false);
 	free(file_name);
 	set_cells_color(&table, 99, FDF_HEIGHT, boundary_test);
 	if (table.col * table.row == length_b
@@ -77,7 +77,7 @@ int	main(void)
 
 	// c
 	file_name = concat_str(input_dir, file_c);
-	table = load_fdf_table(file_name, parse_decimal_bw, false);
+	table = load_fdf_table(file_name, FDF_FORMAT_DECIMAL_BW, false);
 	free(file_name);
 	set_cells_color(&table, 99, FDF_HEIGHT, boundary_test);
 	if (table.col * table.row == length_c

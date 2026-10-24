@@ -242,9 +242,9 @@ int	main(void)
 		{
 			char *file_name = concat_str(src_dir, arr[i].file_name);
 			if (k % 2 == 0)
-				table = load_fdf_table(file_name, parse_decimal_bw, false);
+				table = load_fdf_table(file_name, FDF_FORMAT_DECIMAL_BW, false);
 			else
-				table = load_fdf_table(file_name, parse_decimal_rgba, true);
+				table = load_fdf_table(file_name, FDF_FORMAT_DECIMAL_RGBA, true);
 			free(file_name);
 			if (table.row * table.col == arr[i].length && table.arr != NULL
 				&& assert_intarr(table.arr, arr[i].arr[0].arr, arr[i].length) == true)

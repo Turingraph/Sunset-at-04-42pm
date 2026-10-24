@@ -48,7 +48,7 @@ int	main(int len, char **str)
 
 	if (len < 2)
 		return (0);
-	table = load_fdf_table(str[1], parse_ascii_cheche01, true);
+	table = load_fdf_table(str[1], FDF_FORMAT_ASCII_A, true);
 	if (table.col * table.row == 0)
 	{
 		destroy_fdf_table(&table);
