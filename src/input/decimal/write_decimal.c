@@ -15,7 +15,7 @@
 // time : O(n)
 // space: O(n)
 static void	write_load_decimal_unit(int fd, const t_fdf_load *src,
-		size_t digits, t_fdf_write_mode mode)
+		size_t digits, t_fdf_format mode)
 {
 	size_t	i;
 
@@ -23,7 +23,7 @@ static void	write_load_decimal_unit(int fd, const t_fdf_load *src,
 	while (src != NULL && src->arr != NULL && i < src->length)
 	{
 		write_int(src->arr[i], fd, "0123456789", digits);
-		if (mode == WRITE_HEX_RGB || mode == WRITE_HEX_RGBA)
+		if (mode == FDF_FORMAT_DECIMAL_RGBA)
 		{
 			write(fd, ",0x", 3);
 			if (src->r != NULL)
@@ -32,9 +32,9 @@ static void	write_load_decimal_unit(int fd, const t_fdf_load *src,
 				write_int((int)src->g[i], fd, "0123456789abcdef", 2);
 			if (src->b != NULL)
 				write_int((int)src->b[i], fd, "0123456789abcdef", 2);
+			if (src->a != NULL)
+				write_int((int)src->a[i], fd, "0123456789abcdef", 2);
 		}
-		if (mode == WRITE_HEX_RGBA && src->a != NULL)
-			write_int((int)src->a[i], fd, "0123456789abcdef", 2);
 		write(fd, "\t", 1);
 		i += 1;
 	}
@@ -44,7 +44,7 @@ static void	write_load_decimal_unit(int fd, const t_fdf_load *src,
 // time : O(n)
 // space: O(n)
 void	write_load_decimal(int fd,
-		const t_fdf_load_arr *src, size_t digits, t_fdf_write_mode mode)
+		const t_fdf_load_arr *src, size_t digits, t_fdf_format mode)
 {
 	size_t	i;
 

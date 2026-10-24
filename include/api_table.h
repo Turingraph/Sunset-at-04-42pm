@@ -142,25 +142,25 @@ int				debug_load_file(const char *file_name,
  * Defines the writing mode used when serializing FDF data as fdf file as text
  * file with decimal numbers.
  *
- * - WRITE_DECIMAL_HEIGHT writes only the height value of each FDF cell.
+ * - FDF_FORMAT_DECIMAL_BW writes only the height value of each FDF cell.
  *
- * - WRITE_HEX_RGBA writes the height value together with a full RGBA color.
+ * - FDF_FORMAT_DECIMAL_RGBA writes the height value together with a full RGBA color.
  *
- * - WRITE_HEX_RGB writes the height value together with an RGB color,
+ * - FDF_FORMAT_DECIMAL_RGBA writes the height value together with an RGB color,
  * without an explicit alpha component.
  */
-// typedef enum t_fdf_write_mode
+// typedef enum t_fdf_format
 // {
-// 	WRITE_DECIMAL_HEIGHT,
-// 	WRITE_HEX_RGBA,
-// 	WRITE_HEX_RGB
-// }	t_fdf_write_mode;
-typedef enum t_fdf_write_mode
+// 	FDF_FORMAT_DECIMAL_BW,
+// 	FDF_FORMAT_DECIMAL_RGBA,
+// 	FDF_FORMAT_DECIMAL_RGBA
+// }	t_fdf_format;
+typedef enum t_fdf_format
 {
-	WRITE_DECIMAL_HEIGHT,
-	WRITE_HEX_RGBA,
-	WRITE_HEX_RGB
-}	t_fdf_write_mode;
+	FDF_FORMAT_DECIMAL_BW,
+	FDF_FORMAT_DECIMAL_RGBA,
+	FDF_FORMAT_DECIMAL_RGBA
+}	t_fdf_format;
 
 /**
  * Describes the parsing status of a loaded FDF value.
@@ -454,6 +454,6 @@ void			write_table_ascii_chungaloider(int fd,
  * @param mode output format
  */
 void			write_fdf_table(int fd,
-					const t_fdf_table *src, size_t digits, t_fdf_write_mode mode);
+					const t_fdf_table *src, size_t digits, t_fdf_format mode);
 
 #endif

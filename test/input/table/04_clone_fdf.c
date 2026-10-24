@@ -38,7 +38,7 @@ int	main(void)
 		fdf_dst = debug_load_file(arr[i], dst_dir, FILE_WRITE);
 		if (fdf_dst > -1)
 		{
-			write_fdf_table(fdf_dst, &table, 1, WRITE_DECIMAL_HEIGHT);
+			write_fdf_table(fdf_dst, &table, 1, FDF_FORMAT_DECIMAL_BW);
 			if (assert_file(arr[i], arr[i], src_dir, dst_dir) == true)
 				score += 1;
 			else

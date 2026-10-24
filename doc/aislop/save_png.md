@@ -202,15 +202,15 @@ This separation has several advantages:
 Your existing enum could then select an output format:
 
 ```
-typedef enum t_fdf_write_mode
+typedef enum t_fdf_format
 {
-	WRITE_DECIMAL_HEIGHT,
-	WRITE_HEX_RGBA,
-	WRITE_HEX_RGB,
+	FDF_FORMAT_DECIMAL_BW,
+	FDF_FORMAT_DECIMAL_RGBA,
+	FDF_FORMAT_DECIMAL_RGBA,
 	WRITE_ASCII,
 	WRITE_PNG,
 	WRITE_JPG
-}	t_fdf_write_mode;
+}	t_fdf_format;
 ```
 
 One architectural detail is worth considering: the first four modes serialize FDF data, while the last two export rendered images.

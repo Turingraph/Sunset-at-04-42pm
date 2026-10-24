@@ -17,6 +17,6 @@ size_t			str_length(const char *str);
 // write_decimal.c
 
 void			write_load_decimal(int fd, const t_fdf_load_arr *src,
-					size_t digits, t_fdf_write_mode write_style);
+					size_t digits, t_fdf_format write_style);
 
 #endif

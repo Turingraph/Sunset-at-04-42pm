@@ -13,7 +13,7 @@
 #ifndef PROJ2D_H
 # define PROJ2D_H
 
-# include "../raster/raster.h"
+# include "../../utils/taylor/taylor.h"
 # include "../../input/table/table.h"
 
 /**

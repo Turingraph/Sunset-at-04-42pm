@@ -67,6 +67,6 @@ void			write_table_ascii_chungaloider(int fd,
 // write.c
 
 void			write_fdf_table(int fd,
-					const t_fdf_table *src, size_t digits, t_fdf_write_mode mode);
+					const t_fdf_table *src, size_t digits, t_fdf_format mode);
 
 #endif

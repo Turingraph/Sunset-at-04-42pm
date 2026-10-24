@@ -31,6 +31,6 @@ void	warn_fdf_load(const t_fdf_load *src, size_t i);
 // write_decimal.c
 
 void	write_load_decimal(int fd,
-		const t_fdf_load_arr *src, size_t digits, t_fdf_write_mode mode);
+		const t_fdf_load_arr *src, size_t digits, t_fdf_format mode);
 
 #endif

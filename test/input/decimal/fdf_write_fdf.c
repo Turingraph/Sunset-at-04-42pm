@@ -37,7 +37,7 @@ int	main(void)
 		clone_examples = debug_load_file(arr[i], dst_dir, FILE_WRITE);
 		if (clone_examples > -1)
 		{
-			write_load_decimal(clone_examples, &fdf_file, 1, WRITE_DECIMAL_HEIGHT);
+			write_load_decimal(clone_examples, &fdf_file, 1, FDF_FORMAT_DECIMAL_BW);
 			if (assert_file(arr[i], arr[i], src_dir, dst_dir) == true)
 				score += 1;
 			else

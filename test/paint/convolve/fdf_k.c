@@ -48,7 +48,7 @@ int	main(void)
 				parse_decimal_bw, false);
 		free(file_name);
 		table_b = convolve_fdf(&table_a, NULL, half_dim);
-		write_fdf_table(output, &table_b, 1, WRITE_DECIMAL_HEIGHT);
+		write_fdf_table(output, &table_b, 1, FDF_FORMAT_DECIMAL_BW);
 		destroy_fdf_table(&table_a);
 		destroy_fdf_table(&table_b);
 		i += 1;

@@ -31,7 +31,7 @@ int	main(void)
 		table = load_fdf_table(file_name,
 				parse_decimal_bw, false);
 		free(file_name);
-		write_fdf_table(1, &table, 1, WRITE_DECIMAL_HEIGHT);
+		write_fdf_table(1, &table, 1, FDF_FORMAT_DECIMAL_BW);
 		if (table.col * table.row == 0)
 			score += 1;
 		else

@@ -14,6 +14,7 @@
 # define DISPLAY_TYPE_H
 
 # include "../proj2d/proj2d.h"
+# include "../raster/raster.h"
 
 /**
  * 2D camera describing the visible portion of a rendered object.

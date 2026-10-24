@@ -69,7 +69,7 @@ int	main(void)
 		y += 1;
 	else
 		write(1, "a false\n", 8);
-	// write_fdf_table(1, &table, 1, WRITE_DECIMAL_HEIGHT);
+	// write_fdf_table(1, &table, 1, FDF_FORMAT_DECIMAL_BW);
 	destroy_fdf_table(&table);
 
 	// b

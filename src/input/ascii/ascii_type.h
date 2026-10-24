@@ -19,24 +19,22 @@
  * Defines the writing mode used when serializing FDF data as fdf file as text
  * file with decimal numbers.
  *
- * - WRITE_DECIMAL_HEIGHT writes only the height value of each FDF cell.
+ * - FDF_FORMAT_DECIMAL_BW writes only the height value of each FDF cell.
  *
- * - WRITE_HEX_RGBA writes the height value together with a full RGBA color.
- *
- * - WRITE_HEX_RGB writes the height value together with an RGB color,
- * without an explicit alpha component.
+ * - FDF_FORMAT_DECIMAL_RGBA writes the height value together with a full RGBA color.
  */
-typedef enum t_fdf_write_mode
+typedef enum t_fdf_format
 {
-	WRITE_DECIMAL_HEIGHT,
-	WRITE_HEX_RGBA,
-	WRITE_HEX_RGB,
-	// WRITE_ASCII_A,
-	// WRITE_ASCII_B,
-	// WRITE_ASCII_C,
+	FDF_FORMAT_DECIMAL_BW,
+	FDF_FORMAT_DECIMAL_RGBA,
+	FDF_FORMAT_ASCII_A,
+	FDF_FORMAT_ASCII_B,
+	FDF_FORMAT_ASCII_C,
 	// WRITE_PNG,
 	// WRITE_JPG
-}	t_fdf_write_mode;
+}	t_fdf_format;
+
+
 
 /**
  * Describes the parsing status of a loaded FDF value.

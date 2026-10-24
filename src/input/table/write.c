@@ -47,7 +47,7 @@ void	write_rgba_fdf(int fd, const t_fdf_table *src, size_t index)
  * @param mode output format
  */
 void	write_fdf_table(int fd, const t_fdf_table *src,
-	size_t digits, t_fdf_write_mode mode)
+	size_t digits, t_fdf_format mode)
 {
 	size_t	i;
 	size_t	j;
@@ -61,12 +61,12 @@ void	write_fdf_table(int fd, const t_fdf_table *src,
 		while (j < src->col)
 		{
 			write_int(src->arr[src->col * i + j], fd, "0123456789", digits);
-			if (mode == WRITE_HEX_RGB || mode == WRITE_HEX_RGBA)
+			if (mode == FDF_FORMAT_DECIMAL_RGBA || mode == FDF_FORMAT_DECIMAL_RGBA)
 				write_rgba_fdf(fd, src, src->col * i + j);
-			if (src->a != NULL && mode == WRITE_HEX_RGBA)
+			if (src->a != NULL && mode == FDF_FORMAT_DECIMAL_RGBA)
 				write_int((int)src->a[src->col * i + j],
 					fd, "0123456789abcdef", 2);
-			else if (src->a == NULL && mode == WRITE_HEX_RGBA)
+			else if (src->a == NULL && mode == FDF_FORMAT_DECIMAL_RGBA)
 				write(fd, "00", 2);
 			write(fd, "\t", 1);
 			j += 1;

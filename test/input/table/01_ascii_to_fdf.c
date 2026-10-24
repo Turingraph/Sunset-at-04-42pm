@@ -98,8 +98,8 @@ int	main(void)
 			write(1, "\n*** ", 5);
 			write(1, arr[i], str_length(arr[i]));
 			write(1, " ***\n", 5);
-			write_fdf_table(1, &table, 3, WRITE_DECIMAL_HEIGHT);
-			write_fdf_table(fdf_dst, &table, 1, WRITE_DECIMAL_HEIGHT);
+			write_fdf_table(1, &table, 3, FDF_FORMAT_DECIMAL_BW);
+			write_fdf_table(fdf_dst, &table, 1, FDF_FORMAT_DECIMAL_BW);
 		}
 		else
 			write_file_not_exists(arr[i]);
