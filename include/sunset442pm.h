@@ -779,7 +779,7 @@ void			write_fdf_table(int fd,
  * @see 3B1B convolution video https://youtu.be/KuXjwB4LzSA?si=9DNIvf9SS2SX4jET
  * for more details
  */
-t_fdf_table	convolve_fdf(const t_fdf_table *src, float *kernel,
+t_fdf_table	convolve_fdf_table(const t_fdf_table *src, float *kernel,
 				size_t dim);
 
 /**
@@ -792,7 +792,7 @@ t_fdf_table	convolve_fdf(const t_fdf_table *src, float *kernel,
  * @return allocated 1D kernel with 2 * half_dim + 1 items,
  * or NULL if allocation fails
  */
-float	*gaussian_kernel1d(size_t half_dim, float std);
+float	*kernel_gauss1d(size_t half_dim, float std);
 
 /**
  * Create a 2D Blur Gaussian kernel from two 1D Gaussian kernels.
@@ -809,7 +809,7 @@ float	*gaussian_kernel1d(size_t half_dim, float std);
  * @see 3B1B convolution video https://youtu.be/KuXjwB4LzSA?si=9DNIvf9SS2SX4jET
  *  for more details
  */
-float	*gaussian_kernel(size_t half_dim, float std_1, float std_2);
+float	*kernel_gauss(size_t half_dim, float std_1, float std_2);
 
 /**
  * Create a 1D kernel with an inner region and an outer region.
@@ -825,7 +825,7 @@ float	*gaussian_kernel(size_t half_dim, float std_1, float std_2);
  * @param outer_num value utilized by the outer region.
  * @return allocated 1D kernel, or NULL if allocation fails
  */
-float	*edge_kernel1d(size_t inner_dim, size_t outer_dim,
+float	*kernel_edge1d(size_t inner_dim, size_t outer_dim,
 	float inner_num, float outer_num);
 
 /**
@@ -858,7 +858,7 @@ float	init_outer_num(float inner_dim, float outer_dim, float input, float kernel
  * @see Image convolution tutorial https://www.youtube.com/live/8rrHTtUzyZA?si=UZVlq0cpb2X95MZN
  * for more details.
  */
-float	*edge_kernel(size_t inner_dim, size_t outer_dim, float input, float kernel_sum);
+float	*kernel_edge(size_t inner_dim, size_t outer_dim, float input, float kernel_sum);
 
 /* ************************************************************************** */
 /* *** src/paint/evenodd/ *** */
@@ -895,7 +895,7 @@ size_t		binary_search_count(size_t min_input, size_t max_input);
  * @return true if the binary-search iteration count is odd,
  * false otherwise.
  */
-bool		is_binary_search_length_odd(const t_fdf_table *dst, size_t index);
+bool		spots_oddlength_bisearch(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether the number of iterations of a binary-search procedure
@@ -916,7 +916,7 @@ bool		is_binary_search_length_odd(const t_fdf_table *dst, size_t index);
  * @return true if the binary-search iteration count is odd,
  * false otherwise.
  */
-bool		is_binary_search_product_odd(const t_fdf_table *dst, size_t index);
+bool		spots_oddtime_bisearch(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether the number of iterations of a binary-search procedure
@@ -931,7 +931,7 @@ bool		is_binary_search_product_odd(const t_fdf_table *dst, size_t index);
  * @return true if the scaled maximum Collatz point is odd,
  * false otherwise.
  */
-bool		is_binary_search_andmod(const t_fdf_table *dst, size_t index);
+bool		spots_andmod_bisearch(const t_fdf_table *dst, size_t index);
 
 /**
  * Find the maximum value reached by the Collatz sequence of an input.
@@ -955,7 +955,7 @@ size_t		collatz_max_point(size_t x);
  * @return true if the scaled maximum Collatz point is odd,
  * false otherwise.
  */
-bool		is_collatz_odd_length(const t_fdf_table *dst, size_t index);
+bool		spots_oddlength_collatz(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether the maximum point of the Collatz sequence generated
@@ -970,7 +970,7 @@ bool		is_collatz_odd_length(const t_fdf_table *dst, size_t index);
  * @return true if the scaled maximum Collatz point is odd,
  * false otherwise.
  */
-bool		is_collatz_odd_product(const t_fdf_table *dst, size_t index);
+bool		spots_oddtime_collatz(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether the maximum point of the Collatz sequence generated
@@ -985,7 +985,7 @@ bool		is_collatz_odd_product(const t_fdf_table *dst, size_t index);
  * @return true if the scaled maximum Collatz point is odd,
  * false otherwise.
  */
-bool		is_collatz_odd_andmod(const t_fdf_table *dst, size_t index);
+bool		spots_andmod_collatz(const t_fdf_table *dst, size_t index);
 
 /**
  * Compute z' = complex_func(the complex coordinate of the cell).
@@ -1004,7 +1004,7 @@ bool		is_collatz_odd_andmod(const t_fdf_table *dst, size_t index);
  * @return true if the rounded calculated value is odd,
  * false otherwise.
  */
-bool		is_re2_diff_im2_odd_func(const t_fdf_table *dst, size_t index,
+bool		spots_diffreim2odd_func(const t_fdf_table *dst, size_t index,
 				t_float2d (*complex_func)(t_float2d a), float zoom);
 
 /**
@@ -1019,7 +1019,7 @@ bool		is_re2_diff_im2_odd_func(const t_fdf_table *dst, size_t index,
  * @return true if the rounded calculated value is odd,
  * false otherwise.
  */
-bool		is_re2_diff_im2_odd(const t_fdf_table *dst, size_t index);
+bool		spots_diffreim2odd(const t_fdf_table *dst, size_t index);
 
 /**
  * Compute z' = complex_func(the complex coordinate of the cell).
@@ -1038,7 +1038,7 @@ bool		is_re2_diff_im2_odd(const t_fdf_table *dst, size_t index);
  * @return true if the rounded coordinate magnitude is odd,
  * false otherwise.
  */
-bool		is_oddlength_func(const t_fdf_table *dst, size_t index,
+bool		spots_oddlength_func(const t_fdf_table *dst, size_t index,
 				t_float2d (*complex_func)(t_float2d a), float zoom);
 
 /**
@@ -1055,7 +1055,7 @@ bool		is_oddlength_func(const t_fdf_table *dst, size_t index,
  * @return true if the rounded coordinate magnitude is odd,
  * false otherwise.
  */
-bool		is_oddlength(const t_fdf_table *dst, size_t index);
+bool		spots_oddlength(const t_fdf_table *dst, size_t index);
 
 /**
  * Compute z' = complex_func(the complex coordinate of the cell).
@@ -1073,7 +1073,7 @@ bool		is_oddlength(const t_fdf_table *dst, size_t index);
  *
  * @return true if z.x is even and z.y is even, false otherwise.
  */
-bool		is_andmod_func(const t_fdf_table *dst, size_t index,
+bool		spots_andmod_func(const t_fdf_table *dst, size_t index,
 				t_float2d (*complex_func)(t_float2d a), float zoom);
 
 /**
@@ -1087,7 +1087,7 @@ bool		is_andmod_func(const t_fdf_table *dst, size_t index,
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool		is_oddlength_x2(const t_fdf_table *dst, size_t index);
+bool		spots_oddlength_x2(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether constant times magnitude of the cube of a cell's
@@ -1100,7 +1100,7 @@ bool		is_oddlength_x2(const t_fdf_table *dst, size_t index);
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool		is_oddlength_x3(const t_fdf_table *dst, size_t index);
+bool		spots_oddlength_x3(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether constant times magnitude of the 4-th power of a cell's
@@ -1113,7 +1113,7 @@ bool		is_oddlength_x3(const t_fdf_table *dst, size_t index);
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool		is_oddlength_x4(const t_fdf_table *dst, size_t index);
+bool		spots_oddlength_x4(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether constant times magnitude of the 5-th power of a cell's
@@ -1126,7 +1126,7 @@ bool		is_oddlength_x4(const t_fdf_table *dst, size_t index);
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool		is_oddlength_x5(const t_fdf_table *dst, size_t index);
+bool		spots_oddlength_x5(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether constant times magnitude of the 6-th power of a cell's
@@ -1139,7 +1139,7 @@ bool		is_oddlength_x5(const t_fdf_table *dst, size_t index);
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool		is_oddlength_x6(const t_fdf_table *dst, size_t index);
+bool		spots_oddlength_x6(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether the ax^2 and ay^2 of the cell is an odd value.
@@ -1151,7 +1151,7 @@ bool		is_oddlength_x6(const t_fdf_table *dst, size_t index);
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool		is_andmod_x2(const t_fdf_table *dst, size_t index);
+bool		spots_andmod_x2(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether the ax^3 and ay^3 of the cell is an odd value.
@@ -1163,7 +1163,7 @@ bool		is_andmod_x2(const t_fdf_table *dst, size_t index);
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool		is_andmod_x3(const t_fdf_table *dst, size_t index);
+bool		spots_andmod_x3(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether the ax^4 and ay^4 of the cell is an odd value.
@@ -1175,7 +1175,7 @@ bool		is_andmod_x3(const t_fdf_table *dst, size_t index);
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool		is_andmod_x4(const t_fdf_table *dst, size_t index);
+bool		spots_andmod_x4(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether the ax^5 and ay^5 of the cell is an odd value.
@@ -1187,7 +1187,7 @@ bool		is_andmod_x4(const t_fdf_table *dst, size_t index);
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool		is_andmod_x5(const t_fdf_table *dst, size_t index);
+bool		spots_andmod_x5(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether the ax^6 and ay^6 of the cell is an odd value.
@@ -1199,7 +1199,7 @@ bool		is_andmod_x5(const t_fdf_table *dst, size_t index);
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool		is_andmod_x6(const t_fdf_table *dst, size_t index);
+bool		spots_andmod_x6(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether constant times magnitude of the square of a cell's
@@ -1212,7 +1212,7 @@ bool		is_andmod_x6(const t_fdf_table *dst, size_t index);
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool		is_oddlength_x2shadow(const t_fdf_table *dst, size_t index);
+bool		spots_oddlength_x2shadow(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether constant times magnitude of the cube of a cell's
@@ -1225,7 +1225,7 @@ bool		is_oddlength_x2shadow(const t_fdf_table *dst, size_t index);
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool		is_oddlength_x3shadow(const t_fdf_table *dst, size_t index);
+bool		spots_oddlength_x3shadow(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether the ax^2 and ay^2 of the cell is an odd value.
@@ -1237,7 +1237,7 @@ bool		is_oddlength_x3shadow(const t_fdf_table *dst, size_t index);
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool	is_andmod_x2shadow(const t_fdf_table *dst, size_t index);
+bool	spots_andmod_x2shadow(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether the ax^3 and ay^3 of the cell is an odd value.
@@ -1249,7 +1249,7 @@ bool	is_andmod_x2shadow(const t_fdf_table *dst, size_t index);
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool	is_andmod_x3shadow(const t_fdf_table *dst, size_t index);
+bool	spots_andmod_x3shadow(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether the magnitude of the sin of a cell's
@@ -1262,7 +1262,7 @@ bool	is_andmod_x3shadow(const t_fdf_table *dst, size_t index);
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool		is_oddlength_sin(const t_fdf_table *dst, size_t index);
+bool		spots_oddlength_sin(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether the magnitude of the cos of a cell's
@@ -1275,7 +1275,7 @@ bool		is_oddlength_sin(const t_fdf_table *dst, size_t index);
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool		is_oddlength_cos(const t_fdf_table *dst, size_t index);
+bool		spots_oddlength_cos(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether the magnitude of the sin of a cell's
@@ -1288,7 +1288,7 @@ bool		is_oddlength_cos(const t_fdf_table *dst, size_t index);
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool		is_andmod_sin(const t_fdf_table *dst, size_t index);
+bool		spots_andmod_sin(const t_fdf_table *dst, size_t index);
 
 /**
  * Check whether the magnitude of the cos of a cell's
@@ -1301,7 +1301,7 @@ bool		is_andmod_sin(const t_fdf_table *dst, size_t index);
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool		is_andmod_cos(const t_fdf_table *dst, size_t index);
+bool		spots_andmod_cos(const t_fdf_table *dst, size_t index);
 
 /* ************************************************************************** */
 /* *** src/paint/paint/ *** */
@@ -1422,7 +1422,7 @@ bool		is_chess_fdf(const t_fdf_table *dst, size_t index);
  * @param is_filtered_cell optional callback used to select which cells
  * are modified. If NULL, every cell is modified.
  */
-void		set_cells_color(t_fdf_table *dst, int color, t_fdf_channel channel,
+void		paint_spots_fdf_table(t_fdf_table *dst, int color, t_fdf_channel channel,
 				bool (*is_filtered_cell)(const t_fdf_table *dst, size_t index));
 
 /**

@@ -13,7 +13,7 @@ int	main(void)
 	t_matrix	ker;
 
 	ker_dim = 5;
-	ker.arr = gaussian_kernel(ker_dim / 2, 1, 1);
+	ker.arr = kernel_gauss(ker_dim / 2, 1, 1);
 	write(1, ">>> ", 4);
 	write_int((int)(f_sum(ker.arr, 25) * 10000), 1, "0123456789", 1);
 	write(1, "\n", 1);
@@ -26,7 +26,7 @@ int	main(void)
 	write_fdf_table(output_fd, &table_b, FDF_HEIGHT, FDF_FORMAT_ASCII_A);
 	close(output_fd);
 
-	table_c = convolve_fdf(&table_b, ker.arr, ker_dim);
+	table_c = convolve_fdf_table(&table_b, ker.arr, ker_dim);
 	output_fd = debug_load_file(output_dir_2, NULL, FILE_WRITE);
 	write_fdf_table(output_fd, &table_c, FDF_HEIGHT, FDF_FORMAT_ASCII_A);
 	close(output_fd);

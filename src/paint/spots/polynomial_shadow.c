@@ -1,4 +1,4 @@
-#include "evenodd.h"
+#include "spots.h"
 
 /**
  * Check whether constant times magnitude of the square of a cell's
@@ -13,9 +13,9 @@
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool	is_oddlength_x2shadow(const t_fdf_table *dst, size_t index)
+bool	spots_oddlength_x2shadow(const t_fdf_table *dst, size_t index)
 {
-	return (is_oddlength_func(dst, index, complex_square, 0.1));
+	return (spots_oddlength_func(dst, index, complex_square, 0.1));
 }
 
 /**
@@ -31,9 +31,9 @@ bool	is_oddlength_x2shadow(const t_fdf_table *dst, size_t index)
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool	is_oddlength_x3shadow(const t_fdf_table *dst, size_t index)
+bool	spots_oddlength_x3shadow(const t_fdf_table *dst, size_t index)
 {
-	return (is_oddlength_func(dst, index, complex_cube, 0.05));
+	return (spots_oddlength_func(dst, index, complex_cube, 0.05));
 }
 
 /**
@@ -48,9 +48,9 @@ bool	is_oddlength_x3shadow(const t_fdf_table *dst, size_t index)
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool	is_andmod_x2shadow(const t_fdf_table *dst, size_t index)
+bool	spots_andmod_x2shadow(const t_fdf_table *dst, size_t index)
 {
-	return (is_andmod_func(dst, index, complex_square, 0.03));
+	return (spots_andmod_func(dst, index, complex_square, 0.03));
 }
 
 /**
@@ -65,7 +65,7 @@ bool	is_andmod_x2shadow(const t_fdf_table *dst, size_t index)
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool	is_andmod_x3shadow(const t_fdf_table *dst, size_t index)
+bool	spots_andmod_x3shadow(const t_fdf_table *dst, size_t index)
 {
-	return (is_andmod_func(dst, index, complex_cube, 0.03));
+	return (spots_andmod_func(dst, index, complex_cube, 0.03));
 }

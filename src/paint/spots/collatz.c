@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "evenodd.h"
+#include "spots.h"
 
 /**
  * Find the maximum value reached by the Collatz sequence of an input.
@@ -58,7 +58,7 @@ size_t	collatz_max_point(size_t x)
  * @return true if the scaled maximum Collatz point is odd,
  * false otherwise.
  */
-bool	is_collatz_odd_length(const t_fdf_table *dst, size_t index)
+bool	spots_oddlength_collatz(const t_fdf_table *dst, size_t index)
 {
 	int			input;
 	size_t		max;
@@ -91,7 +91,7 @@ bool	is_collatz_odd_length(const t_fdf_table *dst, size_t index)
  * @return true if the scaled maximum Collatz point is odd,
  * false otherwise.
  */
-bool	is_collatz_odd_product(const t_fdf_table *dst, size_t index)
+bool	spots_oddtime_collatz(const t_fdf_table *dst, size_t index)
 {
 	t_float2d	y;
 	int			input;
@@ -124,7 +124,7 @@ bool	is_collatz_odd_product(const t_fdf_table *dst, size_t index)
  * @return true if the scaled maximum Collatz point is odd,
  * false otherwise.
  */
-bool	is_collatz_odd_andmod(const t_fdf_table *dst, size_t index)
+bool	spots_andmod_collatz(const t_fdf_table *dst, size_t index)
 {
 	t_float2d	y;
 	size_t		max_x;

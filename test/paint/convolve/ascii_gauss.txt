@@ -35,8 +35,8 @@ int	main(void)
 	size_t	  length = 20;
 
 	half_dim = 3;
-	kernel = gaussian_kernel(half_dim, 0.7, 0.7);
-	kernel_2 = init_matrix(2 * half_dim + 1,
+	kernel = kernel_gauss(half_dim, 0.7, 0.7);
+	kernel_2 = create_matrix(2 * half_dim + 1,
 		2 * half_dim + 1,
 		1.0 / ((2 * half_dim + 1) * (2 * half_dim + 1)));
 	i = 0;
@@ -56,8 +56,8 @@ int	main(void)
 		destroy_fdf_table(&table_b);
 		i += 1;
 	}
-	free_matrix(&kernel);
-	free_matrix(&kernel_2);
+	destroy_matrix(&kernel);
+	destroy_matrix(&kernel_2);
 	return (0);
 }
 

@@ -32,7 +32,7 @@ int	main(void)
 	paint_aura_fdf_table(&table, FDF_BLUE, aura_pythagoras_3d);
 	paint_aura_fdf_table(&table, FDF_RED, aura_min_xy);
 	paint_aura_fdf_table(&table, FDF_GREEN, aura_max_xyz);
-	set_cells_color(&table, 255, FDF_ALPHA, NULL);
+	paint_spots_fdf_table(&table, 255, FDF_ALPHA, NULL);
 	paint_gradient_fdf_table(&table, init_white_noise(), false);
 	style.thickness = 2;
 	style.shape2d = SHAPE2D_RECTANGLE;

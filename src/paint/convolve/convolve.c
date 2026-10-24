@@ -49,7 +49,7 @@ static t_matrix	init_src_kernel_int(const t_fdf_table *src,
 	dst.col = dim;
 	dst.row = dim;
 	dst.arr = malloc_talk(sizeof(float) * dim * dim,
-			"convolve_fdf\n");
+			"convolve_fdf_table\n");
 	if (dst.arr == NULL)
 		return (dst);
 	i = 0;
@@ -120,7 +120,7 @@ static int	convolve_unit(const t_fdf_table *src, size_t index,
  * @see 3B1B convolution video https://youtu.be/KuXjwB4LzSA?si=9DNIvf9SS2SX4jET
  * for more details
  */
-t_fdf_table	convolve_fdf(const t_fdf_table *src, float *kernel,
+t_fdf_table	convolve_fdf_table(const t_fdf_table *src, float *kernel,
 	size_t dim)
 {
 	t_fdf_table	dst;

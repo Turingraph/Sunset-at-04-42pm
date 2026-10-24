@@ -14,7 +14,7 @@ BUFFER_SIZE = 42
 
 # *** library ***
 LIBRARY = $(patsubst %, lib/%.a, libft taylor get_next_line linalg ascii decimal table \
-	convolve paint debug raster motif proj2d render window evenodd)
+	convolve paint debug raster motif proj2d render window spots)
 
 # *** atom src ***
 SRC_libft = $(wildcard utils/libft/*.c)
@@ -30,8 +30,8 @@ SRC_table = $(wildcard input/table/*.c)
 
 SRC_aura = $(wildcard paint/aura/*.c)
 SRC_convolve = $(wildcard paint/convolve/*.c)
-SRC_paint = $(wildcard paint/paint/*.c)
-SRC_evenodd = $(wildcard paint/evenodd/*.c)
+SRC_gradient = $(wildcard paint/paint/*.c)
+SRC_spots = $(wildcard paint/spots/*.c)
 
 SRC_raster = $(wildcard visualize/raster/*.c)
 SRC_motif = $(wildcard visualize/motif/*.c)
@@ -54,8 +54,8 @@ OBJ_table = $(patsubst %.c, obj/%.o, $(SRC_table)) $(OBJ_decimal)
 
 OBJ_aura = $(patsubst %.c, obj/%.o, $(SRC_aura)) $(OBJ_taylor)
 OBJ_convolve = $(patsubst %.c, obj/%.o, $(SRC_convolve)) $(OBJ_table) $(OBJ_taylor)
-OBJ_paint = $(patsubst %.c, obj/%.o, $(SRC_paint)) $(OBJ_taylor)
-OBJ_evenodd = $(patsubst %.c, obj/%.o, $(SRC_evenodd)) $(OBJ_taylor)
+OBJ_gradient = $(patsubst %.c, obj/%.o, $(SRC_gradient)) $(OBJ_taylor)
+OBJ_spots = $(patsubst %.c, obj/%.o, $(SRC_spots)) $(OBJ_taylor)
 
 OBJ_raster = $(patsubst %.c, obj/%.o, $(SRC_raster)) $(OBJ_taylor) $(OBJ_table)
 OBJ_motif = $(patsubst %.c, obj/%.o, $(SRC_motif)) $(OBJ_raster)

@@ -74,7 +74,7 @@ int	main(void)
 	table_base = create_fdf_table(30, 30, false);
 	paint_aura_fdf_table(&table, FDF_HEIGHT, aura_amgm_inequality);
 	paint_aura_fdf_table(&table, FDF_HEIGHT, aura_pythagoras_3d);
-	set_cells_color(&table_base, 1, FDF_HEIGHT, is_oddlength_x2shadow);
+	paint_spots_fdf_table(&table_base, 1, FDF_HEIGHT, spots_oddlength_x2shadow);
 	mix_hadamard_fdf_table(&table, &table_base, FDF_HEIGHT);
 	paint_gradient_fdf_table(&table, init_all(), true);
 	style.thickness = 3;

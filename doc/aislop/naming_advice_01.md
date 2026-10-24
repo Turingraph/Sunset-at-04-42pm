@@ -24,7 +24,7 @@ The main README provides a useful cross-section of the API:
 ```
 table = create_fdf_table(100, 100, true);
 setcells_pythagorus_length(&table);
-set_cells_color(&table_base, 30, HEIGHT, is_oddlength_cube);
+paint_spots_fdf_table(&table_base, 30, HEIGHT, spots_oddlength_cube);
 mix_hadamard_fdf_table(&table, &table_base, HEIGHT);
 relu_fdf_table(&table, 201, 2000, 0);
 
@@ -47,7 +47,7 @@ I see several naming patterns here that are individually understandable but coll
 Consider these names:
 
 - `setcells_pythagorus_length`
-- `set_cells_color`
+- `paint_spots_fdf_table`
 - `paint_gradient_fdf_table`
 - `relu_fdf_table`
 - `scale_fdf_table`
@@ -171,7 +171,7 @@ I'd avoid mixing these forms for equivalent operations:
 
 ```
 paint_gradient_fdf_table(...);
-set_cells_color(...);
+paint_spots_fdf_table(...);
 gradient_color_cells(...);
 ```
 
@@ -689,11 +689,11 @@ Your existing code in the non-Euclidean example contains this sequence:
 ```
 table_base = create_fdf_table(300, 300, false);
 
-set_cells_color(
+paint_spots_fdf_table(
     &table_base,
     3,
     HEIGHT,
-    is_andmod_x3
+    spots_andmod_x3
 );
 
 table = create_fdf_table(300, 300, true);
@@ -748,7 +748,7 @@ surface_map_channel(
     &base,
     SURFACE_CHANNEL_HEIGHT,
     3,
-    is_andmod_x3
+    spots_andmod_x3
 );
 
 /* Construct the main mathematical surface. */
@@ -839,7 +839,7 @@ Search the headers and implementations for functions that perform similar operat
 For example:
 
 ```
-set_cells_color(...)
+paint_spots_fdf_table(...)
 paint_gradient_fdf_table(...)
 paint_aura_fdf_table(...)
 ```

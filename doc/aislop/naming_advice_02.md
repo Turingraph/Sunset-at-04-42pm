@@ -19,7 +19,7 @@ I think so. Here are three examples of the kinds of things that would catch thei
 Your examples contain names such as:
 
 ```
-set_cells_color(...)
+paint_spots_fdf_table(...)
 paint_gradient_fdf_table(...)
 scale_fdf_table(...)
 mix_hadamard_fdf_table(...)
@@ -31,7 +31,7 @@ For example, consider:
 
 ```
 paint_gradient_fdf_table(...)
-set_cells_color(...)
+paint_spots_fdf_table(...)
 ```
 
 The first starts with an operation that describes a color transformation. The second starts with a generic setter.
@@ -40,9 +40,9 @@ That's not necessarily wrong: the functions may perform fundamentally different 
 
 A developer might ask:
 
-- Does `set_cells_color()` assign one color to every cell?
+- Does `paint_spots_fdf_table()` assign one color to every cell?
 - Does `paint_gradient_fdf_table()` derive each cell's color from its numerical value?
-- Does `set_cells_color()` overwrite colors that were previously computed by `paint_gradient_fdf_table()`?
+- Does `paint_spots_fdf_table()` overwrite colors that were previously computed by `paint_gradient_fdf_table()`?
 - Is there a general `color_cells()` operation that both functions should use?
 
 The problem isn't that the names are grammatically different. It's that the API doesn't immediately communicate the relationship between the operations.
@@ -246,7 +246,7 @@ color_cells_by_normal(...);
 Instead, imagine that the library uses:
 
 ```
-set_cells_color(...);
+paint_spots_fdf_table(...);
 paint_aura_fdf_table(...);
 surface_colorize_height(...);
 ```

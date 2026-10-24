@@ -30,7 +30,7 @@ int	main(void)
 	table = create_fdf_table(100, 100, true);
 	table_base = create_fdf_table(100, 100, false);
 	paint_aura_fdf_table(&table, FDF_HEIGHT, aura_pythagoras);
-	set_cells_color(&table_base, 1, FDF_HEIGHT, is_binary_search_andmod);
+	paint_spots_fdf_table(&table_base, 1, FDF_HEIGHT, spots_andmod_bisearch);
 	mix_hadamard_fdf_table(&table, &table_base, FDF_HEIGHT);
 	style.thickness = 2;
 	style.shape2d = SHAPE2D_RECTANGLE;

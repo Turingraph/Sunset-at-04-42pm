@@ -79,7 +79,7 @@ int	main(void)
 	table2 = create_fdf_table(161, 161, true);
 	paint_aura_fdf_table(&table, FDF_HEIGHT, aura_amgm_inequality);
 	paint_aura_fdf_table(&table2, FDF_HEIGHT, aura_pythagoras);
-	set_cells_color(&table, 0, FDF_HEIGHT, is_3d_pythagoras);
+	paint_spots_fdf_table(&table, 0, FDF_HEIGHT, is_3d_pythagoras);
 	relu_fdf_table(&table, -10000, 0, 0);
 	i = 0;
 	while (i < table.row * table.col)

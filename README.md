@@ -63,7 +63,7 @@ int	main(void)
 	table = create_fdf_table(100, 100, true);
 	table_base = create_fdf_table(100, 100, false);
 	setcells_pythagorus_length(&table);
-	set_cells_color(&table_base, 30, HEIGHT, is_oddlength_cube);
+	paint_spots_fdf_table(&table_base, 30, HEIGHT, spots_oddlength_cube);
 	mix_hadamard_fdf_table(&table, &table_base, HEIGHT);
 	relu_fdf_table(&table, 201, 2000, 0);
 	style.background_color = rgba_to_int32(0, 0, 0, 255);

@@ -27,7 +27,7 @@ int	main(void)
 	t_style_render	style;
 
 	table_base = create_fdf_table(161, 161, true);
-	set_cells_color(&table_base, 10, FDF_HEIGHT, is_andmod_sin);
+	paint_spots_fdf_table(&table_base, 10, FDF_HEIGHT, spots_andmod_sin);
 	style.thickness = 2;
 	style.shape2d = SHAPE2D_RECTANGLE;
 	paint_gradient_fdf_table(&table_base, init_deep_wood(), true);

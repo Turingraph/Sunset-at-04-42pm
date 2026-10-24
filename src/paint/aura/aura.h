@@ -49,6 +49,7 @@ int		aura_minexp(const t_fdf_table *dst, size_t index);
 
 // paint.c
 
+int		aura_conway(const t_fdf_table *dst, size_t index, int threshold);
 void	paint_aura_fdf_table(t_fdf_table *dst, t_fdf_channel channel,
 			int (*aura)(const t_fdf_table *dst, size_t index));
 

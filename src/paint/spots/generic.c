@@ -1,4 +1,4 @@
-#include "evenodd.h"
+#include "spots.h"
 
 /**
  * Compute z' = complex_func(the complex coordinate of the cell).
@@ -19,7 +19,7 @@
  * @return true if the rounded calculated value is odd,
  * false otherwise.
  */
-bool	is_re2_diff_im2_odd_func(const t_fdf_table *dst, size_t index,
+bool	spots_diffreim2odd_func(const t_fdf_table *dst, size_t index,
 	t_float2d (*complex_func)(t_float2d a), float zoom)
 {
 	t_float2d	y;
@@ -52,9 +52,9 @@ bool	is_re2_diff_im2_odd_func(const t_fdf_table *dst, size_t index,
  * @return true if the rounded calculated value is odd,
  * false otherwise.
  */
-bool	is_re2_diff_im2_odd(const t_fdf_table *dst, size_t index)
+bool	spots_diffreim2odd(const t_fdf_table *dst, size_t index)
 {
-	return (is_re2_diff_im2_odd_func(dst, index, NULL, 0.5));
+	return (spots_diffreim2odd_func(dst, index, NULL, 0.5));
 }
 
 /**
@@ -76,7 +76,7 @@ bool	is_re2_diff_im2_odd(const t_fdf_table *dst, size_t index)
  * @return true if the rounded coordinate magnitude is odd,
  * false otherwise.
  */
-bool	is_oddlength_func(const t_fdf_table *dst, size_t index,
+bool	spots_oddlength_func(const t_fdf_table *dst, size_t index,
 	t_float2d (*complex_func)(t_float2d a), float zoom)
 {
 	t_float2d	y;
@@ -109,9 +109,9 @@ bool	is_oddlength_func(const t_fdf_table *dst, size_t index,
  * @return true if the rounded coordinate magnitude is odd,
  * false otherwise.
  */
-bool	is_oddlength(const t_fdf_table *dst, size_t index)
+bool	spots_oddlength(const t_fdf_table *dst, size_t index)
 {
-	return (is_oddlength_func(dst, index, NULL, 1));
+	return (spots_oddlength_func(dst, index, NULL, 1));
 }
 
 /**
@@ -132,7 +132,7 @@ bool	is_oddlength(const t_fdf_table *dst, size_t index)
  *
  * @return true if z.x is even and z.y is even, false otherwise.
  */
-bool	is_andmod_func(const t_fdf_table *dst, size_t index,
+bool	spots_andmod_func(const t_fdf_table *dst, size_t index,
 	t_float2d (*complex_func)(t_float2d a), float zoom)
 {
 	t_float2d	y;

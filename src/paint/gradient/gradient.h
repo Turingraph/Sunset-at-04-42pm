@@ -57,18 +57,6 @@ typedef struct t_gradient
 	int					input_end;
 }	t_gradient;
 
-// boundary.c
-
-bool	is_boundary_fdf(const t_fdf_table *dst, size_t index, int threshold);
-int		count_neighbor_fdf(const t_fdf_table *dst, size_t index, int threshold);
-
-// filter.c
-
-bool	is_space_fdf(const t_fdf_table *dst, size_t index);
-bool	is_chess_fdf(const t_fdf_table *dst, size_t index);
-void	set_cells_color(t_fdf_table *dst, int color, t_fdf_channel channel,
-			bool (*is_filtered_cell)(const t_fdf_table *dst, size_t index));
-
 // gradient.c
 
 void	paint_gradient_fdf_table(t_fdf_table *dst,

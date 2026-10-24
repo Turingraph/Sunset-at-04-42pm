@@ -272,7 +272,7 @@ void			copy_fdf_table_channel(t_fdf_table *dst,
  * @see 3B1B convolution video https://youtu.be/KuXjwB4LzSA?si=9DNIvf9SS2SX4jET
  * for more details
  */
-t_fdf_table	convolve_fdf(const t_fdf_table *src, float *kernel,
+t_fdf_table	convolve_fdf_table(const t_fdf_table *src, float *kernel,
 				size_t dim);
 
 /**
@@ -285,7 +285,7 @@ t_fdf_table	convolve_fdf(const t_fdf_table *src, float *kernel,
  * @return allocated 1D kernel with 2 * half_dim + 1 items,
  * or NULL if allocation fails
  */
-float	*gaussian_kernel1d(size_t half_dim, float std);
+float	*kernel_gauss1d(size_t half_dim, float std);
 
 /**
  * Create a 2D Blur Gaussian kernel from two 1D Gaussian kernels.
@@ -302,7 +302,7 @@ float	*gaussian_kernel1d(size_t half_dim, float std);
  * @see 3B1B convolution video https://youtu.be/KuXjwB4LzSA?si=9DNIvf9SS2SX4jET
  *  for more details
  */
-float	*gaussian_kernel(size_t half_dim, float std_1, float std_2);
+float	*kernel_gauss(size_t half_dim, float std_1, float std_2);
 
 /**
  * Create a 1D kernel with an inner region and an outer region.
@@ -318,7 +318,7 @@ float	*gaussian_kernel(size_t half_dim, float std_1, float std_2);
  * @param outer_num value utilized by the outer region.
  * @return allocated 1D kernel, or NULL if allocation fails
  */
-float	*edge_kernel1d(size_t inner_dim, size_t outer_dim,
+float	*kernel_edge1d(size_t inner_dim, size_t outer_dim,
 	float inner_num, float outer_num);
 
 /**
@@ -351,7 +351,7 @@ float	init_outer_num(float inner_dim, float outer_dim, float input, float kernel
  * @see Image convolution tutorial https://www.youtube.com/live/8rrHTtUzyZA?si=UZVlq0cpb2X95MZN
  * for more details.
  */
-float	*edge_kernel(size_t inner_dim, size_t outer_dim, float input, float kernel_sum);
+float	*kernel_edge(size_t inner_dim, size_t outer_dim, float input, float kernel_sum);
 
 
 /* ************************************************************************** */
@@ -410,7 +410,7 @@ typedef struct t_gradient
  * @param is_filtered_cell optional callback used to select which cells
  * are modified. If NULL, every cell is modified.
  */
-void		set_cells_color(t_fdf_table *dst, int color, t_fdf_channel channel,
+void		paint_spots_fdf_table(t_fdf_table *dst, int color, t_fdf_channel channel,
 				bool (*is_filtered_cell)(const t_fdf_table *dst, size_t index));
 
 /**

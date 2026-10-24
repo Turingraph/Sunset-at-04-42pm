@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "evenodd.h"
+#include "spots.h"
 
 /**
  * Count the number of iterations required by a binary-search procedure
@@ -74,7 +74,7 @@ size_t	binary_search_count(size_t min_input, size_t max_input)
  * @return true if the binary-search iteration count is odd,
  * false otherwise.
  */
-bool	is_binary_search_length_odd(const t_fdf_table *dst, size_t index)
+bool	spots_oddlength_bisearch(const t_fdf_table *dst, size_t index)
 {
 	int			input;
 	size_t		max;
@@ -119,7 +119,7 @@ bool	is_binary_search_length_odd(const t_fdf_table *dst, size_t index)
  * @return true if the binary-search iteration count is odd,
  * false otherwise.
  */
-bool	is_binary_search_product_odd(const t_fdf_table *dst, size_t index)
+bool	spots_oddtime_bisearch(const t_fdf_table *dst, size_t index)
 {
 	t_float2d	y;
 	int			input;
@@ -152,7 +152,7 @@ bool	is_binary_search_product_odd(const t_fdf_table *dst, size_t index)
  * @return true if the scaled maximum Collatz point is odd,
  * false otherwise.
  */
-bool	is_binary_search_andmod(const t_fdf_table *dst, size_t index)
+bool	spots_andmod_bisearch(const t_fdf_table *dst, size_t index)
 {
 	t_float2d	y;
 	size_t		max_x;

@@ -14,7 +14,7 @@
 
 // time : O(1)
 // space: O(1)
-void	*free_matrix(t_matrix *src)
+void	*destroy_matrix(t_matrix *src)
 {
 	if (src == NULL)
 		return (NULL);
@@ -27,7 +27,7 @@ void	*free_matrix(t_matrix *src)
 
 // time : O(n)
 // space: O(n)
-t_matrix	init_matrix(size_t row, size_t col, float scale)
+t_matrix	create_matrix(size_t row, size_t col, float scale)
 {
 	t_matrix	dst;
 	size_t		i;
@@ -39,7 +39,7 @@ t_matrix	init_matrix(size_t row, size_t col, float scale)
 		dst.arr = (float *)malloc(sizeof(float) * row * col);
 	if (dst.arr == NULL)
 	{
-		free_matrix(&dst);
+		destroy_matrix(&dst);
 		return (dst);
 	}
 	i = 0;
@@ -64,7 +64,7 @@ t_matrix	outer_product(const float *vec_v,
 	t_matrix	dst;
 	size_t		i;
 
-	dst = init_matrix(dim, dim, 1);
+	dst = create_matrix(dim, dim, 1);
 	if (dst.arr == NULL || (vec_u == NULL && vec_v == NULL))
 		return (dst);
 	i = 0;

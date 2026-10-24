@@ -48,7 +48,7 @@ int	main(void)
 	t_fdf_table		table_base;
 
 	table_base = create_fdf_table(300, 300, false);
-	set_cells_color(&table_base, 3, FDF_HEIGHT, is_andmod_x3);
+	paint_spots_fdf_table(&table_base, 3, FDF_HEIGHT, spots_andmod_x3);
 	table = create_fdf_table(300, 300, true);
 	paint_aura_fdf_table(&table, FDF_HEIGHT, aura_max_xy);
 	mix_hadamard_fdf_table(&table, &table_base, FDF_HEIGHT);

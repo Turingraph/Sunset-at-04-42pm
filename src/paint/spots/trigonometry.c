@@ -1,4 +1,4 @@
-#include "evenodd.h"
+#include "spots.h"
 
 /**
  * Check whether the magnitude of the sin of a cell's
@@ -13,9 +13,9 @@
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool	is_oddlength_sin(const t_fdf_table *dst, size_t index)
+bool	spots_oddlength_sin(const t_fdf_table *dst, size_t index)
 {
-	return (is_oddlength_func(dst, index, complex_sin, 0.1));
+	return (spots_oddlength_func(dst, index, complex_sin, 0.1));
 }
 
 /**
@@ -31,9 +31,9 @@ bool	is_oddlength_sin(const t_fdf_table *dst, size_t index)
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool	is_oddlength_cos(const t_fdf_table *dst, size_t index)
+bool	spots_oddlength_cos(const t_fdf_table *dst, size_t index)
 {
-	return (is_oddlength_func(dst, index, complex_cos, 0.1));
+	return (spots_oddlength_func(dst, index, complex_cos, 0.1));
 }
 
 /**
@@ -49,9 +49,9 @@ bool	is_oddlength_cos(const t_fdf_table *dst, size_t index)
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool	is_andmod_sin(const t_fdf_table *dst, size_t index)
+bool	spots_andmod_sin(const t_fdf_table *dst, size_t index)
 {
-	return (is_andmod_func(dst, index, complex_sin, 0.075));
+	return (spots_andmod_func(dst, index, complex_sin, 0.075));
 }
 
 /**
@@ -67,7 +67,7 @@ bool	is_andmod_sin(const t_fdf_table *dst, size_t index)
  *
  * @return true if the calculated value is odd, false otherwise.
  */
-bool	is_andmod_cos(const t_fdf_table *dst, size_t index)
+bool	spots_andmod_cos(const t_fdf_table *dst, size_t index)
 {
-	return (is_andmod_func(dst, index, complex_cos, 0.075));
+	return (spots_andmod_func(dst, index, complex_cos, 0.075));
 }

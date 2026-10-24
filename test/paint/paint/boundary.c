@@ -59,7 +59,7 @@ int	main(void)
 	file_name = concat_str(input_dir, file_a);
 	table = load_fdf_table(file_name, FDF_FORMAT_DECIMAL_BW, false);
 	free(file_name);
-	set_cells_color(&table, 99, FDF_HEIGHT, boundary_test);
+	paint_spots_fdf_table(&table, 99, FDF_HEIGHT, boundary_test);
 	if (table.col * table.row == length_a
 		&& assert_intarr(table.arr, correct_a, length_a) == true)
 		y += 1;
@@ -69,7 +69,7 @@ int	main(void)
 	file_name = concat_str(input_dir, file_b);
 	table = load_fdf_table(file_name, FDF_FORMAT_DECIMAL_BW, false);
 	free(file_name);
-	set_cells_color(&table, 99, FDF_HEIGHT, boundary_test);
+	paint_spots_fdf_table(&table, 99, FDF_HEIGHT, boundary_test);
 	if (table.col * table.row == length_b
 		&& assert_intarr(table.arr, correct_b, length_b) == true)
 		y += 1;
@@ -79,7 +79,7 @@ int	main(void)
 	file_name = concat_str(input_dir, file_c);
 	table = load_fdf_table(file_name, FDF_FORMAT_DECIMAL_BW, false);
 	free(file_name);
-	set_cells_color(&table, 99, FDF_HEIGHT, boundary_test);
+	paint_spots_fdf_table(&table, 99, FDF_HEIGHT, boundary_test);
 	if (table.col * table.row == length_c
 		&& assert_intarr(table.arr, correct_c, length_c) == true)
 		y += 1;
