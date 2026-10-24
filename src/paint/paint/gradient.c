@@ -14,6 +14,21 @@
 
 // time : O(1)
 // space: O(1)
+static int	get_input_rgba(t_fdf_channel rgba_type, t_input_rgba src)
+{
+	if (rgba_type == FDF_RED)
+		return (src.r);
+	if (rgba_type == FDF_GREEN)
+		return (src.g);
+	if (rgba_type == FDF_BLUE)
+		return (src.b);
+	if (rgba_type == FDF_ALPHA)
+		return (src.a);
+	return (0);
+}
+
+// time : O(1)
+// space: O(1)
 static int	gradient_smooth(t_fdf_channel rgba_type,
 	t_gradient gradient_input, int input_threshold)
 {
@@ -82,7 +97,7 @@ static int	update_cell_color(int alpha, bool is_overwrite,
 
 // time : O(1)
 // space: O(1)
-static void	color_cells_gradient_unit(t_fdf_table *dst,
+static void	paint_gradient_fdf_table_unit(t_fdf_table *dst,
 	t_gradient gradient_input, bool is_overwrite, size_t i)
 {
 	int				threshold;
@@ -122,7 +137,7 @@ static void	color_cells_gradient_unit(t_fdf_table *dst,
  * @param gradient_input gradient definition
  * @param is_overwrite replace existing colors instead of blending
  */
-void	color_cells_gradient(t_fdf_table *dst,
+void	paint_gradient_fdf_table(t_fdf_table *dst,
 	t_gradient gradient_input, bool is_overwrite)
 {
 	size_t	i;
@@ -132,7 +147,7 @@ void	color_cells_gradient(t_fdf_table *dst,
 	i = 0;
 	while (dst != NULL && i < dst->row * dst->col && dst->arr != NULL)
 	{
-		color_cells_gradient_unit(dst, gradient_input,
+		paint_gradient_fdf_table_unit(dst, gradient_input,
 			is_overwrite, i);
 		i += 1;
 	}

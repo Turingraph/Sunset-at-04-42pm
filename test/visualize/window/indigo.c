@@ -37,7 +37,7 @@ int	main(int len, char **str)
 	style.thickness = 1;
 	style.shape2d = SHAPE2D_RECTANGLE;
 	relu_fdf_table(&table, 0, 30, 0);
-	color_cells_gradient(&table, init_deep_wood(), true);
+	paint_gradient_fdf_table(&table, init_deep_wood(), true);
 	scale_fdf_table(&table, 1.0, FDF_HEIGHT);
 	output = create_fdf_proj2d(&table, NULL, 1.0);
 	view_fdf(&output, style, rgba32_from_char(255, 255, 255, 255));

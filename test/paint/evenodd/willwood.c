@@ -72,11 +72,11 @@ int	main(void)
 	wood = init_deep_wood();
 	table = create_fdf_table(30, 30, true);
 	table_base = create_fdf_table(30, 30, false);
-	paint_space(&table, FDF_HEIGHT, cell_metric_amgm_inequality);
-	paint_space(&table, FDF_HEIGHT, cell_metric_pythagoras_3d);
+	paint_aura_fdf_table(&table, FDF_HEIGHT, aura_amgm_inequality);
+	paint_aura_fdf_table(&table, FDF_HEIGHT, aura_pythagoras_3d);
 	set_cells_color(&table_base, 1, FDF_HEIGHT, is_oddlength_x2shadow);
 	mix_hadamard_fdf_table(&table, &table_base, FDF_HEIGHT);
-	color_cells_gradient(&table, init_all(), true);
+	paint_gradient_fdf_table(&table, init_all(), true);
 	style.thickness = 3;
 	style.shape2d = SHAPE2D_CIRCLE;
 	i = 0;
@@ -84,10 +84,10 @@ int	main(void)
 	{
 		wood.input_start += 15;
 		wood.input_end += 15;
-		color_cells_gradient(&table, wood, true);
+		paint_gradient_fdf_table(&table, wood, true);
 		i += 1;
 	}
-	color_cells_gradient(&table, init_white_noise(), true);
+	paint_gradient_fdf_table(&table, init_white_noise(), true);
 	scale_fdf_table(&table, 1.0 / 30.0, FDF_HEIGHT);
 	output = create_fdf_proj2d(&table, proj2d_cabinet, 1.3);
 	view_fdf(&output, style, rgba32_from_char(0, 0, 0, 255));

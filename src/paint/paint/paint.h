@@ -18,7 +18,7 @@
 # include <fcntl.h>
 
 /**
- * Defines a color input for t_gradient argument of the function `color_cells_gradient`
+ * Defines a color input for t_gradient argument of the function `paint_gradient_fdf_table`
  * 
  * If the color channel is less than 0, then the color isn't render.
  */
@@ -71,53 +71,7 @@ void	set_cells_color(t_fdf_table *dst, int color, t_fdf_channel channel,
 
 // gradient.c
 
-void	color_cells_gradient(t_fdf_table *dst,
+void	paint_gradient_fdf_table(t_fdf_table *dst,
 			t_gradient gradient_input, bool is_overwrite);
-
-// metric_3d.c
-
-int		cell_metric_triangle_inequality_3d(const t_fdf_table *dst, size_t index);
-int		cell_metric_pythagoras_3d(const t_fdf_table *dst, size_t index);
-int		cell_metric_max_xyz(const t_fdf_table *dst, size_t index);
-int		cell_metric_root_xyz(const t_fdf_table *dst, size_t index);
-int		cell_metric_addsub_3d(const t_fdf_table *dst, size_t index);
-
-// metric_inequality.c
-
-int		cell_metric_triangle_inequality(const t_fdf_table *dst, size_t index);
-int		cell_metric_amgm_inequality(const t_fdf_table *dst, size_t index);
-int		cell_metric_amgm_inequality_3d(const t_fdf_table *dst, size_t index);
-int		cell_metric_x_plus_y_square(const t_fdf_table *dst, size_t index);
-int		cell_metric_cauchy_schwarz_inequality_3d(const t_fdf_table *dst, size_t index);
-
-// metric_min.c
-
-int		cell_metric_min_xy(const t_fdf_table *dst, size_t index);
-int		cell_metric_min_xyz(const t_fdf_table *dst, size_t index);
-int		cell_metric_mincos(const t_fdf_table *dst, size_t index);
-int		cell_metric_minecos(const t_fdf_table *dst, size_t index);
-int		cell_metric_minexp(const t_fdf_table *dst, size_t index);
-
-// metric_tri.c
-
-int		cell_metric_maxsin(const t_fdf_table *dst, size_t index);
-int		cell_metric_maxesin(const t_fdf_table *dst, size_t index);
-int		cell_metric_maxcos(const t_fdf_table *dst, size_t index);
-int		cell_metric_maxecos(const t_fdf_table *dst, size_t index);
-int		cell_metric_maxexp(const t_fdf_table *dst, size_t index);
-
-// metric.c
-
-int		cell_metric_pythagoras(const t_fdf_table *dst, size_t index);
-int		cell_metric_max_xy(const t_fdf_table *dst, size_t index);
-int		cell_metric_addsub(const t_fdf_table *dst, size_t index);
-int		cell_metric_root_xy(const t_fdf_table *dst, size_t index);
-int		cell_metric_fermat_theorem(const t_fdf_table *dst, size_t index);
-
-// utils.c
-
-void	paint_space(t_fdf_table *dst, t_fdf_channel channel,
-			int (*cell_metric)(const t_fdf_table *dst, size_t index));
-int		get_input_rgba(t_fdf_channel rgba_type, t_input_rgba src);
 
 #endif

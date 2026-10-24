@@ -80,8 +80,8 @@ int	main(void)
 		table_a = load_fdf_table(file_name,
 				FDF_FORMAT_ASCII_C, true);
 		free(file_name);
-        color_cells_gradient(&table_a, init_gradient(), true);
-        color_cells_gradient(&table_a, init_gradient_2(), true);
+        paint_gradient_fdf_table(&table_a, init_gradient(), true);
+        paint_gradient_fdf_table(&table_a, init_gradient_2(), true);
 		scale_fdf_table(&table_a, 1.0 / 3.0, FDF_RED);
 		write_fdf_table(output, &table_a, FDF_RED, FDF_FORMAT_ASCII_B);
 		destroy_fdf_table(&table_a);

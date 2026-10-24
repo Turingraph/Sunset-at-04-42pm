@@ -27,10 +27,10 @@ int	main(void)
 	t_style_render	style;
 
 	table = create_fdf_table(120, 120, true);
-	paint_space(&table, FDF_HEIGHT, cell_metric_max_xy);
+	paint_aura_fdf_table(&table, FDF_HEIGHT, aura_max_xy);
 	style.thickness = 2;
 	style.shape2d = SHAPE2D_RECTANGLE;
-	color_cells_gradient(&table, init_deep_wood(), true);
+	paint_gradient_fdf_table(&table, init_deep_wood(), true);
 	scale_fdf_table(&table, 1.0 / 120.0, FDF_HEIGHT);
 	output = create_fdf_proj2d(&table, NULL, 0.6);
 	view_fdf(&output, style, rgba32_from_char(0, 0, 0, 255));

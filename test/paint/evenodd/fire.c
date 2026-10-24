@@ -62,7 +62,7 @@ t_gradient	init_feeling_blue(void)
 
 bool	is_3d_pythagoras(const t_fdf_table *dst, size_t index)
 {
-	if (cell_metric_pythagoras_3d(dst, index) % 2 == 1)
+	if (aura_pythagoras_3d(dst, index) % 2 == 1)
 		return (true);
 	return (false);
 }
@@ -77,8 +77,8 @@ int	main(void)
 
 	table = create_fdf_table(161, 161, true);
 	table2 = create_fdf_table(161, 161, true);
-	paint_space(&table, FDF_HEIGHT, cell_metric_amgm_inequality);
-	paint_space(&table2, FDF_HEIGHT, cell_metric_pythagoras);
+	paint_aura_fdf_table(&table, FDF_HEIGHT, aura_amgm_inequality);
+	paint_aura_fdf_table(&table2, FDF_HEIGHT, aura_pythagoras);
 	set_cells_color(&table, 0, FDF_HEIGHT, is_3d_pythagoras);
 	relu_fdf_table(&table, -10000, 0, 0);
 	i = 0;
@@ -90,9 +90,9 @@ int	main(void)
 	}
 	style.thickness = 2;
 	style.shape2d = SHAPE2D_CIRCLE;
-	color_cells_gradient(&table, init_popart(), true);
-	color_cells_gradient(&table, init_feeling_blue(), true);
-	color_cells_gradient(&table, init_deep_wood(), true);
+	paint_gradient_fdf_table(&table, init_popart(), true);
+	paint_gradient_fdf_table(&table, init_feeling_blue(), true);
+	paint_gradient_fdf_table(&table, init_deep_wood(), true);
 	output = create_fdf_proj2d(&table, proj2d_cabinet, 0.6);
 	view_fdf(&output, style, rgba32_from_char(0, 0, 0, 255));
 	destroy_fdf_table(&table2);

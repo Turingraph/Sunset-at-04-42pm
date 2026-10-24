@@ -76,10 +76,10 @@ int	main(int len, char **str)
 	}
 	style.thickness = 3;
 	style.shape2d = SHAPE2D_RECTANGLE;
-	color_cells_gradient(&table, init_ztmy_studyme(), true);
-	color_cells_gradient(&table, init_ztmy_timeleft(), true);
+	paint_gradient_fdf_table(&table, init_ztmy_studyme(), true);
+	paint_gradient_fdf_table(&table, init_ztmy_timeleft(), true);
 	scale_fdf_table(&table, 1.0 / 3.0, FDF_HEIGHT);
-	color_cells_gradient(&table, init_white_noise(), true);
+	paint_gradient_fdf_table(&table, init_white_noise(), true);
 	output = create_fdf_proj2d(&table, NULL, 1.0);
 	view_fdf(&output, style, rgba32_from_char(0, 0, 0, 255));
 	destroy_fdf_table(&table);

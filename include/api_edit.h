@@ -359,7 +359,7 @@ float	*edge_kernel(size_t inner_dim, size_t outer_dim, float input, float kernel
 /* ************************************************************************** */
 
 /**
- * Defines a color input for t_gradient argument of the function `color_cells_gradient`
+ * Defines a color input for t_gradient argument of the function `paint_gradient_fdf_table`
  * 
  * If the color channel is less than 0, then the color isn't render.
  */
@@ -422,22 +422,22 @@ void		set_cells_color(t_fdf_table *dst, int color, t_fdf_channel channel,
  * @param gradient_input gradient definition
  * @param is_overwrite replace existing colors instead of blending
  */
-void		color_cells_gradient(t_fdf_table *dst,
+void		paint_gradient_fdf_table(t_fdf_table *dst,
 				t_gradient gradient_input, bool is_overwrite);
 
 /**
  * Paint a table FDF channel using the value of each cell from
  * the origin in the complex plane, as |z.x + z.im|.
- * If cell_metric is not NULL, its output will be utilized instead
+ * If aura is not NULL, its output will be utilized instead
  * of the default complex-plane distance.
  * 
- * time/space: O(n) + O(cell_metric) / O(1)
+ * time/space: O(n) + O(aura) / O(1)
  * 
  * @param dst destination FDF table to paint
  * @param channel FDF channel to paint
- * @param cell_metric optional function to calculate the value of each cell
+ * @param aura optional function to calculate the value of each cell
  */
-void	paint_space(t_fdf_table *dst, t_fdf_channel channel,
-	int (*cell_metric)(const t_fdf_table *dst, size_t index));
+void	paint_aura_fdf_table(t_fdf_table *dst, t_fdf_channel channel,
+	int (*aura)(const t_fdf_table *dst, size_t index));
 
 #endif

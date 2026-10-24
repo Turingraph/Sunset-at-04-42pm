@@ -29,12 +29,12 @@ int	main(void)
 
 	table = create_fdf_table(100, 100, true);
 	table_base = create_fdf_table(100, 100, false);
-	paint_space(&table, FDF_HEIGHT, cell_metric_pythagoras);
+	paint_aura_fdf_table(&table, FDF_HEIGHT, aura_pythagoras);
 	set_cells_color(&table_base, 1, FDF_HEIGHT, is_binary_search_andmod);
 	mix_hadamard_fdf_table(&table, &table_base, FDF_HEIGHT);
 	style.thickness = 2;
 	style.shape2d = SHAPE2D_RECTANGLE;
-	color_cells_gradient(&table, init_deep_wood(), true);
+	paint_gradient_fdf_table(&table, init_deep_wood(), true);
 	output = create_fdf_proj2d(&table, NULL, 0.6);
 	view_fdf(&output, style, rgba32_from_char(0, 0, 0, 255));
 	destroy_fdf_table(&table);

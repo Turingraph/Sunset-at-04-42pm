@@ -30,7 +30,7 @@ int	main(void)
 	set_cells_color(&table_base, 10, FDF_HEIGHT, is_andmod_sin);
 	style.thickness = 2;
 	style.shape2d = SHAPE2D_RECTANGLE;
-	color_cells_gradient(&table_base, init_deep_wood(), true);
+	paint_gradient_fdf_table(&table_base, init_deep_wood(), true);
 	output = create_fdf_proj2d(&table_base, NULL, 0.6);
 	view_fdf(&output, style, rgba32_from_char(0, 0, 0, 255));
 	destroy_fdf_table(&table_base);

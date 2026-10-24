@@ -57,7 +57,7 @@ int	main(int len, char **str)
 	style.background_color = rgba_to_int32(0, 0, 0, 255);
 	style.line_thickness = 1;
 	style.artists = E_RECTANGLE;
-	color_cells_gradient(&table, init_gradient(), true);
+	paint_gradient_fdf_table(&table, init_gradient(), true);
 	output = create_fdf_proj2d(&table, NULL, 1.0);
 	view_fdf(&output, style);
 	destroy_fdf_table(&table);

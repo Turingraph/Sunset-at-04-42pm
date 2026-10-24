@@ -7,7 +7,7 @@ int	conway_test(const t_fdf_table *dst, size_t index)
 	return ((count_neighbor_fdf(dst, index, 0) + 1));
 }
 
-int	cell_metric_positive(const t_fdf_table *dst, size_t index)
+int	aura_positive(const t_fdf_table *dst, size_t index)
 {
 	if (dst->arr[index] <= 0)
 		return (-1 * dst->arr[index]);
@@ -60,8 +60,8 @@ int	main(void)
 	file_name = concat_str(input_dir, file_a);
 	table = load_fdf_table(file_name, FDF_FORMAT_DECIMAL_BW, false);
 	free(file_name);
-	paint_space(&table, FDF_HEIGHT, conway_test);
-	paint_space(&table, FDF_HEIGHT, cell_metric_positive);
+	paint_aura_fdf_table(&table, FDF_HEIGHT, conway_test);
+	paint_aura_fdf_table(&table, FDF_HEIGHT, aura_positive);
 	add_fdf_table(&table, -1, FDF_HEIGHT);
 	relu_fdf_table(&table, -1, 0, 0);
 	if (table.col * table.row == length_a
@@ -76,8 +76,8 @@ int	main(void)
 	file_name = concat_str(input_dir, file_b);
 	table = load_fdf_table(file_name, FDF_FORMAT_DECIMAL_BW, false);
 	free(file_name);
-	paint_space(&table, FDF_HEIGHT, conway_test);
-	paint_space(&table, FDF_HEIGHT, cell_metric_positive);
+	paint_aura_fdf_table(&table, FDF_HEIGHT, conway_test);
+	paint_aura_fdf_table(&table, FDF_HEIGHT, aura_positive);
 	add_fdf_table(&table, -1, FDF_HEIGHT);
 	relu_fdf_table(&table, -1, 0, 0);
 	if (table.col * table.row == length_b
@@ -91,8 +91,8 @@ int	main(void)
 	file_name = concat_str(input_dir, file_c);
 	table = load_fdf_table(file_name, FDF_FORMAT_DECIMAL_BW, false);
 	free(file_name);
-	paint_space(&table, FDF_HEIGHT, conway_test);
-	paint_space(&table, FDF_HEIGHT, cell_metric_positive);
+	paint_aura_fdf_table(&table, FDF_HEIGHT, conway_test);
+	paint_aura_fdf_table(&table, FDF_HEIGHT, aura_positive);
 	add_fdf_table(&table, -1, FDF_HEIGHT);
 	relu_fdf_table(&table, -1, 0, 0);
 	if (table.col * table.row == length_c

@@ -20,7 +20,7 @@ Your examples contain names such as:
 
 ```
 set_cells_color(...)
-color_cells_gradient(...)
+paint_gradient_fdf_table(...)
 scale_fdf_table(...)
 mix_hadamard_fdf_table(...)
 ```
@@ -30,7 +30,7 @@ An experienced developer might wonder why these functions use different word ord
 For example, consider:
 
 ```
-color_cells_gradient(...)
+paint_gradient_fdf_table(...)
 set_cells_color(...)
 ```
 
@@ -41,8 +41,8 @@ That's not necessarily wrong: the functions may perform fundamentally different 
 A developer might ask:
 
 - Does `set_cells_color()` assign one color to every cell?
-- Does `color_cells_gradient()` derive each cell's color from its numerical value?
-- Does `set_cells_color()` overwrite colors that were previously computed by `color_cells_gradient()`?
+- Does `paint_gradient_fdf_table()` derive each cell's color from its numerical value?
+- Does `set_cells_color()` overwrite colors that were previously computed by `paint_gradient_fdf_table()`?
 - Is there a general `color_cells()` operation that both functions should use?
 
 The problem isn't that the names are grammatically different. It's that the API doesn't immediately communicate the relationship between the operations.
@@ -230,7 +230,7 @@ This is closely related to discoverability, but it concerns how much a developer
 Suppose a developer learns that:
 
 ```
-color_cells_gradient(...)
+paint_gradient_fdf_table(...)
 ```
 
 applies a gradient to a collection of cells.
@@ -247,7 +247,7 @@ Instead, imagine that the library uses:
 
 ```
 set_cells_color(...);
-paint_space(...);
+paint_aura_fdf_table(...);
 surface_colorize_height(...);
 ```
 
@@ -320,7 +320,7 @@ Consider:
 ```
 mix_hadamard_fdf_table(&table, &table_base, HEIGHT);
 scale_fdf_table(&table, 1.0 / 120.0, HEIGHT);
-color_cells_gradient(&table, gradient, true);
+paint_gradient_fdf_table(&table, gradient, true);
 ```
 
 From the call sites alone, I would want to establish the following:

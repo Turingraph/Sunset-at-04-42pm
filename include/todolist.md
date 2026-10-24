@@ -5,7 +5,7 @@ Type
 	3.	table
 2.	small
 	1.	math
-	2.	cell_metric
+	2.	aura
 	3.	evenodd
 3.	table
 4.	view

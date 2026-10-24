@@ -28,6 +28,7 @@ SRC_ascii = $(wildcard input/ascii/*.c)
 SRC_decimal = $(wildcard input/decimal/*.c)
 SRC_table = $(wildcard input/table/*.c)
 
+SRC_aura = $(wildcard paint/aura/*.c)
 SRC_convolve = $(wildcard paint/convolve/*.c)
 SRC_paint = $(wildcard paint/paint/*.c)
 SRC_evenodd = $(wildcard paint/evenodd/*.c)
@@ -51,6 +52,7 @@ OBJ_ascii = $(patsubst %.c, obj/%.o, $(SRC_ascii)) $(OBJ_libft) $(OBJ_get_next_l
 OBJ_decimal = $(patsubst %.c, obj/%.o, $(SRC_decimal)) $(OBJ_ascii)
 OBJ_table = $(patsubst %.c, obj/%.o, $(SRC_table)) $(OBJ_decimal)
 
+OBJ_aura = $(patsubst %.c, obj/%.o, $(SRC_aura)) $(OBJ_taylor)
 OBJ_convolve = $(patsubst %.c, obj/%.o, $(SRC_convolve)) $(OBJ_table) $(OBJ_taylor)
 OBJ_paint = $(patsubst %.c, obj/%.o, $(SRC_paint)) $(OBJ_taylor)
 OBJ_evenodd = $(patsubst %.c, obj/%.o, $(SRC_evenodd)) $(OBJ_taylor)

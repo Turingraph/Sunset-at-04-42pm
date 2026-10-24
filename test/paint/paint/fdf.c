@@ -79,7 +79,7 @@ int	main(void)
 		table_a = load_fdf_table(file_name,
 				FDF_FORMAT_ASCII_C, true);
 		free(file_name);
-        color_cells_gradient(&table_a, init_gradient(), true);
+        paint_gradient_fdf_table(&table_a, init_gradient(), true);
 		write_fdf_table(output, &table_a, 1, FDF_FORMAT_DECIMAL_RGBA);
 		destroy_fdf_table(&table_a);
 		i += 1;

@@ -28,12 +28,12 @@ int	main(void)
 	t_style_render	style;
 
 	table = create_fdf_table(120, 120, true);
-	paint_space(&table, FDF_HEIGHT, cell_metric_amgm_inequality);
-	paint_space(&table, FDF_BLUE, cell_metric_pythagoras_3d);
-	paint_space(&table, FDF_RED, cell_metric_min_xy);
-	paint_space(&table, FDF_GREEN, cell_metric_max_xyz);
+	paint_aura_fdf_table(&table, FDF_HEIGHT, aura_amgm_inequality);
+	paint_aura_fdf_table(&table, FDF_BLUE, aura_pythagoras_3d);
+	paint_aura_fdf_table(&table, FDF_RED, aura_min_xy);
+	paint_aura_fdf_table(&table, FDF_GREEN, aura_max_xyz);
 	set_cells_color(&table, 255, FDF_ALPHA, NULL);
-	color_cells_gradient(&table, init_white_noise(), false);
+	paint_gradient_fdf_table(&table, init_white_noise(), false);
 	style.thickness = 2;
 	style.shape2d = SHAPE2D_RECTANGLE;
 	scale_fdf_table(&table, 1.0 / 120.0, FDF_HEIGHT);

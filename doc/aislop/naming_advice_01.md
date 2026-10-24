@@ -28,7 +28,7 @@ set_cells_color(&table_base, 30, HEIGHT, is_oddlength_cube);
 mix_hadamard_fdf_table(&table, &table_base, HEIGHT);
 relu_fdf_table(&table, 201, 2000, 0);
 
-color_cells_gradient(&table, init_deep_sea(), true);
+paint_gradient_fdf_table(&table, init_deep_sea(), true);
 scale_fdf_table(&table, 1.0 / 120.0, HEIGHT);
 
 output = create_fdf_proj2d(&table, proj2d_isometric, 0.6);
@@ -48,7 +48,7 @@ Consider these names:
 
 - `setcells_pythagorus_length`
 - `set_cells_color`
-- `color_cells_gradient`
+- `paint_gradient_fdf_table`
 - `relu_fdf_table`
 - `scale_fdf_table`
 - `mix_hadamard_fdf_table`
@@ -57,7 +57,7 @@ Some use `set`, some use `color`, and others use `scale` or a mathematical term.
 
 That isn't necessarily a problem with any individual function. The problem is that users have to learn several naming patterns.
 
-For example, if I already know `color_cells_gradient()`, which function should I look for when I want to color cells according to their height?
+For example, if I already know `paint_gradient_fdf_table()`, which function should I look for when I want to color cells according to their height?
 
 Would it be:
 
@@ -170,7 +170,7 @@ The important point is that you establish a small number of predictable patterns
 I'd avoid mixing these forms for equivalent operations:
 
 ```
-color_cells_gradient(...);
+paint_gradient_fdf_table(...);
 set_cells_color(...);
 gradient_color_cells(...);
 ```
@@ -354,9 +354,9 @@ Your non-Euclidean example is particularly revealing.
 It contains operations such as:
 
 ```
-paint_space(&table, HEIGHT, cell_metric_max_xy);
+paint_aura_fdf_table(&table, HEIGHT, aura_max_xy);
 mix_hadamard_fdf_table(&table, &table_base, HEIGHT);
-color_cells_gradient(&table, init_floor(), true);
+paint_gradient_fdf_table(&table, init_floor(), true);
 scale_fdf_table(&table, 1.0 / 120.0, HEIGHT);
 output = create_fdf_proj2d(&table, NULL, 0.6);
 view_fdf(&output, style, background_color);
@@ -698,10 +698,10 @@ set_cells_color(
 
 table = create_fdf_table(300, 300, true);
 
-paint_space(
+paint_aura_fdf_table(
     &table,
     HEIGHT,
-    cell_metric_max_xy
+    aura_max_xy
 );
 
 mix_hadamard_fdf_table(
@@ -710,7 +710,7 @@ mix_hadamard_fdf_table(
     HEIGHT
 );
 
-color_cells_gradient(
+paint_gradient_fdf_table(
     &table,
     init_floor(),
     true
@@ -756,7 +756,7 @@ surface_map_channel(
     &surface,
     SURFACE_CHANNEL_HEIGHT,
     0,
-    cell_metric_max_xy
+    aura_max_xy
 );
 
 /* Combine the surfaces using the Hadamard product. */
@@ -791,7 +791,7 @@ fdf_destroy(&output);
 
 This is a **proposed naming sketch, not drop-in replacement code**. Some function signatures differ from your current API, and the exact names depend on the implementation.
 
-In particular, I would verify what `paint_space()` does before replacing it with `surface_map_channel()`. The example assumes that its behavior is equivalent to assigning values to a channel, which may not be true.
+In particular, I would verify what `paint_aura_fdf_table()` does before replacing it with `surface_map_channel()`. The example assumes that its behavior is equivalent to assigning values to a channel, which may not be true.
 
 Similarly, I would retain `t_fdf_table` instead of introducing `t_surface` if the latter would misrepresent the data structure. The point is the naming pattern, not the specific type name.
 
@@ -826,9 +826,9 @@ Candidates for investigation include:
 | `create_fdf_proj2d()` | Does it construct a new object or initialize existing storage? |
 | `scale_fdf_table()` | Is it scaling values, multiplying a channel, or performing another operation? |
 | `scale_dim_fdf_table()` | Does it resize the grid or transform geometric dimensions? |
-| `paint_space()` | Does it populate a numerical field, generate geometry, or do something else? |
+| `paint_aura_fdf_table()` | Does it populate a numerical field, generate geometry, or do something else? |
 | `setcells_pythagorus_length()` | Does it assign a distance metric to cells? |
-| `color_cells_gradient()` | Does it assign colors directly or map values through a gradient? |
+| `paint_gradient_fdf_table()` | Does it assign colors directly or map values through a gradient? |
 
 These are questions to resolve by reading the implementations, not automatic renaming recommendations.
 
@@ -840,8 +840,8 @@ For example:
 
 ```
 set_cells_color(...)
-color_cells_gradient(...)
-paint_space(...)
+paint_gradient_fdf_table(...)
+paint_aura_fdf_table(...)
 ```
 
 Determine which operations are genuinely distinct and which are simply different interfaces for the same concept.
