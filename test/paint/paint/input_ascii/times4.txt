@@ -1,9 +1,0 @@
-iiiiiii::::ii::::iiiiiiiiiiiiiii::::ii::::iiiiiiiiiiiiiii::::ii::::iiiiiiiiiiiiiii::::ii::::iiiiiiiiiiiiii
-iiiiiii:::::i:::::iiiiiiiiiiiiii:::::i:::::iiiiiiiiiiiiii:::::i:::::iiiiiiiiiiiiii:::::i:::::iiiiiiiiiiiii
-iiiiiiii:::::i:::::iiiiiiiiiiiiii:::::i:::::iiiiiiiiiiiiii:::::i:::::iiiiiiiiiiiiii:::::i:::::iiiiiiiiiiii
-::::::::i::::ii::::iii:::::::::::i::::ii::::iii:::::::::::i::::ii::::iii:::::::::::i::::ii::::iii:::::::::
-::::::::iiiiiiiiiiiiii:::::::::::iiiiiiiiiiiiii:::::::::::iiiiiiiiiiiiii:::::::::::iiiiiiiiiiiiii:::::::::
-::::::::::ii::::ii::::ii:::::::::::ii::::ii::::ii:::::::::::ii::::ii::::ii:::::::::::ii::::ii::::ii:::::::
-::::::::::ii:::::i:::::i:::::::::::ii:::::i:::::i:::::::::::ii:::::i:::::i:::::::::::ii:::::i:::::i:::::::
-iiiiiiiiiiiii:::::i:::::iiiiiiiiiiiiii:::::i:::::iiiiiiiiiiiiii:::::i:::::iiiiiiiiiiiiii:::::i:::::iiiiiii
-iiiiiiiiiiiiii::::ii::::iiiiiiiiiiiiiii::::ii::::iiiiiiiiiiiiiii::::ii::::iiiiiiiiiiiiiii::::ii::::iiiiiii

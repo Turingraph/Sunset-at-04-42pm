@@ -13,8 +13,11 @@ BUFFER_SIZE = 42
 .SECONDEXPANSION:
 
 # *** library ***
-LIBRARY = $(patsubst %, lib/%.a, libft taylor get_next_line linalg ascii decimal table \
-	convolve paint debug raster motif proj2d render window spots)
+LIBRARY = $(patsubst %, lib/%.a, debug \
+	ascii decimal get_next_line table \
+	aura convolve gradient spots \
+	libft taylor \
+	motif proj2d raster render window)
 
 # *** atom src ***
 SRC_libft = $(wildcard utils/libft/*.c)
@@ -23,7 +26,6 @@ SRC_get_next_line = $(wildcard input/get_next_line/*.c)
 
 # *** composed src ***
 SRC_debug = $(wildcard debug/debug/*.c)
-SRC_linalg = $(wildcard utils/linalg/*.c)
 SRC_ascii = $(wildcard input/ascii/*.c)
 SRC_decimal = $(wildcard input/decimal/*.c)
 SRC_table = $(wildcard input/table/*.c)
