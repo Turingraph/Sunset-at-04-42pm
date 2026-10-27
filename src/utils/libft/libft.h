@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:22:05 by phsottat          #+#    #+#             */
-/*   Updated: 2026/08/29 14:22:25 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/27 13:09:05 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ void			*malloc_talk(size_t elem_size, const char *comment);
 unsigned char	*rgbarr_from_table(const t_fdf_table *src,
 					t_fdf_channel rgba_type);
 t_float2d		init_table_coordinate(const t_fdf_table *dst, size_t index, float zoom);
-bool			mul_overflow_size_t(size_t col, size_t row);
-bool			mul_overflow_uint32_t(uint32_t col, uint32_t row);
 
 // interval.c
 
@@ -44,5 +42,12 @@ float			f_max(float a, float b);
 float			f_min(float a, float b);
 int				f_max_int(int a, int b);
 int				f_min_int(int a, int b);
+
+// overflow.c
+
+bool			mul_overflow_size_t(size_t col, size_t row);
+bool			mul_overflow_uint32_t(uint32_t col, uint32_t row);
+bool			mul_overflow_int(int a, int b);
+bool			add_overflow_int(int a, int b);
 
 #endif

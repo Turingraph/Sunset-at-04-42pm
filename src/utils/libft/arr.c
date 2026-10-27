@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:27:08 by phsottat          #+#    #+#             */
-/*   Updated: 2026/10/19 16:12:47 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/27 12:53:12 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,45 +136,3 @@ Reference
 	i_dont_understand_size_t/
 *	https://stackoverflow.com/questions/22514803/maximum-size-of-size-t
 */
-
-/**
- * Check whether the product of 2 size_t type number cause integeroverflow,
- * or output 0 or not.
- *
- * time/space: O(1) / O(1)
- *
- * status: public api
- * 
- * @param col   The 1st number.
- * @param row   The 2nd number.
- * @return true if the product are valid, greater than 0, and the index is within
- *         bounds; false otherwise.
- */
-bool	mul_overflow_size_t(size_t col, size_t row)
-{
-	if (col == 0 || row == 0 || col > SIZE_MAX / row
-		|| row > SIZE_MAX / col)
-		return (false);
-	return (true);
-}
-
-/**
- * Check whether the product of 2 uint32_t type number cause integeroverflow,
- * or output 0 or not.
- *
- * time/space: O(1) / O(1)
- *
- * status: public api
- * 
- * @param col   The 1st number.
- * @param row   The 2nd number.
- * @return true if the product are valid, greater than 0, and the index is within
- *         bounds; false otherwise.
- */
-bool	mul_overflow_uint32_t(uint32_t col, uint32_t row)
-{
-	if (col == 0 || row == 0 || col > UINT32_MAX / row
-		|| row > UINT32_MAX / col)
-		return (false);
-	return (true);
-}

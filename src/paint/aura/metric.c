@@ -1,85 +1,58 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   metric.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/27 14:34:03 by phsottat          #+#    #+#             */
+/*   Updated: 2026/10/27 14:54:00 by phsottat         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "aura.h"
 
 /**
-* Calculate the Euclidean distance of a cell from the origin
-* in the 3d space
+* Calculate (x^2 + y^2 + z^2)^(1/2)
 * 
 * time/space: O(1) / O(1)
 * 
 * status: public api
-* 
-* @param dst source FDF table
-* @param index index of the cell
-* @return Euclidean distance from the origin
 */
-int	aura_pythagoras(const t_fdf_table *dst, size_t index)
+int	aura_pythagoras(int x, int y, int z)
 {
-	t_float2d	y;
-	int			z;
-	int			distance;
+	int	distance;
 
-	if (dst == NULL || mul_overflow_size_t(dst->col, dst->row) == false || index >= dst->col * dst->row)
-		return (false);
-	z = 0;
-	if (dst->arr != NULL)
-		z = dst->arr[index];
-	y = init_table_coordinate(dst, index, 1.0);
-	distance = (int)(y.x * y.x + y.y * y.y) + z * z;
+	distance = x * x + y * y + z * z;
 	return ((int)(f_root_find(distance, 2)));
 }
 
 /**
- * Calculate the maximum absolute component of a cell coordinate
- * in 3d space.
+ * Return max(x, y, z)
  * 
  * time/space: O(1) / O(1)
  * 
  * status: public api
- * 
- * @param dst source FDF table
- * @param index index of the cell
- * @return maximum of |re|, |im|, and z
  */
-int	aura_max_xyz(const t_fdf_table *dst, size_t index)
+int	aura_max(int x, int y, int z)
 {
-	t_float2d	y;
-	int			max2d;
-	int			z;
+	int			max3d;
 
-	if (dst == NULL || mul_overflow_size_t(dst->col, dst->row) == false || index >= dst->col * dst->row)
-		return (false);
-	z = 0;
-	if (dst->arr != NULL)
-		z = dst->arr[index];
-	y = init_table_coordinate(dst, index, 1.0);
-	max2d = (int)(f_max(f_abs(y.x), f_abs(y.y)));
-	return (f_max_int(max2d, z));
+	max3d = f_max_int(f_abs(x), f_abs(y));
+	return (f_max_int(max3d, z));
 }
 
 /**
- * Calculate the maximum absolute component of a cell coordinate
- * in 3d space.
+ * Calculate min(x, y, z)
  * 
  * time/space: O(1) / O(1)
  * 
  * status: public api
- * 
- * @param dst source FDF table
- * @param index index of the cell
- * @return minimum of |re|, |im|, and z
  */
-int	aura_min_xyz(const t_fdf_table *dst, size_t index)
+int	aura_min(int x, int y, int z)
 {
-	t_float2d	y;
-	int			min2d;
-	int			z;
+	int			min3d;
 
-	if (dst == NULL || mul_overflow_size_t(dst->col, dst->row) == false || index >= dst->col * dst->row)
-		return (false);
-	z = 0;
-	if (dst->arr != NULL)
-		z = dst->arr[index];
-	y = init_table_coordinate(dst, index, 1.0);
-	min2d = (int)(f_min(f_abs(y.x), f_abs(y.y)));
-	return (f_min_int(min2d, z));
+	min3d = f_min_int(f_abs_int(x), f_abs_int(y));
+	return (f_min_int(min3d, z));
 }

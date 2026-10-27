@@ -1,0 +1,86 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   complex.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/27 14:38:44 by phsottat          #+#    #+#             */
+/*   Updated: 2026/10/27 14:55:45 by phsottat         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "aura.h"
+
+int	aura_complex_pythagorus(int x, int y, int z,
+	t_float2d (*complex_func)(t_float2d a))
+{
+	t_float2d	complex;
+
+	complex.x = (float)x;
+	complex.y = (float)y;
+	if (complex_func != NULL)
+		complex = complex_func(complex);
+	return (aura_pythagoras((int)complex.x, (int)complex.y, z));
+}
+
+int	aura_complex_max(int x, int y, int z,
+	t_float2d (*complex_func)(t_float2d a))
+{
+	t_float2d	complex;
+
+	complex.x = (float)x;
+	complex.y = (float)y;
+	if (complex_func != NULL)
+		complex = complex_func(complex);
+	return (aura_max((int)complex.x, (int)complex.y, z));
+}
+
+int	aura_complex_min(int x, int y, int z,
+	t_float2d (*complex_func)(t_float2d a))
+{
+	t_float2d	complex;
+
+	complex.x = (float)x;
+	complex.y = (float)y;
+	if (complex_func != NULL)
+		complex = complex_func(complex);
+	return (aura_min((int)complex.x, (int)complex.y, z));
+}
+
+int	aura_complex_fermat(int x, int y, int z,
+	t_float2d (*complex_func)(t_float2d a))
+{
+	t_float2d	complex;
+
+	complex.x = (float)x;
+	complex.y = (float)y;
+	if (complex_func != NULL)
+		complex = complex_func(complex);
+	return (aura_fermat((int)complex.x, (int)complex.y, z));
+}
+
+int	aura_pythagorus_complex(int x, int y, int z,
+	t_float2d (*complex_func)(t_float2d a))
+{
+	t_float2d	complex;
+
+	complex.x = (float)x;
+	complex.y = (float)y;
+	if (complex_func != NULL)
+		complex = complex_func(complex);
+	return (aura_pythagoras((int)complex.x, (int)complex.y, z));
+}
+
+int	aura_pythagorus_complex(int x, int y, int z,
+	t_float2d (*complex_func)(t_float2d a))
+{
+	t_float2d	complex;
+
+	complex.x = (float)x;
+	complex.y = (float)y;
+	if (complex_func != NULL)
+		complex = complex_func(complex);
+	return (aura_pythagoras((int)complex.x, (int)complex.y, z));
+}
+

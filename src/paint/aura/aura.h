@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/27 11:15:35 by phsottat          #+#    #+#             */
-/*   Updated: 2026/10/27 11:15:36 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/27 14:54:34 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,50 +19,28 @@
 
 // arithmetic.c
 
-int		aura_root_xyz(const t_fdf_table *dst, size_t index);
-int		aura_addsub(const t_fdf_table *dst, size_t index);
-
-// fermat.c
-
-int		aura_fermat(const t_fdf_table *dst, size_t index, size_t power);
-int		aura_fermat2(const t_fdf_table *dst, size_t index);
-int		aura_fermat3(const t_fdf_table *dst, size_t index);
-int		aura_fermat4(const t_fdf_table *dst, size_t index);
-int		aura_fermat5(const t_fdf_table *dst, size_t index);
-int		aura_fermat6(const t_fdf_table *dst, size_t index);
+int		aura_root2(int x, int y, int z);
+int		aura_root3(int x, int y, int z);
+int		aura_addsub(int x, int y, int z);
+int		aura_fermat(int x, int y, int z);
 
 // inequality.c
 
-int		aura_triangle_inequality(const t_fdf_table *dst, size_t index);
-int		aura_amgm_inequality(const t_fdf_table *dst, size_t index);
-int		aura_cauchy_schwarz_inequality_3d(const t_fdf_table *dst, size_t index);
-
-// maxtri.c
-
-int		aura_maxcos(const t_fdf_table *dst, size_t index);
-int		aura_maxecos(const t_fdf_table *dst, size_t index);
-int		aura_maxsin(const t_fdf_table *dst, size_t index);
-int		aura_maxesin(const t_fdf_table *dst, size_t index);
-int		aura_maxexp(const t_fdf_table *dst, size_t index);
+int		aura_inequality_triangle(int x, int y, int z);
+int		aura_inequality_amgm(int x, int y, int z);
+int		aura_inequality_cauchy_3d(int x, int y, int z);
 
 // metric.c
 
-int		aura_pythagoras(const t_fdf_table *dst, size_t index);
-int		aura_max_xyz(const t_fdf_table *dst, size_t index);
-int		aura_min_xyz(const t_fdf_table *dst, size_t index);
-
-// mintri.c
-
-int		aura_mincos(const t_fdf_table *dst, size_t index);
-int		aura_minecos(const t_fdf_table *dst, size_t index);
-int		aura_minsin(const t_fdf_table *dst, size_t index);
-int		aura_minesin(const t_fdf_table *dst, size_t index);
-int		aura_minexp(const t_fdf_table *dst, size_t index);
+int		aura_pythagoras(int x, int y, int z);
+int		aura_max(int x, int y, int z);
+int		aura_min(int x, int y, int z);
 
 // paint.c
 
-int		aura_conway(const t_fdf_table *dst, size_t index, int threshold);
-void	paint_aura_fdf_table(t_fdf_table *dst, t_fdf_channel channel,
-			int (*aura)(const t_fdf_table *dst, size_t index));
+void	paint_aura_fdf_table(t_fdf_table *dst,
+			t_fdf_channel src_channel,
+			t_fdf_channel dst_channel,
+			int (*aura_custom)(int x, int y, int z));
 
 #endif

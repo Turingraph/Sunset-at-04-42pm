@@ -1,56 +1,70 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   arithmetic.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/27 14:33:56 by phsottat          #+#    #+#             */
+/*   Updated: 2026/10/27 14:54:52 by phsottat         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "aura.h"
 
 /**
- * Calculate the square root of the absolute product of the
- * real and imaginary components of a cell coordinate.
+ * Calculate |x * y * z|^(1/2)
  * 
  * time/space: O(1) / O(1)
  * 
  * status: public api
- * 
- * @param dst source FDF table
- * @param index index of the cell
- * @return sqrt(|re * im|)
  */
-int	aura_root_xyz(const t_fdf_table *dst, size_t index)
+int	aura_root2(int x, int y, int z)
 {
-	t_float2d	y;
-	int			z;
-
-	if (dst == NULL || mul_overflow_size_t(dst->col, dst->row) == false || index >= dst->col * dst->row)
-		return (false);
-	y = init_table_coordinate(dst, index, 1.0);
-	z = 0;
-	if (dst->arr != NULL)
-		z = f_abs_int(dst->arr[index]);
-	y.x = f_abs(y.x);
-	y.y = f_abs(y.y);
-	z *= (int)f_abs(y.x * y.y);
-	return ((int)f_round(f_root_find(z, 3)));
+	return ((int)f_round(f_root_find(x * y * z, 2)));
 }
 
 /**
- * Calculate the absolute value of the sum of x, y, and z.
+ * Calculate |x * y * z|^(1/3)
  * 
  * time/space: O(1) / O(1)
  * 
  * status: public api
- * 
- * @param dst source FDF table
- * @param index index of the cell
- * @return |x + y + z|
  */
-int	aura_addsub(const t_fdf_table *dst, size_t index)
+int	aura_root3(int x, int y, int z)
 {
-	t_float2d	y;
-	int			z;
-
-	if (dst == NULL || mul_overflow_size_t(dst->col, dst->row) == false || index >= dst->col * dst->row)
-		return (false);
-	z = 0;
-	if (dst->arr != NULL)
-		z = dst->arr[index];
-	y = init_table_coordinate(dst, index, 1.0);
-	return ((int)f_abs(y.x + y.y + z));
+	return ((int)f_round(f_root_find(x * y * z, 3)));
 }
 
+/**
+ * Calculate |x + y + z|
+ * 
+ * time/space: O(1) / O(1)
+ * 
+ * status: public api
+ */
+int	aura_addsub(int x, int y, int z)
+{
+	return (f_abs_int(x + y + z));
+}
+
+/**
+ * Calculate x^z + y^z - floor((x^z + y^z)^(1/z))
+ * 
+ * time/space: O(1) / O(1)
+ * 
+ * status: public api
+ */
+int	aura_fermat(int x, int y, int z)
+{
+	int			a;
+	int			b;
+	int			c;
+
+	a = (int)f_pow(x, z);
+	b = (int)f_pow(y, z);
+	c = a + b;
+	c = (int)f_floor(f_root_find((float)c, 3));
+	c = (int)f_pow((int)c, z);
+	return (f_abs_int(a + b - c));
+}

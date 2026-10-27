@@ -1,59 +1,44 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   paint.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/27 12:25:45 by phsottat          #+#    #+#             */
+/*   Updated: 2026/10/27 14:41:40 by phsottat         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "aura.h"
 
-/**
- * Counts the neighboring cells whose values exceed a given threshold.
- *
- * Examines the eight possible neighbors (horizontal, vertical, and diagonal)
- * of the cell at the specified index in a 2D grid stored as a 1D array.
- * A neighbor is counted if its value is strictly greater than the threshold.
- * Neighbors outside the grid boundaries are ignored.
- *
- * time/space: O(1) / O(1)
- * 
- * status: public api
- * 
- * @param dst FDF table
- * @param index Index of the cell (within the FDF table) whose neighbors will be examined.
- * The index must be within the grid's valid range.
- * @param threshold Minimum value a neighboring cell must exceed to be counted.
- * 
- * @return The number of valid neighboring cells whose values exceed the
- * threshold, ranging from 0 to 8. Returns 0 if the FDF table is invalid.
- */
-int	aura_conway(const t_fdf_table *dst, size_t index, int threshold)
+static void	paint_aura_fdf_table_loop(t_fdf_table *dst,
+	unsigned char *dst_rgba,
+	unsigned char *src_rgba,
+	int (*aura_custom)(int x, int y, int z))
 {
-	int	y;
+	size_t			i;
+	int				y;
+	int				z;
+	t_float2d		position;
 
-	y = 0;
-	if (dst == NULL || dst->arr == NULL
-		|| mul_overflow_size_t(dst->col, dst->row) == false
-		|| index >= dst->col * dst->row)
-		return (y);
-	if (index % dst->col < dst->col - 1 && dst->arr[index + 1] > threshold)
-		y += 1;
-	if (index % dst->col > 0 && dst->arr[index - 1] > threshold)
-		y += 1;
-	if (index / dst->col < dst->row - 1 && dst->arr[index + dst->col] > threshold)
-		y += 1;
-	if (index / dst->col > 0 && dst->arr[index - dst->col] > threshold)
-		y += 1;
-	if (index / dst->col < dst->row - 1
-		&& index % dst->col < dst->col - 1
-		&& dst->arr[index + dst->col + 1] > threshold)
-		y += 1;
-	if (index / dst->col < dst->row - 1
-		&& index % dst->col > 0
-		&& dst->arr[index + dst->col - 1] > threshold)
-		y += 1;
-	if (index / dst->col > 0
-		&& index % dst->col < dst->col - 1
-		&& dst->arr[index - dst->col + 1] > threshold)
-		y += 1;
-	if (index / dst->col > 0
-		&& index % dst->col > 0
-		&& dst->arr[index - dst->col - 1] > threshold)
-		y += 1;
-	return (y);
+	i = 0;
+	while (i < dst->row * dst->col)
+	{
+		position = init_table_coordinate(dst, i, 1.0);
+		if (src_rgba == NULL)
+			z = dst->arr[i];
+		else
+			z = (int)src_rgba[i];
+		y = (int)f_abs(position.x + position.y + (float)z);
+		if (aura_custom != NULL)
+			y = aura_custom((int)position.x, (int)position.y, z);
+		if (dst_rgba == NULL)
+			dst->arr[i] = y;
+		else
+			dst_rgba[i] = (unsigned char)f_interval_int(y, 0, 255);
+		i += 1;
+	}
 }
 
 /**
@@ -68,32 +53,28 @@ int	aura_conway(const t_fdf_table *dst, size_t index, int threshold)
  * 
  * @param dst destination FDF table to paint
  * @param channel FDF channel to paint
- * @param aura optional function to calculate the value of each cell
+ * @param src_channel FDF channel to paint
+ * @param dst_channel FDF channel to paint
+ * @param aura_custom optional function to calculate the value of each cell
+ * It is f(x, y, z). If it is NULL, then f(x, y, z) = |x + y + z|.
  */
-void	paint_aura_fdf_table(t_fdf_table *dst, t_fdf_channel channel,
-	int (*aura)(const t_fdf_table *dst, size_t index))
+void	paint_aura_fdf_table(t_fdf_table *dst,
+	t_fdf_channel src_channel,
+	t_fdf_channel dst_channel,
+	int (*aura_custom)(int x, int y, int z))
 {
-	size_t			i;
-	int				y;
-	t_float2d		z;
-	unsigned char	*rgba;
+	unsigned char	*src_rgba;
+	unsigned char	*dst_rgba;
 
 	if (dst == NULL || dst->arr == NULL
 		|| mul_overflow_size_t(dst->col, dst->row) == false)
 		return ;
-	rgba = rgbarr_from_table(dst, channel);
-	i = 0;
-	while (i < dst->row * dst->col)
-	{
-		z = init_table_coordinate(dst, i, 1);
-		y = (int)(f_abs(z.x) + f_abs(z.y));
-		y = (int)f_round(f_root_find(y, 2));
-		if (aura != NULL)
-			y = aura(dst, i);
-		if (channel == FDF_HEIGHT)
-			dst->arr[i] = y;
-		else if (rgba != NULL)
-			rgba[i] = (unsigned char)f_interval_int(y, 0, 255);
-		i += 1;
-	}
+	src_rgba = rgbarr_from_table(dst, src_channel);
+	dst_rgba = rgbarr_from_table(dst, dst_channel);
+	if ((dst->arr == NULL
+			&& (src_channel == FDF_HEIGHT || dst_channel == FDF_HEIGHT))
+		|| (dst_rgba == NULL && dst_channel != FDF_HEIGHT)
+		|| (src_rgba == NULL && src_channel != FDF_HEIGHT))
+		return ;
+	paint_aura_fdf_table_loop(dst, dst_rgba, src_rgba, aura_custom);
 }
