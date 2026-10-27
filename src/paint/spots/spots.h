@@ -1,5 +1,17 @@
-#ifndef EVENODD_H
-# define EVENODD_H
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   spots.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/27 11:15:42 by phsottat          #+#    #+#             */
+/*   Updated: 2026/10/27 11:15:58 by phsottat         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef SPOTS_H
+# define SPOTS_H
 
 #include "../../utils/libft/libft.h"
 #include "../../utils/taylor/taylor.h"

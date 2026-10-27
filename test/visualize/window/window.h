@@ -2,7 +2,7 @@
 # define WINDOW_TESTER_H
 
 #include "../../../src/visualize/window/window.h"
-#include "../../../src/paint/paint/paint.h"
+#include "../../../src/paint/gradient/gradient.h"
 #include "../../../src/input/table/table.h"
 
 #endif

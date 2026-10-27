@@ -32,7 +32,7 @@ SRC_table = $(wildcard input/table/*.c)
 
 SRC_aura = $(wildcard paint/aura/*.c)
 SRC_convolve = $(wildcard paint/convolve/*.c)
-SRC_gradient = $(wildcard paint/paint/*.c)
+SRC_gradient = $(wildcard paint/gradient/*.c)
 SRC_spots = $(wildcard paint/spots/*.c)
 
 SRC_raster = $(wildcard visualize/raster/*.c)

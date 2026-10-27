@@ -12,7 +12,6 @@ SRC_taylor = $(wildcard utils/taylor/*.c)
 
 SRC_convolve = $(wildcard paint/convolve/*.c)
 SRC_paint = $(wildcard paint/paint/*.c)
-SRC_evenodd = $(wildcard paint/evenodd/*.c)
 
 SRC_motif = $(wildcard visualize/motif/*.c)
 SRC_window = $(wildcard visualize/window/*.c)
@@ -20,16 +19,14 @@ SRC_window = $(wildcard visualize/window/*.c)
 OUT_paint = $(patsubst %.c, out/%.out, $(SRC_paint))
 OUT_motif = $(patsubst %.c, out/%.out, $(SRC_motif))
 OUT_window = $(patsubst %.c, out/%.out, $(SRC_window))
-OUT_evenodd = $(patsubst %.c, out/%.out, $(SRC_evenodd))
 
 LIB_GRAPHIC = $(patsubst %, ../include/%.a, libmlx42)
 GRAPHIC_CONFIG = -ldl -lglfw -pthread
-LIB_paint = $(patsubst %, ../src/lib/%.a, paint table debug)
 LIB_motif = $(patsubst %, ../src/lib/%.a, motif) $(LIB_GRAPHIC)
-LIB_window = $(patsubst %, ../src/lib/%.a, paint table window) $(LIB_GRAPHIC)
-LIB_evenodd = $(patsubst %, ../src/lib/%.a, paint table window evenodd) $(LIB_GRAPHIC)
+LIB_window = $(patsubst %, ../src/lib/%.a, gradient table window) $(LIB_GRAPHIC)
+LIB_paint = $(patsubst %, ../src/lib/%.a, gradient debug table window spots aura) $(LIB_GRAPHIC)
 
-OUT_LIB = $(OUT_motif) $(OUT_window) $(OUT_evenodd)
+OUT_LIB = $(OUT_motif) $(OUT_window) $(OUT_paint)
 OUT_BASIC = $(patsubst %.c, out/%.out,	\
 	$(SRC_get_next_line) $(SRC_convolve)\
 	$(SRC_decimal) $(SRC_table) $(SRC_libft) $(SRC_taylor))
@@ -44,16 +41,16 @@ INPUT_GNL = $(wildcard input/get_next_line/input/*)
 CLONE_FIGLET_decimal = $(patsubst ../corpus/figlet_rozzo/%, input/decimal/clone_input_ascii/%, $(INPUT_FIGLET))
 CLONE_FIGLET_TABLE = $(patsubst ../corpus/figlet_rozzo/%, input/table/clone_input_ascii/%, $(INPUT_FIGLET))
 CLONE_FIGLET = $(CLONE_FIGLET_decimal) $(CLONE_FIGLET_TABLE)
-CLONE_FDF_decimal = $(patsubst ../corpus/fdf/%, input/decimal/clone_input_fdf/%, $(INPUT_FDF))
-CLONE_FDF_TABLE = $(patsubst ../corpus/fdf/%, input/table/clone_input_fdf/%, $(INPUT_FDF))
-CLONE_FDF = $(CLONE_FDF_decimal) $(CLONE_FDF_TABLE)
+CLONE_DECIMAL_decimal = $(patsubst ../corpus/fdf/%, input/decimal/clone_input_fdf/%, $(INPUT_FDF))
+CLONE_DECIMAL_TABLE = $(patsubst ../corpus/fdf/%, input/table/clone_input_fdf/%, $(INPUT_FDF))
+CLONE_DECIMAL = $(CLONE_DECIMAL_decimal) $(CLONE_DECIMAL_TABLE)
 CLONE_GNL = $(patsubst input/get_next_line/input/%, input/get_next_line/clone_input/%, $(INPUT_GNL))
 
 #-----------------------------------------------------------------------------------------------
 # *** obj, out, and lib ***
 all: all_out all_clone
 
-all_out: $(OUT_BASIC) $(OUT_LIB) $(OUT_paint)
+all_out: $(OUT_BASIC) $(OUT_LIB)
 	@echo $^
 
 $(OUT_LIB): out/%.out: obj/%.o
@@ -64,10 +61,6 @@ $(OUT_BASIC): out/%.out: obj/%.o
 	@mkdir -p $(@D)
 	$(CC) -o $@ $^ -L. ../src/lib/debug.a ../src/lib/$(notdir $(call remove_slash, $(dir $@))).a
 
-$(OUT_paint): out/%.out: obj/%.o
-	@mkdir -p $(@D)
-	$(CC) -o $@ $^ -L. $(LIB_paint)
-
 obj/%.o: %.c
 	@mkdir -p $(@D)
 	$(CC) -c $< -o $@
@@ -75,10 +68,10 @@ obj/%.o: %.c
 #-----------------------------------------------------------------------------------------------
 # *** create output file ***
 
-all_clone: $(CLONE_FDF) $(CLONE_FIGLET) $(CLONE_GNL)
+all_clone: $(CLONE_DECIMAL) $(CLONE_FIGLET) $(CLONE_GNL)
 	@echo $^
 
-$(CLONE_FDF): ../corpus/fdf/$(notdir $@)
+$(CLONE_DECIMAL): ../corpus/fdf/$(notdir $@)
 	@mkdir -p $(@D)
 	touch $@
 
@@ -100,6 +93,6 @@ clean_out:
 	rm -r -f obj/
 
 clean_clone:
-	rm -r -f $(CLONE_FIGLET) $(CLONE_FDF) $(CLONE_GNL)
+	rm -r -f $(CLONE_FIGLET) $(CLONE_DECIMAL) $(CLONE_GNL)
 
 .PHONY: all all_out all_clone clean clean_out clean_clone

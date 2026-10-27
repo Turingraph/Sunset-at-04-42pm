@@ -39,7 +39,7 @@ bool	is_fdf_name(const char *str)
 int	main(int len, char **str)
 {
 	t_fdf_table		table;
-	t_fdf_proj2d			output;
+	t_fdf_proj2d	output;
 	t_style_render	style;
 
 	if (len < 2 || is_fdf_name(str[1]) == false)

@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   paint.h                                            :+:      :+:    :+:   */
+/*   gradient.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 16:18:18 by phsottat          #+#    #+#             */
-/*   Updated: 2026/08/29 16:23:28 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/27 11:30:33 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PAINT_H
-# define PAINT_H
+#ifndef GRADIENT_H
+# define GRADIENT_H
 
 # include "../../utils/taylor/taylor.h"
 # include "../../utils/libft/libft.h"
