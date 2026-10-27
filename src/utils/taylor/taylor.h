@@ -28,14 +28,6 @@
 #  define PI 3.141592653589
 # endif
 
-// complex_polynomial.c
-
-t_float2d	complex_square(t_float2d a);
-t_float2d	complex_cube(t_float2d a);
-t_float2d	complex_x4(t_float2d a);
-t_float2d	complex_x5(t_float2d a);
-t_float2d	complex_x6(t_float2d a);
-
 // complex_trig.c
 
 t_float2d	complex_exp(t_float2d a);
@@ -47,6 +39,15 @@ t_float2d	complex_cos(t_float2d a);
 t_float2d	complex_multiplication(t_float2d a, t_float2d b);
 t_float2d	complex_reciprocal(t_float2d a);
 float		complex_magnitude(t_float2d a, char is_square);
+t_float2d	complex_square(t_float2d a);
+t_float2d	complex_polynomial(t_float2d a, size_t power, size_t reciprocal);
+
+// discrete.c
+
+size_t		f_bisearch_count(size_t min_input, size_t max_input);
+size_t		f_collatz_max(size_t x, size_t div, size_t mul);
+void		f_fibonacci_custom(size_t x, size_t *a0, size_t *a1, size_t *a2);
+size_t		f_fibonacci(size_t x);
 
 // stats.c
 
