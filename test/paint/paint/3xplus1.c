@@ -30,7 +30,7 @@ int	main(void)
 	table = create_fdf_table(100, 100, true);
 	table_base = create_fdf_table(100, 100, false);
 	paint_aura_fdf_table(&table, FDF_HEIGHT, aura_pythagoras);
-	paint_spots_fdf_table(&table_base, 1, FDF_HEIGHT, spots_andmod_bisearch);
+	paint_spots_fdf_table(&table_base, 1, FDF_HEIGHT, spots_andmod_x2);
 	mix_hadamard_fdf_table(&table, &table_base, FDF_HEIGHT);
 	style.thickness = 2;
 	style.shape2d = SHAPE2D_RECTANGLE;
@@ -44,5 +44,5 @@ int	main(void)
 }
 
 /*
-valgrind --leak-check=full --show-leak-kinds=all ./test/out/paint/evenodd/3xplus1.out
+valgrind --leak-check=full --show-leak-kinds=all ./test/out/paint/paint/3xplus1.out
 */

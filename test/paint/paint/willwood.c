@@ -68,17 +68,18 @@ int	main(void)
 	t_style_render	style;
 	t_gradient		wood;
 	size_t			i;
+	size_t			dim = 300;
 
 	wood = init_deep_wood();
-	table = create_fdf_table(30, 30, true);
-	table_base = create_fdf_table(30, 30, false);
+	table = create_fdf_table(dim, dim, true);
+	table_base = create_fdf_table(dim, dim, false);
 	paint_aura_fdf_table(&table, FDF_HEIGHT, aura_inequality_amgm);
-	paint_aura_fdf_table(&table, FDF_HEIGHT, aura_pythagoras_3d);
-	paint_spots_fdf_table(&table_base, 1, FDF_HEIGHT, spots_oddlength_x2shadow);
+	paint_aura_fdf_table(&table, FDF_HEIGHT, aura_pythagoras);
+	paint_spots_fdf_table(&table_base, 1, FDF_HEIGHT, spots_oddlength_x2);
 	mix_hadamard_fdf_table(&table, &table_base, FDF_HEIGHT);
 	paint_gradient_fdf_table(&table, init_all(), true);
 	style.thickness = 3;
-	style.shape2d = SHAPE2D_CIRCLE;
+	style.shape2d = SHAPE2D_RECTANGLE;
 	i = 0;
 	while (i < 24)
 	{
@@ -89,7 +90,7 @@ int	main(void)
 	}
 	paint_gradient_fdf_table(&table, init_white_noise(), true);
 	scale_fdf_table(&table, 1.0 / 30.0, FDF_HEIGHT);
-	output = create_fdf_proj2d(&table, proj2d_cabinet, 1.3);
+	output = create_fdf_proj2d(&table, NULL, 1);
 	view_fdf(&output, style, rgba32_from_char(0, 0, 0, 255));
 	destroy_fdf_table(&table);
 	destroy_fdf_table(&table_base);
@@ -98,5 +99,6 @@ int	main(void)
 }
 
 /*
-valgrind --leak-check=full --show-leak-kinds=all ./test/out/paint/evenodd/willwood.out
+valgrind --leak-check=full --show-leak-kinds=all 
+./test/out/paint/paint/willwood.out
 */

@@ -15,68 +15,50 @@
 
 #include "../../utils/libft/libft.h"
 #include "../../utils/taylor/taylor.h"
+#include "../aura/aura.h"
 
-// binary_search.c
+// complex.c
 
-size_t	binary_search_count(size_t min_input, size_t max_input);
-bool	spots_oddlength_bisearch(const t_fdf_table *dst, size_t index);
-bool	spots_oddtime_bisearch(const t_fdf_table *dst, size_t index);
-bool	spots_andmod_bisearch(const t_fdf_table *dst, size_t index);
+bool	spots_andmod_custom(t_double2d x,
+			t_double2d (*complex_func)(t_double2d a));
+bool	spots_aura_custom(t_double2d x,
+			int (*aura_custom)(int x, int y, int z),
+			t_double2d (*complex_func)(t_double2d a));
 
-// collatz.c
+// edge.c
 
-size_t	collatz_max_point(size_t x);
-bool	spots_oddlength_collatz(const t_fdf_table *dst, size_t index);
-bool	spots_oddtime_collatz(const t_fdf_table *dst, size_t index);
-bool	spots_andmod_collatz(const t_fdf_table *dst, size_t index);
+bool	is_available_left(size_t col, size_t row, size_t index);
+bool	is_available_right(size_t col, size_t row, size_t index);
+bool	is_available_up(size_t col, size_t row, size_t index);
+bool	is_available_down(size_t col, size_t row, size_t index);
+bool	is_edge_frame(size_t col, size_t row, size_t index);
 
-// generic.c
+// power.c
 
-bool	spots_diffreim2odd_func(const t_fdf_table *dst, size_t index,
-			t_float2d (*complex_func)(t_float2d a), float zoom);
-bool	spots_diffreim2odd(const t_fdf_table *dst, size_t index);
-bool	spots_oddlength_func(const t_fdf_table *dst, size_t index,
-			t_float2d (*complex_func)(t_float2d a), float zoom);
-bool	spots_oddlength(const t_fdf_table *dst, size_t index);
-bool	spots_andmod_func(const t_fdf_table *dst, size_t index,
-			t_float2d (*complex_func)(t_float2d a), float zoom);
-
-// paint.c
-
-bool	spots_boundary(const t_fdf_table *dst, size_t index, int threshold);
-bool	spots_space(const t_fdf_table *dst, size_t index);
-bool	spots_chess(const t_fdf_table *dst, size_t index);
-void	paint_spots_fdf_table(t_fdf_table *dst, int color,
-			t_fdf_channel channel, bool (*spots)(const t_fdf_table *dst, size_t index));
-
-// polynomial_andmod.c
-
+bool	spots_oddlength_22(const t_fdf_table *dst, size_t index);
+bool	spots_oddlength_x2(const t_fdf_table *dst, size_t index);
+bool	spots_oddlength_x3(const t_fdf_table *dst, size_t index);
+bool	spots_bugs_x2(const t_fdf_table *dst, size_t index);
+bool	spots_bugs_x3(const t_fdf_table *dst, size_t index);
+bool	spots_oddlength_x4(const t_fdf_table *dst, size_t index);
+bool	spots_max_x2(const t_fdf_table *dst, size_t index);
+bool	spots_max_x3(const t_fdf_table *dst, size_t index);
+bool	spots_fermat_x2(const t_fdf_table *dst, size_t index);
+bool	spots_fermat_x3(const t_fdf_table *dst, size_t index);
 bool	spots_andmod_x2(const t_fdf_table *dst, size_t index);
 bool	spots_andmod_x3(const t_fdf_table *dst, size_t index);
 bool	spots_andmod_x4(const t_fdf_table *dst, size_t index);
-bool	spots_andmod_x5(const t_fdf_table *dst, size_t index);
-bool	spots_andmod_x6(const t_fdf_table *dst, size_t index);
 
-// polynomial_length.c
+// paint.c
 
-bool	spots_oddlength_x2(const t_fdf_table *dst, size_t index);
-bool	spots_oddlength_x3(const t_fdf_table *dst, size_t index);
-bool	spots_oddlength_x4(const t_fdf_table *dst, size_t index);
-bool	spots_oddlength_x5(const t_fdf_table *dst, size_t index);
-bool	spots_oddlength_x6(const t_fdf_table *dst, size_t index);
+void	paint_spots_fdf_table(t_fdf_table *dst, int color,
+			t_fdf_channel channel, bool (*spots)(const t_fdf_table *dst, size_t index));
 
-// polynomial_shadow.c
+// space.c
 
-bool	spots_oddlength_x2shadow(const t_fdf_table *dst, size_t index);
-bool	spots_oddlength_x3shadow(const t_fdf_table *dst, size_t index);
-bool	spots_andmod_x2shadow(const t_fdf_table *dst, size_t index);
-bool	spots_andmod_x3shadow(const t_fdf_table *dst, size_t index);
-
-// trigonometry.c
-
-bool	spots_oddlength_sin(const t_fdf_table *dst, size_t index);
-bool	spots_oddlength_cos(const t_fdf_table *dst, size_t index);
-bool	spots_andmod_sin(const t_fdf_table *dst, size_t index);
-bool	spots_andmod_cos(const t_fdf_table *dst, size_t index);
+size_t	count_neighbor_fdf_table(const t_fdf_table *dst, size_t index);
+bool	spots_boundary(const t_fdf_table *dst, size_t index);
+bool	spots_space(const t_fdf_table *dst, size_t index);
+bool	spots_chess(const t_fdf_table *dst, size_t index);
 
 #endif

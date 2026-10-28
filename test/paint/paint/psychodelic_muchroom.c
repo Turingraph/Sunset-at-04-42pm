@@ -29,8 +29,8 @@ int	main(void)
 
 	table = create_fdf_table(120, 120, true);
 	paint_aura_fdf_table(&table, FDF_HEIGHT, aura_inequality_amgm);
-	paint_aura_fdf_table(&table, FDF_BLUE, aura_pythagoras_3d);
-	paint_aura_fdf_table(&table, FDF_RED, aura_min_xy);
+	paint_aura_fdf_table(&table, FDF_BLUE, aura_pythagoras);
+	paint_aura_fdf_table(&table, FDF_RED, aura_min);
 	paint_aura_fdf_table(&table, FDF_GREEN, aura_max);
 	paint_spots_fdf_table(&table, 255, FDF_ALPHA, NULL);
 	paint_gradient_fdf_table(&table, init_white_noise(), false);
@@ -46,6 +46,6 @@ int	main(void)
 
 /*
 valgrind --leak-check=full --show-leak-kinds=all 
-./test/out/paint/evenodd/psychodelic_muchroom.out
+./test/out/paint/paint/psychodelic_muchroom.out
 
 */

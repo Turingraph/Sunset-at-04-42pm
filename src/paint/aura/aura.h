@@ -28,7 +28,8 @@ int		aura_fermat(int x, int y, int z);
 
 int		aura_inequality_triangle(int x, int y, int z);
 int		aura_inequality_amgm(int x, int y, int z);
-int		aura_inequality_cauchy_3d(int x, int y, int z);
+int		aura_inequality_cauchy(int x, int y, int z);
+int		aura_inequality_addmul(int x, int y, int z);
 
 // metric.c
 
@@ -39,8 +40,7 @@ int		aura_min(int x, int y, int z);
 // paint.c
 
 void	paint_aura_fdf_table(t_fdf_table *dst,
-			t_fdf_channel src_channel,
-			t_fdf_channel dst_channel,
+			t_fdf_channel channel,
 			int (*aura_custom)(int x, int y, int z));
 
 #endif

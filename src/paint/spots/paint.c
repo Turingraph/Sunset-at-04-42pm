@@ -1,93 +1,5 @@
 #include "spots.h"
 
-/**
- * Check whether a cell is located on the boundary of the table
- * or is adjacent to an empty cell.
- *
- * time/space: O(1) / O(1)
- *
- * status: public api
- *
- * @param dst FDF table to check
- * @param index index of the cell to check
- * @param threshold cell that have value greater than the threshold is considered as non-empty space.
- * Cell that have value equal to or less than the threshold is considered as empty space.
- * 
- * @return true if the cell is a positive value located on the table
- * boundary or adjacent to an empty cell, false otherwise.
- */
-bool	spots_boundary(const t_fdf_table *dst, size_t index, int threshold)
-{
-	if (dst == NULL || dst->arr == NULL
-		|| mul_overflow_size_t(dst->col, dst->row) == false
-		|| index >= dst->col * dst->row)
-		return (false);
-	if (dst->arr[index] > threshold
-			&& (index % dst->col == 0 || index % dst->col == dst->col - 1
-			|| index / dst->col == 0 || index / dst->col == dst->row - 1))
-		return (true);
-	if (dst->arr[index] > threshold && index + dst->col + 1 < dst->row * dst->col
-		&& (int)index - (int)dst->col - 1 >= threshold && (
-			dst->arr[index + 1] <= threshold
-			|| dst->arr[(int)index - 1] <= threshold
-			|| dst->arr[(int)index + (int)dst->col + 1] <= threshold
-			|| dst->arr[(int)index + (int)dst->col - 1] <= threshold
-			|| dst->arr[(int)index - (int)dst->col + 1] <= threshold
-			|| dst->arr[(int)index - (int)dst->col - 1] <= threshold
-			|| dst->arr[(int)index + (int)dst->col] <= threshold
-			|| dst->arr[(int)index - (int)dst->col] <= threshold
-		))
-		return (true);
-	return (false);
-}
-
-/**
- * Check whether a cell is considered empty
- * (the integer height of the cell less than or equal to 0).
- *
- * time/space: O(1) / O(1)
- *
- * status: public api
- *
- * @param dst FDF table to check
- * @param index index of the cell to check
- *
- * @return true if the cell contains a value less than or equal to 0,
- * false otherwise.
- */
-bool	spots_space(const t_fdf_table *dst, size_t index)
-{
-	if (dst == NULL || dst->arr == NULL
-		|| mul_overflow_size_t(dst->col, dst->row) == false || index >= dst->col * dst->row)
-		return (false);
-	if (dst->arr[index] <= 0)
-		return (true);
-	return (false);
-}
-
-/**
- * Check whether a cell belongs to the chess pattern.
- *
- * time/space: O(1) / O(1)
- *
- * status: public api
- *
- * @param dst FDF table to check
- * @param index index of the cell to check
- *
- * @return true if the cell position belongs to the chess pattern,
- * false otherwise.
- */
-bool	spots_chess(const t_fdf_table *dst, size_t index)
-{
-	if (dst == NULL || dst->arr == NULL
-		|| mul_overflow_size_t(dst->col, dst->row) == false)
-		return (false);
-	if ((index % dst->col + index / dst->col) % 2 == 1)
-		return (true);
-	return (false);
-}
-
 // time : O(1)
 // space: O(1)
 static void	paint_spots_fdf_table_unit(t_fdf_table *dst, int color,
@@ -127,10 +39,10 @@ void	paint_spots_fdf_table(t_fdf_table *dst, int color,
 {
 	size_t	i;
 
-	if (mul_overflow_size_t(dst->col, dst->row) == false)
+	if (dst != NULL && mul_overflow_size_t(dst->col, dst->row) == false)
 		return ;
 	i = 0;
-	while (dst != NULL && i < dst->row * dst->col)
+	while (i < dst->row * dst->col)
 	{
 		if (spots == NULL
 			|| spots((const t_fdf_table *)dst, i) == true)

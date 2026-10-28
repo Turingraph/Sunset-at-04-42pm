@@ -15,7 +15,7 @@ BUFFER_SIZE = 42
 # *** library ***
 LIBRARY = $(patsubst %, lib/%.a, debug \
 	ascii decimal get_next_line table \
-	aura convolve gradient spots \
+	aura convolve gradient spots\
 	libft taylor \
 	motif proj2d raster render window)
 
@@ -57,7 +57,7 @@ OBJ_table = $(patsubst %.c, obj/%.o, $(SRC_table)) $(OBJ_decimal)
 OBJ_aura = $(patsubst %.c, obj/%.o, $(SRC_aura)) $(OBJ_taylor)
 OBJ_convolve = $(patsubst %.c, obj/%.o, $(SRC_convolve)) $(OBJ_table) $(OBJ_taylor)
 OBJ_gradient = $(patsubst %.c, obj/%.o, $(SRC_gradient)) $(OBJ_taylor)
-OBJ_spots = $(patsubst %.c, obj/%.o, $(SRC_spots)) $(OBJ_taylor)
+OBJ_spots = $(patsubst %.c, obj/%.o, $(SRC_spots)) $(OBJ_taylor) $(OBJ_aura)
 
 OBJ_raster = $(patsubst %.c, obj/%.o, $(SRC_raster)) $(OBJ_taylor) $(OBJ_table)
 OBJ_motif = $(patsubst %.c, obj/%.o, $(SRC_motif)) $(OBJ_raster)
@@ -101,6 +101,8 @@ clean:
 	rm -r -f lib/
 	rm -r -f obj/
 
+re: clean all
+
 # Lol, both Makefile tutorial and Suisei already cover .PHONY
 # https://youtu.be/N029UUlH1Dc?si=8PragRfDm3MzFOBc
-.PHONY: all clean
+.PHONY: all clean re

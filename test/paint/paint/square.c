@@ -50,7 +50,7 @@ int	main(void)
 	table_base = create_fdf_table(300, 300, false);
 	paint_spots_fdf_table(&table_base, 3, FDF_HEIGHT, spots_andmod_x3);
 	table = create_fdf_table(300, 300, true);
-	paint_aura_fdf_table(&table, FDF_HEIGHT, aura_max_xy);
+	paint_aura_fdf_table(&table, FDF_HEIGHT, aura_max);
 	mix_hadamard_fdf_table(&table, &table_base, FDF_HEIGHT);
 	style.thickness = 2;
 	style.shape2d = SHAPE2D_RECTANGLE;
@@ -67,5 +67,5 @@ int	main(void)
 
 /*
 valgrind --leak-check=full --show-leak-kinds=all
-./test/out/paint/evenodd/square.out
+./test/out/paint/paint/square.out
 */

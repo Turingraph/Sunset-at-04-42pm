@@ -40,9 +40,15 @@ int	aura_inequality_amgm(int x, int y, int z)
 {
 	int	y_max;
 	int	y_min;
+	int	n;
 
-	y_max = (int)((x + y + z) / 3.0);
-	y_min = f_root_find(x * y * z, 3);
+	n = 3;
+	if (z == 0)
+		n = 2;
+	y_max = (int)(f_abs_int(x + y + z) / n);
+	if (z == 0)
+		z = 1;
+	y_min = f_root_find(f_abs_int(x * y * z), n);
 	return (y_max - y_min);
 }
 
@@ -58,8 +64,17 @@ int	aura_inequality_cauchy(int x, int y, int z)
 	int	y_max;
 	int	y_min;
 
-	y_max = (int)(x * x + y * y + z * z);
-	y_min = (int)(f_pow(x + y + z, 2));
+	y_max = f_pow(x * x + y * y + z * z, 2);
+	y_min = (x + y + z) * (x + y + z);
 	return (y_max - y_min);
 }
 
+int	aura_inequality_addmul(int x, int y, int z)
+{
+	int	y_max;
+	int	y_min;
+
+	y_max = f_abs_int(x + 1) * f_abs_int(y + 1) * f_abs_int(z + 1);
+	y_min = f_abs_int(x + 1) + f_abs_int(y + 1) + f_abs_int(z + 1);
+	return (y_max - y_min);
+}

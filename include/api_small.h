@@ -796,7 +796,7 @@ int	aura_x_plus_y_square(const t_fdf_table *dst, size_t index);
  * @param index index of the cell
  * @return x^2 + y^2 + z^2 - (x + y + z)^2
  */
-int	aura_inequality_cauchy_3d(const t_fdf_table *dst, size_t index);
+int	aura_inequality_cauchy(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the minimum absolute component of a cell coordinate.

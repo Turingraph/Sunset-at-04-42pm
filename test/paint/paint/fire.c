@@ -62,7 +62,10 @@ t_gradient	init_feeling_blue(void)
 
 bool	is_3d_pythagoras(const t_fdf_table *dst, size_t index)
 {
-	if (aura_pythagoras(dst, index) % 2 == 1)
+	t_double2d	x;
+
+	x = fdf_table_coordinate(dst, index);
+	if (aura_pythagoras(x.x, x.y, dst->arr[index]) % 2 == 1)
 		return (true);
 	return (false);
 }
@@ -103,5 +106,5 @@ int	main(void)
 
 
 /*
-valgrind --leak-check=full --show-leak-kinds=all ./test/out/paint/evenodd/fire.out
+valgrind --leak-check=full --show-leak-kinds=all ./test/out/paint/paint/fire.out
 */

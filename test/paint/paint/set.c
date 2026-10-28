@@ -27,7 +27,7 @@ int	main(void)
 	t_style_render	style;
 
 	table = create_fdf_table(120, 120, true);
-	paint_aura_fdf_table(&table, FDF_HEIGHT, aura_max_xy);
+	paint_aura_fdf_table(&table, FDF_HEIGHT, aura_max);
 	style.thickness = 2;
 	style.shape2d = SHAPE2D_RECTANGLE;
 	paint_gradient_fdf_table(&table, init_deep_wood(), true);
@@ -40,5 +40,5 @@ int	main(void)
 }
 
 /*
-valgrind --leak-check=full --show-leak-kinds=all ./test/out/paint/evenodd/set.out
+valgrind --leak-check=full --show-leak-kinds=all ./test/out/paint/paint/set.out
 */

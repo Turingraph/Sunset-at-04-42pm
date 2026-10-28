@@ -18,9 +18,9 @@
  * status: public api
  * 
  */
-t_float2d	complex_multiplication(t_float2d a, t_float2d b)
+t_double2d	complex_multiplication(t_double2d a, t_double2d b)
 {
-	t_float2d	dst;
+	t_double2d	dst;
 
 	dst.x = a.x * b.x - a.y * b.y;
 	dst.y = a.x * b.y + a.y * b.x;
@@ -37,9 +37,9 @@ t_float2d	complex_multiplication(t_float2d a, t_float2d b)
  * status: public api
  * 
  */
-t_float2d	complex_reciprocal(t_float2d a)
+t_double2d	complex_reciprocal(t_double2d a)
 {
-	t_float2d	dst;
+	t_double2d	dst;
 
 	dst.x = 0;
 	dst.y = 0;
@@ -56,7 +56,7 @@ t_float2d	complex_reciprocal(t_float2d a)
  * status: public api
  * 
  */
-float	complex_magnitude(t_float2d a, char is_square)
+float	complex_magnitude(t_double2d a, char is_square)
 {
 	float	y;
 
@@ -67,24 +67,14 @@ float	complex_magnitude(t_float2d a, char is_square)
 }
 
 /**
- * compute (a.x + a.y)^2
- * 
- * status: public api
- * 
- */
-t_float2d	complex_square(t_float2d a)
-{
-	return (complex_multiplication(a, a));
-}
-
-/**
  * compute (a.x + a.y)^3
  * 
  * status: public api
  */
-t_float2d	complex_polynomial(t_float2d a, size_t power, size_t reciprocal)
+t_double2d	complex_power(t_double2d a, size_t power)
 {
-	size_t	i;
+	size_t		i;
+	t_double2d	c;
 
 	if (power == 0)
 	{
@@ -92,16 +82,11 @@ t_float2d	complex_polynomial(t_float2d a, size_t power, size_t reciprocal)
 		a.y = 0;
 		return (a);
 	}
+	c = a;
 	i = 1;
 	while (i < power)
 	{
-		a = complex_square(a);
-		i += 1;
-	}
-	i = 1;
-	while (i < reciprocal)
-	{
-		a = complex_reciprocal(a);
+		a = complex_multiplication(a, c);
 		i += 1;
 	}
 	return (a);

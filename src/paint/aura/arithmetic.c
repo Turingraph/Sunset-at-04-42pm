@@ -61,10 +61,13 @@ int	aura_fermat(int x, int y, int z)
 	int			b;
 	int			c;
 
+	z = z % 7;
+	if (z == 0)
+		z = 2;
 	a = (int)f_pow(x, z);
 	b = (int)f_pow(y, z);
 	c = a + b;
-	c = (int)f_floor(f_root_find((float)c, 3));
-	c = (int)f_pow((int)c, z);
+	c = (int)f_floor(f_root_find((double)c, z));
+	c = (int)f_pow((double)c, z);
 	return (f_abs_int(a + b - c));
 }

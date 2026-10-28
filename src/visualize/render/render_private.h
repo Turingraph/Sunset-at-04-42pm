@@ -22,7 +22,7 @@ bool		is_line_in_screen(t_camera2d camera,
 bool		is_circle_in_screen(t_camera2d camera,
 				t_int2d src, int radius);
 float		init_fdf_point1d(t_fdf_proj2d *fdf, t_int2d ixiy, size_t dim, char next);
-t_int2d	world_to_screen2d(t_camera2d camera, float x, float y);
+t_int2d		world_to_screen2d(t_camera2d camera, float x, float y);
 bool		isvalid_hook2d(const t_hook2d *src);
 
 // render_*.c

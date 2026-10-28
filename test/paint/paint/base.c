@@ -20,14 +20,22 @@ t_gradient	init_deep_wood()
 	return (dst);
 }
 
+// bool	spots_andmod_sin(const t_fdf_table *dst, size_t index)
+// {
+// 	t_double2d	x;
+
+// 	x = fdf_table_coordinate(dst, index);
+// 	return (spots_andmod_custom(x, complex_sin));
+// }
+
 int	main(void)
 {
 	t_fdf_table		table_base;
 	t_fdf_proj2d			output;
 	t_style_render	style;
 
-	table_base = create_fdf_table(161, 161, true);
-	paint_spots_fdf_table(&table_base, 10, FDF_HEIGHT, spots_andmod_sin);
+	table_base = create_fdf_table(300, 300, true);
+	paint_spots_fdf_table(&table_base, 10, FDF_HEIGHT, spots_max_x2);
 	style.thickness = 2;
 	style.shape2d = SHAPE2D_RECTANGLE;
 	paint_gradient_fdf_table(&table_base, init_deep_wood(), true);
@@ -39,5 +47,6 @@ int	main(void)
 }
 
 /*
-valgrind --leak-check=full --show-leak-kinds=all ./test/out/paint/evenodd/base.out
+valgrind --leak-check=full --show-leak-kinds=all 
+./test/out/paint/paint/base.out
 */

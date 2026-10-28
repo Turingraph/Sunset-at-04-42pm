@@ -106,21 +106,18 @@ unsigned char	*rgbarr_from_table(const t_fdf_table *src,
  * 
  * @param dst FDF table containing the cell
  * @param index index of the cell
- * @param zoom coordinate scaling factor
  * @return complex coordinate of the selected cell.
  */
-t_float2d	init_table_coordinate(const t_fdf_table *dst, size_t index, float zoom)
+t_double2d	fdf_table_coordinate(const t_fdf_table *dst, size_t index)
 {
-	t_float2d	y;
+	t_double2d	y;
 
 	y.x = 0;
 	y.y = 0;
-	if (dst == NULL || dst->row == 0 || dst->col == 0)
+	if (dst == NULL || mul_overflow_size_t(dst->col, dst->row) == false)
 		return (y);
 	y.x = (float)dst->col / 2.0 - (float)(index % dst->col);
 	y.y = (float)(index / dst->col) - (float)dst->row / 2.0;
-	y.x *= zoom;
-	y.y *= zoom;
 	return (y);
 }
 

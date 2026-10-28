@@ -17,6 +17,7 @@
 # include "../../../src/paint/gradient/gradient.h"
 # include "../../../src/paint/spots/spots.h"
 # include "../../../src/input/table/table.h"
+# include "../../../src/debug/debug/debug.h"
 # include "../../../src/visualize/window/window.h"
 
 #endif

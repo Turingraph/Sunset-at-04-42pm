@@ -81,14 +81,18 @@ size_t	f_collatz_max(size_t x, size_t div, size_t mul)
 			max = x;
 		if (x % 2 == 0 && div > 0)
 			x /= div;
-		else
+		else if (x % 2 == 0)
+			x /= 2;
+		else if (mul % 2 == 1)
 			x = mul * x + 1;
+		else
+			x = (mul + 1) * x + 1;
 		limit += 1;
 	}
 	return (max);
 }
 
-static size_t	f_fibonacci_unit(size_t *a, size_t *b)
+static double	f_mul_dpointer(double *a, double *b)
 {
 	if (a == NULL && b == NULL)
 		return (0);
@@ -99,39 +103,47 @@ static size_t	f_fibonacci_unit(size_t *a, size_t *b)
 	return (*a * *b);
 }
 
-void	f_fibonacci_custom(size_t x, size_t *a0, size_t *a1, size_t *a2)
-{
-	size_t	b0;
-	size_t	b1;
-	size_t	b2;
+/*
+Verify fibonacci
+*/
 
-	if (a0 == NULL || a1 == NULL || a2 == NULL)
-		return ;
+void	f_fibonacci_custom(size_t x, double *a0, double *a1, double *a2)
+{
+	double	b0;
+	double	b1;
+	double	b2;
+
 	if (x > 0)
 		f_fibonacci_custom(x / 2, a0, a1, a2);
-	b0 = f_fibonacci_unit(a0, a0) + f_fibonacci_unit(a1, a1);
-	b1 = f_fibonacci_unit(a1, a0) + f_fibonacci_unit(a1, a2);
-	b2 = f_fibonacci_unit(a1, a1) + f_fibonacci_unit(a2, a2);
+	b0 = f_mul_dpointer(a0, a0) + f_mul_dpointer(a1, a1);
+	b1 = f_mul_dpointer(a1, a0) + f_mul_dpointer(a1, a2);
+	b2 = f_mul_dpointer(a1, a1) + f_mul_dpointer(a2, a2);
 	if (x % 2 == 1)
 	{
-		b0 += *a1;
-		b1 = *a0;
-		b2 = *a1;
+		if (a1 != NULL)
+			b0 += *a1;
+		if (a0 != NULL)
+			b1 = *a0;
+		if (a1 != NULL)
+			b2 = *a1;
 	}
-	*a0 = b0;
-	*a1 = b1;
-	*a2 = b2;
+	if (a0 != NULL)
+		*a0 = b0;
+	if (a1 != NULL)
+		*a1 = b1;
+	if (a2 != NULL)
+		*a2 = b2;
 }
 
 size_t	f_fibonacci(size_t x)
 {
-	size_t	a0;
-	size_t	a1;
-	size_t	a2;
+	double	a0;
+	double	a1;
+	double	a2;
 
 	a0 = 1;
 	a1 = 1;
 	a2 = 0;
 	f_fibonacci_custom(x, &a0, &a1, &a2);
-	return (a0);
+	return ((size_t)a0);
 }

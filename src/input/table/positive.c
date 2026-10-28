@@ -114,3 +114,21 @@ void	relu_fdf_table(t_fdf_table *dst, int min, int max, int expect)
 		i += 1;
 	}
 }
+
+void	abs_fdf_table(t_fdf_table *dst)
+{
+	size_t	i;
+
+	if (dst == NULL || dst->arr == NULL
+		|| mul_overflow_size_t(dst->col, dst->row) == false)
+		return ;
+	i = 0;
+	while (i < dst->col * dst->row)
+	{
+		if (dst->arr[i] < 0 && dst->arr[i] > -2147483648)
+			dst->arr[i] *= -1;
+		if (dst->arr[i] == -2147483648)
+			dst->arr[i] = 0;
+		i += 1;
+	}
+}
