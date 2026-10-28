@@ -44,6 +44,17 @@ typedef struct t_fdf_proj2d
 	float			width;
 }	t_fdf_proj2d;
 
+/*
+To Do Now (proj2d)
+1.	t_float2d proj2d_(x, y, z) => t_double2d proj2d(x, y)
+2.	create_fdf_proj2d(src, proj2d, scale) => create_fdf_proj2d(src, proj2d, is_normalize)
+3.	scale_fdf_proj2d(src, scale_x, scale_y)
+4.	rotate_fdf_proj2d(src, delta)
+
+To Do Now (other)
+1.	check fibonacci
+*/
+
 // create.c
 
 t_fdf_proj2d		create_fdf_proj2d(t_fdf_table *src,
