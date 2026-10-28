@@ -2,7 +2,7 @@
 # define TABLE_TESTER_H
 
 # include "../../../src/input/table/table.h"
-#include "../../../src/debug/debug/debug.h"
+#include "../../../src/utils/debug/debug.h"
 
 typedef struct t_scale_dim_tester t_scale_dim_tester;
 

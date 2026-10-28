@@ -2,7 +2,7 @@
 # define GET_NEXT_LINE_TESTER_H
 
 #include "../../../src/input/get_next_line/get_next_line.h"
-#include "../../../src/debug/debug/debug.h"
+#include "../../../src/utils/debug/debug.h"
 
 // https://github.com/Tripouille/gnlTester/tree/master/files
 

@@ -25,7 +25,7 @@ SRC_taylor = $(wildcard utils/taylor/*.c)
 SRC_get_next_line = $(wildcard input/get_next_line/*.c)
 
 # *** composed src ***
-SRC_debug = $(wildcard debug/debug/*.c)
+SRC_debug = $(wildcard utils/debug/*.c)
 SRC_ascii = $(wildcard input/ascii/*.c)
 SRC_decimal = $(wildcard input/decimal/*.c)
 SRC_table = $(wildcard input/table/*.c)

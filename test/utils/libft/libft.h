@@ -2,7 +2,7 @@
 # define LIBFT_TESTER_H
 
 # include "../../../src/utils/libft/libft.h"
-#include "../../../src/debug/debug/debug.h"
+#include "../../../src/utils/debug/debug.h"
 
 typedef struct t_atoi_tester t_atoi_tester;
 
