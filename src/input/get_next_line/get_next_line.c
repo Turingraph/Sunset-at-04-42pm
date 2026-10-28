@@ -46,13 +46,17 @@ size_t	index_a_in_str(const char *src, char a, bool is_after)
  * @param dst dynamic string to append the text to
  * @param buffer_length number of characters to read at a time
  */
-void	fetch_str_dynamic(int fd, t_str_dynamic *dst, size_t buffer_length)
+char	*get_all_lines(int fd, size_t buffer_length)
 {
-	char	*buff;
-	bool	continue_line;
+	t_str_dynamic	dst;
+	char			*buff;
+	bool			continue_line;
 
+	dst = create_str_dynamic(1);
+	if (dst.str == NULL)
+		return (NULL);
 	continue_line = true;
-	while (continue_line == true && dst != NULL && dst->str != NULL)
+	while (continue_line == true)
 	{
 		buff = clone_str(sizeof(char) * buffer_length, NULL);
 		if (buff == NULL)
@@ -60,13 +64,14 @@ void	fetch_str_dynamic(int fd, t_str_dynamic *dst, size_t buffer_length)
 		else
 		{
 			read(fd, buff, buffer_length);
-			concat_str_dynamic(dst, buff);
+			concat_str_dynamic(&dst, buff);
 			if (index_a_in_str(buff, '\0', true) < buffer_length)
 				continue_line = false;
 		}
 		free(buff);
 	}
 	close(fd);
+	return (dst.str);
 }
 
 /**
@@ -85,22 +90,29 @@ void	fetch_str_dynamic(int fd, t_str_dynamic *dst, size_t buffer_length)
 char	*get_next_line(int fd, bool is_continue)
 {
 	char			*dst;
-	static char		*prev_str = NULL;
-	t_str_dynamic	dyn_str;
+	static char		*str_all_line = NULL;
+	static size_t	prev_index = 0;
 	size_t			length;
 
-	dyn_str = create_str_dynamic(1);
-	if (dyn_str.str == NULL)
+	if (fd < -1)
 		return (NULL);
-	concat_str_dynamic(&dyn_str, prev_str);
-	if (prev_str == NULL)
-		fetch_str_dynamic(fd, &dyn_str, BUFFER_SIZE);
-	free(prev_str);
-	prev_str = NULL;
-	length = index_a_in_str(dyn_str.str, '\n', true);
-	dst = clone_str(length, dyn_str.str);
-	if (is_continue == true)
-		prev_str = clone_str(dyn_str.length - length, dyn_str.str + length);
-	free(dyn_str.str);
+	if (str_all_line == NULL)
+		str_all_line = get_all_lines(fd, BUFFER_SIZE);
+	if (str_all_line == NULL)
+		return (NULL);
+	length = index_a_in_str(str_all_line + prev_index, '\n', true);
+	dst = clone_str(length, str_all_line + prev_index);
+	prev_index += length;
+	if (str_all_line[prev_index] == '\0' || is_continue == false)
+	{
+		free(str_all_line);
+		str_all_line = NULL;
+		prev_index = 0;
+	}
 	return (dst);
 }
+
+/*
+000000000000000002000000000000200000000
+000000000000000002, 000000000000200000000
+*/

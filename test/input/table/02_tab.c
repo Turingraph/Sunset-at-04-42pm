@@ -63,6 +63,7 @@ int	main(void)
 /*
 valgrind --leak-check=full --show-leak-kinds=all ./test/out/input/table/02_tab.out
 
+// before
 ==197923== 
 ==197923== HEAP SUMMARY:
 ==197923==     in use at exit: 0 bytes in 0 blocks
@@ -72,4 +73,15 @@ valgrind --leak-check=full --show-leak-kinds=all ./test/out/input/table/02_tab.o
 ==197923== 
 ==197923== For lists of detected and suppressed errors, rerun with: -s
 ==197923== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+
+// after
+==463785== 
+==463785== HEAP SUMMARY:
+==463785==     in use at exit: 0 bytes in 0 blocks
+==463785==   total heap usage: 152,691 allocs, 152,691 frees, 35,935,688 bytes allocated
+==463785== 
+==463785== All heap blocks were freed -- no leaks are possible
+==463785== 
+==463785== For lists of detected and suppressed errors, rerun with: -s
+==463785== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
 */

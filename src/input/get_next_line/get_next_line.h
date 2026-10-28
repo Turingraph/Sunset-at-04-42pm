@@ -52,7 +52,7 @@ size_t			index_a_in_str(const char *src, char a, bool is_after);
 
 // get_next_line.c
 
-void			fetch_str_dynamic(int fd, t_str_dynamic *dst, size_t buffer_length);
+char			*get_all_lines(int fd, size_t buffer_length);
 char			*get_next_line(int fd, bool is_continue);
 
 // load.c
