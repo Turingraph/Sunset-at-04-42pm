@@ -78,6 +78,29 @@ float	*kernel_gauss(size_t half_dim, float std_1, float std_2)
 	return (dst.arr);
 }
 
+static void	swap_dim(size_t *inner_dim, size_t *outer_dim)
+{
+	size_t	temp;
+
+	if (inner_dim != NULL && outer_dim != NULL)
+	{
+		if (*inner_dim < 3)
+			*inner_dim = 3;
+		if (*inner_dim % 2 == 0)
+			*inner_dim += 1;
+		if (*outer_dim < 3)
+			*outer_dim = 3;
+		if (*outer_dim % 2 == 0)
+			*outer_dim += 1;
+		if (*outer_dim < *inner_dim)
+		{
+			temp = *outer_dim;
+			*outer_dim = *inner_dim;
+			*inner_dim = temp;
+		}
+	}
+}
+
 /**
  * Create a 1D kernel with an inner region and an outer region.
  *
@@ -100,6 +123,7 @@ float	*kernel_edge1d(size_t inner_dim, size_t outer_dim,
 	size_t	i;
 	float	*kernel;
 
+	swap_dim(&inner_dim, &outer_dim);
 	if (mul_overflow_size_t(outer_dim / 2, outer_dim / 2) == false)
 		return (NULL);
 	kernel = malloc_talk(sizeof(float) * outer_dim, "kernel_edge1d\n");
@@ -146,7 +170,7 @@ therefore b = (-2am) / n, a = (-bn) / (2m)
  * 
  * time/space: O(1) / O(1)
  * 
- * status: public api
+ * status: internal helper
  * 
  * @param inner_dim dimension of the inner region.
  * @param outer_dim dimension of the outer region.
@@ -156,7 +180,7 @@ therefore b = (-2am) / n, a = (-bn) / (2m)
  * @see Image convolution tutorial https://www.youtube.com/live/8rrHTtUzyZA?si=UZVlq0cpb2X95MZN
  * for more details.
  */
-float	init_outer_num(float inner_dim, float outer_dim, float input, float kernel_sum)
+static float	init_outer_num(float inner_dim, float outer_dim, float input, float kernel_sum)
 {
 	if (outer_dim == 0)
 		return (0.0);
@@ -182,22 +206,12 @@ float	init_outer_num(float inner_dim, float outer_dim, float input, float kernel
  */
 float	*kernel_edge(size_t inner_dim, size_t outer_dim, float input, float kernel_sum)
 {
-	size_t		swap_dim;
 	float		*vec_v;
 	float		*vec_u;
 	float		outer_num;
 	t_matrix	dst;
 
-	if (outer_dim % 2 == 0)
-		outer_dim += 1;
-	if (outer_dim < 3)
-		outer_dim = 3;
-	if (inner_dim > outer_dim)
-	{
-		swap_dim = inner_dim;
-		inner_dim = outer_dim;
-		outer_dim = swap_dim;
-	}
+	swap_dim(&inner_dim, &outer_dim);
 	if (mul_overflow_size_t(outer_dim, outer_dim) == false)
 		return (NULL);
 	outer_num = init_outer_num((float)inner_dim, (float)outer_dim, input, kernel_sum);
@@ -207,4 +221,50 @@ float	*kernel_edge(size_t inner_dim, size_t outer_dim, float input, float kernel
 	free(vec_v);
 	free(vec_u);
 	return (dst.arr);
+}
+
+float	*kernel_cross(size_t inner_dim, size_t outer_dim)
+{
+	float		*vec_v;
+	float		*vec_u;
+	t_matrix	dst;
+
+	swap_dim(&inner_dim, &outer_dim);
+	if (mul_overflow_size_t(outer_dim, outer_dim) == false)
+		return (NULL);
+	vec_v = kernel_edge1d(inner_dim, outer_dim, 0, 1);
+	vec_u = kernel_edge1d(inner_dim, outer_dim, 0, 1);
+	dst = outer_product(vec_v, vec_u, outer_dim);
+	free(vec_v);
+	free(vec_u);
+	return (dst.arr);
+}
+
+float	*kernel_count_neighbors(size_t inner_dim, size_t outer_dim)
+{
+	float	*dst;
+	size_t	i;
+	int		index_left;
+	int		index_right;
+
+	swap_dim(&inner_dim, &outer_dim);
+	if (mul_overflow_size_t(outer_dim, outer_dim) == false)
+		return (NULL);
+	dst = malloc_talk(sizeof(float) * outer_dim * outer_dim,
+			"kernel_count_neighbors\n");
+	if (dst == NULL)
+		return (NULL);
+	index_left = outer_dim / 2 - inner_dim / 2;
+	index_right = index_left + inner_dim;
+	i = 0;
+	while (i < outer_dim * outer_dim)
+	{
+		if (i % outer_dim <= index_left
+			|| i % outer_dim >= index_right
+			|| i / outer_dim <= index_left
+			|| i / outer_dim >= index_right)
+			dst[i] = 1;
+		i += 1;
+	}
+	return (dst);
 }

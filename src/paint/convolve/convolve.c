@@ -72,27 +72,31 @@ static t_matrix	init_src_kernel_int(const t_fdf_table *src,
 // time : O(m^2)
 // space: O(m^2)
 static int	convolve_unit(const t_fdf_table *src, size_t index,
-	float *kernel, size_t dim)
+	t_matrix kernel, bool is_normal)
 {
 	t_matrix	src_kernel;
 	int			output;
+	size_t		dim;
 
+	dim = kernel.col;
 	output = 0;
 	src_kernel = init_src_kernel_int(src, dim,
 			(int)(index % src->col), (int)(index / src->col));
 	if (src_kernel.arr == NULL)
 		return (output);
-	if (src_kernel.arr != NULL && kernel != NULL)
+	if (kernel.arr != NULL)
 	{
 		output = dot_product(src_kernel.arr,
-				kernel, dim * dim);
-		if ((float)(f_sum(kernel, dim * dim)) > 0.2)
+				kernel.arr, dim * dim);
+		if ((float)f_abs(f_sum(kernel.arr, dim * dim)) > 0.2 && is_normal == true)
 			output = (int)f_round(
-					(float)output / (float)(f_sum(kernel, dim * dim)));
+					(float)output / (float)(f_sum(kernel.arr, dim * dim)));
 	}
-	else if (src_kernel.arr != NULL && kernel == NULL)
+	else if (is_normal == true && dim > 0)
 		output = (int)f_round(
 				f_sum(src_kernel.arr, dim * dim) / (float)(dim * dim));
+	else
+		output = (int)f_round(f_sum(src_kernel.arr, dim * dim));
 	free(src_kernel.arr);
 	return (output);
 }
@@ -113,6 +117,7 @@ static int	convolve_unit(const t_fdf_table *src, size_t index,
  * @param src source FDF table
  * @param kernel convolution kernel.
  * @param dim the dimension (number of row and column) of the square kernel.
+ * @param is_normal if true, then normalizing the kernel dot product output.
  * If dim is odd, then dim = dim + 1. If dim is less than 3, then dim = 3.
  * The dimension should be odd number.
  * @return FDF table with the selected channels convolved
@@ -121,13 +126,13 @@ static int	convolve_unit(const t_fdf_table *src, size_t index,
  * for more details
  */
 t_fdf_table	convolve_fdf_table(const t_fdf_table *src, float *kernel,
-	size_t dim)
+	size_t dim, bool is_normal)
 {
 	t_fdf_table	dst;
 	size_t		i;
+	t_matrix	kernel_arg;
 
 	if (src == NULL || src->arr == NULL
-		|| 2147483647 <= dim
 		|| mul_overflow_size_t(src->col, src->row) == false
 		|| mul_overflow_size_t(dim, dim) == false)
 		return (create_fdf_table(0, 0, false));
@@ -135,13 +140,18 @@ t_fdf_table	convolve_fdf_table(const t_fdf_table *src, float *kernel,
 		dim += 1;
 	if (dim < 3)
 		dim = 3;
+	if (mul_overflow_size_t(dim, dim) == false)
+		return (create_fdf_table(0, 0, false));
+	kernel_arg.arr = kernel;
+	kernel_arg.col = dim;
+	kernel_arg.row = dim;
 	dst = scale_dim_fdf_table(src, 1, 1);
 	if (dst.arr == NULL)
 		return (create_fdf_table(0, 0, false));
 	i = 0;
 	while (i < src->col * src->row)
 	{
-		dst.arr[i] = convolve_unit(src, i, kernel, dim);
+		dst.arr[i] = convolve_unit(src, i, kernel_arg, is_normal);
 		i += 1;
 	}
 	return (dst);

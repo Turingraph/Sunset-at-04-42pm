@@ -16,6 +16,7 @@
 # include "../../../src/paint/aura/aura.h"
 # include "../../../src/paint/gradient/gradient.h"
 # include "../../../src/paint/spots/spots.h"
+# include "../../../src/paint/convolve/convolve.h"
 # include "../../../src/input/table/table.h"
 # include "../../../src/utils/debug/debug.h"
 # include "../../../src/visualize/window/window.h"

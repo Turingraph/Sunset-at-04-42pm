@@ -64,7 +64,7 @@ int	aura_inequality_cauchy(int x, int y, int z)
 	int	y_max;
 	int	y_min;
 
-	y_max = f_pow(x * x + y * y + z * z, 2);
+	y_max = (x * x + y * y + z * z) * (x * x + y * y + z * z);
 	y_min = (x + y + z) * (x + y + z);
 	return (y_max - y_min);
 }

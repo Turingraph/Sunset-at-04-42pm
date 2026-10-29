@@ -33,6 +33,7 @@ int				fdf_table_minmax(const t_fdf_table *src,
 void			positive_fdf_table(t_fdf_table *dst);
 void			relu_fdf_table(t_fdf_table *dst, int min, int max, int expect);
 void			abs_fdf_table(t_fdf_table *dst);
+void			bool_fdf_table(t_fdf_table *dst, bool only_positive);
 
 // scale_dim.c
 

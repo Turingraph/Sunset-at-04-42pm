@@ -132,3 +132,22 @@ void	abs_fdf_table(t_fdf_table *dst)
 		i += 1;
 	}
 }
+
+void	bool_fdf_table(t_fdf_table *dst, bool only_positive)
+{
+	int	minmax;
+	int	expect_min;
+
+	if (dst == NULL || dst->arr == NULL
+		|| mul_overflow_size_t(dst->col, dst->row) == false)
+		return ;
+	expect_min = 0;
+	if (only_positive == false)
+		expect_min = -1;
+	minmax = fdf_table_minmax(dst, false, FDF_HEIGHT);
+	if (minmax <= 0)
+		relu_fdf_table(dst, minmax, 0, expect_min);
+	minmax = fdf_table_minmax(dst, true, FDF_HEIGHT);
+	if (minmax >= 1)
+		relu_fdf_table(dst, 1, minmax, 1);
+}

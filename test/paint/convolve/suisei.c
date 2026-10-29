@@ -26,7 +26,7 @@ int	main(void)
 	write_fdf_table(output_fd, &table_b, FDF_HEIGHT, FDF_FORMAT_ASCII_A);
 	close(output_fd);
 
-	table_c = convolve_fdf_table(&table_b, ker.arr, ker_dim);
+	table_c = convolve_fdf_table(&table_b, ker.arr, ker_dim, true);
 	output_fd = debug_load_file(output_dir_2, NULL, FILE_WRITE);
 	write_fdf_table(output_fd, &table_c, FDF_HEIGHT, FDF_FORMAT_ASCII_A);
 	close(output_fd);

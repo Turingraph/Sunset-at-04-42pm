@@ -14,15 +14,14 @@
 
 // time : O(1)
 // space: O(1)
-void	*destroy_matrix(t_matrix *src)
+void	destroy_matrix(t_matrix *src)
 {
 	if (src == NULL)
-		return (NULL);
+		return ;
 	free(src->arr);
 	src->arr = NULL;
 	src->row = 0;
 	src->col = 0;
-	return (NULL);
 }
 
 // time : O(n)
@@ -98,4 +97,23 @@ bool	is_matrix_same_dim(const t_matrix *a, const t_matrix *b)
 		|| a->col != b->col || a->row != b->row)
 		return (false);
 	return (true);
+}
+
+// time : O(n)
+// space: O(1)
+float	dot_product(const float *vec_v, const float *vec_u, size_t dim)
+{
+	float	y;
+	size_t	i;
+
+	if (vec_v == NULL || vec_u == NULL)
+		return (0);
+	y = 0;
+	i = 0;
+	while (i < dim)
+	{
+		y += vec_v[i] * vec_u[i];
+		i += 1;
+	}
+	return (y);
 }

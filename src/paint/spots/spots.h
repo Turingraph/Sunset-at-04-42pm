@@ -17,21 +17,13 @@
 #include "../../utils/taylor/taylor.h"
 #include "../aura/aura.h"
 
-// complex.c
+// custom.c
 
 bool	spots_andmod_custom(t_double2d x,
 			t_double2d (*complex_func)(t_double2d a));
 bool	spots_aura_custom(t_double2d x,
 			int (*aura_custom)(int x, int y, int z),
 			t_double2d (*complex_func)(t_double2d a));
-
-// edge.c
-
-bool	is_available_left(size_t col, size_t row, size_t index);
-bool	is_available_right(size_t col, size_t row, size_t index);
-bool	is_available_up(size_t col, size_t row, size_t index);
-bool	is_available_down(size_t col, size_t row, size_t index);
-bool	is_edge_frame(size_t col, size_t row, size_t index);
 
 // power.c
 
@@ -56,7 +48,6 @@ void	paint_spots_fdf_table(t_fdf_table *dst, int color,
 
 // space.c
 
-size_t	count_neighbor_fdf_table(const t_fdf_table *dst, size_t index);
 bool	spots_boundary(const t_fdf_table *dst, size_t index);
 bool	spots_space(const t_fdf_table *dst, size_t index);
 bool	spots_chess(const t_fdf_table *dst, size_t index);

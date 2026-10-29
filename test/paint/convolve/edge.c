@@ -42,7 +42,7 @@ int	main(void)
 				FDF_FORMAT_ASCII_A, false);
 		free(file_name);
 		scale_fdf_table(&table_a, 3.0, FDF_HEIGHT);
-		table_c = convolve_fdf_table(&table_a, edge, 5);
+		table_c = convolve_fdf_table(&table_a, edge, 5, true);
 		// positive_fdf_table(&table_c);
 		write_fdf_table(output, &table_c, FDF_HEIGHT, FDF_FORMAT_ASCII_A);
 		destroy_fdf_table(&table_a);
