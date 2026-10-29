@@ -12,6 +12,20 @@
 
 #include "table_private.h"
 
+bool	isvalid_fdf_channel(const t_fdf_table *src,
+	unsigned char **rgbarr, t_fdf_channel channel)
+{
+	if (src == NULL
+		|| mul_overflow_size_t(src->col, src->row) == false
+		|| rgbarr == NULL)
+		return (false);
+	*rgbarr = rgbarr_from_table(src, channel);
+	if ((*rgbarr == NULL && channel != FDF_HEIGHT)
+		|| (src->arr == NULL && channel == FDF_HEIGHT))
+		return (false);
+	return (true);
+}
+
 /**
  * Multiply each selected FDF channel by scale.
  *
@@ -26,29 +40,21 @@
 void	scale_fdf_table(t_fdf_table *dst, float scale,
 	t_fdf_channel channel)
 {
-	size_t	i;
+	unsigned char	*dst_rgba;
+	size_t			i;
 
-	if (dst == NULL || mul_overflow_size_t(dst->col, dst->row) == false)
+	if (isvalid_fdf_channel(dst, &dst_rgba, channel) == false)
 		return ;
 	i = 0;
-	while (i < dst->col * dst->row)
+	while (i < dst->row * dst->col)
 	{
-		if (dst->arr != NULL && channel == FDF_HEIGHT)
-			dst->arr[i] = (int)f_interval_int(
+		if (channel == FDF_HEIGHT)
+			dst->arr[i] = (int)f_interval(
 					f_round(dst->arr[i] * scale),
 					-2147483648.0, 2147483647.0);
-		if (dst->r != NULL && channel == FDF_RED)
-			dst->r[i] = (unsigned char)f_interval_int(
-					dst->r[i] * scale, 0, 255);
-		if (dst->g != NULL && channel == FDF_GREEN)
-			dst->g[i] = (unsigned char)f_interval_int(
-					dst->g[i] * scale, 0, 255);
-		if (dst->b != NULL && channel == FDF_BLUE)
-			dst->b[i] = (unsigned char)f_interval_int(
-					dst->b[i] * scale, 0, 255);
-		if (dst->a != NULL && channel == FDF_ALPHA)
-			dst->a[i] = (unsigned char)f_interval_int(
-					dst->a[i] * scale, 0, 255);
+		else
+			dst_rgba[i] = (unsigned char)f_interval(
+					dst_rgba[i] * scale, 0, 255);
 		i += 1;
 	}
 }
@@ -66,28 +72,21 @@ void	scale_fdf_table(t_fdf_table *dst, float scale,
  */
 void	add_fdf_table(t_fdf_table *dst, int input, t_fdf_channel channel)
 {
-	size_t	i;
+	unsigned char	*dst_rgba;
+	size_t			i;
 
-	if (dst == NULL || mul_overflow_size_t(dst->col, dst->row) == false)
+	if (isvalid_fdf_channel(dst, &dst_rgba, channel) == false)
 		return ;
 	i = 0;
-	while (i < dst->col * dst->row)
+	while (i < dst->row * dst->col)
 	{
-		if (dst->arr != NULL && channel == FDF_HEIGHT)
+		if (channel == FDF_HEIGHT)
 			dst->arr[i] = (int)f_interval(
-					f_round(dst->arr[i] + input), -2147483648.0, 2147483647.0);
-		if (dst->r != NULL && channel == FDF_RED)
-			dst->r[i] = (unsigned char)f_interval(
-					(int)dst->r[i] + input, 0, 255);
-		if (dst->g != NULL && channel == FDF_GREEN)
-			dst->g[i] = (unsigned char)f_interval(
-					(int)dst->g[i] + input, 0, 255);
-		if (dst->b != NULL && channel == FDF_BLUE)
-			dst->b[i] = (unsigned char)f_interval(
-					(int)dst->b[i] + input, 0, 255);
-		if (dst->a != NULL && channel == FDF_ALPHA)
-			dst->a[i] = (unsigned char)f_interval(
-					(int)dst->a[i] + input, 0, 255);
+					f_round(dst->arr[i] + input),
+					-2147483648.0, 2147483647.0);
+		else
+			dst_rgba[i] = (unsigned char)f_interval(
+					dst_rgba[i] + input, 0, 255);
 		i += 1;
 	}
 }
@@ -107,32 +106,23 @@ void	add_fdf_table(t_fdf_table *dst, int input, t_fdf_channel channel)
 void	mix_add_fdf_table(t_fdf_table *dst,
 	const t_fdf_table *src, t_fdf_channel channel)
 {
-	size_t	i;
+	unsigned char	*dst_rgba;
+	unsigned char	*src_rgba;
+	size_t			i;
 
-	if (src == NULL || dst == NULL
-		|| mul_overflow_size_t(dst->col, dst->row) == false
-		|| mul_overflow_size_t(src->col, src->row) == false
-		|| dst->row * dst->col != src->row * src->col)
+	if (isvalid_fdf_channel(dst, &dst_rgba, channel) == false
+		|| isvalid_fdf_channel(src, &src_rgba, channel) == false)
 		return ;
 	i = 0;
-	while (i < dst->col * dst->row)
+	while (i < dst->row * dst->col)
 	{
-		if (src->arr != NULL && dst->arr != NULL && channel == FDF_HEIGHT)
+		if (channel == FDF_HEIGHT)
 			dst->arr[i] = (int)f_interval(
 					f_round(dst->arr[i] + src->arr[i]),
 					-2147483648.0, 2147483647.0);
-		if (src->r != NULL && dst->r != NULL && channel == FDF_RED)
-			dst->r[i] = (unsigned char)f_interval(
-					dst->r[i] + src->r[i], 0, 255);
-		if (src->g != NULL && dst->g != NULL && channel == FDF_GREEN)
-			dst->g[i] = (unsigned char)f_interval(
-					dst->g[i] + src->g[i], 0, 255);
-		if (src->b != NULL && dst->b != NULL && channel == FDF_BLUE)
-			dst->b[i] = (unsigned char)f_interval(
-					dst->b[i] + src->b[i], 0, 255);
-		if (src->a != NULL && dst->a != NULL && channel == FDF_ALPHA)
-			dst->a[i] = (unsigned char)f_interval(
-					dst->a[i] + src->a[i], 0, 255);
+		else
+			dst_rgba[i] = (unsigned char)f_interval(
+					dst_rgba[i] + src_rgba[i], 0, 255);
 		i += 1;
 	}
 }
@@ -152,50 +142,23 @@ void	mix_add_fdf_table(t_fdf_table *dst,
 void	mix_hadamard_fdf_table(t_fdf_table *dst,
 	const t_fdf_table *src, t_fdf_channel channel)
 {
-	size_t	i;
+	unsigned char	*dst_rgba;
+	unsigned char	*src_rgba;
+	size_t			i;
 
-	if (src == NULL || dst == NULL
-		|| mul_overflow_size_t(dst->col, dst->row) == false
-		|| mul_overflow_size_t(src->col, src->row) == false
-		|| dst->row * dst->col != src->row * src->col)
+	if (isvalid_fdf_channel(dst, &dst_rgba, channel) == false
+		|| isvalid_fdf_channel(src, &src_rgba, channel) == false)
 		return ;
 	i = 0;
-	while (i < dst->col * dst->row)
+	while (i < dst->row * dst->col)
 	{
-		if (src->arr != NULL && dst->arr != NULL && channel == FDF_HEIGHT)
+		if (channel == FDF_HEIGHT)
 			dst->arr[i] = (int)f_interval(
 					f_round(dst->arr[i] * src->arr[i]),
 					-2147483648.0, 2147483647.0);
-		if (src->r != NULL && dst->r != NULL && channel == FDF_RED)
-			dst->r[i] = (unsigned char)f_interval(
-					dst->r[i] * src->r[i], 0, 255);
-		if (src->g != NULL && dst->g != NULL && channel == FDF_GREEN)
-			dst->g[i] = (unsigned char)f_interval(
-					dst->g[i] * src->g[i], 0, 255);
-		if (src->b != NULL && dst->b != NULL && channel == FDF_BLUE)
-			dst->b[i] = (unsigned char)f_interval(
-					dst->b[i] * src->b[i], 0, 255);
-		if (src->a != NULL && dst->a != NULL && channel == FDF_ALPHA)
-			dst->a[i] = (unsigned char)f_interval(
-					dst->a[i] * src->a[i], 0, 255);
+		else
+			dst_rgba[i] = (unsigned char)f_interval(
+					dst_rgba[i] * src_rgba[i], 0, 255);
 		i += 1;
 	}
-}
-
-/**
- * Copy the channel from source FDF table to the dst FDF table.
- * dst and src should have the same numbers of row times column.
- *
- * time/space: O(n) / O(1)
- *
- * status: public api
- *
- * @param dst FDF table to modify
- * @param src source FDF table
- * @param channel channel to copy
- */
-void	copy_fdf_table_channel(t_fdf_table *dst, const t_fdf_table *src, t_fdf_channel channel)
-{
-	scale_fdf_table(dst, 0.0, channel);
-	mix_add_fdf_table(dst, src, channel);
 }

@@ -25,6 +25,14 @@ t_fdf_table		create_fdf_table(size_t row, size_t col, bool is_rgba);
 
 t_fdf_table		load_fdf_table(const char *file_name,
 					t_fdf_format format, bool is_rgba);
+// normal.c
+
+void			mod_fdf_table(t_fdf_table *dst, int mod,
+					t_fdf_channel channel);
+void			interval_fdf_table(t_fdf_table *dst, int input_min, int input_max,
+					t_fdf_channel channel);
+void			copy_fdf_table_channel(t_fdf_table *dst, t_fdf_table *src,
+					t_fdf_channel dst_channel, t_fdf_channel src_channel);
 
 // positive.c
 
@@ -53,8 +61,6 @@ void			add_fdf_table(t_fdf_table *dst,
 void			mix_add_fdf_table(t_fdf_table *dst,
 					const t_fdf_table *src, t_fdf_channel channel);
 void			mix_hadamard_fdf_table(t_fdf_table *dst,
-					const t_fdf_table *src, t_fdf_channel channel);
-void			copy_fdf_table_channel(t_fdf_table *dst,
 					const t_fdf_table *src, t_fdf_channel channel);
 
 // write.c

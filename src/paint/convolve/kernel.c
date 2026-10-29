@@ -244,8 +244,8 @@ float	*kernel_count_neighbors(size_t inner_dim, size_t outer_dim)
 {
 	float	*dst;
 	size_t	i;
-	int		index_left;
-	int		index_right;
+	size_t	index_left;
+	size_t	index_right;
 
 	swap_dim(&inner_dim, &outer_dim);
 	if (mul_overflow_size_t(outer_dim, outer_dim) == false)

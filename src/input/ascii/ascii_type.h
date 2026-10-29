@@ -22,6 +22,12 @@
  * - FDF_FORMAT_DECIMAL_BW writes only the height value of each FDF cell.
  *
  * - FDF_FORMAT_DECIMAL_RGBA writes the height value together with a full RGBA color.
+ * 
+ * - FDF_FORMAT_ASCII_A writes only the value of each FDF cell according to the 1st ASCII method as ASCII art.
+ *
+ * - FDF_FORMAT_ASCII_B writes only the value of each FDF cell according to the 2nd ASCII method as ASCII art.
+ * 
+ * - FDF_FORMAT_ASCII_C writes only the value of each FDF cell according to the 3rd ASCII method as ASCII art.
  */
 typedef enum t_fdf_format
 {
@@ -33,6 +39,10 @@ typedef enum t_fdf_format
 	// WRITE_PNG,
 	// WRITE_JPG
 }	t_fdf_format;
+
+# ifndef DICT_ASCII_LENGTH
+#  define DICT_ASCII_LENGTH 80
+# endif
 
 # ifndef DICT_ASCII_A
 #  define DICT_ASCII_A " `'.,:_-;~!^\"\\|)rvcilj+xnzt>=]*?}17JTC23%Yoyhk4$5IF&XVUGZEwemqdgPKO980DQRHNB#WM@"
