@@ -29,8 +29,8 @@ int	main(void)
 
 	table = create_fdf_table(100, 100, true);
 	table_base = create_fdf_table(100, 100, false);
-	paint_aura_fdf_table(&table, FDF_HEIGHT, aura_pythagoras);
-	paint_spots_fdf_table(&table_base, 1, FDF_HEIGHT, spots_andmod_x2);
+	paint_aura_fdf_table(&table, 1, FDF_HEIGHT, aura_pythagoras);
+	paint_aura_fdf_table(&table_base, AURA_FORTE, FDF_HEIGHT, aura_hypnotize_no2);
 	mix_hadamard_fdf_table(&table, &table_base, FDF_HEIGHT);
 	style.thickness = 2;
 	style.shape2d = SHAPE2D_RECTANGLE;

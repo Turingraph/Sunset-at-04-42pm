@@ -2,7 +2,7 @@
 
 static void	write_with_paint_aura_fdf_table(float scale, const char *file_name,
 	t_fdf_table *table,
-	int (*aura)(int x, int y, int z))
+	int (*aura)(double x, double y, double z))
 {
 	int	output;
 
@@ -17,12 +17,12 @@ static void	write_with_paint_aura_fdf_table(float scale, const char *file_name,
 	}
 	if (scale > 0)
 		scale_fdf_table(table, scale, FDF_HEIGHT);
-	paint_aura_fdf_table(table, FDF_HEIGHT, aura);
+	paint_aura_fdf_table(table, 1, FDF_HEIGHT, aura);
 	write_fdf_table(output, table, FDF_HEIGHT, FDF_FORMAT_ASCII_B);
 	close(output);
 }
 
-int	aura_maxcos(int x, int y, int z)
+int	aura_maxcos(double x, double y, double z)
 {
 	t_double2d	com;
 

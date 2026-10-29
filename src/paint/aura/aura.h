@@ -17,30 +17,77 @@
 # include "../../utils/libft/libft.h"
 # include <fcntl.h>
 
+# ifndef AURA_PIANISSIMO
+#  define AURA_PIANISSIMO 0.025
+# endif
+
+# ifndef AURA_PIANO
+#  define AURA_PIANO 0.05
+# endif
+
+# ifndef AURA_MEZZO
+#  define AURA_MEZZO 0.075
+# endif
+
+# ifndef AURA_FORTE
+#  define AURA_FORTE 0.1
+# endif
+
+// anime.c
+
+int			aura_chainsawman_no2(double x, double y, double z);
+int			aura_chainsawman_no3(double x, double y, double z);
+
 // arithmetic.c
 
-int		aura_root2(int x, int y, int z);
-int		aura_root3(int x, int y, int z);
-int		aura_addsub(int x, int y, int z);
-int		aura_fermat(int x, int y, int z);
+int			aura_root2(double x, double y, double z);
+int			aura_root3(double x, double y, double z);
+int			aura_addsub(double x, double y, double z);
+int			aura_fermat(double x, double y, double z);
+
+/*
+I might fix the disco aura.
+*/
+
+// hawaii_disco.c
+
+int			aura_hawaii_no2(double x, double y, double z);
+int			aura_hawaii_no3(double x, double y, double z);
+int			aura_disco_no2(double x, double y, double z);
+int			aura_disco_no3(double x, double y, double z);
+
+// hypnotize_fractal.c
+
+int			aura_hypnotize_no2(double x, double y, double z);
+int			aura_hypnotize_no3(double x, double y, double z);
+int			aura_fractal_no2(double x, double y, double z);
+int			aura_fractal_no3(double x, double y, double z);
 
 // inequality.c
 
-int		aura_inequality_triangle(int x, int y, int z);
-int		aura_inequality_amgm(int x, int y, int z);
-int		aura_inequality_cauchy(int x, int y, int z);
-int		aura_inequality_addmul(int x, int y, int z);
+int			aura_inequality_triangle(double x, double y, double z);
+int			aura_inequality_amgm(double x, double y, double z);
+int			aura_inequality_cauchy(double x, double y, double z);
+int			aura_inequality_addmul(double x, double y, double z);
 
 // metric.c
 
-int		aura_pythagoras(int x, int y, int z);
-int		aura_max(int x, int y, int z);
-int		aura_min(int x, int y, int z);
+int			aura_pythagoras(double x, double y, double z);
+int			aura_max(double x, double y, double z);
+int			aura_min(double x, double y, double z);
 
 // paint.c
 
-void	paint_aura_fdf_table(t_fdf_table *dst,
-			t_fdf_channel channel,
-			int (*aura_custom)(int x, int y, int z));
+t_double2d	complex_x2(t_double2d a);
+t_double2d	complex_x3(t_double2d a);
+void		paint_aura_fdf_table(t_fdf_table *dst,
+				double zoom,
+				t_fdf_channel channel,
+				int (*aura_custom)(double x, double y, double z));
+int			aura_custom_andmod(t_double2d x, double z,
+				t_double2d (*complex_func)(t_double2d a));
+int			aura_custom_bi(t_double2d x, double z,
+					int (*aura_custom)(double x, double y, double z),
+					t_double2d (*complex_func)(t_double2d a));
 
 #endif

@@ -19,7 +19,7 @@
  * 
  * status: public api
  */
-int	aura_inequality_triangle(int x, int y, int z)
+int	aura_inequality_triangle(double x, double y, double z)
 {
 	int	y_max;
 	int	y_min;
@@ -36,7 +36,7 @@ int	aura_inequality_triangle(int x, int y, int z)
  * 
  * status: public api
  */
-int	aura_inequality_amgm(int x, int y, int z)
+int	aura_inequality_amgm(double x, double y, double z)
 {
 	int	y_max;
 	int	y_min;
@@ -59,7 +59,7 @@ int	aura_inequality_amgm(int x, int y, int z)
  * 
  * status: public api
  */
-int	aura_inequality_cauchy(int x, int y, int z)
+int	aura_inequality_cauchy(double x, double y, double z)
 {
 	int	y_max;
 	int	y_min;
@@ -69,7 +69,7 @@ int	aura_inequality_cauchy(int x, int y, int z)
 	return (y_max - y_min);
 }
 
-int	aura_inequality_addmul(int x, int y, int z)
+int	aura_inequality_addmul(double x, double y, double z)
 {
 	int	y_max;
 	int	y_min;

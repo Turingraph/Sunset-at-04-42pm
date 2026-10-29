@@ -19,7 +19,7 @@
  * 
  * status: public api
  */
-int	aura_root2(int x, int y, int z)
+int	aura_root2(double x, double y, double z)
 {
 	return ((int)f_round(f_root_find(x * y * z, 2)));
 }
@@ -31,7 +31,7 @@ int	aura_root2(int x, int y, int z)
  * 
  * status: public api
  */
-int	aura_root3(int x, int y, int z)
+int	aura_root3(double x, double y, double z)
 {
 	return ((int)f_round(f_root_find(x * y * z, 3)));
 }
@@ -43,7 +43,7 @@ int	aura_root3(int x, int y, int z)
  * 
  * status: public api
  */
-int	aura_addsub(int x, int y, int z)
+int	aura_addsub(double x, double y, double z)
 {
 	return (f_abs_int(x + y + z));
 }
@@ -55,19 +55,21 @@ int	aura_addsub(int x, int y, int z)
  * 
  * status: public api
  */
-int	aura_fermat(int x, int y, int z)
+int	aura_fermat(double x, double y, double z)
 {
-	int			a;
-	int			b;
-	int			c;
+	int	a;
+	int	b;
+	int	c;
+	int	zz;
 
-	z = z % 7;
-	if (z == 0)
-		z = 2;
-	a = (int)f_pow(x, z);
-	b = (int)f_pow(y, z);
+	zz = (int)z;
+	zz = zz % 7;
+	if (zz == 0)
+		zz = 2;
+	a = (int)f_pow(x, zz);
+	b = (int)f_pow(y, zz);
 	c = a + b;
-	c = (int)f_floor(f_root_find((double)c, z));
-	c = (int)f_pow((double)c, z);
+	c = (int)f_floor(f_root_find((double)c, zz));
+	c = (int)f_pow((double)c, zz);
 	return (f_abs_int(a + b - c));
 }

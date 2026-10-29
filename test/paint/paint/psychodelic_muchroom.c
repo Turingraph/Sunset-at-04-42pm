@@ -28,11 +28,12 @@ int	main(void)
 	t_style_render	style;
 
 	table = create_fdf_table(120, 120, true);
-	paint_aura_fdf_table(&table, FDF_HEIGHT, aura_inequality_amgm);
-	paint_aura_fdf_table(&table, FDF_BLUE, aura_pythagoras);
-	paint_aura_fdf_table(&table, FDF_RED, aura_min);
-	paint_aura_fdf_table(&table, FDF_GREEN, aura_max);
-	paint_spots_fdf_table(&table, 255, FDF_ALPHA, NULL);
+	relu_fdf_table(&table, 0, 0, 255);
+	copy_fdf_table_channel(&table, &table, FDF_ALPHA, FDF_HEIGHT);
+	paint_aura_fdf_table(&table, 1, FDF_HEIGHT, aura_inequality_amgm);
+	paint_aura_fdf_table(&table, 1, FDF_BLUE, aura_pythagoras);
+	paint_aura_fdf_table(&table, 1, FDF_RED, aura_min);
+	paint_aura_fdf_table(&table, 1, FDF_GREEN, aura_max);
 	paint_gradient_fdf_table(&table, init_white_noise(), false);
 	style.thickness = 2;
 	style.shape2d = SHAPE2D_RECTANGLE;

@@ -15,7 +15,7 @@ BUFFER_SIZE = 42
 # *** library ***
 LIBRARY = $(patsubst %, lib/%.a, debug \
 	ascii decimal get_next_line table \
-	aura convolve gradient spots\
+	aura convolve gradient\
 	libft taylor \
 	motif proj2d raster render window)
 
@@ -33,7 +33,6 @@ SRC_table = $(wildcard input/table/*.c)
 SRC_aura = $(wildcard paint/aura/*.c)
 SRC_convolve = $(wildcard paint/convolve/*.c)
 SRC_gradient = $(wildcard paint/gradient/*.c)
-SRC_spots = $(wildcard paint/spots/*.c)
 
 SRC_raster = $(wildcard visualize/raster/*.c)
 SRC_motif = $(wildcard visualize/motif/*.c)
@@ -57,7 +56,6 @@ OBJ_table = $(patsubst %.c, obj/%.o, $(SRC_table)) $(OBJ_decimal)
 OBJ_aura = $(patsubst %.c, obj/%.o, $(SRC_aura)) $(OBJ_taylor)
 OBJ_convolve = $(patsubst %.c, obj/%.o, $(SRC_convolve)) $(OBJ_table) $(OBJ_taylor)
 OBJ_gradient = $(patsubst %.c, obj/%.o, $(SRC_gradient)) $(OBJ_taylor)
-OBJ_spots = $(patsubst %.c, obj/%.o, $(SRC_spots)) $(OBJ_taylor) $(OBJ_aura)
 
 OBJ_raster = $(patsubst %.c, obj/%.o, $(SRC_raster)) $(OBJ_taylor) $(OBJ_table)
 OBJ_motif = $(patsubst %.c, obj/%.o, $(SRC_motif)) $(OBJ_raster)

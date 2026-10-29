@@ -19,7 +19,7 @@
 * 
 * status: public api
 */
-int	aura_pythagoras(int x, int y, int z)
+int	aura_pythagoras(double x, double y, double z)
 {
 	int	distance;
 
@@ -34,7 +34,7 @@ int	aura_pythagoras(int x, int y, int z)
  * 
  * status: public api
  */
-int	aura_max(int x, int y, int z)
+int	aura_max(double x, double y, double z)
 {
 	int			max3d;
 
@@ -49,7 +49,7 @@ int	aura_max(int x, int y, int z)
  * 
  * status: public api
  */
-int	aura_min(int x, int y, int z)
+int	aura_min(double x, double y, double z)
 {
 	int			min3d;
 

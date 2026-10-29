@@ -60,14 +60,11 @@ t_gradient	init_feeling_blue(void)
 	return (dst);
 }
 
-bool	is_3d_pythagoras(const t_fdf_table *dst, size_t index)
+int	is_3d_pythagoras(double x, double y, double z)
 {
-	t_double2d	x;
-
-	x = fdf_table_coordinate(dst, index);
-	if (aura_pythagoras(x.x, x.y, dst->arr[index]) % 2 == 1)
-		return (true);
-	return (false);
+	if (aura_pythagoras(x, y, z) % 2 == 1)
+		return (1);
+	return (0);
 }
 
 int	main(void)
@@ -80,9 +77,9 @@ int	main(void)
 
 	table = create_fdf_table(161, 161, true);
 	table2 = create_fdf_table(161, 161, true);
-	paint_aura_fdf_table(&table, FDF_HEIGHT, aura_inequality_amgm);
-	paint_aura_fdf_table(&table2, FDF_HEIGHT, aura_pythagoras);
-	paint_spots_fdf_table(&table, 0, FDF_HEIGHT, is_3d_pythagoras);
+	paint_aura_fdf_table(&table, 1, FDF_HEIGHT, aura_inequality_amgm);
+	paint_aura_fdf_table(&table2, 1, FDF_HEIGHT, aura_pythagoras);
+	paint_aura_fdf_table(&table, 1, FDF_HEIGHT, is_3d_pythagoras);
 	relu_fdf_table(&table, -10000, 0, 0);
 	i = 0;
 	while (i < table.row * table.col)

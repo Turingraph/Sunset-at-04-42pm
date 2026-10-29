@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/pc/Desktop/GrASCIIfi/src/input/draft_get_next_line",
-      "program": "/home/pc/Desktop/GrASCIIfi/src/input/draft_get_next_line/build/Debug/outDebug",
+      "cwd": "/home/pc/Desktop/GrASCIIfi/src/paint/trash_spots2",
+      "program": "/home/pc/Desktop/GrASCIIfi/src/paint/trash_spots2/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
