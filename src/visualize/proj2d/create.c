@@ -158,7 +158,7 @@ static void	fdf_proj2d_update(const t_fdf_table *src, t_fdf_proj2d *dst,
  * @see src/visualize/fdf/projection.c
  */
 t_fdf_proj2d	create_conformal_fdf_proj2d(t_fdf_table *src,
-	t_double2d (*complex)(t_double2d a), float scale)
+	t_double2d (*complex_map)(t_double2d a), float scale)
 {
 	t_fdf_proj2d	dst;
 	float	max_x;
@@ -171,7 +171,7 @@ t_fdf_proj2d	create_conformal_fdf_proj2d(t_fdf_table *src,
 	dst = fdf_proj2d_malloc(src);
 	if (dst.col == 0 || dst.row == 0)
 		return (dst);
-	fdf_proj2d_update((const t_fdf_table *)src, &dst, scale, complex);
+	fdf_proj2d_update((const t_fdf_table *)src, &dst, scale, complex_map);
 	min_x = (float)minmax_from_arr_float(dst.x, dst.col * dst.row, false);
 	max_x = (float)minmax_from_arr_float(dst.x, dst.col * dst.row, true);
 	min_y = (float)minmax_from_arr_float(dst.y, dst.col * dst.row, false);

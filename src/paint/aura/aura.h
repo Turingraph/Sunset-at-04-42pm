@@ -33,28 +33,12 @@
 #  define AURA_FORTE 0.1
 # endif
 
-// anime.c
-
-int			aura_chainsawman_no2(double x, double y, double z);
-int			aura_chainsawman_no3(double x, double y, double z);
-
 // arithmetic.c
 
 int			aura_root2(double x, double y, double z);
 int			aura_root3(double x, double y, double z);
 int			aura_addsub(double x, double y, double z);
 int			aura_fermat(double x, double y, double z);
-
-/*
-I might fix the disco aura.
-*/
-
-// hawaii_disco.c
-
-int			aura_hawaii_no2(double x, double y, double z);
-int			aura_hawaii_no3(double x, double y, double z);
-int			aura_disco_no2(double x, double y, double z);
-int			aura_disco_no3(double x, double y, double z);
 
 // hypnotize_fractal.c
 
@@ -69,6 +53,13 @@ int			aura_inequality_triangle(double x, double y, double z);
 int			aura_inequality_amgm(double x, double y, double z);
 int			aura_inequality_cauchy(double x, double y, double z);
 int			aura_inequality_addmul(double x, double y, double z);
+
+// math_rock.c
+
+int			aura_disco_no2(double x, double y, double z);
+int			aura_disco_no3(double x, double y, double z);
+int			aura_chainsawman_no2(double x, double y, double z);
+int			aura_chainsawman_no3(double x, double y, double z);
 
 // metric.c
 

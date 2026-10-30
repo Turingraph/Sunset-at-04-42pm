@@ -48,8 +48,8 @@ int	main(void)
 	table = create_fdf_table(300, 300, true);
 	table_base = create_fdf_table(300, 300, false);
 	paint_aura_fdf_table(&table, 1, FDF_HEIGHT, aura_pythagoras);
-	// add_fdf_table(&table_base, 6, FDF_HEIGHT);
-	paint_aura_fdf_table(&table_base, AURA_PIANO, FDF_HEIGHT, aura_hypnotize_no3);
+	add_fdf_table(&table_base, 1, FDF_HEIGHT);
+	paint_aura_fdf_table(&table_base, AURA_PIANO, FDF_HEIGHT, aura_fractal_no2);
 	mix_hadamard_fdf_table(&table, &table_base, FDF_HEIGHT);
 	paint_gradient_fdf_table(&table, init_deep_wood(), true);
 	paint_gradient_fdf_table(&table, init_white_noise(), true);
@@ -60,5 +60,6 @@ int	main(void)
 }
 
 /*
-valgrind --leak-check=full --show-leak-kinds=all ./test/out/paint/paint/cube.out
+valgrind --leak-check=full --show-leak-kinds=all 
+./test/out/paint/paint/cube.out
 */

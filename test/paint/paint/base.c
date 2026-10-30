@@ -27,7 +27,7 @@ int	main(void)
 	t_style_render	style;
 
 	table_base = create_fdf_table(300, 300, true);
-	paint_aura_fdf_table(&table_base, AURA_FORTE, FDF_HEIGHT, aura_hawaii_no2);
+	paint_aura_fdf_table(&table_base, AURA_FORTE, FDF_HEIGHT, aura_disco_no2);
 	style.thickness = 2;
 	style.shape2d = SHAPE2D_RECTANGLE;
 	paint_gradient_fdf_table(&table_base, init_deep_wood(), true);
