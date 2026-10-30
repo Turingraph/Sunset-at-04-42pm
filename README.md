@@ -35,13 +35,13 @@ Make this C file (I will name it as `main.c`) and copy `subsetat442pm.h`, `sunse
 
 // time : O(1)
 // space: O(1)
-t_gradient	init_deep_sea()
+t_gradient	init_deep_wood()
 {
 	t_gradient	dst;
 
 	dst.cell_channel = GRADIENT_HEIGHT;
 	dst.input_start = 0;
-	dst.input_end = 200;
+	dst.input_end = 300;
 	dst.rgba_start.r = 70;
 	dst.rgba_start.g = 75;
 	dst.rgba_start.b = 113;
@@ -53,31 +53,51 @@ t_gradient	init_deep_sea()
 	return (dst);
 }
 
+// time : O(1)
+// space: O(1)
+t_gradient	init_white_noise()
+{
+	t_gradient	dst;
+
+	dst.cell_channel = GRADIENT_HEIGHT;
+	dst.input_start = 0;
+	dst.input_end = 0;
+	dst.rgba_start.r = 0;
+	dst.rgba_start.g = 0;
+	dst.rgba_start.b = 0;
+	dst.rgba_start.a = 255;
+	dst.rgba_end.r = 0;
+	dst.rgba_end.g = 0;
+	dst.rgba_end.b = 0;
+	dst.rgba_end.a = 255;
+	return (dst);
+}
+
 int	main(void)
 {
 	t_fdf_table		table_base;
 	t_fdf_table		table;
-	t_fdf			output;
-	t_style_render32	style;
+	t_fdf_proj2d			output;
+	t_style_render	style;
 
-	table = create_fdf_table(100, 100, true);
-	table_base = create_fdf_table(100, 100, false);
-	setcells_pythagorus_length(&table);
-	paint_spots_fdf_table(&table_base, 30, HEIGHT, spots_oddlength_cube);
-	mix_hadamard_fdf_table(&table, &table_base, HEIGHT);
-	relu_fdf_table(&table, 201, 2000, 0);
-	style.background_color = rgba_to_int32(0, 0, 0, 255);
-	style.line_thickness = 2;
-	style.artists = E_EULER;
-	paint_gradient_fdf_table(&table, init_deep_sea(), true);
-	scale_fdf_table(&table, 1.0 / 120.0, HEIGHT);
-	output = create_fdf_proj2d(&table, proj2d_isometric, 0.6);
-	view_fdf(&output, style);
+	table = create_fdf_table(300, 300, true);
+	table_base = create_fdf_table(300, 300, false);
+	paint_aura_fdf_table(&table, 1, FDF_HEIGHT, aura_pythagoras);
+	// add_fdf_table(&table_base, 6, FDF_HEIGHT);
+	paint_aura_fdf_table(&table_base, AURA_PIANO, FDF_HEIGHT, aura_chainsawman_no3);
+	mix_hadamard_fdf_table(&table, &table_base, FDF_HEIGHT);
+	style.thickness = 2;
+	style.shape2d = SHAPE2D_RECTANGLE;
+	paint_gradient_fdf_table(&table, init_deep_wood(), true);
+	paint_gradient_fdf_table(&table, init_white_noise(), true);
+	output = create_fdf_proj2d(&table, NULL, 0.6);
+	view_fdf(&output, style, rgba32_from_char(0, 0, 0, 255));
 	destroy_fdf_table(&table);
 	destroy_fdf_table(&table_base);
 	destroy_fdf_proj2d(&output);
 	return (0);
 }
+
 ```
 
 Lastly, run
@@ -160,12 +180,12 @@ bool	is_fdf_name(const char *str)
 int	main(int len, char **str)
 {
 	t_fdf_table		table;
-	t_fdf			output;
+	t_fdf_proj2d	output;
 	t_style_render	style;
 
 	if (len < 2 || is_fdf_name(str[1]) == false)
 		return (0);
-	table = load_fdf_table(str[1], NULL, parse_decimal_rgba, true);
+	table = load_fdf_table(str[1], FDF_FORMAT_DECIMAL_RGBA, true);
 	if (table.col * table.row == 0)
 	{
 		write(1, "File might be invalid and/or Malloc returns NULL.\n", 51);
@@ -173,16 +193,22 @@ int	main(int len, char **str)
 		return (0);
 	}
 	style.thickness = 1;
-	style.shape2d = E_LINE;
+	style.shape2d = SHAPE2D_LINE;
 	paint_gradient_fdf_table(&table, init_gradient(), true);
 	output = create_fdf_proj2d(&table, proj2d_isometric, 0.5);
-	view_fdf(&output, style, rgba_to_int32(255, 255, 255, 255));
+	view_fdf(&output, style, rgba32_from_char(255, 255, 255, 255));
 	destroy_fdf_table(&table);
 	destroy_fdf_proj2d(&output);
 	return (0);
 }
 
-./test/out/visualize/window/fdf.out corpus/fdf/42.fdf
+/*
+valgrind --leak-check=full --show-leak-kinds=all 
+
+./test/out/visualize/window/fdf.out corpus/fdf/elem-fract.fdf
+
+*/
+
 ```
 
 as this picture.
@@ -269,31 +295,29 @@ t_gradient	init_ztmy_studyme()
 int	main(int len, char **str)
 {
 	t_fdf_table		table;
-	t_fdf			output;
+	t_fdf_proj2d	output;
 	t_style_render	style;
 
 	if (len < 2)
 		return (0);
-	table = load_fdf_table(str[1], NULL, parse_ascii_a, true);
+	table = load_fdf_table(str[1], FDF_FORMAT_ASCII_A, true);
 	if (table.col * table.row == 0)
 	{
 		destroy_fdf_table(&table);
 		return (0);
 	}
 	style.thickness = 3;
-	style.shape2d = E_LINE;
+	style.shape2d = SHAPE2D_RECTANGLE;
 	paint_gradient_fdf_table(&table, init_ztmy_studyme(), true);
 	paint_gradient_fdf_table(&table, init_ztmy_timeleft(), true);
-	scale_fdf_table(&table, 1.0 / 3.0, HEIGHT);
+	scale_fdf_table(&table, 1.0 / 3.0, FDF_HEIGHT);
 	paint_gradient_fdf_table(&table, init_white_noise(), true);
-	output = create_fdf_proj2d(&table, proj2d_isometric, 1.0);
-	view_fdf(&output, style, rgba_to_int32(0, 0, 0, 255));
+	output = create_fdf_proj2d(&table, NULL, 1.0);
+	view_fdf(&output, style, rgba32_from_char(0, 0, 0, 255));
 	destroy_fdf_table(&table);
 	destroy_fdf_proj2d(&output);
 	return (0);
 }
-
-valgrind --leak-check=full --show-leak-kinds=all ./test/out/visualize/window/zutomayo.out test/paint/convolve/input_ascii/zutomayo_isometric2.txt
 ```
 
 as this picture.
