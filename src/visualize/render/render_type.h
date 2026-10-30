@@ -30,7 +30,8 @@ typedef struct t_camera2d
 {
 	t_int2d	offset;
 	t_int2d	window_size;
-	float		zoom;
+	float	zoom_x;
+	float	zoom_y;
 }	t_camera2d;
 
 /**

@@ -20,6 +20,14 @@
 #  define ZOOM_LEVEL 1.1
 # endif
 
+# ifndef ZOOM_MAX
+#  define ZOOM_MAX 8
+# endif
+
+# ifndef ZOOM_MIN
+#  define ZOOM_MIN 0.2
+# endif
+
 // hook.c
 
 void		hook_controller(mlx_key_data_t keydata, void *param);
@@ -40,6 +48,9 @@ void		view_fdf_pixel_art(t_fdf_table *src, int32_t background_color);
 
 bool		isvalid_key(mlx_key_data_t keydata);
 bool		isvalid_pan_key(mlx_key_data_t keydata);
-bool		isvalid_zoom_key(mlx_key_data_t keydata, float zoom);
+bool		isvalid_zoom_key_x(mlx_key_data_t keydata, float zoom);
+bool		isvalid_zoom_key_y(mlx_key_data_t keydata, float zoom);
+bool		isvalid_zoom_key(mlx_key_data_t keydata, float zoom_x, float zoom_y);
+bool		isvalid_invert_key(mlx_key_data_t keydata);
 
 #endif

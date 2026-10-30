@@ -20,7 +20,7 @@ static void	hook_pan(mlx_key_data_t keydata, t_camera2d *camera)
 
 	if (camera == NULL || isvalid_pan_key(keydata) == false)
 		return ;
-	delta = 100 * camera->zoom;
+	delta = 100 * f_max(camera->zoom_x, camera->zoom_y);
 	if (keydata.key == MLX_KEY_UP)
 		camera->offset.y += delta;
 	if (keydata.key == MLX_KEY_DOWN)
@@ -36,20 +36,51 @@ static void	hook_pan(mlx_key_data_t keydata, t_camera2d *camera)
 static void	hook_zoom(mlx_key_data_t keydata,
 	t_hook2d *hook)
 {
-	float		scale;
-	size_t		len;
+	float	scale;
+	size_t	len;
 
 	if (isvalid_hook2d(hook) == false
-		|| isvalid_zoom_key(keydata, hook->camera->zoom) == false)
+		|| isvalid_zoom_key(keydata, hook->camera->zoom_x, hook->camera->zoom_y) == false)
 		return ;
 	len = hook->fdf->col;
 	len *= hook->fdf->row;
 	scale = ZOOM_LEVEL;
-	if (keydata.key == MLX_KEY_0)
+	if (keydata.key == MLX_KEY_0 || keydata.key == MLX_KEY_O || keydata.key == MLX_KEY_L)
 		scale = 1.0 / scale;
-	hook->camera->zoom *= scale;
-	scale_vector(hook->fdf->x, scale, len);
-	scale_vector(hook->fdf->y, scale, len);
+	if (isvalid_zoom_key_x(keydata, hook->camera->zoom_x) == true)
+	{
+		hook->camera->zoom_x *= scale;
+		scale_vector(hook->fdf->x, scale, len);
+	}
+	if (isvalid_zoom_key_y(keydata, hook->camera->zoom_y) == true)
+	{
+		hook->camera->zoom_y *= scale;
+		scale_vector(hook->fdf->y, scale, len);
+	}
+}
+
+// time : O(n)
+// space: O(1)
+static void	hook_invert(mlx_key_data_t keydata,
+	t_hook2d *hook)
+{
+	size_t	len;
+
+	if (isvalid_hook2d(hook) == false
+		|| isvalid_invert_key(keydata) == false)
+		return ;
+	len = hook->fdf->col;
+	len *= hook->fdf->row;
+	if (keydata.key == MLX_KEY_1)
+	{
+		hook->camera->zoom_x *= -1;
+		scale_vector(hook->fdf->x, -1, len);
+	}
+	if (keydata.key == MLX_KEY_2)
+	{
+		hook->camera->zoom_y *= -1;
+		scale_vector(hook->fdf->y, -1, len);
+	}
 }
 
 // time : O(n)
@@ -59,16 +90,19 @@ static void	hook_reset(mlx_key_data_t keydata,
 {
 	size_t		len;
 
-	if (isvalid_hook2d(hook) == false || hook->camera->zoom < 0.2
+	if (isvalid_hook2d(hook) == false
 		|| keydata.key != MLX_KEY_Q)
 		return ;
 	len = hook->fdf->col;
 	len *= hook->fdf->row;
 	hook->camera->offset.x = 0.0;
 	hook->camera->offset.y = 0.0;
-	scale_vector(hook->fdf->x, 1.0 / hook->camera->zoom, len);
-	scale_vector(hook->fdf->y, 1.0 / hook->camera->zoom, len);
-	hook->camera->zoom = 1.0;
+	if (f_abs(hook->camera->zoom_x) > ZOOM_MIN)
+		scale_vector(hook->fdf->x, 1.0 / hook->camera->zoom_x, len);
+	if (f_abs(hook->camera->zoom_y) > ZOOM_MIN)
+		scale_vector(hook->fdf->y, 1.0 / hook->camera->zoom_y, len);
+	hook->camera->zoom_x = 1.0;
+	hook->camera->zoom_y = 1.0;
 }
 
 /**
@@ -129,6 +163,7 @@ void	hook_controller(mlx_key_data_t keydata, void *param)
 	before = after;
 	before += 0.366667;
 	render_fdf(hook, false);
+	hook_invert(keydata, hook);
 	hook_zoom(keydata, hook);
 	hook_pan(keydata, hook->camera);
 	hook_reset(keydata, hook);

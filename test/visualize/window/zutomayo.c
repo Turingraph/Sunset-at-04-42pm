@@ -60,6 +60,11 @@ t_gradient	init_ztmy_studyme()
 	return (dst);
 }
 
+t_double2d	complex_x2(t_double2d x)
+{
+	return (complex_multiplication(x, complex_multiplication(x, x)));
+}
+
 int	main(int len, char **str)
 {
 	t_fdf_table		table;
@@ -74,14 +79,14 @@ int	main(int len, char **str)
 		destroy_fdf_table(&table);
 		return (0);
 	}
-	style.thickness = 3;
-	style.shape2d = SHAPE2D_LINE;
+	style.thickness = 5;
+	style.shape2d = SHAPE2D_CIRCLE;
 	paint_gradient_fdf_table(&table, init_ztmy_studyme(), true);
 	paint_gradient_fdf_table(&table, init_ztmy_timeleft(), true);
 	scale_fdf_table(&table, 1.0 / 3.0, FDF_HEIGHT);
 	paint_gradient_fdf_table(&table, init_white_noise(), true);
 	// scale_fdf_table(&table, 0, FDF_HEIGHT);
-	output = create_conformal_fdf_proj2d(&table, complex_sin, 0.01);
+	output = create_conformal_fdf_proj2d(&table, complex_x2, 0.05);
 	view_fdf_proj2d(&output, style, rgba32_from_char(0, 0, 0, 255));
 	destroy_fdf_table(&table);
 	destroy_fdf_proj2d(&output);
@@ -91,7 +96,6 @@ int	main(int len, char **str)
 /*
 valgrind --tool=callgrind ./test/out/visualize/window/zutomayo.out test/paint/convolve/input_ascii/zutomayo_isometric2.txt
 valgrind --leak-check=full --show-leak-kinds=all ./test/out/visualize/window/zutomayo.out test/paint/convolve/input_ascii/zutomayo_isometric2.txt
-valgrind --leak-check=full --show-leak-kinds=all ./test/out/visualize/window/zutomayo.out test/paint/convolve/input_ascii_02/zutomayo_isometric2.txt
 
 ==2638489== 
 ==2638489== LEAK SUMMARY:

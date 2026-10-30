@@ -32,7 +32,8 @@ t_camera2d	init_camera2d(size_t window_width, size_t window_height)
 
 	camera.offset.x = 0;
 	camera.offset.y = 0;
-	camera.zoom = 1.0;
+	camera.zoom_x = 1.0;
+	camera.zoom_y = 1.0;
 	camera.window_size.x = window_width;
 	camera.window_size.y = window_height;
 	return (camera);

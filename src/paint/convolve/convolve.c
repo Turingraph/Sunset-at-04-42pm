@@ -88,7 +88,7 @@ static int	convolve_unit(const t_fdf_table *src, size_t index,
 	{
 		output = dot_product(src_kernel.arr,
 				kernel.arr, dim * dim);
-		if ((float)f_abs(f_sum(kernel.arr, dim * dim)) > 0.2 && is_normal == true)
+		if ((float)f_abs(f_sum(kernel.arr, dim * dim)) < 0.2 && is_normal == true)
 			output = (int)f_round(
 					(float)output / (float)(f_sum(kernel.arr, dim * dim)));
 	}
