@@ -53,7 +53,7 @@ int	main(void)
 	paint_gradient_fdf_table(&table, init_deep_wood(), true);
 	paint_gradient_fdf_table(&table, init_white_noise(), true);
 	scale_fdf_table(&table, 0, FDF_HEIGHT);
-	view_fdf_pixel_art_conformal(&table, rgba32_from_char(0, 0, 0, 255), 0.1, complex_x2);
+	view_fdf_conformal2d(&table, rgba32_from_char(0, 0, 0, 255), 0.1, complex_x2);
 	destroy_fdf_table(&table);
 	destroy_fdf_table(&table_base);
 	return (0);

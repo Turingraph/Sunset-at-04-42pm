@@ -54,5 +54,6 @@ int	main(void)
 }
 
 /*
-valgrind --leak-check=full --show-leak-kinds=all ./test/out/paint/paint/paint_aura.out
+valgrind --leak-check=full --show-leak-kinds=all 
+./test/out/paint/paint/paint_aura.out
 */
