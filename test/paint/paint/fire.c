@@ -93,8 +93,8 @@ int	main(void)
 	paint_gradient_fdf_table(&table, init_popart(), true);
 	paint_gradient_fdf_table(&table, init_feeling_blue(), true);
 	paint_gradient_fdf_table(&table, init_deep_wood(), true);
-	output = create_fdf_proj2d(&table, proj2d_cabinet, 0.6);
-	view_fdf(&output, style, rgba32_from_char(0, 0, 0, 255));
+	output = create_fdf_proj2d(&table, proj2d_cabinet);
+	view_fdf_proj2d(&output, style, rgba32_from_char(0, 0, 0, 255));
 	destroy_fdf_table(&table2);
 	destroy_fdf_table(&table);
 	destroy_fdf_proj2d(&output);

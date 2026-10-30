@@ -80,8 +80,8 @@ int	main(int len, char **str)
 	paint_gradient_fdf_table(&table, init_popart(), true);
 	scale_fdf_table(&table, 1.0 / 20.0, FDF_HEIGHT);
 	paint_gradient_fdf_table(&table, init_white_noise(), true);
-	output = create_fdf_proj2d(&table, proj2d_military, 1.0);
-	view_fdf(&output, style, rgba32_from_char(34, 79, 112, 255));
+	output = create_fdf_proj2d(&table, proj2d_military);
+	view_fdf_proj2d(&output, style, rgba32_from_char(34, 79, 112, 255));
 	destroy_fdf_table(&table);
 	destroy_fdf_proj2d(&output);
 	return (0);

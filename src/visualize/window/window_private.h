@@ -14,6 +14,7 @@
 # define WINDOW_PRIVATE_H
 
 # include "../render/render.h"
+# include "../../input/table/table.h"
 
 # ifndef ZOOM_LEVEL
 #  define ZOOM_LEVEL 1.1
@@ -32,7 +33,8 @@ void		normalize_fdf_proj2d(t_fdf_proj2d *src,
 
 // public.c
 
-void		view_fdf(t_fdf_proj2d *fdf, t_style_render style_render, int32_t background_color);
+void		view_fdf_proj2d(t_fdf_proj2d *fdf, t_style_render style_render, int32_t background_color);
+void		view_fdf_pixel_art(t_fdf_table *src, int32_t background_color);
 
 // verify.c
 

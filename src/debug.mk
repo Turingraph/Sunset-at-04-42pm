@@ -61,7 +61,7 @@ OBJ_raster = $(patsubst %.c, obj/%.o, $(SRC_raster)) $(OBJ_taylor) $(OBJ_table)
 OBJ_motif = $(patsubst %.c, obj/%.o, $(SRC_motif)) $(OBJ_raster)
 OBJ_proj2d = $(patsubst %.c, obj/%.o, $(SRC_proj2d)) $(OBJ_table) $(OBJ_taylor)
 OBJ_render = $(patsubst %.c, obj/%.o, $(SRC_render)) $(OBJ_proj2d) $(OBJ_raster)
-OBJ_window = $(patsubst %.c, obj/%.o, $(SRC_window)) $(OBJ_render)
+OBJ_window = $(patsubst %.c, obj/%.o, $(SRC_window)) $(OBJ_render) $(OBJ_table)
 
 # https://stackoverflow.com/questions/59465799/avoid-gnu-make-automatic-file-deletion
 # This command will preserve the selected files.

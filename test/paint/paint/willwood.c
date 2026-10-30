@@ -64,8 +64,6 @@ int	main(void)
 {
 	t_fdf_table		table_base;
 	t_fdf_table		table;
-	t_fdf_proj2d			output;
-	t_style_render	style;
 	t_gradient		wood;
 	size_t			i;
 	size_t			dim = 300;
@@ -75,11 +73,9 @@ int	main(void)
 	table_base = create_fdf_table(dim, dim, false);
 	paint_aura_fdf_table(&table, 1, FDF_HEIGHT, aura_inequality_amgm);
 	paint_aura_fdf_table(&table, 1, FDF_HEIGHT, aura_pythagoras);
-	paint_aura_fdf_table(&table_base, AURA_FORTE, FDF_HEIGHT, aura_hypnotize_no2);
+	paint_aura_fdf_table(&table_base, 0.09, FDF_HEIGHT, aura_hypnotize_no2);
 	mix_hadamard_fdf_table(&table, &table_base, FDF_HEIGHT);
 	paint_gradient_fdf_table(&table, init_all(), true);
-	style.thickness = 3;
-	style.shape2d = SHAPE2D_RECTANGLE;
 	i = 0;
 	while (i < 24)
 	{
@@ -90,11 +86,9 @@ int	main(void)
 	}
 	paint_gradient_fdf_table(&table, init_white_noise(), true);
 	scale_fdf_table(&table, 1.0 / 30.0, FDF_HEIGHT);
-	output = create_fdf_proj2d(&table, NULL, 1);
-	view_fdf(&output, style, rgba32_from_char(0, 0, 0, 255));
+	view_fdf_pixel_art(&table, rgba32_from_char(0, 0, 0, 255));
 	destroy_fdf_table(&table);
 	destroy_fdf_table(&table_base);
-	destroy_fdf_proj2d(&output);
 	return (0);
 }
 

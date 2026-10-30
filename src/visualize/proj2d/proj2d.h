@@ -46,7 +46,7 @@ typedef struct t_fdf_proj2d
 
 /*
 To Do Now (proj2d)
-1.	t_float2d proj2d_(x, y, z) => t_double2d proj2d(x, y)
+1.	t_double2d proj2d_(x, y, z) => t_double2d proj2d(x, y)
 2.	create_fdf_proj2d(src, proj2d, scale) => create_fdf_proj2d(src, proj2d, is_normalize)
 3.	scale_fdf_proj2d(src, scale_x, scale_y)
 4.	rotate_fdf_proj2d(src, delta)
@@ -57,23 +57,24 @@ To Do Now (other)
 
 // create.c
 
-t_fdf_proj2d		create_fdf_proj2d(t_fdf_table *src,
-				t_float2d (*proj2d)(float x, float y, float z),
-				float scale);
+t_fdf_proj2d	create_conformal_fdf_proj2d(t_fdf_table *src,
+					t_double2d (*proj2d)(t_double2d a), float scale);
+t_fdf_proj2d	create_fdf_proj2d(t_fdf_table *src,
+					t_double2d (*proj2d)(t_double2d vec2d));
 t_fdf_proj2d		destroy_fdf_proj2d(t_fdf_proj2d *src);
 
 // proj2d.c
 
-t_float2d	proj2d_isometric(float x, float y, float z);
-t_float2d	proj2d_military(float x, float y, float z);
-t_float2d	proj2d_cabinet(float x, float y, float z);
-t_float2d	proj2d_orthogonal(float x, float y, float z);
-t_float2d	proj2d_wave(float x, float y, float z);
+t_double2d	proj2d_isometric(t_double2d vec2d);
+t_double2d	proj2d_military(t_double2d vec2d);
+t_double2d	proj2d_cabinet(t_double2d vec2d);
+t_double2d	proj2d_orthogonal(t_double2d vec2d);
 
 // utils.c
 
 int32_t		rgba32_from_proj2d(const t_fdf_proj2d *src, size_t index);
 bool		isvalid_fdf_proj2d(const t_fdf_proj2d *src);
 void		scale_vector(float *update_v, float s, size_t dim);
+void		scale_fdf_proj2d(t_fdf_proj2d *dst, float scale_x, float scale_y);
 
 #endif

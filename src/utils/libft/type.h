@@ -76,11 +76,4 @@ typedef struct t_double2d
 	float	y;
 }	t_double2d;
 
-
-typedef struct t_float2d
-{
-	float	x;
-	float	y;
-}	t_float2d;
-
 #endif

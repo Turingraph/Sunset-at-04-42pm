@@ -39,8 +39,8 @@ int	main(int len, char **str)
 	relu_fdf_table(&table, 0, 30, 0);
 	paint_gradient_fdf_table(&table, init_deep_wood(), true);
 	scale_fdf_table(&table, 1.0, FDF_HEIGHT);
-	output = create_fdf_proj2d(&table, NULL, 1.0);
-	view_fdf(&output, style, rgba32_from_char(255, 255, 255, 255));
+	output = create_fdf_proj2d(&table, NULL);
+	view_fdf_proj2d(&output, style, rgba32_from_char(255, 255, 255, 255));
 	destroy_fdf_table(&table);
 	destroy_fdf_proj2d(&output);
 	return (0);

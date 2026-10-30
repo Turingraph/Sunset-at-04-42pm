@@ -44,29 +44,21 @@ int	main(void)
 {
 	t_fdf_table		table_base;
 	t_fdf_table		table;
-	t_fdf_proj2d			output;
-	t_style_render	style;
 
 	table = create_fdf_table(300, 300, true);
 	table_base = create_fdf_table(300, 300, false);
 	paint_aura_fdf_table(&table, 1, FDF_HEIGHT, aura_pythagoras);
 	// add_fdf_table(&table_base, 6, FDF_HEIGHT);
-	paint_aura_fdf_table(&table_base, AURA_PIANO, FDF_HEIGHT, aura_chainsawman_no3);
+	paint_aura_fdf_table(&table_base, AURA_PIANO, FDF_HEIGHT, aura_hypnotize_no3);
 	mix_hadamard_fdf_table(&table, &table_base, FDF_HEIGHT);
-	style.thickness = 2;
-	style.shape2d = SHAPE2D_RECTANGLE;
 	paint_gradient_fdf_table(&table, init_deep_wood(), true);
 	paint_gradient_fdf_table(&table, init_white_noise(), true);
-	output = create_fdf_proj2d(&table, NULL, 0.6);
-	view_fdf(&output, style, rgba32_from_char(0, 0, 0, 255));
+	view_fdf_pixel_art(&table, rgba32_from_char(0, 0, 0, 255));
 	destroy_fdf_table(&table);
 	destroy_fdf_table(&table_base);
-	destroy_fdf_proj2d(&output);
 	return (0);
 }
 
-
 /*
-valgrind --leak-check=full --show-leak-kinds=all 
-./test/out/paint/paint/cube.out
+valgrind --leak-check=full --show-leak-kinds=all ./test/out/paint/paint/cube.out
 */

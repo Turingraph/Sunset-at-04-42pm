@@ -54,8 +54,8 @@ int	main(int len, char **str)
 	style.thickness = 1;
 	style.shape2d = SHAPE2D_LINE;
 	paint_gradient_fdf_table(&table, init_gradient(), true);
-	output = create_fdf_proj2d(&table, proj2d_isometric, 0.5);
-	view_fdf(&output, style, rgba32_from_char(255, 255, 255, 255));
+	output = create_fdf_proj2d(&table, proj2d_isometric);
+	view_fdf_proj2d(&output, style, rgba32_from_char(255, 255, 255, 255));
 	destroy_fdf_table(&table);
 	destroy_fdf_proj2d(&output);
 	return (0);

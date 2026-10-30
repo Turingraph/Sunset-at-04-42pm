@@ -24,7 +24,7 @@ OUT_convolve = $(patsubst %.c, out/%.out, $(SRC_convolve))
 LIB_GRAPHIC = $(patsubst %, ../include/%.a, libmlx42)
 GRAPHIC_CONFIG = -ldl -lglfw -pthread
 LIB_motif = $(patsubst %, ../src/lib/%.a, motif) $(LIB_GRAPHIC)
-LIB_window = $(patsubst %, ../src/lib/%.a, gradient table window) $(LIB_GRAPHIC)
+LIB_window = $(patsubst %, ../src/lib/%.a, gradient window) $(LIB_GRAPHIC)
 LIB_paint = $(patsubst %, ../src/lib/%.a, gradient debug table window aura convolve) $(LIB_GRAPHIC)
 LIB_convolve = $(patsubst %, ../src/lib/%.a, debug convolve) $(LIB_GRAPHIC)
 

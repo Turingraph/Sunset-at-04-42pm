@@ -69,14 +69,25 @@ bool	isvalid_fdf_proj2d(const t_fdf_proj2d *src)
 
 // time : O(n)
 // space: O(1)
-void	scale_vector(float *update_v, float s, size_t dim)
+void	scale_vector(float *update_v, float scale, size_t dim)
 {
 	size_t	i;
 
 	i = 0;
 	while (i < dim && update_v != NULL)
 	{
-		update_v[i] *= s;
+		update_v[i] *= scale;
 		i += 1;
 	}
+}
+
+// time : O(n)
+// space: O(1)
+void	scale_fdf_proj2d(t_fdf_proj2d *dst, float scale_x, float scale_y)
+{
+	if (dst == NULL || mul_overflow_size_t(dst->col, dst->row) == false
+		|| dst->x == NULL || dst->y == NULL)
+		return ;
+	scale_vector(dst->x, scale_x, dst->col * dst->row);
+	scale_vector(dst->y, scale_y, dst->col * dst->row);
 }

@@ -38,3 +38,69 @@ int	f_abs_int(int x)
 		return (-1 * x);
 	return (x);
 }
+
+unsigned char	minmax_from_arr_uchar(unsigned char *arr, size_t length, bool is_max)
+{
+	int		sign;
+	size_t	i;
+	int		y;
+
+	if (arr == NULL || length == 0)
+		return (0);
+	y = 0;
+	sign = 1;
+	if (is_max == false)
+		sign = -1;
+	i = 0;
+	while (i < length)
+	{
+		if (y * sign < (int)arr[i] * sign)
+			y = (int)arr[i];
+		i += 1;
+	}
+	return ((unsigned char)y);
+}
+
+int	minmax_from_arr_int(int *arr, size_t length, bool is_max)
+{
+	int		sign;
+	size_t	i;
+	int		y;
+
+	if (arr == NULL || length == 0)
+		return (0);
+	y = 0;
+	sign = 1;
+	if (is_max == false)
+		sign = -1;
+	i = 0;
+	while (i < length)
+	{
+		if (y * sign < arr[i] * sign)
+			y = arr[i];
+		i += 1;
+	}
+	return (y);
+}
+
+float	minmax_from_arr_float(float *arr, size_t length, bool is_max)
+{
+	float		sign;
+	size_t	i;
+	float		y;
+
+	if (arr == NULL || length == 0)
+		return (0);
+	y = 0;
+	sign = 1;
+	if (is_max == false)
+		sign = -1;
+	i = 0;
+	while (i < length)
+	{
+		if (y * sign < arr[i] * sign)
+			y = arr[i];
+		i += 1;
+	}
+	return (y);
+}

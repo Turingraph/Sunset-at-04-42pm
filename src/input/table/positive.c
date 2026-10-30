@@ -29,33 +29,20 @@
 int	fdf_table_minmax(const t_fdf_table *src,
 	bool is_max, t_fdf_channel channel)
 {
-	int		sign;
-	size_t	i;
-	int		y;
+	size_t	length;
 
-	if (mul_overflow_size_t(src->col, src->row) == false)
+	if (src == NULL || mul_overflow_size_t(src->col, src->row) == false)
 		return (0);
-	y = 0;
-	sign = 1;
-	if (is_max == false)
-		sign = -1;
-	i = 0;
-	while (src != NULL && i < src->col * src->row)
-	{
-		if (channel == FDF_HEIGHT && src->arr != NULL
-			&& sign * y < sign * src->arr[i])
-			y = src->arr[i];
-		if (channel == FDF_ALPHA && src->a != NULL && sign * y < sign * src->a[i])
-			y = src->a[i];
-		if (channel == FDF_RED && src->r != NULL && sign * y < sign * src->r[i])
-			y = src->r[i];
-		if (channel == FDF_GREEN && src->g != NULL && sign * y < sign * src->g[i])
-			y = src->g[i];
-		if (channel == FDF_BLUE && src->b != NULL && sign * y < sign * src->b[i])
-			y = src->b[i];
-		i += 1;
-	}
-	return (y);
+	length = src->col * src->row;
+	if (channel == FDF_RED)
+		return ((int)minmax_from_arr_uchar(src->r, length, is_max));
+	if (channel == FDF_GREEN)
+		return ((int)minmax_from_arr_uchar(src->g, length, is_max));
+	if (channel == FDF_BLUE)
+		return ((int)minmax_from_arr_uchar(src->b, length, is_max));
+	if (channel == FDF_ALPHA)
+		return ((int)minmax_from_arr_uchar(src->a, length, is_max));
+	return (minmax_from_arr_int(src->arr, length, is_max));
 }
 
 /**

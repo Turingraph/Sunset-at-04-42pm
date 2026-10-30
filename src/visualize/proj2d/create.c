@@ -35,7 +35,7 @@ static t_fdf_proj2d	fdf_proj2d_null(void)
  *
  * This function frees the source fdf data.
  *
- * view_fdf() does not call destroy_fdf_proj2d(). The caller therefore remains
+ * view_fdf_proj2d() does not call destroy_fdf_proj2d(). The caller therefore remains
  * responsible for releasing an FDF object created by create_fdf_proj2d().
  *
  * Calling destroy_fdf_proj2d() with NULL is safe.
@@ -87,6 +87,7 @@ static t_fdf_proj2d	fdf_proj2d_malloc(t_fdf_table *src)
 	src->g = NULL;
 	src->b = NULL;
 	src->a = NULL;
+	dst.width = 0;
 	dst.row = src->row;
 	dst.col = src->col;
 	dst.x = malloc_talk(src->row * src->col * sizeof(float),
@@ -100,26 +101,30 @@ static t_fdf_proj2d	fdf_proj2d_malloc(t_fdf_table *src)
 
 // time : O(n)
 // space: O(1)
-static void	fdf_proj2d_update(const t_fdf_table *src, float *arr_x,
-	float *arr_y, t_float2d (*proj2d)(float x, float y, float z))
+static void	fdf_proj2d_update(const t_fdf_table *src, t_fdf_proj2d *dst,
+	double scale,
+	t_double2d (*proj2d)(t_double2d a))
 {
 	size_t		i;
-	t_float2d	dst;
+	t_double2d	position;
+	double		z;
 
-	if (src == NULL || arr_x == NULL || arr_y == NULL
-		|| mul_overflow_size_t(src->col, src->row) == false)
+	if (src == NULL || mul_overflow_size_t(src->col, src->row) == false)
 		return ;
+	z = 0.0;
 	i = 0;
 	while (i < src->row * src->col)
 	{
-		dst.x = (float)(i % src->col) - (float)(src->col / 2);
-		dst.y = (float)(i / src->col) - (float)(src->row / 2);
-		if (src->arr == NULL && proj2d != NULL)
-			dst = proj2d(dst.x, dst.y, 0.0);
-		else if (proj2d != NULL)
-			dst = proj2d(dst.x, dst.y, src->arr[i]);
-		arr_x[i] = dst.x;
-		arr_y[i] = dst.y;
+		if (src->arr != NULL)
+			z = src->arr[i];
+		z *= scale;
+		position = fdf_table_coordinate(src, i);
+		position.x *= scale;
+		position.y *= scale;
+		if (proj2d != NULL)
+			position = proj2d(position);
+		dst->x[i] = (float)position.x;
+		dst->y[i] = (float)(position.y - z);
 		i += 1;
 	}
 }
@@ -146,32 +151,39 @@ static void	fdf_proj2d_update(const t_fdf_table *src, float *arr_x,
  *
  * @param src source table containing the FDF data
  * @param proj2d the functional pointer for define the projection of
- * t_fdf_table as t_fdf.
- * @param scale for scaling Fdf object.
+ * t_fdf_table as t_fdf. Note that the projection is always yield 3D looking results.
+ * @param scale for normalizing Fdf object. This feature is useful when user apply
+ * conformal map of complex analytic function.
  * @return initialized t_fdf object.
  * @see src/visualize/fdf/projection.c
  */
-t_fdf_proj2d	create_fdf_proj2d(t_fdf_table *src,
-	t_float2d (*proj2d)(float x, float y, float z), float scale)
+t_fdf_proj2d	create_conformal_fdf_proj2d(t_fdf_table *src,
+	t_double2d (*complex)(t_double2d a), float scale)
 {
 	t_fdf_proj2d	dst;
 	float	max_x;
 	float	min_x;
+	float	max_y;
+	float	min_y;
 
 	if (src == NULL || mul_overflow_size_t(src->col, src->row) == false)
 		return (fdf_proj2d_null());
 	dst = fdf_proj2d_malloc(src);
 	if (dst.col == 0 || dst.row == 0)
 		return (dst);
-	fdf_proj2d_update(src, dst.x, dst.y, proj2d);
-	scale_vector(dst.x, scale, src->col * src->row);
-	scale_vector(dst.y, scale, src->col * src->row);
-	min_x = (float)fdf_table_minmax(
-			(const t_fdf_table *)src, false, FDF_HEIGHT);
-	max_x = (float)fdf_table_minmax(
-			(const t_fdf_table *)src, true, FDF_HEIGHT);
-	dst.width = f_max(max_x - min_x, (float)f_max_int(src->row, src->col));
+	fdf_proj2d_update((const t_fdf_table *)src, &dst, scale, complex);
+	min_x = (float)minmax_from_arr_float(dst.x, dst.col * dst.row, false);
+	max_x = (float)minmax_from_arr_float(dst.x, dst.col * dst.row, true);
+	min_y = (float)minmax_from_arr_float(dst.y, dst.col * dst.row, false);
+	max_y = (float)minmax_from_arr_float(dst.y, dst.col * dst.row, true);
+	dst.width = f_max(max_x - min_x, max_y - min_y);
 	dst.row = src->row;
 	dst.col = src->col;
 	return (dst);
+}
+
+t_fdf_proj2d	create_fdf_proj2d(t_fdf_table *src,
+	t_double2d (*proj2d)(t_double2d a))
+{
+	return (create_conformal_fdf_proj2d(src, proj2d, 1));
 }

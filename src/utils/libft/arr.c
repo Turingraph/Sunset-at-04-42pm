@@ -116,7 +116,7 @@ t_double2d	fdf_table_coordinate(const t_fdf_table *dst, size_t index)
 	y.y = 0;
 	if (dst == NULL || mul_overflow_size_t(dst->col, dst->row) == false)
 		return (y);
-	y.x = (float)dst->col / 2.0 - (float)(index % dst->col);
+	y.x = (float)(index % dst->col) - (float)dst->col / 2.0;
 	y.y = (float)(index / dst->col) - (float)dst->row / 2.0;
 	return (y);
 }

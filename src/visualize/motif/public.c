@@ -12,7 +12,7 @@
 
 #include "motif_private.h"
 
-// This function is only used for view_fdf.
+// This function is only used for view_fdf_proj2d.
 static bool	view_motif_handle_00(mlx_t *mlx, mlx_image_t *img)
 {
 	if (img == NULL)
@@ -24,7 +24,7 @@ static bool	view_motif_handle_00(mlx_t *mlx, mlx_image_t *img)
 	return (true);
 }
 
-// This function is only used for view_fdf.
+// This function is only used for view_fdf_proj2d.
 static int32_t	view_motif_handle_01(mlx_t *mlx, mlx_image_t *img)
 {
 	return (mlx_image_to_window(mlx, img,
@@ -32,7 +32,7 @@ static int32_t	view_motif_handle_01(mlx_t *mlx, mlx_image_t *img)
 			(mlx->height - img->height) / 2));
 }
 
-// This function is only used for view_fdf.
+// This function is only used for view_fdf_proj2d.
 static void	view_motif_handle_02(mlx_t *mlx, mlx_image_t *img)
 {
 	mlx_loop(mlx);

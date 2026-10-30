@@ -29,8 +29,8 @@ Reference
  * component.
  *
  * formula:
- * - x' = 0.866 * x - 0.866 * y
- * - y' = 0.5 * x + 0.5 * y - z
+ * - x' = 0.866 * vec2d.x - 0.866 * y
+ * - y' = 0.5 * vec2d.x + 0.5 * vec2d.y
  * 
  * time/space: O(1) / O(1)
  *
@@ -41,12 +41,12 @@ Reference
  * @param z z-coordinate of the 3D point
  * @return 2D complex point containing the projected coordinates
  */
-t_float2d	proj2d_isometric(float x, float y, float z)
+t_double2d	proj2d_isometric(t_double2d vec2d)
 {
-	t_float2d	dst;
+	t_double2d	dst;
 
-	dst.x = 0.866 * x - 0.866 * y;
-	dst.y = 0.5 * x + 0.5 * y - z;
+	dst.x = 0.866 * vec2d.x - 0.866 * vec2d.y;
+	dst.y = 0.5 * vec2d.x + 0.5 * vec2d.y;
 	return (dst);
 }
 
@@ -59,8 +59,8 @@ t_float2d	proj2d_isometric(float x, float y, float z)
  * component.
  *
  * formula:
- * - x' = 0.707 * x - 0.707 * y
- * - y' = 0.707 * x + 0.707 * y - z
+ * - x' = 0.707 * vec2d.x - 0.707 * y
+ * - y' = 0.707 * vec2d.x + 0.707 * vec2d.y
  * 
  * time/space: O(1) / O(1)
  *
@@ -71,12 +71,12 @@ t_float2d	proj2d_isometric(float x, float y, float z)
  * @param z z-coordinate of the 3D point
  * @return 2D complex point containing the projected coordinates
  */
-t_float2d	proj2d_military(float x, float y, float z)
+t_double2d	proj2d_military(t_double2d vec2d)
 {
-	t_float2d	dst;
+	t_double2d	dst;
 
-	dst.x = 0.707 * x - 0.707 * y;
-	dst.y = 0.707 * x + 0.707 * y - z;
+	dst.x = 0.707 * vec2d.x - 0.707 * vec2d.y;
+	dst.y = 0.707 * vec2d.x + 0.707 * vec2d.y;
 	return (dst);
 }
 
@@ -89,8 +89,8 @@ t_float2d	proj2d_military(float x, float y, float z)
  * components. The z coordinate affects the vertical component.
  *
  * formula:
- * - x' = x - 0.353 * y
- * - y' = 0.707 * y - z
+ * - x' = vec2d.x - 0.353 * y
+ * - y' = 0.707 * vec2d.y
  * 
  * time/space: O(1) / O(1)
  *
@@ -101,12 +101,12 @@ t_float2d	proj2d_military(float x, float y, float z)
  * @param z z-coordinate of the 3D point
  * @return 2D complex point containing the projected coordinates
  */
-t_float2d	proj2d_cabinet(float x, float y, float z)
+t_double2d	proj2d_cabinet(t_double2d vec2d)
 {
-	t_float2d	dst;
+	t_double2d	dst;
 
-	dst.x = x - 0.353 * y;
-	dst.y = 0.707 * y - z;
+	dst.x = vec2d.x - 0.353 * vec2d.y;
+	dst.y = 0.707 * vec2d.y;
 	return (dst);
 }
 
@@ -118,8 +118,8 @@ t_float2d	proj2d_cabinet(float x, float y, float z)
  * the y and z coordinates into the vertical component.
  *
  * formula:
- * - x' = x
- * - y' = y - z
+ * - x' = vec2d.x
+ * - y' = vec2d.y
  * 
  * time/space: O(1) / O(1)
  *
@@ -130,41 +130,11 @@ t_float2d	proj2d_cabinet(float x, float y, float z)
  * @param z z-coordinate of the 3D point
  * @return 2D complex point containing the projected coordinates
  */
-t_float2d	proj2d_orthogonal(float x, float y, float z)
+t_double2d	proj2d_orthogonal(t_double2d vec2d)
 {
-	t_float2d	dst;
+	t_double2d	dst;
 
-	dst.x = x;
-	dst.y = y - z;
-	return (dst);
-}
-
-/**
- * Apply a wave projection to a 3D point.
- *
- * This projection transforms the x, y, and z coordinates into a 2D point
- * by applying a cosine wave based on the x coordinate to the z coordinate.
- * The resulting value is combined with the y coordinate to produce the
- * vertical component.
- *
- * formula:
- * - x' = x - 0.353 * y
- * - y' = z * f_cos(x) + y - z
- * 
- * time/space: O(1) / O(1)
- *
- * status: public api
- * 
- * @param x x-coordinate of the 3D point
- * @param y y-coordinate of the 3D point
- * @param z z-coordinate of the 3D point
- * @return 2D complex point containing the projected coordinates
- */
-t_float2d	proj2d_wave(float x, float y, float z)
-{
-	t_float2d	dst;
-
-	dst.x = x;
-	dst.y = z * f_cos(x) + y - z;
+	dst.x = vec2d.x;
+	dst.y = vec2d.y;
 	return (dst);
 }

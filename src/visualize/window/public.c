@@ -13,7 +13,7 @@
 #include "window_private.h"
 
 // This function is only used for view_fdf.
-static bool	view_fdf_handle_00(mlx_t *mlx, mlx_image_t *img)
+static bool	handle_fdf0(mlx_t *mlx, mlx_image_t *img)
 {
 	if (img == NULL)
 	{
@@ -25,7 +25,7 @@ static bool	view_fdf_handle_00(mlx_t *mlx, mlx_image_t *img)
 }
 
 // This function is only used for view_fdf.
-static int32_t	view_fdf_handle_01(mlx_t *mlx, mlx_image_t *img)
+static int32_t	handle_fdf1(mlx_t *mlx, mlx_image_t *img)
 {
 	return (mlx_image_to_window(mlx, img,
 			((int)mlx->width - (int)img->width) / 2,
@@ -33,7 +33,7 @@ static int32_t	view_fdf_handle_01(mlx_t *mlx, mlx_image_t *img)
 }
 
 // This function is only used for view_fdf.
-static void	view_fdf_handle_02(mlx_t *mlx, mlx_image_t *img)
+static void	handle_fdf2(mlx_t *mlx, mlx_image_t *img)
 {
 	mlx_loop(mlx);
 	mlx_delete_image(mlx, img);
@@ -73,7 +73,7 @@ static void	view_fdf_handle_02(mlx_t *mlx, mlx_image_t *img)
  * @param fdf_render style used to render the FDF object.
  * @param background_color the background color of the window scene.
  */
-void	view_fdf(t_fdf_proj2d *fdf, t_style_render fdf_render,
+void	view_fdf_proj2d(t_fdf_proj2d *fdf, t_style_render fdf_render,
 	int32_t background_color)
 {
 	mlx_t			*mlx;
@@ -85,7 +85,7 @@ void	view_fdf(t_fdf_proj2d *fdf, t_style_render fdf_render,
 	mlx = mlx_init(SUNSET_WINDOW_WIDTH,
 			SUNSET_WINDOW_HEIGHT, "Sunset at 4:42 pm", true);
 	hook = init_hook2d(mlx, fdf, fdf_render, background_color);
-	if (view_fdf_handle_00(mlx, hook.img) == false)
+	if (handle_fdf0(mlx, hook.img) == false)
 		return ;
 	camera = init_camera2d(SUNSET_WINDOW_WIDTH, SUNSET_WINDOW_HEIGHT);
 	hook.camera = &camera;
@@ -93,11 +93,26 @@ void	view_fdf(t_fdf_proj2d *fdf, t_style_render fdf_render,
 			SUNSET_WINDOW_HEIGHT));
 	raster_color_background(hook.img, background_color);
 	render_fdf(&hook, true);
-	if (-1 == view_fdf_handle_01(mlx, hook.img))
+	if (-1 == handle_fdf1(mlx, hook.img))
 	{
 		mlx_terminate(mlx);
 		return ;
 	}
 	mlx_key_hook(mlx, &hook_controller, &hook);
-	view_fdf_handle_02(mlx, hook.img);
+	handle_fdf2(mlx, hook.img);
+}
+
+void	view_fdf_pixel_art(t_fdf_table *src, int32_t background_color)
+{
+	t_style_render	style;
+	t_fdf_proj2d	dst;
+
+	if (src == NULL || mul_overflow_size_t(src->col, src->row) == false)
+		return ;
+	style.shape2d = SHAPE2D_RECTANGLE;
+	style.thickness = 0;
+	scale_fdf_table(src, 0, FDF_HEIGHT);
+	dst = create_fdf_proj2d(src, NULL);
+	view_fdf_proj2d(&dst, style, background_color);
+	destroy_fdf_proj2d(&dst);
 }

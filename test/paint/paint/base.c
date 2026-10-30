@@ -31,8 +31,8 @@ int	main(void)
 	style.thickness = 2;
 	style.shape2d = SHAPE2D_RECTANGLE;
 	paint_gradient_fdf_table(&table_base, init_deep_wood(), true);
-	output = create_fdf_proj2d(&table_base, NULL, 0.6);
-	view_fdf(&output, style, rgba32_from_char(0, 0, 0, 255));
+	output = create_fdf_proj2d(&table_base, NULL);
+	view_fdf_proj2d(&output, style, rgba32_from_char(0, 0, 0, 255));
 	destroy_fdf_table(&table_base);
 	destroy_fdf_proj2d(&output);
 	return (0);

@@ -21,6 +21,9 @@
 
 float			f_abs(float x);
 int				f_abs_int(int x);
+unsigned char	minmax_from_arr_uchar(unsigned char *arr, size_t length, bool is_max);
+int				minmax_from_arr_int(int *arr, size_t length, bool is_max);
+float			minmax_from_arr_float(float *arr, size_t length, bool is_max);
 
 // arr.c
 

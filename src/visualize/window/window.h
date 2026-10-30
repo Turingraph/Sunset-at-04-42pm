@@ -14,9 +14,11 @@
 # define WINDOW_H
 
 # include "../render/render.h"
+# include "../../input/table/table.h"
 
 // public.c
 
-void		view_fdf(t_fdf_proj2d *fdf, t_style_render drawing_style, int32_t background_color);
+void		view_fdf_proj2d(t_fdf_proj2d *fdf, t_style_render drawing_style, int32_t background_color);
+void		view_fdf_pixel_art(t_fdf_table *src, int32_t background_color);
 
 #endif

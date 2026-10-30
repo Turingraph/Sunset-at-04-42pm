@@ -75,21 +75,21 @@ int	main(int len, char **str)
 		return (0);
 	}
 	style.thickness = 3;
-	style.shape2d = SHAPE2D_RECTANGLE;
+	style.shape2d = SHAPE2D_LINE;
 	paint_gradient_fdf_table(&table, init_ztmy_studyme(), true);
 	paint_gradient_fdf_table(&table, init_ztmy_timeleft(), true);
 	scale_fdf_table(&table, 1.0 / 3.0, FDF_HEIGHT);
 	paint_gradient_fdf_table(&table, init_white_noise(), true);
-	output = create_fdf_proj2d(&table, NULL, 1.0);
-	view_fdf(&output, style, rgba32_from_char(0, 0, 0, 255));
+	// scale_fdf_table(&table, 0, FDF_HEIGHT);
+	output = create_conformal_fdf_proj2d(&table, complex_sin, 0.01);
+	view_fdf_proj2d(&output, style, rgba32_from_char(0, 0, 0, 255));
 	destroy_fdf_table(&table);
 	destroy_fdf_proj2d(&output);
 	return (0);
 }
 
 /*
-valgrind --tool=callgrind 
-./test/out/visualize/window/zutomayo.out test/paint/convolve/input_ascii/zutomayo_isometric2.txt
+valgrind --tool=callgrind ./test/out/visualize/window/zutomayo.out test/paint/convolve/input_ascii/zutomayo_isometric2.txt
 valgrind --leak-check=full --show-leak-kinds=all ./test/out/visualize/window/zutomayo.out test/paint/convolve/input_ascii/zutomayo_isometric2.txt
 valgrind --leak-check=full --show-leak-kinds=all ./test/out/visualize/window/zutomayo.out test/paint/convolve/input_ascii_02/zutomayo_isometric2.txt
 
