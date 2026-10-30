@@ -31,13 +31,12 @@ typedef struct t_float_arr
 
 // convolve.c
 
-t_fdf_table	convolve_fdf_table(const t_fdf_table *src, float *kernel,
-				size_t dim, bool is_normal);
+t_fdf_table	convolve_fdf_table(const t_fdf_table *src, t_matrix kernel, bool is_normal);
 
 // conway.c
 
 t_fdf_table	convolve_bool_fdf_table(const t_fdf_table *src,
-				size_t dim, float *kernel, bool only_positive);
+				t_matrix kernel, bool only_positive);
 t_fdf_table	count_neighbors_fdf_table(const t_fdf_table *src, size_t dim);
 t_fdf_table	conway_fdf_table(const t_fdf_table *src, size_t dim,
 				const char *rules_birth, const char *rules_survive);

@@ -32,7 +32,7 @@ int	main(void)
 	size_t	  length = 20;
 	t_matrix	edge;
 
-	edge = kernel_edge(3, 7, 1, 1);
+	edge = kernel_edge(3, 5, 1, 1);
 	i = 0;
 	while (i < length)
 	{
@@ -42,7 +42,7 @@ int	main(void)
 				FDF_FORMAT_ASCII_A, false);
 		free(file_name);
 		scale_fdf_table(&table_a, 3.0, FDF_HEIGHT);
-		table_c = convolve_fdf_table(&table_a, edge.arr, 5, true);
+		table_c = convolve_fdf_table(&table_a, edge, true);
 		// positive_fdf_table(&table_c);
 		interval_fdf_table(&table_c, 0, DICT_ASCII_LENGTH - 1, FDF_HEIGHT);
 		write_fdf_table(output, &table_c, FDF_HEIGHT, FDF_FORMAT_ASCII_A);

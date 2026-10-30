@@ -1,24 +1,20 @@
 #include "convolve.h"
 
 t_fdf_table	convolve_bool_fdf_table(const t_fdf_table *src,
-	size_t dim, float *kernel, bool only_positive)
+	t_matrix kernel, bool only_positive)
 {
 	t_fdf_table	dst;
 	t_fdf_table	bi;
 
 	if (src == NULL || src->arr == NULL
 		|| mul_overflow_size_t(src->col, src->row) == false
-		|| mul_overflow_size_t(dim, dim) == false)
+		|| mul_overflow_size_t(kernel.col, kernel.row) == false)
 		return (create_fdf_table(0, 0, false));
-	if (dim % 2 == 0)
-		dim += 1;
-	if (dim < 3)
-		dim = 3;
 	bi = scale_dim_fdf_table(src, 1, 1);
 	if (bi.arr == NULL)
 		return (create_fdf_table(0, 0, false));
 	bool_fdf_table(&bi, only_positive);
-	dst = convolve_fdf_table(&bi, kernel, dim, false);
+	dst = convolve_fdf_table(&bi, kernel, false);
 	destroy_fdf_table(&bi);
 	return (dst);
 }
@@ -40,7 +36,7 @@ t_fdf_table	count_neighbors_fdf_table(const t_fdf_table *src, size_t dim)
 	if (kernel.arr == NULL)
 		return (create_fdf_table(0, 0, false));
 	kernel.arr[dim * dim / 2] = 0;
-	dst = convolve_bool_fdf_table(src, dim, kernel.arr, true);
+	dst = convolve_bool_fdf_table(src, kernel, true);
 	free(kernel.arr);
 	return (dst);
 }

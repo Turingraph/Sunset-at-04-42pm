@@ -5,7 +5,7 @@ int	main(void)
 	t_fdf_table	table_a;
 	t_fdf_table	table_b;
 	t_fdf_table	table_c;
-	size_t		half_dim;
+	size_t		dim;
 	int			output;
 	char		*dst_dir = "test/paint/convolve/input_ascii/";
 	char		*src_dir = "corpus/ascii/";
@@ -32,8 +32,12 @@ int	main(void)
 		"zutomayo_isometric2.txt"};
 	size_t	  i;
 	size_t	  length = 20;	// max = 24
+	t_matrix	kernel;
 
-	half_dim = 5;
+	dim = 5;
+	kernel.col = dim;
+	kernel.row = dim;
+	kernel.arr = NULL;
 	i = 0;
 	while (i < length)
 	{
@@ -43,7 +47,7 @@ int	main(void)
 				FDF_FORMAT_ASCII_A, false);
 		free(file_name);
 		table_b = scale_dim_fdf_table(&table_a, 3, 3);
-		table_c = convolve_fdf_table(&table_b, NULL, half_dim, true);
+		table_c = convolve_fdf_table(&table_b, kernel, true);
 		write_fdf_table(output, &table_c, FDF_HEIGHT, FDF_FORMAT_ASCII_A);
 		destroy_fdf_table(&table_a);
 		destroy_fdf_table(&table_b);

@@ -115,43 +115,33 @@ static int	convolve_unit(const t_fdf_table *src, size_t index,
  * status: public api (unchecked)
  *
  * @param src source FDF table
- * @param kernel convolution kernel.
- * @param dim the dimension (number of row and column) of the square kernel.
+ * @param kernel square convolution kernel.
+ * If the kernel.arr is NULL but kernel dimension is valid, than the kernel is averaging blur kernel.
+ * If the kernel dimension is invalidL, then return NULL table
  * @param is_normal if true, then normalizing the kernel dot product output.
- * If dim is odd, then dim = dim + 1. If dim is less than 3, then dim = 3.
- * The dimension should be odd number.
  * @return FDF table with the selected channels convolved
  * 
  * @see 3B1B convolution video https://youtu.be/KuXjwB4LzSA?si=9DNIvf9SS2SX4jET
  * for more details
  */
-t_fdf_table	convolve_fdf_table(const t_fdf_table *src, float *kernel,
-	size_t dim, bool is_normal)
+t_fdf_table	convolve_fdf_table(const t_fdf_table *src, t_matrix kernel, bool is_normal)
 {
 	t_fdf_table	dst;
 	size_t		i;
-	t_matrix	kernel_arg;
 
 	if (src == NULL || src->arr == NULL
 		|| mul_overflow_size_t(src->col, src->row) == false
-		|| mul_overflow_size_t(dim, dim) == false)
+		|| mul_overflow_size_t(kernel.col, kernel.row) == false
+		|| (kernel.arr != NULL
+			&& (kernel.col != kernel.row || kernel.col % 2 == 0 || kernel.col < 3)))
 		return (create_fdf_table(0, 0, false));
-	if (dim % 2 == 0)
-		dim += 1;
-	if (dim < 3)
-		dim = 3;
-	if (mul_overflow_size_t(dim, dim) == false)
-		return (create_fdf_table(0, 0, false));
-	kernel_arg.arr = kernel;
-	kernel_arg.col = dim;
-	kernel_arg.row = dim;
 	dst = scale_dim_fdf_table(src, 1, 1);
 	if (dst.arr == NULL)
 		return (create_fdf_table(0, 0, false));
 	i = 0;
 	while (i < src->col * src->row)
 	{
-		dst.arr[i] = convolve_unit(src, i, kernel_arg, is_normal);
+		dst.arr[i] = convolve_unit(src, i, kernel, is_normal);
 		i += 1;
 	}
 	return (dst);

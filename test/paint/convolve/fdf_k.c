@@ -37,8 +37,12 @@ int	main(void)
 	size_t	  i;
 	size_t	  length = 24;	// max = 24
 	char	*file_name;
+	t_matrix	kernel;
 
 	dim = 7;
+	kernel.col = dim;
+	kernel.row = dim;
+	kernel.arr = NULL;
 	i = 0;
 	while (i < length)
 	{
@@ -47,7 +51,7 @@ int	main(void)
 		table_a = load_fdf_table(file_name,
 				FDF_FORMAT_DECIMAL_BW, false);
 		free(file_name);
-		table_b = convolve_fdf_table(&table_a, NULL, dim, true);
+		table_b = convolve_fdf_table(&table_a, kernel, true);
 		write_fdf_table(output, &table_b, 1, FDF_FORMAT_DECIMAL_BW);
 		destroy_fdf_table(&table_a);
 		destroy_fdf_table(&table_b);
