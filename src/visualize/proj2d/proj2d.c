@@ -45,8 +45,8 @@ t_double2d	proj2d_isometric(t_double2d vec2d)
 {
 	t_double2d	dst;
 
-	dst.x = 0.866 * vec2d.x - 0.866 * vec2d.y;
-	dst.y = 0.5 * vec2d.x + 0.5 * vec2d.y;
+	dst.x = f_sin(PI31415 / 3.0) * vec2d.x - f_sin(PI31415 / 3.0) * vec2d.y;
+	dst.y = f_cos(PI31415 / 3) * vec2d.x + f_cos(PI31415 / 3) * vec2d.y;
 	return (dst);
 }
 
@@ -75,8 +75,8 @@ t_double2d	proj2d_military(t_double2d vec2d)
 {
 	t_double2d	dst;
 
-	dst.x = 0.707 * vec2d.x - 0.707 * vec2d.y;
-	dst.y = 0.707 * vec2d.x + 0.707 * vec2d.y;
+	dst.x = f_cos(PI31415 / 4) * vec2d.x - f_sin(PI31415 / 4) * vec2d.y;
+	dst.y = f_cos(PI31415 / 4) * vec2d.x + f_sin(PI31415 / 4) * vec2d.y;
 	return (dst);
 }
 
@@ -105,8 +105,8 @@ t_double2d	proj2d_cabinet(t_double2d vec2d)
 {
 	t_double2d	dst;
 
-	dst.x = vec2d.x - 0.353 * vec2d.y;
-	dst.y = 0.707 * vec2d.y;
+	dst.x = vec2d.x - f_cos(PI31415 / 3) * vec2d.y;
+	dst.y = f_sin(PI31415 / 3) * vec2d.y;
 	return (dst);
 }
 

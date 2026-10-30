@@ -63,8 +63,8 @@ t_gradient	init_popart(void)
 int	main(int len, char **str)
 {
 	t_fdf_table		table;
-	t_fdf_proj2d			output;
-	t_style_render	style;
+	// t_fdf_proj2d			output;
+	// t_style_render	style;
 
 	if (len < 2)
 		return (0);
@@ -74,20 +74,22 @@ int	main(int len, char **str)
 		destroy_fdf_table(&table);
 		return (0);
 	}
-	style.thickness = 2;
-	style.shape2d = SHAPE2D_CIRCLE;
+	// style.thickness = 2;
+	// style.shape2d = SHAPE2D_CIRCLE;
 	paint_gradient_fdf_table(&table, init_feeling_blue(), true);
 	paint_gradient_fdf_table(&table, init_popart(), true);
 	scale_fdf_table(&table, 1.0 / 20.0, FDF_HEIGHT);
 	paint_gradient_fdf_table(&table, init_white_noise(), true);
-	output = create_fdf_proj2d(&table, proj2d_military);
-	view_fdf_proj2d(&output, style, rgba32_from_char(34, 79, 112, 255));
+	// output = create_fdf_proj2d(&table, proj2d_cabinet, 1);
+	// view_fdf_proj2d(&output, style, rgba32_from_char(34, 79, 112, 255));
+	view_fdf_pixel_art(&table, rgba32_from_char(34, 79, 112, 255));
 	destroy_fdf_table(&table);
-	destroy_fdf_proj2d(&output);
+	// destroy_fdf_proj2d(&output);
 	return (0);
 }
 
 /*
-valgrind --leak-check=full --show-leak-kinds=all ./test/out/visualize/window/yorushika.out test/paint/convolve/input_ascii/rain_with_cappuccino_rozzo.txt
+valgrind --leak-check=full --show-leak-kinds=all 
+./test/out/visualize/window/yorushika.out test/paint/convolve/input_ascii/rain_with_cappuccino_rozzo.txt
 
 */

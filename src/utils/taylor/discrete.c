@@ -92,6 +92,10 @@ size_t	f_collatz_max(size_t x, size_t div, size_t mul)
 	return (max);
 }
 
+/*
+
+// This code might be incorrect.
+
 static double	f_mul_dpointer(double *a, double *b)
 {
 	if (a == NULL && b == NULL)
@@ -102,10 +106,6 @@ static double	f_mul_dpointer(double *a, double *b)
 		return (*a);
 	return (*a * *b);
 }
-
-/*
-Verify fibonacci
-*/
 
 void	f_fibonacci_custom(size_t x, double *a0, double *a1, double *a2)
 {
@@ -147,3 +147,4 @@ size_t	f_fibonacci(size_t x)
 	f_fibonacci_custom(x, &a0, &a1, &a2);
 	return ((size_t)a0);
 }
+*/

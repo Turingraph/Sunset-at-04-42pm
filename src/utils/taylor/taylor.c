@@ -188,7 +188,7 @@ double	f_sin(double x)
 	size_t	i;
 
 	i = 0;
-	pi2 = 2 * PI;
+	pi2 = 2 * PI31415;
 	x = x - f_floor(x / pi2) * pi2;
 	if (x < 0.01 && x > -0.01)
 		return (x);
@@ -216,5 +216,5 @@ double	f_sin(double x)
  */
 double	f_cos(double x)
 {
-	return (f_sin(x + PI / 2.0));
+	return (f_sin(x + PI31415 / 2.0));
 }

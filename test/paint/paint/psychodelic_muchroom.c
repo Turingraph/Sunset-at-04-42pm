@@ -38,7 +38,7 @@ int	main(void)
 	style.thickness = 2;
 	style.shape2d = SHAPE2D_RECTANGLE;
 	scale_fdf_table(&table, 1.0 / 120.0, FDF_HEIGHT);
-	output = create_fdf_proj2d(&table, NULL);
+	output = create_fdf_proj2d(&table, NULL, 1);
 	view_fdf_proj2d(&output, style, rgba32_from_char(0, 0, 0, 255));
 	destroy_fdf_table(&table);
 	destroy_fdf_proj2d(&output);

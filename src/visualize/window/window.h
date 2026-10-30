@@ -20,6 +20,5 @@
 
 void		view_fdf_proj2d(t_fdf_proj2d *fdf, t_style_render drawing_style, int32_t background_color);
 void		view_fdf_pixel_art(t_fdf_table *src, int32_t background_color);
-void		view_fdf_conformal2d(t_fdf_table *src, int32_t background_color, double scale, t_double2d (*complex_map)(t_double2d a));
 
 #endif

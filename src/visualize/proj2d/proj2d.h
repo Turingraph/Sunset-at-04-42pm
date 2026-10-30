@@ -57,10 +57,8 @@ To Do Now (other)
 
 // create.c
 
-t_fdf_proj2d	create_conformal_fdf_proj2d(t_fdf_table *src,
-					t_double2d (*complex_map)(t_double2d a), float scale);
 t_fdf_proj2d	create_fdf_proj2d(t_fdf_table *src,
-					t_double2d (*proj2d)(t_double2d vec2d));
+					t_double2d (*proj2d)(t_double2d a), float scale);
 t_fdf_proj2d		destroy_fdf_proj2d(t_fdf_proj2d *src);
 
 // proj2d.c

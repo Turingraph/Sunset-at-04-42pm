@@ -153,12 +153,12 @@ static void	fdf_proj2d_update(const t_fdf_table *src, t_fdf_proj2d *dst,
  * @param proj2d the functional pointer for define the projection of
  * t_fdf_table as t_fdf. Note that the projection is always yield 3D looking results.
  * @param scale for normalizing Fdf object. This feature is useful when user apply
- * conformal map of complex analytic function.
+ * non-linear map instead of the Parallel projection.
  * @return initialized t_fdf object.
  * @see src/visualize/fdf/projection.c
  */
-t_fdf_proj2d	create_conformal_fdf_proj2d(t_fdf_table *src,
-	t_double2d (*complex_map)(t_double2d a), float scale)
+t_fdf_proj2d	create_fdf_proj2d(t_fdf_table *src,
+	t_double2d (*proj2d)(t_double2d a), float scale)
 {
 	t_fdf_proj2d	dst;
 	float	max_x;
@@ -171,7 +171,7 @@ t_fdf_proj2d	create_conformal_fdf_proj2d(t_fdf_table *src,
 	dst = fdf_proj2d_malloc(src);
 	if (dst.col == 0 || dst.row == 0)
 		return (dst);
-	fdf_proj2d_update((const t_fdf_table *)src, &dst, scale, complex_map);
+	fdf_proj2d_update((const t_fdf_table *)src, &dst, scale, proj2d);
 	min_x = (float)minmax_from_arr_float(dst.x, dst.col * dst.row, false);
 	max_x = (float)minmax_from_arr_float(dst.x, dst.col * dst.row, true);
 	min_y = (float)minmax_from_arr_float(dst.y, dst.col * dst.row, false);
@@ -180,10 +180,4 @@ t_fdf_proj2d	create_conformal_fdf_proj2d(t_fdf_table *src,
 	dst.row = src->row;
 	dst.col = src->col;
 	return (dst);
-}
-
-t_fdf_proj2d	create_fdf_proj2d(t_fdf_table *src,
-	t_double2d (*proj2d)(t_double2d a))
-{
-	return (create_conformal_fdf_proj2d(src, proj2d, 1));
 }

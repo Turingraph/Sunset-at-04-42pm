@@ -24,8 +24,8 @@
 #  define MAXIMUM_TERM 24
 # endif
 
-# ifndef PI
-#  define PI 3.141592653589
+# ifndef PI31415
+#  define PI31415 3.141592653589
 # endif
 
 // complex_trig.c
@@ -45,8 +45,6 @@ t_double2d	complex_power(t_double2d a, size_t power);
 
 size_t		f_bisearch_count(size_t min_input, size_t max_input);
 size_t		f_collatz_max(size_t x, size_t div, size_t mul);
-void		f_fibonacci_custom(size_t x, double *a0, double *a1, double *a2);
-size_t		f_fibonacci(size_t x);
 
 // stats.c
 

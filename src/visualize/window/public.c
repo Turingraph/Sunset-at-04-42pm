@@ -112,22 +112,7 @@ void	view_fdf_pixel_art(t_fdf_table *src, int32_t background_color)
 	style.shape2d = SHAPE2D_RECTANGLE;
 	style.thickness = 0;
 	scale_fdf_table(src, 0, FDF_HEIGHT);
-	dst = create_fdf_proj2d(src, NULL);
-	view_fdf_proj2d(&dst, style, background_color);
-	destroy_fdf_proj2d(&dst);
-}
-
-void	view_fdf_conformal2d(t_fdf_table *src, int32_t background_color, double scale, t_double2d (*complex_map)(t_double2d a))
-{
-	t_style_render	style;
-	t_fdf_proj2d	dst;
-
-	if (src == NULL || mul_overflow_size_t(src->col, src->row) == false)
-		return ;
-	style.shape2d = SHAPE2D_CIRCLE;
-	style.thickness = 5;
-	scale_fdf_table(src, 0, FDF_HEIGHT);
-	dst = create_conformal_fdf_proj2d(src, complex_map, scale);
+	dst = create_fdf_proj2d(src, NULL, 1);
 	view_fdf_proj2d(&dst, style, background_color);
 	destroy_fdf_proj2d(&dst);
 }

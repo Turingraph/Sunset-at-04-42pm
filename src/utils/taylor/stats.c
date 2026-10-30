@@ -27,7 +27,7 @@ double	f_normal(double std, double means, double x)
 	double	down;
 	double	pi;
 
-	pi = PI;
+	pi = PI31415;
 	if (std == 0)
 		return (0);
 	down = std * f_root_find(2 * pi, 2);

@@ -21,7 +21,7 @@
 # endif
 
 # ifndef ZOOM_MAX
-#  define ZOOM_MAX 8
+#  define ZOOM_MAX 1000
 # endif
 
 # ifndef ZOOM_MIN
