@@ -5,7 +5,7 @@ int	main(void)
 	t_fdf_table	table_a;
 	t_fdf_table	table_c;
 	int			output;
-	char		*dst_dir = "test/paint/convolve/input_edge_2/";
+	char		*dst_dir = "test/paint/convolve/input_edge/";
 	char		*src_dir = "test/paint/convolve/input_ascii/";
 	char		*arr[] = {
 		"apartment_goofy.txt",
@@ -30,9 +30,9 @@ int	main(void)
 		"zutomayo_isometric2.txt"};
 	size_t	  i;
 	size_t	  length = 20;
-	float	*edge;
+	t_matrix	edge;
 
-	edge = kernel_edge(3, 7, 1, 0);
+	edge = kernel_edge(3, 7, 1, 1);
 	i = 0;
 	while (i < length)
 	{
@@ -42,15 +42,16 @@ int	main(void)
 				FDF_FORMAT_ASCII_A, false);
 		free(file_name);
 		scale_fdf_table(&table_a, 3.0, FDF_HEIGHT);
-		table_c = convolve_fdf_table(&table_a, edge, 5, true);
+		table_c = convolve_fdf_table(&table_a, edge.arr, 5, true);
 		// positive_fdf_table(&table_c);
+		interval_fdf_table(&table_c, 0, DICT_ASCII_LENGTH - 1, FDF_HEIGHT);
 		write_fdf_table(output, &table_c, FDF_HEIGHT, FDF_FORMAT_ASCII_A);
 		destroy_fdf_table(&table_a);
 		destroy_fdf_table(&table_c);
 		close(output);
 		i += 1;
 	}
-	free(edge);
+	free(edge.arr);
 	return (0);
 }
 

@@ -4,7 +4,7 @@ int	main(void)
 {
 	t_fdf_table	table_a;
 	t_fdf_table	table_b;
-	size_t		half_dim;
+	size_t		dim;
 	int			output;
 	char		*dst_dir = "test/paint/convolve/fdf_k/";
 	char		*src_dir = "corpus/fdf/";
@@ -38,7 +38,7 @@ int	main(void)
 	size_t	  length = 24;	// max = 24
 	char	*file_name;
 
-	half_dim = 3;
+	dim = 7;
 	i = 0;
 	while (i < length)
 	{
@@ -47,7 +47,7 @@ int	main(void)
 		table_a = load_fdf_table(file_name,
 				FDF_FORMAT_DECIMAL_BW, false);
 		free(file_name);
-		table_b = convolve_fdf_table(&table_a, NULL, half_dim, true);
+		table_b = convolve_fdf_table(&table_a, NULL, dim, true);
 		write_fdf_table(output, &table_b, 1, FDF_FORMAT_DECIMAL_BW);
 		destroy_fdf_table(&table_a);
 		destroy_fdf_table(&table_b);

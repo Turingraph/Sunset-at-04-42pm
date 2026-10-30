@@ -23,6 +23,12 @@ typedef struct t_matrix
 	float	*arr;
 }	t_matrix;
 
+typedef struct t_float_arr
+{
+	float	*arr;
+	size_t	length;
+}	t_float_arr;
+
 // convolve.c
 
 t_fdf_table	convolve_fdf_table(const t_fdf_table *src, float *kernel,
@@ -38,13 +44,13 @@ t_fdf_table	conway_fdf_table(const t_fdf_table *src, size_t dim,
 
 // kernel.c
 
-float		*kernel_edge1d(size_t inner_dim, size_t outer_dim,
+t_float_arr	kernel_edge1d(size_t inner_dim, size_t outer_dim,
 				float inner_num, float outer_num);
-float		*kernel_edge(size_t inner_dim, size_t outer_dim, float input, float kernel_sum);
-float		*kernel_gauss1d(size_t half_dim, float std);
-float		*kernel_gauss(size_t half_dim, float std_1, float std_2);
-float		*kernel_cross(size_t inner_dim, size_t outer_dim);
-float		*kernel_count_neighbors(size_t inner_dim, size_t outer_dim);
+t_matrix	kernel_edge(size_t inner_dim, size_t outer_dim, float input, float kernel_sum);
+t_float_arr	kernel_gauss1d(size_t dim, float std);
+t_matrix	kernel_gauss(size_t dim, float std_1, float std_2);
+t_matrix	kernel_cross(size_t inner_dim, size_t outer_dim);
+t_matrix	kernel_count_neighbors(size_t inner_dim, size_t outer_dim);
 
 // matrix.c
 

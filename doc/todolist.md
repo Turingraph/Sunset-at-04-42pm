@@ -1,13 +1,9 @@
 
 to do next
-1.  rename some function in input/table/
-2.  split input/table/ as input/table/, paint/mix/, and paint/transform/
-3.  split paint/gradient/ as paint/gradient/ and paint/aura/
-4.  rename paint/evenodd/ as paint/spots/
-5.  rename paint/convolve/ (or rename as blur?)
-
-possible features
-1.	resize and concat
-2.	png/jpg
-3.	opengl
-4.	motif on table
+1.	fix paint/convolve/
+	1.	float *kernel_ --> t_matrix kernel
+	2.	convolve_fdf_table(t_fdf_table, float, size_t, bool) --> convolve_fdf_table(t_fdf_table, t_matrix) // Should you eliminate bool or not ?
+2.	fix visualize/proj2d/
+	1.	scale_fdf_proj2d(t_fdf_proj2d, float, float)
+	2.	making proj2d_ more accurate
+3.	test fib
