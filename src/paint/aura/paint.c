@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/27 12:25:45 by phsottat          #+#    #+#             */
-/*   Updated: 2026/10/27 14:41:40 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/31 12:33:44 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ int	aura_custom_andmod(t_double2d x, double z,
 		x.x *= -1;
 	if (x.y < 0)
 		x.y *= -1;
-	if ((int)x.x % 2 == 1 && (int)x.y % 2 == 1 && z > 0)
+	if ((int)x.x % 2 == 1 && (int)x.y % 2 == 1 && z >= 0)
 		return (1);
 	return (0);
 }

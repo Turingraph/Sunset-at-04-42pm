@@ -33,6 +33,7 @@
 t_double2d	complex_exp(t_double2d a);
 t_double2d	complex_sin(t_double2d a);
 t_double2d	complex_cos(t_double2d a);
+t_double2d	complex_rotate(double angle);
 
 // complex.c
 

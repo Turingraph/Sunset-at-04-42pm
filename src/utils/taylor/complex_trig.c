@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:29:02 by phsottat          #+#    #+#             */
-/*   Updated: 2026/09/14 12:09:54 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/10/31 12:43:03 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,5 +100,14 @@ t_double2d	complex_sin(t_double2d a)
 	e2 = complex_exp(x2);
 	y.x = (e1.x - e2.x) / 2;
 	y.y = (e1.y - e2.y) / 2;
+	return (y);
+}
+
+t_double2d	complex_rotate(double angle)
+{
+	t_double2d	y;
+
+	y.x = f_cos(angle);
+	y.y = f_sin(angle);
 	return (y);
 }

@@ -1,14 +1,13 @@
 #include"paint.h"
 
-static void	write_with_paint_aura_fdf_table(float reset, float scale, const char *file_name,
+static void	write_with_paint_aura_fdf_table(float scale, const char *file_name,
 	t_fdf_table *table,
 	int (*aura)(double x, double y, double z))
 {
 	t_fdf_table	table2;
 	int	output;
 
-	scale_fdf_table(table, reset, FDF_HEIGHT);
-	add_fdf_table(table, reset, FDF_HEIGHT);
+	scale_fdf_table(table, 0, FDF_HEIGHT);
 	output = debug_load_file(file_name,
 		"corpus/aura/", FILE_WRITE);
 	if (output <= -1 || file_name == NULL)
@@ -35,15 +34,14 @@ int	main(void)
 	table = create_fdf_table(201, 201, false);
 	if (table.arr == NULL)
 		return (0);
-	write_with_paint_aura_fdf_table(0, AURA_MEZZO , "chainsawman_no2.txt", &table, aura_chainsawman_no2);
-	write_with_paint_aura_fdf_table(0, AURA_MEZZO , "chainsawman_no3.txt", &table, aura_chainsawman_no3);
-	write_with_paint_aura_fdf_table(1, AURA_MEZZO , "fractal_no2.txt", &table, aura_fractal_no2);
-	scale_fdf_table(&table, 0, FDF_HEIGHT);
-	write_with_paint_aura_fdf_table(1, AURA_MEZZO , "fractal_no3.txt", &table, aura_fractal_no3);
-	write_with_paint_aura_fdf_table(0, AURA_FORTE * 2 , "disco_no2.txt", &table, aura_disco_no2);
-	write_with_paint_aura_fdf_table(0, AURA_MEZZO , "disco_no3.txt", &table, aura_disco_no3);
-	write_with_paint_aura_fdf_table(0, AURA_FORTE , "hypnotize_no2.txt", &table, aura_hypnotize_no2);
-	write_with_paint_aura_fdf_table(0, AURA_MEZZO , "hypnotize_no3.txt", &table, aura_hypnotize_no3);
+	write_with_paint_aura_fdf_table(AURA_MEZZO , "chainsawman_no2.txt", &table, aura_chainsawman_no2);
+	write_with_paint_aura_fdf_table(AURA_MEZZO , "chainsawman_no3.txt", &table, aura_chainsawman_no3);
+	write_with_paint_aura_fdf_table(AURA_MEZZO , "fractal_no2.txt", &table, aura_fractal_no2);
+	write_with_paint_aura_fdf_table(AURA_MEZZO , "fractal_no3.txt", &table, aura_fractal_no3);
+	write_with_paint_aura_fdf_table(AURA_FORTE * 2 , "disco_no2.txt", &table, aura_disco_no2);
+	write_with_paint_aura_fdf_table(AURA_MEZZO , "disco_no3.txt", &table, aura_disco_no3);
+	write_with_paint_aura_fdf_table(AURA_FORTE , "hypnotize_no2.txt", &table, aura_hypnotize_no2);
+	write_with_paint_aura_fdf_table(AURA_MEZZO , "hypnotize_no3.txt", &table, aura_hypnotize_no3);
 	destroy_fdf_table(&table);
 	return (0);
 }
