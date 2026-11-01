@@ -17,8 +17,6 @@ static void	write_with_paint_aura_fdf_table(float scale, const char *file_name,
 		write(1, " isn't exists\n", 14);
 		return ;
 	}
-	if (reset > 0)
-		scale_fdf_table(table, reset, FDF_HEIGHT);
 	paint_aura_fdf_table(table, scale, FDF_HEIGHT, aura);
 	table2 = count_neighbors_fdf_table(table, 32);
 	mix_hadamard_fdf_table(&table2, table, FDF_HEIGHT);

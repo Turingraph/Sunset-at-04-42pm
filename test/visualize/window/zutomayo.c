@@ -98,7 +98,7 @@ int	main(int len, char **str)
 	scale_fdf_table(&table, 1.0 / 3.0, FDF_HEIGHT);
 	paint_gradient_fdf_table(&table, init_white_noise(), true);
 	// scale_fdf_table(&table, 0, FDF_HEIGHT);
-	output = create_fdf_proj2d(&table, complex_sin, 0.01);
+	output = create_fdf_proj2d(&table, complex_reciprocal, 0.001);
 	view_fdf_proj2d(&output, style, rgba32_from_char(0, 0, 0, 255));
 	destroy_fdf_table(&table);
 	destroy_fdf_proj2d(&output);

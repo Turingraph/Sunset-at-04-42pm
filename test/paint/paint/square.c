@@ -29,13 +29,13 @@ t_gradient	init_white_noise()
 	dst.cell_channel = GRADIENT_HEIGHT;
 	dst.input_start = 0;
 	dst.input_end = 0;
-	dst.rgba_start.r = 0;
-	dst.rgba_start.g = 0;
-	dst.rgba_start.b = 0;
+	dst.rgba_start.r = 255;
+	dst.rgba_start.g = 255;
+	dst.rgba_start.b = 255;
 	dst.rgba_start.a = 255;
-	dst.rgba_end.r = 0;
-	dst.rgba_end.g = 0;
-	dst.rgba_end.b = 0;
+	dst.rgba_end.r = 255;
+	dst.rgba_end.g = 255;
+	dst.rgba_end.b = 255;
 	dst.rgba_end.a = 255;
 	return (dst);
 }
@@ -52,12 +52,12 @@ int	main(void)
 	paint_aura_fdf_table(&table, 1, FDF_HEIGHT, aura_pythagoras);
 	paint_aura_fdf_table(&table_base, 0.2, FDF_HEIGHT, aura_disco_no2);
 	mix_hadamard_fdf_table(&table, &table_base, FDF_HEIGHT);
-	paint_gradient_fdf_table(&table, init_deep_wood(), true);
 	paint_gradient_fdf_table(&table, init_white_noise(), true);
+	paint_gradient_fdf_table(&table, init_deep_wood(), true);
 	scale_fdf_table(&table, 0, FDF_HEIGHT);
 	style.shape2d = SHAPE2D_CIRCLE;
-	style.thickness = 5;
-	output = create_fdf_proj2d(&table, complex_x3, AURA_FORTE);
+	style.thickness = 3;
+	output = create_fdf_proj2d(&table, complex_sin, 0.01);
 	view_fdf_proj2d(&output, style, rgba32_from_char(0, 0, 0, 255));
 	destroy_fdf_table(&table);
 	destroy_fdf_table(&table_base);
