@@ -92,13 +92,13 @@ int	main(int len, char **str)
 		return (0);
 	}
 	style.thickness = 3;
-	style.shape2d = SHAPE2D_LINE;
+	style.shape2d = SHAPE2D_RECTANGLE;
 	paint_gradient_fdf_table(&table, init_ztmy_studyme(), true);
 	paint_gradient_fdf_table(&table, init_ztmy_timeleft(), true);
 	scale_fdf_table(&table, 1.0 / 3.0, FDF_HEIGHT);
 	paint_gradient_fdf_table(&table, init_white_noise(), true);
-	// scale_fdf_table(&table, 0, FDF_HEIGHT);
-	output = create_fdf_proj2d(&table, complex_reciprocal, 0.001);
+	scale_fdf_table(&table, 0, FDF_HEIGHT);
+	output = create_fdf_proj2d(&table, NULL, 1);
 	view_fdf_proj2d(&output, style, rgba32_from_char(0, 0, 0, 255));
 	destroy_fdf_table(&table);
 	destroy_fdf_proj2d(&output);

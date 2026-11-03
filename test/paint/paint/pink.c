@@ -1,0 +1,100 @@
+#include"paint.h"
+
+// time : O(1)
+// space: O(1)
+t_gradient	init_deep_wood()
+{
+	t_gradient	dst;
+
+	dst.cell_channel = GRADIENT_HEIGHT;
+	dst.input_start = 0;
+	dst.input_end = 300;
+	dst.rgba_start.r = 70;
+	dst.rgba_start.g = 75;
+	dst.rgba_start.b = 113;
+	dst.rgba_start.a = 255;
+	dst.rgba_end.r = 124;
+	dst.rgba_end.g = 213;
+	dst.rgba_end.b = 199;
+	dst.rgba_end.a = 255;
+	return (dst);
+}
+
+// time : O(1)
+// space: O(1)
+t_gradient	init_half()
+{
+	t_gradient	dst;
+
+	dst.cell_channel = GRADIENT_COL;
+	dst.input_start = 0;
+	dst.input_end = 150;
+	dst.rgba_start.r = 238;
+	dst.rgba_start.g = 201;
+	dst.rgba_start.b = 245;
+	dst.rgba_start.a = 255;
+	dst.rgba_end.r = 250;
+	dst.rgba_end.g = 161;
+	dst.rgba_end.b = 167;
+	dst.rgba_end.a = 255;
+	return (dst);
+}
+
+// time : O(1)
+// space: O(1)
+t_gradient	init_white_noise()
+{
+	t_gradient	dst;
+
+	dst.cell_channel = GRADIENT_HEIGHT;
+	dst.input_start = 0;
+	dst.input_end = 0;
+	dst.rgba_start.r = 255;
+	dst.rgba_start.g = 255;
+	dst.rgba_start.b = 255;
+	dst.rgba_start.a = 255;
+	dst.rgba_end.r = 255;
+	dst.rgba_end.g = 255;
+	dst.rgba_end.b = 255;
+	dst.rgba_end.a = 255;
+	return (dst);
+}
+
+t_double2d	complex_sinx(t_double2d x)
+{
+	t_double2d	a;
+
+	a = complex_sin(x);
+	return (complex_multiplication(a, complex_rotate(PI31415 / 2)));
+}
+
+int	main(void)
+{
+	t_fdf_table		table_base;
+	t_fdf_table		table;
+	t_style_render	style;
+	t_fdf_proj2d	output;
+
+	table = create_fdf_table(300, 300, true);
+	table_base = create_fdf_table(300, 300, false);
+	paint_aura_fdf_table(&table, 1, FDF_HEIGHT, aura_pythagoras);
+	paint_aura_fdf_table(&table_base, AURA_MEZZO, FDF_HEIGHT, aura_hypnotize_no3);
+	mix_hadamard_fdf_table(&table, &table_base, FDF_HEIGHT);
+	paint_gradient_fdf_table(&table, init_deep_wood(), true);
+	paint_gradient_fdf_table(&table, init_half(), true);
+	paint_gradient_fdf_table(&table, init_white_noise(), true);
+	scale_fdf_table(&table, 0, FDF_HEIGHT);
+	style.shape2d = SHAPE2D_CIRCLE;
+	style.thickness = 3;
+	output = create_fdf_proj2d(&table, complex_sinx, 0.01);
+	view_fdf_proj2d(&output, style, rgba32_from_char(254, 238, 241, 255));
+	destroy_fdf_table(&table);
+	destroy_fdf_table(&table_base);
+	destroy_fdf_proj2d(&output);
+	return (0);
+}
+
+/*
+valgrind --leak-check=full --show-leak-kinds=all 
+./test/out/paint/paint/pink.out
+*/
