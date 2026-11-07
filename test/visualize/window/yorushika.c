@@ -64,7 +64,7 @@ static t_double2d	rotate_cab(t_double2d x)
 {
 	t_double2d	a;
 
-	a = complex_rotate(PI31415 / 6);
+	a = complex_rotate(PI314PM / 6);
 	return (complex_multiplication(x, a));
 }
 

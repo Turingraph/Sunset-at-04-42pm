@@ -59,9 +59,9 @@ int	main(void)
 	scale_fdf_table(&table, 0, FDF_HEIGHT);
 	style.shape2d = SHAPE2D_CIRCLE;
 	style.thickness = 1;
-	output = create_fdf_proj2d(&table, NULL, 1);
-	// output = create_fdf_proj2d(&table, complex_sin, 0.01);
-	// scale_fdf_proj2d(&output, 35, 35);
+	// output = create_fdf_proj2d(&table, NULL, 1);
+	output = create_fdf_proj2d(&table, complex_cos, 0.0125);
+	// scale_fdf_proj2d(&output, 100, 100);
 	view_fdf_proj2d(&output, style, rgba32_from_char(0, 0, 0, 255));
 	destroy_fdf_table(&table);
 	destroy_fdf_table(&table_base);

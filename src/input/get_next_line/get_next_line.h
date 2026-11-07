@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:36:58 by phsottat          #+#    #+#             */
-/*   Updated: 2026/10/21 16:50:52 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/11/07 18:55:38 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef struct t_str_dynamic
 typedef enum t_file_mode
 {
 	FILE_READ = O_RDONLY,
-	FILE_WRITE = O_WRONLY,
+	FILE_WRITE = O_WRONLY | O_CREAT | O_TRUNC,
 }	t_file_mode;
 
 /*

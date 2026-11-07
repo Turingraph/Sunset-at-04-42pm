@@ -24,8 +24,8 @@
 #  define MAXIMUM_TERM 24
 # endif
 
-# ifndef PI31415
-#  define PI31415 3.141592653589
+# ifndef PI314PM
+#  define PI314PM 3.141592653589
 # endif
 
 // complex_trig.c

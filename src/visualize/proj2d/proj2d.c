@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   projection_01.c                                    :+:      :+:    :+:   */
+/*   proj2d.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/03 11:13:30 by phsottat          #+#    #+#             */
-/*   Updated: 2026/09/04 18:15:33 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/11/07 19:00:29 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ t_double2d	proj2d_isometric(t_double2d vec2d)
 {
 	t_double2d	dst;
 
-	dst.x = f_sin(PI31415 / 3.0) * vec2d.x - f_sin(PI31415 / 3.0) * vec2d.y;
-	dst.y = f_cos(PI31415 / 3) * vec2d.x + f_cos(PI31415 / 3) * vec2d.y;
+	dst.x = f_sin(PI314PM / 3.0) * vec2d.x - f_sin(PI314PM / 3.0) * vec2d.y;
+	dst.y = f_cos(PI314PM / 3) * vec2d.x + f_cos(PI314PM / 3) * vec2d.y;
 	return (dst);
 }
 
@@ -75,8 +75,8 @@ t_double2d	proj2d_military(t_double2d vec2d)
 {
 	t_double2d	dst;
 
-	dst.x = f_cos(PI31415 / 4) * vec2d.x - f_sin(PI31415 / 4) * vec2d.y;
-	dst.y = f_cos(PI31415 / 4) * vec2d.x + f_sin(PI31415 / 4) * vec2d.y;
+	dst.x = f_cos(PI314PM / 4) * vec2d.x - f_sin(PI314PM / 4) * vec2d.y;
+	dst.y = f_cos(PI314PM / 4) * vec2d.x + f_sin(PI314PM / 4) * vec2d.y;
 	return (dst);
 }
 
@@ -105,8 +105,8 @@ t_double2d	proj2d_cabinet(t_double2d vec2d)
 {
 	t_double2d	dst;
 
-	dst.x = vec2d.x - f_cos(PI31415 / 3) * vec2d.y;
-	dst.y = f_sin(PI31415 / 3) * vec2d.y;
+	dst.x = vec2d.x - f_cos(PI314PM / 3) * vec2d.y;
+	dst.y = f_sin(PI314PM / 3) * vec2d.y;
 	return (dst);
 }
 

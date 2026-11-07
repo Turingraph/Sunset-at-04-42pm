@@ -65,7 +65,7 @@ t_double2d	complex_sinx(t_double2d x)
 	t_double2d	a;
 
 	a = complex_sin(x);
-	return (complex_multiplication(a, complex_rotate(PI31415 / 2)));
+	return (complex_multiplication(a, complex_rotate(PI314PM / 2)));
 }
 
 int	main(void)

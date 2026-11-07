@@ -52,6 +52,8 @@ char	*get_all_lines(int fd, size_t buffer_length)
 	char			*buff;
 	bool			continue_line;
 
+	if (fd < 0)
+		return (NULL);
 	dst = create_str_dynamic(1);
 	if (dst.str == NULL)
 		return (NULL);
@@ -94,7 +96,7 @@ char	*get_next_line(int fd, bool is_continue)
 	static size_t	prev_index = 0;
 	size_t			length;
 
-	if (fd < -1)
+	if (fd < 0)
 		return (NULL);
 	if (str_all_line == NULL)
 		str_all_line = get_all_lines(fd, BUFFER_SIZE);
@@ -111,8 +113,3 @@ char	*get_next_line(int fd, bool is_continue)
 	}
 	return (dst);
 }
-
-/*
-000000000000000002000000000000200000000
-000000000000000002, 000000000000200000000
-*/

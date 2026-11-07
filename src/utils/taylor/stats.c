@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:29:38 by phsottat          #+#    #+#             */
-/*   Updated: 2026/09/14 11:59:47 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/11/07 19:00:29 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ double	f_normal(double std, double means, double x)
 	double	down;
 	double	pi;
 
-	pi = PI31415;
+	pi = PI314PM;
 	if (std == 0)
 		return (0);
 	down = std * f_root_find(2 * pi, 2);

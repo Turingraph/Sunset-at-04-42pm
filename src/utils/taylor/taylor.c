@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:29:28 by phsottat          #+#    #+#             */
-/*   Updated: 2026/09/14 11:59:35 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/11/07 19:00:29 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,7 +188,7 @@ double	f_sin(double x)
 	size_t	i;
 
 	i = 0;
-	pi2 = 2 * PI31415;
+	pi2 = 2 * PI314PM;
 	x = x - f_floor(x / pi2) * pi2;
 	if (x < 0.01 && x > -0.01)
 		return (x);
@@ -216,5 +216,5 @@ double	f_sin(double x)
  */
 double	f_cos(double x)
 {
-	return (f_sin(x + PI31415 / 2.0));
+	return (f_sin(x + PI314PM / 2.0));
 }
