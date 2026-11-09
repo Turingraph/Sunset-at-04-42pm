@@ -124,8 +124,8 @@ int	main(void)
 	scale_fdf_table(&table, 0, FDF_HEIGHT);
 	style.shape2d = SHAPE2D_CIRCLE;
 	style.thickness = 1;
-	// output = create_fdf_proj2d(&table, NULL, 1);
-	output = create_fdf_proj2d(&table, complex_sin, 0.0125);
+	output = create_fdf_proj2d(&table, NULL, 1);
+	// output = create_fdf_proj2d(&table, complex_sin, 0.0125);
 	// output = create_fdf_proj2d(&table, complex_x3, 0.00125);
 	// scale_fdf_proj2d(&output, 30, 30);
 	view_fdf_proj2d(&output, style, rgba32_from_char(0, 0, 0, 255));
