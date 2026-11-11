@@ -19,7 +19,7 @@ static void	write_with_paint_aura_fdf_table(float scale, const char *file_name,
 	}
 	paint_aura_fdf_table(table, scale, FDF_HEIGHT, aura);
 	table2 = count_neighbors_fdf_table(table, 32);
-	mix_hadamard_fdf_table(&table2, table, FDF_HEIGHT);
+	// mix_hadamard_fdf_table(&table2, table, FDF_HEIGHT);
 	write_fdf_table(output, &table2, FDF_HEIGHT, FDF_FORMAT_ASCII_B);
 	close(output);
 	destroy_fdf_table(&table2);

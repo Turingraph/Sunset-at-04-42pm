@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/27 12:25:45 by phsottat          #+#    #+#             */
-/*   Updated: 2026/10/31 12:33:44 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/11/11 16:41:26 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,15 +93,20 @@ void	paint_aura_fdf_table(t_fdf_table *dst,
 int	aura_custom_andmod(t_double2d x, double z,
 	t_double2d (*complex_func)(t_double2d a))
 {
+	int		modd;
+
+	modd = 2;
+	if (z > 1)
+		modd = z;
 	if (complex_func != NULL)
 		x = complex_func(x);
 	if (x.x < 0)
 		x.x *= -1;
 	if (x.y < 0)
 		x.y *= -1;
-	if ((int)x.x % 2 == 1 && (int)x.y % 2 == 1 && z >= 0)
+	if ((int)x.x % modd == 1 && (int)x.y % modd == 1)
 		return (1);
-	return (0);
+	return (z);
 }
 
 /**
@@ -126,13 +131,17 @@ int	aura_custom_bi(t_double2d x, double z,
 	t_double2d (*complex_func)(t_double2d a))
 {
 	double	distance;
+	int		modd;
 
+	modd = 2;
+	if (z > 1)
+		modd = z;
 	if (complex_func != NULL)
 		x = complex_func(x);
 	distance = x.x + x.y;
 	if (aura_custom != NULL)
-		distance = aura_custom(x.x, x.y, z);
-	if ((int)f_floor(distance) % 2 == 1)
+		distance = aura_custom(x.x, x.y, 0);
+	if ((int)f_floor(distance) % modd == 1)
 		return (1);
-	return (0);
+	return (z);
 }

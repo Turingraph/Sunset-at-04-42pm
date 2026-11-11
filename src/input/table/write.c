@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:55:57 by phsottat          #+#    #+#             */
-/*   Updated: 2026/09/11 14:29:47 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/11/11 16:19:14 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,7 @@ void	write_fdf_table_custom(int fd, const t_fdf_table *src,
 void	write_fdf_table(int fd, const t_fdf_table *src,
 	t_fdf_channel channel, t_fdf_format format)
 {
-	if (src == NULL || mul_overflow_size_t(src->col, src->row) == false || fd < -1)
+	if (src == NULL || mul_overflow_size_t(src->col, src->row) == false || fd < 0)
 		return ;
 	if (format == FDF_FORMAT_ASCII_A)
 		write_fdf_table_custom(fd, src, channel, DICT_ASCII_A);

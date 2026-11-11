@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   public.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 14:07:35 by phsottat          #+#    #+#             */
-/*   Updated: 2026/10/21 14:12:14 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/11/11 16:19:14 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static t_fdf_load	parse_ascii_c(char *line)
  */
 t_fdf_load_arr	fetch_fdf_load(int fd, t_fdf_format format)
 {
-	if (fd < -1)
+	if (fd < 0)
 		return (create_fdf_load_arr(0));
 	if (format == FDF_FORMAT_ASCII_A)
 		return (fetch_fdf_load_helper(fd, parse_ascii_a));
