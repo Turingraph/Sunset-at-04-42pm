@@ -114,7 +114,9 @@ int	main(void)
 	table_base = create_fdf_table(mmaaxx, mmaaxx, false);
 	paint_aura_fdf_table(&table, 1, FDF_HEIGHT, aura_inequality_triangle);
 	paint_aura_fdf_table(&table, 1, FDF_HEIGHT, aura_pythagoras);
-	paint_aura_fdf_table(&table_base, AURA_PIANISSIMO, FDF_HEIGHT, aura_fractal_no3);
+	add_fdf_table(&table_base, 7, FDF_HEIGHT);
+	paint_aura_fdf_table(&table_base, AURA_PIANISSIMO, FDF_HEIGHT, aura_hypnotize_no3);
+	relu_fdf_table(&table_base, 7, 7, 0);
 	mix_hadamard_fdf_table(&table, &table_base, FDF_HEIGHT);
 	paint_gradient_fdf_table(&table, init_deep_wood(), true);
 	paint_gradient_fdf_table(&table, init_popart2(), true);
