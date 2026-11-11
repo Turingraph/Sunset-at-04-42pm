@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/27 12:25:45 by phsottat          #+#    #+#             */
-/*   Updated: 2026/11/11 16:41:26 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/11/11 18:18:56 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,16 +132,23 @@ int	aura_custom_bi(t_double2d x, double z,
 {
 	double	distance;
 	int		modd;
+	int		re;
 
+	re = 1;
 	modd = 2;
 	if (z > 1)
 		modd = z;
+	if (z < -1)
+	{
+		modd = -1 * z;
+		re = modd - 1;
+	}
 	if (complex_func != NULL)
 		x = complex_func(x);
 	distance = x.x + x.y;
 	if (aura_custom != NULL)
 		distance = aura_custom(x.x, x.y, 0);
-	if ((int)f_floor(distance) % modd == 1)
+	if ((int)f_floor(distance) % modd == re)
 		return (1);
 	return (z);
 }
