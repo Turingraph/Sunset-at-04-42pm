@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/27 14:33:56 by phsottat          #+#    #+#             */
-/*   Updated: 2026/10/27 14:54:52 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/11/14 14:42:22 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
  * 
  * status: public api
  */
-int	aura_root2(double x, double y, double z)
+double	aura_root2(double x, double y, double z)
 {
 	return ((int)f_round(f_root_find(x * y * z, 2)));
 }
@@ -31,7 +31,7 @@ int	aura_root2(double x, double y, double z)
  * 
  * status: public api
  */
-int	aura_root3(double x, double y, double z)
+double	aura_root3(double x, double y, double z)
 {
 	return ((int)f_round(f_root_find(x * y * z, 3)));
 }
@@ -43,7 +43,7 @@ int	aura_root3(double x, double y, double z)
  * 
  * status: public api
  */
-int	aura_addsub(double x, double y, double z)
+double	aura_addsub(double x, double y, double z)
 {
 	return (f_abs_int(x + y + z));
 }
@@ -55,7 +55,7 @@ int	aura_addsub(double x, double y, double z)
  * 
  * status: public api
  */
-int	aura_fermat(double x, double y, double z)
+double	aura_fermat(double x, double y, double z)
 {
 	int	a;
 	int	b;

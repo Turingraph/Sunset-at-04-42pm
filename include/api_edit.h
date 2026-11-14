@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/16 14:50:48 by phsottat          #+#    #+#             */
-/*   Updated: 2026/10/21 14:26:33 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/11/14 14:43:08 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -438,6 +438,6 @@ void		paint_gradient_fdf_table(t_fdf_table *dst,
  * @param aura optional function to calculate the value of each cell
  */
 void	paint_aura_fdf_table(t_fdf_table *dst, t_fdf_channel channel,
-	int (*aura)(const t_fdf_table *dst, size_t index));
+	double (*aura)(const t_fdf_table *dst, size_t index));
 
 #endif

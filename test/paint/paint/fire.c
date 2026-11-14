@@ -60,9 +60,9 @@ t_gradient	init_feeling_blue(void)
 	return (dst);
 }
 
-int	is_3d_pythagoras(double x, double y, double z)
+double	is_3d_pythagoras(double x, double y, double z)
 {
-	if (aura_pythagoras(x, y, z) % 2 == 1)
+	if ((int)aura_pythagoras(x, y, z) % 2 == 1)
 		return (1);
 	return (0);
 }

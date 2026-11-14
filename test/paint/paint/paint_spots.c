@@ -2,7 +2,7 @@
 
 static void	write_with_paint_aura_fdf_table(float scale, const char *file_name,
 	t_fdf_table *table,
-	int (*aura)(double x, double y, double z))
+	double (*aura)(double x, double y, double z))
 {
 	t_fdf_table	table2;
 	int	output;

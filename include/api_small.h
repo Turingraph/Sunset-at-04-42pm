@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/16 15:08:44 by phsottat          #+#    #+#             */
-/*   Updated: 2026/10/27 14:54:28 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/11/14 14:43:08 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -681,7 +681,7 @@ bool		spots_andmod_cos(const t_fdf_table *dst, size_t index);
  * @param aura optional function to calculate the value of each cell
  */
 void	paint_aura_fdf_table(t_fdf_table *dst, t_fdf_channel channel,
-	int (*aura)(const t_fdf_table *dst, size_t index));
+	double (*aura)(const t_fdf_table *dst, size_t index));
 
 /**
  * Calculate the difference between the sum of the absolute
@@ -693,7 +693,7 @@ void	paint_aura_fdf_table(t_fdf_table *dst, t_fdf_channel channel,
  * @param index index of the cell
  * @return |re| + |im| + |z| - |re + im + z|
  */
-int	aura_inequality_triangle_3d(const t_fdf_table *dst, size_t index);
+double	aura_inequality_triangle_3d(const t_fdf_table *dst, size_t index);
 
 /**
 * Calculate the Euclidean distance of a cell from the origin
@@ -705,7 +705,7 @@ int	aura_inequality_triangle_3d(const t_fdf_table *dst, size_t index);
 * @param index index of the cell
 * @return Euclidean distance from the origin
 */
-int	aura_pythagoras_3d(const t_fdf_table *dst, size_t index);
+double	aura_pythagoras_3d(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the maximum absolute component of a cell coordinate
@@ -717,7 +717,7 @@ int	aura_pythagoras_3d(const t_fdf_table *dst, size_t index);
  * @param index index of the cell
  * @return maximum of |re|, |im|, and z
  */
-int	aura_max(const t_fdf_table *dst, size_t index);
+double	aura_max(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the square root of the absolute product of the
@@ -729,7 +729,7 @@ int	aura_max(const t_fdf_table *dst, size_t index);
  * @param index index of the cell
  * @return sqrt(|re * im|)
  */
-int	aura_root3(const t_fdf_table *dst, size_t index);
+double	aura_root3(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the absolute value of the sum of x, y, and z.
@@ -740,7 +740,7 @@ int	aura_root3(const t_fdf_table *dst, size_t index);
  * @param index index of the cell
  * @return |x + y + z|
  */
-int	aura_addsub_3d(const t_fdf_table *dst, size_t index);
+double	aura_addsub_3d(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the difference between the sum of the absolute
@@ -752,7 +752,7 @@ int	aura_addsub_3d(const t_fdf_table *dst, size_t index);
  * @param index index of the cell
  * @return |re| + |im| - |re + im|
  */
-int	aura_inequality_triangle(const t_fdf_table *dst, size_t index);
+double	aura_inequality_triangle(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the different between (x + y) / 2 - (xy)^(1/2)
@@ -763,7 +763,7 @@ int	aura_inequality_triangle(const t_fdf_table *dst, size_t index);
  * @param index index of the cell
  * @return (x + y) / 2 - (xy)^(1/2)
  */
-int	aura_inequality_amgm(const t_fdf_table *dst, size_t index);
+double	aura_inequality_amgm(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the (x + y + z) / 3 - (xyz)^(1/3)
@@ -774,7 +774,7 @@ int	aura_inequality_amgm(const t_fdf_table *dst, size_t index);
  * @param index index of the cell
  * @return (x + y + z) / 3 - (xyz)^(1/3)
  */
-int	aura_inequality_amgm_3d(const t_fdf_table *dst, size_t index);
+double	aura_inequality_amgm_3d(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the (re + im)^2
@@ -785,7 +785,7 @@ int	aura_inequality_amgm_3d(const t_fdf_table *dst, size_t index);
  * @param index index of the cell
  * @return (re + im)^2
  */
-int	aura_x_plus_y_square(const t_fdf_table *dst, size_t index);
+double	aura_x_plus_y_square(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the x^2 + y^2 + z^2 - (x + y + z)^2
@@ -796,7 +796,7 @@ int	aura_x_plus_y_square(const t_fdf_table *dst, size_t index);
  * @param index index of the cell
  * @return x^2 + y^2 + z^2 - (x + y + z)^2
  */
-int	aura_inequality_cauchy(const t_fdf_table *dst, size_t index);
+double	aura_inequality_cauchy(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the minimum absolute component of a cell coordinate.
@@ -807,7 +807,7 @@ int	aura_inequality_cauchy(const t_fdf_table *dst, size_t index);
  * @param index index of the cell
  * @return minimum of |re| and |im|
  */
-int	aura_min_xy(const t_fdf_table *dst, size_t index);
+double	aura_min_xy(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the minimum absolute component of a cell coordinate
@@ -819,7 +819,7 @@ int	aura_min_xy(const t_fdf_table *dst, size_t index);
  * @param index index of the cell
  * @return minimum of |re|, |im|, and z
  */
-int	aura_min(const t_fdf_table *dst, size_t index);
+double	aura_min(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the minimum cosine value of the real and imaginary
@@ -831,7 +831,7 @@ int	aura_min(const t_fdf_table *dst, size_t index);
  * @param index index of the cell
  * @return min(row, col) * min(cos(re / a), cos(im / a))
  */
-int	aura_mincos(const t_fdf_table *dst, size_t index);
+double	aura_mincos(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the minimum component of the complex cosine of a
@@ -845,7 +845,7 @@ int	aura_mincos(const t_fdf_table *dst, size_t index);
  * 
  * @return min(cos(z).x, cos(z).y)
  */
-int	aura_minecos(const t_fdf_table *dst, size_t index);
+double	aura_minecos(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the minimum component of the complex exponential
@@ -857,7 +857,7 @@ int	aura_minecos(const t_fdf_table *dst, size_t index);
  * @param index index of the cell
  * @return min(re(exp(z)), im(exp(z)))
  */
-int	aura_minexp(const t_fdf_table *dst, size_t index);
+double	aura_minexp(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the maximum sine value of the real and imaginary
@@ -869,7 +869,7 @@ int	aura_minexp(const t_fdf_table *dst, size_t index);
  * @param index index of the cell
  * @return min(row, col) * max(sin(re / a), sin(im / a))
  */
-int	aura_maxsin(const t_fdf_table *dst, size_t index);
+double	aura_maxsin(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the maximum component of the complex sine of a
@@ -883,7 +883,7 @@ int	aura_maxsin(const t_fdf_table *dst, size_t index);
  * 
  * @return max(sin(z).x, sin(z).y)
  */
-int	aura_maxesin(const t_fdf_table *dst, size_t index);
+double	aura_maxesin(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the maximum cosine value of the real and imaginary
@@ -895,7 +895,7 @@ int	aura_maxesin(const t_fdf_table *dst, size_t index);
  * @param index index of the cell
  * @return min(row, col) * max(cos(re / a), cos(im / a))
  */
-int	aura_maxcos(const t_fdf_table *dst, size_t index);
+double	aura_maxcos(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the maximum component of the complex cosine of a
@@ -909,7 +909,7 @@ int	aura_maxcos(const t_fdf_table *dst, size_t index);
  * 
  * @return max(cos(z).x, cos(z).y)
  */
-int	aura_maxecos(const t_fdf_table *dst, size_t index);
+double	aura_maxecos(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the maximum component of the complex exponential
@@ -921,7 +921,7 @@ int	aura_maxecos(const t_fdf_table *dst, size_t index);
  * @param index index of the cell
  * @return max(re(exp(z)), im(exp(z)))
  */
-int	aura_maxexp(const t_fdf_table *dst, size_t index);
+double	aura_maxexp(const t_fdf_table *dst, size_t index);
 
 /**
 * Calculate the Euclidean distance of a cell from the origin
@@ -933,7 +933,7 @@ int	aura_maxexp(const t_fdf_table *dst, size_t index);
 * @param index index of the cell
 * @return Euclidean distance from the origin
 */
-int	aura_pythagoras(const t_fdf_table *dst, size_t index);
+double	aura_pythagoras(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the maximum absolute component of a cell coordinate.
@@ -944,7 +944,7 @@ int	aura_pythagoras(const t_fdf_table *dst, size_t index);
  * @param index index of the cell
  * @return maximum of |re| and |im|
  */
-int	aura_max_xy(const t_fdf_table *dst, size_t index);
+double	aura_max_xy(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the absolute value of the sum of the real and
@@ -956,7 +956,7 @@ int	aura_max_xy(const t_fdf_table *dst, size_t index);
  * @param index index of the cell
  * @return |re + im|
  */
-int	aura_addsub(const t_fdf_table *dst, size_t index);
+double	aura_addsub(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the square root of the absolute product of the
@@ -968,7 +968,7 @@ int	aura_addsub(const t_fdf_table *dst, size_t index);
  * @param index index of the cell
  * @return sqrt(|re * im|)
  */
-int	aura_root3_xy(const t_fdf_table *dst, size_t index);
+double	aura_root3_xy(const t_fdf_table *dst, size_t index);
 
 /**
  * Calculate the a^3 + b^3 - c^3 where a,b,c are integer and c is the
@@ -980,6 +980,6 @@ int	aura_root3_xy(const t_fdf_table *dst, size_t index);
  * @param index index of the cell
  * @return a^3 + b^3 - floor((a^3 + b^3)^(1/3))
  */
-int	aura_fermat_theorem(const t_fdf_table *dst, size_t index);
+double	aura_fermat_theorem(const t_fdf_table *dst, size_t index);
 
 #endif

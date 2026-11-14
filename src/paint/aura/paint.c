@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/27 12:25:45 by phsottat          #+#    #+#             */
-/*   Updated: 2026/11/11 18:18:56 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/11/14 14:43:08 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_double2d	complex_x3(t_double2d a)
 void	paint_aura_fdf_table(t_fdf_table *dst,
 	double zoom,
 	t_fdf_channel channel,
-	int (*aura_custom)(double x, double y, double z))
+	double (*aura_custom)(double x, double y, double z))
 {
 	unsigned char	*rgbarr;
 	size_t			i;
@@ -90,7 +90,7 @@ void	paint_aura_fdf_table(t_fdf_table *dst,
  * coordinate.
  * @return true if z.x is even and z.y is even, false otherwise.
  */
-int	aura_custom_andmod(t_double2d x, double z,
+double	aura_custom_andmod(t_double2d x, double z,
 	t_double2d (*complex_func)(t_double2d a))
 {
 	int		modd;
@@ -126,8 +126,8 @@ int	aura_custom_andmod(t_double2d x, double z,
  * @return true if the rounded coordinate magnitude is odd,
  * false otherwise.
  */
-int	aura_custom_bi(t_double2d x, double z,
-	int (*aura_custom)(double x, double y, double z),
+double	aura_custom_bi(t_double2d x, double z,
+	double (*aura_custom)(double x, double y, double z),
 	t_double2d (*complex_func)(t_double2d a))
 {
 	double	distance;

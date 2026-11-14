@@ -6,7 +6,7 @@
 /*   By: phsottat <phsottat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/27 14:34:01 by phsottat          #+#    #+#             */
-/*   Updated: 2026/10/27 14:34:02 by phsottat         ###   ########.fr       */
+/*   Updated: 2026/11/14 14:42:22 by phsottat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
  * 
  * status: public api
  */
-int	aura_inequality_triangle(double x, double y, double z)
+double	aura_inequality_triangle(double x, double y, double z)
 {
 	int	y_max;
 	int	y_min;
@@ -36,7 +36,7 @@ int	aura_inequality_triangle(double x, double y, double z)
  * 
  * status: public api
  */
-int	aura_inequality_amgm(double x, double y, double z)
+double	aura_inequality_amgm(double x, double y, double z)
 {
 	int	y_max;
 	int	y_min;
@@ -59,7 +59,7 @@ int	aura_inequality_amgm(double x, double y, double z)
  * 
  * status: public api
  */
-int	aura_inequality_cauchy(double x, double y, double z)
+double	aura_inequality_cauchy(double x, double y, double z)
 {
 	int	y_max;
 	int	y_min;
@@ -69,7 +69,7 @@ int	aura_inequality_cauchy(double x, double y, double z)
 	return (y_max - y_min);
 }
 
-int	aura_inequality_addmul(double x, double y, double z)
+double	aura_inequality_addmul(double x, double y, double z)
 {
 	int	y_max;
 	int	y_min;

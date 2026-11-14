@@ -2,7 +2,7 @@
 
 static void	write_with_paint_aura_fdf_table(float scale, const char *file_name,
 	t_fdf_table *table,
-	int (*aura)(double x, double y, double z))
+	double (*aura)(double x, double y, double z))
 {
 	int	output;
 
@@ -22,7 +22,7 @@ static void	write_with_paint_aura_fdf_table(float scale, const char *file_name,
 	close(output);
 }
 
-int	aura_maxcos(double x, double y, double z)
+double	aura_maxcos(double x, double y, double z)
 {
 	t_double2d	com;
 
@@ -54,6 +54,5 @@ int	main(void)
 }
 
 /*
-valgrind --leak-check=full --show-leak-kinds=all 
-./test/out/paint/paint/paint_aura.out
+valgrind --leak-check=full --show-leak-kinds=all ./test/out/paint/paint/paint_aura.out
 */
